@@ -1,0 +1,15 @@
+
+Notes for Thesis
+
+\section{Reduction Software:}
+
+The first main task my research involved reducing the CRIRES observations, extracting the spectra from time raw images. There were two options for reducing the data, using the ESO reduction software or a in-house built software called DRACS (Data Reduction Algorithm for Crires Spectra). Time was spent reducing the data with both methods to determine which was better. 
+There were tradeoffs between the two pipelines but DRACS was chosen to be perferable of the two. The line depths of the two reduced and normalized spectra were compared for consistancy and gave compariable results.
+
+The ESO reduced spectra had a few bad pixels still left in the reduced spectra that where not removed after trying many different settings to try and fix them.
+That were not a problem with the DRACS software. 
+The DRACS reduction was quicker to implement because it could be ran in batch mode and did the full reduction of each spectra very qucikly where as the ESO pipeline with GASGANO was a manual process and time consuming to select all the files and parameters for each step of the reduction. 
+
+I also found there were inconsistency in the flat feild reduction on the ESO pipeline between software updates.
+
+The choice of DRACS required some updates from me. I had to write a couple of scripts to normalize and combined the DRACS output spectra. And add code to reduce detector $\#3$ which was not used previously.
