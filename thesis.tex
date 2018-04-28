@@ -1,0 +1,216 @@
+\RequirePackage{xcolor}
+\documentclass[fleqn]{fcup-thesis}
+
+\usepackage[english]{babel}
+\usepackage{lipsum}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[separate-uncertainty=true]{siunitx}
+\usepackage[version=3]{mhchem}
+\usepackage{wasysym}
+\usepackage[final]{microtype}
+\usepackage[hang,multiple]{footmisc}
+\let\newfloat\relax
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{xkvltxp}
+\usepackage{fixme}
+\usepackage{color}
+\usepackage{rotate}
+\usepackage{rotating}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+\usepackage{longtable}
+\usepackage{pdflscape}
+
+\usepackage{caption}
+\captionsetup{
+	labelfont=bf,
+}
+\captionsetup[table]{%
+	justification=justified,
+	singlelinecheck=false,
+}
+
+
+\definecolor{flatblue}{RGB}{41, 128, 185}
+\definecolor{flatgrey}{RGB}{52, 73, 94}
+\definecolor{flatgreen}{RGB}{44, 201, 144}
+\definecolor{flatpurple}{RGB}{142, 68, 173}
+\definecolor{flatorange}{RGB}{211, 84, 0}
+\definecolor{flatred}{RGB}{207, 0, 15}
+\usepackage{soul}  % highlight text with \hl{}, strikethrough with \st{}
+\sethlcolor{flatgreen}
+\setstcolor{flatred}
+\usepackage{epigraph} %for quotes
+\setlength\epigraphrule{0pt}
+
+%% TODO NOTES
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\newcommandx{\change}[2][1=]{\todo[linecolor=flatblue,backgroundcolor=flatblue!25,bordercolor=flatblue,#1]{#2}}
+\newcommandx{\reference}[2][1=]{\todo[linecolor=flatgreen,backgroundcolor=flatgreen!25,bordercolor=flatgreen,#1]{#2}}
+\newcommandx{\unfinished}[2][1=]{\todo[linecolor=flatorange,backgroundcolor=flatorange!25,bordercolor=flatorange,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=flatpurple,backgroundcolor=flatpurple!25,bordercolor=flatpurple,#1]{#2}}
+
+
+%%%%%%%%%%% Literature %%%%%%%%%%%%%%%
+% When in doubt visit this page:
+% http://adsabs.harvard.edu/abs_doc/aas_macros.html
+\usepackage[authoryear]{natbib}
+\def\aap{A\&A}
+\def\aapr{Astronomy and Astrophysics Reviews}
+\def\eprint{e-prints}
+\def\apj{ApJ}
+\def\apjs{ApJS}
+\def\apjl{ApJL}
+\def\mnras{MNRAS}
+\def\aj{AJ}
+\def\nat{Nature}
+\def\aaps{A\&A Supp.}
+\def\pasp{Publications of the ASP}
+\def\prd{Phys. Rev. D}
+\def\prl{Phys. Rev. Lett.}
+\def\araa{ARA\&A}
+\def\actaa{Acta Astronomica}
+\def\procspie{Proceedings of the SPIE}
+\def\pasj{PASJ}
+\def\icarus{Icarus}
+\def\pasa{Publications of the Astron. Soc. of Australia}
+
+
+\usepackage{fix-cm} % Allows increasing the f
+\usepackage[colorlinks,
+linkcolor=flatorange,
+citecolor=flatblue,
+urlcolor=flatpurple]{hyperref}
+
+\usepackage[Lenny]{fncychap}
+
+%%%%%%%%%%%%% new commands %%%%%%%%%%%%%%%
+\newcommand{\cref}[1]{Chapter~\ref{#1}}
+\newcommand{\sref}[1]{Section~\ref{#1}}
+\newcommand{\tref}[1]{\tablename~\ref{#1}}
+\newcommand{\fref}[1]{\figurename~\ref{#1}}
+\newcommand{\aref}[1]{Appendix~\ref{#1}}
+\newcommand{\eref}[1]{Equation~\ref{#1}}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\bf}{\textbf}
+\newcommand{\nicebreak}{\newline\newline\noindent}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\object}[1]{#1}
+\newcommand{\Mjup}{M_\mathrm{Jup}}
+
+%%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%%%%
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\tm}[1]{\textnormal{#1}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dd}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+
+%%%%%%%%%%%%% Layout %%%%%%%%%%%%%%%%%%%%%
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+%% A&A stuff
+\DeclareRobustCommand{\ion}[2]{\textup{#1\,\textsc{\lowercase{#2}}}}
+\newcommand*\element[1][]{%
+	\def\aa@element@tr{#1}%
+	\aa@element
+}
+
+
+%% *** Change this example to appropriate values. ***
+\degree{Doctor of Philosophy}
+\department{Departamento de Fisica e Astronomia}
+\gradyear{2018}
+\author{Jason James Neal}
+\title{Towards the nIR detection of planets.}
+
+
+%% Make each page fill up the entire page.
+\flushbottom
+
+
+%%%%%%%%%%%%      MAIN  DOCUMENT      %%%%%%%%%%%%
+% \includeonly{introduction}
+
+\begin{document}
+	
+	%% This sets the page style and numbering for preliminary sections.
+	\begin{preliminary}
+		
+		%% This generates the title page from the information given above.
+		\maketitle
+		\cleardoublepage
+		
+		
+		\begin{dedication}
+			\centering \huge \itshape
+			To Jessica, Timothy, Amelia\\For always supporting me
+		\end{dedication}
+		
+		
+		\begin{acknowledgements}
+			
+			Gillian - proofreading
+			
+			Supervisors for guiding me
+			
+			\vspace{7mm}
+			
+			
+		\end{acknowledgements}
+		
+		
+		
+		\begin{abstract}
+			
+			
+		\end{abstract}
+		
+		\begin{abstract-pt}
+			
+			
+		\end{abstract-pt}
+		
+		
+		
+		\tableofcontents
+		\addcontentsline{toc}{chapter}{\listtablename}
+		\listoftables
+		\addcontentsline{toc}{chapter}{\listfigurename}
+		\listoffigures
+		
+	\end{preliminary}
+	
+	
+	%% *** Include chapter files here. ***
+	\include{chapters/introduction}
+	\include{chapters/direct-recovery-technique}
+	\include{chapters/companion-recover}	
+	\include{chapters/nir-information-content}
+	\include{chapters/discussion}
+	\include{chapters/future}
+	
+	
+	\appendix
+	
+	\include{appendices/appendix-a}
+	
+	
+	
+	%% This adds a line for the Bibliography in the Table of Contents.
+	\addcontentsline{toc}{chapter}{Bibliography}
+	% \bibliographystyle{plain}
+	%% *** Set the bibliography file. ***
+	\bibliography{thesis}
+	\bibliographystyle{astron}
+	\nocite{} %include everything.
+	
+	
+\end{document}
