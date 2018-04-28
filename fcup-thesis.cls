@@ -369,6 +369,91 @@
    \begingroup}%
   {\par\endgroup\newpage}
 
+
+
+
+%----------------------------------------------------------------------------------------
+%	ABBREVIATIONS PAGE DESIGN
+%----------------------------------------------------------------------------------------
+
+%% \begin{abbreviations}...\end{abbreviations} formats an
+%% acknowledgements section (*not* on a separate page).
+\newenvironment*{abbreviations}%
+{\begin{center}
+		\section*{Acknowledgements}
+	\end{center}
+	\begingroup}%
+{\par\endgroup\newpage}
+
+%\newcommand{\abbrevname}{List of Abbreviations}
+%\providecaptionname{english,british,american}{\abbrevname}{List of Abbreviations}
+%
+%\NewDocumentEnvironment{abbreviations}{ m }{%
+%	\ifbool{nolistspace}{\begingroup\singlespacing}{}
+%	\ifbool{listtoc}{\addchap{\abbrevname}}{\addchap*{\abbrevname}}
+%	\begin{longtable}{#1}
+%	}{%
+%\end{longtable}
+%\addtocounter{table}{-1} % Don't count this table as one of the document tables
+%\ifbool{nolistspace}{\endgroup}{}
+%}
+
+%----------------------------------------------------------------------------------------
+%	PHYSICAL CONSTANTS PAGE DESIGN
+%----------------------------------------------------------------------------------------
+
+%% \begin{constants}...\end{constants} formats an
+%% acknowledgements section (*not* on a separate page).
+\newenvironment*{constants}%
+{\begin{center}
+		\section*{Physical Constants}
+	\end{center}
+	\begingroup}%
+{\par\endgroup\newpage}
+
+%\newcommand{\constantsname}{Physical Constants}
+%\providecaptionname{english,british,american}{\constantsname}{Physical Constants}
+%
+%
+%\NewDocumentEnvironment{constants}{ m }{%
+%	\ifbool{nolistspace}{\begingroup\singlespacing}{}
+%	\ifbool{listtoc}{\addchap{\constantsname}}{\addchap*{\constantsname}}
+%	\begin{longtable}{#1}
+%	}{%
+%\end{longtable}
+%\addtocounter{table}{-1} % Don't count this table as one of the document tables
+%\ifbool{nolistspace}{\endgroup}{}
+%}
+
+%----------------------------------------------------------------------------------------
+%	SYMBOLS PAGE DESIGN
+%----------------------------------------------------------------------------------------
+
+%% \begin{symbols}...\end{symbols} formats an
+%% acknowledgements section (*not* on a separate page).
+\newenvironment*{symbols}%
+{\begin{center}
+		\section*{List of Symbols}
+	\end{center}
+	\begingroup}%
+{\par\endgroup\newpage}
+
+%\newcommand{\symbolsname}{List of Symbols}
+%\providecaptionname{english,british,american}{\symbolsname}{List of Symbols}
+%
+%\NewDocumentEnvironment{symbols}{ m }{%
+%	\ifbool{nolistspace}{\begingroup\singlespacing}{}
+%	\ifbool{listtoc}{\addchap{\symbolsname}}{\addchap*{\symbolsname}}
+%	\begin{longtable}{#1}
+%	}{%
+%\end{longtable}
+%\addtocounter{table}{-1} % Don't count this table as one of the document tables
+%\ifbool{nolistspace}{\endgroup}{}
+%}
+
+
+
+
 %% Redefine `thebibliography' environment so that it generates headers
 %% in the same style as the rest of the document.
 \let\@thesisthebibliography\thebibliography
