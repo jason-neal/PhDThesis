@@ -43,7 +43,7 @@
 
 
 
-# from draft of paper 18/7/2017
+% from draft of paper 18/7/2017
 \subsection{Companion K}
 \label{sec:companion_RV}
 \emph{These sections might be unnecessary}\\
@@ -59,185 +59,14 @@ We use the K band magnitude specifically for this work to estimate the flux rati
 
 If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario).
 
-\begin{table}
-    \caption{Estimating the host/companion flux ratios using the \citet{baraffe_evolutionary_2003} brown dwarf tables. $F_1/F_2$ is the estimated host/companion flux ratio calculated from the magnitude difference. Ages is taken from the table~\ref{tab:starparams}}.
-    \begin{tabular}{lccccc}
-        \hline\hline
-        Object & HostK & Companion Mass & T$_{eff}$ & $\textrm{M}_{k}$ & $F_1/F_2$\\
-        & (MJup) & (K) &   &  & \\
-        \hline
-        \object{HD 4747} &   &   &   &  & \\
-        \object{HD 4747} & 5.30 & 72.0 & 1473 & 13.66 & 2192.9 \\    % https://arxiv.org/pdf/1604.00398.pdf new results
-        \object{HD 162020} &   &   &   & \\
-        \object{HD 167665} &   &   &   & \\
-        \object{HD 168443} &   &   &   & \\
-        \object{HD 211847} &   &   &   & 50\\
-        \object{HD 162020} &   &   &   & \\
-        \object{HD 202206} &   &   &   & \\
-        \object{HD 30501} & 90 & 2494 & 10.3 & 85.8 \\
-        \object{HD 30501} & 5.53 & 90.0 & 2498 & 10.36 & 85.8 \\
-    \end{tabular}
-    \label{tab:flux_table}
-\end{table}
-
-\begin{table}
-    \tiny
-    \begin{tabular}{l c c c c c c c}
-        Host       & SpT  & $\textrm{M}_2\sin i$ & $\textrm{M}_2$     & Flux ratio  &  $\delta$ RV   & Period & Phase coverage \\
-        &      & $\textrm{M}_{Jup}$   & $\textrm{M}_{Jup}$ & K band      &  m/s           & Days   & (\%) \\
-        \hline
-        \object{HD 211847}   & G5V  & 19.20 & 155$^\dagger$   & 0.26        & 13   & 7929.4  & 0.09  \\  %B % 2017
-        \object{HD 202206}*  & G6V  & 17.4  & 93.6$^\dagger$  & 0.133       & 427  & 256     & 0.78  \\  %(B)   % May2017
-        \object{HD 30501}    & K2V  & 62.3  & 89.6            & 0.011       & 1226 & 2073.6  & 5.8   \\
-        \object{HD 4747}     & K0V  & 39.6  & 60.2$^\dagger$  & $1e^{-4}$   & N/A  & 13826.2 &  N/A  \\  % 2017
-        \object{HD 167665}   & F9V  & 50.3  &                 & $2e^{-3}$   & 59   & 4385    & 0.18  \\  %  -- $2e^{-5}$  best case based on age rage.
-        \object{HD 168443}*  & G6V  & 17.2  &                 & $2e^{-10}$  & 0    & 1749.8  & 0.001 \\  %(c)
-        \object{HD 162020}   & K3V  & 14.4  &                 & $7e^{-6}$   & 363  & 8.4     & 0.24  \\  %
-    \end{tabular}\\
-    \vspace{1em}
-    * only the largest companion.
-    $\dagger$ Masses recently published
-\end{table}
-
 
 A simple tool to do this calculation was created with python. Given a host name, companion mass and a stellar age it can give a flux contrast ratio of the system. A script to work backwards from a flux-ratio to a companion mass was also created as a check for the results from \S~\ref{subsec:companion_recovery}. These scripts can be found at \url{https://github.com/jason-neal/baraffe_tables}.
-
-\begin{figure}
-    \includegraphics[width=0.4\textwidth]{images/tmp-images/HD30501-spectum.png}\\
-    \includegraphics[width=0.4\textwidth]{images/tmp-images/HD30501-telluric-correction.png}\\
-    \includegraphics[width=0.4\textwidth]{images/tmp-images/HD30501-difference.png}\\
-    \caption{Example spectrum, telluric correction, and difference}
-    \label{fig:spectral_example}
-\end{figure}
-
-
-%% Table of stellar parameters
-\begin{table*}
-    \centering
-    \small
-    \caption{Stellar parameters of the BD targets hosts.}
-    \begin{tabular}{lccccccccc}
-        \toprule
-        Star & SpT & \(\textrm{M}_V \)& \(T{}_{\mathrm{eff}} \) & \(\log g \) & \([Fe/H] \) & \(M_1\) & Age & Reference\\
-        & & & K & cm s\(^{-2} \) & dex & M\(_{\odot} \) & Gyr & \\
-        \midrule
-        \object{HD 4747} & K0V & 5.94 & \(5316\pm50\) & \(4.48\pm0.10\) & \(-0.21\pm0.05\) & \(0.81\pm0.02\) & \(3.3\pm2.3\) & 1, 2, 3\\ 
-        \object{HD 162020} & K3V & 9.12 & \(4723\pm71\) & \(4.31\pm0.18\) & \(-0.10\pm0.03\)  & \(0.74\pm0.07\)  &  \(3.1\pm2.7\) & 4, 5\\  
-        \object{HD 167665} & F9V & 4.06 & \(6224\pm50\) & \(4.44\pm0.10\) & \(0.05\pm0.06\)  & \(1.14\pm0.03\) & \(0.7\pm3.6\) & 1\\
-        \object{HD 168443} & G6V & 6.92 & \(5617\pm35\) & \(4.22\pm0.05\) & \(0.06\pm0.05\)   & \(1.01\pm0.07\) & \(10.0 \pm0.3\) & 5, 6 \\ 
-        \object{HD 202206} & G6V & 8.07 & \(5757\pm25\) & \(4.47\pm0.03\) & \(0.29\pm0.02\)  & \(1.04\pm0.07\) & \(2.9\pm1.0\)? & 5, 7\\ 
-        \object{HD 211847} & G5V  & 8.62 & \(5715\pm24\) & \(4.49\pm0.05\) & \(-0.08\pm0.02\)  & \(0.92\pm0.07\) & \(0.1\pm6.0\) & 2, 4\\ 
-        \object{HD 30501}B & K2V & 6.13 & \(5223\pm50\)  & \(4.56\pm0.10\) & \(0.06\pm0.06\)  & \(0.81\pm0.02\) & \(0.8\pm7.0\) & 4\\ 
-        \bottomrule
-    \end{tabular} \\
-    \tablebib{
-        (1) \citet{sahlmann_search_2011}; (2) \citet{santos_spectroscopic_2005}; (3) \citet{crepp_trends_2016}; (4) \citet{tsantaki_deriving_2013}; (5) \cite{bonfanti_age_2016}; (6) \citet{santos_spectroscopic_2004};
-        (7) \citet{sousa_spectroscopic_2008};
-    }
-    \label{tab:starparams}
-\end{table*}
-
-
-% Table of orbit parameters
-\begin{table*}
-    \centering
-    \tiny
-    \caption{Orbital parameters used for the BD companions from the literature.}
-    \begin{tabular}{lcccccccccc}
-        \toprule
-        Object      & \(\gamma \)  & \(P \)       & \(e \)   & \(\textrm{K}_{1} \)         & \(T_{0} \)         & \(\omega \)  & \(M_2 \sin{i}\) & \(M_2\) & Reference\\
-        & (km\(^{-1} \)) & (day)   &       & (ms\(^{-1} \))   & (JD-2,400,000)  & (deg)  &   \(\textrm{M}_{Jup} \)  &   \(\textrm{M}_{Jup} \)   & \\
-        \midrule
-        \object{HD 4747}       & \(0.2149 \pm 11 \)      & \(13826.2 \pm 314.1\)          & \(0.740\pm 0.002\)  & \(755.3\pm 12\)     & \(50463.1 \pm 7.3\)                & \(269.1 \pm 0.6\)    &  39.6    & 60.2 & 2 \\
-        \object{HD 162020}   & \(-27.328\pm0.002\)   & \(8.428198 \pm 5.6e^{-5}\)  & \(0.277 \pm 0.002\) & \(1813\pm 4\)        & \(51990.677  \pm 0.005\)     & \(28.40 \pm 0.23\)   & 14.4    &     -             & 3 \\
-        \object{HD 167665}   & \(8.003 \pm 0.008\)     & \(4451.8\pm27.6\)   & \(0.340\pm0.005\) & \(609.5\pm 3.3\)         & \(56987.6 \pm 29\)       & \(-134.3\pm0.9\)   & 50.3    &     -                   & 1 \\
-        \object{HD 168443}b  & \(-0.046533\pm0.552\) & \(158.11247\pm0.0.00037\)  & \(0.52883\pm0.00103\)  & \(475.133\pm0.9102\)      & \(55626.199 \pm 0.024\)  & \(172.923\pm0.139\)       & 7.7 &     -                   & 4 \\ 
-        \object{HD 168443}c  & \(-0.046533\pm0.552\) & \(1749.83\pm0.57\)  & \(0.2113\pm0.00171\)  & \(297.70\pm0.618\)      & \(55521.3 \pm 2.2\)         & \(64.87\pm0.5113\)       & 17.1 &     -                   & 4 \\ 
-        \object{HD 202206}B & 14.721     & \(256.33 \pm 0.02\)    & \(0.432\pm0.001\)   & \(567 \pm 1\)    & \(52176.14\pm 0.12\)  & \(161.9\pm0.2\)  & 17.4    & \(93.6\pm7\)   & 5,7 \\  % \lambda = 266.228 deg (mean longitude)
-        \object{HD 202206}c & 14.721     & \(1260\pm 11\)    & \(0.22\pm0.03\)   & \(41\pm1\)       & \(53103\pm452\)  & \(280\pm4\)  & 2.3   & \(17.9\pm3\) & 5, 7 \\ % \lambda = 30.586 deg (mean longitude)
-        
-        \object{HD 211847} 	 & 6.689\tablefootmark{a} & \(7929.4\pm2500\)  & \(0.685\pm0.068\)   & \(291.4\pm12.2\)   & \(62030.1 \pm2500\)  & \(159.2\pm2.0\)  & 19.2  & 155  & 1, 6 \\
-        \object{HD 30501}  	  & \(23.710\pm0.028\)         & \(2073.6\pm3.0\) & \(0.741\pm0.004\)   & \(1703.1\pm26.0\)  & \(53851.5+-3.0\)    & \(70.4\pm0.7\)    & 62.3    & 89.6      & 1   \\
-        \bottomrule
-    \end{tabular}
-    \tablebib{
-        (1) \citet{sahlmann_search_2011}; (2) \citet{crepp_trends_2016}; (3) \citet{udry_coralie_2002};
-        (4) \citet{pilyavsky_search_2011}; (5) \citet{correia_coralie_2005}; (6) \citet{moutou_eccentricity_2017} (7) \citet{benedict_hd_2017};
-    }
-    \tablefoot{
-        \tablefoottext{a}{fixed}
-    }
-    \label{tab:orbitparams}
-\end{table*}
-
-
-\begin{table*}
-    %\tiny
-    \small
-    \centering
-    \caption{Estimated properties of results, flux ratios and observed constraints. Estimated Flux ratios and RV differences. \(F_{1}/F_{2} \) is the estimated host/companion flux ratio calculated from the K band magnitude difference with the companion magnitudes estimated from Baraffe models and the respective masses. Ages are taken from the values in Table~\ref{tab:starparams}. RV determined by known orbital parameters, and phase from period.  \textbf{Add K band magnitudes for star and companion here?} 
-        \[Nb/Na = sqrt(2) * sqrt(Fa/fb) = sqrt(2) * sqrt(100^{((mB-mA)/5)})\]
-        Use Simbad magnitudes for host and baraffe magnitude estimates based on mass or minimum mass. for hd202206c where no K band mag is given  HD202206 k-band magnitude taken from 2MASS All-sky point source catalogue. 
-    }. 
-    \begin{tabular}{l c c c c c c c c}
-        \toprule
-        &  Estimated  & Estimated &  Estimated & Estimated &  &    \\  % 2017
-        Host           & \(F_{2}/F_{1} \)   & \(N_{2}/N_{1} \) (noise ratio) & \(K_2\) &   \(\Delta \) RV    & Phase coverage \\
-        & K band     & & km/s & m/s & (\%) \\
-        \midrule
-        \object{HD 211847}B  & 0.26  &  2.7   & -1.8512 & 3.88   & 0.09  \\  %B % 2017
-        \object{HD 202206}B  & 0.04   &   6.9 &  -6.79 & 145.17   & 0.74  \\  %(B)   % May2017
-        \object{HD 202206}c  &   2e-5   &    316  &   -2.50     &   0.67     &  0.149  \\  %(B)   % May2017
-        \object{HD 30501}      & 0.011           &  13.4    &  -16.12    &  1346.46      & 5.8   \\
-        \object{HD 4747}        & \(1\times10^{-4} \)   & 141.4 &  -10.65 & -  &  -  \\  % 2017
-        \object{HD 167665}    & \(2\times10^{-3} \)   &  31.6    &  -14.47\tablefootmark{a}   &   138.45     & 0.18  \\  %  -- \(2\times10^{-5} \)  best case based on age rage.
-        \object{HD 168443b} & \(2\times10^{-15} \)  &    \(1\times10^{5} \)   &  -64.6\tablefootmark{a}5  &   257.16   & 0.035 \\ 
-        \object{HD 168443c}&  \(2\times10^{-10} \)  &   \(3\times10^{7} \)     &  -18.05\tablefootmark{a}  &   0.95   &  0.001 \\  %(c)
-        \object{HD 162020}   & \(7\times10^{-6} \)   &  534.5  &  -98.92\tablefootmark{a} &  2344.24     & 0.28  \\  %
-        \bottomrule
-    \end{tabular}\\
-    \tablefoot{
-        \tablefoottext{a}{Maxium \(K_2\) only given \(M_2 \sin{i}\)}
-    }
-    \label{tab:flux_table}
-\end{table*}
-
-
 
 \subsection{CRIRES data}
 \label{subsec:CRIRES}
 Observations were performed with the CRIRES instrument~\citep{kaeufl_crires_2004} configured to observe a narrow wavelength domain of the K-band between \(\rm2120-2160~nm \) using the Ks and the Hx5e-2 filters. The slit width of \(0.4\sec \) resulted in an instrumental resolving power of R\(\sim50000 \), with no adaptive optics to ensure that the slit was entirely covered by each target.
 
 The observations were performed in service mode during period 89 with run ID.~089.C-0977(A) between April and August 2012. An observation is composed of 8 individual spectra with an integration time of 180 seconds, observed in the ABBAABBA nod cycle pattern to obtain a high (>100) signal-to-noise when combined. The targets and observation times taken by CRIRES are provided in Table~\ref{tab:observations}.
-
-\begin{table*}
-    \centering    \caption{Details about the CRIRES observations used in this work. For multiple companions just used the largest h202206B and hd168443c.}
-    \begin{tabular}{lccccccc c c}
-        \toprule
-        Object & Observation & start \(Date \)  & Filter & Airmass  & \(RV_1\) & \(RV_2\) & \\  % & \(Date \)
-        &  Number & (yyyy-mm-dd hh:mm:ss)  &  & (at start) & km/s & km/s\\ % data ref    % & (JD\(^{\star} \))
-        \midrule
-        \object{HD 4747}   & 1 & 2012-07-06 07:36:06 & Ks     & 1.25  & -0.219 & -0.154 \\ %-1      & 2456114.81674
-        \object{HD 162020} & 1 & 2012-07-04 06:23:22 & Ks     & 1.30 & -28.7596 & 50.78469 \\ %-1      & 2456112.76624
-        \object{HD 162020} & 2 & 2012-07-04 06:57:48 & Ks     & 1.44  & -28.7167 & 48.4404\\ %-2      & 2456112.79015
-        \object{HD 167665} & 1 & 2012-07-28 05:00:53 & Hx5e-2 & 1.24 & 7.58091 & 18.02407 \\ %-1a     & 2456136.70895
-        \object{HD 167665} & 2 & 2012-07-28 05:37:27 & Hx5e-2 & 1.39  & 7.58089 & 18.0245 \\ %-1b     & 2456136.73434
-        \object{HD 167665} & 3 & 2012-08-05 02:54:03 & Hx5e-2 & 1.04  & 7.57508 & 18.1625\\ %-2      & 2456144.62087
-        \object{HD 168443} & 1 & 2012-08-05 04:29:32 & Ks     & 1.31 & -0.12067& 50.9321\\ %-1      & 2456144.68718
-        \object{HD 168443} & 2 & 2012-08-05 04:58:50 & Ks     & 1.47 & -0.12065& 51.1893 \\ %-2      & 2456144.70753
-        \object{HD 202206} & 1 & 2012-07-12 06:54:44 & Ks     & 1.01 & 14.84265 & 12.9916\\ %-1      & 2456120.78801
-        \object{HD 202206} & 2 & 2012-07-13 05:41:40 & J       & 1.01 &  14.83655 & 13.0647 \\ %-2      & 2456121.73727
-        \object{HD 202206} & 3 & 2012-07-11 08:29:55 & Ks     & 1.15& 14.84867  & 12.91958\\ %-3      & 2456119.85411
-        \object{HD 211847} & 1 & 2012-07-06 07:02:57 & Ks     & 1.07 & 6.6131 & 7.171\\ %-1      & 2456114.79372
-        \object{HD 211847} & 2 & 2012-07-13 06:54:37 & Ks     & 1.05 & 6.6137 & 7.167\\ %-2      & 2456121.78793
-        \object{HD 30501}  & 1 & 2012-04-07 00:08:29 & Hx5e-2 & 1.6 & 22.372 & 36.377\\ %-1      & 2456024.50590
-        \object{HD 30501}  & 2 & 2012-08-01 09:17:30 & Hx5e-2 & 1.42 & 22.505 & 35.120 \\ %-2a     & 2456140.88716
-        \object{HD 30501}  & 3 & 2012-08-02 08:47:30 & Hx5e-2 & 1.53 & 22.507 &  35.102 \\ %-3      & 2456141.86633
-        \object{HD 30501}  & 4 & 2012-08-06 09:42:07 & Ks     & 1.28 & 22.514 & 35.031\\ %-2b     & 2456145.90426
-        \bottomrule
-    \end{tabular}
-    \label{tab:observations}
-\end{table*}
 
 
 
