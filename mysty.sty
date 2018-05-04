@@ -1,0 +1,48 @@
+\newcommand*\aa@tablebibname{References}
+\newcommand*\aa@tablefootname{Notes}
+
+\newcommand*\aa@tablebibfont{\small}
+\newcommand*\aa@tablebibnamefont{\small\bfseries}
+\newcommand*\aa@tablefootfont{\small}
+\newcommand*\aa@tablefootnamefont{\small\bfseries}
+
+\newlength{\VSpaceBeforeTabBib}
+\setlength{\VSpaceBeforeTabBib}{2ex}
+\newlength{\VSpaceBeforeTabFoot}
+\setlength{\VSpaceBeforeTabFoot}{2ex}
+
+\newcommand\tablebib[1]{\VSpaceBeforeTabFoot=1ex%
+	\par\vspace{\VSpaceBeforeTabBib}
+	\noindent
+	\begin{minipage}{\linewidth}
+		{\aa@tablebibnamefont\aa@tablebibname.}~%
+		\aa@tablebibfont
+		\ignorespaces
+		#1%
+	\end{minipage}%
+}
+
+\newcommand\tablefoot[1]{\VSpaceBeforeTabBib=1ex%
+	\par\vspace{\VSpaceBeforeTabFoot}
+	\noindent
+	\begin{minipage}{\linewidth}
+		{\aa@tablefootnamefont\aa@tablefootname.}~%
+		\aa@tablefootfont
+		\ignorespaces
+		#1%
+	\end{minipage}%
+}
+
+\newcommand*\tablefootmark[1]{%
+	\unskip
+	\hbox{\@textsuperscript{\normalfont\itshape\ignorespaces#1}}%
+	\,%
+	\ignorespaces
+}
+
+\newcommand\tablefoottext[2]{%
+	\hbox{\@textsuperscript{\normalfont({\itshape\ignorespaces#1})}}%
+	~%
+	\ignorespaces
+	#2\ \ignorespaces%
+}
