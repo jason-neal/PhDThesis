@@ -15,10 +15,64 @@
 \citet{artigau_optical_2018} recently compared archival spectra of Barnards Star, an M-dwarf, and found that state-of-the-art atmosphere models over-predict the $Y$ and $J$-band RV content by more than a factor of $\sim$$2$, while under-predicting the $H$ and $K$-band content by half.
  
 
+History of Precision calculations:
+Connes 1985 -
+Bouchy et al. 2001  - photon noise limit on rv measurements.   
+Figueria et al. 2016 - focus on m-dwarfs parameter range to specify new instrumentation windows to focus.
+Reiners 2017 -  Carmenes sample. some precision
+
+
+
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
-\subsection{Subsection 1}
+\subsection{Fundamental photon noise limitation}
+A optimum technique to calculate the radial velocity precision of s spectrum using the full spectral information is proposed by \citet{Connes1985}. For each spectrum there is assigned a quality factor, Q, to compute the fundamental uncertainty on the radial velocity measurements due to noise.
+
+\begin{figure}
+    \caption{Figure of spectrum with a shift $\delta \lambda$. Similar to \citet{Connes1985} Fig.~X}
+\end{figure}
+
+Here we preform the derivation using the notation followed in \citet{bouchy_fundamental_2001}, it is almost a duplication of their derivation with some extra notes to make things clearer.
+
+
+The Doppler shift is given by:
+\begin{equation}
+\frac{\delta V}{c} = \frac{\delta \lambda}{\lambda}.
+\label{eq:dopplershift}
+\end{equation}
+
+Using basic calculus \[\delta y = \frac{\partial y}{\partial x} \delta t  \nonumber\], and for a small Doppler shift that is small compared to the line-width, the observable intensity change at a given pixel can be expressed by:
+
+\begin{equation}
+\delta A(i) = A(i) - A_0(i) = \frac{\partial A_0(i)}{\partial \lambda} \delta \lambda 
+\end{equation}
+
+Rearranging this for \(\delta \lambda\) the Doppler shift then becomes:
+\begin{equation}
+    \frac{\delta V(i)}{c} = \frac{A(i) - A_0(i) }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))}
+\end{equation}
+
+This equation shows that the change in velocity is measured through a change in intensity in the recorded spectrum, \(A(i)-A_0(i))\), and inversely proportional to the slope of the spectrum, \(\partial A_0(i)/\partial \lambda(i))\). 
+This equation provides a measurement of the radial velocity shift for each pixel (i) in the spectrum. The whole available spectral range should be used to increase the sensitivity of the measurement and decrease the noise. This is achieved with a weighted average, by summing the contribution of all pixels using an optimal weight W(i).
+
+
+\begin{equation}
+\frac{\delta V}{c} = \frac{\Sigma{ \frac{\delta V(i)}{c}W(i)}}{\Sigma {W(i)}}
+\end{equation}
+
+ zero rv measurement to get precision? Connes relevant here...?
+
+Statistically, the optimal weights are proportional to the inverse square of the individual dispersion,
+
+\begin{equation}
+W(i) = \frac{1}{\left(\frac{\delta V_{RMS}(i)}{c}\right)^2},
+\end{equation}
+where $X_{RMS}$ is the dispersion on the quantity $X$.
+
+
+given photon noise.... is given by Connes 1985... 
+
 
 
 %-----------------------------------
