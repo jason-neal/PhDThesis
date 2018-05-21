@@ -28,16 +28,11 @@
 \usepackage{threeparttablex}     			       % Lets threeparttable work with longtable
 \usepackage{longtable}
 \usepackage{pdflscape}
+\usepackage{datatool}			% Loading in databases into table
 
 \usepackage{caption}
-\captionsetup{
-	labelfont=bf,
-}
-\captionsetup[table]{%
-	justification=justified,
-	singlelinecheck=false,
-}
-
+\captionsetup{labelfont=bf}
+\captionsetup[table]{justification=justified,singlelinecheck=false,}
 
 \definecolor{flatblue}{RGB}{41, 128, 185}
 \definecolor{flatgrey}{RGB}{52, 73, 94}
@@ -251,7 +246,8 @@ urlcolor=flatpurple]{hyperref}
 	
 	
 	\appendix
-	
+		
+    %\include{appendices/precision_table}
 	\include{appendices/appendix-a}
 	
 	

@@ -1,0 +1,43 @@
+%!TEX root = ../thesis.tex
+% Appendix Template
+
+\chapter{NIR Precision amendment} % Main appendix title
+
+\label{AppendixX} % Change X to a consecutive letter; for referencing this appendix elsewhere, use \ref{AppendixX}
+
+During the improvement of the NIR precision software a significant error was discovered in the telluric masking. Basically the algorithm to detect the edges of telluric lines did not work correctly. This meant the telluric masks applied in the second criteria of \citet{figueira_radial_2016} are significantly incorrect.
+
+Here we include the table from Figueira 2016 with the condition 2 being significantly different. 
+The are some slight modifications of the conditions 1 and 3, or the order 0.1 .from original values. 
+
+
+\unfinished{needs the rounding performed.}{table}
+
+% Load in the ENIRC precision data
+\DTLloaddb{precision}{./appendices/precisiondata2017.tsv}
+
+\begin{longtable}{cccc}
+    \caption{Results of the simulations described in Sect.\,........}\label{TableData}
+    \\
+    \hline\hline
+    Simulation & $\sigma_{RV}$(Cond.\,1) & $\sigma_{RV}$(Cond.\,2) & $\sigma_{RV}$(Cond.\,3) \\ 
+    (SpTp - Band - $v.sin{i}$ - R) & [m/s]& [m/s] & [m/s]%\\
+    \hline
+    \endfirsthead
+    \caption{continued.}%\\
+    \hline\hline
+    Simulation & $\sigma_{RV}$(Cond.\,1) & $\sigma_{RV}$(Cond.\,2) & $\sigma_{RV}$(Cond.\,3) %\\ 
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    \caption{NIR precision}
+    \centering
+
+    \toprule
+    \DTLforeachkeyinrow{precision}{\id=id, \cond1=prec1, \cond2=prec2, \cond3=prec3}{
+         \\
+         \id & \cond1 & \cond2 & \cond3 
+         }
+ 
+\end{table}
