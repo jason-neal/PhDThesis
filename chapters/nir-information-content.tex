@@ -136,3 +136,101 @@ Can do Barnards star in Carmenes. compared to models in Artigau.
 %----------------------------------------------------------------------------------------
 
 \section{Main Section 2}
+
+
+
+\section{Code improvements}
+Care needs to be taken to optimize the code. The original code used in Figueira 2016 was very slow, taking around 2 hours per simulation, this lead to weeks of processing time to compute the precision's for the paper.
+
+Some work focused on testing ideology from computer science. Although not perfect implementation I began by adding automated tests to the code to check individual parts of it. 
+Before making changes I created automated tests that would confirm the functionality of pieces of the code. I could then make changes to the code, to improve the performance without worrying that the results were different.
+Namely that the same precision were calculated in the end.
+
+There was a major performance bottleneck in the convolution stage, which increased the performance around 250X itself. The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range). Turning the result into a numpy array, performing the sum for that pixel and appending it to a list. 
+
+\textbf{Insert code samples.}
+
+\begin{lstlisting}[language=Python, caption=Python example old]
+
+def pixel_rot_convolution(wl_0, wl, flux, vsini, epsilon):
+flux_conv_rot = []
+counter=0
+    for wl_0 in wav_extended:
+        # select all values such that are within the FWHM limits
+        delta_wl = wl_0*vsini/3.0e5
+        mask = [i for i in range(len(wal)) if
+                         ((wl_0 - delta_wl) < wl[i] < (wl_0 + delta_wl))]
+        flux_2convolve = flux[mask[0]:mask[-1]+1]
+        rotation_profile = rotation_kernel(wl[mask[0]:mask[-1]+1] - wl_0, delta_wl, vsini, epsilon)
+        flux_conv_rot.append(np.sum(rotation_profile*flux_2convolve))
+ 
+flux_conv_rot = np.array(flux_conv_rot, dtype="float64")
+
+\end{lstlisting}
+
+These simple examples ignore the edge effects which are incorporated, by extending the wavelength range used by 5 fwhm.
+\begin{lstlisting}[language=Python, caption=Python example]
+
+flux_conv_rot = np.empty_like(wl)
+for i, wl_0 in enumerate(wl):
+    """Rotational convolution for pixel wl_0."""
+    # select all values such that they are within the fwhm limits
+    delta_wl = wl_0 * vsini / 3.0e5
+
+    mask = (wl > (wl_0 - delta_wl) &  (wl < (wl + delta_wl)))
+    rotation_profile = rotation_kernel(wl[index_mask] - wl_0, delta_wl, vsini, epsilon)
+    
+    pixel_conv = np.sum(rotation_profile *  flux[mask]) / np.sum(rotation_profile)
+    flux_conv_rot[i] = pixel_conv
+
+\end{lstlisting}
+
+
+\begin{lstlisting}
+
+def rotation_kernel(delta_lambdas: ndarray, delta_lambda_l: float, vsini: float, epsilon: float) -> ndarray:
+"""Calculate the rotation kernel for a given wavelength
+
+Parameters
+----------
+delta_lambdas: array
+Wavelength values selected within delta_lambda_l around central value. (check)
+delta_lambda_l: float
+FWHM of rotational broadening. (check)
+vsini: float
+Projected rotational velocity [km/s]
+epsilon: float
+Linear limb-darkening coefficient (0-1).
+
+Returns
+-------
+Rotational kernel
+
+Notes:
+Equations * from .... book.
+
+"""
+denominator = (np.pi * vsini * (1.0 - epsilon / 3.0))
+lambda_ratio_sqr = (delta_lambdas / delta_lambda_l) ** 2.0
+
+c1 = 2.0 * (1.0 - epsilon) / denominator
+c2 = 0.5 * np.pi * epsilon / denominator
+
+return c1 * np.sqrt(1.0 - lambda_ratio_sqr) + c2 * (1.0 - lambda_ratio_sqr)
+\end{lstlisting}
+
+The solution is to iterate over each pixel but create a mask array and use numpy indexing to select the required pixel span. (this remains in numpy ) 
+These operations all remain in numpy so do not waste time converting between lists and numpy arrays, in which Python need to constantly check and convert the type of each item.
+
+This shows a lesson in the usefulness of test driven development, or testing of code in science.
+
+
+An normalization step was originally done after the convolution, to normalize out the effect of the convolution on a spectrum of 1s, due to the changing wavelength grids sampling. This was brought inside the main convolution by dividing the pixel by the convolution of a spectrum of ones at the same time. (again in numpy so it is quick)
+
+Parrallelization as embarrassingly parallel, the result of each pixel is independent of result of neighbors.
+
+This is not a criticism of the work done by the original author (my supervisor). It is easier to modify a working system then to create one from scratch.
+
+Computer code is not the important part in scientific exploration., although becoming more important in open source and reproduciblity efforts. Often forgotten in 
+
+\# Handle any phoenix aces models.
