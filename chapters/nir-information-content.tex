@@ -102,6 +102,20 @@ In the photon noise dominated region the \(\sqrt{N_{e^-}} = S/N\), signal-to-noi
 
 
 
+\subsection{Prepare phoenix aces models}:
+\# see Figuria 2016
+
+Convert SED to counts.
+
+
+Scale to 100 snr per resolution element in J band.
+
+Convolutions
+
+
+Since the synthetic models do not have a consistent wavelength grid, the discretization of the convolution kernel onto the  changing wavelength grid causes each pixel to be multiplied by  a slightly different kernel area. We therefore divide the result by a convolution of a spectrum of ones with the same wavelength resolution.
+
+
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
