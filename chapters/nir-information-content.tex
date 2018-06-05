@@ -10,10 +10,24 @@
 %----------------------------------------------------------------------------------------
 
 \section{Radial velocity precision}
-RV precision -> smaller planets, e.g the earth around the sun is 10cm/s
+The first detections of planets with the RV technique \textbf{Queloz 2995} discovered the mass and close in hot-Jupiter planets. These are the easiest to detect with the highest RV amplitude.
+
+Over the years the community has push the limits of this technique to smaller and smaller planetary masses. An example is shown in Fig.~\ref{fig:year_mass}. 
+\begin{figure}
+\label{fig:year_mass}
+\includegraphics[width=0.8\linewidth]{figures/year_planet_mass.png}
+\caption{Mass of discovered planets verse year. From Exoplanet.eu}
+\end{figure}
+
+
+RV amplitude scales with mass of the star $M_\star^{-2/3}$ and with the planetary orbital period $P_\textrm{orb}^{-2/3}$.
+
+The detection of an Earth-mass planet inside the habitable zone around a solar-type star, the RV amplitude is 10 cm/s. If that a planet with the same characteristics is instead orbiting a M/ -dwarf, the RV amplitude is larger than 1 m/s. This is due to two factors, the smaller mass of the host star, and the closer habitable zone, due to a lower luminosity output of the host)
 
 \citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an M-dwarf, and found that state-of-the-art atmosphere models over-predict the $Y$ and $J$-band RV content by more than a factor of $\sim$$2$, while under-predicting the $H$ and $K$-band content by half.
- 
+
+We are currently aiming to extend this work over the whole M-dwarf range, from M0-M9.
+
 
 History of Precision calculations:
 Connes 1985 -
@@ -31,41 +45,43 @@ A optimum technique to calculate the radial velocity precision of s spectrum usi
 
 \begin{figure}
     \centering
-     \includegraphics[width=0.7\linewidth]{figures/spectrum_example_a}
-    \includegraphics[width=0.7\linewidth]{figures/precision_derivation}git 
-    \caption{Figure of spectrum with a shift $\delta \lambda$. Similar to \citet{Connes1985} Fig.~X. What is the difference between $\delta \sigma$ and $d \sigma$ in Connes}
+    %\includegraphics[width=0.7\linewidth]{figures/spectrum_example_a}
+    \includegraphics[width=0.7\linewidth]{figures/precision_derivation}
+    \caption{Arbitrary spectral line with a shift $\delta \lambda$, inspired by \citet{Connes1985}.}
     \label{fig:precisionderivation}
 \end{figure}
 
-\unfinished{Use plt.vlines() instead of plt.axhline()}.
+Here we explain the derivation following \citet{Connes1985, bouchy_fundamental_2001, figueira_radial_2016}. A mix of notations from each is used with some extra notes to try and make things clear.
 
-Here we preform the derivation using the notation followed in \citet{bouchy_fundamental_2001}, it is almost a duplication of their derivation with some extra notes to make things clearer.
-
-
-The Doppler shift is given by:
+The Doppler shift of a spectrum is given by:
 \begin{equation}
 \frac{\delta V}{c} = \frac{\delta \lambda}{\lambda}.
 \label{eq:dopplershift}
 \end{equation}
+Here $c$ is the speed of light in a vacuum, and $\delta \lambda$ is the observed shift in wavelength $\lambda$ caused by the velocity $\delta V$
 
-Using basic calculus \[\delta y = \frac{\partial y}{\partial x} \delta t  \nonumber\], and for a small Doppler shift that is small compared to the line-width, the observable intensity change at a given pixel can be expressed by:
+Using basic calculus \(\delta y = \frac{\partial y}{\partial x} \delta x,  \nonumber\) and for a Doppler shift that is small compared to the line-width\footnote{Although \textbf{Connes 1983} show that this approximation in Eq.\,\ref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change at a given pixel can be expressed by:
 
 \begin{equation}
-\delta A(i) = A(i) - A_0(i) = \frac{\partial A_0(i)}{\partial \lambda} \delta \lambda 
+\delta A(i) = A(i) - A_0(i) \simeq \frac{\partial A_0(i)}{\partial \lambda} \delta \lambda
+\label{eq:intensitychange}
 \end{equation}
 
-Rearranging this for \(\delta \lambda\) the Doppler shift then becomes:
+Rearranging Eq.~\ref{eq:intensitychange} for \(\delta \lambda\) and putting it into Eq.~\ref{eq:dopplershift}, the Doppler shift of then becomes:
 \begin{equation}
     \frac{\delta V(i)}{c} = \frac{A(i) - A_0(i) }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))}
 \end{equation}
 
-This equation shows that the change in velocity is measured through a change in intensity in the recorded spectrum, \(A(i)-A_0(i))\), and inversely proportional to the slope of the spectrum, \(\partial A_0(i)/\partial \lambda(i))\). 
-This equation provides a measurement of the radial velocity shift for each pixel (i) in the spectrum. The whole available spectral range should be used to increase the sensitivity of the measurement and decrease the noise. This is achieved with a weighted average, by summing the contribution of all pixels using an optimal weight W(i).
-
+This equation shows that the changes in velocity is measured through a change in intensity in the recorded spectrum, \(A(i)-A_0(i)\), and inversely proportional to the slope of the spectrum, \(\partial A_0(i)/\partial \lambda(i))\). 
+This equation provides a measurement of the radial velocity shift for each pixel (i) in the spectrum. The whole available spectral range, $\Sigma$, should be used to increase the sensitivity of the measurement and decrease the noise. This is achieved with a weighted average, by summing the contribution of all pixels using an optimal weight W(i).
 
 \begin{equation}
 \frac{\delta V}{c} = \frac{\Sigma{ \frac{\delta V(i)}{c}W(i)}}{\Sigma {W(i)}}
 \end{equation}
+
+\citet{Connes1985} show that the optimal weights for photon limited noise is given by.....
+
+There is also a optimal weight for detector noise but we are always assume we are in high SNR case and are photon noise limited.
 
  zero rv measurement to get precision? Connes relevant here...?
 
@@ -228,10 +244,24 @@ This shows a lesson in the usefulness of test driven development, or testing of 
 
 An normalization step was originally done after the convolution, to normalize out the effect of the convolution on a spectrum of 1s, due to the changing wavelength grids sampling. This was brought inside the main convolution by dividing the pixel by the convolution of a spectrum of ones at the same time. (again in numpy so it is quick)
 
-Parrallelization as embarrassingly parallel, the result of each pixel is independent of result of neighbors.
+Parallelization as embarrassingly parallel, the result of each pixel is independent of result of neighbors.
 
 This is not a criticism of the work done by the original author (my supervisor). It is easier to modify a working system then to create one from scratch.
 
-Computer code is not the important part in scientific exploration., although becoming more important in open source and reproduciblity efforts. Often forgotten in 
+Computer code is not the important part in scientific exploration., although becoming more important in open source and reproducibility efforts. Often forgotten in 
 
 \# Handle any phoenix aces models.
+
+
+\section{SPIRou and NIRPS ETC}
+Having this tool to calculate RV precisions efficiently lead to contributions to the Exposure Time Calculators (ETC) for both the SPIRou and NIRPS spectrographs.
+
+In Septemeber 2017 we were requested to provide precision calculations for the SPIRou ETC\footnote{\url{http://www.cfht.hawaii.edu/Instruments/SPIRou/SPIRou_etc.php}}. These were the same table as \citet{figueira_radial_2016} but with a each band referenced to 100 SNR in its own band. The modification to use the center of any band was made to fulfill this request. Notes on the telluric correction issue affect on Condition. 2.  
+
+In May 2018 we were requested to provide precision calculations for the NIRPS ETC. This extended the spectral range from M0, M3, M6, M9 at 3900. 3500, 2800 2600 K respectively, but to all temperatures between 2500 and 4000K inclusively. This provides a finer resolution coverage over the M spectral type, allowed by the PHOENIX-ACES library.
+Instrumental resolutions of 75000 and 100000 were requested to match the NIRPS instrument.
+The logg and metallicity, sampling rate remained at the \citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
+Precisions were provided for SNR of 100 relative to the J, H bands as well as to each band individually. Artigua 2018.(priv. communication) suggested the truly relevant value is the SNR in H band for NIRPS radial velocities.
+
+A table of the precisions created for the NIRPS ETC are provided as an online table to our publication \textit{Neal et al. 2018b (in prep.)} \footnote{Available at \url{}.} \unfinished{Inlcude correct links} 
+
