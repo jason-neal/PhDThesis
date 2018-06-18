@@ -14,30 +14,62 @@ The are some slight modifications of the conditions 1 and 3, or the order 0.1 .f
 \unfinished{needs the rounding performed.}{table}
 
 % Load in the ENIRC precision data
-\DTLloaddb{precision}{./appendices/precisiondata2017.tsv}
 
-\begin{longtable}{cccc}
-    \caption{Results of the simulations described in Sect.\,........}\label{TableData}
-    \\
-    \hline\hline
-    Simulation & $\sigma_{RV}$(Cond.\,1) & $\sigma_{RV}$(Cond.\,2) & $\sigma_{RV}$(Cond.\,3) \\ 
-    (SpTp - Band - $v.sin{i}$ - R) & [m/s]& [m/s] & [m/s]%\\
-    \hline
-    \endfirsthead
-    \caption{continued.}%\\
-    \hline\hline
-    Simulation & $\sigma_{RV}$(Cond.\,1) & $\sigma_{RV}$(Cond.\,2) & $\sigma_{RV}$(Cond.\,3) %\\ 
-    \hline
-    \endhead
-    \hline
-    \endfoot
-    \caption{NIR precision}
-    \centering
+%\DTLsetseparator{ }
+%%\DTLloaddb{precision}{./appendices/precisiondata2017.tsv}
+%
+%\begin{longtable}{cccc}
+%    \caption{Results of the simulations described in Sect.\,........}\label{TableData}
+%    \\
+%    \hline\hline
+%    Simulation & $\sigma_{RV}$(Cond.\,1) & $\sigma_{RV}$(Cond.\,2) & $\sigma_{RV}$(Cond.\,3) \\ 
+%    (SpTp - Band - $v.sin{i}$ - R) & [m/s]& [m/s] & [m/s]%\\
+%    \hline
+%    \endfirsthead
+%    \caption{continued.}%\\
+%    \hline\hline
+%    Simulation & $\sigma_{RV}$(Cond.\,1) & $\sigma_{RV}$(Cond.\,2) & $\sigma_{RV}$(Cond.\,3) %\\ 
+%    \hline
+%    \endhead
+%    \hline
+%    \endfoot
+%    \caption{NIR precision}
+%    \centering
+%
+%    \toprule
+%    &&&&\\
+%    %\DTLforeachkeyinrow{precision}{\id=id, \condone=prec1, \condtwo=prec2, \condthree=prec3}{
+%     %    \\
+%     %    \id & \condone & \condtwo & \condthree 
+%     %    }
+% 
+%\end{longtable}
 
-    \toprule
-    \DTLforeachkeyinrow{precision}{\id=id, \condone=prec1, \condtwo=prec2, \condthree=prec3}{
-         \\
-         \id & \condone & \condtwo & \condthree 
-         }
- 
-\end{table}
+
+\DTLsetseparator{ }
+% \DTLloadrawdb{precisions}{precision_results_2017_ref_band-J_snr-100.0.dat}%
+
+\longtab[2]{
+    \begin{longtable}{cccc}
+        
+        \caption{Correction to results of the simulations described in Table\,A.1 of \citet{figueira_radial_2016}.}\label{TableData}
+        \\
+        \hline\hline
+        Simulation & $\sigma_{RV}$(Cond.\,1) & $\sigma_{RV}$(Cond.\,2) & $\sigma_{RV}$(Cond.\,3) \\ 
+        (SpTp - Band - $v.sin{i}$ - R) & [m/s]& [m/s] & [m/s]\\
+        \hline
+        \endfirsthead
+        \caption{continued.}\\
+        \hline\hline
+        Simulation & $\sigma_{RV}$(Cond.\,1) & $\sigma_{RV}$(Cond.\,2) & $\sigma_{RV}$(Cond.\,3) \\
+        \hline
+        \endhead 
+        \hline
+        \endfoot
+        ...&....&...&precision\_results\_2017\_ref\_band-J\_snr-100.0.dat\\
+        %\DTLforeach*{precisions}{\sim=id, \condone=prec1, \condtwo=prec2, \condthree=prec3}{%  \DTLiffirstrow{}{\\}  if first row don't add a new line at start.
+        %\DTLiffirstrow{}{\\}\sim & \condone & \condtwo & \condthree
+        %}
+        
+    \end{longtable}
+}
