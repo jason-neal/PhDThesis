@@ -144,9 +144,26 @@ Band by band like Figueria 2016?
 Certain\% steps like Bouchy or Artigau
 
 
-Can do Barnards star in Carmenes. compared to models in Artigau.
+Can do Barnard's star in CARMENES. compared to models in Artigau.
 
+\DTLsetseparator{,}
+\DTLloadrawdb{targets}{data/carmenes_selection.csv}%
 
+\begin{table*}[b]
+    \centering
+    \caption{CARMENES library target selection spanning the M-Dwarf spectral range.}
+    \begin{tabular}{l l l r c c c c}%
+        \hline
+        Karmn & Name & SpT &  $\textrm{SNR}_{\textrm{NIR}}$  & Temp (K) & logg & [Fe/H] & v$\sin{i}$ (km/s)\\
+        \hline
+        \DTLforeach*{targets}{\id=Karmn,\name=Name,\sptype=SpT,\snr=NIR-SNR,\teff=Teff, \logg=logg,\metal=FeH, \rot=ROT-Vsini}{
+            \DTLiffirstrow{}{\\}\id & \name &\sptype & \snr & \teff & \logg & \metal & \rot
+        }
+        \\
+        \hline
+    \end{tabular}
+    \label{tab:targets}
+\end{table*}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
