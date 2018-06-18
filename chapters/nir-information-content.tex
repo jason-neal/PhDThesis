@@ -14,9 +14,10 @@ The first detections of planets with the RV technique \textbf{Queloz 2995} disco
 
 Over the years the community has push the limits of this technique to smaller and smaller planetary masses. An example is shown in Fig.~\ref{fig:year_mass}. 
 \begin{figure}
-\label{fig:year_mass}
+
 \includegraphics[width=0.8\linewidth]{figures/year_planet_mass.png}
 \caption{Mass of discovered planets verse year. From Exoplanet.eu}
+\label{fig:year_mass}
 \end{figure}
 
 
@@ -60,7 +61,7 @@ The Doppler shift of a spectrum is given by:
 \end{equation}
 Here $c$ is the speed of light in a vacuum, and $\delta \lambda$ is the observed shift in wavelength $\lambda$ caused by the velocity $\delta V$
 
-Using basic calculus \(\delta y = \frac{\partial y}{\partial x} \delta x,  \nonumber\) and for a Doppler shift that is small compared to the line-width\footnote{Although \textbf{Connes 1983} show that this approximation in Eq.\,\ref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change at a given pixel can be expressed by:
+Using basic calculus \(\delta y = \frac{\partial y}{\partial x} \delta x,  \nonumber\) and for a Doppler shift that is small compared to the line-width\footnote{Although \citet{Connes1985} show that this approximation in Eq.\,\ref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change at a given pixel can be expressed by:
 
 \begin{equation}
 \delta A(i) = A(i) - A_0(i) \simeq \frac{\partial A_0(i)}{\partial \lambda} \delta \lambda
@@ -73,27 +74,34 @@ Rearranging Eq.~\ref{eq:intensitychange} for \(\delta \lambda\) and putting it i
 \end{equation}
 
 This equation shows that the changes in velocity is measured through a change in intensity in the recorded spectrum, \(A(i)-A_0(i)\), and inversely proportional to the slope of the spectrum, \(\partial A_0(i)/\partial \lambda(i))\). 
-This equation provides a measurement of the radial velocity shift for each pixel (i) in the spectrum. The whole available spectral range, $\Sigma$, should be used to increase the sensitivity of the measurement and decrease the noise. This is achieved with a weighted average, by summing the contribution of all pixels using an optimal weight W(i).
+This equation provides a measurement of the radial velocity shift for each pixel (i) in the spectrum. The whole available spectral range, $\Sigma$, should be used to increase the sensitivity of the measurement and decrease the noise. This is achieved by summing the contribution of all pixels using an optimal weight W(i).
 
 \begin{equation}
 \frac{\delta V}{c} = \frac{\Sigma{ \frac{\delta V(i)}{c}W(i)}}{\Sigma {W(i)}}
 \end{equation}
 
-\citet{Connes1985} show that the optimal weights for photon limited noise is given by.....
-
-There is also a optimal weight for detector noise but we are always assume we are in high SNR case and are photon noise limited.
-
- zero rv measurement to get precision? Connes relevant here...?
-
 Statistically, the optimal weights are proportional to the inverse square of the individual dispersion,
+
 
 \begin{equation}
 W(i) = \frac{1}{\left(\frac{\delta V_{RMS}(i)}{c}\right)^2},
 \end{equation}
 where $X_{RMS}$ is the dispersion on the quantity $X$.
 
+The individual dispersion of the velocity change measure \delta V_{RMS}(i) in pixel i is given by This is the velocity variation expected on pixel i given successive measurements of the spectrum with the same input velocity, e.g. zero.
+ is the dispersion on the velocity associated with repeated measurements 
+ for the photon-noise limited case\footnote{There is also detector noise limited weights given by XXXXX although we assume we are always in the photon noise limited case for high resolution spectroscopy.} 
+ 
+The in the photon noise limited case we assume that all measurements have same RV then the the the object has not 
+\citet{Connes1985} show that the optimal weights for photon limited noise is given by.....
 
-given photon noise.... is given by Connes 1985... 
+There is also a optimal weight for detector noise but we are always assume we are in high SNR case and are photon noise limited.
+
+ zero rv measurement to get precision? Connes relevant here...?
+
+
+
+given photon noise.... is given by \citet{Connes1985}... 
 
 
 \begin{equation}
@@ -120,7 +128,7 @@ In the photon noise dominated region the \(\sqrt{N_{e^-}} = S/N\), signal-to-noi
 
 
 \subsection{Prepare phoenix aces models}:
-\# see Figuria 2016
+\# see \citet{figueira_radial_2016} 
 
 Convert SED to counts.
 
