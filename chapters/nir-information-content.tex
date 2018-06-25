@@ -42,7 +42,7 @@ Reiners 2017 -  Carmenes sample. some precision
 %	SUBSECTION 1
 %-----------------------------------
 \subsection{Fundamental photon noise limitation}
-A optimum technique to calculate the radial velocity precision of s spectrum using the full spectral information is proposed by \citet{Connes1985}. For each spectrum there is assigned a quality factor, Q, to compute the fundamental uncertainty on the radial velocity measurements due to noise.
+A optimum technique to calculate the radial velocity precision of a spectrum using the full spectral information is proposed by \citet{Connes1985}. For each spectrum there is assigned a quality factor, Q, to compute the fundamental uncertainty on the radial velocity measurements due to noise. \unfinished{Change picture spectral range to capital lambda $\Lambda$}
 
 \begin{figure}
     \centering
@@ -53,7 +53,7 @@ A optimum technique to calculate the radial velocity precision of s spectrum usi
     \label{fig:precisionderivation}
 \end{figure}
 
-Here we explain the derivation following \citet{Connes1985, bouchy_fundamental_2001, figueira_radial_2016}. A mix of notations from each is used with some extra notes to try and make things clear.
+Here we provide the radial velocity precision derivation following \citet{Connes1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this section comes from \citet{bouchy_fundamental_2001} with some extra notes added to improve the clarity.
 
 The Doppler shift of a spectrum is given by:
 \begin{equation}
@@ -71,7 +71,7 @@ Using basic calculus \(\delta y = \frac{\partial y}{\partial x} \delta x,  \nonu
 
 Rearranging Eq.~\ref{eq:intensitychange} for \(\delta \lambda\) and putting it into Eq.~\ref{eq:dopplershift}, the Doppler shift of then becomes:
 \begin{equation}
-    \frac{\delta V(i)}{c} = \frac{A(i) - A_0(i) }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))}
+    \frac{\delta V(i)}{c} = \frac{A(i) - A_0(i) }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))} \label{eq:delta_v_i}
 \end{equation}
 
 This equation shows that the changes in velocity is measured through a change in intensity in the recorded spectrum, \(A(i)-A_0(i)\), and inversely proportional to the slope of the spectrum, \(\partial A_0(i)/\partial \lambda(i))\). 
@@ -85,47 +85,119 @@ Statistically, the optimal weights are proportional to the inverse square of the
 
 
 \begin{equation}
-W(i) = \frac{1}{\left(\frac{\delta V_{RMS}(i)}{c}\right)^2},
+W(i) = \frac{1}{\left(\frac{\delta V_{RMS}(i)}{c}\right)^2},  \label{eq:weights}
 \end{equation}
 where $X_{RMS}$ is the dispersion on the quantity $X$.
 
-The individual dispersion of the velocity change measure $\delta V_{RMS}(i)$ in pixel i is given by This is the velocity variation expected on pixel i given successive measurements of the spectrum with the same input velocity, e.g. zero.
- is the dispersion on the velocity associated with repeated measurements 
- for the photon-noise limited case\footnote{There is also detector noise limited weights given by XXXXX although we assume we are always in the photon noise limited case for high resolution spectroscopy.} 
- 
+
+The individual dispersion of the velocity change measure $\delta V_{RMS}(i)$ is the dispersion of radial velocity resulting from several measurements of the reference spectrum all with the same Doppler shift (e.g. zero). Equation.\,\ref{eq:delta_v_i} thus becomes:
+\begin{equation}
+    \frac{\delta V(i)}{c} = \frac{{[A(i) - A_0(i)]}_{RMS} }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))} \label{eq:delta_v_i}
+\end{equation}
+The noise of the spectrum A is the quadratic sum of the photon noise \(\sqrt{A}\) and the detector noise \(\sigma_D\). The spectrum \(A_0\) is considered noise free. 
+
+\begin{equation}
+[A(i)-A_0(i)]_{RMS} = [A(i)]_{RMS} = \sqrt{\sqrt{A(i)}^2 + \sigma^2_{D}} \label{eq:noise}
+\end{equation}
+We can set \(A = A_0\) if we consider the Doppler shift is small and that \(A\) and \(A_0\) have the same intensity level. Using Eq.\,\ref{eq:weights},\,\ref{eq:delta_v_i} and\,\ref{eq:noise}	the optimum weights then become solely dependent on the reference  spectrum.
+
+
+
+\begin{equation}
+W(i) =   \frac{\lambda^2(i)  (\partial A_0(i)/\partial \lambda(i))^{2}}{A(i) + {\sigma}^{2}_{D}} \label{eq:optimal_weight}
+\end{equation} 
+This weighting function can be modified to mask out and eliminate unwanted lines in the spectrum. For instance in the removal of telluric absorption lines in observed spectra. This is achieved to setting the particular pixel weights to zero. 
+
+With the optimal weights set the velocity change measured from the full spectral range \(\Lambda\)\unfinished{Change picture spectral range} is given by:
+
+
+\begin{eqnarray}
+    \frac{\delta V(i)}{c} &= \frac{
+    	\Sigma{
+        	\frac{
+            	A(i) - A_0(i)}{
+                \lambda(i) \left(\partial A_0(i)/\partial \lambda(i)\right)} W(i)}}{
+             \Sigma {W(i)}} \\
+    &= \frac{
+    	\Sigma  {
+        	(\frac
+            	{A(i) - A_0(i)}
+                {\lambda(i) (\partial A_0(i)/\partial \lambda(i))}) \frac
+                	{\lambda^2(i)  (\partial A_0(i)/\partial \lambda(i))^{2}}
+                    {A(i) + {\sigma}^{2}_{D}}
+                 } 
+         }
+    {\frac
+    	{\lambda^2(i)  (\partial A_0(i)/\partial \lambda(i))^{2}}{A(i) + {\sigma}^{2}_{D}} 
+        } \\
+    &= 
+    \label{eq:delta_v_i}
+\end{eqnarray}\unfinished {Finish this equation (9 of bouchy 2001)}
+\unfinished{Try the symbolic package from PC}
+
+The important quantity for RV measurements is not only the velocity value itself but the dispersion on the measured velocity or the precision, \(\delta V_{RMS}\). From equation \ref{eq:weights} the dispersion is given by :
+
+
+\begin{equation}
+    \frac{\delta V_{RMS}}{c} = \frac{1}{\Sigma {\,W(i)}} = \frac{1}{Q \Sigma {\,A_0(i)}}
+\end{equation}
+With this the velocity precision is  inversely proportional to the sum of the optimal pixel weights. 
+
+A spectral quality factor, Q, is defined as  for the pure photon noise case, as in \cite{Connes1985, connes_demonstration_1996}.
+
+\begin{equation}
+Q = \frac{\sqrt{\Sigma{\,W(i)}}}{\sqrt{\Sigma{\,A_0(i)}}}.
+\end{equation}
+This factor is flux independent and is purely a function of the spectral profile within the spectral range considered. It is is a measure of the line richness. For example a spectra with  many sharp lines will have a high Q. This quality factor is valid for the pure photon noise case only.
+
+With this quality factor the uncertainty in the velocity change can be rearranged in terms of the spectral quality;
+
+\begin{equation}
+    \delta V_{RMS} = \frac{c}{Q \sqrt{\Sigma {\,A_0(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}},  
+\end{equation
+
+Where \(\Sigma A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo electrons \({N}_{{e}^{-}}\) counted in the whole spectral range considered.
+From the spectral quality factor and the number of photons collect the fundamental velocity precision can be determined.
+
+The spectral quality depends on the spectral profile of the target as well as the instrumental resolution of the spectrograph (which induces line broadening), The number of photoelectrons counted Ne- depends on the stellar magnitude, detector efficiency and integration time.
+
+In the case of several \(\delta  V\) measurements computed for \(k\) spectral slices (or spectral orders) then the error on the average \(\delta V\) is given by the error on a weighted average:
+\begin{equation}
+\overline{\delta {V}_{RMS}} = \frac{1}{\sqrt{\Sigma_k{(\frac{1}{\delta V_{RMS}(k)})^2}}}
+\end{equation}
+
+
+We follow \cite{figueira_radial_2016} by exclusively considering  a high signal-to-noise regime in which A(i) + D\^2 ~ A(i) can be approximated.
+
+
+\footnote{ pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\Sigma{\lambda^2 {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\Sigma{\, A_0(i)}}\) as derived by \cite{Connes1985}. }
+
 The in the photon noise limited case we assume that all measurements have same RV then the the the object has not 
 \citet{Connes1985} show that the optimal weights for photon limited noise is given by.....
 
 There is also a optimal weight for detector noise but we are always assume we are in high SNR case and are photon noise limited.
 
- zero rv measurement to get precision? Connes relevant here...?
+ 
+This technique has been tested and demonstrated on observations by \citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation \citet{Connes1985,bouchy_fundamental_2001} and can influence the design (or use) of spectrographs   
+ (e.g. SPIROU \citep{artigau_spirou_2014,figueira_radial_2016})
+\unfinished{Does spectrograph pipelines such as  HARPS use these equations to measure estimate/precision?}
 
-
-
-given photon noise.... is given by \citet{Connes1985}... 
-
-
-\begin{equation}
-    \frac{\delta V_{RMS}}{c} = \frac{1}{\Sigma {W(i)}} = \frac{1}{Q \Sigma {A_0(i)}}
-\end{equation}
-
-\begin{equation}
-Q = \frac{\sqrt{(\Sigma{W(i)}}}{\sqrt{\Sigma{A_0(i)}}}
-\end{equation}
 
 Considering that \(\Sigma{A_0(i)} = N_{e^-} \) is the total number of photoelectrons counted over the whole spectral range then the uncertainty in the velocity change is finally given by:
 
 \begin{equation}
-\frac{\delta V_{RMS}}{c} = \frac{c}{Q \sqrt{N_{e^-}}} = \frac{c}{Q S/N}.
+\frac{\delta V_{RMS}}{c} = \frac{c}{Q \sqrt{N_{e^-}}} \approx \frac{c}{Q (S/N)},
 \end{equation}
 
-In the photon noise dominated region the \(\sqrt{N_{e^-}} = S/N\), signal-to-noise of the detection. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?} 
+where the \(SNR=\sqrt{N_{e^-}} for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?} 
 
 
-\begin{equation}
-\bar{\delta V_{RMS}} = \frac{1}{\sqrt{\Sigma{(\frac{1}{\delta V_{RMS}(k)})^2}}}
-\end{equation}
+\subsection {Signal to noise scaling}
+Take 1 sampling width at center of band - > scale to specific snr require.
+provide the scaling default spectral SNR.
+new precision = old precision * old snr / new snr
 
+We should provide the resolution element 3 pixel snr value from the code...
 
 
 \subsection{Prepare phoenix aces models}:
@@ -141,10 +213,13 @@ Convolutions
 
 Since the synthetic models do not have a consistent wavelength grid, the discretization of the convolution kernel onto the  changing wavelength grid causes each pixel to be multiplied by  a slightly different kernel area. We therefore divide the result by a convolution of a spectrum of ones with the same wavelength resolution.
 
+Differences to Figueria et al.
 
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
+
+Preparation of Carmenes spectra.
 
 \subsection{Comparing models to Carmenes.}
 Already somewhat done in Reiners. (use all spectra).
