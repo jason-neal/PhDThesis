@@ -16,15 +16,38 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
+The work of this thesis relies on the use of NIR spectra obtained by the CRIRES instrument. This chapter contains an overview of NIR reductions steps undertaken, a comparison of model used and post reduction steps taken to make the spectra usable for the follow chapters.  
 
-\section{Main Section 1}
+\section{NIR spectroscopy}
+
+Cryogenically cooled and temperature controlled...  
 
 
+The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}, with Gasgano Gui.  CRIRES pipeline user manual 
 
+\subsection{Output files}
+\subsubsection{Dark current}
+
+As the dark current depends on the exposure time there a multiple dark current files. 
+These are averaged together and subtracted from the observed science frames. 
+
+
+\subsection{Flat field}
+Correct for no-uniform illumination and non-linearity
+
+The dark current created for the same time as the flats is used.
+These are average together.
+
+
+\subsection{Lamp files}
+Wavelength calibration
+We apply wavelength calibration below
+
+Observed output
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
-\subsection{Subsection 1}
+\subsection{Subsection}
 
 
 %-----------------------------------
