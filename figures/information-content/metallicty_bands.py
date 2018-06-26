@@ -27,7 +27,7 @@ def feh_plot(*args, **kwargs):
     assert np.all(df.logg == logg)
     assert np.all(df.vsini == vsini)
 
-    fig, axes = plt.subplots(1, 5,figsize=(7, 4), sharey=True)
+    fig, axes = plt.subplots(1, 5, figsize=(7, 4), sharey=True)
     # for res in [60000, 80000, 100000]:
     for temp, mtype in zip([2600, 2800, 3500, 3900], ["M9", "M6", "M3", "M0"]):
         for ii, band in enumerate(bands):
@@ -62,7 +62,7 @@ def logg_plot( *args, **kwargs):
     assert np.all(df.Resolution == res)
     assert np.all(df["[Fe/H]"] == feh)
     assert np.all(df.vsini == vsini)
-    fig, axes = plt.subplots(1, 5, sharey=True)
+    fig, axes = plt.subplots(1, 5, figsize=(7, 4), sharey=True)
     for temp, mtype in zip([2600, 2800, 3500, 3900], ["M9", "M6", "M3", "M0"]):
         for ii, band in enumerate(bands):
             this_df = df[(df.Band.str.strip() == band) &
@@ -93,10 +93,8 @@ feh_plot(name="metalicity_effect.pdf")
 feh_plot(name="metalicity_effect.png")
 
 
-
-
 logg_plot(name="logg_effect.pdf")
 
 logg_plot(name="logg_effect.png")
 
-plt.clos()
+plt.close()
