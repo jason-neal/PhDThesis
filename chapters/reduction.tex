@@ -19,17 +19,21 @@
 The work of this thesis relies on the use of NIR spectra obtained by the CRIRES instrument. This chapter contains an overview of NIR reductions steps undertaken, a comparison of model used and post reduction steps taken to make the spectra usable for the follow chapters.  
 
 \section{NIR spectroscopy}
+Specifics of NIR verse optical
 
-Cryogenically cooled and temperature controlled...  
 
+- dark current
+The dark current is due to the thermal motion of elections in the detector
 
-The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}, with Gasgano Gui.  CRIRES pipeline user manual 
 
 \subsection{Output files}
+Main Extraction components
 \subsubsection{Dark current}
 
 As the dark current depends on the exposure time there a multiple dark current files. 
 These are averaged together and subtracted from the observed science frames. 
+
+\missingfigure{Dark current image for 3 seconds and 180 seconds.}
 
 
 \subsection{Flat field}
@@ -39,11 +43,22 @@ The dark current created for the same time as the flats is used.
 These are average together.
 
 
+Non -linearity calibrations
+
+
 \subsection{Lamp files}
 Wavelength calibration
 We apply wavelength calibration below
 
 Observed output
+
+
+
+
+We explored two different extraction pipelines. The ESO CRIRES pipeline and a in-house pipeline originally used in \citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for Crires Spectra) .
+
+The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}, with the\href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} interface.  CRIRES pipeline user manual 
+
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
@@ -55,8 +70,9 @@ Observed output
 %-----------------------------------
 
 \subsection{Subsection 2}
-Useful information about MIR reduction in VISIR manual
-\href{https://www.eso.org/sci/facilities/paranal/instruments/visir/doc/VLT-MAN-ESO-14300-3514_2018-02-01.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/visir/doc/VLT-MAN-ESO-14300-3514_2018-02-01.pdf}
+Useful information about MIR reduction in the 
+\href{https://www.eso.org/sci/facilities/paranal/instruments/visir/doc/VLT-MAN-ESO-14300-3514_2018-02-01.pdf}{VISIR manual}
+%
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
@@ -131,11 +147,12 @@ The individual nod spectra that contained artifacts were visually identified by 
 
 For the remainder of the paper we use combined spectra constructed by averaging the 8 nod-cycle spectra together, where some of the optimally extracted spectra have been replaced using the above method. The last panel of Fig.~\ref{fig:nod_artifacts} shows that the difference between the combined optimally extracted spectra and the \emph{combined extraction with replacements}.
 
-\begin{figure}
-	\includegraphics[width=\hsize]{images/final/Bad_pixel_replacement.pdf}  % chktex 8
-	\caption{Example of an artifact in the optimally extracted spectra. The top panel contains the 8 normalized nod spectra after optimal extraction, while the middle panel shows the rectangular extraction for the exact same spectra. A vertical offset is included between each spectra. A single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artifact in the optimal extraction. The bottom panel shows the difference between a combined spectrum using the optimal nods only and a combined spectrum in which the seventh nod is replaced with its rectangular counterpart. The nod spectra are in observation order from top to bottom.}
-	\label{fig:nod_artifacts}
-\end{figure}
+\missingfigure{Example of an artifact in the optimally extracted spectra. The top panel contains the 8 normalized nod spectra after optimal extraction, while the middle panel shows the rectangular extraction for the exact same spectra. A vertical offset is included between each spectra. A single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artifact in the optimal extraction. The bottom panel shows the difference between a combined spectrum using the optimal nods only and a combined spectrum in which the seventh nod is replaced with its rectangular counterpart. The nod spectra are in observation order from top to bottom.}
+% \begin{figure}
+% 	\includegraphics[width=\hsize]{images/final/Bad_pixel_replacement.pdf}  % chktex 8
+% 	\caption{Example of an artifact in the optimally extracted spectra. The top panel contains the 8 normalized nod spectra after optimal extraction, while the middle panel shows the rectangular extraction for the exact same spectra. A vertical offset is included between each spectra. A single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artifact in the optimal extraction. The bottom panel shows the difference between a combined spectrum using the optimal nods only and a combined spectrum in which the seventh nod is replaced with its rectangular counterpart. The nod spectra are in observation order from top to bottom.}
+% 	\label{fig:nod_artifacts}
+% \end{figure}
 
 The normalization and nod combining steps were also performed using IRAF while the following post reduction procedures and analysis all utilize \emph{Python}. This pipeline was chosen over the ESO CRIRES pipeline because it seemed relatively simple to use, being mostly automated, and appeared to have less bad pixel/cosmic ray artifacts in the resulting spectra. In hindsight this was not the case, with artifacts appearing that needed to be removed. 
 
@@ -178,12 +195,12 @@ We note that there are many variations on this wavelength-calibration technique 
 
 \unfinished{Add pictures of wavelength calibrations}
 
-
-\begin{figure*}
-	\includegraphics[width=\hsize]{figures/reduction/Spectra_examples.pdf}
-	\caption{Extracted, normalized and wavelength calibrated spectra for a single observation of each target. The target name is given above each spectrum along with the observation number. Each panel is the spectra from a single detector 1--4 in order of increasing wavelength. The black dashed lines indicate the unique telluric spectrum used for wavelength calibration and telluric correction for each observation.}
-	\label{fig:detector4allspectra}
-\end{figure*}
+\missingfigure{Extracted, normalized and wavelength calibrated spectra for a single observation of each target. The target name is given above each spectrum along with the observation number. Each panel is the spectra from a single detector 1--4 in order of increasing wavelength. The black dashed lines indicate the unique telluric spectrum used for wavelength calibration and telluric correction for each observation.}
+% \begin{figure*}
+% 	\includegraphics[width=\hsize]{figures/reduction/Spectra_examples.pdf}
+% 	\caption{Extracted, normalized and wavelength calibrated spectra for a single observation of each target. The target name is given above each spectrum along with the observation number. Each panel is the spectra from a single detector 1--4 in order of increasing wavelength. The black dashed lines indicate the unique telluric spectrum used for wavelength calibration and telluric correction for each observation.}
+% 	\label{fig:detector4allspectra}
+% \end{figure*}
 
 
 
@@ -230,6 +247,8 @@ In Sect.~\ref{sec:results} we also apply a further wavelength restriction to mas
 
 
 \unfinished{ADD non/H20 fitting corrections.}
+
+\missingfigure{Plots showing some examples the telluric correction with and without H20 separated}
 
 \section{Reduction experience:}
 The effort placed in reducing CRIRES spectra allowed me to participate in 3 different collaborations.
