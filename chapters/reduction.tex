@@ -16,14 +16,27 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-The work of this thesis relies on the use of NIR spectra obtained by the CRIRES instrument. This chapter contains an overview of NIR reductions steps undertaken, a comparison of model used and post reduction steps taken to make the spectra usable for the follow chapters.  
+The work of this thesis relies on the use of NIR spectra obtained by the CRIRES instrument. This chapter contains an overview of reductions steps undertaken, highlighting key effects present for CRIRES specifically, a comparison between reduction pipelines was preformed of model used and post reduction steps taken to make the spectra usable for the follow chapters.  
 
 \section{NIR spectroscopy}
 Specifics of NIR verse optical
 
+NIR spectroscopy requires the use of CMOS detectors which are a different technology to the more commonly known CCD's. Their use is required in the NIR as the quantum efficiency (how well it measures photons) for CCDs although great for visible is poor in the NIR. CMOS detectors have a higher quantum efficiency in the NIR. 
+\change(rearange/reorgaize this paragraph.)
 
-- dark current
-The dark current is due to the thermal motion of elections in the detector
+- Dark Current
+The dark current is the detection of thermal elections on the detector, without any light falling on the detector. This is more of an issue for NIR compared to the optical  The dark current is even greater issue for the higher wavelengths of the MIR 5-20 \todo{check MIR wavelength} \si{\micro\meter} at which the telescope starts to strongly glow. 
+For reference from \emph{Wien's displacement law} the 1-5 \si{\micro\meter} span of the CRIRES detector corresponds to a peak thermal emission between 2800 and 1300 K respectively.  
+The freezing point temperature of 273 K(0\si{\celsius} corresponds to thermal peak at 10.6\si{\micro\meter}.
+
+To correct for the a calibration image is created by  the dark current is undertaken by exposures
+As the dark current is non-linear calibrations need to be taken for each of the exposure times used.  The average o it needs to be taken for 
+
+Flat field - 
+Non-linear response of pixels to white light
+
+For CRIRES the flat field images need to be corrected for non-linearity using coefficients provided by ESO.
+Calibrations provided by ESO
 
 
 \subsection{Output files}
@@ -33,8 +46,10 @@ Main Extraction components
 As the dark current depends on the exposure time there a multiple dark current files. 
 These are averaged together and subtracted from the observed science frames. 
 
-\missingfigure{Dark current image for 3 seconds and 180 seconds.}
-
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
+\caption{Dark current image for 3 seconds and 180 seconds. Each created by averaging 3 dark images at each setting.}
+\end{figure}
 
 \subsection{Flat field}
 Correct for no-uniform illumination and non-linearity
@@ -45,6 +60,12 @@ These are average together.
 
 Non -linearity calibrations
 
+Nod and jitter:
+nod is a large shift along the slit to use a different position of the spectra.
+jitter is a slight offset so that the spectra do not fall exactly on the same position each time.
+
+\missingfigure{Nod position spectra and a slice vertically. }
+ABBAABBA  pattern is used.
 
 \subsection{Lamp files}
 Wavelength calibration
@@ -55,9 +76,15 @@ Observed output
 
 
 
-We explored two different extraction pipelines. The ESO CRIRES pipeline and a in-house pipeline originally used in \citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for Crires Spectra) .
+We explored reducing the CIRIRES spectra with two different extraction pipelines. The ESO CRIRES pipeline and a in-house pipeline originally\change{originally?} used in \citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for CRIRES Spectra) .
+
 
 The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}, with the\href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} interface.  CRIRES pipeline user manual 
+
+It became tedious to use the Gasgano gui and tweek all the paramter settings manually. 
+
+The DRACS can be run semi-autonomously so that it provides a consistent reduction relatively easily.
+
 
 %-----------------------------------
 %	SUBSECTION 1
