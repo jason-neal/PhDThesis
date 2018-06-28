@@ -111,6 +111,7 @@ tlmgr install   \
   setspace      \
   fixme         \
   l3kernel      \
+  sttools       \
 
 
 # Keep no backups (not required, simply makes cache bigger)
