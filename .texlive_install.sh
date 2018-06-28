@@ -99,7 +99,7 @@ tlmgr install   \
   microtype     \
   footmisc      \
   placeins      \
-  xkey­val       \
+  xkeyval       \
   threeparttable \
   threeparttablex \
   datatool      \
@@ -110,7 +110,7 @@ tlmgr install   \
   fncychap      \
   setspace      \
   fixme         \
-  l3k­er­nel      \
+  l3kernel      \
 
 
 # Keep no backups (not required, simply makes cache bigger)
