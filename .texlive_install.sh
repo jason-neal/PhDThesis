@@ -41,15 +41,11 @@ tlmgr install collection-langeuropean
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # pgf includes tikz
 tlmgr install   \
-  latex-graphics\
   graphics      \
   tools         \
   exam          \
   amsmath       \
-  am­scls        \
-  ams­fonts      \
   mathtools     \
-  enumerate     \
   thmtools      \
   stmaryrd      \
   xcolor        \
@@ -58,7 +54,6 @@ tlmgr install   \
   cancel        \
   hyperref      \
   pgfplots      \
-  bm            \
   listings      \
   scalerel      \
   stackengine   \
@@ -104,12 +99,10 @@ tlmgr install   \
   microtype     \
   footmisc      \
   placeins      \  
-  fixme         \
   xkvltxp       \
   rotate        \
   rotating      \
   threeparttable  \ 
-  threeparttablex \
   datatool      \
   soul          \
   epigraph      \
@@ -118,7 +111,15 @@ tlmgr install   \
   fix-cm        \
   colorlinks    \
   fncychap      \
+  setspace      \
 
+
+# Troublesome packages
+tlmgr install     \
+  fixme           \
+  threeparttablex \
+  am­scls        \
+  ams­fonts      \
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
