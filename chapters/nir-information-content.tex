@@ -49,7 +49,7 @@ A optimum technique to calculate the radial velocity precision of a spectrum usi
     %\includegraphics[width=0.7\linewidth]{figures/spectrum_example_a}
    % \includegraphics[width=0.7\linewidth]{figures/precision_derivation.pdf}
     \includegraphics[width=0.7\linewidth]{figures/precision_derivation.png}
-    \caption{Arbitrary spectral line with a shift $\delta \lambda$, inspired by \citet{Connes1985}.}
+    \caption{Arbitrary spectral line with a shift $\delta \lambda$, inspired by \citet{Connes1985}.  \(\Lambda\) is the wavelength range considered.}
     \label{fig:precisionderivation}
 \end{figure}
 
@@ -92,7 +92,7 @@ where $X_{RMS}$ is the dispersion on the quantity $X$.
 
 The individual dispersion of the velocity change measure $\delta V_{RMS}(i)$ is the dispersion of radial velocity resulting from several measurements of the reference spectrum all with the same Doppler shift (e.g. zero). Equation.\,\ref{eq:delta_v_i} thus becomes:
 \begin{equation}
-    \frac{\delta V(i)}{c} = \frac{{[A(i) - A_0(i)]}_{RMS} }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))} \label{eq:delta_v_i}
+    \frac{\delta V(i)}{c} = \frac{{[A(i) - A_0(i)]}_{RMS} }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))} \label{eq:delta_v_i_rms}
 \end{equation}
 The noise of the spectrum A is the quadratic sum of the photon noise \(\sqrt{A}\) and the detector noise \(\sigma_D\). The spectrum \(A_0\) is considered noise free. 
 
@@ -131,7 +131,7 @@ With the optimal weights set the velocity change measured from the full spectral
     	{\lambda^2(i)  (\partial A_0(i)/\partial \lambda(i))^{2}}{A(i) + {\sigma}^{2}_{D}} 
         } \\
     &= 
-    \label{eq:delta_v_i}
+    \label{eq:delta_v_eqarray}
 \end{eqnarray}\unfinished {Finish this equation (9 of bouchy 2001)}
 \unfinished{Try the symbolic package from PC}
 
@@ -153,13 +153,29 @@ This factor is flux independent and is purely a function of the spectral profile
 With this quality factor the uncertainty in the velocity change can be rearranged in terms of the spectral quality;
 
 \begin{equation}
-    \delta V_{RMS} = \frac{c}{Q \sqrt{\Sigma {\,A_0(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}},  
-\end{equation
+    \delta V_{RMS} = \frac{c}{Q \sqrt{\Sigma {\,A_0(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}},
+\end{equation}
 
-Where \(\Sigma A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo electrons \({N}_{{e}^{-}}\) counted in the whole spectral range considered.
+where \(\Sigma A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo electrons \({N}_{{e}^{-}}\) counted in the whole spectral range considered.
 From the spectral quality factor and the number of photons collect the fundamental velocity precision can be determined.
 
-The spectral quality depends on the spectral profile of the target as well as the instrumental resolution of the spectrograph (which induces line broadening), The number of photoelectrons counted Ne- depends on the stellar magnitude, detector efficiency and integration time.
+The spectral quality depends on the spectral profile of the target as well as the instrumental resolution of the spectrograph (which induces line broadening). The number of photoelectrons counted  \(N_{e^{-}}\) depends on the stellar magnitude, detector efficiency and integration time. It can be estimated using 
+ \begin{equation}
+ N_{e^{-}} = P_{avg} * S_{tel} * T_{exp} * \alpha* \Lambda, 
+ \end{equation}
+ 
+where \(P_{avg}\) is the average monochromatic stellar brightness 
+across the wavelength range \(\Lambda\) in
+
+\si{\photons\per\second\per\centi\metre\squared\per\centi\metre},
+
+\(S_{tel}\) is the telescope collecting area in \si{\centi\metre\squared}, 
+
+\(T_{exp}\) is the integration time in \si{\second}, 
+
+and \(\alpha\) the overall efficiency (including atmosphere, telescope, spectrograph and detector). 
+
+ This can be used to determine the RV precision for a given instrument, and be useful in exposure time calculators for planing observations. 
 
 In the case of several \(\delta  V\) measurements computed for \(k\) spectral slices (or spectral orders) then the error on the average \(\delta V\) is given by the error on a weighted average:
 \begin{equation}
@@ -189,7 +205,9 @@ Considering that \(\Sigma{A_0(i)} = N_{e^-} \) is the total number of photoelect
 \frac{\delta V_{RMS}}{c} = \frac{c}{Q \sqrt{N_{e^-}}} \approx \frac{c}{Q (S/N)},
 \end{equation}
 
-where the \(SNR=\sqrt{N_{e^-}} for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?} 
+where the \(SNR=\sqrt{N_{e^-}} \)for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?} 
+
+
 
 
 \subsection {Signal to noise scaling}
@@ -248,6 +266,30 @@ Can do Barnard's star in CARMENES. compared to models in Artigau.
     \end{tabular}
     \label{tab:targets}
 \end{table*}
+
+
+
+\section{Metallicity logg effects}
+We explore the effect of metallicity and logg on the spectral quality of spectra in the PHOENIX-ACES library by extending the quality factor and precisions computation to [Fe/H] -1--1 and logg 4.0--5.5. In figure \ref{fig:deviations} show the variation of quality factor with broadening of R=100000 and vsini=1.0 km/s across the M-dwarf spectral types and the NIR bands. We observed multiple different effects present.
+
+
+The Z band has a large separation in spectral quality due to spectral type, this is because the continuum the Z band is severely eroded in the spectra of late M's as they cool. Each spectral type also behaves very differently to a change in [Fe/H] and logg. For M0 and M3 there is an increase with [Fe/H] below solar metallicity, above solar metallicity the slopes of the lines dramatically increase, especially for M3. For M6 and M9 there is a step slope with [Fe/H] below solar metallicity, which flattens off at solar metallicity, and even decreases for the M9 spectra above solar metallicity. 
+As logg increases in the Z band there is a decrease in quality. There is a consistently large separation between early and late M's that. The quality for M6 is very shallow, while for M9 the quality is nearly flat for logg = 4.0 and 4.5 but then decreases sharply at higher logg. 
+
+Y band -\\
+
+J band - \\
+
+For the H and K band there is fairly consistent linear trend for all spectral types, with the quality factor increasing with an increase in [Fe/H] and decreasing with an increase in logg. There is also only a relatively small variation in quality factor due to the spectral type.
+
+
+
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{figures/information-content/metalicity_effect.pdf}\\
+\includegraphics[width=0.99\linewidth]{figures/information-content/logg_effect.pdf}
+\caption{Quality factor changes across spectral type and bands for variations in [Fe/H] and logg. Broadening values are R=100000 and vsini = 1.0 km/s. Top: Quality factor variation of [Fe/H] between -1.0 to 1.0 at a fixed logg=4.5. Bottom: Quality factor variation of logg between 4 and 5.5 with fixed [Fe/H]=0.0. Note a higher quality factor corresponds to an increased RV precision.}
+\label{fig:deviations}
+\end{figure}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
