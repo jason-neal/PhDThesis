@@ -85,7 +85,7 @@ tlmgr install   \
   collection-fontsrecommended \
   minted        \
   pgfgantt      \
-  oberdiek     \
+  oberdiek      \
   geometry      \
   beamer        \
   translator    \
@@ -98,11 +98,12 @@ tlmgr install   \
   wasysym       \
   microtype     \
   footmisc      \
-  placeins      \  
+  placeins      \
   xkvltxp       \
   rotate        \
   rotating      \
-  threeparttable  \ 
+  threeparttable \
+  threeparttablex \
   datatool      \
   soul          \
   epigraph      \
@@ -112,14 +113,10 @@ tlmgr install   \
   colorlinks    \
   fncychap      \
   setspace      \
-
-
-# Troublesome packages
-tlmgr install     \
   fixme           \
-  threeparttablex \
   am­scls        \
   ams­fonts      \
+
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
