@@ -120,7 +120,7 @@ tlmgr install   \
   fix-cm        \
   colorlinks    \
   fncychap      \
-
+  latexmk       \
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
