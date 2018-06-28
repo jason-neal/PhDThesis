@@ -21,6 +21,9 @@ if ! command -v texlua > /dev/null; then
   cd ..
 fi
 
+# install for building
+tlmgr install latexmk    
+
 # Just including texlua so the cache check above works
 # Needed for any use of texlua even if not testing LuaTeX
 tlmgr install luatex
@@ -38,25 +41,25 @@ tlmgr install collection-langeuropean
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # pgf includes tikz
 tlmgr install   \
+  latex-graphics\
+  graphics      \
+  tools         \
   exam          \
   amsmath       \
-  amsthm        \
-  amssymb       \
+  am­scls        \
+  ams­fonts      \
   mathtools     \
   enumerate     \
   thmtools      \
   stmaryrd      \
   xcolor        \
   pdfpages      \
-  centernot     \
   pgf           \
   cancel        \
   hyperref      \
-  bookmark      \
   pgfplots      \
   bm            \
   listings      \
-  graphicx      \
   scalerel      \
   stackengine   \
   etoolbox      \
@@ -87,18 +90,14 @@ tlmgr install   \
   collection-fontsrecommended \
   minted        \
   pgfgantt      \
-  pdflscape     \
+  oberdiek     \
   geometry      \
-  longtable     \
   beamer        \
   translator    \
   environ       \
   trimspaces    \
   imakeidx      \
   lipsum        \
-  inputenc      \
-  fontenc       \
-  lmodern       \
   siunitx       \
   mhchem        \
   wasysym       \
@@ -107,7 +106,6 @@ tlmgr install   \
   placeins      \  
   fixme         \
   xkvltxp       \
-  color         \
   rotate        \
   rotating      \
   threeparttable  \ 
@@ -120,7 +118,7 @@ tlmgr install   \
   fix-cm        \
   colorlinks    \
   fncychap      \
-  latexmk       \
+
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
