@@ -111,9 +111,13 @@ tlmgr install   \
   setspace      \
   fixme         \
   l3kernel      \
+  l3packages    \
   sttools       \
-
-
+  xfor          \
+  substr        \
+  fp            \
+  todonotes     \
+ 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
 
