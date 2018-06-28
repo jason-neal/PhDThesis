@@ -99,9 +99,7 @@ tlmgr install   \
   microtype     \
   footmisc      \
   placeins      \
-  xkvltxp       \
-  rotate        \
-  rotating      \
+  xkey­val       \
   threeparttable \
   threeparttablex \
   datatool      \
@@ -109,13 +107,10 @@ tlmgr install   \
   epigraph      \
   xargs         \
   natbib        \
-  fix-cm        \
-  colorlinks    \
   fncychap      \
   setspace      \
-  fixme           \
-  am­scls        \
-  ams­fonts      \
+  fixme         \
+  l3k­er­nel      \
 
 
 # Keep no backups (not required, simply makes cache bigger)
