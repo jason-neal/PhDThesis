@@ -15,7 +15,7 @@ test:
 	chktex thesis.tex
 
 build:
-	latexmk -interaction=nonstopmode thesis.tex
+	latexmk -pdf -interaction=nonstopmode thesis.tex
 
 clean:
 	find . -name '*.log' -exec rm --force {} +
