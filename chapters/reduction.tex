@@ -10,102 +10,6 @@
 % Telluric Correction
 
 
-\chapter{Tools for spectral analysis}  % Main chapter title
-\label{cha:reduction} 
-
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
-The work of this thesis relies on the use of NIR spectra obtained by the CRIRES instrument. This chapter contains an overview of reductions steps undertaken, highlighting key effects present for CRIRES specifically, a comparison between reduction pipelines was preformed of model used and post reduction steps taken to make the spectra usable for the follow chapters.  
-
-\section{NIR spectroscopy}
-Specifics of NIR verse optical
-
-NIR spectroscopy requires the use of CMOS detectors which are a different technology to the more commonly known CCD's. Their use is required in the NIR as the quantum efficiency (how well it measures photons) for CCDs although great for visible is poor in the NIR. CMOS detectors have a higher quantum efficiency in the NIR. 
-\change(rearange/reorgaize this paragraph.)
-
-- Dark Current
-The dark current is the detection of thermal elections on the detector, without any light falling on the detector. This is more of an issue for NIR compared to the optical  The dark current is even greater issue for the higher wavelengths of the MIR 5-20 \todo{check MIR wavelength} \si{\micro\meter} at which the telescope starts to strongly glow. 
-For reference from \emph{Wien's displacement law} the 1-5 \si{\micro\meter} span of the CRIRES detector corresponds to a peak thermal emission between 2800 and 1300 K respectively.  
-The freezing point temperature of 273 K(0\si{\celsius} corresponds to thermal peak at 10.6\si{\micro\meter}.
-
-To correct for the a calibration image is created by  the dark current is undertaken by exposures
-As the dark current is non-linear calibrations need to be taken for each of the exposure times used.  The average o it needs to be taken for 
-
-Flat field - 
-Non-linear response of pixels to white light
-
-For CRIRES the flat field images need to be corrected for non-linearity using coefficients provided by ESO.
-Calibrations provided by ESO
-
-
-\subsection{Output files}
-Main Extraction components
-\subsubsection{Dark current}
-
-As the dark current depends on the exposure time there a multiple dark current files. 
-These are averaged together and subtracted from the observed science frames. 
-
-\begin{figure}
-\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
-\caption{Dark current image for 3 seconds and 180 seconds. Each created by averaging 3 dark images at each setting.}
-\end{figure}
-
-\subsection{Flat field}
-Correct for no-uniform illumination and non-linearity
-
-The dark current created for the same time as the flats is used.
-These are average together.
-
-
-Non -linearity calibrations
-
-Nod and jitter:
-nod is a large shift along the slit to use a different position of the spectra.
-jitter is a slight offset so that the spectra do not fall exactly on the same position each time.
-
-\missingfigure{Nod position spectra and a slice vertically. }
-ABBAABBA  pattern is used.
-
-\subsection{Lamp files}
-Wavelength calibration
-We apply wavelength calibration below
-
-Observed output
-
-
-
-
-We explored reducing the CIRIRES spectra with two different extraction pipelines. The ESO CRIRES pipeline and a in-house pipeline originally\change{originally?} used in \citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for CRIRES Spectra) .
-
-
-The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}, with the\href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} interface.  CRIRES pipeline user manual 
-
-It became tedious to use the Gasgano gui and tweek all the paramter settings manually. 
-
-The DRACS can be run semi-autonomously so that it provides a consistent reduction relatively easily.
-
-
-%-----------------------------------
-%	SUBSECTION 1
-%-----------------------------------
-\subsection{Subsection}
-
-
-%-----------------------------------
-%	SUBSECTION 2
-%-----------------------------------
-
-\subsection{Subsection 2}
-Useful information about MIR reduction in the 
-\href{https://www.eso.org/sci/facilities/paranal/instruments/visir/doc/VLT-MAN-ESO-14300-3514_2018-02-01.pdf}{VISIR manual}
-%
-%----------------------------------------------------------------------------------------
-%	SECTION 2
-%----------------------------------------------------------------------------------------
-
-\section{Main Section 2}
-
 NIR Data reduction:
 Extensive effort was made to reduce these spectra, comparing two different techniques.
 - corrections
@@ -120,46 +24,100 @@ Crires reduction
 
 
 
-\subsection{CRIRES data}
-\label{subsec:CRIRES} 
-Observations were performed with the CRIRES instrument~\citep{kaeufl_crires_2004} configured to observe a narrow wavelength domain of the K-band between 2120--2160~nm using the Ks and the Hx5e-2 filters. The slit width of \(0.4\sec \) resulted in an instrumental resolving power of \(\rm R=50\,000\), with no adaptive optics to ensure that the slit was entirely covered by each target. This prevents strong slit illumination variations that could change the shape of spectral lines.
+\chapter{Tools for spectral analysis}  % Main chapter title
+\label{cha:reduction} 
 
-The observations were performed in service mode during period 89 with run ID.~089.C-0977(A) between April and August 2012. An observation is composed of 8 individual spectra with an integration time of 180 seconds, observed in the ABBAABBA nod cycle pattern to obtain a high (>100) signal-to-noise when combined. The list of observations obtained with CRIRES are provided in Table~\ref{tab:observations}.
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+The work of this thesis relies on the use of NIR spectra obtained by the CRIRES instrument. This chapter contains an overview of reductions steps undertaken, highlighting key effects present for CRIRES specifically, a comparison between reduction pipelines was preformed of model used and post reduction steps taken to make the spectra usable for the follow chapters.  
 
-\begin{table*}
-	\centering    
-	\caption{Details about the CRIRES observations times and settings. The estimated RV values for both component in each observation are provided. These are calculated using the best known orbital parameters and the companion mass \((M_{2}\sin{i}/M_{2})\). For hosts with multiple companions the RV value is for the largest companion only i.e. \object{HD 202206}B and \object{HD 168443}c. The RV difference between the host and the companion (\(RV_2 - RV_1\)) corresponds to the \(rv_2\) parameter in the binary model from Sect.~\ref{subsubsec:binary-model}.}
-	\begin{tabular}{l c c c c r@{.}l r@{.}l r@{.}l}
-		\toprule
-		Object & Obs. \# & Start date  & Filter & Airmass  & \multicolumn{2}{c}{\(RV_1\)} & \multicolumn{2}{c}{\(RV_2\)} & \multicolumn{2}{c}{\(rv_2\)}  \\  % & \(Date \)
-		&   & (yyyy-mm-dd hh:mm:ss)  &  & (at start) & \multicolumn{2}{c}{kms\(^{-1}\)} & \multicolumn{2}{c}{kms\(^{-1}\)} & \multicolumn{2}{c}{kms\(^{-1}\)}\\ % data ref    % & (JD\(^{\star} \))
-		\midrule
-		\object{HD 4747}   & 1 & 2012-07-06 07:36:06 & Ks     	      & 1.25  	  & $-$0    & 219 & $-$0  & 154 & 0&065 \\ %-1      & 2456114.81674
-		\object{HD 162020} & 1 & 2012-07-04 06:23:22 & Ks     		& 1.30 		& $-$28  & 760 & 50 & 785\tablefootmark{a} & 79&545\tablefootmark{a} \\ %-1      & 2456112.76624
-		\object{HD 162020} & 2 & 2012-07-04 06:57:48 & Ks     		& 1.44  	& $-$28  & 717 & 48 & 440\tablefootmark{a} & 77&157\tablefootmark{a} \\ %-2      & 2456112.79015
-		\object{HD 167665} & 1 & 2012-07-28 05:00:53 & Hx5e-2 	& 1.24 		& 7         & 581 & 18 & 024\tablefootmark{a} & 10&443\tablefootmark{a} \\ %-1a     & 2456136.70895
-		\object{HD 167665} & 2 & 2012-07-28 05:37:27 & Hx5e-2 	& 1.39  	& 7         & 581 & 18 & 025\tablefootmark{a}  & 10&444\tablefootmark{a} \\ %-1b     & 2456136.73434
-		\object{HD 167665} & 3 & 2012-08-05 02:54:03 & Hx5e-2 	& 1.04  	& 7         & 575 & 18 & 163\tablefootmark{a} & 10&588\tablefootmark{a} \\ %-2      & 2456144.62087
-		\object{HD 168443} & 1 & 2012-08-05 04:29:32 & Ks     		& 1.31 		& $-$0   & 121 & 50 & 932\tablefootmark{a, b}  & 51&053\tablefootmark{a,b} \\ %-1      & 2456144.68718
-		\object{HD 168443} & 2 & 2012-08-05 04:58:50 & Ks     		& 1.47 		& $-$0   & 121 & 51 & 189 \tablefootmark{a, b} & 51&310\tablefootmark{a,b} \\ %-2      & 2456144.70753
-		\object{HD 202206} & 1 & 2012-07-12 06:54:44 & Ks     		& 1.01 		& 14      & 843 & 12 & 992\tablefootmark{b}  & -1&851 \\ %-1      & 2456120.78801
-		\object{HD 202206} & 2 & 2012-07-13 05:41:40 & J       		  & 1.01 	  & 14      & 837 & 13 & 065\tablefootmark{b}  & -1&772 \\ %-2      & 2456121.73727
-		\object{HD 202206} & 3 & 2012-07-11 08:29:55 & Ks     		& 1.15		& 14      & 849 & 12 & 920\tablefootmark{b}  & -1&929 \\ %-3      & 2456119.85411
-		\object{HD 211847} & 1 & 2012-07-06 07:02:57 & Ks     		& 1.07 		& 6        & 613 & 7   & 171 & 0& 558\\ %-1      & 2456114.79372
-		\object{HD 211847} & 2 & 2012-07-13 06:54:37 & Ks     		& 1.05 		& 6        & 614 & 7   & 167 & 0&553 \\ %-2      & 2456121.78793
-		\object{HD 30501}  & 1 & 2012-04-07 00:08:29 & Hx5e-2 	 & 1.60 	 & 22      &  372 & 36 & 377 & 14&005 \\ %-1      & 2456024.50590
-		\object{HD 30501}  & 2 & 2012-08-01 09:17:30 & Hx5e-2    & 1.42		 & 22      & 505 & 35  & 120 & 12&615 \\ %-2a     & 2456140.88716
-		\object{HD 30501}  & 3 & 2012-08-02 08:47:30 & Hx5e-2 	 & 1.53 	 & 22      & 507 &  35 & 102 & 12&595 \\ %-3      & 2456141.86633
-		\object{HD 30501}  & 4 & 2012-08-06 09:42:07 & Ks     		 & 1.28 	 & 22      & 514 & 35 & 031 & 12&517 \\ %-2b     & 2456145.90426
-		\bottomrule
-		
-	\end{tabular}
-	\tablefoot{
-		\tablefoottext{a}{Maximum RV given \(\textrm{M}_2\sin{i}\) only.}
-		\tablefoottext{b}{Largest mass companion only.}
-	}
-	\label{tab:observations}
-\end{table*}
+\section{NIR spectroscopy}
+Specifics of NIR verse optical
+
+NIR spectroscopy requires the use of CMOS detectors which are a different technology to the more commonly known CCD's. Their use is required in the NIR as the quantum efficiency (how well it measures photons) for CCDs although great for visible is poor in the NIR. CMOS detectors have a higher quantum efficiency in the NIR. 
+\change(rearange/reorgaize this paragraph.)
+
+There are 3 main effects that need to be accounted for in NIR spectroscopy which influence the observations and calibrations taken. We briefly detail them here and how they are corrected for
+
+\subsubsection{Dark Current}
+The dark current is the detection of thermal elections on the detector, without any light falling on the detector. This is more of an issue for NIR compared to the optical  The dark current is even greater issue for the higher wavelengths of the MIR 5-20 \todo{check MIR wavelength} \si{\micro\meter} at which the telescope and instrumentation strongly glows. 
+For reference from \emph{Wien's displacement law} the 1-5 \si{\micro\meter} span of the CRIRES detector corresponds to a peak thermal emission between 2800 and 1300 K respectively.  
+While the freezing point of water at 273 K(0\si{\celsius} corresponds to thermal peak at 10.6\si{\micro\meter}.
+
+To correct for the a calibration image is created by  the dark current is undertaken by exposures
+As the dark current is non-linear calibrations need to be taken for each of the exposure times used. 
+
+
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
+\caption{Dark current image for 3 seconds and 180 seconds. Each created by averaging 3 dark images at each setting. A glow is observed on the bottom 2 corners.}
+\end{figure}
+
+
+
+\subsubsection{Flat field}
+To correct for pixel-to-pixel variations in sensitivity across the detector a flat-field correction is needed. Exposures of a uniform light source are taken allowing the individual pixel-to-pixel sensitivity to be determined and corrected for. The flat field images need to be corrected for the dark current present, so require dark frames with the same exposure times as the flat frames.
+The CRIRES detector suffers from detector non-linearity response to light intensity. This non-linearity is corrected by applying a set of non-linearity corrections provided by ESO to the flat-field images.  
+
+
+\subsubsection{Background subtraction}
+
+When exposures of the target are undertaken the background light of the sky is also recorded. For slit spectroscopy such as CRIRES this is corrected using a technique called nodding. An observation is spit into multiple images. Between images the telescope is moved to shift target vertically in the slit so that the light from the star travels through slightly different optical path and it spectra falls in a different part of the detector. 
+For example Fig.ref-nod positions show a small section of spectra for one of CRIRES spectra with the spectra lying in different places on the detector. A pair of images from opposite positions are then subtracted so that the background from the opposite nod cancels out the background light.
+
+\missingfigure()
+
+A jitter can also be applied which is a much smaller offset than the nodding shift. This ensures that the successive nods at the same nod position do not fall exactly on the same pixels, encase there are bad pixels.
+
+Taking a number of observations and staking them is also required so that each individual frame does not become saturated with the dark current at very long exposure times.
+
+As an example for the CRIRES observations analyzed here they were performed with a ABBAABBA nod cycle with a exposure time of 180s each, or 24 minutes all up.
+
+
+
+\missingfigure{Nod position spectra and a slice vertically.}
+ABBAABBA  pattern is used.
+
+\subsection{Lamp files}
+CRIRES also produces spectra of a TH-Ar lamp that is used for wavelength calibration. There is a known issue with this calibration in that there are very few spectral lines in the NIR. 
+
+We tried using them when applying the preform our own wavelength calibration using ....
+
+We apply wavelength calibration below using telluric lines.
+
+
+
+Useful information about MIR reduction in the 
+\href{https://www.eso.org/sci/facilities/paranal/instruments/visir/doc/VLT-MAN-ESO-14300-3514_2018-02-01.pdf}{VISIR manual}
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+
+\section{Contrast pipelines}
+
+Here we contrast the two pipelines explored and a little background of each.
+
+\subsection{ESO pipeline}
+
+
+\subsection{DRACS}
+
+
+We explored reducing the CIRIRES spectra with two different extraction pipelines. The ESO CRIRES pipeline and a in-house pipeline originally\change{originally?} used in \citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for CRIRES Spectra) .
+
+
+The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}, with the\href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} interface.  CRIRES pipeline user manual 
+
+It became tedious to use the Gasgano GUI and tweek all the parameter settings manually. 
+
+The DRACS can be run semi-autonomously so that it provides a consistent reduction relatively easily.
+
+
+
+The most tedius thing about DRACS is creating the lists for the different input parameters
+
 
 
 \subsubsection{Data reduction}
@@ -185,10 +143,16 @@ The normalization and nod combining steps were also performed using IRAF while t
 
 One possible explanation for the artifacts present is an instrumental effect, such as instrument glow. This is known to affect CRIRES and included in the data reduction cookbook \citep{smoker_very_2012}. These artifacts in the K-band spectra were not observed in previous works in the H-band using this pipeline and as such may have a wavelength dependent affect, as the higher wavelength nIR is more susceptible to thermal instrument glow.
 
+\ Extraneous pixel removal / non-optimal 
+
+\subsection{Post reduction stages}
+
+After the extraction of the 1-D spectra from the images there is a number of steps still 
 
 \subsubsection{Wavelength calibration}
 \label{subsec:wave_cal}
-There is a known issue with the wavelength calibration from the CRIRES Th-Ar calibrations \citep{kerber_laboratory_2009}, due to the low density of Th-AR lines in the near-infrared and the alignment with the detectors narrow wavelength range (e.g.\ CRIRES-POP \citep{nicholls_crirespop_2017}).
+There is a known issue with the wavelength calibration from the CRIRES Th-Ar calibrations \citep{kerber_laboratory_2009}, due to the low density of Th-AR lines in the near-infrared and the alignment with the detectors narrow wavelength range (e.g.\ CRIRES-POP \citep{nicholls_crirespop_2017}). We experienced these issue ourselves when using the ESO CRIRES pipeline. The DRACS pipeline does not use the Th-AR lamp files for wavelength calibration and leaves it for post reduction analysis
+
 Therefore, we use the telluric absorption lines present in each observation as the wavelength reference. Instead of directly using the HITRAN database \citep{rothman_hitran2012_2013} for the line positions of the telluric spectra (e.g.~\citep{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}), we use TAPAS atmospheric transmission models \citep{bertaux_tapas_2014} obtained for each observation. These in turn use the HITRAN database but include atmospheric profiles and physical measurements to model the telluric absorption strength.
 
 The centroid of each telluric line is obtained by fitting the telluric transmission spectrum, \(T \), as a sum of Gaussian functions (subtracted from the continuum) representing the telluric lines,
@@ -239,7 +203,6 @@ Requiring data from tapas
 - not handy for many
 - own script to derive from spectra header.
 
-\unfinished{Artigau 2018 use TAPAS, and Figueria 2016}
 
 \subsubsection{Telluric correction}
 \label{subsec:telluric_correction}
@@ -255,6 +218,8 @@ We found that for a few spectra in our sample this method corrected the deeper t
 
 \unfinished{Still uneven line coverage on all detectors in this small range}
 
+\unfinished{H\_2\_0 corrections}  example of good and bad fitting...
+
 
 \subsection{Tapas models}
 \label{subsec:tapas_models}
@@ -264,8 +229,16 @@ We use the mid-observation time to retrieve transmission models for each observa
 After the telluric correction is performed, the spectra are corrected for Earth's barycentric RV using the \emph{helcor} PyAstronomy\footnote{https://pyastronomy.readthedocs.io} function ported from the REDUCE IDL package (See \citet[][]{piskunov_new_2002}).
 
 
+
+The the telluric spectra from TAPAS can not only be used for correcting individual spectra but are also easily used to create a wavelength mask of deep telluric lines. For instance \citet{figueira_radial_2016} and \citet{artigau_optical_2018} use TAPAS spectra to mask out atmospheric lines deeper than 2\% for the computation of photon noise precision of radial velocity measurements. 
+
+
+
+
 \subsection{Wavelength masking}
-We apply several wavelength masks to remove wavelength regions from which we cannot extract information.
+Throughout the course of this work we found regions of the spectra found several regions from which we cannot reliably extract information.
+We apply masks to these areas to remove them from the spectra. We collate the main reasons for the wavelength masking below 
+
 Firstly, regions near the edges of each detector where the wavelength solution is extrapolated outside of the calibrating telluric lines are removed, reducing the effective size of each detector by about \(10\%\) or \(\sim100\) pixels. 
 
 Secondly, we mask out any remaining artifacts present in the spectra and the centers of deep telluric lines where telluric correction was not corrected properly, sometimes resulting in "emission-like" peaks in the corrected spectrum. These factors combined result in masking out around a further 10\% of the observed spectra. 
@@ -276,6 +249,7 @@ In Sect.~\ref{sec:results} we also apply a further wavelength restriction to mas
 \unfinished{ADD non/H20 fitting corrections.}
 
 \missingfigure{Plots showing some examples the telluric correction with and without H20 separated}
+
 
 \section{Reduction experience:}
 The effort placed in reducing CRIRES spectra allowed me to participate in 3 different collaborations.
