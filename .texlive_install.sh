@@ -117,6 +117,8 @@ tlmgr install   \
   substr        \
   fp            \
   todonotes     \
+  beebe         \
+
  
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
