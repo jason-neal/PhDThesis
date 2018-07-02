@@ -55,9 +55,11 @@ To correct for the a calibration image is created by  the dark current is undert
 As the dark current is non-linear calibrations need to be taken for each of the exposure times used. 
 
 
-\begin{figure}
-\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
-\caption{Dark current image for 3 seconds and 180 seconds. Each created by averaging 3 dark images at each setting. A glow is observed on the bottom 2 corners.}
+\begin{figure}[h]
+    \centering
+%\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
+\includegraphics[width=0.9\textwidth]{figures/reduction/master_darks_inverted.pdf}
+\caption{Dark current image for 3 seconds and 180 seconds. Each created by averaging 3 dark images at each setting. A glow is observed on the bottom 2 corners. Both have been scaled to the maxium in the 180s exposure. and the colors inverted so black is where the light is recorded.}
 \end{figure}
 
 
@@ -65,6 +67,13 @@ As the dark current is non-linear calibrations need to be taken for each of the 
 \subsubsection{Flat field}
 To correct for pixel-to-pixel variations in sensitivity across the detector a flat-field correction is needed. Exposures of a uniform light source are taken allowing the individual pixel-to-pixel sensitivity to be determined and corrected for. The flat field images need to be corrected for the dark current present, so require dark frames with the same exposure times as the flat frames.
 The CRIRES detector suffers from detector non-linearity response to light intensity. This non-linearity is corrected by applying a set of non-linearity corrections provided by ESO to the flat-field images.  
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/reduction/master_flatr_inverted.pdf}
+    \caption{Flat field for a detector}
+\end{figure}
 
 
 \subsubsection{Background subtraction}
