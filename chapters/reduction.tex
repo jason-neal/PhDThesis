@@ -114,26 +114,42 @@ Useful information about MIR reduction in the
 
 Here we contrast the two pipelines explored and a little background of each.
 
-\subsection{ESO pipeline}
-
-
-\subsection{DRACS}
-
-
 We explored reducing the CIRIRES spectra with two different extraction pipelines. The ESO CRIRES pipeline and a in-house pipeline originally\change{originally?} used in \citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for CRIRES Spectra) .
 
 
-The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}, with the\href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} interface.  CRIRES pipeline user manual 
+\subsection{ESO pipeline}
 
-It became tedious to use the Gasgano GUI and tweek all the parameter settings manually. 
+The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}, with the\href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} gui interface.  Instructions for using this can be found in the CRIRES pipeline user manual and the GASGANO manual.
+
+
+It soon became tedious to use the Gasgano GUI to extract the many spectra reduce many and tweak all the parameter settings manually. In particular manually measuring and adding the vertical positions of the 6 Th-AR lines for each detector and observation. This was in an attempt to improve the wavelength calibration provided by the Th-AR lamp spectra.
+A number of other parameters were tweaked from the defaults in an attempt to  improve the reduction. Again become tedious t o repeatably change the parameters for all observations.
+
+Having the GUI id however allow for a easy introduction into using performing spectral reduction when not of not yet comfortable with the command line (required for the ESOREX interface).
+
+\subsection{DRACS}
 
 The DRACS can be run semi-autonomously so that it provides a consistent reduction relatively easily.
 
 
+The most tedious thing about DRACS is creating the lists for the different input parameters
 
-The most tedius thing about DRACS is creating the lists for the different input parameters
 
 
+
+\section{Reduction choice }
+
+After using both it was decided to continue using DRACS ... for this reasons
+. 
+The main reason for both pipelines was to check the reduction output were similar, especially the line depths.
+\missingfigure(spectra from both reduction methods to show similarities)
+
+
+\subsubsection{Reduction issues}
+
+Some time later it was noticed that some spectra had issues. these arose from the optimal extraction in the DRACS pipeline where bad pixels would cause removed
+
+\missingfigure{Table of frames that were replaced} 
 
 \subsubsection{Data reduction}
 \label{subsubsec:reduction}
