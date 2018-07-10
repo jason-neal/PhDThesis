@@ -50,18 +50,18 @@ Reiners 2017 -  Carmenes sample. some precision
 %	SUBSECTION 1
 %-----------------------------------
 \subsection{Fundamental photon noise limitation}
-A optimum technique to calculate the radial velocity precision of a spectrum using the full spectral information is proposed by \citet{Connes1985}. For each spectrum there is assigned a quality factor, Q, to compute the fundamental uncertainty on the radial velocity measurements due to noise. \unfinished{Change picture spectral range to capital lambda $\Lambda$}
+A optimum technique to calculate the radial velocity precision of a spectrum using the full spectral information is proposed by~\citet{Connes1985}. For each spectrum there is assigned a quality factor, Q, to compute the fundamental uncertainty on the radial velocity measurements due to noise. \unfinished{Change picture spectral range to capital lambda $\Lambda$}
 
 \begin{figure}
     \centering
     %\includegraphics[width=0.7\linewidth]{figures/spectrum_example_a}
    % \includegraphics[width=0.7\linewidth]{figures/precision_derivation.pdf}
     \includegraphics[width=0.7\linewidth]{figures/precision_derivation.png}
-    \caption{Arbitrary spectral line with a shift $\delta \lambda$, inspired by \citet{Connes1985}.  \(\Lambda\) is the wavelength range considered.}
+    \caption{Arbitrary spectral line with a shift $\delta \lambda$, inspired by~\citet{Connes1985}.  \(\Lambda\) is the wavelength range considered.}
     \label{fig:precisionderivation}
 \end{figure}
 
-Here we provide the radial velocity precision derivation following \citet{Connes1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this section comes from \citet{bouchy_fundamental_2001} with some extra notes added to improve the clarity.
+Here we provide the radial velocity precision derivation following~\citet{Connes1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this section comes from~\citet{bouchy_fundamental_2001} with some extra notes added to improve the clarity.
 
 The Doppler shift of a spectrum is given by:
 \begin{equation}
@@ -70,7 +70,7 @@ The Doppler shift of a spectrum is given by:
 \end{equation}
 Here $c$ is the speed of light in a vacuum, and $\delta \lambda$ is the observed shift in wavelength $\lambda$ caused by the velocity $\delta V$
 
-Using basic calculus \(\delta y = \frac{\partial y}{\partial x} \delta x,  \nonumber\) and for a Doppler shift that is small compared to the line-width\footnote{Although \citet{Connes1985} show that this approximation in Eq.\,\ref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change at a given pixel can be expressed by:
+Using basic calculus \(\delta y = \frac{\partial y}{\partial x} \delta x,  \nonumber\) and for a Doppler shift that is small compared to the line-width\footnote{Although~\citet{Connes1985} show that this approximation in Eq.\,\ref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change at a given pixel can be expressed by:
 
 \begin{equation}
 \delta A(i) = A(i) - A_0(i) \simeq \frac{\partial A_0(i)}{\partial \lambda} \delta \lambda
@@ -151,7 +151,7 @@ The important quantity for RV measurements is not only the velocity value itself
 \end{equation}
 With this the velocity precision is  inversely proportional to the sum of the optimal pixel weights. 
 
-A spectral quality factor, Q, is defined as  for the pure photon noise case, as in \cite{Connes1985, connes_demonstration_1996}.
+A spectral quality factor, Q, is defined as  for the pure photon noise case, as in~\cite{Connes1985, connes_demonstration_1996}.
 
 \begin{equation}
 Q = \frac{\sqrt{\Sigma{\,W(i)}}}{\sqrt{\Sigma{\,A_0(i)}}}.
@@ -191,10 +191,10 @@ In the case of several \(\delta  V\) measurements computed for \(k\) spectral sl
 \end{equation}
 
 
-We follow \cite{figueira_radial_2016} by exclusively considering  a high signal-to-noise regime in which A(i) + D\^2 ~ A(i) can be approximated.
+We follow~\cite{figueira_radial_2016} by exclusively considering  a high signal-to-noise regime in which A(i) + D\^2 ~ A(i) can be approximated.
 
 
-\footnote{ pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\Sigma{\lambda^2 {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\Sigma{\, A_0(i)}}\) as derived by \cite{Connes1985}. }
+\footnote{ pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\Sigma{\lambda^2 {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\Sigma{\, A_0(i)}}\) as derived by~\cite{Connes1985}. }
 
 The in the photon noise limited case we assume that all measurements have same RV then the the the object has not 
 \citet{Connes1985} show that the optimal weights for photon limited noise is given by.....
@@ -202,8 +202,8 @@ The in the photon noise limited case we assume that all measurements have same R
 There is also a optimal weight for detector noise but we are always assume we are in high SNR case and are photon noise limited.
 
  
-This technique has been tested and demonstrated on observations by \citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation \citet{Connes1985,bouchy_fundamental_2001} and can influence the design (or use) of spectrographs   
- (e.g. SPIROU \citep{artigau_spirou_2014,figueira_radial_2016})
+This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation~\citet{Connes1985,bouchy_fundamental_2001} and can influence the design (or use) of spectrographs   
+ (e.g. SPIROU~\citep{artigau_spirou_2014,figueira_radial_2016})
 \unfinished{Does spectrograph pipelines such as  HARPS use these equations to measure estimate/precision?}
 
 
@@ -227,7 +227,7 @@ We should provide the resolution element 3 pixel snr value from the code...
 
 
 \subsection{Prepare phoenix aces models}:
-\# see \citet{figueira_radial_2016} 
+\# see~\citet{figueira_radial_2016} 
 
 Convert SED to counts.
 
@@ -407,11 +407,11 @@ Computer code is not the important part in scientific exploration., although bec
 \section{SPIRou and NIRPS ETC}
 Having this tool to calculate RV precisions efficiently lead to contributions to the Exposure Time Calculators (ETC) for both the SPIRou and NIRPS spectrographs.
 
-In Septemeber 2017 we were requested to provide precision calculations for the SPIRou ETC\footnote{\url{http://www.cfht.hawaii.edu/Instruments/SPIRou/SPIRou_etc.php}}. These were the same table as \citet{figueira_radial_2016} but with a each band referenced to 100 SNR in its own band. The modification to use the center of any band was made to fulfill this request. Notes on the telluric correction issue affect on Condition. 2.  
+In Septemeber 2017 we were requested to provide precision calculations for the SPIRou ETC\footnote{\url{http://www.cfht.hawaii.edu/Instruments/SPIRou/SPIRou_etc.php}}. These were the same table as~\citet{figueira_radial_2016} but with a each band referenced to 100 SNR in its own band. The modification to use the center of any band was made to fulfill this request. Notes on the telluric correction issue affect on Condition. 2.  
 
 In May 2018 we were requested to provide precision calculations for the NIRPS ETC. This extended the spectral range from M0, M3, M6, M9 at 3900. 3500, 2800 2600 K respectively, but to all temperatures between 2500 and 4000K inclusively. This provides a finer resolution coverage over the M spectral type, allowed by the PHOENIX-ACES library.
 Instrumental resolutions of 75000 and 100000 were requested to match the NIRPS instrument.
-The logg and metallicity, sampling rate remained at the \citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
+The logg and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
 Precisions were provided for SNR of 100 relative to the J, H bands as well as to each band individually. Artigua 2018.(priv. communication) suggested the truly relevant value is the SNR in H band for NIRPS radial velocities.
 
 A table of the precisions created for the NIRPS ETC are provided as an online table to our publication \textit{Neal et al. 2018b (in prep.)} \footnote{Available at \url{}.} \unfinished{Inlcude correct links} 

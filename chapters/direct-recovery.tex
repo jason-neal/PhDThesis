@@ -11,10 +11,8 @@
 % Calculation of exposure time required etc?
 
 
-\chapter{Direct-Spectral-Recovery}  % Main chapter title
-
+\chapter{Direct Spectral Recovery}  % Main chapter title
 \label{cha:Chapter3} 
-
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
@@ -100,8 +98,8 @@ This relation was used to estimate $\textrm{K}_2$ for the companion from the min
 
 
 \subsection{Companion-host Flux ratio}
-The companion-host flux or contrast ratio of the systems are calculated using $ \frac{F_{2}}{F_{1}} \approx 2.512^{m_1-m_2} $, where $m_1$ and $m_2$ are the magnitude of the host and companion respectively.\ $m_1$ is the observed magnitude of the host while $m_2$ is obtained from stellar evolution models of \citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass or minimum mass and the host age. The models, interpolated to the companion mass, also provide a first estimate of companion properties such as $T_{eff}$, $R/R_{\odot}$ and the magnitude in many wavelength bands.
-We use the K band magnitude specifically for this work to estimate the flux ratio between the host and companion using and the host K band magnitude obtained from SIMBAD \citep{wenger_simbad_2000}. Our flux ratio estimates are presented in table~\ref{tab:flux_table}.
+The companion-host flux or contrast ratio of the systems are calculated using $ \frac{F_{2}}{F_{1}} \approx 2.512^{m_1-m_2} $, where $m_1$ and $m_2$ are the magnitude of the host and companion respectively.\ $m_1$ is the observed magnitude of the host while $m_2$ is obtained from stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass or minimum mass and the host age. The models, interpolated to the companion mass, also provide a first estimate of companion properties such as $T_{eff}$, $R/R_{\odot}$ and the magnitude in many wavelength bands.
+We use the K band magnitude specifically for this work to estimate the flux ratio between the host and companion using and the host K band magnitude obtained from SIMBAD~\citep{wenger_simbad_2000}. Our flux ratio estimates are presented in table~\ref{tab:flux_table}.
 
 If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario).
 
@@ -110,7 +108,7 @@ A simple tool to do this calculation was created with python. Given a host name,
 
 
 \subsection{CRIRES data}
-\label{subsec:CRIRES}
+\label{subsec:CRIRESdata}
 Observations were performed with the CRIRES instrument~\citep{kaeufl_crires_2004} configured to observe a narrow wavelength domain of the K-band between \(\rm2120-2160~nm \) using the Ks and the Hx5e-2 filters. The slit width of \(0.4\sec \) resulted in an instrumental resolving power of R\(\sim50000 \), with no adaptive optics to ensure that the slit was entirely covered by each target.
 
 The observations were performed in service mode during period 89 with run ID.~089.C-0977(A) between April and August 2012. An observation is composed of 8 individual spectra with an integration time of 180 seconds, observed in the ABBAABBA nod cycle pattern to obtain a high (>100) signal-to-noise when combined. The targets and observation times taken by CRIRES are provided in Table~\ref{tab:observations}.
@@ -138,9 +136,9 @@ CHECK out LOCKWOOD 2014 - maximum likelyhood with todcor   1e-4 flux ratio doubl
 \section{Differential subtraction}
 \label{sec:spec_diff}
 
-The observations were gathered having in mind the application of a differential subtraction method \citep[e.g.][]{ferluga_separating_1997, kostogryz_spectral_2013} to detect the spectra of the faint BD companions. In short, we Doppler shift each observation to the rest frame of the host star and then mutually subtract the spectra from pairs of observations to cancel out the spectra of the brighter host star. The residuals from this method should contain two copies of the faint companion, subtracted from each other with a radial velocity offset \(\Delta RV\), one positive and one negative. This RV offset, if detectable, would allow the mass ratio to be determined and hence the companion mass. 
+The observations were gathered having in mind the application of a differential subtraction method~\citep[e.g.][]{ferluga_separating_1997, kostogryz_spectral_2013} to detect the spectra of the faint BD companions. In short, we Doppler shift each observation to the rest frame of the host star and then mutually subtract the spectra from pairs of observations to cancel out the spectra of the brighter host star. The residuals from this method should contain two copies of the faint companion, subtracted from each other with a radial velocity offset \(\Delta RV\), one positive and one negative. This RV offset, if detectable, would allow the mass ratio to be determined and hence the companion mass. 
 
-Due to the poorly separated observation times relative to the long orbital periods, this method was revealed to be inappropriate for these observations as the RV separation of the companion spectra between observations (\(\le 2.3\)~kms\(^{-1}\)) is significantly smaller than the FWHM (full width half maximum) of individual spectral lines (\(\sim\)6~kms\(^{-1}\) at \(\rm R=50\,000\)).  The small separation of the companion causes the lines of the companion to also mutually cancel, severely reducing the residual signal to well below the available noise level. The requirement of well separated RVs for the companion spectra was clearly stated in the original proposal but was not satisfied when the observations were obtained\footnote{see Sect.~\textbf{ref{subsubsec:differential scedualing}} for more details}. Radial velocity constraint are also valid for other studies such as the detection of reflected light from exoplanets \cite{martins_evidence_2015}. The estimated companion \(\Delta RV\) separation between the furthermost observational pair for each target is provided in the fifth column of Table~\ref{tab:flux_table}. 
+Due to the poorly separated observation times relative to the long orbital periods, this method was revealed to be inappropriate for these observations as the RV separation of the companion spectra between observations (\(\le 2.3\)~kms\(^{-1}\)) is significantly smaller than the FWHM (full width half maximum) of individual spectral lines (\(\sim\)6~kms\(^{-1}\) at \(\rm R=50\,000\)).  The small separation of the companion causes the lines of the companion to also mutually cancel, severely reducing the residual signal to well below the available noise level. The requirement of well separated RVs for the companion spectra was clearly stated in the original proposal but was not satisfied when the observations were obtained\footnote{see Sect.~\textbf{ref{subsubsec:differential scedualing}} for more details}. Radial velocity constraint are also valid for other studies such as the detection of reflected light from exoplanets~\cite{martins_evidence_2015}. The estimated companion \(\Delta RV\) separation between the furthermost observational pair for each target is provided in the fifth column of Table~\ref{tab:flux_table}. 
 
 Despite these problems, we still tried to apply the method to our data. Given the negative result, however, we decided to move this section to Appendix~\ref{appendix:A1}, where we describe the method and some exploratory results that may be useful for future studies.
 
@@ -148,7 +146,7 @@ Despite these problems, we still tried to apply the method to our data. Given th
 
 \section{Direct Subtraction Method}
 \label{appendix:A1}
-Here we outline the direct subtraction method used, which is similar to previous works \citep{ferluga_separating_1997,kostogryz_spectral_2013}. Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately, the spectrum received from the host-companion pair is given by the superposition of two spectral components (\(J_{1} \), \(J_{2} \)), where \(\lambda-v\) represents the Doppler shift \(\lambda(1-v/c)\) by velocity \(v\).
+Here we outline the direct subtraction method used, which is similar to previous works~\citep{ferluga_separating_1997,kostogryz_spectral_2013}. Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately, the spectrum received from the host-companion pair is given by the superposition of two spectral components (\(J_{1} \), \(J_{2} \)), where \(\lambda-v\) represents the Doppler shift \(\lambda(1-v/c)\) by velocity \(v\).
 \begin{equation}
 \textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2})
 \end{equation}
@@ -171,9 +169,9 @@ where,
 
 is the actual RV difference (\(\Delta RV \)) between the two companion spectra.
 
-The resulting differential spectra, dubbed \emph{s-profile} by \citet{ferluga_separating_1997}, is composed of just the companion spectra, shifted and subtracted from itself.
+The resulting differential spectra, dubbed \emph{s-profile} by~\citet{ferluga_separating_1997}, is composed of just the companion spectra, shifted and subtracted from itself.
 
-From binary dynamics \citep[e.g.][]{murray_keplerian_2010} the RV amplitudes of the host and companion are related through the mass ratio, \(q \), while having an opposite sign.
+From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the RV amplitudes of the host and companion are related through the mass ratio, \(q \), while having an opposite sign.
 \begin{align}
 	v_{2}  &= -\textrm{q} * v_{1} \label{eqn:q_relation}
 \end{align}
@@ -184,17 +182,17 @@ We can simplify Eq.~\ref{eqn:k} by expressing it in terms of the host RV and mas
 	k &= -q v_{1a} + q v_{1b} + v_{1a} - v_{1b} \nonumber \\
 	&= (1 - \textrm{q})(v_{1a} - v_{1b}). \label{eqn:k_simplified}
 \end{align}
-If we are able to determine the \(\Delta RV \) between the the companion spectra, k, from the s-profile \citep[see ][]{ferluga_separating_1997} then we can determine the mass ratio of the system, q, thereby constraining the mass of the companion. The values \(v_{1a} \) and \(v_{1b} \) are calculated from the orbital parameters of the system and are the same values already used to shift and mutually cancel the host spectrum.
+If we are able to determine the \(\Delta RV \) between the the companion spectra, k, from the s-profile~\citep[see ][]{ferluga_separating_1997} then we can determine the mass ratio of the system, q, thereby constraining the mass of the companion. The values \(v_{1a} \) and \(v_{1b} \) are calculated from the orbital parameters of the system and are the same values already used to shift and mutually cancel the host spectrum.
 
-This method is very similar to \citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated.
+This method is very similar to~\citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated.
 
 
 \subsection{Results of spectral differential analysis}
 
 \label{appendix:A2}
-We applied the spectral differential procedure outlined above on the wavelength-calibrated and telluric-corrected CRIRES observations. The spectra were corrected for Earth's barycentric RV using the \emph{helcor} PyAstronomy\footnote{https://pyastronomy.readthedocs.io} function ported from the REDUCE IDL package (See \citet[][]{piskunov_new_2002}) and Doppler shifted to the rest frame velocity of the system. The spectra were then subtracted from each other and analyzed as described above.
+We applied the spectral differential procedure outlined above on the wavelength-calibrated and telluric-corrected CRIRES observations. The spectra were corrected for Earth's barycentric RV using the \emph{helcor} PyAstronomy\footnote{https://pyastronomy.readthedocs.io} function ported from the REDUCE IDL package (See~\citet[][]{piskunov_new_2002}) and Doppler shifted to the rest frame velocity of the system. The spectra were then subtracted from each other and analyzed as described above.
 
-It is necessary to have a consistent instrumental setup \citet{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g. slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted. In our case, the second observation of \object{HD 202206} and fourth of \object{HD 30501} were taken with different filters compared to the other observations. Therefore, these two observations could not be used for this differential analysis. As noted in \citep{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
+It is necessary to have a consistent instrumental setup~\citet{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g. slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted. In our case, the second observation of \object{HD 202206} and fourth of \object{HD 30501} were taken with different filters compared to the other observations. Therefore, these two observations could not be used for this differential analysis. As noted in~\citep{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
 
 
 \begin{figure}
@@ -214,7 +212,7 @@ In our best case, \object{HD 30501},  the \(\Delta RV\) of the companion between
 When the \(\Delta RV \) of the companion is smaller than the FWHM of a line there is a mutual subtraction of the companion spectra, diminishing the detected amplitude of the differential signal, and removing the ability to detect the companions using this method. Observations need to be spaced further apart in time/phase to achieve a larger \(\Delta RV\) separation and increase the amplitude of the differential. Of course once there is a separation there will be complex interactions between neighboring lines that need to be accounted for.
 
 \subsection{Relative differential amplitude}
-To probe this issue further we investigated how the amplitude of the differential signal changed with \(\Delta RV \). Taking the same PHOENIX-ACES spectra (\(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0 \), \(\rm [Fe/H]=0.0 \)), we computed differential spectra for a range of \(\Delta RV\)s between \(\pm10\)~kms\(^{-1}\). Figure~\ref{fig:diff_amp} shows how the relative amplitude of the differential spectrum in the wavelength range 2110--2123~nm (detector 1 of our CRIRES observations) changed as the spectra are offset. At each RV step we take the maximum absolute differential value found. These are then normalized by the median value outside of the line FWHM (dashed vertical lines), between \(\pm(7-10)\)~kms\(^{-1}\), to give a relative differential amplitude, independent from the depth of a specific line. For comparison we also show the relative amplitude of the differential spectrum for a single Gaussian and single Lorentzian line when Doppler shifted by the same \(\Delta RV \)s. The shape of these results is also consistent with the analytical form of the differential spectra \citet[][eqn.~A.1]{ferluga_separating_1997}.
+To probe this issue further we investigated how the amplitude of the differential signal changed with \(\Delta RV \). Taking the same PHOENIX-ACES spectra (\(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0 \), \(\rm [Fe/H]=0.0 \)), we computed differential spectra for a range of \(\Delta RV\)s between \(\pm10\)~kms\(^{-1}\). Figure~\ref{fig:diff_amp} shows how the relative amplitude of the differential spectrum in the wavelength range 2110--2123~nm (detector 1 of our CRIRES observations) changed as the spectra are offset. At each RV step we take the maximum absolute differential value found. These are then normalized by the median value outside of the line FWHM (dashed vertical lines), between \(\pm(7-10)\)~kms\(^{-1}\), to give a relative differential amplitude, independent from the depth of a specific line. For comparison we also show the relative amplitude of the differential spectrum for a single Gaussian and single Lorentzian line when Doppler shifted by the same \(\Delta RV \)s. The shape of these results is also consistent with the analytical form of the differential spectra~\citet[][eqn.~A.1]{ferluga_separating_1997}.
 
 At a \(\Delta RV\) difference of zero, spectral lines of the companion completely cancel each other out, resulting in zero amplitude. As the RV separation increases, the individual lines stop canceling themselves until a maximum differential amplitude is achieved when the lines are fully separated from themselves (equal to the line depth). 
 
@@ -244,7 +242,7 @@ We note that for the targets in which only the minimum mass (\(\textrm{M}\sin{i}
 
 If a direct measurement of the companion RV or \(\Delta RV \) from the differential spectra analysis was achieved, then this relation would have been used to calculate the companion mass.
 
-The error on estimated RV values is calculated using the general error propagation formula \citep{ku_notes_1966} with the RV equation and the errors on the orbital parameters. For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc, it follows: 
+The error on estimated RV values is calculated using the general error propagation formula~\citep{ku_notes_1966} with the RV equation and the errors on the orbital parameters. For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc, it follows: 
 \begin{align}
 	f &= f(x, y, z, ...)\\
 	\delta f &= \sqrt{{\left( \frac{\partial f}{\partial x} \delta x\right)}^2 +  {\left(\frac{\partial f}{\partial y} \delta y\right)}^2 + {\left(\frac{\partial f}{\partial z} \delta z\right)}^2 + ...}
@@ -255,11 +253,11 @@ The error on estimated RV values is calculated using the general error propagati
 
 \unfinished{Move location / adjust from paper}
 \label{compaion flux ration}
-The companion-host flux or contrast ratio of the systems are calculated using \( \frac{F_{2}}{F_{1}} \approx 2.512^{m_{1}-m_{2}} \), where \(m_{1} \) and \(m_{2} \) are the magnitude of the host and companion respectively.\ \(m_{1} \) is the magnitude of the host in the literature, while \(m_{2} \) is obtained from stellar evolution models of \citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass (or \(M_{2}\sin{i}\))) and the host's age. If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario). The models, interpolated to the companion mass, also provide a first estimate of companion properties such as \(T_{\textrm{eff}}\), logg, \(R/R_{\sun}\) and the magnitude in many wavelength bands.
-We use the K-band magnitude specifically for this work to estimate the flux ratio between the host and companion using the host K-band magnitude obtained from SIMBAD \citep{wenger_simbad_2000}. Our flux ratio estimates are presented in table~\ref{tab:flux_table}.
+The companion-host flux or contrast ratio of the systems are calculated using \( \frac{F_{2}}{F_{1}} \approx 2.512^{m_{1}-m_{2}} \), where \(m_{1} \) and \(m_{2} \) are the magnitude of the host and companion respectively.\ \(m_{1} \) is the magnitude of the host in the literature, while \(m_{2} \) is obtained from stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass (or \(M_{2}\sin{i}\))) and the host's age. If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario). The models, interpolated to the companion mass, also provide a first estimate of companion properties such as \(T_{\textrm{eff}}\), logg, \(R/R_{\sun}\) and the magnitude in many wavelength bands.
+We use the K-band magnitude specifically for this work to estimate the flux ratio between the host and companion using the host K-band magnitude obtained from SIMBAD~\citep{wenger_simbad_2000}. Our flux ratio estimates are presented in table~\ref{tab:flux_table}.
 The companion \(T_{\textrm{eff}}\) and logg values specifically are used to influence the selection of synthetic model grids to perform the \(\chi^2\) analysis over.
 
-A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to estimate the flux ratio using the \citep{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables. Given the host star name, the companion mass and a stellar age it interpolates the available Baraffe tables to the companion mass and age specified. The host's name is used to query the SIMBAD database to obtain stellar properties, specifically magnitudes, to calculate the flux ratios. It can also work in reverse to estimate the companion mass when provided with a flux ratio value.
+A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to estimate the flux ratio using the~\citep{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables. Given the host star name, the companion mass and a stellar age it interpolates the available Baraffe tables to the companion mass and age specified. The host's name is used to query the SIMBAD database to obtain stellar properties, specifically magnitudes, to calculate the flux ratios. It can also work in reverse to estimate the companion mass when provided with a flux ratio value.
 
 
 
