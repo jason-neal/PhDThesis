@@ -17,7 +17,7 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-The work of this thesis relies on the use of NIR spectra obtained by the CRIRES instrument. This chapter contains an overview of reductions steps undertaken, highlighting the main steps for CRIRES specifically. A comparison between two reduction pipelines is preformed, a correction of spectral artifacts discovered and post reduction steps of wavelength calibration and telluric correction were taken to produce high quality spectra for the use in \cref{cha:Chapter3} and~ \ref{cha:Chapter4}. 
+The work of this thesis relies on the use of {\nir} spectra obtained by the CRIRES instrument. This chapter contains an overview of reductions steps undertaken, highlighting the main steps for CRIRES specifically. A comparison between two reduction pipelines is performed, a correction of spectral artifacts discovered and post reduction steps of wavelength calibration and telluric correction were taken to produce high quality spectra for the use in \cref{cha:Chapter3} and~ \ref{cha:Chapter4}. 
 
 \section{Summary of dataset}
 \todo{}{}
@@ -28,13 +28,13 @@ Brief summary of dataset we focus reduction on. The motivation of these will be 
  
 \section{NIR spectroscopy}
 \todo{}{}
-Specifics of NIR verse optical
+Specifics of {\nir} verse optical
 
 
-NIR spectroscopy requires the use of CMOS detectors which are a different technology to the more commonly known CCD's. Their use is required in the NIR as the quantum efficiency (how well it measures photons) for CCD's although great for visible is poor in the NIR. CMOS detectors have a higher quantum efficiency in the NIR. 
+NIR spectroscopy requires the use of CMOS detectors which are a different technology to the more commonly known CCD's. Their use is required in the {\nir} as the quantum efficiency (how well it measures photons) for CCD's although great for visible is poor in the \nir. CMOS detectors have a higher quantum efficiency in the \nir. 
 \change{rearrange/reorganize this paragraph.}
 
-CCD based on Silicon which doesn't work with nir
+CCD based on Silicon which doesn't work with \nir
 
 
 \subsection{General reduction Concepts}
@@ -43,7 +43,7 @@ CCD based on Silicon which doesn't work with nir
 
 Focus on our observations
 
-There are 3 main effects that need to be accounted for in NIR spectroscopy which influence the observations and calibrations taken. We briefly detail them here and how they are corrected for
+There are 3 main effects that need to be accounted for in {\nir} spectroscopy which influence the observations and calibrations taken. We briefly detail them here and how they are corrected for
 
 \begin{figure}[h]
 \centering
@@ -54,7 +54,7 @@ There are 3 main effects that need to be accounted for in NIR spectroscopy which
 \end{figure}
 
 \subsubsection{Dark Current}
-The dark current is form of instrumental noise, in which, the detector measures photons while not being illuminated. It is the detection of thermal elections moving inside the detector, creating spurious photon counts. Calibration and removal of the dark current is preformed by preforming exposures in which the detector is not illuminated. 
+The dark current is form of instrumental noise, in which, the detector measures photons while not being illuminated. It is the detection of thermal elections moving inside the detector, creating spurious photon counts. Calibration and removal of the dark current is performed by taking exposures in which the detector is not illuminated. 
  The temperature of the detectors in CRIRES instrument are kept at \textbf{XXX degree C} to reduce the dark current and maintain a stable level. The electrical components of the CRIRES detectors create thermal energy while operational which impacts the dark current. A strong glow is observed in the bottom corners of the CRIRES detector in \fref{fig:darkcurrent} due to the presence of nearby amplifiers.As per the CRIRES calibration plan dark frames need to be taken for each exposure time used. \fref{fig:darkcurrent} shows the master dark frame created from averaging three dark frames for exposure times of 3 seconds and 180 seconds, both on the same amplitude scale.
 For the CRIRES detectors the dark current the per pixel is around 0.2-0.4\,(\(e^{-}\)\si{\per\second}), while the glow at the two corners of the 180 second exposure shown here is around \(\sim9000 / 180\approx50\)\,\(e^{-}\)\si{\per\second}.
 
@@ -64,12 +64,12 @@ For the CRIRES detectors the dark current the per pixel is around 0.2-0.4\,(\(e^
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{figures/reduction/master_flats_1.pdf}
-    \caption{A flat-field image for a detector \#1 before (left) and after(right) the non-linearity corrections are preformed. A prefect detector would have all pixels in the flat-field equal to 1.}
+    \caption{A flat-field image for a detector \#1 before (left) and after(right) the non-linearity corrections are performed. A prefect detector would have all pixels in the flat-field equal to 1.}
     \label{fig:masterflats}
 \end{figure}
 
 \subsubsection{Flat-field}
-No detector is truly perfect, with all pixels preforming equally well. To correct for pixel-to-pixel variations in photon sensitivity across the detector and for any distortions in the optical path a flat-field correction is needed. Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected. The flat-field frames are corrected for dark current by subtraction of the master dark frame with the appropriate exposure time.
+No detector is truly perfect, with all pixels performing equally well. To correct for pixel-to-pixel variations in photon sensitivity across the detector and for any distortions in the optical path a flat-field correction is needed. Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected. The flat-field frames are corrected for dark current by subtraction of the master dark frame with the appropriate exposure time.
 
 The CRIRES detector suffers from nonlinearities in sensitivity across the detector. This can be seen in the flat-field image on the left of \fref{fig:masterflats} where there is a gradient from white to black across the detector. A set of coefficients for each pixel is provided by ESO \footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the non-linearity of the detectors. This also corrects for the odd-even affect observed in the CRIRES detectors in which there is a slight difference in output between the pixels from the odd and even columns. The frame on the right of \fref{fig:masterflats} has been corrected for the nonlinearities.
 
@@ -101,24 +101,21 @@ For each exposure at each nod position a \emph{jitter} is also be applied to all
 
 \subsection{TH-Ar Calibrations}
 \todo{Should I even include this section}
-As part of the CRIRES calibration step there are images of \thar lamp spectra from 6 fibers.
-We didn't use as there are known issues in the NIR. (but this is what they look like??)
+As part of the CRIRES calibration step there are images of {\thar} lamp spectra from 6 fibers.
+We didn't use as there are known issues in the \nir. (but this is what they look like??)
 
 See other section \sref{subsec:wavcalib}.
 \missingfigure{\thar exposure showing the few lines for calibration?}
 
 \begin{figure}
-\includegraphics[width=\hsize]{./figures/reduction/lamp_plots.pdf}
-    \caption{A Th-Ar calibration lamp frame for each detector, corrected from the dark current.}
+\includegraphics[width=\hsize]{./figures/reduction/lamp_plots.pdf}\\
+\includegraphics[width=\hsize]{./figures/reduction/lamp_plots_cbar_each.pdf}
+\caption{A Th-Ar calibration lamp frame for each detector, corrected from the dark current. \bf{Which is better?}}
     \label{fig:caliblamps}
 \end{figure}
 
-\begin{figure}
-\includegraphics[width=\hsize]{./figures/reduction/lamp_plots_cbar_each.pdf}
-    \caption{A Th-Ar calibration lamp frame for each detector, corrected from the dark current.}
-    \label{fig:caliblamps2}
-\end{figure}
-Scratches on the detector often misidentified by eso pipline as \thar lines.
+Scratches on the detector can cause a decrease in the correlation between {\thar} lines and the spectral template in ESO pipeline. This can be resolved by first applying a mask.
+At the top and bottom there are also 2 meteorological fibers that can not be used for wavelength calibration as they pass through a different optical pathway.
 
 
 \todo{Note: Useful information about MIR reduction in the 
@@ -143,14 +140,14 @@ In these next sections we document our experience using both pipelines, and comp
 
 
 \subsection{CRIRES pipeline}
-The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}. The \href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} graphical user interface (GUI) for the pipeline was used. The CRIRES reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}} was followed to reduce the CRIRES nodding spectra. The CRIRES pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the the GASGANO manual\footnote{\href{here}{here}}. The pipeline provides a number of \emph{recipes} which preform the required extraction steps. From the GUI each recipe is manually selected, then the correct calibration and observation files are selected and added. 
+The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}. The \href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} graphical user interface (GUI) for the pipeline was used. The CRIRES reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}} was followed to reduce the CRIRES nodding spectra. The CRIRES pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the the GASGANO manual\footnote{\href{here}{here}}. The pipeline provides a number of \emph{recipes} which perform the required extraction steps. From the GUI each recipe is manually selected, then the correct calibration and observation files are selected and added. 
 
 - dark creation
 - flat creation
 - wavelength calibration
 - jitter extraction
 
-The wavelength calibration was the most tedious. To try and improve the wavelength calibration the y positions of the 6 \thar fibers was found for each detector and entered into the parameters for each observation. This sometimes helped but not always in the end we did not use them anyway.
+The wavelength calibration was the most tedious. To try and improve the wavelength calibration the y positions of the 6 {\thar} fibers was found for each detector and entered into the parameters for each observation. This sometimes helped but not always in the end we did not use them anyway.
 
 The final output is a extracted and flattened spectra (although not normalized to 1) both in a rectangular and optimal and errors, with a wavelength calibration.
 
@@ -167,7 +164,7 @@ DONT READ Just unsorted junk:
 
 \textit{It is believed that there is a way to enable batch processing???}
 
-\textit{It soon became tedious to use the Gasgano GUI to extract the many spectra reduce many and tweak all the parameter settings manually. In particular manually measuring and adding the vertical positions of the 6 \thar lines for each detector and observation. This was in an attempt to improve the wavelength calibration provided by the \thar lamp spectra.
+\textit{It soon became tedious to use the Gasgano GUI to extract the many spectra reduce many and tweak all the parameter settings manually. In particular manually measuring and adding the vertical positions of the 6 {\thar} lines for each detector and observation. This was in an attempt to improve the wavelength calibration provided by the {\thar} lamp spectra.
 A number of other parameters were tweaked from the defaults in an attempt to improve the reduction. Again become tedious to repeatably change the parameters for all observations.}
 
 \textit{Having the GUI id however allow for a easy introduction into using performing spectral reduction when not of not yet comfortable with the command line (required for the ESOREX interface).
@@ -190,9 +187,9 @@ DONT READ UNFINISHED
 
 How to use:
 \textit{To use DRACS you need to create a number of lists with different, darks, flats, observations\footnote{The GASGANO GUI was helpful to help identify the distinction of each fits file for a beginner}. A similar process with list of files is done with the ESOREX pipeline.}
-\textit{Once these list are created then the main script can be executed that semi-autonomously preforms the reduction. The first time though there are a number of manual checks/decisions, (e.g. confirming the order tracing position, and fit) but DRACS remembers them. This means the extraction requires less manual input if run a second or third time though.}
+\textit{Once these list are created then the main script can be executed that semi-autonomously performs the reduction. The first time though there are a number of manual checks/decisions, (e.g. confirming the order tracing position, and fit) but DRACS remembers them. This means the extraction requires less manual input if run a second or third time though.}
 
-\textit{This was handy when trying to tune some of the internal parameters to preform a better extraction.}
+\textit{This was handy when trying to tune some of the internal parameters to perform a better extraction.}
 
 \missingfigure{Order tracing example plot?, exaggerated sketch} 
 
@@ -216,7 +213,7 @@ We in-fact found they were the same line depth.
 
 After using both it was decided to continue using DRACS \ldots for this reasons
 
-With these considerations at this point we decided to preform the rest of the reductions with the DRACS pipeline. This would require a manual wavelength calibration to be preformed. 
+With these considerations at this point we decided to perform the rest of the reductions with the DRACS pipeline. This would require a manual wavelength calibration to be performed. 
 
 
 BUT: We eventually found some strange inconsistencies in the DRACS reduction, artifacts. where bad pixels were non-optimally corrected\ldots.
@@ -260,7 +257,7 @@ Combined spectra were finally constructed by averaging the 8 nod-cycle spectra t
 
 The normalization and nod combining steps were also performed using IRAF while the following post reduction procedures and analysis all utilize \emph{Python}. This pipeline was chosen over the ESO CRIRES pipeline because it seemed relatively simple to use, being mostly automated, and appeared to have less bad pixel/cosmic ray artifacts in the resulting spectra. In hindsight this was not the case, with artifacts appearing that needed to be removed. 
 
-One possible explanation for the artifacts present is an instrumental effect, such as instrument glow. This is known to affect CRIRES and included in the data reduction cookbook~\citep{smoker_very_2012}. These artifacts in the K-band spectra were not observed in previous works in the H-band using this pipeline and as such may have a wavelength dependent affect, as the higher wavelength nIR is more susceptible to thermal instrument glow.
+One possible explanation for the artifacts present is an instrumental effect, such as instrument glow. This is known to affect CRIRES and included in the data reduction cookbook~\citep{smoker_very_2012}. These artifacts in the K-band spectra were not observed in previous works in the H-band using this pipeline and as such may have a wavelength dependent affect, as the higher wavelength {\nir} is more susceptible to thermal instrument glow.
 
 
 
@@ -274,11 +271,11 @@ Note for HD202206 the 1st two nods have a much higher extracted flux. I am still
 
 
 \section{Reduction experience:}
-The experience gained in reducing CRIRES spectra allowed for some collaboration in other works. The DRACS pipeline was used to extract the spectra of two other targets. A brief aim of each science case is given below.
+The experience gained in reducing CRIRES spectra enable participation in collaborations with other science cases. The DRACS pipeline was used to extract the spectra of two other targets. A target and a very brief aim of each science case is given below.
 \begin{itemize}
-\item Barnard's Star\footnote{Programme ID: 085.D-0161(A)}: Reduced to extend the work of~\citet{andreasen_nearinfrared_2016} in derivation spectroscopic parameters in the NIR. Unfortunately the reduced NIR spectra from the CRIRES-POP library was used instead in~\citet{Andreasen et al. (in prep.)}. 
-\item $\eta$ Tel\footnote{Programme ID: 083.C-0759(A)}: To measure the rotation rate of the a quickly rotating Brown Dwarf by measuring the line broadening. \change{}{Hagelberg et al. (in prep.)}
-\item The spectra of $\eta$ Tel was also used to compare different telluric correction methods in~\cite{ulmer-moll_telluric_2018}.
+\item Barnard's Star\footnote{Programme ID: 085.D-0161(A)}: The reduced {\nir} spectra of Barnard's Star was meant to extend the work of~\citet{andreasen_nearinfrared_2016} in deriving the spectroscopic parameters in the \nir. Unfortunately in the end the already reduced CRIRES-POP library was used instead in~\citet{Andreasen et al. (in prep.)}. \unfinished{reason}{This was because \ldots}
+\item $\eta$ Tel\footnote{Programme ID: 083.C-0759(A)}: The spectra of $\eta$ Tel, quickly rotating Brown Dwarf, was reduced to accurately determine its rotation rate by measuring the line broadening. \change{}{Hagelberg et al. (in prep.)}
+\item The same spectra of $\eta$ Tel were also used in~\citet{ulmer-moll_telluric_2018} to compare different telluric correction methods in the \nir.
 \end{itemize}
 
 For these works only the spectral extraction outlined above was performed. The post \change{I seem to use these interchangeably. are they}{extraction/reduction} steps from the following sections were not.
@@ -288,19 +285,23 @@ For these works only the spectral extraction outlined above was performed. The p
 
 \section{Post reduction stages}
 \label{sec:posreduction}
-After using DRACS we have an extracted 1-D spectra of the target. The spectra has had wavelength information added yet or been corrected for telluric lines. We will address these two things in the following section.
+From the DRACS pipeline we have extracted the 1-D spectra of each target. The spectra still need to undergo some post-reduction step. In particular, wavelength calibration and telluric correction. A detailed look of how these steps were developed and performed are addressed in the following section.
 
-\subsubsection{Wavelength calibration}
+\subsection{Wavelength calibration}
 \label{subsec:wavcalib}
-Wavelength calibration, assigning accurate wavelength values to each pixel in the spectra, is challenging in the NIR with CRIRES. CRIRES uses a Thorium-Argon (\thar) lamp to place 6 emission spectra on the detector using fibers. The spectra of the \thar emission lines are used to determine the spatial distribution of the wavelength solution across each detector. \change{fix-up get a good citation, number of lines}{\thar lamps are excellent at optical wavelengths where their numerous (8600 espresso) spectral lines enable precisions of sub-m/s HARPS spectrograph\cite{paper}}. However in the NIR, there is a low density of \thar lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ CRIRES-POP~\citep{nicholls_crirespop_2017})
-We experienced these issue ourselves when using the ESO CRIRES pipeline. At the wavelength of 2.1-2.7 micron there are roughly XXX \thar lines across the detectors.
-The calibration with the ESO pipeline recipes often would provide poor The DRACS pipeline does not use the \thar lamp files for wavelength calibration and leaves it for post reduction analysis
+Wavelength calibration is the process of assigning accurate wavelength values to each pixel in the spectra. For CRIRES in the {\nir} this is challenging. CRIRES uses a Thorium-Argon (\thar) lamp to place 6 emission spectra on the detector using fibers. The spectra of the {\thar} emission lines are used to determine the spatial distribution of the wavelength solution across each detector using correlation with a spectral template. \change{fix-up get a good citation, number of lines}{}{\thar} lamps are excellent at optical wavelengths where the numerous (8600 espresso) spectral lines enable precision of sub-m/s radial velocity measurements HARPS spectrograph\reference{paper for harps thar lines}{(?)}. However in the \nir, there is a relatively low density of {\thar} lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ CRIRES-POP~\citep{nicholls_crirespop_2017}).
+Above 2.2~\si{\micro\meter} there are O-H sky lines that can be used for wavelength calibration but for our observations below 2.2 \si{\micro\meter} they are too dim.\reference{ cite crires manual, a paper about sky lines?}
 
-The CRIRES manuals point out that above 2.2 micron there are O-H sky lines that can be used for calibration but we focus at 2.1-2.2 where we are they are too dim.
- 
-Therefore, we use the telluric absorption lines present in each observation as the wavelength reference. Instead of directly using the HITRAN database~\citep{rothman_hitran2012_2013} for the line positions of the telluric spectra (e.g.~\citep{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}), we use TAPAS atmospheric transmission models~\citep{bertaux_tapas_2014} obtained for each observation. These in turn use the HITRAN database but include atmospheric profiles and physical measurements to model the telluric absorption strength.
+These wavelength calibration issues were experienced when using the ESO CRIRES pipeline, with non-Th-Ar lines features sometimes affecting the correlation.
 
-The centroid of each telluric line is obtained by fitting the telluric transmission spectrum, \(T \), as a sum of Gaussian functions (subtracted from the continuum) representing the telluric lines,
+At the wavelength of 2.1-2.17~\si{\micro\meter} there are roughly XXX {\thar} lines across all four detectors, as seen in \fref{fig:caliblamps}.
+The DRACS pipeline does not use the {\thar} lamp files for wavelength calibration and leaves this as a post reduction step.
+
+A common method for wavelength calibration that does not rely on Th-Ar lamps of CRIRES involves using the telluric lines present  to provide the wavelength solution ~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}. This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere. 
+
+We follow this method using the telluric absorption lines present in each observation as the wavelength reference. Instead of directly using the HITRAN database~\citep{rothman_hitran2012_2013} for the telluric line positions \citet[such as in ][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}), we use the TAPAS atmospheric transmission models~\citep{bertaux_tapas_2014} obtained for each observation. The TAPAS models in turns use the HITRAN database but includes atmospheric profiles and physical meteorological measurements to model the telluric absorption strength.
+
+To calibrate the wavelength the telluric lines in the model need to be associated to the corresponding telluric lines in the observed spectrum. The centroid\footnote{Center of the line} of each telluric line in the model is obtained by fitting the telluric transmission spectrum, \(T(\lambda) \), as a simple sum of Gaussian functions (subtracted from the continuum).
 
 \begin{equation}
 T(\lambda) = 1 - {\Sigma}_{i}\ G(\lambda, A_{i}, {\mu}_{i}, {\sigma}_{i}),
@@ -312,21 +313,29 @@ where \(G \) is a Gaussian function of the form
 G(\lambda, A, \mu, \sigma) = {A \textrm{e}}^{{-(\lambda-\mu)}^{2}/2\sigma^{2}}
 \end{equation}
 
-and \(A \), \(\mu \), \(\sigma \) are the amplitude, central wavelength, and standard deviation for each line respectively. Telluric lines actually have a %\todo{Mention somewhere what a voigt profile is, convolution of Gaussain and Lorentzian (thermal verse pressure broadening)} Voigt profile but at this resolution the Gaussian profile dominates, and as such the Gaussian assumption is a good one for the fit to find the line centers.
+and \(A \), \(\mu \), \(\sigma \) are the amplitude, central wavelength, and standard deviation for each line respectively. Telluric lines actually have a Voigt profile\footnote{A Voigt profile is a convolution of two broadening profiles, a Gaussian and a Lorentzian. Gaussian broadening results from thermal Doppler broadening, and instrumental broadening while the Lorentzian broadening comes from molecular vibrational bands\citep{meier_art_2005}.} but at this resolution the Gaussian profile dominates, and as such the Gaussian assumption is a sufficient to fit the line centers.
 
-The observed spectra contain two different components: stellar and telluric lines overlapped. This overlapping is, in fact, a multiplication of the stellar and telluric spectra. These were fitted with two Gaussian-sum models multiplied together, with the identification of telluric and stellar lines performed manually for each spectra, using the synthetic telluric models as the reference.
+The observed spectra contain two different spectral components: stellar and telluric lines overlapped. This overlapping is, in fact, a multiplication of the stellar and telluric spectra. The observed spectra are fitted with two Gaussian-sum models multiplied together. The identification between telluric and stellar lines is performed manually for each spectra, using the telluric model as the reference. \unfinished{include more information about manual selection, blending}
 \begin{align}
 I_{obs}(x) &= I_{tell}(x) \times I_{space}(x) \nonumber \\
-I_{obs}(x) &= \Big(1 - {\Sigma}_{j}\ G(x, A_{j}, {\mu}_{j}, {\sigma}_{j})\Big) \times \Big(1 - {\Sigma}_{k} G(x, A_{k}, {\mu}_{k}, {\sigma}_{k})\Big), \label{eqn:obs}
+I_{obs}(x) &= \Big(1 - {\Sigma}_{j}\ G(x, A_{j}, {\mu}_{j}, {\sigma}_{j})\Big)_{tell} \times \Big(1 - {\Sigma}_{k} G(x, A_{k}, {\mu}_{k}, {\sigma}_{k})\Big)_{space}, \label{eqn:obs}
 \end{align}
 
-where \(x \) is the pixel coordinate of the extracted spectra.
+where \(x \) is the pixel coordinates of the extracted spectra.
 
-The wavelength solution was obtained by fitting a second order polynomial, shown to be sufficient for higher precision RV studies~\citep[e.g.][]{bean_groundbased_2010, figueira_radial_2010}, to the centroid values \(\{\mu(x), \mu(\lambda)\} \) obtained from the telluric component of the observed spectra and telluric model respectively. 
+\missingfigure{example figures illustrating this method}
 
-Much like issues with \thar calibrations this method only works well when there is sufficient coverage of telluric lines on the detector. For the wavelength setting of these observations, the spectra from the second detector (top right panel of \fref{fig:detector4allspectra}) only have two large telluric lines present with several small lines, with relative depths smaller than 1\%, which are difficult to identify. This deteriorated the calibration stability for the second detector. With the lack of telluric contamination and stellar lines on the second detector it may have been ideal for the detection of a faint secondary spectra; unfortunately the wavelength calibration quality varies in an inverse way.
+After fitting \(I_obs(x)\) to the observed spectrum and \(T(\lambda)\) to the telluric model the wavelength solution was obtained by fitting a second order polynomial to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\} \) from the telluric components of the observed spectra and telluric model respectively. A second order polynomial has been shown to be sufficient for higher precision RV studies~\citep[e.g.][]{bean_groundbased_2010, figueira_radial_2010}. This polynomial is then used to map the whole spectrum from pixels into wavelength values.
 
-We note that there are many variations on this wavelength-calibration technique including those integrated within programs such as TelFit~\citet{gullikson_correcting_2014}, and ESOs Molecfit~\citet{smette_molecfit_2015}, that perform telluric correction and re-calibrate the wavelength axis themselves.
+\missingfigure{Example of coordinates and the fit.}
+
+Much like with the {\thar} calibrations, this technique performs better when there is sufficient coverage of telluric lines on the detectors. For the wavelength setting of these observations, the spectra from the second detector (top right panel of \fref{fig:detector4allspectra}) only have two large telluric lines present with several small lines, with relative depths smaller than 1\%, which are often difficult to accurately identify. This deteriorated the calibration stability for the second detector. With the lack of telluric contamination and stellar lines on the second detector it may have been ideal for the detection of a faint secondary spectra; unfortunately the wavelength calibration quality varies in an inverse way.
+
+
+We note that there are many variations on this wavelength-calibration technique including those integrated within programs such as TelFit~\citet{gullikson_correcting_2014}, and ESOs Molecfit~\citet{smette_molecfit_2015}, that perform telluric correction and re-calibrate the wavelength axis themselves at the same time.
+
+
+An briefly attempted wavelength calibration using the iterative method outlined in \cite{brogi_rotation_2016}. This involved generating set of wavelength solutions for the observed spectrum, cross-correlating each one against the telluric model. The solutions for the next iteration are obtained by refining the parameters from the solution with the highest correlation. This was not successful as we did not include a model or a mask of the stellar lines. The method worked well for \citet{brogi_rotation_2016} as they included templates for both star and telluric lines were observing in a wavelength domain in which there is a large number of strong and uniform stellar CO lines across the detector. Without adding any stellar masking the telluric lines would strongly correlate to the stellar lines, especially were there was blended lines. This method was abandoned, but may have been possible if a stellar mask was used.
 
 
 \unfinished{Add pictures of wavelength calibrations}
@@ -338,7 +347,7 @@ We note that there are many variations on this wavelength-calibration technique 
 % 	\label{fig:detector4allspectra}
 % \end{figure*}
 
-
+In the future it may be plausible to combine all of the methods above, including the Th-Ar calibration lines, telluric models, and stellar templates. Also applying a fit to the 4 detectors so that neighboring detectors can help with the fit when low lines are used.
 
 \unfinished{See Solene's paper regarding Telluric correction with models and reference spectra}
 
@@ -349,20 +358,28 @@ Requiring data from tapas
 - own script to derive from spectra header.
 
 
-Attempt of Brogi 2016 wavelength calibration method. Didn't preform well as we did not have many lines. They had a C02 comb of lines. 
+Attempt of Brogi 2016 wavelength calibration method. Didn't perform well as we did not have many lines. They had a C02 comb of lines. 
 
 
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{figures/reduction/Spectra_examples}
-    \caption{}
+    \caption{An example spectra for each target and detector. The solid lines are the spectra while the black dashed lines are the telluric models used for wavelength correction, showing good alignment with the spectra.}
     \label{fig:spectraexamples}
 \end{figure}
 
+In hind sight trying , especially for detector 2 trying to include the telluric spectra is 
+\missingfigure{comparision between a gasgano wavelength solution and the manual one. This has not be done by me before... }
+
 \subsubsection{Telluric correction}
 \label{subsec:telluric_correction}
-Ground based observations require the removal of the absorption lines introduced by Earth's atmosphere. These observations were first taken in an atmospheric window of the K-band in order to reduce the absorption introduced by the atmosphere~\citep{barnes_hd_2008}. 
-\missingfigure{The telluiric spectrum around 2 micron showing the 2.1 micron window of low telluric absorption} To correct for the remaining telluric line contamination the spectra were divided by the TAPAS\citep{bertaux_tapas_2014} atmospheric transmission models for each observation. Synthetic telluric models were used to avoid the observing overhead necessary to perform telluric standard star exposures~\citep{vacca_method_2003}, and they have been demonstrated to be superior in the quality of the correction relative to the telluric standard approach~\citep[e.g.][]{cotton_atmospheric_2014}.
+All ground based astronomical observations pass though Earths atmosphere. The atmosphere becomes a spectral filter imprinting the absorption profile of the atmosphere onto the our the constituents of our atmosphere. To accurately recover the spectra of the observed target the removal of the absorption lines introduced by Earth's atmosphere is extremely important. The motion, changing composition and \todo{See solenes paper for matereial here}.
+A number of methods are available to correct for the telluric lines, telluric reference (cite) , models (tapas), modeling/fitting (molecfit tellfit). The effectiveness between these three methods has recently been performed in \cite{ulmer-moll_telluric_2018}.   \todo{Expand this section...}. \todo{Should this be more in the introduction?}.
+
+In this work we use telluric models without fitting, using the TAPAS spectra.
+
+These observations were first taken in an atmospheric window of the K-band in order to reduce the absorption introduced by the atmosphere~\citep{barnes_hd_2008}. 
+\missingfigure{The telluric spectrum around 2 micron showing the 2.1 micron window of low telluric absorption} To correct for the remaining telluric line contamination the spectra were divided by the TAPAS\citep{bertaux_tapas_2014} atmospheric transmission models for each observation. Synthetic telluric models were used to avoid the observing overhead necessary to perform telluric standard star exposures~\citep{vacca_method_2003}, and they have been demonstrated to be superior in the quality of the correction relative to the telluric standard approach~\citep[e.g.][]{cotton_atmospheric_2014}.
 
 Before the correction, the depth of the telluric lines were re-scaled to match the airmass of the observation using the relation \(\rm T = T^{\beta} \), where \(\rm T\) is the telluric spectrum and \(\beta \) is the airmass ratio between the observation and model. This changed the depth of most absorption lines to match the observations, but does not correctly scale the deeper \(\rm H_{2}O \) lines. The scaled telluric model is interpolated to the wavelengths of the observed spectrum and then used to correct the observed spectra through division, leaving behind a telluric corrected spectra. An example of a telluric corrected spectra is shown in the middle panel of \fref{fig:spectral_example}, with the light blue shading indicating where the deeper telluric lines were.
 
@@ -370,7 +387,7 @@ We attempted the technique suggested by~\citet{bertaux_tapas_2014} to address th
 
 We found that for a few spectra in our sample this method corrected the deeper telluric lines well, but in many cases we found that the fitted scaling factor was affected by the presence of blended stellar lines (attempting to fit those also). It was also strongly influenced by the deepest \(H_{2}O\) telluric lines present. We find that the telluric correction of the deep \(\rm H_{2}O \) lines could be improved with this technique, but, at the cost of worsening the correction of the many smaller \(\rm H_{2}O \) lines. Since the smaller \(\rm H_{2}O \) lines covered more of the spectrum in this region than the larger lines we chose not to continue with this separate \(\rm H_{2}O \) scaling. One possible solution for this would be to perform a piece-wise telluric correction, performing this step only for the deeper \( \rm H_{2}O\) lines, or by using one of the other tools that fits the telluric model to the observations. This technique could also benefit from a larger wavelength span that would enable blended lines to be ignored while having sufficient deep \(\rm H_{2}O\) lines to fit the scaling factor correctly. This small experiment shows that a simple scaling is not enough to correct for the absorption in an effective way, for this case.
 
-\unfinished{Add telluric spectra for NIR band? the plot from Molecfit?}
+\unfinished{Add telluric spectra for {\nir} band? the plot from Molecfit?}
 
 \unfinished{Still uneven line coverage on all detectors in this small range}
 
@@ -390,7 +407,7 @@ The telluric spectra from TAPAS can not only be used for correcting individual s
 
 
 
-%\todo{Look at } -> synthesizing telluric spectra NIR for CRIRES~\cite{seifahrt_synthesising_2010}
+%\todo{Look at } -> synthesizing telluric spectra {\nir} for CRIRES~\cite{seifahrt_synthesising_2010}
 
 
 Using TAPAS is contrasted alongside Molecfit and Tellfit in~\cite{ulmer-moll_telluric_2018}. We conclude that \ldots
