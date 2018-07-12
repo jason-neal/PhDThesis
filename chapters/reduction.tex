@@ -64,19 +64,19 @@ For the CRIRES detectors the dark current the per pixel is around 0.2-0.4\,(\(e^
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{figures/reduction/master_flats_1.pdf}
-    \caption{A flat-field image for a detector \#1 before (left) and after(right) the non-linearity corrections are performed. A prefect detector would have all pixels in the flat-field equal to 1.}
+    \caption{A flat-field image for a detector \#1 before (left) and after(right) the non-linearity corrections are performed. A prefect detector would have all pixels in the flat-field equal to 1. \bf{Remove flat and flatR titles.}}
     \label{fig:masterflats}
 \end{figure}
 
 \subsubsection{Flat-field}
 No detector is truly perfect, with all pixels performing equally well. To correct for pixel-to-pixel variations in photon sensitivity across the detector and for any distortions in the optical path a flat-field correction is needed. Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected. The flat-field frames are corrected for dark current by subtraction of the master dark frame with the appropriate exposure time.
 
-The CRIRES detector suffers from nonlinearities in sensitivity across the detector. This can be seen in the flat-field image on the left of \fref{fig:masterflats} where there is a gradient from white to black across the detector. A set of coefficients for each pixel is provided by ESO \footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the non-linearity of the detectors. This also corrects for the odd-even affect observed in the CRIRES detectors in which there is a slight difference in output between the pixels from the odd and even columns. The frame on the right of \fref{fig:masterflats} has been corrected for the nonlinearities.
+The CRIRES detector suffers from nonlinearities in sensitivity across the detector. This can be seen in the flat-field image on the left of \fref{fig:masterflats} where there is a gradient from white to black across the detector. A set of coefficients for each pixel is provided by ESO\footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the non-linearity of the detectors. This also corrects for the odd-even affect observed in the CRIRES detectors in which there is a slight difference in output between the pixels from the odd and even columns. The frame on the right of \fref{fig:masterflats} has been corrected for the nonlinearities.
 
 
 
 \subsubsection{Nodding and Jitter}
-The technique of \emph{nodding} is used remove sky emission, detector dark current and glow. First an observation is spit into multiple separate exposures. Between each exposure the telescope is moved to change the vertical position of the target  in the slit. The light from the star travels through slightly different optical path and is recorded on a different part of the detector. The frames from the two nod positions (A, B) are then subtracted (A-B) to remove the background measurement from each spectra.
+The technique of \emph{nodding} is used remove sky emission, detector dark current and glow. First, an observation is spit into multiple separate exposures. Between each exposure the telescope is moved to change the vertical position of the target in the slit. The light from the star travels through slightly different optical path and is recorded on a different part of the detector. The frames from the two nod positions (A, B) are then subtracted (A-B) to remove the background measurement from each spectra.
 
 A visual example of the nodding is shown in \fref{fig:nodimages}. On the left are 150 pixel slices from the successive nod positions A and B as well as the difference A-B. On the right is a single pixel column from each image on the left. The background signal at the level of 20-30 counts in the image is almost canceled out by the opposite nod. This efficiently removes the background signal/noise from the observed spectra target. 
 
@@ -92,11 +92,9 @@ Observations of faint targets, that need long exposure times are also broken up 
     \label{fig:nodimages}
 \end{figure}
 
-
 For each exposure at each nod position a \emph{jitter} is also be applied to allow the correction of bad pixels and decreases systematics of the detector. This is a small random vertical offset which ensures that all spectra at the same nod position do not consistently land on the same pixels each time.
 
 \change{move}{As an example for the CRIRES observations analyzed here they were performed with a ABBAABBA nod cycle with a exposure time of 180s each, or 24 minutes all up.}
-
 
 
 \subsection{TH-Ar Calibrations}
@@ -117,7 +115,6 @@ See other section \sref{subsec:wavcalib}.
 Scratches on the detector can cause a decrease in the correlation between {\thar} lines and the spectral template in ESO pipeline. This can be resolved by first applying a mask.
 At the top and bottom there are also 2 meteorological fibers that can not be used for wavelength calibration as they pass through a different optical pathway.
 
-
 \todo{Note: Useful information about MIR reduction in the 
 \href{https://www.eso.org/sci/facilities/paranal/instruments/visir/doc/VLT-MAN-ESO-14300-3514_2018-02-01.pdf}{VISIR manual}}
 
@@ -128,24 +125,20 @@ optimal / rectangular...
 
 There are two types of extraction commonly used. The \emph{rectangular} extraction performs a rectangular aperture sum in the spatial direction while the \emph{optimal} extraction~\citep{horne_optimal_1986} also includes variance weighting to reduce the impact of the noise and deviant pixels on the total flux measurement. Optimal extraction is the most common and is the default output of both the ESO and DRACS pipelines.
 
-%-----------------------------------
-%	SUBSECTION 2
-%-----------------------------------
-
 \section{Pipeline Comparison}
 To be able to extract the target spectra from the calibration and observation images a number of steps, some outlined above in \sref{subsec:nirreduction}, have to be performed in sequence. The software tools that performs this series of steps is refereed to as a \emph{pipeline}. Each stage in the pipeline performs a specific task (e.g. average dark frame creation or nod subtraction), then passing it to the next stage. Two different pipelines were available to reduce the CRIRES observations use in this work. The first is the standard CRIRES pipeline\footnote{\href{https://www.eso.org/sci/software/pipelines/}{https://www.eso.org/sci/software/pipelines/}}, available from ESO.
 The second is a in-house pipeline originally \change{was this the first instance} used in~\citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for CRIRES Spectra) \change{Pedro it is my understanding that the ESO pipeline did not exist/was not available when you created DRACS, correct?}
 
 In these next sections we document our experience using both pipelines, and compare the extracted spectra from both pipelines.
 
-
 \subsection{CRIRES pipeline}
 The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}. The \href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} graphical user interface (GUI) for the pipeline was used. The CRIRES reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}} was followed to reduce the CRIRES nodding spectra. The CRIRES pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the the GASGANO manual\footnote{\href{here}{here}}. The pipeline provides a number of \emph{recipes} which perform the required extraction steps. From the GUI each recipe is manually selected, then the correct calibration and observation files are selected and added. 
-
-- dark creation
-- flat creation
-- wavelength calibration
-- jitter extraction
+\begin{itemize}
+\item - dark creation
+\item - flat creation
+\item - wavelength calibration
+\item - jitter extraction
+\end{itemize}
 
 The wavelength calibration was the most tedious. To try and improve the wavelength calibration the y positions of the 6 {\thar} fibers was found for each detector and entered into the parameters for each observation. This sometimes helped but not always in the end we did not use them anyway.
 
@@ -167,7 +160,7 @@ DONT READ Just unsorted junk:
 \textit{It soon became tedious to use the Gasgano GUI to extract the many spectra reduce many and tweak all the parameter settings manually. In particular manually measuring and adding the vertical positions of the 6 {\thar} lines for each detector and observation. This was in an attempt to improve the wavelength calibration provided by the {\thar} lamp spectra.
 A number of other parameters were tweaked from the defaults in an attempt to improve the reduction. Again become tedious to repeatably change the parameters for all observations.}
 
-\textit{Having the GUI id however allow for a easy introduction into using performing spectral reduction when not of not yet comfortable with the command line (required for the ESOREX interface).
+\textit{Having the GUI did however allow for a easy introduction into using performing spectral reduction when not of not yet comfortable with the command line (required for the ESOREX interface).
 There is a command line interface available, ESOREX but it is not The newer ESO pipeline reduction tool Reflex does not have a pipeline for CRIRES. }
 
 
@@ -271,9 +264,9 @@ Note for HD202206 the 1st two nods have a much higher extracted flux. I am still
 
 
 \section{Reduction experience:}
-The experience gained in reducing CRIRES spectra enable participation in collaborations with other science cases. The DRACS pipeline was used to extract the spectra of two other targets. A target and a very brief aim of each science case is given below.
+The experience gained in reducing CRIRES spectra enabled participation in collaboration with other science cases. The DRACS pipeline was used to extract the spectra of two other targets. A target and a very brief aim of each science case is given below.
 \begin{itemize}
-\item Barnard's Star\footnote{Programme ID: 085.D-0161(A)}: The reduced {\nir} spectra of Barnard's Star was meant to extend the work of~\citet{andreasen_nearinfrared_2016} in deriving the spectroscopic parameters in the \nir. Unfortunately in the end the already reduced CRIRES-POP library was used instead in~\citet{Andreasen et al. (in prep.)}. \unfinished{reason}{This was because \ldots}
+\item Barnard's Star\footnote{Programme ID: 085.D-0161(A)}: The reduced {\nir} spectra of Barnard's Star was meant to extend the work of~\citet{andreasen_nearinfrared_2016} in deriving the spectroscopic parameters in the \nir. Unfortunately in the end the already reduced CRIRES-POP library was used instead in~\bf{citet{Andreasen et al. (in prep.)}}. \unfinished{reason}{This was because \ldots}
 \item $\eta$ Tel\footnote{Programme ID: 083.C-0759(A)}: The spectra of $\eta$ Tel, quickly rotating Brown Dwarf, was reduced to accurately determine its rotation rate by measuring the line broadening. \change{}{Hagelberg et al. (in prep.)}
 \item The same spectra of $\eta$ Tel were also used in~\citet{ulmer-moll_telluric_2018} to compare different telluric correction methods in the \nir.
 \end{itemize}
@@ -281,7 +274,6 @@ The experience gained in reducing CRIRES spectra enable participation in collabo
 For these works only the spectral extraction outlined above was performed. The post \change{I seem to use these interchangeably. are they}{extraction/reduction} steps from the following sections were not.
 
 \missingfigure{An image of some reduced spectra from eta Tel and Barnard's star???}
-
 
 \section{Post reduction stages}
 \label{sec:posreduction}
@@ -315,7 +307,8 @@ G(\lambda, A, \mu, \sigma) = {A \textrm{e}}^{{-(\lambda-\mu)}^{2}/2\sigma^{2}}
 
 and \(A \), \(\mu \), \(\sigma \) are the amplitude, central wavelength, and standard deviation for each line respectively. Telluric lines actually have a Voigt profile\footnote{A Voigt profile is a convolution of two broadening profiles, a Gaussian and a Lorentzian. Gaussian broadening results from thermal Doppler broadening, and instrumental broadening while the Lorentzian broadening comes from molecular vibrational bands\citep{meier_art_2005}.} but at this resolution the Gaussian profile dominates, and as such the Gaussian assumption is a sufficient to fit the line centers.
 
-The observed spectra contain two different spectral components: stellar and telluric lines overlapped. This overlapping is, in fact, a multiplication of the stellar and telluric spectra. The observed spectra are fitted with two Gaussian-sum models multiplied together. The identification between telluric and stellar lines is performed manually for each spectra, using the telluric model as the reference. \unfinished{include more information about manual selection, blending}
+The observed spectra contain two different spectral components: stellar and telluric lines overlapped. This overlapping is, in fact, a multiplication of the stellar and telluric spectra. The observed spectra are fitted with two Gaussian-sum models multiplied together. The identification between telluric and stellar lines is performed manually for each spectra, using the telluric model as the reference. Care was taken to fit the correct components to blended spectra where possible to improved the number telluric lines use for calibration. The fits were inspected to ensure that they reasonably matched the line positions. There was difficultly in identifying the shallow lines with depths below 1-2\%. But these were needed in some spectra to obtain a suitable fit. 
+
 \begin{align}
 I_{obs}(x) &= I_{tell}(x) \times I_{space}(x) \nonumber \\
 I_{obs}(x) &= \Big(1 - {\Sigma}_{j}\ G(x, A_{j}, {\mu}_{j}, {\sigma}_{j})\Big)_{tell} \times \Big(1 - {\Sigma}_{k} G(x, A_{k}, {\mu}_{k}, {\sigma}_{k})\Big)_{space}, \label{eqn:obs}
@@ -327,7 +320,7 @@ where \(x \) is the pixel coordinates of the extracted spectra.
 
 After fitting \(I_obs(x)\) to the observed spectrum and \(T(\lambda)\) to the telluric model the wavelength solution was obtained by fitting a second order polynomial to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\} \) from the telluric components of the observed spectra and telluric model respectively. A second order polynomial has been shown to be sufficient for higher precision RV studies~\citep[e.g.][]{bean_groundbased_2010, figueira_radial_2010}. This polynomial is then used to map the whole spectrum from pixels into wavelength values.
 
-\missingfigure{Example of coordinates and the fit.}
+\missingfigure{Example of coordinates and the fit. Ca I calculate some errors on the polynomial coord fit.}
 
 Much like with the {\thar} calibrations, this technique performs better when there is sufficient coverage of telluric lines on the detectors. For the wavelength setting of these observations, the spectra from the second detector (top right panel of \fref{fig:detector4allspectra}) only have two large telluric lines present with several small lines, with relative depths smaller than 1\%, which are often difficult to accurately identify. This deteriorated the calibration stability for the second detector. With the lack of telluric contamination and stellar lines on the second detector it may have been ideal for the detection of a faint secondary spectra; unfortunately the wavelength calibration quality varies in an inverse way.
 
@@ -335,8 +328,11 @@ Much like with the {\thar} calibrations, this technique performs better when the
 We note that there are many variations on this wavelength-calibration technique including those integrated within programs such as TelFit~\citet{gullikson_correcting_2014}, and ESOs Molecfit~\citet{smette_molecfit_2015}, that perform telluric correction and re-calibrate the wavelength axis themselves at the same time.
 
 
-An briefly attempted wavelength calibration using the iterative method outlined in \cite{brogi_rotation_2016}. This involved generating set of wavelength solutions for the observed spectrum, cross-correlating each one against the telluric model. The solutions for the next iteration are obtained by refining the parameters from the solution with the highest correlation. This was not successful as we did not include a model or a mask of the stellar lines. The method worked well for \citet{brogi_rotation_2016} as they included templates for both star and telluric lines were observing in a wavelength domain in which there is a large number of strong and uniform stellar CO lines across the detector. Without adding any stellar masking the telluric lines would strongly correlate to the stellar lines, especially were there was blended lines. This method was abandoned, but may have been possible if a stellar mask was used.
+A brief attempt of wavelength calibration using an iterative method outlined in \cite{brogi_rotation_2016}. This involved generating set of wavelength solutions for the observed spectrum, cross-correlating each one against the telluric model. The solutions for the next iteration are obtained by refining the parameters from the solution with the highest correlation. 
+The method worked well for \citet{brogi_rotation_2016} as they included templates for both star and telluric lines were observing in a wavelength domain in which there is a large number of strong and uniform stellar CO lines across the detector. 
+Our experiments with this method were not successful as we did not include a stellar mask or model. Without adding any stellar masking the telluric lines would strongly correlate to the stellar lines present, especially were there was blended lines. The lead to incorrect wavelength solutions This method was abandoned, but may have been possible if a stellar mask was used.
 
+\missingfigure{Would a table of polynomial wavelength solutions along with errors be any use?}
 
 \unfinished{Add pictures of wavelength calibrations}
 
@@ -349,18 +345,6 @@ An briefly attempted wavelength calibration using the iterative method outlined 
 
 In the future it may be plausible to combine all of the methods above, including the Th-Ar calibration lines, telluric models, and stellar templates. Also applying a fit to the 4 detectors so that neighboring detectors can help with the fit when low lines are used.
 
-\unfinished{See Solene's paper regarding Telluric correction with models and reference spectra}
-
-Telluric Correction:
-TAPAS
-Requiring data from tapas
-- not handy for many
-- own script to derive from spectra header.
-
-
-Attempt of Brogi 2016 wavelength calibration method. Didn't perform well as we did not have many lines. They had a C02 comb of lines. 
-
-
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{figures/reduction/Spectra_examples}
@@ -368,12 +352,16 @@ Attempt of Brogi 2016 wavelength calibration method. Didn't perform well as we d
     \label{fig:spectraexamples}
 \end{figure}
 
-In hind sight trying , especially for detector 2 trying to include the telluric spectra is 
+
 \missingfigure{comparision between a gasgano wavelength solution and the manual one. This has not be done by me before... }
+
+
+
+\unfinished{See Solene's paper regarding Telluric correction with models and reference spectra}
 
 \subsubsection{Telluric correction}
 \label{subsec:telluric_correction}
-All ground based astronomical observations pass though Earths atmosphere. The atmosphere becomes a spectral filter imprinting the absorption profile of the atmosphere onto the our the constituents of our atmosphere. To accurately recover the spectra of the observed target the removal of the absorption lines introduced by Earth's atmosphere is extremely important. The motion, changing composition and \todo{See solenes paper for matereial here}.
+The Earth's atmosphere is a spectral filter for all ground-based astronomical observations, imprinting the absorption profile of the atmosphere onto the spectrum observed. To accurately recover the spectra of the observed target the removal of the absorption lines introduced by Earth's atmosphere is extremely important. The motion, changing composition and \todo{See solenes paper for matereial here}.
 A number of methods are available to correct for the telluric lines, telluric reference (cite) , models (tapas), modeling/fitting (molecfit tellfit). The effectiveness between these three methods has recently been performed in \cite{ulmer-moll_telluric_2018}.   \todo{Expand this section...}. \todo{Should this be more in the introduction?}.
 
 In this work we use telluric models without fitting, using the TAPAS spectra.
@@ -396,21 +384,56 @@ We found that for a few spectra in our sample this method corrected the deeper t
 
 \subsection{Tapas models}
 \label{subsec:tapas_models}
-We used telluric line models to wavelength calibrate the reduced spectra in \sref{subsec:wavcalib} and to correct for the atmospheric absorption in \sref{subsec:telluric_correction}. We utilized the TAPAS (Transmissions of the AtmosPhere for AStronomical data) web-service\footnote{\url{http://www.pole-ether.fr/tapas/}}~\citep{bertaux_tapas_2014} to obtain atmospheric transmission models for each observation. TAPAS uses the standard line-by-line radiation transfer model code LBLRTM~\citep{clough_linebyline_1995} along with the 2008 HITRAN spectroscopic database~\citep{rothman_hitran_2009} and Arletty atmospheric profiles derived using meteorological measurements from the ETHER data center\footnote{\url{http://www.pole-ether.fr}}, which has a 6 hour resolution in atmospheric profiles.
-We use the mid-observation time to retrieve transmission models for each observation, with the Arletty atmospheric profiles\footnote{Nearest of the 6 hourly profiles} and vacuum wavelengths. The telluric models were retrieved without any barycentric correction to keep the telluric lines at a RV of zero with respect to the instrument. We obtained one model with all provided species present, convolved to a resolution of \(\rm R=50\,000 \), and another two models without an instrumental profile convolution applied. For these two extra models, one contained only the transmission spectra of \(\rm H_{2}O \) while the other was for all other constituents except \(\rm H_{2}O \). This was to explore a known issue~\citep{bertaux_tapas_2014} with the depth of \(\rm H_{2}O \) absorption lines in \sref{subsec:telluric_correction}.
+For the wavelength calibration and telluric correction methods we use telluric line models. These have been show to provide as good or better telluric correction compared to the telluric standard method \reference{telluric model correction methods original}and \citep{ulmer-moll_telluric_2018}.
 
-After the telluric correction is performed, the spectra are corrected for Earth's barycentric RV using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (See~\citet[][]{piskunov_new_2002}).
+We utilized the TAPAS (Transmissions of the AtmosPhere for AStronomical data) web-service\footnote{\url{http://www.pole-ether.fr/tapas/}}~\citep{bertaux_tapas_2014} to obtain atmospheric transmission models for each observation. TAPAS uses the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995} along with the 2008 HITRAN spectroscopic database~\citep{rothman_hitran_2009} and Arletty atmospheric profiles derived using meteorological measurements from the ETHER data center\footnote{\url{http://www.pole-ether.fr}} to create telluric line models.
 
+The Arletty atmospheric profiles have a 6 hour resolution, so there may be a slight difference between the actual profile at the time of observation.
 
+We use the mid-observation time to retrieve transmission models for each observation, with the Arletty atmospheric profiles\footnote{Nearest of the 6 hourly profiles} and vacuum wavelengths selected. The telluric models were retrieved without any barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument. 
 
-The telluric spectra from TAPAS can not only be used for correcting individual spectra but are also easily used to create a wavelength mask of deep telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use TAPAS spectra to mask out atmospheric lines deeper than 2\% for the computation of photon noise precision of radial velocity measurements. 
-
+TAPAS allows for the choice of atmospheric constituents included in the model spectra. We obtained one model with all available species present, convolved to a resolution of \(\rm R=50\,000 \), and another two models without an instrumental profile convolution applied. For these two extra models, one contained only the transmission spectra of \(\rm H_{2}O \) while the other contained all other constituents except \(\rm H_{2}O \). This was to explore a known issue with the depth of \(\rm H_{2}O \) absorption lines in the TAPAS~\citet{bertaux_tapas_2014}. \sref{subsec:telluric_correction}.
 
 
 %\todo{Look at } -> synthesizing telluric spectra {\nir} for CRIRES~\cite{seifahrt_synthesising_2010}
 
-
 Using TAPAS is contrasted alongside Molecfit and Tellfit in~\cite{ulmer-moll_telluric_2018}. We conclude that \ldots
+
+\subsection{Issues with TAPAS-  Pet Peves}
+\change{Issues in an appendix}
+Requiring data from Tapas
+- not handy for many
+- own script to derive from spectra header.
+
+Issues regarding TAPAS - 1 hour offsets!
+Fails when trying to ask for about more than 5 at a time.
+Automated script requires unobtainable knowledge about the state of the database, the next query in the sequence. 
+
+
+\subsubsection{Vacuum wavelengths}
+
+Wavelength transformation---reasons we didn't
+
+Vacuum wavelengths are requested and used in this work.
+We chose to stay in vacuum wavelengths.  
+
+correction comes from refractive index of air which changes with pressure and temperature of air.
+
+There are a number of conversions for converting between atmospheric wavelengths and vacuum wavelengths for optical and NIR spectra, the most recent one --- which includes the \nir only valid up to 1.7 microns...    
+Therefore we did not use it. \unfinished{Fix up this}
+
+Does having the detector in a vacuum chamber affect this/mean it vacuum wavelengths already???
+
+Citations:
+
+        Edlen 1953, J. Opt. Soc. Am 43 no. 5\\
+        Peck and Reeder 1972, J. Opt. Soc. 62 no. 8\\
+        Ciddor 1996, Applied Optics 35 no. 9
+
+
+\subsubsection{Other uses}
+The telluric spectra from TAPAS can not only be used for correcting individual spectra but are also easily used to create a wavelength mask of deep telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use TAPAS spectra to mask out atmospheric lines deeper than 2\% for the computation of photon noise precision of radial velocity measurements. 
+
 
 \subsection{Wavelength masking}
 Throughout the course of this work we found regions of the spectra found several regions from which we cannot reliably extract information.
@@ -427,3 +450,6 @@ In \sref{sec:results} we also apply a further wavelength restriction to mask out
 
 \missingfigure{Plots showing some examples the telluric correction with and without H20 separated}
 
+\subsection{Barycentric correction}
+After the telluric correction is performed, the spectra are corrected for Earth's heliocentric motion. The heliocentic velocity is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}). This calculates radial velocity of the observatory towards the astronomical target, accounting for Earth's barycentric motion around the Sun as well as Earth's rotation. This computation requires the date and time of the observation, the location of the observatory and, the celestial coordinates of the target.
+The correction is applied by Doppler shifting the spectrum by the negative value heliocentric velocity calculated, placing all spectra as if they were observed from the reference point of the Sun.
