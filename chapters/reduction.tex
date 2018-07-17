@@ -57,8 +57,6 @@ No detector is truly perfect, with all pixels performing equally well. To correc
 
 The CRIRES detector suffers from nonlinearities in sensitivity across the detector. This can be seen in the flat-field image on the left of \fref{fig:masterflats} where there is a gradient from white to black across the detector. A set of coefficients for each pixel is provided by ESO\footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the nonlinearity of the detectors. This also corrects for a slight difference in sensitivity between the pixels from the odd and even columns in the CRIRES detectors, commonly called the ``odd-even effect''. The frame on the right of \fref{fig:masterflats} has been corrected for the nonlinearities.
 
-
-
 \subsubsection{Nodding and Jitter}
 The technique of \emph{nodding} is used to remove sky emission, detector dark current, and glow. First, an observation is spit into multiple separate exposures. Between each exposure the telescope is moved to change the vertical position of the target in the slit. The light from the star travels through a slightly different optical path and is recorded on a different part of the detector. The frames from the two nod positions (A, B) are then subtracted (A-B) to remove the background measurement from each spectra.
 
@@ -72,21 +70,21 @@ Observations of faint targets, that need long exposure times, are also broken up
         \includegraphics[width=0.4\textwidth]{figures/reduction/nod_image_sample.pdf} &
         \includegraphics[width=0.37\textwidth]{figures/reduction/nod_slice_example.pdf}\\
     \end{tabular}
-    \caption{Illustration of the nodding technique. Left: Sample slices of successive images at nod position A, B and their difference A-B for detector \#1. Right: A vertical slice along the slit at column 512 (middle of detector)}. The background level observed in A and B is effectively removed by the subtraction. {\red A and B backgrounds should be different on left.( just above zero ) and the spectra should be back, scale 2 A-B?}}
+    \caption{Illustration of the nodding technique. Left: Sample slices of successive images at nod position A, B and their difference A-B for detector \#1. Right: A vertical slice along the slit at column 512 (middle of detector). The background level observed in A and B is effectively removed by the subtraction. {\red A and B backgrounds should be different on left. (just above zero ) and the spectra should be blacker, scale 2 A-B?}}
     \label{fig:nodimages}
 \end{figure}
 
 A small random vertical offset is applied to each observation which ensures that all spectra at the same nod position do not consistently land on the same pixels each time. This is known as the \emph{jitter} and allows for the correction of bad pixels and decreases the effect from any systematics of the detector.
 
-\change{move}{As an example for the CRIRES observations analyzed for the main work here they were performed with an ABBAABBA  nod cycle pattern with an exposure time of 180s each, or 24 minutes all up.}
+\change{move}{As an example for the CRIRES observations analyzed for the main work here they were performed with an ABBAABBA nod cycle pattern with an exposure time of 180s each, or 24 minutes all up.}
 
 
-\subsection{{\thar} Calibrations}
+\subsection{{\thar} lamp calibration}
 As part of the CRIRES calibration procedure spectra are taken {\thar} lamps. The {\thar} spectra are placed into the instrument using 6 optical fibers, creating 6 uniformly spaced spectra across the detector.
 \fref{fig:caliblamps} contains the {\thar} spectra for all four detectors, with the {\thar}. There are roughly 50 {\thar} lines that fall across the four detectors for the wavelength setting here, although most of them are quite faint, With the scaling shown in these images only around 10 of the brightest lines can be just detected by eye. 
 
-The purpose of these fibers is to cross-correlate each with a {\thar} template, obtaining a wavelength solution across the detector.  Scratches on the detector can cause a decrease in the correlation between {\thar} lines and the spectral template in ESO pipeline. This can be resolved by first applying a pixel mask (although we did not attempt it). At the top and bottom there are also 2 meteorological fibers that can not be used for wavelength calibration as they pass through a different optical pathway.  The brightest one at the bottom seems to have strong features that overwhelm or washout many columns in detector 2--4 (vertical stripes). \unfinished{Check if it is mentioned how these get corrected/ if thye impact the wavelneght solution.}
-In the end we did not use the {\thar} calibrations, this is discussed in \sref{subsec:wavcalib}. They have still been included here for completeness.
+The purpose of these fibers is to cross-correlate each with a {\thar} template, obtaining a wavelength solution across the detector. Scratches on the detector can cause a decrease in the correlation between {\thar} lines and the spectral template in ESO pipeline. This can be resolved by first applying a pixel mask (although we did not attempt it). At the top and bottom there are also 2 meteorological fibers that can not be used for wavelength calibration as they pass through a different optical pathway.  The brightest one at the bottom seems to have strong features that overwhelm or washout many columns in detector 2--4 (vertical stripes). \unfinished{Check if it is mentioned how these get corrected/ if the impact the wavelength solution.}
+In the end we did not use the {\thar} calibrations, this is discussed in \sref{subsec:wavecalib}. They have still been included here for completeness.
 
 \begin{figure}
 \includegraphics[width=\hsize]{./figures/reduction/lamp_plots_cbar_each.pdf}
@@ -193,11 +191,10 @@ With these considerations at this point we decided to perform the rest of the re
 BUT: We eventually found some strange inconsistencies in the DRACS reduction, artifacts. where bad pixels were non-optimally corrected\ldots.
 In hindsight it may have been better to use ESO (if a way to semi-automation was discovered)
 
-
-
 \subsubsection{Reduction issues}
 \label{subsubsec:reductionartifacts}
-At a later date some large artifacts in the DRACS extracted spectra were identified. An investigation in to the cause of these artifacts was undertaken to identify their source and remove them from the spectra. Separating out the individual nod spectra side-by-side revealed that the artifacts were occurring in only a few of the individual nod spectra from the optimal extraction and that they were not present in the rectangular extracted nods. Four examples are shown in  \textbf{Figures ..blah an blah.} In each panel the top sub-plot contains the optimal extracted spectra, while the middle sub-plot contains the rectangularly extracted spectra.
+\TODO{Check optimal extraction parameters, may have reduced the extraction width by too much?? Need to check changing it.}
+At a later date some large artifacts in the DRACS extracted spectra were identified. An investigation in to the cause of these artifacts was undertaken to identify their source and remove them from the spectra. Separating out the individual nod spectra side-by-side revealed that the artifacts were occurring in only a few of the individual nod spectra from the optimal extraction and that they were not present in the rectangular extracted nods. Four examples are shown in \textbf{Figures ..blah an blah.} In each panel the top sub-plot contains the optimal extracted spectra, while the middle sub-plot contains the rectangularly extracted spectra.
 
 It is is obviously clear that the artifacts in the optimal nod correspond to large bad pixel spikes present in the rectangular extracted nod. The difference between the rectangular and optimal extraction is that the optimal is the rectangular extraction but weighted by its variance. It appears that the presence of cosmic rays or bad pixels heavily affected the variance weighting during the \emph{optimal} extraction. It is also observed that the artifact creates are not localized to the bad pixel region but affect a large spectral range (100's of pixels in some cases). 
 
@@ -206,12 +203,10 @@ The artifacts were observed to create flux deviations in the fully combined opti
 Numerous parameters in the DRACS were experimented with to try and remove the observed artifacts with no success. We therefore decided to replace the optimally extracted nods that had artifacts with their rectangular counterparts. 
 An iterative 4-\(\sigma \)\footnote{There is no justification why 4-\(\sigma\) was chosen over the commonly used 3-\(\sigma\).} rejection algorithm\footnote{Found at \url{https://github.com/jason-neal/nod_combination}} was applied to the replacement rectangular extractions to remove the erroneous pixels that caused the artifacts. The \(\sigma\) value for each pixel was calculated as the standard deviation of the nearest 2 pixels on either side of all 8 nod spectra. Any rejected pixels were replaced using linear interpolation.
 
-We note that we did not really observe a pattern in which nod, and in which position were going to be artifacts. there are many other spikes in the rectangular extractions that do not create the artifacts  observed. 
+We note that we did not really observe a pattern in which nod, and in which position were going to be artifacts. there are many other spikes in the rectangular extractions that do not create the artifacts observed. 
 
 Combined spectra were finally constructed by averaging the 8 nod-cycle spectra together, where some of the optimally extracted spectra have been replaced using the above method. The last panels of \fref{fig:nodartifacts} shows that the difference between the combined spectra using only optimally extracted spectra and the combination with replacements.
 \todo{Do the figures}
-
-
 
 \begin{figure}
     \centering
@@ -261,16 +256,16 @@ For these works only the spectral extraction outlined above was performed. The p
 From the DRACS pipeline we have extracted the 1-D spectra of each target. The spectra still need to undergo some post-reduction step. In particular, wavelength calibration and telluric correction. A detailed look of how these steps were developed and performed are addressed in the following section.
 
 \subsection{Wavelength calibration}
-\label{subsec:wavcalib}
-Wavelength calibration is the process of assigning accurate wavelength values to each pixel in the spectra. For CRIRES in the {\nir} this is challenging. CRIRES uses a Thorium-Argon (\thar) lamp to place 6 emission spectra on the detector using fibers. The spectra of the {\thar} emission lines are used to determine the spatial distribution of the wavelength solution across each detector using correlation with a spectral template. \change{fix-up get a good citation, number of lines}{}{\thar} lamps are excellent at optical wavelengths where the numerous (8600 espresso) spectral lines enable precision of sub-m/s radial velocity measurements HARPS spectrograph\reference{paper for harps thar lines}{(?)}. However in the \nir, there is a relatively low density of {\thar} lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ CRIRES-POP~\citep{nicholls_crirespop_2017}).
-Above 2.2~\si{\micro\meter} there are O-H sky lines that can be used for wavelength calibration but for our observations below 2.2 \si{\micro\meter} they are too dim.\reference{ cite crires manual, a paper about sky lines?}
+\label{subsec:wavecalib}
+Wavelength calibration is the process of assigning accurate wavelength values to each pixel in the spectra. For CRIRES in the {\nir} this is challenging. CRIRES uses a Thorium-Argon (\thar) lamp to place 6 emission spectra on the detector using fibers. The spectra of the {\thar} emission lines are used to determine the spatial distribution of the wavelength solution across each detector using correlation with a spectral template. \change{fix-up get a good citation, number of lines}{}{\thar} lamps are excellent at optical wavelengths where the numerous (8600 espresso) spectral lines enable precision of sub-m/s radial velocity measurements HARPS spectrograph\reference{paper for harps {\thar} lines}{(?)}. However in the {\nir}, there is a relatively low density of {\thar} lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ CRIRES-POP~\citep{nicholls_crirespop_2017}).
+Above 2.2~\si{\micro\meter} there are {O-H} sky lines that can be used for wavelength calibration but for our observations below 2.2 \si{\micro\meter} they are too dim.\reference{ cite crires manual, a paper about sky lines?}
 
 These wavelength calibration issues were experienced when using the ESO CRIRES pipeline, with non-Th-Ar lines features sometimes affecting the correlation.
 
 At the wavelength of 2.1-2.17~\si{\micro\meter} there are roughly XXX {\thar} lines across all four detectors, as seen in \fref{fig:caliblamps}.
 The DRACS pipeline does not use the {\thar} lamp files for wavelength calibration and leaves this as a post reduction step.
 
-A common method for wavelength calibration that does not rely on Th-Ar lamps of CRIRES involves using the telluric lines present  to provide the wavelength solution ~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}. This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere. 
+A common method for wavelength calibration that does not rely on Th-Ar lamps of CRIRES involves using the telluric lines present to provide the wavelength solution ~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}{\red piskorz2016}. This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere. 
 
 We follow this method using the telluric absorption lines present in each observation as the wavelength reference. Instead of directly using the HITRAN database~\citep{rothman_hitran2012_2013} for the telluric line positions \citet[such as in ][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}), we use the TAPAS atmospheric transmission models~\citep{bertaux_tapas_2014} obtained for each observation. The TAPAS models in turns use the HITRAN database but includes atmospheric profiles and physical meteorological measurements to model the telluric absorption strength.
 
