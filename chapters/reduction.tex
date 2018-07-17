@@ -1,35 +1,21 @@
 %!TEX root = ../thesis.tex
-%2-Tools for spectral analysis
-
-% Wavelength Calibration
-% All detectors together
-% Possibly a future extent would be to model the th-ar lines, as well as the telluric lines, and 
-% With stellar and ThAr lines???
-% Telluric Correction
-
-
-
-
+%2 - Tools for spectral analysis
 
 \chapter{NIR spectroscopic reduction} % Main chapter title
 \label{cha:reduction} 
-
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-The work of this thesis relies on the use of {\nir} spectra obtained by the CRIRES instrument. This chapter contains an overview of reductions steps undertaken, highlighting the main steps for CRIRES specifically. A comparison between two reduction pipelines is performed, a correction of spectral artifacts discovered and post reduction steps of wavelength calibration and telluric correction were taken to produce high quality spectra for the use in \cref{cha:Chapter3} and~ \ref{cha:Chapter4}. 
+The work of this thesis relies on the use of {\nir} spectra obtained by the CRIRES instrument. This chapter contains an overview of the steps undertaken to extract astronomical spectra, focusing on the CRIRES instrument specifically. A comparison between the two reduction pipelines is performed. Detail of some issues we encountered with the reduction output are presented as well as the post reduction steps we performed, specifically wavelength calibration and telluric correction. The reduced spectra produced in this chapter will be used in \cref{cha:Chapter3} and \cref{cha:Chapter4}. We wrap up this chapter by highlighting other techniques in high resolution {\nir} spectra reduction and calibration which may have improved some of the results.  
 
 \section{Summary of dataset}
 \todo{}{}
-Brief summary of dataset we focus reduction on. The motivation of these will be explained elsewhere.
-
-
+Brief summary of dataset we focus reduction on. The motivation of these will be explained in \cref{cha:Chapter3}.
 
  
 \section{NIR spectroscopy}
 \todo{}{}
 Specifics of {\nir} verse optical
-
 
 NIR spectroscopy requires the use of CMOS detectors which are a different technology to the more commonly known CCD's. Their use is required in the {\nir} as the quantum efficiency (how well it measures photons) for CCD's although great for visible is poor in the \nir. CMOS detectors have a higher quantum efficiency in the \nir. 
 \change{rearrange/reorganize this paragraph.}
@@ -49,38 +35,36 @@ There are 3 main effects that need to be accounted for in {\nir} spectroscopy wh
 \centering
 %\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
 \includegraphics[width=0.9\textwidth]{figures/reduction/master_darks_1.pdf}
-\caption{Master dark frame for and exposure time of  3 and 180 seconds. Each is created by averaging 3 dark frames in which the detector received no incident light. Both frames are on the same scale and show dark current grows with exposure time. The color has been inverted so that black is the recorded measurement.}
+\caption{Master dark frames for exposure times of  3 and 180 seconds. Each master is created by averaging 3 images in which the detector received no incident light. Both frames are on the same scale and show dark current grows with exposure time. The color has been inverted so that black is the recorded measurement.}
 \label{fig:darkcurrent}
 \end{figure}
 
 \subsubsection{Dark Current}
-The dark current is form of instrumental noise, in which, the detector measures photons while not being illuminated. It is the detection of thermal elections moving inside the detector, creating spurious photon counts. Calibration and removal of the dark current is performed by taking exposures in which the detector is not illuminated. 
- The temperature of the detectors in CRIRES instrument are kept at \textbf{XXX degree C} to reduce the dark current and maintain a stable level. The electrical components of the CRIRES detectors create thermal energy while operational which impacts the dark current. A strong glow is observed in the bottom corners of the CRIRES detector in \fref{fig:darkcurrent} due to the presence of nearby amplifiers.As per the CRIRES calibration plan dark frames need to be taken for each exposure time used. \fref{fig:darkcurrent} shows the master dark frame created from averaging three dark frames for exposure times of 3 seconds and 180 seconds, both on the same amplitude scale.
-For the CRIRES detectors the dark current the per pixel is around 0.2-0.4\,(\(e^{-}\)\si{\per\second}), while the glow at the two corners of the 180 second exposure shown here is around \(\sim9000 / 180\approx50\)\,\(e^{-}\)\si{\per\second}.
-
-
+The dark current is a form of instrumental noise, in which the detector measures photons while not being illuminated. It is the detection of thermal electrons moving inside the detector, creating spurious photon counts. Calibration and removal of the dark current is performed by taking exposures in which the detector is not illuminated. 
+ The temperature of the detectors in CRIRES instrument are kept at \textbf{XXX degree C} to significantly reduce, and to maintain consistent a low dark current. The electrical components of the CRIRES detectors create thermal energy while operational which impacts the dark current. A strong glow is observed in the bottom corners of the CRIRES detector in \fref{fig:darkcurrent} due to the presence of nearby amplifiers. As per the CRIRES calibration plan, ``dark frames'' need to be taken for each exposure time used. \fref{fig:darkcurrent} shows the master dark frame created from averaging three dark frames for exposure times of 3 seconds (for the flats) and 180 seconds (for the science), both on the same amplitude scale.
+For the CRIRES detectors the dark current per pixel is around 0.2-0.4\,(\(e^{-}\)\si{\per\second}), while the glow at the two corners of the 180 second exposure shown here is around \(\sim9000 / 180\approx50\)\,\(e^{-}\)\si{\per\second}.
 
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{figures/reduction/master_flats_1.pdf}
-    \caption{A flat-field image for a detector \#1 before (left) and after(right) the non-linearity corrections are performed. A prefect detector would have all pixels in the flat-field equal to 1. \bf{Remove flat and flatR titles.}}
+    \caption{A flat-field image for detector \#1 before (left) and after(right) the non-linearity corrections are performed. A perfect detector would have all pixels in the flat-field equal to 1. \bf{\red Remove flat and flatR titles.}}
     \label{fig:masterflats}
 \end{figure}
 
 \subsubsection{Flat-field}
-No detector is truly perfect, with all pixels performing equally well. To correct for pixel-to-pixel variations in photon sensitivity across the detector and for any distortions in the optical path a flat-field correction is needed. Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected. The flat-field frames are corrected for dark current by subtraction of the master dark frame with the appropriate exposure time.
+No detector is truly perfect, with all pixels performing equally well. To correct for pixel-to-pixel variations in photon sensitivity across the detector and for any distortions in the optical path, a flat-field correction is needed. Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected. The flat-field frames are corrected for dark current by subtraction of the master dark frame with the appropriate exposure time.
 
-The CRIRES detector suffers from nonlinearities in sensitivity across the detector. This can be seen in the flat-field image on the left of \fref{fig:masterflats} where there is a gradient from white to black across the detector. A set of coefficients for each pixel is provided by ESO\footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the non-linearity of the detectors. This also corrects for the odd-even affect observed in the CRIRES detectors in which there is a slight difference in output between the pixels from the odd and even columns. The frame on the right of \fref{fig:masterflats} has been corrected for the nonlinearities.
+The CRIRES detector suffers from nonlinearities in sensitivity across the detector. This can be seen in the flat-field image on the left of \fref{fig:masterflats} where there is a gradient from white to black across the detector. A set of coefficients for each pixel is provided by ESO\footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the nonlinearity of the detectors. This also corrects for a slight difference in sensitivity between the pixels from the odd and even columns in the CRIRES detectors, commonly called the ``odd-even effect''. The frame on the right of \fref{fig:masterflats} has been corrected for the nonlinearities.
 
 
 
 \subsubsection{Nodding and Jitter}
-The technique of \emph{nodding} is used remove sky emission, detector dark current and glow. First, an observation is spit into multiple separate exposures. Between each exposure the telescope is moved to change the vertical position of the target in the slit. The light from the star travels through slightly different optical path and is recorded on a different part of the detector. The frames from the two nod positions (A, B) are then subtracted (A-B) to remove the background measurement from each spectra.
+The technique of \emph{nodding} is used to remove sky emission, detector dark current, and glow. First, an observation is spit into multiple separate exposures. Between each exposure the telescope is moved to change the vertical position of the target in the slit. The light from the star travels through a slightly different optical path and is recorded on a different part of the detector. The frames from the two nod positions (A, B) are then subtracted (A-B) to remove the background measurement from each spectra.
 
-A visual example of the nodding is shown in \fref{fig:nodimages}. On the left are 150 pixel slices from the successive nod positions A and B as well as the difference A-B. On the right is a single pixel column from each image on the left. The background signal at the level of 20-30 counts in the image is almost canceled out by the opposite nod. This efficiently removes the background signal/noise from the observed spectra target. 
+A visual example of the nodding is shown in \fref{fig:nodimages}. On the left are slices of 150 pixel columns from successive nod positions A and B as well as the difference A-B. On the right is a single pixel column from each image on the left. The background signal at the level of 20-30 counts in the image is almost canceled out by the opposite nod. This efficiently removes the background signal/noise from the observed spectra target. 
 
-Observations of faint targets, that need long exposure times are also broken up into multiple images so that the instrument glow from \fref{fig:darkcurrent} does not saturate the detector.
+Observations of faint targets, that need long exposure times, are also broken up into multiple images so that the instrument glow from \fref{fig:darkcurrent} does not saturate the detector.
 
 \begin{figure}
     \centering
@@ -88,32 +72,27 @@ Observations of faint targets, that need long exposure times are also broken up 
         \includegraphics[width=0.4\textwidth]{figures/reduction/nod_image_sample.pdf} &
         \includegraphics[width=0.37\textwidth]{figures/reduction/nod_slice_example.pdf}\\
     \end{tabular}
-    \caption{Small section of nod position A, B and A-B for 1 HD30501 detector A. Right: A vertical slice slice along the slit at position \textbf{512}. The background is effectively removed by the subtraction of the orange}
+    \caption{Illustration of the nodding technique. Left: Sample slices of successive images at nod position A, B and their difference A-B for detector \#1. Right: A vertical slice along the slit at column 512 (middle of detector)}. The background level observed in A and B is effectively removed by the subtraction. {\red A and B backgrounds should be different on left.( just above zero ) and the spectra should be back, scale 2 A-B?}}
     \label{fig:nodimages}
 \end{figure}
 
-For each exposure at each nod position a \emph{jitter} is also be applied to allow the correction of bad pixels and decreases systematics of the detector. This is a small random vertical offset which ensures that all spectra at the same nod position do not consistently land on the same pixels each time.
+A small random vertical offset is applied to each observation which ensures that all spectra at the same nod position do not consistently land on the same pixels each time. This is known as the \emph{jitter} and allows for the correction of bad pixels and decreases the effect from any systematics of the detector.
 
-\change{move}{As an example for the CRIRES observations analyzed here they were performed with a ABBAABBA nod cycle with a exposure time of 180s each, or 24 minutes all up.}
+\change{move}{As an example for the CRIRES observations analyzed for the main work here they were performed with an ABBAABBA  nod cycle pattern with an exposure time of 180s each, or 24 minutes all up.}
 
 
-\subsection{TH-Ar Calibrations}
-\todo{Should I even include this section}
-As part of the CRIRES calibration step there are images of {\thar} lamp spectra from 6 fibers.
-We didn't use as there are known issues in the \nir. (but this is what they look like??)
+\subsection{{\thar} Calibrations}
+As part of the CRIRES calibration procedure spectra are taken {\thar} lamps. The {\thar} spectra are placed into the instrument using 6 optical fibers, creating 6 uniformly spaced spectra across the detector.
+\fref{fig:caliblamps} contains the {\thar} spectra for all four detectors, with the {\thar}. There are roughly 50 {\thar} lines that fall across the four detectors for the wavelength setting here, although most of them are quite faint, With the scaling shown in these images only around 10 of the brightest lines can be just detected by eye. 
 
-See other section \sref{subsec:wavcalib}.
-\missingfigure{\thar exposure showing the few lines for calibration?}
+The purpose of these fibers is to cross-correlate each with a {\thar} template, obtaining a wavelength solution across the detector.  Scratches on the detector can cause a decrease in the correlation between {\thar} lines and the spectral template in ESO pipeline. This can be resolved by first applying a pixel mask (although we did not attempt it). At the top and bottom there are also 2 meteorological fibers that can not be used for wavelength calibration as they pass through a different optical pathway.  The brightest one at the bottom seems to have strong features that overwhelm or washout many columns in detector 2--4 (vertical stripes). \unfinished{Check if it is mentioned how these get corrected/ if thye impact the wavelneght solution.}
+In the end we did not use the {\thar} calibrations, this is discussed in \sref{subsec:wavcalib}. They have still been included here for completeness.
 
 \begin{figure}
-\includegraphics[width=\hsize]{./figures/reduction/lamp_plots.pdf}\\
 \includegraphics[width=\hsize]{./figures/reduction/lamp_plots_cbar_each.pdf}
-\caption{A Th-Ar calibration lamp frame for each detector, corrected from the dark current. \bf{Which is better?}}
+\caption{A Th-Ar calibration lamp frame for each detector, corrected from the dark current.}
     \label{fig:caliblamps}
 \end{figure}
-
-Scratches on the detector can cause a decrease in the correlation between {\thar} lines and the spectral template in ESO pipeline. This can be resolved by first applying a mask.
-At the top and bottom there are also 2 meteorological fibers that can not be used for wavelength calibration as they pass through a different optical pathway.
 
 \todo{Note: Useful information about MIR reduction in the 
 \href{https://www.eso.org/sci/facilities/paranal/instruments/visir/doc/VLT-MAN-ESO-14300-3514_2018-02-01.pdf}{VISIR manual}}
@@ -126,13 +105,15 @@ optimal / rectangular...
 There are two types of extraction commonly used. The \emph{rectangular} extraction performs a rectangular aperture sum in the spatial direction while the \emph{optimal} extraction~\citep{horne_optimal_1986} also includes variance weighting to reduce the impact of the noise and deviant pixels on the total flux measurement. Optimal extraction is the most common and is the default output of both the ESO and DRACS pipelines.
 
 \section{Pipeline Comparison}
-To be able to extract the target spectra from the calibration and observation images a number of steps, some outlined above in \sref{subsec:nirreduction}, have to be performed in sequence. The software tools that performs this series of steps is refereed to as a \emph{pipeline}. Each stage in the pipeline performs a specific task (e.g. average dark frame creation or nod subtraction), then passing it to the next stage. Two different pipelines were available to reduce the CRIRES observations use in this work. The first is the standard CRIRES pipeline\footnote{\href{https://www.eso.org/sci/software/pipelines/}{https://www.eso.org/sci/software/pipelines/}}, available from ESO.
-The second is a in-house pipeline originally \change{was this the first instance} used in~\citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for CRIRES Spectra) \change{Pedro it is my understanding that the ESO pipeline did not exist/was not available when you created DRACS, correct?}
+\change{Reword}{To be able to extract the target spectra from the calibration and observation images a number of steps, some outlined above in \sref{subsec:nirreduction}, have to be performed in sequence. }The series of steps, performed by various software tools, is referred to as a \emph{pipeline}. Each stage in the pipeline performs a specific task, for example, creating the master dark frame or performing the nod subtraction). The result of one stage is passed to the next (automatically or manually). Two different pipelines were available to reduce the CRIRES observations used in this work. The first is the standard CRIRES pipeline\footnote{\href{https://www.eso.org/sci/software/pipelines/}{https://www.eso.org/sci/software/pipelines/}}, available from ESO.
+The second is an in-house pipeline originally \change{was this the first instance} used in~\citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for CRIRES Spectra) \change{Pedro it is my understanding that the ESO pipeline did not exist/was not available when you created DRACS, correct?}
 
-In these next sections we document our experience using both pipelines, and compare the extracted spectra from both pipelines.
+In these next sections we document our experience using both pipelines, and compare the extracted spectra and user experience.
+
+ESO has a new reduction ``workflow'' called EsoReflex, it is not available for CRIRES, and not expected to be ever supported.
 
 \subsection{CRIRES pipeline}
-The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}. The \href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} graphical user interface (GUI) for the pipeline was used. The CRIRES reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}} was followed to reduce the CRIRES nodding spectra. The CRIRES pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the the GASGANO manual\footnote{\href{here}{here}}. The pipeline provides a number of \emph{recipes} which perform the required extraction steps. From the GUI each recipe is manually selected, then the correct calibration and observation files are selected and added. 
+The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}. The \href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} graphical user interface (GUI) for the pipeline was used. The CRIRES reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}} was followed to reduce the CRIRES nodding spectra. The CRIRES pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the GASGANO manual\footnote{\href{here}{here}}. The pipeline provides a number of \emph{recipes} which perform the required extraction steps. From the GUI each recipe is manually selected, then the correct calibration and observation files are selected and added. 
 \begin{itemize}
 \item - dark creation
 \item - flat creation
