@@ -38,6 +38,14 @@ There are 3 main effects that need to be accounted for in {\nir} spectroscopy wh
 \caption{Master dark frames for exposure times of  3 and 180 seconds. Each master is created by averaging 3 images in which the detector received no incident light. Both frames are on the same scale and show dark current grows with exposure time. The color has been inverted so that black is the recorded measurement.}
 \label{fig:darkcurrent}
 \end{figure}
+\begin{figure}[h]
+    \centering
+    %\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
+    \includegraphics[width=0.45\textwidth]{figures/reduction/MasterDarkFlat_1.png}
+    \includegraphics[width=0.45\textwidth]{figures/reduction/MasterDarkSpec_1.png}
+    \caption{Master dark frames for exposure times of  3 and 180 seconds. Each master is created by averaging 3 images in which the detector received no incident light. Both frames are on the same scale and show dark current grows with exposure time. The color has been inverted so that black is the recorded measurement.}
+    \label{fig:darkcurrent}
+\end{figure}
 
 \subsubsection{Dark Current}
 The dark current is a form of instrumental noise, in which the detector measures photons while not being illuminated. It is the detection of thermal electrons moving inside the detector, creating spurious photon counts. Calibration and removal of the dark current is performed by taking exposures in which the detector is not illuminated. 
@@ -51,6 +59,18 @@ For the CRIRES detectors the dark current per pixel is around 0.2-0.4\,(\(e^{-}\
     \caption{A flat-field image for detector \#1 before (left) and after(right) the non-linearity corrections are performed. A perfect detector would have all pixels in the flat-field equal to 1. \bf{\red Remove flat and flatR titles.}}
     \label{fig:masterflats}
 \end{figure}
+
+
+\begin{figure}[h]
+    \centering
+  %  \begin{tabular}[ll]
+        \includegraphics[width=0.45\textwidth]{figures/reduction/Flat_2.png} %
+          \includegraphics[width=0.45\textwidth]{figures/reduction/FlatR_2.png} %\\
+    %\end{tabular}
+    \caption{A flat-field image for detector \#2 before (left) and after(right) the non-linearity corrections are performed. A perfect detector would have all pixels in the flat-field equal to 1. \bf{\red IT reveals scratches on the detecotrs. and ...}}
+    \label{fig:masterflats}
+\end{figure}
+
 
 \subsubsection{Flat-field}
 No detector is truly perfect, with all pixels performing equally well. To correct for pixel-to-pixel variations in photon sensitivity across the detector and for any distortions in the optical path, a flat-field correction is needed. Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected. The flat-field frames are corrected for dark current by subtraction of the master dark frame with the appropriate exposure time.
@@ -66,11 +86,11 @@ Observations of faint targets, that need long exposure times, are also broken up
 
 \begin{figure}
     \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.4\textwidth]{figures/reduction/nod_image_sample.pdf} &
+    \begin{tabular}{ccc}
+        \includegraphics[width=0.4\textwidth]{figures/reduction/nod_image_sample.pdf} &  \includegraphics[width=0.35\textwidth]{figures/reduction/Nods_AB_A-B.png} &
         \includegraphics[width=0.37\textwidth]{figures/reduction/nod_slice_example.pdf}\\
     \end{tabular}
-    \caption{Illustration of the nodding technique. Left: Sample slices of successive images at nod position A, B and their difference A-B for detector \#1. Right: A vertical slice along the slit at column 512 (middle of detector). The background level observed in A and B is effectively removed by the subtraction. {\red A and B backgrounds should be different on left. (just above zero ) and the spectra should be blacker, scale 2 A-B?}}
+    \caption{Illustration of the nodding technique. Left: Sample slice of successive images at nod positions A and B, and their difference A-B for detector \#1. Right: A vertical slice along the slit at column 512 (middle of detector). The background level observed in A and B is effectively removed by the subtraction. {\red A and B backgrounds should be different on left. (just above zero ) and the spectra should be blacker, scale 2 A-B?}. Middle has orange around 0. {\red label middle panel if used}}
     \label{fig:nodimages}
 \end{figure}
 
@@ -89,6 +109,16 @@ In the end we did not use the {\thar} calibrations, this is discussed in \sref{s
 \begin{figure}
 \includegraphics[width=\hsize]{./figures/reduction/lamp_plots_cbar_each.pdf}
 \caption{A Th-Ar calibration lamp frame for each detector, corrected from the dark current.}
+    \label{fig:caliblamps}
+\end{figure}
+
+\begin{figure}
+    \begin{tabular}{cc}
+         \includegraphics[width=.45\hsize]{./figures/reduction/Thar_1.png} & \includegraphics[width=.45\hsize]{./figures/reduction/Thar_2.png} \\
+         \includegraphics[width=.45\hsize]{./figures/reduction/Thar_3.png} & \includegraphics[width=.45\hsize]{./figures/reduction/Thar_4.png} \\
+    \end{tabular}
+   
+    \caption{An example Th-Ar calibration lamp frame for each detector. These have not been corrected from the dark current.}
     \label{fig:caliblamps}
 \end{figure}
 
@@ -193,7 +223,7 @@ In hindsight it may have been better to use ESO (if a way to semi-automation was
 
 \subsubsection{Reduction issues}
 \label{subsubsec:reductionartifacts}
-\TODO{Check optimal extraction parameters, may have reduced the extraction width by too much?? Need to check changing it.}
+\todo{Check optimal extraction parameters, may have reduced the extraction width by too much?? Need to check changing it.}
 At a later date some large artifacts in the DRACS extracted spectra were identified. An investigation in to the cause of these artifacts was undertaken to identify their source and remove them from the spectra. Separating out the individual nod spectra side-by-side revealed that the artifacts were occurring in only a few of the individual nod spectra from the optimal extraction and that they were not present in the rectangular extracted nods. Four examples are shown in \textbf{Figures ..blah an blah.} In each panel the top sub-plot contains the optimal extracted spectra, while the middle sub-plot contains the rectangularly extracted spectra.
 
 It is is obviously clear that the artifacts in the optimal nod correspond to large bad pixel spikes present in the rectangular extracted nod. The difference between the rectangular and optimal extraction is that the optimal is the rectangular extraction but weighted by its variance. It appears that the presence of cosmic rays or bad pixels heavily affected the variance weighting during the \emph{optimal} extraction. It is also observed that the artifact creates are not localized to the bad pixel region but affect a large spectral range (100's of pixels in some cases). 
