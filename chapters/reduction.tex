@@ -250,9 +250,8 @@ Combined spectra were finally constructed by averaging the 8 nod-cycle spectra t
     \label{fig:badpixelreplacement}
 \end{figure}
 
+The fraction nod spectra from all detectors and observations affected by artifacts was 14 percent. These are detailed in \tref{tab:nod_replacement}. More example images are also provide in \aref{append:artifacts} 
 
-% Table of nods optimally reduced replaced by rectangular extraction and bad pixel replacement.
-\input{tables/replaced_nods}
 
 The normalization and nod combining steps were also performed using IRAF while the following post reduction procedures and analysis all utilize \emph{Python}. This pipeline was chosen over the ESO CRIRES pipeline because it seemed relatively simple to use, being mostly automated, and appeared to have less bad pixel/cosmic ray artifacts in the resulting spectra. In hindsight this was not the case, with artifacts appearing that needed to be removed. 
 
@@ -267,6 +266,19 @@ It could be that these are a incorrect bad pixel mask.
 
 
 Note for HD202206 the 1st two nods have a much higher extracted flux. I am still unsure why this is...
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=0.5\linewidth]{figures/reduction/bp_plots/non_resized_nods_HD202206-1_chip_2} & \includegraphics[width=0.5\linewidth]{figures/reduction/bp_plots/resized_nods_HD202206-1_chip_2}\\
+    \end{tabular}
+    \caption{Reduction of HD202206-1  Chip 2. The difference between the left and right is that the right has the aperture size automatically adjusted. Setting the resize parameter for apextact. Changing this one parameter removed one large artifact but kept the other. }
+    \label{fig:resizednods}
+\end{figure}
+
+Due to time constraints the endless parameter combinations possible the  replacement of nods with artifacts was used.  
+
+Much time and effort when into trying to extract the spectra as best as possible, without artifacts to have the best chance at obtaining high quality scientific results of the faint features we were trying to detect.
 
 
 \section{Reduction experience:}
