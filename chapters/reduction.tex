@@ -202,24 +202,24 @@ How to use:
 
 \subsection{Pipeline comparison and selection}
 
-Both reduction methods were applied to the same CRIRES spectra to check for consistency and quality of both methods. \fref{fig:reductioncomparsion} shows the reduced spectra from both methods\ldots.
-
-One of the important things we checked was the line depth of the spectra. To insure that DRACS was comparable to the ESO pipeline.
-\missingfigure{Some spectra from both reduction methods to show similarities, }
 \begin{figure}
-   \label{fig:reductioncomparsion}
+    \begin{tabular}{cc}
+        \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_1} & \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_1}\\
+        \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_2} & \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_2}\\
+        \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_3} & \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_3}\\
+        \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_4} & \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_4}\\
+    \end{tabular}
+    \caption{Comparison between the ESO pipeline and DRACS pipeline. For two observations HD30501-1 and HD202206-1. The blue lines are the extracted spectra from the ESO pipeline, the orange dashed lines are the optimal extraction from the DRACS pipeline, while the green dash-dotted line is the DRACS extraction after dealing with artifacts in the optimal extraction addressed in \sref{subsubsec:reductionartifacts}. The wavelength information applied to the spectra here comes from the ESO pipeline.}
+    \label{fig:reduction-comparsion}
 \end{figure}
 
-We in-fact found they were the same line depth.
+Both reduction methods were applied to the same CRIRES spectra to check for consistency and quality of both methods. Two examples of the extraction for HD30501-1 (left) and HD202206-1 (right) from both pipelines is provided in \fref{fig:reduction-comparsion}. The blue lines are the extracted spectra from the ESO pipeline, the orange dashed lines are the optimal extraction from the DRACS pipeline, while the green dash-dotted line is the DRACS extraction after dealing with artifacts in the optimal extraction addressed in \sref{subsubsec:reductionartifacts}. 
 
+One of the important things we checked was the line depth of the spectral to ensure that the pipelines were consistent. The ESO pipeline has noticeable issues with many random spikes still present in the spectra, likely caused by bad pixels or cosmic rays that are not correctly removed. There are also large spikes at either end of the detector in the ESO reduced spectra.  
 
-After using both it was decided to continue using DRACS \ldots for this reasons
+At this stage we chose to use the DRACS results, as we considered that the DRACS pipeline produced better extracted spectra than the ESO pipeline. This decision was based on the quality of the reduced spectra, as well as the relative ease of use of the pipeline, being semi-automated once set up. This was also chosen so that a software to preform the bad pixel removal on the ESO reduced spectra didn't have to be created\footnote{See \sref{subsubsec:reductionartifacts}!}. The fact that the ESO pipeline provided a wavelength solution for the spectra did not factor into the decision as it was considered to unreliable due to known issues with CRIRES wavelength calibration so a new wavelength calibration would be needed anyway.
 
-With these considerations at this point we decided to perform the rest of the reductions with the DRACS pipeline. This would require a manual wavelength calibration to be performed. 
-
-
-BUT: We eventually found some strange inconsistencies in the DRACS reduction, artifacts. where bad pixels were non-optimally corrected\ldots.
-In hindsight it may have been better to use ESO (if a way to semi-automation was discovered)
+The spectra used here in the comparison are the combination of the 8 nod spectra. Later it was discovered, that individual nod spectra from the DRACS pipeline had issues, see \sref{subsubsec:reductionartifacts}. These are difficult to notice on this scale as they each constitute 1/8 th of the information. As an example of this is seen in detector \#2 of HD202206-1 in \fref{fig:reduction-comparison}. An artifact from a single nod spectra, which is shown in Figure \ref{fig:resizednods}, is barely visible in the pipeline comparison here as a slight depression of the orange dashed line between 2132 and 2134~nm. We explain the identification of these artifacts and how we deal with them (green lines) in the following section.
 
 \subsubsection{Reduction issues}
 \label{subsubsec:reductionartifacts}
@@ -324,9 +324,10 @@ where \(x \) is the pixel coordinates of the extracted spectra.
 
 \missingfigure{example figures illustrating this method}
 
-After fitting \(I_obs(x)\) to the observed spectrum and \(T(\lambda)\) to the telluric model the wavelength solution was obtained by fitting a second order polynomial to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\} \) from the telluric components of the observed spectra and telluric model respectively. A second order polynomial has been shown to be sufficient for higher precision RV studies~\citep[e.g.][]{bean_groundbased_2010, figueira_radial_2010}. This polynomial is then used to map the whole spectrum from pixels into wavelength values.
+After fitting \(I_obs(x)\) to the observed spectrum and \(T(\lambda)\) to the telluric model the wavelength solution was obtained by fitting a second order polynomial to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\} \) from the telluric components of the observed spectra and telluric model respectively. A second order polynomial has been shown to be sufficient for higher precision RV studies~\citep[e.g.][]{bean_groundbased_2010, figueira_radial_2010}. This polynomial is then used to map the whole spectrum from pixels into wavelength. Higher 3$^{\textrm{rd}}$ and 4$^{\textrm{th}}$ order polynomials were attempted but had limited success due to the limit number and uneven spacing of telluric lines in our narrow wavelength range, especially on detector \#2. There were often large deviations due to the uneven spread of telluric lines, especially at the ends.
 
-\missingfigure{Example of coordinates and the fit. Ca I calculate some errors on the polynomial coord fit.}
+Other work has used more terms e.g 4th order e.g \citep{piskorz_evidence_2016a} \textbf{others}, but they have more lines and more wavelength span. 
+\missingfigure{Example of coordinates and the fit. Can I calculate some errors on the polynomial coord fit.}
 
 Much like with the {\thar} calibrations, this technique performs better when there is sufficient coverage of telluric lines on the detectors. For the wavelength setting of these observations, the spectra from the second detector (top right panel of \fref{fig:detector4allspectra}) only have two large telluric lines present with several small lines, with relative depths smaller than 1\%, which are often difficult to accurately identify. This deteriorated the calibration stability for the second detector. With the lack of telluric contamination and stellar lines on the second detector it may have been ideal for the detection of a faint secondary spectra; unfortunately the wavelength calibration quality varies in an inverse way.
 
@@ -351,6 +352,8 @@ Our experiments with this method were not successful as we did not include a ste
 
 In the future it may be plausible to combine all of the methods above, including the Th-Ar calibration lines, telluric models, and stellar templates. Also applying a fit to the 4 detectors so that neighboring detectors can help with the fit when low lines are used.
 
+We should have used the RV of the host star, and fitted against host lines also. This is what is done in other work. It is recommended to attempt one of these other solutions first before trying to roll-your-own. 
+
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{figures/reduction/Spectra_examples}
@@ -359,11 +362,14 @@ In the future it may be plausible to combine all of the methods above, including
 \end{figure}
 
 
-\missingfigure{comparision between a gasgano wavelength solution and the manual one. This has not be done by me before... }
+\missingfigure{Comparision between a gasgano wavelength solution and the manual one. This has not be done by me before... }
 
 
 
 \unfinished{See Solene's paper regarding Telluric correction with models and reference spectra}
+
+
+In hindsight using the wavelength solution from the ESO pipeline may have been a good starting point helped.
 
 \subsubsection{Telluric correction}
 \label{subsec:telluric_correction}
