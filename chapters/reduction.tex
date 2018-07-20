@@ -44,7 +44,7 @@ There are 3 main effects that need to be accounted for in {\nir} spectroscopy wh
     \includegraphics[width=0.45\textwidth]{figures/reduction/MasterDarkFlat_1.png}
     \includegraphics[width=0.45\textwidth]{figures/reduction/MasterDarkSpec_1.png}
     \caption{Master dark frames for exposure times of  3 and 180 seconds. Each master is created by averaging 3 images in which the detector received no incident light. Both frames are on the same scale and show dark current grows with exposure time. The color has been inverted so that black is the recorded measurement.}
-    \label{fig:darkcurrent}
+    \label{fig:darkcurrent_color}
 \end{figure}
 
 \subsubsection{Dark Current}
@@ -65,10 +65,10 @@ For the CRIRES detectors the dark current per pixel is around 0.2-0.4\,(\(e^{-}\
     \centering
   %  \begin{tabular}[ll]
         \includegraphics[width=0.45\textwidth]{figures/reduction/Flat_2.png} %
-          \includegraphics[width=0.45\textwidth]{figures/reduction/FlatR_2.png} %\\
+        \includegraphics[width=0.45\textwidth]{figures/reduction/FlatR_2.png} %\\
     %\end{tabular}
-    \caption{A flat-field image for detector \#2 before (left) and after(right) the non-linearity corrections are performed. A perfect detector would have all pixels in the flat-field equal to 1. \bf{\red IT reveals scratches on the detecotrs. and ...}}
-    \label{fig:masterflats}
+    \caption{A flat-field image for detector \#2 before (left) and after(right) the non-linearity corrections are performed. A perfect detector would have all pixels in the flat-field equal to 1. \bf{\red IT reveals scratches on the detectors. and ...}}
+    \label{fig:masterflats_color}
 \end{figure}
 
 
@@ -237,16 +237,14 @@ We note that we did not really observe a pattern in which nod, and in which posi
 
 Combined spectra were finally constructed by averaging the 8 nod-cycle spectra together, where some of the optimally extracted spectra have been replaced using the above method. The last panels of \fref{fig:nodartifacts} shows that the difference between the combined spectra using only optimally extracted spectra and the combination with replacements.
 \todo{Do the figures}
+There is a clear  large extended artifact on the 7th nod of the top panel is created by the large spike For the first panel a single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artifact in the optimal extraction.  This is the same spectra as the 2nd down the right of \fref{fig:reduction-comparsion} \todo{point out contrast difference again?}.
+
+Again this difference is observed in detector 
 
 \begin{figure}
     \centering
-    \begin{tabular}{cc}
-    \includegraphics[width=\hsize/2]{figures/reduction/Bad_pixel_replacement} &
-    \includegraphics[width=\hsize/2]{figures/reduction/Bad_pixel_replacement}\\
-     \includegraphics[width=\hsize/2]{figures/reduction/Bad_pixel_replacement} & 
-     \includegraphics[width=\hsize/2]{figures/reduction/Bad_pixel_replacement}
-     \end{tabular}
-    \caption{Example of an artifact in the optimally extracted spectra. The top panel contains the 8 normalized nod spectra after optimal extraction, while the middle panel shows the rectangular extraction for the exact same spectra. A vertical offset is included between each spectra. For the first panel a single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artifact in the optimal extraction. The bottom panels shows the difference between a combined spectrum using optimal nods only and a combined spectrum in which the identified nods are replaced with their rectangular counterparts. The nod spectra are in observation order from top to bottom.  \textbf{this is obs ... detector x in which nod 7 is replace.}}
+    \includegraphics[width=\hsize/2]{figures/reduction/Bad_pixel_replacement}
+    \caption{Example of an artifact in the optimally extracted spectra from detector \#2 of HDXXXXXX. The top panel contains the 8 normalized nod spectra obtained using optimal extraction. The middle panel shows nod spectra using only rectangular extraction. The bottom panel shows the difference between a combined spectrum using optimal nods only and a combined spectrum in which the identified nods are replaced with their rectangular counterparts as per \ref{subsubsec:reductionartifacts}. A vertical offset is included between each spectra for clarity.The nod spectra are in observation order from top to bottom.}
     \label{fig:badpixelreplacement}
 \end{figure}
 
@@ -255,8 +253,7 @@ The fraction nod spectra from all detectors and observations affected by artifac
 
 The normalization and nod combining steps were also performed using IRAF while the following post reduction procedures and analysis all utilize \emph{Python}. This pipeline was chosen over the ESO CRIRES pipeline because it seemed relatively simple to use, being mostly automated, and appeared to have less bad pixel/cosmic ray artifacts in the resulting spectra. In hindsight this was not the case, with artifacts appearing that needed to be removed. 
 
-One possible explanation for the artifacts present is an instrumental effect, such as instrument glow. This is known to affect CRIRES and included in the data reduction cookbook~\citep{smoker_very_2012}. These artifacts in the K-band spectra were not observed in previous works in the H-band using this pipeline and as such may have a wavelength dependent affect, as the higher wavelength {\nir} is more susceptible to thermal instrument glow.
-
+These artifacts in the K-band spectra were not observed in previous works in the H-band using this pipeline and as such may have a wavelength dependent effect. Although another possibility could be that there were artifacts in intermediate steps of the previous works that were missed due to the semi-automated pipeline, with the combined output only slightly affected. 
 
 
 \textbf{In the paper We say it could be glow. I do not think it is anymore and think it is just bad pixels not correctly removed. Either way it does not affect our results significantly....
@@ -267,25 +264,27 @@ It could be that these are a incorrect bad pixel mask.
 
 Note for HD202206 the 1st two nods have a much higher extracted flux. I am still unsure why this is...
 
+In the generation of this document some more experimentation with the DRACS parameters was preformed. Adjusting the parameters of the IRAF DOSLIT\footnote{Documentation for DOSLIT can be found here \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}} recipe
+manually changing the \(\sigma\) rejection (between \(1-5 sigma\)) and increasing the tracing width parameters did not affect the artifacts. However enabling automated aperture resizing\footnote{Using \href{apresize}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?apresize.hlp}} by setting the ``resize'' parameter to yes does manage to remove one of the large artifacts in the observation of {HD202206-1}. In \fref{fig:resizednods} we show the optimal and rectangular extraction from the DRACS pipeline with only one parameter (resize) of the pipeline changed. The artifact in nod 6 is removed but the artifact in nod 7 is still present. 
 \begin{figure}
     \centering
     \begin{tabular}{cc}
     \includegraphics[width=0.5\linewidth]{figures/reduction/bp_plots/non_resized_nods_HD202206-1_chip_2} & \includegraphics[width=0.5\linewidth]{figures/reduction/bp_plots/resized_nods_HD202206-1_chip_2}\\
     \end{tabular}
-    \caption{Reduction of HD202206-1  Chip 2. The difference between the left and right is that the right has the aperture size automatically adjusted. Setting the resize parameter for apextact. Changing this one parameter removed one large artifact but kept the other. }
+    \caption{DRACS reduction of HD202206-1 detector 2 with a single pipeline parameter changed. Left: Pipeline with the "doslit.resize" set to ``no''. Right: The same but with doslit.resize set to ``yes''. During the order tracing the aperture size is automatically adjusted but the . Setting the resize parameter for \textbf{apextract?}. Changing this one parameter removed one large artifact but kept the other. One large artifact is removed, one is not.}
     \label{fig:resizednods}
 \end{figure}
 
-Due to time constraints the endless parameter combinations possible the  replacement of nods with artifacts was used.  
+This discovery came too late to implement on all of the observations, and redo all the analysis, but does indicate that improvements may be obtained with extensive time and patience tweaking the parameters of the DRACS pipeline.
 
 Much time and effort when into trying to extract the spectra as best as possible, without artifacts to have the best chance at obtaining high quality scientific results of the faint features we were trying to detect.
-
+Due to time constraints the replacement of nods with artifacts (indicated in \ref{tab:nod_replacement}) with their rectangular counterparts was performed.  
 
 \section{Reduction experience:}
 The experience gained in reducing CRIRES spectra enabled participation in collaboration with other science cases. The DRACS pipeline was used to extract the spectra of two other targets. A target and a very brief aim of each science case is given below.
 \begin{itemize}
 \item Barnard's Star\footnote{Programme ID: 085.D-0161(A)}: The reduced {\nir} spectra of Barnard's Star was meant to extend the work of~\citet{andreasen_nearinfrared_2016} in deriving the spectroscopic parameters in the \nir. Unfortunately in the end the already reduced CRIRES-POP library was used instead in~\bf{citet{Andreasen et al. (in prep.)}}. \unfinished{reason}{This was because \ldots}
-\item $\eta$ Tel\footnote{Programme ID: 083.C-0759(A)}: The spectra of $\eta$ Tel, quickly rotating Brown Dwarf, was reduced to accurately determine its rotation rate by measuring the line broadening. \change{}{Hagelberg et al. (in prep.)}
+\item $\eta$ Tel\footnote{Programme ID: 083.C-0759(A)}: The spectra of {$\eta$ Tel}, quickly rotating Brown Dwarf, was reduced to accurately determine its rotation rate by measuring the line broadening. \change{}{Hagelberg et al. (in prep.)}
 \item The same spectra of $\eta$ Tel were also used in~\citet{ulmer-moll_telluric_2018} to compare different telluric correction methods in the \nir.
 \end{itemize}
 
