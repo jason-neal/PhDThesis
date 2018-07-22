@@ -136,22 +136,18 @@ There are two types of extraction commonly used. The \emph{rectangular} extracti
 \change{Reword}{To be able to extract the target spectra from the calibration and observation images a number of steps, some outlined above in \sref{subsec:nirreduction}, have to be performed in sequence. }The series of steps, performed by various software tools, is referred to as a \emph{pipeline}. Each stage in the pipeline performs a specific task, for example, creating the master dark frame or performing the nod subtraction). The result of one stage is passed to the next (automatically or manually). Two different pipelines were available to reduce the CRIRES observations used in this work. The first is the standard CRIRES pipeline\footnote{\href{https://www.eso.org/sci/software/pipelines/}{https://www.eso.org/sci/software/pipelines/}}, available from ESO.
 The second is an in-house pipeline originally \change{was this the first instance} used in~\citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for CRIRES Spectra) \change{Pedro it is my understanding that the ESO pipeline did not exist/was not available when you created DRACS, correct?}
 
-In these next sections we document our experience using both pipelines, and compare the extracted spectra and user experience.
+In these next sections we document our experience using both pipelines, comparing the extracted spectra and user experience.
 
-ESO has a new reduction ``workflow'' called EsoReflex, it is not available for CRIRES, and not expected to be ever supported.
 
-\subsection{CRIRES pipeline}
-The spectra were initially reduced using the ESO CRIRES pipeline \href{ESO CRIRES pipeline}{ESO CRIRES pipeline}. The \href{https://www.eso.org/sci/software/gasgano.html}{GASGANO} graphical user interface (GUI) for the pipeline was used. The CRIRES reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}} was followed to reduce the CRIRES nodding spectra. The CRIRES pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the GASGANO manual\footnote{\href{here}{here}}. The pipeline provides a number of \emph{recipes} which perform the required extraction steps. From the GUI each recipe is manually selected, then the correct calibration and observation files are selected and added. 
-\begin{itemize}
-\item - dark creation
-\item - flat creation
-\item - wavelength calibration
-\item - jitter extraction
-\end{itemize}
+\subsection{ESO CRIRES pipeline}
+The ESO CRIRES pipeline was used to reduce CRIRES nodding spectra following direction from the CRIRES pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the CRIRES reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}}
 
-The wavelength calibration was the most tedious. To try and improve the wavelength calibration the y positions of the 6 {\thar} fibers was found for each detector and entered into the parameters for each observation. This sometimes helped but not always in the end we did not use them anyway.
+The GASGANO\footnote{\href{https://www.eso.org/sci/software/gasgano.html}{https://www.eso.org/sci/software/gasgano.html}} graphical user interface (GUI) was used to interact with the pipeline with guidence from the GASGANO manual\todo{Link to manual}\footnote{\href{here}{here}}. The pipeline provides a number of \emph{recipes} which perform the required extraction steps. From the GUI each recipe is manually selected, then the correct calibration and observation files need to be selected to use with that recipe.  
 
-The final output is a extracted and flattened spectra (although not normalized to 1) both in a rectangular and optimal and errors, with a wavelength calibration.
+The final output is an extracted and flattened spectra (although not normalized to 1) both in a rectangular and optimal and errors, with a wavelength calibration.
+
+The wavelength calibration was the most tedious. To try and improve the wavelength calibration the {y-positions} of the 6 {\thar} fibers were found for each detector and entered into the parameters for each observation. This sometimes helped but not always; in the end we did not use them.
+
 
 \textbf{Opinions: SHOULD I BE including my opinions on the usage?}
 DONT READ Just unsorted junk: 
@@ -172,14 +168,14 @@ A number of other parameters were tweaked from the defaults in an attempt to imp
 \textit{Having the GUI did however allow for a easy introduction into using performing spectral reduction when not of not yet comfortable with the command line (required for the ESOREX interface).
 There is a command line interface available, ESOREX but it is not The newer ESO pipeline reduction tool Reflex does not have a pipeline for CRIRES. }
 
+ESO has a new reduction ``workflow'' called ESO Reflex\footnote{\href{https://www.eso.org/sci/software/esoreflex/}{https://www.eso.org/sci/software/esoreflex/}}, but it is not available for CRIRES.
 
 \subsection{DRACS}
-DRACS (Data Reduction Algorithm for CRIRES Spectra) is custom reduction pipeline~\citep{figueira_radial_2010} written in IRAF's CL\footnote{IRAF is distributed by the National Optical Astronomy Observatories, which are operated by the Association of Universities for Research in Astronomy, {Inc.}, under cooperative agreement with the National Science Foundation.}~\citep{tody_iraf_1993}. It provides for automated dark and nonlinearity corrections (using the nonlinearity coefficients provided by ESO), as well as the flagging and replacement of bad pixels. The images are corrected from sensitivity variations by dividing by a flat-field corrected from the blaze function effect. The nodding pairs are mutually subtracted and the order tracing is accomplished by fitting cubic splines
-Order tracing allows the extraction algorithm to follow the shape for the dispersion across the detector \unfinished{is footnote  correct "instruments optics"}\footnote{The spectra do not fall perfectly horizontally on the detector and usually contain some curvature due to the instruments optics.}. 
+DRACS (Data Reduction Algorithm for CRIRES Spectra) is a custom reduction pipeline~\citep{figueira_radial_2010} written in IRAF's CL\footnote{IRAF is distributed by the National Optical Astronomy Observatories, which are operated by the Association of Universities for Research in Astronomy, {Inc.}, under cooperative agreement with the National Science Foundation.}~\citep{tody_iraf_1993}. It provides for automated dark and nonlinearity corrections (using the nonlinearity coefficients provided by ESO), as well as the flagging and replacement of bad pixels. The images are corrected from sensitivity variations by dividing by a flat-field which was corrected from the blaze function effect. The nodding pairs are mutually subtracted and the order tracing is accomplished by fitting cubic splines. Order tracing allows the extraction algorithm to follow the shape for the dispersion across the detector \unfinished{is footnote  correct "instruments optics"}\footnote{The spectra do not fall perfectly horizontally on the detector and usually contain some curvature due to the instruments optics.}. 
 By default the pipeline returns the \emph{optimal }extraction~\citep{horne_optimal_1986}, but the \emph{rectangular} extraction can also be obtained. (see \sref{subsubsec:reductionartifacts} for more details).
-The extracted spectra from each nod is continuum normalized by dividing by a polynomial fitted to the continuum, with the polynomial degree selected for each spectrum and detector. Finally the normalized nod-cycle spectra are averaged together to give a single reduced spectrum, normalized to 1.
+The extracted spectra from each nod is continuum normalized by dividing by a polynomial fitted to the continuum, with the polynomial degree selected for each spectrum and detector. Finally, the normalized nod-cycle spectra are averaged together to give a single reduced spectrum, normalized to 1.
 
-The DRACS pipeline was originally developed to work with H-band spectra, some internal parameters were adjusted slightly in an attempt to achieve a better reduction on the K-band spectra analyzed here.
+The DRACS pipeline was originally developed to work with H-band spectra, some internal parameters were adjusted slightly in an attempt to achieve a better reduction on the K-band spectra analyzed here. \textbf{This was mainly adjusting the type and order of the tracing functions.}
 
 
 Opinions:
@@ -215,57 +211,24 @@ How to use:
 
 Both reduction methods were applied to the same CRIRES spectra to check for consistency and quality of both methods. Two examples of the extraction for HD30501-1 (left) and HD202206-1 (right) from both pipelines is provided in \fref{fig:reduction-comparsion}. The blue lines are the extracted spectra from the ESO pipeline, the orange dashed lines are the optimal extraction from the DRACS pipeline, while the green dash-dotted line is the DRACS extraction after dealing with artifacts in the optimal extraction addressed in \sref{subsubsec:reductionartifacts}. 
 
-One of the important things we checked was the line depth of the spectral to ensure that the pipelines were consistent. The ESO pipeline has noticeable issues with many random spikes still present in the spectra, likely caused by bad pixels or cosmic rays that are not correctly removed. There are also large spikes at either end of the detector in the ESO reduced spectra.  
+One of the important things we checked was the line depth of the spectral to ensure that the pipelines were consistent. The ESO pipeline has noticeable issues with many spikes still present in the spectra, likely caused by bad pixels or cosmic rays that are not correctly removed. There are also large spikes at either end of the detector in the ESO reduced spectra.  
 
-At this stage we chose to use the DRACS results, as we considered that the DRACS pipeline produced better extracted spectra than the ESO pipeline. This decision was based on the quality of the reduced spectra, as well as the relative ease of use of the pipeline, being semi-automated once set up. This was also chosen so that a software to preform the bad pixel removal on the ESO reduced spectra didn't have to be created\footnote{See \sref{subsubsec:reductionartifacts}!}. The fact that the ESO pipeline provided a wavelength solution for the spectra did not factor into the decision as it was considered to unreliable due to known issues with CRIRES wavelength calibration so a new wavelength calibration would be needed anyway.
+At this stage we chose to use the DRACS results, as we considered that the DRACS pipeline produced better extracted spectra than the ESO pipeline. This decision was based on the quality of the reduced spectra, as well as the relative ease of use of the pipeline, being semi-automated once set up. This was also chosen so that a software to perform the bad pixel removal on the ESO reduced spectra didn't have to be created\footnote{See \sref{subsubsec:reductionartifacts}!}. The fact that the ESO pipeline provided a wavelength solution for the spectra did not factor into the decision as it was considered to unreliable due to known issues with CRIRES wavelength calibration so a new wavelength calibration would be needed anyway.
 
 The spectra used here in the comparison are the combination of the 8 nod spectra. Later it was discovered, that individual nod spectra from the DRACS pipeline had issues, see \sref{subsubsec:reductionartifacts}. These are difficult to notice on this scale as they each constitute 1/8 th of the information. As an example of this is seen in detector \#2 of HD202206-1 in \fref{fig:reduction-comparison}. An artifact from a single nod spectra, which is shown in Figure \ref{fig:resizednods}, is barely visible in the pipeline comparison here as a slight depression of the orange dashed line between 2132 and 2134~nm. We explain the identification of these artifacts and how we deal with them (green lines) in the following section.
 
 \subsubsection{Reduction issues}
 \label{subsubsec:reductionartifacts}
 \todo{Check optimal extraction parameters, may have reduced the extraction width by too much?? Need to check changing it.}
-At a later date some large artifacts in the DRACS extracted spectra were identified. An investigation in to the cause of these artifacts was undertaken to identify their source and remove them from the spectra. Separating out the individual nod spectra side-by-side revealed that the artifacts were occurring in only a few of the individual nod spectra from the optimal extraction and that they were not present in the rectangular extracted nods. Four examples are shown in \textbf{Figures ..blah an blah.} In each panel the top sub-plot contains the optimal extracted spectra, while the middle sub-plot contains the rectangularly extracted spectra.
-
-It is is obviously clear that the artifacts in the optimal nod correspond to large bad pixel spikes present in the rectangular extracted nod. The difference between the rectangular and optimal extraction is that the optimal is the rectangular extraction but weighted by its variance. It appears that the presence of cosmic rays or bad pixels heavily affected the variance weighting during the \emph{optimal} extraction. It is also observed that the artifact creates are not localized to the bad pixel region but affect a large spectral range (100's of pixels in some cases). 
-
-The artifacts were observed to create flux deviations in the fully combined optimally extracted spectra of \(\sim 0.5\% \). Therefore, we took measures to remove these artifacts before combining the nod spectra as the science case for these observations is to recover companion spectra with expected flux ratios \(\rm {F_2}/{F_1} < 1\% \). 
-
-Numerous parameters in the DRACS were experimented with to try and remove the observed artifacts with no success. We therefore decided to replace the optimally extracted nods that had artifacts with their rectangular counterparts. 
-An iterative 4-\(\sigma \)\footnote{There is no justification why 4-\(\sigma\) was chosen over the commonly used 3-\(\sigma\).} rejection algorithm\footnote{Found at \url{https://github.com/jason-neal/nod_combination}} was applied to the replacement rectangular extractions to remove the erroneous pixels that caused the artifacts. The \(\sigma\) value for each pixel was calculated as the standard deviation of the nearest 2 pixels on either side of all 8 nod spectra. Any rejected pixels were replaced using linear interpolation.
-
-We note that we did not really observe a pattern in which nod, and in which position were going to be artifacts. there are many other spikes in the rectangular extractions that do not create the artifacts observed. 
-
-Combined spectra were finally constructed by averaging the 8 nod-cycle spectra together, where some of the optimally extracted spectra have been replaced using the above method. The last panels of \fref{fig:nodartifacts} shows that the difference between the combined spectra using only optimally extracted spectra and the combination with replacements.
-\todo{Do the figures}
-There is a clear  large extended artifact on the 7th nod of the top panel is created by the large spike For the first panel a single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artifact in the optimal extraction.  This is the same spectra as the 2nd down the right of \fref{fig:reduction-comparsion} \todo{point out contrast difference again?}.
-
-Again this difference is observed in detector 
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\hsize/2]{figures/reduction/Bad_pixel_replacement}
-    \caption{Example of an artifact in the optimally extracted spectra from detector \#2 of HDXXXXXX. The top panel contains the 8 normalized nod spectra obtained using optimal extraction. The middle panel shows nod spectra using only rectangular extraction. The bottom panel shows the difference between a combined spectrum using optimal nods only and a combined spectrum in which the identified nods are replaced with their rectangular counterparts as per \ref{subsubsec:reductionartifacts}. A vertical offset is included between each spectra for clarity.The nod spectra are in observation order from top to bottom.}
-    \label{fig:badpixelreplacement}
-\end{figure}
-
-The fraction nod spectra from all detectors and observations affected by artifacts was 14 percent. These are detailed in \tref{tab:nod_replacement}. More example images are also provide in \aref{append:artifacts} 
+At a later date some large artifacts in the DRACS extracted spectra were identified. An investigation into the cause of these artifacts was undertaken to identify their source and remove them from the spectra. Separating out the individual nod spectra side-by-side revealed that the artifacts were occurring in only a few of the individual nod spectra from the optimal extraction and that they were not present in the rectangular extracted nods. Four examples are shown in \textbf{Figures ..blah and blah.} In each panel the top sub-plot contains the optimal extracted spectra, while the middle sub-plot contains the rectangularly extracted spectra.
 
 
-The normalization and nod combining steps were also performed using IRAF while the following post reduction procedures and analysis all utilize \emph{Python}. This pipeline was chosen over the ESO CRIRES pipeline because it seemed relatively simple to use, being mostly automated, and appeared to have less bad pixel/cosmic ray artifacts in the resulting spectra. In hindsight this was not the case, with artifacts appearing that needed to be removed. 
+The occurance of artifacts in the observations did not appear to have a pattern with nod position or detecotor. They do occur with large spikes in the rectangular extractions. There are many other spikes in the rectangular extractions that do not create the artifacts observed. 
 
-These artifacts in the K-band spectra were not observed in previous works in the H-band using this pipeline and as such may have a wavelength dependent effect. Although another possibility could be that there were artifacts in intermediate steps of the previous works that were missed due to the semi-automated pipeline, with the combined output only slightly affected. 
+It is clear that the artifacts in the optimal nod correspond to large bad pixel spikes present in the rectangular extracted nod. The optimal extraction diferes from the rectangular extraction by applying variance weighting across the aperature. It appears that the presence of cosmic rays or bad pixels heavily affected the variance weighting during the \emph{optimal} extraction. It is also observed that the artifacts created are not localized to the region around the bad pixel region but affect a extended spectral range (100's of pixels in some cases). 
 
-
-\textbf{In the paper We say it could be glow. I do not think it is anymore and think it is just bad pixels not correctly removed. Either way it does not affect our results significantly....
-This method is likely to have a slight negative impact on the noise/snr.}
-
-It could be that these are a incorrect bad pixel mask.
-
-
-Note for HD202206 the 1st two nods have a much higher extracted flux. I am still unsure why this is...
-
-In the generation of this document some more experimentation with the DRACS parameters was preformed. Adjusting the parameters of the IRAF DOSLIT\footnote{Documentation for DOSLIT can be found here \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}} recipe
-manually changing the \(\sigma\) rejection (between \(1-5 sigma\)) and increasing the tracing width parameters did not affect the artifacts. However enabling automated aperture resizing\footnote{Using \href{apresize}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?apresize.hlp}} by setting the ``resize'' parameter to yes does manage to remove one of the large artifacts in the observation of {HD202206-1}. In \fref{fig:resizednods} we show the optimal and rectangular extraction from the DRACS pipeline with only one parameter (resize) of the pipeline changed. The artifact in nod 6 is removed but the artifact in nod 7 is still present. 
+Numerous parameters in the DRACS pipeline were experimented with to try and remove the observed artifacts with limited success. For instance, no complete removal of the artifacts was found by manually changing the \(\sigma\) rejection limts (between \(1-5 sigma\)) and increasing the tracing width parameter of IRAFs DOSLIT\footnote{Documentation for DOSLIT can be found here \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}} recipe. Although it did slightly affect the shape of the artifacts. 
+During the creation of this document we found that the enabling automated aperture resizing\footnote{Using \href{apresize}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?apresize.hlp}} by setting the ``resize'' parameter to yes does manage to remove one of the large artifacts in the observation of {HD202206-1}. We show the effect of this in \fref{fig:resizednods} with the optimal and rectangular extraction from the DRACS pipeline with only the \emph{resize} parameter changed. The artifact in the sixth nod is removed but the artifact in the seventh nod is still present.
 \begin{figure}
     \centering
     \begin{tabular}{cc}
@@ -275,12 +238,45 @@ manually changing the \(\sigma\) rejection (between \(1-5 sigma\)) and increasin
     \label{fig:resizednods}
 \end{figure}
 
-This discovery came too late to implement on all of the observations, and redo all the analysis, but does indicate that improvements may be obtained with extensive time and patience tweaking the parameters of the DRACS pipeline.
+This discovery came too late to implement it for all of the observations, re-doing all the analysis, but does indicate that some improvements may be obtained with extensive time and patience tweaking the parameters of the DRACS pipeline.
+
+
+The artifacts in the individual nod spectra were observed to create flux deviations in the fully combined optimally extracted spectra of \(\sim 0.5\% \). The purpose of these spectra was to detect faint compnaion spectra with expected flux ratios \(\rm {F_2}/{F_1} < 1\% \). We therefore needed to take measures to remove these artifacts from the combined spectra.
+
+The solution that we chose was to replace the optimally extracted nods that contained artifacts with their rectangular counterparts. Creating a combined spectra that had a mix of optiamaly reduced and rectangularly reduced nod spectra.
+To repace the spikes in the rectangular extraction that created the artifacts and others a iterative 4-\(\sigma \)\footnote{There is no justification why 4-\(\sigma\) was chosen over the commonly used 3-\(\sigma\).} rejection algorithm\footnote{Found at \url{https://github.com/jason-neal/nod_combination}} was applied to the rectangular extractions. The \(\sigma\) for each pixel was calculated as the standard deviation of the nearest 2 pixels on either side of it, across all 8 nod spectra. Any rejected pixels were replaced using linear interpolation along the spectra.
+
+
+Combined spectra were finally constructed by averaging the 8 nod-cycle spectra together, where some of the optimally extracted spectra have been replaced using the above method. The third panel of \fref{fig:nodartifacts} shows the difference between the combined spectra using only optimally extracted spectra and the mixed combination with replacements. The actual spectra from the two diferent methods can be seen in \ref{fig:reduction-comparsion} where orange is the combination of optimally reduced spectra only and green uses the replacement method outlined here.
+
+There is a clear large extended artifact on the 7th nod of the top panel is created by the large spike For the first panel a single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artifact in the optimal extraction. This is the same spectra as the 2nd down the right of \fref{fig:reduction-comparsion}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\hsize/2]{figures/reduction/Bad_pixel_replacement}
+    \caption{Example of an artifact in the optimally extracted spectra from detector \#2 of HDXXXXXX. The top panel contains the 8 normalized nod spectra obtained using optimal extraction. The middle panel shows nod spectra using only rectangular extraction. The bottom panel shows the difference between a combined spectrum using optimal nods only and a combined spectrum in which the identified nods are replaced with their rectangular counterparts as per \ref{subsubsec:reductionartifacts}. A vertical offset is included between each spectra for clarity.The nod spectra are in observation order from top to bottom.}
+    \label{fig:badpixelreplacement}
+\end{figure}
+
+The fraction nod spectra from all detectors and observations affected by artifacts was 14 percent. These are detailed in \tref{tab:nod_replacement}. More examples of observations that contain artifacts are given in \aref{append:artifacts}. Selected to show their range of variation. 
+
+
+The continuum normalization is performed in IRAF while the mixed combination is carried out in \emph{Python} along with the post reduction procedures detailed below. This pipeline was chosen over the ESO CRIRES pipeline because it seemed relatively simpler to use, being semi-automated, and appeared to have less bad pixel/cosmic ray artifacts in the resulting spectra. In hindsight the artifacts that appeared in the DRACS reduction took longer to investigate, a create a solution. This involved a script to remove the bad-pixels that created the artifacts, something we tried to avoid by using the DRACS pipeline instead of the ESO pipeline.
+
+\unfinished{check this statement}{These artifacts in the K-band spectra were not observed in previous works in the H-band using this pipeline and as such may have a wavelength dependent effect. Although another possibility could be that there were artifacts in intermediate steps of the previous works that were missed due to the semi-automated pipeline, with the combined output only slightly affected.}
+
+
+\textbf{In the paper We say it could be glow. I do not think it is anymore and think it is just bad pixels not correctly removed. Either way it does not affect our results significantly....
+This method is likely to have a slight negative impact on the noise/snr.}
+
+Note for HD202206 the 1st two nods have a much higher extracted flux. I am still unsure why this is...
+
 
 Much time and effort when into trying to extract the spectra as best as possible, without artifacts to have the best chance at obtaining high quality scientific results of the faint features we were trying to detect.
 Due to time constraints the replacement of nods with artifacts (indicated in \ref{tab:nod_replacement}) with their rectangular counterparts was performed.  
 
-\section{Reduction experience:}
+\subsection{Reduction experience:}
+\label{subsec:experience}
 The experience gained in reducing CRIRES spectra enabled participation in collaboration with other science cases. The DRACS pipeline was used to extract the spectra of two other targets. A target and a very brief aim of each science case is given below.
 \begin{itemize}
 \item Barnard's Star\footnote{Programme ID: 085.D-0161(A)}: The reduced {\nir} spectra of Barnard's Star was meant to extend the work of~\citet{andreasen_nearinfrared_2016} in deriving the spectroscopic parameters in the \nir. Unfortunately in the end the already reduced CRIRES-POP library was used instead in~\bf{citet{Andreasen et al. (in prep.)}}. \unfinished{reason}{This was because \ldots}
@@ -306,7 +302,7 @@ These wavelength calibration issues were experienced when using the ESO CRIRES p
 At the wavelength of 2.1-2.17~\si{\micro\meter} there are roughly XXX {\thar} lines across all four detectors, as seen in \fref{fig:caliblamps}.
 The DRACS pipeline does not use the {\thar} lamp files for wavelength calibration and leaves this as a post reduction step.
 
-A common method for wavelength calibration that does not rely on Th-Ar lamps of CRIRES involves using the telluric lines present to provide the wavelength solution ~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}{\red piskorz_evidence_2016}. This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere. 
+A common method for wavelength calibration that does not rely on Th-Ar lamps of CRIRES involves using the telluric lines present to provide the wavelength solution ~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}{\red \citep{ piskorz_evidence_2016}}. This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere. 
 
 We follow this method using the telluric absorption lines present in each observation as the wavelength reference. Instead of directly using the HITRAN database~\citep{rothman_hitran2012_2013} for the telluric line positions \citet[such as in ][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}), we use the TAPAS atmospheric transmission models~\citep{bertaux_tapas_2014} obtained for each observation. The TAPAS models in turns use the HITRAN database but includes atmospheric profiles and physical meteorological measurements to model the telluric absorption strength.
 
