@@ -268,28 +268,21 @@ urlcolor=flatpurple]{hyperref}
 	%% *** Include chapter files here. ***
 	\include{chapters/introduction}
     \include{chapters/advanced_concepts}
-    
     \include{chapters/reduction}
 	\include{chapters/direct-recovery}
 	\include{chapters/companion-recovery}	
 	\include{chapters/nir-information-content}
 	\include{chapters/discussion}
 	\include{chapters/conclusions}
-    
-	
-	
+
 	\appendix
 	\unfinished{Precision table needs fixed up}	
     %\include{appendices/precision_table}
-	\include{appendices/appendix-a}
 	\include{appendices/artifact_examples_appendix}
-	
-	
-	%% This adds a line for the Bibliography in the Table of Contents.
+    
+    % Bibliography
 	\addcontentsline{toc}{chapter}{Bibliography}
-	% \bibliographystyle{plain}
-	%% *** Set the bibliography file. ***
-	\bibliography{thesis}
+	\bibliography{thesis}  % do not inlcude .bib extension
 	\bibliographystyle{astron}
 	\nocite{} %include everything.
 	
