@@ -1,5 +1,5 @@
 %!TEX root = ../thesis.tex
-%2 - Tools for spectral analysis
+% Tools for spectral analysis
 
 \chapter{NIR spectroscopic reduction} % Main chapter title
 \label{cha:reduction} 
@@ -134,7 +134,7 @@ There are two types of extraction commonly used. The \emph{rectangular} extracti
 
 \section{Pipeline Comparison}
 \change{Reword}{To be able to extract the target spectra from the calibration and observation images a number of steps, some outlined above in \sref{subsec:nirreduction}, have to be performed in sequence. }The series of steps, performed by various software tools, is referred to as a \emph{pipeline}. Each stage in the pipeline performs a specific task, for example, creating the master dark frame or performing the nod subtraction). The result of one stage is passed to the next (automatically or manually). Two different pipelines were available to reduce the CRIRES observations used in this work. The first is the standard CRIRES pipeline\footnote{\href{https://www.eso.org/sci/software/pipelines/}{https://www.eso.org/sci/software/pipelines/}}, available from ESO.
-The second is an in-house pipeline originally \change{was this the first instance} used in~\citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for CRIRES Spectra) \change{Pedro it is my understanding that the ESO pipeline did not exist/was not available when you created DRACS, correct?}
+The second is an in-house pipeline originally \change{was this the first instance} used in~\citet{figueira_radial_2010} called DRACS (Data Reduction Algorithm for CRIRES Spectra) \change{Pedro it is my understanding that the ESO pipeline did not exist/was not publicly available when you created DRACS, correct?}
 
 In these next sections we document our experience using both pipelines, comparing the extracted spectra and user experience.
 
@@ -142,33 +142,15 @@ In these next sections we document our experience using both pipelines, comparin
 \subsection{ESO CRIRES pipeline}
 The ESO CRIRES pipeline was used to reduce CRIRES nodding spectra following direction from the CRIRES pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the CRIRES reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-ESO-14200-4032\_v91.pdf}}
 
-The GASGANO\footnote{\href{https://www.eso.org/sci/software/gasgano.html}{https://www.eso.org/sci/software/gasgano.html}} graphical user interface (GUI) was used to interact with the pipeline with guidence from the GASGANO manual\todo{Link to manual}\footnote{\href{here}{here}}. The pipeline provides a number of \emph{recipes} which perform the required extraction steps. From the GUI each recipe is manually selected, then the correct calibration and observation files need to be selected to use with that recipe.  
+The GASGANO\footnote{\href{https://www.eso.org/sci/software/gasgano.html}{https://www.eso.org/sci/software/gasgano.html}} graphical user interface (GUI) was used to interact with the pipeline with guidance from the GASGANO manual\footnote{\href{https://www.eso.org/sci/software/gasgano/VLT-PRO-ESO-19000-1932-V4.pdf}{https://www.eso.org/sci/software/gasgano/VLT-PRO-ESO-19000-1932-V4.pdf}}. The pipeline provides a number of \emph{recipes} which perform the required extraction steps. From the GUI each recipe is manually selected, then the correct calibration and observation files need to be selected to use with each recipe.  The final output from the ESO pipeline is a fits table with the combined extracted spectra (both rectangular and optimal extractions), pixel errors and a wavelength solution.
 
-The final output is an extracted and flattened spectra (although not normalized to 1) both in a rectangular and optimal and errors, with a wavelength calibration.
+For a novice of spectral extraction this pipeline and the available documentation was very helpful to get started and perform a extraction. However, to reduce many spectra it soon became a long tedious process.
 
-The wavelength calibration was the most tedious. To try and improve the wavelength calibration the {y-positions} of the 6 {\thar} fibers were found for each detector and entered into the parameters for each observation. This sometimes helped but not always; in the end we did not use them.
+Constant revision of the documentation was necessary to ensure all the correct image and calibration files were added to each recipe. The ESO pipeline makes all the recipe parameters easily accessible to modify via a window of the recipe interface. This is great for tweaking the parameters and for identifying which parameters are relevant to each recipe. However when trying to experiment with the recipe parameters to achieve high quality spectra extraction, it became repetitive to change the same parameters for each observation, as well as difficult to keep track of all the changes and assessing their affect on the final output. From our recollection the recipe defaults were restored for each observation. This makes it difficult to reduce all of the observations in a consistent manor.
 
+The parameters for the wavelength calibration were the most tedious. To try and improve the wavelength calibration the {y-positions} of the 6 {\thar} fibers were manually found from the images for each detector  and observation and entered as input parameters for the calibration recipe. This helped the wavelength calibration recipe to correctly identify/fit more of the {\thar} spectra in most cases, but took some time. In the end we did not use them as we chose to use the other pipeline.
 
-\textbf{Opinions: SHOULD I BE including my opinions on the usage?}
-DONT READ Just unsorted junk: 
-
-\textit{- For the extraction of many spectra it soon became tedious. Having to tweak parameters to obtain a better reduction. Then having to remember and change for each observation. }
-
-\textit{- Having the available options visible in the GUI for each spectrum is handy if you need to change them.}
-
-
-
-\textit{One good thing is it had the list of parameters available to tweak for that recipe visible..}
-
-\textit{It is believed that there is a way to enable batch processing???}
-
-\textit{It soon became tedious to use the Gasgano GUI to extract the many spectra reduce many and tweak all the parameter settings manually. In particular manually measuring and adding the vertical positions of the 6 {\thar} lines for each detector and observation. This was in an attempt to improve the wavelength calibration provided by the {\thar} lamp spectra.
-A number of other parameters were tweaked from the defaults in an attempt to improve the reduction. Again become tedious to repeatably change the parameters for all observations.}
-
-\textit{Having the GUI did however allow for a easy introduction into using performing spectral reduction when not of not yet comfortable with the command line (required for the ESOREX interface).
-There is a command line interface available, ESOREX but it is not The newer ESO pipeline reduction tool Reflex does not have a pipeline for CRIRES. }
-
-ESO has a new reduction ``workflow'' called ESO Reflex\footnote{\href{https://www.eso.org/sci/software/esoreflex/}{https://www.eso.org/sci/software/esoreflex/}}, but it is not available for CRIRES.
+ESO has a new reduction ``workflow'' called ESO Reflex\citep{freudling_automated_2013}\footnote{\href{https://www.eso.org/sci/software/esoreflex/}{https://www.eso.org/sci/software/esoreflex/}}. This enables automated reduction with the ability to chain together the extraction recipes in the specific order desired, repeat steps to optimize to reduction, as well as automatically handles the data organization (no need to manually select the files for each recipe). This would likely have enabled a quicker and more consistent reduction of the spectra. It is not available for the CRIRES pipeline unfortunately.
 
 \subsection{DRACS}
 DRACS (Data Reduction Algorithm for CRIRES Spectra) is a custom reduction pipeline~\citep{figueira_radial_2010} written in IRAF's CL\footnote{IRAF is distributed by the National Optical Astronomy Observatories, which are operated by the Association of Universities for Research in Astronomy, {Inc.}, under cooperative agreement with the National Science Foundation.}~\citep{tody_iraf_1993}. It provides for automated dark and nonlinearity corrections (using the nonlinearity coefficients provided by ESO), as well as the flagging and replacement of bad pixels. The images are corrected from sensitivity variations by dividing by a flat-field which was corrected from the blaze function effect. The nodding pairs are mutually subtracted and the order tracing is accomplished by fitting cubic splines. Order tracing allows the extraction algorithm to follow the shape for the dispersion across the detector \unfinished{is footnote  correct "instruments optics"}\footnote{The spectra do not fall perfectly horizontally on the detector and usually contain some curvature due to the instruments optics.}. 
