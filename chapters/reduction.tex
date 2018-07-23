@@ -6,11 +6,11 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-The work of this thesis relies on the use of {\nir} spectra obtained by the CRIRES instrument. This chapter contains an overview of the steps undertaken to extract astronomical spectra, focusing on the CRIRES instrument specifically. A comparison between the two reduction pipelines is performed. Detail of some issues we encountered with the reduction output are presented as well as the post reduction steps we performed, specifically wavelength calibration and telluric correction. The reduced spectra produced in this chapter will be used in \cref{cha:Chapter3} and \cref{cha:Chapter4}. We wrap up this chapter by highlighting other techniques in high resolution {\nir} spectra reduction and calibration which may have improved some of the results.  
+The work of this thesis relies on the use of {\nir} spectra obtained by the CRIRES instrument. This chapter contains an overview of the steps undertaken to extract astronomical spectra, focusing on the CRIRES instrument specifically. A comparison between the two reduction pipelines is performed. Detail of some issues we encountered with the reduction output are presented as well as the post reduction steps we performed, specifically wavelength calibration and telluric correction. The reduced spectra produced in this chapter will be used in \cref{cha:direct_recovery} and \cref{cha:model_comparison}. We wrap up this chapter by highlighting other techniques in high resolution {\nir} spectra reduction and calibration which may have improved some of the results.  
 
 \section{Summary of dataset}
 \todo{}{}
-Brief summary of dataset we focus reduction on. The motivation of these will be explained in \cref{cha:Chapter3}.
+Brief summary of dataset we focus reduction on. The motivation of these will be explained in \cref{cha:direct_recovery}.
 
  
 \section{NIR spectroscopy}
@@ -96,7 +96,7 @@ Observations of faint targets, that need long exposure times, are also broken up
 
 A small random vertical offset is applied to each observation which ensures that all spectra at the same nod position do not consistently land on the same pixels each time. This is known as the \emph{jitter} and allows for the correction of bad pixels and decreases the effect from any systematics of the detector.
 
-\change{move}{As an example for the CRIRES observations analyzed for the main work here they were performed with an ABBAABBA nod cycle pattern with an exposure time of 180s each, or 24 minutes all up.}
+\change{move}{As an example, the CRIRES observations analyzed for the work performed in \cref{cha:direct_recovery} and \ref{cha:model_comparison} here they were performed with an ABBAABBA nod cycle pattern with an exposure time of 180s each, or 24 minutes all up.}
 
 
 \subsection{{\thar} lamp calibration}
