@@ -1,21 +1,26 @@
 %!TEX root = ../thesis.tex
-%5-NIR-information
+% NIR-information
 
-\chapter{NIR information}  % Main chapter title
+\chapter{NIR information}
 
 \label{cha:nir_content}
 
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
+\section{Overview}
 
-THIS work is not related to detecting atmospheres themselves but it helps estimates of  detectability of planet around M-Dwarfs, and helps detection of planets in the \nir, one of these may have its atmosphere probed in the future....
+The pursuit of detecting exoplanets, especially ``habitable'' Earth-like" planets requires state-of-the-art instrumentation with high precision. One of the key detection methods, the Radial Velocity (RV) method, measures the wobble induced on the Star by the planet as they orbit their common barycenter \reference{rv method}.  {\red add Some stuff about mass and period from pedros paper}
+
+
 
 A increase in the  number of {\nir} spectrographs is increasing to focus on cooler M-dwarfs stars which have a easier* chance of detecting Earth-like planets in the habitable zone. \change{Check mission statements for these}{SPIRou, NIRPS} and CARMENES. Also CRIRES+... 
 This work continues the assessment of RV precision levels possible in this domain. 
 \todo{For example from Figueira 2016 see figure) A more precise measurement can be achieved from X band then the Y band... or in order XYZ of precision}
 
 \missingfigure{An example from Figueira et al. 2016}
+
+
+
+This work is not directly related to detecting exoplanet atmospheres themselves but investigates the theoretical and observed RV precision of M-dwarf spectra in the NIR. This has previously helped the aid the direction of instrument design by identifying the wavelength regions with the best RV precision \citep{figueira_radial_2016} but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed SNR. This can help in detecting the presence of ``habitable Earth-like'' planets around M-dwarfs which will likely have their atmospheres evenutally probed.
+
 
 \section{Radial velocity precision}
 The first detections of planets with the RV technique \textbf{Queloz 2995} discovered the mass and close in hot-Jupiter planets. These are the easiest to detect with the highest RV amplitude.
@@ -34,6 +39,7 @@ RV amplitude scales with mass of the star $M_\star^{-2/3}$ and with the planetar
 The detection of an Earth-mass planet inside the habitable zone around a solar-type star, the RV amplitude is 10 cm/s. If that a planet with the same characteristics is instead orbiting a M/ -dwarf, the RV amplitude is larger than 1 m/s. This is due to two factors, the smaller mass of the host star, and the closer habitable zone, due to a lower luminosity output of the host)
 
 \citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an M-dwarf, and found that state-of-the-art atmosphere models over-predict the $Y$ and $J$-band RV content by more than a factor of $\sim$$2$, while under-predicting the $H$ and $K$-band content by half.
+{\red in this work we find similar?}
 
 We are currently aiming to extend this work over the whole M-dwarf range, from M0-M9.
 
@@ -43,11 +49,14 @@ Connes 1985 -
 Bouchy et al. 2001  - photon noise limit on rv measurements.   
 Figueria et al. 2016 - focus on m-dwarfs parameter range to specify new instrumentation windows to focus.
 Reiners 2017 -  Carmenes sample. some precision
+pedros school section other precision source r\^1.5
 
 
 \subsection{Fundamental photon noise limitation}
-\change{Should this be an appendix?}
-A optimum technique to calculate the radial velocity precision of a spectrum using the full spectral information is proposed by~\citet{Connes1985}. For each spectrum there is assigned a quality factor, Q, to compute the fundamental uncertainty on the radial velocity measurements due to noise. \unfinished{Change picture spectral range to capital lambda $\Lambda$}
+
+A optimum technique to calculate the radial velocity precision of a spectrum using the full spectral information is proposed by~\citet{Connes1985}. Here we provide the radial velocity precision derivation following~\citet{Connes1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this derivation comes from~\citet{bouchy_fundamental_2001} with some extra notes added to improve the clarity.
+
+For each spectrum there is assigned a quality factor, Q, to compute the fundamental uncertainty on the radial velocity measurements due to noise. {\red i am not sure what i am trying to say in this sentence}\unfinished{Change picture spectral range to capital lambda $\Lambda$}
 
 \begin{figure}
     \centering
@@ -57,8 +66,6 @@ A optimum technique to calculate the radial velocity precision of a spectrum usi
     \caption{Arbitrary spectral line with a shift $\delta \lambda$, inspired by~\citet{Connes1985}.  \(\Lambda\) is the wavelength range considered.}
     \label{fig:precisionderivation}
 \end{figure}
-
-Here we provide the radial velocity precision derivation following~\citet{Connes1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this section comes from~\citet{bouchy_fundamental_2001} with some extra notes added to improve the clarity.
 
 The Doppler shift of a spectrum is given by:
 \begin{equation}
