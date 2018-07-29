@@ -149,7 +149,7 @@ The ESO CRIRES pipeline was used to reduce CRIRES nodding spectra following dire
 
 The GASGANO\footnote{\href{https://www.eso.org/sci/software/gasgano.html}{https://www.eso.org/sci/software/gasgano.html}} graphical user interface (GUI) was used to interact with the pipeline with guidance from the GASGANO manual\footnote{\href{https://www.eso.org/sci/software/gasgano/VLT-PRO-ESO-19000-1932-V4.pdf}{https://www.eso.org/sci/software/gasgano/VLT-PRO-ESO-19000-1932-V4.pdf}}. The pipeline provides a number of \emph{recipes} which perform the required extraction steps. From the GUI each recipe is manually selected, then the correct calibration and observation files need to be selected to use with each recipe.  The final output from the ESO pipeline is a fits table with the combined extracted spectra (both rectangular and optimal extractions), pixel errors and a wavelength solution.
 
-For a novice of spectral extraction this pipeline and the available documentation was very helpful to get started and perform a extraction. However, to reduce many spectra it soon became a long tedious process.
+For a novice of spectral extraction this pipeline and the available documentation was very helpful to get started and perform the extraction. However, to reduce many spectra it soon became a long tedious process.
 
 Constant revision of the documentation was necessary to ensure all the correct image and calibration files were added to each recipe. The ESO pipeline makes all the recipe parameters easily accessible to modify via a window of the recipe interface. This is great for tweaking the parameters and for identifying which parameters are relevant to each recipe. However when trying to experiment with the recipe parameters to achieve high quality spectra extraction, it became repetitive to change the same parameters for each observation, as well as difficult to keep track of all the changes and assessing their affect on the final output. From our recollection the recipe defaults were restored for each observation. This makes it difficult to reduce all of the observations in a consistent manor.
 
@@ -163,26 +163,18 @@ DRACS (Data Reduction Algorithm for CRIRES Spectra) is a custom reduction pipeli
 By default the pipeline returns the \emph{optimal }extraction~\citep{horne_optimal_1986}, but the \emph{rectangular} extraction can also be obtained. (see \sref{subsubsec:reductionartifacts} for more details).
 The extracted spectra from each nod is continuum normalized by dividing by a polynomial fitted to the continuum, with the polynomial degree selected for each spectrum and detector. Finally, the normalized nod-cycle spectra are averaged together to give a single reduced spectrum, normalized to 1.
 
-The DRACS pipeline was originally developed to work with H-band spectra, some internal parameters were adjusted slightly in an attempt to achieve a better reduction on the K-band spectra analyzed here. \textbf{This was mainly adjusting the type and order of the tracing functions.}
+The DRACS pipeline was originally developed to work with H-band spectra. Some of the parameters were adjusted in an attempt to achieve a better reduction on the K-band spectra analyzed here. This was the tracing and normalization polynomial functions and their specific order on the detector. There was also no reduction preformed for detector number 3 (as this was not used in previous works with this pipeline.) This was extended to reduce detector 3 also. 
 
+When using the DRACS pipeline on a new target the tedious part is initially creating the lists of files identifying which files are the dark, flat, and the science frames\footnote{The GASGANO GUI was helpful to help identify the distinction of each fits file for a beginner}. After the lists are created the reduction pipeline can be run and re-run easily, making the effort worth it. 
 
-Opinions:
-DONT READ UNFINISHED 
+The first time though there are a number of manual checks/decisions, (e.g. confirming the order tracing position, and fit is good) but DRACS remembers them in a database. A second or third time though requires less manual input and is quicker. This was useful to experiment with and iterate the reduction parameters of the pipeline. When changing the parameters which affect the order tracing, the  database with the order tracing results was deleted so that it would not influence the new fits. These parameters were therefore slower to iterate on. 
 
-\textit{The DRACS can be run semi-autonomously so that it provides a consistent reduction relatively easily. It remembers the order tracing and}
+This semi-autonomous nature of the DRACS pipeline mean that all the spectra can be reduced in a consistent way and relatively quickly, and did not require manual spectra selection for each individual recipe as was done with the ESO pipeline.
 
-How to use:
-\textit{To use DRACS you need to create a number of lists with different, darks, flats, observations\footnote{The GASGANO GUI was helpful to help identify the distinction of each fits file for a beginner}. A similar process with list of files is done with the ESOREX pipeline.}
-\textit{Once these list are created then the main script can be executed that semi-autonomously performs the reduction. The first time though there are a number of manual checks/decisions, (e.g. confirming the order tracing position, and fit) but DRACS remembers them. This means the extraction requires less manual input if run a second or third time though.}
+There are a couple of drawbacks with using the DRACS pipeline. The first is the lack of documentation on how to use it. This required looking trough the source code to find which functions and scripts do which part of the extraction. Under the hood, DRACS uses available IRAF packages which have documentation available online\footnote{Such as at the \href{Space Telescope Science Institute}{http://stsdas.stsci.edu/gethelp/pkgindex\_noao.html}.}. Searching though this documentation was difficult but required to understand how to use and modify DRACS.
 
-\textit{This was handy when trying to tune some of the internal parameters to perform a better extraction.}
-
-\missingfigure{Order tracing example plot?, exaggerated sketch} 
-
-\textit{The most tedious thing about DRACS is creating the lists for the different input parameters}
-
-\textit{This semi-autonomous nature mean all the spectra are reduced in a consistent way and quickly, not requiring manual spectra selection for each observation.}
-
+The second drawback is that it did not preform wavelength calibration which is done with the ESO pipeline. This means an external wavelength calibration is the only option, see \ref{subsec:wavecalib}. The last drawback is the discovery of artifacts present in the nod spectra which we discuss in detail in 
+\sref{subsubsec:reductionartifacts}.
 
 \subsection{Pipeline comparison and selection}
 \label{subsec:pipeline-selection}
@@ -194,10 +186,10 @@ How to use:
         \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_4} & \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_4}\\
     \end{tabular}
     \caption{Comparison between the ESO pipeline and DRACS pipeline. For two observations HD30501-1 and HD202206-1. The blue lines are the extracted spectra from the ESO pipeline, the orange dashed lines are the optimal extraction from the DRACS pipeline, while the green dash-dotted line is the DRACS extraction after dealing with artifacts in the optimal extraction addressed in \sref{subsubsec:reductionartifacts}. The wavelength information applied to the spectra here comes from the ESO pipeline.}
-    \label{fig:reduction-comparsion}
+    \label{fig:reduction-comparison}
 \end{figure}
 
-Both reduction methods were applied to the same CRIRES spectra to check for consistency and quality of both methods. Two examples of the extraction for HD30501-1 (left) and HD202206-1 (right) from both pipelines is provided in \fref{fig:reduction-comparsion}. The blue lines are the extracted spectra from the ESO pipeline, the orange dashed lines are the optimal extraction from the DRACS pipeline, while the green dash-dotted line is the DRACS extraction after dealing with artifacts in the optimal extraction addressed in \sref{subsubsec:reductionartifacts}. 
+Both reduction methods were applied to the same CRIRES spectra to check for consistency and quality of both methods. Two examples of the extraction for HD30501-1 (left) and HD202206-1 (right) from both pipelines is provided in \fref{fig:reduction-comparison}. The blue lines are the extracted spectra from the ESO pipeline, the orange dashed lines are the optimal extraction from the DRACS pipeline, while the green dash-dotted line is the DRACS extraction after dealing with artifacts in the optimal extraction addressed in \sref{subsubsec:reductionartifacts}. 
 
 One of the important things we checked was the line depth of the spectral to ensure that the pipelines were consistent. The ESO pipeline has noticeable issues with many spikes still present in the spectra, likely caused by bad pixels or cosmic rays that are not correctly removed. There are also large spikes at either end of the detector in the ESO reduced spectra.  
 
@@ -235,9 +227,9 @@ The solution that we chose was to replace the optimally extracted nods that cont
 To replace the spikes in the rectangular extraction that created the artifacts and others a iterative 4-\(\sigma \)\footnote{There is no justification why 4-\(\sigma\) was chosen over the commonly used 3-\(\sigma\).} rejection algorithm\footnote{Found at \url{https://github.com/jason-neal/nod_combination}} was applied to the rectangular extractions. The \(\sigma\) for each pixel was calculated as the standard deviation of the nearest 2 pixels on either side of it, across all 8 nod spectra. Any rejected pixels were replaced using linear interpolation along the spectra.
 
 
-Combined spectra were finally constructed by averaging the 8 nod-cycle spectra together, where some of the optimally extracted spectra have been replaced using the above method. The third panel of \fref{fig:nodartifacts} shows the difference between the combined spectra using only optimally extracted spectra and the mixed combination with replacements. The actual spectra from the two different methods can be seen in \ref{fig:reduction-comparsion} where orange is the combination of optimally reduced spectra only and green uses the replacement method outlined here.
+Combined spectra were finally constructed by averaging the 8 nod-cycle spectra together, where some of the optimally extracted spectra have been replaced using the above method. The third panel of \fref{fig:nodartifacts} shows the difference between the combined spectra using only optimally extracted spectra and the mixed combination with replacements. The actual spectra from the two different methods can be seen in \ref{fig:reduction-comparison} where orange is the combination of optimally reduced spectra only and green uses the replacement method outlined here.
 
-There is a clear large extended artifact on the 7th nod of the top panel is created by the large spike For the first panel a single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artifact in the optimal extraction. This is the same spectra as the 2nd down the right of \fref{fig:reduction-comparsion}.
+There is a clear large extended artifact on the 7th nod of the top panel is created by the large spike For the first panel a single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artifact in the optimal extraction. This is the same spectra as the 2nd down the right of \fref{fig:reduction-comparison}.
 
 \begin{figure}
     \centering
@@ -357,7 +349,7 @@ We should have used the RV of the host star, and fitted against host lines also.
 \end{figure}
 
 
-\missingfigure{Comparision between a gasgano wavelength solution and the manual one. This has not be done by me before... }
+\missingfigure{comparison between a gasgano wavelength solution and the manual one. This has not be done by me before... }
 
 
 
