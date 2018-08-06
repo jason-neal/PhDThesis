@@ -1,0 +1,66 @@
+%!TEX root = ../thesis.tex
+
+\chapter{artefacts in Optimal Extraction} % Main appendix title
+\label{appendix:artefacts}
+
+% Table of nods optimally reduced replaced by rectangular extraction and bad pixel replacement.
+\input{tables/replaced_nods}
+
+As mentioned in \sref{subsubsec:reductionartefacts} there were artefacts observed from the optimal reduction of the DRACS pipeline. In \tref{tab:nod_replacement} we provide a list of all the specific nods for each observation and detector that we observed artefacts and replaced with our explained method.  
+
+With 8 nods per observation, and 4 detectors for the 17 observation there are 544 individual nod spectra. \tref{tab:nod_replacement} identifies 79 individual nods that contain artefacts which is 14.5\%.   Only 16/68 (23.5\%) detector observations have nods without any artefacts and no single observation has no artefacts in any nod spectra across the 4 detectors.
+
+
+In this appendix we also provide more example images of the artefacts observed from the optimal reduction of the DRACS pipeline. We have selected one observation and detector for each observed target to show a variety of the artefacts observed.
+
+In each image the top panel contains the 8 nod spectra extracted using the optimal method, including variance weighting. The middle panel contains the rectangular extraction (sum of the aperture), including the bad pixels.
+
+It is clear that the large extracted artefacts occur due to single spikes observed in the rectangular extraction. What is unclear is why it only occurs some of the time.
+ 
+
+\todo{THESE need to be properly selected and a caption given, one without any artefacts also?}
+\todo{Style needs to be tweaked also}
+ 
+ \begin{figure}
+     \centering
+     \includegraphics[width=0.7\linewidth]{figures/reduction/bp_plots/extraction_comparision_HD4747-1_chip_1}
+     \caption{artefact example for HD4747. Optimal and rectangular nods, continuum normalized and vertically offset.}
+     \label{fig:artefact_example1}
+ \end{figure}
+ \begin{figure}
+     \centering
+     \includegraphics[width=0.7\linewidth]{figures/reduction/bp_plots/extraction_comparision_HD4747-1_chip_2}
+     \caption{Same as \fref{fig:artefact_example1} but for HD162020. {\red{} change picture}}
+     \label{fig:artefact_example2}
+ \end{figure}
+ \begin{figure}
+     \centering
+     \includegraphics[width=0.7\linewidth]{figures/reduction/bp_plots/extraction_comparision_HD4747-1_chip_3}
+     \caption{Same as \fref{fig:artefact_example1} but for HD167665. {\red{} change picture}}
+     \label{fig:artefact_example3}
+ \end{figure}
+ \begin{figure}
+     \centering
+     \includegraphics[width=0.7\linewidth]{figures/reduction/bp_plots/extraction_comparision_HD4747-1_chip_4}
+     \caption{Same as \fref{fig:artefact_example1} but for HD202206. {\red{} change picture}}
+     \label{fig:artefact_example4}
+ \end{figure}
+ \begin{figure}
+     \centering
+     \includegraphics[width=0.7\linewidth]{figures/reduction/bp_plots/extraction_comparision_HD30501-1_chip_1}
+     \caption{Same as \fref{fig:artefact_example1} but for HD168443. {\red{} change picture}}
+     \label{fig:artefact_example5}
+ \end{figure}
+  \begin{figure}
+     \centering
+     \includegraphics[width=0.7\linewidth]{figures/reduction/bp_plots/extraction_comparision_HD30501-1_chip_1}
+     \caption{Same as \fref{fig:artefact_example1} but for HD211847. {\red{} change picture}}
+     \label{fig:artefact_example6}
+ \end{figure}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/reduction/bp_plots/extraction_comparision_HD30501-1_chip_1}
+    \caption{Same as \fref{fig:artefact_example1} but for 30501. {\red{} change picture}}
+    \label{fig:artefact_example7}
+\end{figure}
+ 
