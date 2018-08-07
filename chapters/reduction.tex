@@ -2,22 +2,22 @@
 % Tools for spectral analysis
 
 \chapter{NIR spectroscopic reduction} % Main chapter title
-\label{cha:reduction} 
+\label{cha:reduction}
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-The work of this thesis relies on the use of {\nir} spectra obtained by the CRIRES instrument. This chapter contains an overview of the steps undertaken to extract astronomical spectra, focusing on the CRIRES instrument specifically. A comparison between the two reduction pipelines is performed. Detail of some issues we encountered with the reduction output are presented as well as the post reduction steps we performed, specifically wavelength calibration and telluric correction. The reduced spectra produced in this chapter will be used in \cref{cha:direct_recovery} and \cref{cha:model_comparison}. We wrap up this chapter by highlighting other techniques in high resolution {\nir} spectra reduction and calibration which may have improved some of the results.  
+The work of this thesis relies on the use of {\nir} spectra obtained by the CRIRES instrument. This chapter contains an overview of the steps undertaken to extract astronomical spectra, focusing on the CRIRES instrument specifically. A comparison between the two reduction pipelines is performed. Detail of some issues we encountered with the reduction output are presented as well as the post reduction steps we performed, specifically wavelength calibration and telluric correction. The reduced spectra produced in this chapter will be used in \cref{cha:direct_recovery} and \cref{cha:model_comparison}. We wrap up this chapter by highlighting other techniques in high resolution {\nir} spectra reduction and calibration which may have improved some of the results.
 
 \section{Summary of dataset}
 \todo{}{}
 Brief summary of dataset we focus reduction on. The motivation of these will be explained in \cref{cha:direct_recovery}.
 
- 
+
 \section{NIR spectroscopy}
 \todo{}{}
 Specifics of {\nir} verse optical
 
-NIR spectroscopy requires the use of CMOS detectors which are a different technology to the more commonly known CCD's. Their use is required in the {\nir} as the quantum efficiency (how well it measures photons) for CCD's although great for visible is poor in the \nir. CMOS detectors have a higher quantum efficiency in the \nir. 
+NIR spectroscopy requires the use of CMOS detectors which are a different technology to the more commonly known CCD's. Their use is required in the {\nir} as the quantum efficiency (how well it measures photons) for CCD's although great for visible is poor in the \nir. CMOS detectors have a higher quantum efficiency in the \nir.
 \change{rearrange/reorganize this paragraph.}
 
 CCD based on Silicon which doesn't work with \nir
@@ -49,7 +49,7 @@ There are 3 main effects that need to be accounted for in {\nir} spectroscopy wh
 
 \subsubsection{Dark Current}
 \label{subsubsec:darkcurrent}
-The dark current is a form of instrumental noise, in which the detector measures photons while not being illuminated. It is the detection of thermal electrons moving inside the detector, creating spurious photon counts. Calibration and removal of the dark current is performed by taking exposures in which the detector is not illuminated. 
+The dark current is a form of instrumental noise, in which the detector measures photons while not being illuminated. It is the detection of thermal electrons moving inside the detector, creating spurious photon counts. Calibration and removal of the dark current is performed by taking exposures in which the detector is not illuminated.
  The temperature of the detectors in CRIRES instrument are kept at \textbf{XXX degree C} to significantly reduce, and to maintain consistent a low dark current. The electrical components of the CRIRES detectors create thermal energy while operational which impacts the dark current. A strong glow is observed in the bottom corners of the CRIRES detector in \fref{fig:darkcurrent} due to the presence of nearby amplifiers. As per the CRIRES calibration plan, ``dark frames'' need to be taken for each exposure time used. \fref{fig:darkcurrent} shows the master dark frame created from averaging three dark frames for exposure times of 3 seconds (for the flats) and 180 seconds (for the science), both on the same amplitude scale.
 For the CRIRES detectors the dark current per pixel is around 0.2-0.4\,(\(e^{-}\)\si{\per\second}), while the glow at the two corners of the 180 second exposure shown here is around \(\sim9000 / 180\approx50\)\,\(e^{-}\)\si{\per\second}.
 
@@ -83,7 +83,7 @@ The CRIRES detector suffers from nonlinearities in sensitivity across the detect
 \label{subsec:nod-jitter}
 The technique of \emph{nodding} is used to remove sky emission, detector dark current, and glow. First, an observation is spit into multiple separate exposures. Between each exposure the telescope is moved to change the vertical position of the target in the slit. The light from the star travels through a slightly different optical path and is recorded on a different part of the detector. The frames from the two nod positions (A, B) are then subtracted (A-B) to remove the background measurement from each spectra.
 
-A visual example of the nodding is shown in \fref{fig:nodimages}. On the left are slices of 150 pixel columns from successive nod positions A and B as well as the difference A-B. On the right is a single pixel column from each image on the left. The background signal at the level of 20-30 counts in the image is almost canceled out by the opposite nod. This efficiently removes the background signal/noise from the observed spectra target. 
+A visual example of the nodding is shown in \fref{fig:nodimages}. On the left are slices of 150 pixel columns from successive nod positions A and B as well as the difference A-B. On the right is a single pixel column from each image on the left. The background signal at the level of 20-30 counts in the image is almost canceled out by the opposite nod. This efficiently removes the background signal/noise from the observed spectra target.
 
 Observations of faint targets, that need long exposure times, are also broken up into multiple images so that the instrument glow from \fref{fig:darkcurrent} does not saturate the detector.
 
@@ -105,7 +105,7 @@ A small random vertical offset is applied to each observation which ensures that
 \subsection{{\thar} lamp calibration}
 \label{subsec:th-ar}
 As part of the CRIRES calibration procedure spectra are taken {\thar} lamps. The {\thar} spectra are placed into the instrument using 6 optical fibers, creating 6 uniformly spaced spectra across the detector.
-\fref{fig:caliblamps} contains the {\thar} spectra for all four detectors, with the {\thar}. There are roughly 50 {\thar} lines that fall across the four detectors for the wavelength setting here, although most of them are quite faint, With the scaling shown in these images only around 10 of the brightest lines can be just detected by eye. 
+\fref{fig:caliblamps} contains the {\thar} spectra for all four detectors, with the {\thar}. There are roughly 50 {\thar} lines that fall across the four detectors for the wavelength setting here, although most of them are quite faint, With the scaling shown in these images only around 10 of the brightest lines can be just detected by eye.
 
 The purpose of these fibers is to cross-correlate each with a {\thar} template, obtaining a wavelength solution across the detector. Scratches on the detector can cause a decrease in the correlation between {\thar} lines and the spectral template in ESO pipeline. This can be resolved by first applying a pixel mask (although we did not attempt it). At the top and bottom there are also 2 meteorological fibers that can not be used for wavelength calibration as they pass through a different optical pathway.  The brightest one at the bottom seems to have strong features that overwhelm or washout many columns in detector 2--4 (vertical stripes). \unfinished{Check if it is mentioned how these get corrected/ if the impact the wavelength solution.}
 In the end we did not use the {\thar} calibrations, this is discussed in \sref{subsec:wavecalib}. They have still been included here for completeness.
@@ -121,18 +121,18 @@ In the end we did not use the {\thar} calibrations, this is discussed in \sref{s
          \includegraphics[width=.45\hsize]{./figures/reduction/Thar_1.png} & \includegraphics[width=.45\hsize]{./figures/reduction/Thar_2.png} \\
          \includegraphics[width=.45\hsize]{./figures/reduction/Thar_3.png} & \includegraphics[width=.45\hsize]{./figures/reduction/Thar_4.png} \\
     \end{tabular}
-   
+
     \caption{An example Th-Ar calibration lamp frame for each detector. These have not been corrected from the dark current.}
     \label{fig:caliblamps}
 \end{figure}
 
-\todo{Note: Useful information about MIR reduction in the 
+\todo{Note: Useful information about MIR reduction in the
 \href{https://www.eso.org/sci/facilities/paranal/instruments/visir/doc/VLT-MAN-ESO-14300-3514_2018-02-01.pdf}{VISIR manual}}
 
 \subsection{Extraction}
 \label{subsec:extraction}
 The process of extraction is basically turning the two-dimensional image of the spectrum into a one-dimensional representation of the spectra. This is done by summing the photon counts along the spatial direction, for each column in the dispersion direction in a small window around the spectrum. To do this one needs to identify the position of the spectra across the detector,  refereed to as {order tracing}. In our case there is only one spectral order present but in a cross-dispersed configuration there can/will be many orders. A rectangular box, with a specified aperture width, is centered along on the traced spectrum.
-   
+
 There are two types of extraction commonly used. The \emph{rectangular} extraction performs a simple aperture sum in the spatial direction, counting all photon counts that fall within the aperture. An \emph{optimal} extraction~\citep{horne_optimal_1986} also includes variance weighting to reduce the impact of the noise and deviant pixels on the spectral extraction. A spatial profile is fitted to the spectra and the pixels weighted such that the those furthest away from the center have less impact on the sum. Optimal extraction can increase the effective exposure time by up to 1.69 at \(3 \sigma\)\citep{horne_optimal_1986}. Both rectangular and optimal extraction methods are available from both the ESO CRIRES and DRACS pipeline we compare below.
 
 \section{Pipeline Comparison}
@@ -159,21 +159,21 @@ ESO has a new reduction ``workflow'' called ESO Reflex\citep{freudling_automated
 
 \subsection{DRACS}
 \label{subsec:dracs}
-DRACS (Data Reduction Algorithm for CRIRES Spectra) is a custom reduction pipeline~\citep{figueira_radial_2010} written in IRAF's CL\footnote{IRAF is distributed by the National Optical Astronomy Observatories, which are operated by the Association of Universities for Research in Astronomy, {Inc.}, under cooperative agreement with the National Science Foundation.}~\citep{tody_iraf_1993}. It provides for automated dark and nonlinearity corrections (using the nonlinearity coefficients provided by ESO), as well as the flagging and replacement of bad pixels. The images are corrected from sensitivity variations by dividing by a flat-field which was corrected from the blaze function effect. The nodding pairs are mutually subtracted and the order tracing is accomplished by fitting cubic splines. Order tracing allows the extraction algorithm to follow the shape for the dispersion across the detector \unfinished{is footnote  correct "instruments optics"}\footnote{The spectra do not fall perfectly horizontally on the detector and usually contain some curvature due to the instruments optics.}. 
+DRACS (Data Reduction Algorithm for CRIRES Spectra) is a custom reduction pipeline~\citep{figueira_radial_2010} written in IRAF's CL\footnote{IRAF is distributed by the National Optical Astronomy Observatories, which are operated by the Association of Universities for Research in Astronomy, {Inc.}, under cooperative agreement with the National Science Foundation.}~\citep{tody_iraf_1993}. It provides for automated dark and nonlinearity corrections (using the nonlinearity coefficients provided by ESO), as well as the flagging and replacement of bad pixels. The images are corrected from sensitivity variations by dividing by a flat-field which was corrected from the blaze function effect. The nodding pairs are mutually subtracted and the order tracing is accomplished by fitting cubic splines. Order tracing allows the extraction algorithm to follow the shape for the dispersion across the detector \unfinished{is footnote  correct "instruments optics"}\footnote{The spectra do not fall perfectly horizontally on the detector and usually contain some curvature due to the instruments optics.}.
 By default the pipeline returns the \emph{optimal }extraction~\citep{horne_optimal_1986}, but the \emph{rectangular} extraction can also be obtained. (see \sref{subsubsec:reductionartefacts} for more details).
 The extracted spectra from each nod is continuum normalized by dividing by a polynomial fitted to the continuum, with the polynomial degree selected for each spectrum and detector. Finally, the normalized nod-cycle spectra are averaged together to give a single reduced spectrum, normalized to 1.
 
-The DRACS pipeline was originally developed to work with H-band spectra. Some of the parameters were adjusted in an attempt to achieve a better reduction on the K-band spectra analysed here. This was the tracing and normalization polynomial functions and their specific order on the detector. There was also no reduction preformed for detector number 3 (as this was not used in previous works with this pipeline.) This was extended to reduce detector 3 also. 
+The DRACS pipeline was originally developed to work with H-band spectra. Some of the parameters were adjusted in an attempt to achieve a better reduction on the K-band spectra analysed here. This was the tracing and normalization polynomial functions and their specific order on the detector. There was also no reduction preformed for detector number 3 (as this was not used in previous works with this pipeline.) This was extended to reduce detector 3 also.
 
-When using the DRACS pipeline on a new target the tedious part is initially creating the lists of files identifying which files are the dark, flat, and the science frames\footnote{The GASGANO GUI was helpful to help identify the distinction of each fits file for a beginner}. After the lists are created the reduction pipeline can be run and re-run easily, making the effort worth it. 
+When using the DRACS pipeline on a new target the tedious part is initially creating the lists of files identifying which files are the dark, flat, and the science frames\footnote{The GASGANO GUI was helpful to help identify the distinction of each fits file for a beginner}. After the lists are created the reduction pipeline can be run and re-run easily, making the effort worth it.
 
-The first time though there are a number of manual checks/decisions, (e.g. confirming the order tracing position, and fit is good) but DRACS remembers them in a database. A second or third time though requires less manual input and is quicker. This was useful to experiment with and iterate the reduction parameters of the pipeline. When changing the parameters which affect the order tracing, the  database with the order tracing results was deleted so that it would not influence the new fits. These parameters were therefore slower to iterate on. 
+The first time though there are a number of manual checks/decisions, (e.g. confirming the order tracing position, and fit is good) but DRACS remembers them in a database. A second or third time though requires less manual input and is quicker. This was useful to experiment with and iterate the reduction parameters of the pipeline. When changing the parameters which affect the order tracing, the  database with the order tracing results was deleted so that it would not influence the new fits. These parameters were therefore slower to iterate on.
 
 This semi-autonomous nature of the DRACS pipeline mean that all the spectra can be reduced in a consistent way and relatively quickly, and did not require manual spectra selection for each individual recipe as was done with the ESO pipeline.
 
 There are a couple of drawbacks with using the DRACS pipeline. The first is the lack of documentation on how to use it. This required looking trough the source code to find which functions and scripts do which part of the extraction. Under the hood, DRACS uses available IRAF packages which have documentation available online\footnote{Such as at the \href{Space Telescope Science Institute}{http://stsdas.stsci.edu/gethelp/pkgindex\_noao.html}.}. Searching though this documentation was difficult but required to understand how to use and modify DRACS.
 
-The second drawback is that it did not preform wavelength calibration which is done with the ESO pipeline. This means an external wavelength calibration is the only option, see \ref{subsec:wavecalib}. The last drawback is the discovery of artefacts present in the nod spectra which we discuss in detail in 
+The second drawback is that it did not preform wavelength calibration which is done with the ESO pipeline. This means an external wavelength calibration is the only option, see \ref{subsec:wavecalib}. The last drawback is the discovery of artefacts present in the nod spectra which we discuss in detail in
 \sref{subsubsec:reductionartefacts}.
 
 \subsection{Pipeline comparison and selection}
@@ -189,13 +189,13 @@ The second drawback is that it did not preform wavelength calibration which is d
     \label{fig:reduction-comparison}
 \end{figure}
 
-Both reduction methods were applied to the same CRIRES spectra to check for consistency and quality of both methods. Two examples of the extraction for HD30501-1 (left) and HD202206-1 (right) from both pipelines is provided in \fref{fig:reduction-comparison}. The blue lines are the extracted spectra from the ESO pipeline, the orange dashed lines are the optimal extraction from the DRACS pipeline, while the green dash-dotted line is the DRACS extraction after dealing with artefacts in the optimal extraction addressed in \sref{subsubsec:reductionartefacts}. 
+Both reduction methods were applied to the same CRIRES spectra to check for consistency and quality of both methods. Two examples of the extraction for HD30501-1 (left) and HD202206-1 (right) from both pipelines is provided in \fref{fig:reduction-comparison}. The blue lines are the extracted spectra from the ESO pipeline, the orange dashed lines are the optimal extraction from the DRACS pipeline, while the green dash-dotted line is the DRACS extraction after dealing with artefacts in the optimal extraction addressed in \sref{subsubsec:reductionartefacts}.
 
-One of the important things we checked was the line depth of the spectral to ensure that the pipelines were consistent. The ESO pipeline has noticeable issues with many spikes still present in the spectra, likely caused by bad pixels or cosmic rays that are not correctly removed. There are also large spikes at either end of the detector in the ESO reduced spectra.  
+One of the important things we checked was the line depth of the spectral to ensure that the pipelines were consistent. The ESO pipeline has noticeable issues with many spikes still present in the spectra, likely caused by bad pixels or cosmic rays that are not correctly removed. There are also large spikes at either end of the detector in the ESO reduced spectra.
 
 At this stage we chose to use the DRACS results, as we considered that the DRACS pipeline produced better extracted spectra than the ESO pipeline. This decision was based on the quality of the reduced spectra, as well as the relative ease of use of the pipeline, being semi-automated once set up. This was also chosen so that a software to perform the bad pixel removal on the ESO reduced spectra didn't have to be created\footnote{See \sref{subsubsec:reductionartefacts}!}. The fact that the ESO pipeline provided a wavelength solution for the spectra did not factor into the decision as it was considered to unreliable due to known issues with CRIRES wavelength calibration so a new wavelength calibration would be needed anyway.
 
-The spectra used here in the comparison are the combination of the 8 nod spectra. Later it was discovered, that individual nod spectra from the DRACS pipeline had issues, see \sref{subsubsec:reductionartefacts}. These are difficult to notice on this scale as they each constitute 1/8 th of the information. As an example of this is seen in detector \#2 of HD202206-1 in \fref{fig:reduction-comparison}. An artefact from a single nod spectra, which is shown in Figure \ref{fig:resizednods}, is barely visible in the pipeline comparison here as a slight depression of the orange dashed line between 2132 and 2134~nm. We explain the identification of these artefacts and how we deal with them (green lines) in the following section.
+The spectra used here in the comparison are the combination of the 8 nod spectra. Later it was discovered, that individual nod spectra from the DRACS pipeline had issues, see \sref{subsubsec:reductionartefacts}. These are difficult to notice on this scale as they each constitute 1/8 th of the information. As an example of this is seen in detector \#2 of HD202206-1 in \fref{fig:reduction-comparison}. An artefact from a single nod spectra, which is shown in Figure \ref{fig:resizednods}, is barely visible in the pipeline comparison here as a slight depression of the orange dashed line between 2132 and 2134\nm{}. We explain the identification of these artefacts and how we deal with them (green lines) in the following section.
 
 \subsubsection{Reduction issues}
 \label{subsubsec:reductionartefacts}
@@ -203,11 +203,11 @@ The spectra used here in the comparison are the combination of the 8 nod spectra
 At a later date some large artefacts in the DRACS extracted spectra were identified. An investigation into the cause of these artefacts was undertaken to identify their source and remove them from the spectra. Separating out the individual nod spectra side-by-side revealed that the artefacts were occurring in only a few of the individual nod spectra from the optimal extraction and that they were not present in the rectangular extracted nods. Four examples are shown in \textbf{Figures ..blah and blah.} In each panel the top sub-plot contains the optimal extracted spectra, while the middle sub-plot contains the rectangularly extracted spectra.
 
 
-The occurrence of artefacts in the observations did not appear to have a pattern with nod position or detector. They do occur with large spikes in the rectangular extractions. There are many other spikes in the rectangular extractions that do not create the artefacts observed. 
+The occurrence of artefacts in the observations did not appear to have a pattern with nod position or detector. They do occur with large spikes in the rectangular extractions. There are many other spikes in the rectangular extractions that do not create the artefacts observed.
 
-It is clear that the artefacts in the optimally extracted nods correspond to large pixel spikes present in the rectangular extracted nod. As mentioned in \ref{subsub} the \emph{optimal} extraction includes variance weighting across the spatial direction. It appears that the presence of cosmic rays or bad pixels heavily affected the variance weighting procedure during the \emph{optimal} extraction. It is also observed that the artefacts created are not localized to the region around the bad pixel region but affect a extended spectral range (100's of pixels in some cases). 
+It is clear that the artefacts in the optimally extracted nods correspond to large pixel spikes present in the rectangular extracted nod. As mentioned in \ref{subsub} the \emph{optimal} extraction includes variance weighting across the spatial direction. It appears that the presence of cosmic rays or bad pixels heavily affected the variance weighting procedure during the \emph{optimal} extraction. It is also observed that the artefacts created are not localized to the region around the bad pixel region but affect a extended spectral range (100's of pixels in some cases).
 
-Numerous parameters in the DRACS pipeline were experimented with to try and remove the observed artefacts with limited success. For instance, no complete removal of the artefacts was found by manually changing the \(\sigma\) rejection limits (between \(1-5 sigma\)) and increasing the tracing width parameter of IRAFs DOSLIT\footnote{Documentation for DOSLIT can be found here \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}} recipe. Although it did slightly affect the shape of the artefacts. 
+Numerous parameters in the DRACS pipeline were experimented with to try and remove the observed artefacts with limited success. For instance, no complete removal of the artefacts was found by manually changing the \(\sigma\) rejection limits (between \(1-5 sigma\)) and increasing the tracing width parameter of IRAFs DOSLIT\footnote{Documentation for DOSLIT can be found here \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}} recipe. Although it did slightly affect the shape of the artefacts.
 During the creation of this document we found that the enabling automated aperture resizing\footnote{Using \href{apresize}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?apresize.hlp}} by setting the ``resize'' parameter to yes does manage to remove one of the large artefacts in the observation of {HD202206-1}. We show the effect of this in \fref{fig:resizednods} with the optimal and rectangular extraction from the DRACS pipeline with only the \emph{resize} parameter changed. The artefact in the sixth nod is removed but the artefact in the seventh nod is still present.
 \begin{figure}
     \centering
@@ -238,7 +238,7 @@ There is a clear large extended artefact on the 7th nod of the top panel is crea
     \label{fig:badpixelreplacement}
 \end{figure}
 
-The fraction nod spectra from all detectors and observations affected by artefacts was 14 percent. These are detailed in \tref{tab:nod_replacement}. More examples of observations that contain artefacts are given in \aref{append:artefacts}. Selected to show their range of variation. 
+The fraction nod spectra from all detectors and observations affected by artefacts was 14 percent. These are detailed in \tref{tab:nod_replacement}. More examples of observations that contain artefacts are given in \aref{append:artefacts}. Selected to show their range of variation.
 
 
 The continuum normalization is performed in IRAF while the mixed combination is carried out in \emph{Python} along with the post reduction procedures detailed below. This pipeline was chosen over the ESO CRIRES pipeline because it seemed relatively simpler to use, being semi-automated, and appeared to have less bad pixel/cosmic ray artefacts in the resulting spectra. In hindsight the artefacts that appeared in the DRACS reduction took longer to investigate, a create a solution. This involved a script to remove the bad-pixels that created the artefacts, something we tried to avoid by using the DRACS pipeline instead of the ESO pipeline.
@@ -253,7 +253,7 @@ Note for HD202206 the 1st two nods have a much higher extracted flux. I am still
 
 
 Much time and effort when into trying to extract the spectra as best as possible, without artefacts to have the best chance at obtaining high quality scientific results of the faint features we were trying to detect.
-Due to time constraints the replacement of nods with artefacts (indicated in \ref{tab:nod_replacement}) with their rectangular counterparts was performed.  
+Due to time constraints the replacement of nods with artefacts (indicated in \ref{tab:nod_replacement}) with their rectangular counterparts was performed.
 
 \subsection{Reduction experience:}
 \label{subsec:experience}
@@ -282,7 +282,7 @@ These wavelength calibration issues were experienced when using the ESO CRIRES p
 At the wavelength of 2.1-2.17~\si{\micro\meter} there are roughly XXX {\thar} lines across all four detectors, as seen in \fref{fig:caliblamps}.
 The DRACS pipeline does not use the {\thar} lamp files for wavelength calibration and leaves this as a post reduction step.
 
-A common method for wavelength calibration that does not rely on Th-Ar lamps of CRIRES involves using the telluric lines present to provide the wavelength solution ~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}{\red{} \citep{ piskorz_evidence_2016}}. This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere. 
+A common method for wavelength calibration that does not rely on Th-Ar lamps of CRIRES involves using the telluric lines present to provide the wavelength solution ~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}{\red{} \citep{ piskorz_evidence_2016}}. This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere.
 
 We follow this method using the telluric absorption lines present in each observation as the wavelength reference. Instead of directly using the HITRAN database~\citep{rothman_hitran2012_2013} for the telluric line positions \citet[such as in ][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}), we use the TAPAS atmospheric transmission models~\citep{bertaux_tapas_2014} obtained for each observation. The TAPAS models in turns use the HITRAN database but includes atmospheric profiles and physical meteorological measurements to model the telluric absorption strength.
 
@@ -300,7 +300,7 @@ G(\lambda, A, \mu, \sigma) = {A \textrm{e}}^{{-(\lambda-\mu)}^{2}/2\sigma^{2}}
 
 and \(A \), \(\mu \), \(\sigma \) are the amplitude, central wavelength, and standard deviation for each line respectively. Telluric lines actually have a Voigt profile\footnote{A Voigt profile is a convolution of two broadening profiles, a Gaussian and a Lorentzian. Gaussian broadening results from thermal Doppler broadening, and instrumental broadening while the Lorentzian broadening comes from molecular vibrational bands\citep{meier_art_2005}.} but at this resolution the Gaussian profile dominates, and as such the Gaussian assumption is a sufficient to fit the line centers.
 
-The observed spectra contain two different spectral components: stellar and telluric lines overlapped. This overlapping is, in fact, a multiplication of the stellar and telluric spectra. The observed spectra are fitted with two Gaussian-sum models multiplied together. The identification between telluric and stellar lines is performed manually for each spectra, using the telluric model as the reference. Care was taken to fit the correct components to blended spectra where possible to improved the number telluric lines use for calibration. The fits were inspected to ensure that they reasonably matched the line positions. There was difficultly in identifying the shallow lines with depths below 1-2\%. But these were needed in some spectra to obtain a suitable fit. 
+The observed spectra contain two different spectral components: stellar and telluric lines overlapped. This overlapping is, in fact, a multiplication of the stellar and telluric spectra. The observed spectra are fitted with two Gaussian-sum models multiplied together. The identification between telluric and stellar lines is performed manually for each spectra, using the telluric model as the reference. Care was taken to fit the correct components to blended spectra where possible to improved the number telluric lines use for calibration. The fits were inspected to ensure that they reasonably matched the line positions. There was difficultly in identifying the shallow lines with depths below 1-2\%. But these were needed in some spectra to obtain a suitable fit.
 
 \begin{align}
 I_{obs}(x) &= I_{tell}(x) \times I_{space}(x) \nonumber \\
@@ -313,7 +313,7 @@ where \(x \) is the pixel coordinates of the extracted spectra.
 
 After fitting \(I_obs(x)\) to the observed spectrum and \(T(\lambda)\) to the telluric model the wavelength solution was obtained by fitting a second order polynomial to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\} \) from the telluric components of the observed spectra and telluric model respectively. A second order polynomial has been shown to be sufficient for higher precision RV studies~\citep[e.g.][]{bean_groundbased_2010, figueira_radial_2010}. This polynomial is then used to map the whole spectrum from pixels into wavelength. Higher 3$^{\textrm{rd}}$ and 4$^{\textrm{th}}$ order polynomials were attempted but had limited success due to the limit number and uneven spacing of telluric lines in our narrow wavelength range, especially on detector \#2. There were often large deviations due to the uneven spread of telluric lines, especially at the ends.
 
-Other work has used more terms e.g 4th order e.g \citep{piskorz_evidence_2016} \textbf{others}, but they have more lines and more wavelength span. 
+Other work has used more terms e.g 4th order e.g \citep{piskorz_evidence_2016} \textbf{others}, but they have more lines and more wavelength span.
 \missingfigure{Example of coordinates and the fit. Can I calculate some errors on the polynomial coord fit.}
 
 Much like with the {\thar} calibrations, this technique performs better when there is sufficient coverage of telluric lines on the detectors. For the wavelength setting of these observations, the spectra from the second detector (top right panel of \fref{fig:detector4allspectra}) only have two large telluric lines present with several small lines, with relative depths smaller than 1\%, which are often difficult to accurately identify. This deteriorated the calibration stability for the second detector. With the lack of telluric contamination and stellar lines on the second detector it may have been ideal for the detection of a faint secondary spectra; unfortunately the wavelength calibration quality varies in an inverse way.
@@ -322,8 +322,8 @@ Much like with the {\thar} calibrations, this technique performs better when the
 We note that there are many variations on this wavelength-calibration technique including those integrated within programs such as TelFit~\citet{gullikson_correcting_2014}, and ESO's Molecfit~\citet{smette_molecfit_2015}, that perform telluric correction and re-calibrate the wavelength axis themselves at the same time.
 
 
-A brief attempt of wavelength calibration using an iterative method outlined in \cite{brogi_rotation_2016}. This involved generating set of wavelength solutions for the observed spectrum, cross-correlating each one against the telluric model. The solutions for the next iteration are obtained by refining the parameters from the solution with the highest correlation. 
-The method worked well for \citet{brogi_rotation_2016} as they included templates for both star and telluric lines were observing in a wavelength domain in which there is a large number of strong and uniform stellar CO lines across the detector. 
+A brief attempt of wavelength calibration using an iterative method outlined in \cite{brogi_rotation_2016}. This involved generating set of wavelength solutions for the observed spectrum, cross-correlating each one against the telluric model. The solutions for the next iteration are obtained by refining the parameters from the solution with the highest correlation.
+The method worked well for \citet{brogi_rotation_2016} as they included templates for both star and telluric lines were observing in a wavelength domain in which there is a large number of strong and uniform stellar CO lines across the detector.
 Our experiments with this method were not successful as we did not include a stellar mask or model. Without adding any stellar masking the telluric lines would strongly correlate to the stellar lines present, especially were there was blended lines. The lead to incorrect wavelength solutions This method was abandoned, but may have been possible if a stellar mask was used.
 
 \missingfigure{Would a table of polynomial wavelength solutions along with errors be any use?}
@@ -339,7 +339,7 @@ Our experiments with this method were not successful as we did not include a ste
 
 In the future it may be plausible to combine all of the methods above, including the Th-Ar calibration lines, telluric models, and stellar templates. Also applying a fit to the 4 detectors so that neighboring detectors can help with the fit when low lines are used.
 
-We should have used the RV of the host star, and fitted against host lines also. This is what is done in other work. It is recommended to attempt one of these other solutions first before trying to roll-your-own. 
+We should have used the RV of the host star, and fitted against host lines also. This is what is done in other work. It is recommended to attempt one of these other solutions first before trying to roll-your-own.
 
 \begin{figure}
     \centering
@@ -365,7 +365,7 @@ A number of methods are available to correct for the telluric lines, telluric re
 
 In this work we use telluric models without fitting, using the TAPAS spectra.
 
-These observations were first taken in an atmospheric window of the K-band in order to reduce the absorption introduced by the atmosphere~\citep{barnes_hd_2008}. 
+These observations were first taken in an atmospheric window of the K-band in order to reduce the absorption introduced by the atmosphere~\citep{barnes_hd_2008}.
 \missingfigure{The telluric spectrum around 2 micron showing the 2.1 micron window of low telluric absorption} To correct for the remaining telluric line contamination the spectra were divided by the TAPAS\citep{bertaux_tapas_2014} atmospheric transmission models for each observation. Synthetic telluric models were used to avoid the observing overhead necessary to perform telluric standard star exposures~\citep{vacca_method_2003}, and they have been demonstrated to be superior in the quality of the correction relative to the telluric standard approach~\citep[e.g.][]{cotton_atmospheric_2014}.
 
 Before the correction, the depth of the telluric lines were re-scaled to match the airmass of the observation using the relation \(\rm T = T^{\beta} \), where \(\rm T\) is the telluric spectrum and \(\beta \) is the airmass ratio between the observation and model. This changed the depth of most absorption lines to match the observations, but does not correctly scale the deeper \(\rm H_{2}O \) lines. The scaled telluric model is interpolated to the wavelengths of the observed spectrum and then used to correct the observed spectra through division, leaving behind a telluric corrected spectra. An example of a telluric corrected spectra is shown in the middle panel of \fref{fig:spectral_example}, with the light blue shading indicating where the deeper telluric lines were.
@@ -389,7 +389,7 @@ We utilized the TAPAS (Transmissions of the AtmosPhere for AStronomical data) we
 
 The Arletty atmospheric profiles have a 6 hour resolution, so there may be a slight difference between the actual profile at the time of observation.
 
-We use the mid-observation time to retrieve transmission models for each observation, with the Arletty atmospheric profiles\footnote{Nearest of the 6 hourly profiles} and vacuum wavelengths selected. The telluric models were retrieved without any barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument. 
+We use the mid-observation time to retrieve transmission models for each observation, with the Arletty atmospheric profiles\footnote{Nearest of the 6 hourly profiles} and vacuum wavelengths selected. The telluric models were retrieved without any barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument.
 
 TAPAS allows for the choice of atmospheric constituents included in the model spectra. We obtained one model with all available species present, convolved to a resolution of \(\rm R=50\,000 \), and another two models without an instrumental profile convolution applied. For these two extra models, one contained only the transmission spectra of \(\rm H_{2}O \) while the other contained all other constituents except \(\rm H_{2}O \). This was to explore a known issue with the depth of \(\rm H_{2}O \) absorption lines in the TAPAS~\citet{bertaux_tapas_2014}. \sref{subsec:telluric_correction}.
 
@@ -406,7 +406,7 @@ Requiring data from Tapas
 
 Issues regarding TAPAS - 1 hour offsets!
 Fails when trying to ask for about more than 5 at a time.
-Automated script requires unobtainable knowledge about the state of the database, the next query in the sequence. 
+Automated script requires unobtainable knowledge about the state of the database, the next query in the sequence.
 
 
 \subsubsection{Vacuum wavelengths}
@@ -414,11 +414,11 @@ Automated script requires unobtainable knowledge about the state of the database
 Wavelength transformation---reasons we didn't
 
 Vacuum wavelengths are requested and used in this work.
-We chose to stay in vacuum wavelengths.  
+We chose to stay in vacuum wavelengths.
 
 correction comes from refractive index of air which changes with pressure and temperature of air.
 
-There are a number of conversions for converting between atmospheric wavelengths and vacuum wavelengths for optical and NIR spectra, the most recent one --- which includes the \nir only valid up to 1.7 microns...    
+There are a number of conversions for converting between atmospheric wavelengths and vacuum wavelengths for optical and NIR spectra, the most recent one --- which includes the \nir only valid up to 1.7 microns...
 Therefore we did not use it. \unfinished{Fix up this}
 
 Does having the detector in a vacuum chamber affect this/mean it vacuum wavelengths already???
@@ -431,18 +431,18 @@ Citations:
 
 
 \subsubsection{Other uses}
-The telluric spectra from TAPAS can not only be used for correcting individual spectra but are also easily used to create a wavelength mask of deep telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use TAPAS spectra to mask out atmospheric lines deeper than 2\% for the computation of photon noise precision of radial velocity measurements. 
+The telluric spectra from TAPAS can not only be used for correcting individual spectra but are also easily used to create a wavelength mask of deep telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use TAPAS spectra to mask out atmospheric lines deeper than 2\% for the computation of photon noise precision of radial velocity measurements.
 
 
 \subsection{Wavelength masking}
 Throughout the course of this work we found regions of the spectra found several regions from which we cannot reliably extract information.
-We apply masks to these areas to remove them from the spectra. We collate the main reasons for the wavelength masking below 
+We apply masks to these areas to remove them from the spectra. We collate the main reasons for the wavelength masking below
 
-Firstly, regions near the edges of each detector where the wavelength solution is extrapolated outside of the calibrating telluric lines are removed, reducing the effective size of each detector by about \(10\%\) or \(\sim100\) pixels. 
+Firstly, regions near the edges of each detector where the wavelength solution is extrapolated outside of the calibrating telluric lines are removed, reducing the effective size of each detector by about \(10\%\) or \(\sim100\) pixels.
 
-Secondly, we mask out any remaining artefacts present in the spectra and the centers of deep telluric lines where telluric correction was not corrected properly, sometimes resulting in ``emission-like'' peaks in the corrected spectrum. These factors combined result in masking out around a further 10\% of the observed spectra. 
+Secondly, we mask out any remaining artefacts present in the spectra and the centers of deep telluric lines where telluric correction was not corrected properly, sometimes resulting in ``emission-like'' peaks in the corrected spectrum. These factors combined result in masking out around a further 10\% of the observed spectra.
 
-In \sref{sec:results} we also apply a further wavelength restriction to mask out regions where there is a large mismatch between the observed spectrum and the closest synthetic spectra to the host. This significantly restricts the wavelength span utilized for that purpose to around only 43\% and the masked regions are visible in \fref{fig:visualinspection-hd2118471}. 
+In \sref{sec:results} we also apply a further wavelength restriction to mask out regions where there is a large mismatch between the observed spectrum and the closest synthetic spectra to the host. This significantly restricts the wavelength span utilized for that purpose to around only 43\% and the masked regions are visible in \fref{fig:visualinspection-hd2118471}.
 
 
 \unfinished{ADD non/H20 fitting corrections.}

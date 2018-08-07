@@ -13,11 +13,11 @@
 Because the differential subtraction technique was unsuccessful, not being separable in time. A second method was attempted to try and extract something useful out of the spectra.
 
 We develop this new method, preform some tests and then show the results obtained. There were numerous issues encountered and unsuccessful results.
- 
-Contrast our result to other works.  More phases, longer integration time, higher SNR. 
+
+Contrast our result to other works.  More phases, longer integration time, higher SNR.
 
 
- 
+
 \section{Main Section 1}
 Model fitting two components.
 
@@ -53,16 +53,16 @@ Model fitting two components.
 The BT-Settl (allard et al 2009, 2010 2011 2012 baraffe2015) models, a different flavor of Phoenix models, are more suitable for BD atmospheres as they  include the formation of dust/cloud and hydro-dynamical modeling atmospheric mixing/settling for atmospheres with \(T_{eff}\) below \(\sim2600K\). These are valid across the regime from stars to BDs as cool as 400K. The PHOENIX-ACES models completely avoid the modeling of clouds and settling by the lower temperature restriction of 2300K.
 
 The PHOENIX-ACES models dust in equilibrium with the gas phase but ignores the dust opacity and does not include any settling. It does however include a new Astrophysical Chemical Equilibrium Solver (ACES,
-Barman 2012); adds parameterizations for the mass and mixing-length; and uses the~\cite{asplund_chemical_2009} solar abundances. All these modifications together make it difficult to quantify the spectral changes from each individual change. 
+Barman 2012); adds parameterizations for the mass and mixing-length; and uses the~\cite{asplund_chemical_2009} solar abundances. All these modifications together make it difficult to quantify the spectral changes from each individual change.
 
 The two of the recent "flavors" are the BT-Settl~\citep{allard_model_2010, baraffe_new_2015} and the PHOENIX-ACES~\citep{husser_new_2013} which use versions 15.5 and 16 of the PHOENIX code respectively.
 
-Even though the BT-SETTL models are more suited for the entire range of BD temperatures, we restrict ourselves to the PHOENIX-ACES synthetic spectra for a number of reasons. The ease of use and availability from the spectral library webpage \footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}. The ease of use using the Starfish tools, a wide parameter range and fairly consistent parameter grid span, and the effective radius of the modeled star provided in the fits header. 
+Even though the BT-SETTL models are more suited for the entire range of BD temperatures, we restrict ourselves to the PHOENIX-ACES synthetic spectra for a number of reasons. The ease of use and availability from the spectral library webpage \footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}. The ease of use using the Starfish tools, a wide parameter range and fairly consistent parameter grid span, and the effective radius of the modeled star provided in the fits header.
 
-These were not used in this instance for a couple of reasons, the ineffectiveness to produce a reliable detection on the observations using PHOENIX ACES spectra for our largest companions, which fall well within the PHOENIX ACES temperature limit. 
+These were not used in this instance for a couple of reasons, the ineffectiveness to produce a reliable detection on the observations using PHOENIX ACES spectra for our largest companions, which fall well within the PHOENIX ACES temperature limit.
 
 The PHOENIX-ACES models also provide dimensions of effective radius of the star, in the header. This is required for the method presented here as we need to scale the spectra by their respective surface area when combining together.
-This PHOENIX-ACES lower temperature limit restricts its use to only the higher mass BD companions in our sample (\(~>0.08 M_sol\) at 5Gyr from the~\cite{baraffe_evolutionary_2003} models). 
+This PHOENIX-ACES lower temperature limit restricts its use to only the higher mass BD companions in our sample (\(~>0.08 M_sol\) at 5Gyr from the~\cite{baraffe_evolutionary_2003} models).
 
 
 The most recent BT-SETTL spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/BT-Settl/CIFIST2011_2015/}}~\cite{baraffe_new_2015} is only available for 1200-7000K logg = 2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer Caffau et al. (2011) solar abundances.
@@ -77,7 +77,7 @@ Both sets of synthetic models do not handle the affects of radiation from a neig
 
 
 
-PHOENIX-ACES models dust in equilibrium with gas phase but ignores the dust opacity and does not include any mixing/settling in cooler atmospheres. This is avoided by having a minimum library \(T_{eff}\) 2300K. This unfortunately limits the use of this library for this technique to the larger mass companions in our sample. For example a \(T_{eff}=2300K\) corresponds to a BD with M(\(\sim0.08 M_{\odot}\) at 5 Gyr from the~\cite{baraffe_evolutionary_2003} evolutionary models. 
+PHOENIX-ACES models dust in equilibrium with gas phase but ignores the dust opacity and does not include any mixing/settling in cooler atmospheres. This is avoided by having a minimum library \(T_{eff}\) 2300K. This unfortunately limits the use of this library for this technique to the larger mass companions in our sample. For example a \(T_{eff}=2300K\) corresponds to a BD with M(\(\sim0.08 M_{\odot}\) at 5 Gyr from the~\cite{baraffe_evolutionary_2003} evolutionary models.
 
 
 Even though the BT-SETTL models are more suited for the entire range of BD temperatures down to 400K, through hydrodynamically modeling the mixing and settling of dust/clouds, we restrict ourselves to the PHOENIX-ACES synthetic spectra in this work for a number of reasons. The ease of use and availability from the spectral library webpage \footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}. The effective radius of the modelled star are provided in the fits header and required for the calculation of the flux ratio.
@@ -88,7 +88,7 @@ The most recent BT-SETTL spectral library designated CIFIST2011\_2015\footnote{\
 
 The BT-Settl grids were harder to obtain and use.
 
-As we do not recover suitable results for HD211847 which is supposed to have a temperature around 3400K we suspect that it is not possible for lower temperature either so don't try to extend to the BT-Settl models. 
+As we do not recover suitable results for HD211847 which is supposed to have a temperature around 3400K we suspect that it is not possible for lower temperature either so don't try to extend to the BT-Settl models.
 
 
 \textbf{
@@ -116,11 +116,11 @@ Another example is \object{HD 162020}, which has the lowest orbital period (8.4 
 
 
 \subsubsection {Wavelength range}
-The wavelength choice for the spectra analysed here, observed with the intention to apply the spectral differential technique, was selected due to the location of the K-band telluric absorption window. This wavelength range, with a narrow wavelength range \(\sim50\)~nm set by the CRIRES instrument. This wavelength range is likely not the best choice for the proposed study. may contribute to the poor results from the companion recovery technique. 
+The wavelength choice for the spectra analysed here, observed with the intention to apply the spectral differential technique, was selected due to the location of the K-band telluric absorption window. This wavelength range, with a narrow wavelength range \(\sim50\)\nm{} set by the CRIRES instrument. This wavelength range is likely not the best choice for the proposed study. may contribute to the poor results from the companion recovery technique.
 
-For instance~\citet{passegger_fundamental_2016} used four different spectral regions for the precise parameter determination of M-dwarfs. Specific lines from the different wavelength regions are affected differently by the model parameters: \(T_{\textrm{eff}}\), logg, and [Fe/H]; and are used to break degeneracies in the PHOENIX-ACES parameter space. 
+For instance~\citet{passegger_fundamental_2016} used four different spectral regions for the precise parameter determination of M-dwarfs. Specific lines from the different wavelength regions are affected differently by the model parameters: \(T_{\textrm{eff}}\), logg, and [Fe/H]; and are used to break degeneracies in the PHOENIX-ACES parameter space.
 
-Changing the wavelength coverage to regions with lines sensitive to stellar parameters for both stars and BDs, as well as using a larger wavelength range that will be achieved by CRIRES+, may help to improve the recovery results of the companion recovery technique presented here. We note that if the wavelength range is increased by taking separate observations at different wavelengths, not covered by a single exposure, then changes in the RV of both components between the different wavelength observations may need to be accounted for. 
+Changing the wavelength coverage to regions with lines sensitive to stellar parameters for both stars and BDs, as well as using a larger wavelength range that will be achieved by CRIRES+, may help to improve the recovery results of the companion recovery technique presented here. We note that if the wavelength range is increased by taking separate observations at different wavelengths, not covered by a single exposure, then changes in the RV of both components between the different wavelength observations may need to be accounted for.
 
 
 
