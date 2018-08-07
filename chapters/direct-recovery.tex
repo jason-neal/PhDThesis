@@ -32,6 +32,117 @@ Why this technique and not others.
 Find direct imaging limitations ---
 
 
+
+
+
+\section{Differential subtraction (new)}
+\label{sec:spec_diff}
+{\red This is the summary in the paper}
+The observations were gathered having in mind the application of a differential subtraction method~\citep[e.g.][]{ferluga_separating_1997, kostogryz_spectral_2013} to detect the spectra of the faint BD companions. In short, we Doppler shift each observation to the rest frame of the host star and then mutually subtract the spectra from pairs of observations to cancel out the spectra of the brighter host star. The residuals from this method should contain two copies of the faint companion, subtracted from each other with a radial velocity offset \(\Delta RV\) between them. This RV offset, if detectable, would allow the mass ratio to be determined and hence the companion mass.
+
+Due to the poorly separated observation times relative to the long orbital periods, this method was revealed to be inappropriate for these observations as the RV separation of the companion spectra between observations (\(\le 2.3\)\kmps{}) is significantly smaller than the FWHM (full width half maximum) of individual spectral lines (\(\sim\)6\kmps{} at \(\rm R=50\,000\)).  The small separation of the companion causes the lines of the companion to also mutually cancel, severely reducing the residual signal to well below the available noise level. The requirement of well separated RVs for the companion spectra was clearly stated in the original proposal but was not satisfied when the observations were obtained\footnote{see Sect.~\ref{subsubsec:differential-schedualing} for more details}. {\red{} The very large orbital periods of some of the targets would not produce a sufficient RV signal during one semester. This was a possible oversight during the proposal stage.} The largest estimated companion \(\Delta RV\) separation between the observations of each target is provided in the seventh column of Table~\ref{tab:estimatedparameters}. Radial velocity constraints are also valid for other studies such as the detection of reflected light from exoplanets~\cite{martins_evidence_2015}.
+
+Despite these problems, we still tried to apply the method to our data. Given the negative result, however, we decided to move this section to Appendix~\ref{sec:direct-subtraction}, where we describe the method and some exploratory results that may be useful for future studies.
+
+
+\section{Direct Subtraction Method}
+\label{sec:direct-subtraction}
+Here we outline the direct subtraction method used, which is similar to previous works~\citep{ferluga_separating_1997,kostogryz_spectral_2013}. Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately, the spectrum received from the host-companion pair is given by the superposition of two spectral components (\(J_{1} \), \(J_{2} \)), where \(\lambda-v\) represents the Doppler shift \(\lambda(1-v/c)\) by velocity \(v\).
+\begin{equation}
+\textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2})
+\end{equation}
+or shifted to the host stars rest frame,
+\begin{equation}
+\textrm{I}(\lambda + v_{1}) = \textrm{J}_{1}(\lambda) + \textrm{J}_{2}(\lambda - v_{2} + v_{1})
+\end{equation}
+Here, the subscripts 1 and 2 indicate the spectrum of the host and companion respectively, and \(\lambda \) represents the wavelength of the spectra.
+The spectra of the host star (\(\textrm{J}_{1} \)) is removed though the mutual subtraction of the host spectrum from two separate observations, denoted with subscripts \(a\) and \(b\), correcting for RV motion of the host star.
+\begin{align}
+S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
+&= \textrm{J}_{2}(\lambda - v_{2a} + v_{1a}) - \textrm{J}_{2}(\lambda - v_{2b} + v_{1b}) \nonumber \\
+%  &= \textrm{J}_{2}(\lambda - v_{2a}) - \textrm{J}_{2}(\lambda - v_{2b} - v_{1a} + v_{1b}) \nonumber \\
+S(\lambda + v_{2a}) &= \textrm{J}_{2}(\lambda) - \textrm{J}_{2}(\lambda + \Delta RV ) \label{eqn:sprofile}
+\end{align}
+where,
+\begin{equation}
+\Delta RV = v_{2a} - v_{2b} - v_{1a} + v_{1b} \label{eqn:k}
+\end{equation}
+
+is the actual RV difference (\(\Delta RV \)) between the two companion spectra.
+
+The resulting differential spectra, dubbed \emph{s-profile} by~\citet{ferluga_separating_1997}, is composed of just the companion spectra, shifted and subtracted from itself.
+
+From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the RV amplitudes of the host and companion are related through the mass ratio, \(q \), while having an opposite sign.
+\begin{align}
+v_{2}  &= -\textrm{q} * v_{1} \label{eqn:q_relation}
+\end{align}
+This equation was used to calculate the expected companion RV for each observation in Table~\ref{tab:observations}.
+
+We can simplify Eq.~\ref{eqn:k} by expressing it in terms of the host RV and mass ratio,
+\begin{align}
+k &= -q v_{1a} + q v_{1b} + v_{1a} - v_{1b} \nonumber \\
+&= (1 - \textrm{q})(v_{1a} - v_{1b}). \label{eqn:k_simplified}
+\end{align}
+If we are able to determine the \(\Delta RV \) between the the companion spectra, k, from the s-profile~\citep[see ][]{ferluga_separating_1997} then we can determine the mass ratio of the system, q, thereby constraining the mass of the companion. The values \(v_{1a} \) and \(v_{1b} \) are calculated from the orbital parameters of the system and are the same values already used to shift and mutually cancel the host spectrum.
+
+This method is very similar to~\citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated.
+
+
+
+
+
+
+
+
+
+\section{Direct Subtraction Method}
+\label{sec:direct-subtraction}
+Here we outline the direct subtraction method used, which is similar to previous works~\citep{ferluga_separating_1997,kostogryz_spectral_2013}. Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately, the spectrum received from the host-companion pair is given by the superposition of two spectral components (\(J_{1} \), \(J_{2} \)), where \(\lambda-v\) represents the Doppler shift \(\lambda(1-v/c)\) by velocity \(v\).
+\begin{equation}
+\textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2})
+\end{equation}
+or shifted to the host stars rest frame,
+\begin{equation}
+\textrm{I}(\lambda + v_{1}) = \textrm{J}_{1}(\lambda) + \textrm{J}_{2}(\lambda - v_{2} + v_{1})
+\end{equation}
+Here, the subscripts 1 and 2 indicate the spectrum of the host and companion respectively, and \(\lambda \) represents the wavelength of the spectra.
+The spectra of the host star (\(\textrm{J}_{1} \)) is removed though the mutual subtraction of the host spectrum from two separate observations, denoted with subscripts \(a\) and \(b\), correcting for RV motion of the host star.
+\begin{align}
+S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
+&= \textrm{J}_{2}(\lambda - v_{2a} + v_{1a}) - \textrm{J}_{2}(\lambda - v_{2b}  + v_{1b}) \nonumber \\
+%  &= \textrm{J}_{2}(\lambda - v_{2a}) - \textrm{J}_{2}(\lambda - v_{2b} - v_{1a} + v_{1b}) \nonumber \\
+S(\lambda + v_{2a}) &= \textrm{J}_{2}(\lambda) - \textrm{J}_{2}(\lambda + \Delta RV )  \label{eqn:sprofile}
+\end{align}
+where,
+\begin{equation}
+\Delta RV = v_{2a} - v_{2b} - v_{1a} + v_{1b} \label{eqn:k}
+\end{equation}
+
+is the actual RV difference (\(\Delta RV \)) between the two companion spectra.
+
+The resulting differential spectra, dubbed \emph{s-profile} by~\citet{ferluga_separating_1997}, is composed of just the companion spectra, shifted and subtracted from itself.
+
+From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the RV amplitudes of the host and companion are related through the mass ratio, \(q \), while having an opposite sign.
+\begin{align}
+v_{2}  &= -\textrm{q} * v_{1} \label{eqn:q_relation}
+\end{align}
+This equation was used to calculate the expected companion RV for each observation in Table~\ref{tab:observations}.
+
+We can simplify Eq.~\ref{eqn:k} by expressing it in terms of the host RV and mass ratio,
+\begin{align}
+k &= -q v_{1a} + q v_{1b} + v_{1a} - v_{1b} \nonumber \\
+&= (1 - \textrm{q})(v_{1a} - v_{1b}). \label{eqn:k_simplified}
+\end{align}
+If we are able to determine the \(\Delta RV \) between the the companion spectra, k, from the s-profile~\citep[see ][]{ferluga_separating_1997} then we can determine the mass ratio of the system, q, thereby constraining the mass of the companion. The values \(v_{1a}\) and \(v_{1b}\) are calculated from the orbital parameters of the system and are the same values already used to shift and mutually cancel the host spectrum.
+
+This method is very similar to~\citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated.
+
+
+
+
+
+
+
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
@@ -137,59 +248,6 @@ Although TAPAS provides a convenient web-interface to retrieve telluric spectra,
 
 CHECK out LOCKWOOD 2014 - maximum likelihood with todcor 1e-4 flux ratio double lined spectra
 
-
-\section{Differential subtraction (new)}
-\label{sec:spec_diff}
-
-The observations were gathered having in mind the application of a differential subtraction method~\citep[e.g.][]{ferluga_separating_1997, kostogryz_spectral_2013} to detect the spectra of the faint BD companions. In short, we Doppler shift each observation to the rest frame of the host star and then mutually subtract the spectra from pairs of observations to cancel out the spectra of the brighter host star. The residuals from this method should contain two copies of the faint companion, subtracted from each other with a radial velocity offset \(\Delta RV\) between them. This RV offset, if detectable, would allow the mass ratio to be determined and hence the companion mass.
-
-Due to the poorly separated observation times relative to the long orbital periods, this method was revealed to be inappropriate for these observations as the RV separation of the companion spectra between observations (\(\le 2.3\)\kmps{}) is significantly smaller than the FWHM (full width half maximum) of individual spectral lines (\(\sim\)6\kmps{}\ at \(\rm R=50\,000\)).  The small separation of the companion causes the lines of the companion to also mutually cancel, severely reducing the residual signal to well below the available noise level. The requirement of well separated RVs for the companion spectra was clearly stated in the original proposal but was not satisfied when the observations were obtained\footnote{see Sect.~\ref{subsubsec:differential-schedualing} for more details}. {\red{} The very large orbital periods of some of the targets would not produce a sufficient RV signal during one semester. This was a possible oversight during the proposal stage.} The largest estimated companion \(\Delta RV\) separation between the observations of each target is provided in the seventh column of Table~\ref{tab:estimatedparameters}. Radial velocity constraints are also valid for other studies such as the detection of reflected light from exoplanets~\cite{martins_evidence_2015}.
-
-Despite these problems, we still tried to apply the method to our data. Given the negative result, however, we decided to move this section to Appendix~\ref{sec:direct-subtraction}, where we describe the method and some exploratory results that may be useful for future studies.
-
-
-    \section{Direct Subtraction Method}
-    \label{sec:direct-subtraction}
-    Here we outline the direct subtraction method used, which is similar to previous works~\citep{ferluga_separating_1997,kostogryz_spectral_2013}. Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately, the spectrum received from the host-companion pair is given by the superposition of two spectral components (\(J_{1} \), \(J_{2} \)), where \(\lambda-v\) represents the Doppler shift \(\lambda(1-v/c)\) by velocity \(v\).
-    \begin{equation}
-    \textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2})
-    \end{equation}
-    or shifted to the host stars rest frame,
-    \begin{equation}
-    \textrm{I}(\lambda + v_{1}) = \textrm{J}_{1}(\lambda) + \textrm{J}_{2}(\lambda - v_{2} + v_{1})
-    \end{equation}
-    Here, the subscripts 1 and 2 indicate the spectrum of the host and companion respectively, and \(\lambda \) represents the wavelength of the spectra.
-    The spectra of the host star (\(\textrm{J}_{1} \)) is removed though the mutual subtraction of the host spectrum from two separate observations, denoted with subscripts \(a\) and \(b\), correcting for RV motion of the host star.
-    \begin{align}
-    S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
-    &= \textrm{J}_{2}(\lambda - v_{2a} + v_{1a}) - \textrm{J}_{2}(\lambda - v_{2b} + v_{1b}) \nonumber \\
-    %  &= \textrm{J}_{2}(\lambda - v_{2a}) - \textrm{J}_{2}(\lambda - v_{2b} - v_{1a} + v_{1b}) \nonumber \\
-    S(\lambda + v_{2a}) &= \textrm{J}_{2}(\lambda) - \textrm{J}_{2}(\lambda + \Delta RV ) \label{eqn:sprofile}
-    \end{align}
-    where,
-    \begin{equation}
-    \Delta RV = v_{2a} - v_{2b} - v_{1a} + v_{1b} \label{eqn:k}
-    \end{equation}
-
-    is the actual RV difference (\(\Delta RV \)) between the two companion spectra.
-
-    The resulting differential spectra, dubbed \emph{s-profile} by~\citet{ferluga_separating_1997}, is composed of just the companion spectra, shifted and subtracted from itself.
-
-    From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the RV amplitudes of the host and companion are related through the mass ratio, \(q \), while having an opposite sign.
-    \begin{align}
-    v_{2}  &= -\textrm{q} * v_{1} \label{eqn:q_relation}
-    \end{align}
-    This equation was used to calculate the expected companion RV for each observation in Table~\ref{tab:observations}.
-
-    We can simplify Eq.~\ref{eqn:k} by expressing it in terms of the host RV and mass ratio,
-    \begin{align}
-    k &= -q v_{1a} + q v_{1b} + v_{1a} - v_{1b} \nonumber \\
-    &= (1 - \textrm{q})(v_{1a} - v_{1b}). \label{eqn:k_simplified}
-    \end{align}
-    If we are able to determine the \(\Delta RV \) between the the companion spectra, k, from the s-profile~\citep[see ][]{ferluga_separating_1997} then we can determine the mass ratio of the system, q, thereby constraining the mass of the companion. The values \(v_{1a} \) and \(v_{1b} \) are calculated from the orbital parameters of the system and are the same values already used to shift and mutually cancel the host spectrum.
-
-    This method is very similar to~\citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated.
-
     \subsection{Estimating parameters of observations}
     To estimate the differential amplitude signal we estimated the expected parameters of the impact of the
 
@@ -229,60 +287,6 @@ Despite these problems, we still tried to apply the method to our data. Given th
 
 %%%%%%%%%%%%%%%%%%%
 
-
-
-\section{Differential subtraction}
-\label{sec:spec_diff}
-
-The observations were gathered having in mind the application of a differential subtraction method~\citep[e.g.][]{ferluga_separating_1997, kostogryz_spectral_2013} to detect the spectra of the faint BD companions. In short, we Doppler shift each observation to the rest frame of the host star and then mutually subtract the spectra from pairs of observations to cancel out the spectra of the brighter host star. The residuals from this method should contain two copies of the faint companion, subtracted from each other with a radial velocity offset \(\Delta RV\), one positive and one negative. This RV offset, if detectable, would allow the mass ratio to be determined and hence the companion mass.
-
-Due to the poorly separated observation times relative to the long orbital periods, this method was revealed to be inappropriate for these observations as the RV separation of the companion spectra between observations (\(\le 2.3\)\kmps{}) is significantly smaller than the FWHM (full width half maximum) of individual spectral lines (\(\sim\)6\kmps{} at \(\rm R=50\,000\)).  The small separation of the companion causes the lines of the companion to also mutually cancel, severely reducing the residual signal to well below the available noise level. The requirement of well separated RVs for the companion spectra was clearly stated in the original proposal but was not satisfied when the observations were obtained\footnote{see Sect.~\textbf{ref{subsubsec:differential scedualing}} for more details}. Radial velocity constraint are also valid for other studies such as the detection of reflected light from exoplanets~\cite{martins_evidence_2015}. The estimated companion \(\Delta RV\) separation between the furthermost observational pair for each target is provided in the fifth column of Table~\ref{tab:flux_table}.
-
-Despite these problems, we still tried to apply the method to our data. Given the negative result, however, we decided to move this section to Appendix~\ref{sec:direct-subtraction}, where we describe the method and some exploratory results that may be useful for future studies.
-
-
-
-\section{Direct Subtraction Method}
-\label{sec:direct-subtraction}
-Here we outline the direct subtraction method used, which is similar to previous works~\citep{ferluga_separating_1997,kostogryz_spectral_2013}. Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately, the spectrum received from the host-companion pair is given by the superposition of two spectral components (\(J_{1} \), \(J_{2} \)), where \(\lambda-v\) represents the Doppler shift \(\lambda(1-v/c)\) by velocity \(v\).
-\begin{equation}
-\textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2})
-\end{equation}
-or shifted to the host stars rest frame,
-\begin{equation}
-\textrm{I}(\lambda + v_{1}) = \textrm{J}_{1}(\lambda) + \textrm{J}_{2}(\lambda - v_{2} + v_{1})
-\end{equation}
-Here, the subscripts 1 and 2 indicate the spectrum of the host and companion respectively, and \(\lambda \) represents the wavelength of the spectra.
-The spectra of the host star (\(\textrm{J}_{1} \)) is removed though the mutual subtraction of the host spectrum from two separate observations, denoted with subscripts \(a\) and \(b\), correcting for RV motion of the host star.
-\begin{align}
-	S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
-	&= \textrm{J}_{2}(\lambda - v_{2a} + v_{1a}) - \textrm{J}_{2}(\lambda - v_{2b}  + v_{1b}) \nonumber \\
-	%  &= \textrm{J}_{2}(\lambda - v_{2a}) - \textrm{J}_{2}(\lambda - v_{2b} - v_{1a} + v_{1b}) \nonumber \\
-	S(\lambda + v_{2a}) &= \textrm{J}_{2}(\lambda) - \textrm{J}_{2}(\lambda + \Delta RV )  \label{eqn:sprofile}
-\end{align}
-where,
-\begin{equation}
-\Delta RV = v_{2a} - v_{2b} - v_{1a} + v_{1b} \label{eqn:k}
-\end{equation}
-
-is the actual RV difference (\(\Delta RV \)) between the two companion spectra.
-
-The resulting differential spectra, dubbed \emph{s-profile} by~\citet{ferluga_separating_1997}, is composed of just the companion spectra, shifted and subtracted from itself.
-
-From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the RV amplitudes of the host and companion are related through the mass ratio, \(q \), while having an opposite sign.
-\begin{align}
-	v_{2}  &= -\textrm{q} * v_{1} \label{eqn:q_relation}
-\end{align}
-This equation was used to calculate the expected companion RV for each observation in Table~\ref{tab:observations}.
-
-We can simplify Eq.~\ref{eqn:k} by expressing it in terms of the host RV and mass ratio,
-\begin{align}
-	k &= -q v_{1a} + q v_{1b} + v_{1a} - v_{1b} \nonumber \\
-	&= (1 - \textrm{q})(v_{1a} - v_{1b}). \label{eqn:k_simplified}
-\end{align}
-If we are able to determine the \(\Delta RV \) between the the companion spectra, k, from the s-profile~\citep[see ][]{ferluga_separating_1997} then we can determine the mass ratio of the system, q, thereby constraining the mass of the companion. The values \(v_{1a}\) and \(v_{1b}\) are calculated from the orbital parameters of the system and are the same values already used to shift and mutually cancel the host spectrum.
-
-This method is very similar to~\citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated.
 
 
 \subsection{Results of spectral differential analysis}
@@ -373,3 +377,21 @@ We explored the use of VISIR to detect brown dwarf companions in the MIR. Of the
 Looking at the best candidates XXXX was chosen a a likely target. I calculated flux ratios and performance considerations we determined that observations with VISIR to achieve a SNR of 100 were unfeasible, requiring 1000's of hours observing time.
 
 The goal would be to observe with High-resolution and high through-put spectrographs. Ideally with CRIRES+, which at the time was scheduled for 2017. Currently\footnote{June 2018} first light is scheduled for Q1 2019.
+
+
+
+
+
+
+\subsubsection{Differential scheduling challenges {copy from paper}}
+\label{subsubsec:differential-schedualing}
+This work has revealed that more care needs to be taken in planning the observations for the spectral differential analysis of faint companions in the future. Paying attention in particular to the FWHM of the lines in the region (governed by resolution and wavelength); the estimated companion \(\Delta RV \); the previous observations from different observing periods; and keeping consistent detector settings.
+
+The original goal for the observations was to obtain two different and ``clearly separated radial-velocities'' for the secondary companion. However, the program was assigned a low-priority (C, in ESO grading) and, possibly due to operational reasons, the original time requirements necessary to secure well separated RVs for the companion spectra could not be met. This meant that all observations were insufficiently separated to extract a differential spectra for the companion.
+
+The long orbital periods of these targets is also a contributing factor to the insufficient separations. Most of the targets observed here have orbital periods much longer than an observing semester (183 days). An optimal pair of observations (achieved at the extrema) would need to have been obtained from separate observing periods (between 2 months and 19 years apart). In some cases, even observations taken at the beginning and end of the semester would not be sufficient to achieve companion separation (depending on the phase). Requiring separate observing periods to even achieve the minimum \(\Delta \rm RV\) larger than the line FHWM.\@At the time it was impossible to ask for time over several semesters in a regular proposal.
+
+Our study demonstrates the importance of proposals for projects that need to be extended over several semesters or years. In the ESO context, this corresponds to ``Monitoring proposals''~\citep[e.g.][pg. 18]{eso_eso_2017}. Observations of the targets explored here, with long orbital periods in particular, would benefit from the ability for multi-period proposals and newer scheduling systems which allow for tighter scheduling constraints, such as a companion RV separation. 
+
+For future observations we suggest that the known orbital solution of the companion be used to estimate the companions' RV curve during the observing period, with the companion \(M_2\sin{i}\) providing an RV upper-limit. Knowing the instrumental wavelength and resolution, a constraint can then be set to avoid taking observations when the companion spectra are insufficiently separated, or \(\Delta RV\) < FWHM.\@This constraint can be set using the absolute and relative \emph{time-link} constraints available in ESO's Phase 2 Proposal Preparation (P2PP) tool.
+Additionally, analysing the known orbital solution before-hand, to determine RV constraints will also help identify the best time to observe, if observations from separate periods will be required or, if an optimally separated companion differential is even feasible.
