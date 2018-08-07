@@ -130,7 +130,7 @@ urlcolor=flatpurple]{hyperref}
 \newcommand{\um}{\,\si{\micro\meter}} % micrometer
 
 %% word shortcuts
-\newcommand{\thar}{Th-Ar}  
+\newcommand{\thar}{Th-Ar}
 \newcommand{\nir}{nIR}
 \newcommand{\logg}{logg}
 \newcommand{\feh}{$\textrm{[Fe/H]}$}
@@ -154,65 +154,65 @@ urlcolor=flatpurple]{hyperref}
 
 \listfiles
 
-%%%%%%%%%%%%      MAIN  DOCUMENT      %%%%%%%%%%%%
+%%%%%%%%%%%%      MAIN DOCUMENT      %%%%%%%%%%%%
 % \includeonly{introduction}
 
 \begin{document}
-	
+
 	%% This sets the page style and numbering for preliminary sections.
 	\begin{preliminary}
-		
+
 		%% This generates the title page from the information given above.
 		\maketitle
 		\cleardoublepage
-		
-		
+
+
 		\begin{dedication}
 			\centering \huge \itshape
 			To Jessica, Timothy, Amelia\\For always supporting me
 		\end{dedication}
-		
-		
+
+
 		\begin{acknowledgements}
-			
+
 			Gillian - proofreading
-			
+
 			Supervisors for guiding me
-			
+
 			\vspace{7mm}
-			
-			
+
+
 		\end{acknowledgements}
-		
-		
-		
+
+
+
 		\begin{abstract}
-			
+
 			Thesis abstract
 		\end{abstract}
-		
+
 		\begin{abstract-pt}
-			
+
 			Thesis abstract in Portuguese
 		\end{abstract-pt}
-		
-		
+
+
 		 %%% remove in final version
         \todototoc
 		\listoftodos
-        
+
 		\tableofcontents
 		\addcontentsline{toc}{chapter}{\listtablename}
 		\listoftables
 		\addcontentsline{toc}{chapter}{\listfigurename}
 		\listoffigures
-        
-       
-        
-        
-		\begin{abbreviations}		
+
+
+
+
+		\begin{abbreviations}
 			\begin{longtable}{ll}
-				
+
 				CARMENES & Calar Alto high-Resolution search for M dwarfs with Exoearths with Near-infrared and optical \'Echelle Spectrographs \\
 				CFHT & Canada France Hawaii Telescope \\
 				CRIRES & CRyogenic high-resolution InfraRed \'Echelle Spectrograph \\
@@ -233,62 +233,62 @@ urlcolor=flatpurple]{hyperref}
 				TNG & Telescopio Nazionale Galileo \\
 				VISIR &  VLT spectrometer and imager for the mid-infrared \\
 				VLT & Very large Telescope \\
-				
-			\end{longtable}		
+
+			\end{longtable}
 		\end{abbreviations}
-		
+
 		\begin{constants}
 			\begin{longtable}{lr@{${}={}$}l}
 				 % The \SI{}{} command is provided by the siunitx package, see its documentation for instructions on how to use it
-				 
+
 				 Speed of Light & $c_{0}$ & \SI{2.99792458e8}{\meter\per\second} (exact)\\
 				 Astronomical Unit & AU & 150 million km\\
-				 %Constant Name & $Symbol$ & $Constant Value$ with units\\	
+				 %Constant Name & $Symbol$ & $Constant Value$ with units\\
 			\end{longtable}
 		\end{constants}
-		
+
 		\begin{symbols}
 				\begin{longtable}{lll}
-					
+
 					$a$ & distance & \si{\metre} \\
 					$P$ & power & \si{\watt} (\si{\joule\per\second}) \\
 					%Symbol & Name & Unit \\
-					
+
 					\addlinespace % Gap to separate the Roman symbols from the Greek
 					\\
 					$\lambda$ & wavelength & \si{\nano\metre} \\
                     \(S_{tel}\) & telescope collecting area & \si{\centi\metre\squared} \\
                     \(N_{e^{-}}\) & number of photoelectrons & \\
                     \(P_{avg}\) & average monochromatic stellar brightness & \si{\photons\per\second\per\centi\metre\squared\per\centi\metre}\\
-                    \(T_{exp}\) & exposure time  & \si{\second} \\ 
-          
-                    \(\Lambda\) & wavelength range & \si{\nano\metre} 
+                    \(T_{exp}\) & exposure time  & \si{\second} \\
+
+                    \(\Lambda\) & wavelength range & \si{\nano\metre}
 				\end{longtable}
 		\end{symbols}
-		
+
 	\end{preliminary}
-	
-	
+
+
 	%% *** Include chapter files here. ***
 	\include{chapters/introduction}
     \include{chapters/advanced_concepts}
     \include{chapters/reduction}
 	\include{chapters/direct-recovery}
-	\include{chapters/companion-recovery}	
+	\include{chapters/companion-recovery}
 	\include{chapters/nir-information-content}
 	\include{chapters/discussion}
 	\include{chapters/conclusions}
 
 	\appendix
-	\unfinished{Precision table needs fixed up}	
+	\unfinished{Precision table needs fixed up}
     %\include{appendices/precision_table}
 	\include{appendices/artefact_examples_appendix}
-    
+
     % Bibliography
 	\addcontentsline{toc}{chapter}{Bibliography}
 	\bibliography{thesis}  % do not inlcude .bib extension
 	\bibliographystyle{astron}
 	\nocite{} %include everything.
-	
-	
+
+
 \end{document}

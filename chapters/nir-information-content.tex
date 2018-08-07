@@ -7,11 +7,11 @@
 
 \section{Overview}
 
-The pursuit of detecting exoplanets, especially ``habitable'' Earth-like" planets requires state-of-the-art instrumentation with high precision. One of the key detection methods, the Radial Velocity (RV) method, measures the wobble induced on the Star by the planet as they orbit their common barycenter \reference{rv method}.  {\red{} add Some stuff about mass and period from pedros paper}
+The pursuit of detecting exoplanets, especially ``habitable'' and ``Earth-like'' planets, requires state-of-the-art instrumentation with high precision. One of the key detection methods, the Radial Velocity (RV) method, measures the wobble induced on the Star by the planet as they orbit their common barycenter \reference{rv method}.  {\red{} add Some stuff about mass and period from pedros paper}
 
 
 
-A increase in the  number of {\nir} spectrographs is increasing to focus on cooler M-dwarfs stars which have a easier* chance of detecting Earth-like planets in the habitable zone. \change{Check mission statements for these}{SPIRou, NIRPS} and CARMENES. Also CRIRES+...
+A increase in the number of \nir{} spectrographs is increasing to focus on cooler M-dwarfs stars which have a easier* chance of detecting Earth-like planets in the habitable zone. \change{Check mission statements for these}{SPIRou, NIRPS} and CARMENES. Also CRIRES+...
 This work continues the assessment of RV precision levels possible in this domain.
 \todo{For example from Figueira 2016 see figure) A more precise measurement can be achieved from X band then the Y band... or in order XYZ of precision}
 
@@ -111,7 +111,7 @@ The noise of the spectrum A is the quadratic sum of the photon noise \(\sqrt{A}\
 \begin{equation}
 [A(i)-A_0(i)]_{RMS} = [A(i)]_{RMS} = \sqrt{\sqrt{A(i)}^2 + \sigma^2_{D}} \label{eq:noise}
 \end{equation}
-We can set \(A = A_0\) if we consider the Doppler shift is small and that \(A\) and \(A_0\) have the same intensity level. Using Eq.\,\ref{eq:weights},\,\ref{eq:delta_v_i} and\,\ref{eq:noise}	the optimum weights then become solely dependent on the reference  spectrum.
+We can set \(A = A_0\) if we consider the Doppler shift is small and that \(A\) and \(A_0\) have the same intensity level. Using Eq.\,\ref{eq:weights},\,\ref{eq:delta_v_i} and\,\ref{eq:noise}	the optimum weights then become solely dependent on the reference spectrum.
 
 
 
@@ -120,7 +120,7 @@ W(i) =   \frac{\lambda^2(i)  (\partial A_0(i)/\partial \lambda(i))^{2}}{A(i) + {
 \end{equation}
 This weighting function can be modified to mask out and eliminate unwanted lines in the spectrum. For instance in the removal of telluric absorption lines in observed spectra. This is achieved to setting the particular pixel weights to zero.
 
-With the optimal weights set the velocity change measured from the full spectral range \(\Lambda\)\unfinished{Change picture spectral range} is given by:
+With the optimal weights set the velocity change measured from the full spectral range \(\Lambda\), \unfinished{Change picture spectral range} is given by:
 
 
 \begin{eqnarray}
@@ -153,14 +153,14 @@ The important quantity for RV measurements is not only the velocity value itself
 \begin{equation}
     \frac{\delta V_{RMS}}{c} = \frac{1}{\Sigma {\,W(i)}} = \frac{1}{Q \Sigma {\,A_0(i)}}
 \end{equation}
-With this the velocity precision is  inversely proportional to the sum of the optimal pixel weights.
+With this the velocity precision is inversely proportional to the sum of the optimal pixel weights.
 
-A spectral quality factor, Q, is defined as  for the pure photon noise case, as in~\cite{Connes1985, connes_demonstration_1996}.
+A spectral quality factor, Q, is defined as for the pure photon noise case, as in~\cite{Connes1985, connes_demonstration_1996}.
 
 \begin{equation}
 Q = \frac{\sqrt{\Sigma{\,W(i)}}}{\sqrt{\Sigma{\,A_0(i)}}}.
 \end{equation}
-This factor is flux independent and is purely a function of the spectral profile within the spectral range considered. It is is a measure of the line richness. For example a spectra with  many sharp lines will have a high Q. This quality factor is valid for the pure photon noise case only.
+This factor is flux independent and is purely a function of the spectral profile within the spectral range considered. It is is a measure of the line richness. For example a spectra with many sharp lines will have a high Q. This quality factor is valid for the pure photon noise case only.
 
 With this quality factor the uncertainty in the velocity change can be rearranged in terms of the spectral quality;
 
@@ -189,13 +189,13 @@ and \(\alpha\) the overall efficiency (including atmosphere, telescope, spectrog
 
  This can be used to determine the RV precision for a given instrument, and be useful in exposure time calculators for planing observations.
 
-In the case of several \(\delta  V\) measurements computed for \(k\) spectral slices (or spectral orders) then the error on the average \(\delta V\) is given by the error on a weighted average:
+In the case of several \(\delta V\) measurements computed for \(k\) spectral slices (or spectral orders) then the error on the average \(\delta V\) is given by the error on a weighted average:
 \begin{equation}
 \overline{\delta {V}_{RMS}} = \frac{1}{\sqrt{\Sigma_k{(\frac{1}{\delta V_{RMS}(k)})^2}}}
 \end{equation}
 
 
-We follow~\cite{figueira_radial_2016} by exclusively considering  a high signal-to-noise regime in which A(i) + D\^2 ~ A(i) can be approximated.
+We follow~\cite{figueira_radial_2016} by exclusively considering a high signal-to-noise regime in which $A(i) + D^2 \sim A(i)$ can be approximated.
 
 
 \footnote{ pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\Sigma{\lambda^2 {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\Sigma{\, A_0(i)}}\) as derived by~\cite{Connes1985}. }
@@ -208,7 +208,7 @@ There is also a optimal weight for detector noise but we are always assume we ar
 
 This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation~\citet{Connes1985,bouchy_fundamental_2001} and can influence the design (or use) of spectrographs
  (e.g. SPIROU~\citep{artigau_spirou_2014,figueira_radial_2016})
-\unfinished{Does spectrograph pipelines such as  HARPS use these equations to measure estimate/precision?}
+\unfinished{Does spectrograph pipelines such as HARPS use these equations to measure estimate/precision?}
 
 
 Considering that \(\Sigma{A_0(i)} = N_{e^-} \) is the total number of photoelectrons counted over the whole spectral range then the uncertainty in the velocity change is finally given by:
@@ -241,7 +241,7 @@ Scale to 100 snr per resolution element in J band.
 Convolutions
 
 
-Since the synthetic models do not have a consistent wavelength grid, the discretization of the convolution kernel onto the  changing wavelength grid causes each pixel to be multiplied by  a slightly different kernel area. We therefore divide the result by a convolution of a spectrum of ones with the same wavelength resolution.
+Since the synthetic models do not have a consistent wavelength grid, the discretization of the convolution kernel onto the changing wavelength grid causes each pixel to be multiplied by a slightly different kernel area. We therefore divide the result by a convolution of a spectrum of ones with the same wavelength resolution.
 
 Differences to Figueria et al.
 
@@ -255,7 +255,7 @@ Preparation of Carmenes spectra.
 \missingfigure{Example of CARMENES spectra before and after correction}
 
 \subsection{Bands}
-The bands are selected based on the strong water absorption. This can be seen the Carmenes spectra in Figure~\ref{}\todo{Add figure here}. The wavelength ranges used in this work \citet{figueira_radial_2016} and used in this work are given in Table~\ref{tab:band_ranges}. 
+The bands are selected based on the strong water absorption. This can be seen the Carmenes spectra in Figure~\ref{}\todo{Add figure here}. The wavelength ranges used in this work \citet{figueira_radial_2016} and used in this work are given in Table~\ref{tab:band_ranges}.
 \begin{table}
     \centering
     \caption{The wavelength ranges of the \nir{} spectral bands.}
@@ -307,7 +307,7 @@ Can do Barnard's star in CARMENES. compared to models in Artigau.
 %\input{tables/carmenes_selection_transpose.tex}
 
 \section{Metallicity logg effects}
-We explore the effect of metallicity and logg on the spectral quality of spectra in the PHOENIX-ACES library by extending the quality factor and precisions computation to [Fe/H] -1--1 and logg 4.0--5.5. In figure \ref{fig:deviations} show the variation of quality factor with broadening of R=100000 and vsini=1.0 km/s across the M-dwarf spectral types and the {\nir} bands. We observed multiple different effects present.
+We explore the effect of metallicity and logg on the spectral quality of spectra in the PHOENIX-ACES library by extending the quality factor and precisions computation to [Fe/H] -1--1 and logg 4.0--5.5. In figure \ref{fig:deviations} show the variation of quality factor with broadening of R=100000 and vsini=1.0 km/s across the M-dwarf spectral types and the \nir{} bands. We observed multiple different effects present.
 
 
 The Z band has a large separation in spectral quality due to spectral type, this is because the continuum the Z band is severely eroded in the spectra of late M's as they cool. Each spectral type also behaves very differently to a change in [Fe/H] and logg. For M0 and M3 there is an increase with [Fe/H] below solar metallicity, above solar metallicity the slopes of the lines dramatically increase, especially for M3. For M6 and M9 there is a step slope with [Fe/H] below solar metallicity, which flattens off at solar metallicity, and even decreases for the M9 spectra above solar metallicity.
@@ -441,6 +441,6 @@ In Septemeber 2017 we were requested to provide precision calculations for the S
 In May 2018 we were requested to provide precision calculations for the NIRPS ETC. This extended the spectral range from M0, M3, M6, M9 at 3900. 3500, 2800 2600 K respectively, but to all temperatures between 2500 and 4000K inclusively. This provides a finer resolution coverage over the M spectral type, allowed by the PHOENIX-ACES library.
 Instrumental resolutions of 75000 and 100000 were requested to match the NIRPS instrument.
 The logg and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
-Precisions were provided for SNR of 100 relative to the J, H bands as well as to each band individually. Artigua 2018.(priv. communication) suggested the truly relevant value is the SNR in H band for NIRPS radial velocities.
+Precisions were provided for SNR of 100 relative to the J, H bands as well as to each band individually. Artigua 2018. (priv. communication)\todo{Check how to cite priv communication properly} suggested the truly relevant value is the SNR in H band for NIRPS radial velocities.
 
-A table of the precisions created for the NIRPS ETC are provided as an online table to our publication \textit{Neal et al. 2018b (in prep.)} \footnote{Available at \url{}.} \unfinished{Inlcude correct links}
+A table of the precisions created for the NIRPS ETC are provided as an online table to our publication \textit{Neal et al. 2018b (in prep.)}\footnote{Available at \href{blah}{blah}} \unfinished{Inlcude correct links}

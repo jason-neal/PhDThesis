@@ -50,14 +50,14 @@ Model fitting two components.
 \textbf{Alot of this section needs to be cut out, lots of repeats and it is not well structured. Basically it will say there is this other model that is better for BDs as it differs "like this" but Fig.~\textbf{ref {fig:hd211847-models}} show that it will also have strong mismatch to make it difficult to recover.}
 
 \label{bt-setll}
-The BT-Settl (allard et al 2009, 2010 2011 2012 baraffe2015) models, a different flavor of Phoenix models, are more suitable for BD atmospheres as they  include the formation of dust/cloud and hydro-dynamical modeling atmospheric mixing/settling for atmospheres with \(T_{eff}\) below \(\sim2600K\). These are valid across the regime from stars to BDs as cool as 400K. The PHOENIX-ACES models completely avoid the modeling of clouds and settling by the lower temperature restriction of 2300K.
+The BT-Settl (allard et al 2009, 2010 2011 2012 baraffe2015) models, a different flavor of Phoenix models, are more suitable for BD atmospheres as they include the formation of dust/cloud and hydro-dynamical modeling atmospheric mixing/settling for atmospheres with \(T_{eff}\) below \(\sim2600K\). These are valid across the regime from stars to BDs as cool as 400K. The PHOENIX-ACES models completely avoid the modeling of clouds and settling by the lower temperature restriction of 2300K.
 
 The PHOENIX-ACES models dust in equilibrium with the gas phase but ignores the dust opacity and does not include any settling. It does however include a new Astrophysical Chemical Equilibrium Solver (ACES,
 Barman 2012); adds parameterizations for the mass and mixing-length; and uses the~\cite{asplund_chemical_2009} solar abundances. All these modifications together make it difficult to quantify the spectral changes from each individual change.
 
 The two of the recent "flavors" are the BT-Settl~\citep{allard_model_2010, baraffe_new_2015} and the PHOENIX-ACES~\citep{husser_new_2013} which use versions 15.5 and 16 of the PHOENIX code respectively.
 
-Even though the BT-SETTL models are more suited for the entire range of BD temperatures, we restrict ourselves to the PHOENIX-ACES synthetic spectra for a number of reasons. The ease of use and availability from the spectral library webpage \footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}. The ease of use using the Starfish tools, a wide parameter range and fairly consistent parameter grid span, and the effective radius of the modeled star provided in the fits header.
+Even though the BT-SETTL models are more suited for the entire range of BD temperatures, we restrict ourselves to the PHOENIX-ACES synthetic spectra for a number of reasons. The ease of use and availability from the spectral library webpage\footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}. The ease of use using the Starfish tools, a wide parameter range and fairly consistent parameter grid span, and the effective radius of the modeled star provided in the fits header.
 
 These were not used in this instance for a couple of reasons, the ineffectiveness to produce a reliable detection on the observations using PHOENIX ACES spectra for our largest companions, which fall well within the PHOENIX ACES temperature limit.
 
@@ -70,7 +70,7 @@ The most recent BT-SETTL spectral library designated CIFIST2011\_2015\footnote{\
 The newer PHOENIX-ACES models are limited to \(\rm T_{eff} \) > 2300~K which only cover the larger BDs. To evaluate the lower mass BDs we use the \textbf{other model}, more suitable for cooler BDs and low mass star as they incorporate modeling of dust, clouds etc...
 
 
-The spectral model libraries were accessed using the useful ``grid tools'' provided in the  Starfish\footnote{\url{https://github.com/iancze/Starfish}} Python package\citep{czekala_constructing_2015}.
+The spectral model libraries were accessed using the useful ``grid tools'' provided in the Starfish\footnote{\url{https://github.com/iancze/Starfish}} Python package\citep{czekala_constructing_2015}.
 
 
 Both sets of synthetic models do not handle the affects of radiation from a neighboring star, which may have an affect on the binary orbits here.
@@ -80,7 +80,7 @@ Both sets of synthetic models do not handle the affects of radiation from a neig
 PHOENIX-ACES models dust in equilibrium with gas phase but ignores the dust opacity and does not include any mixing/settling in cooler atmospheres. This is avoided by having a minimum library \(T_{eff}\) 2300K. This unfortunately limits the use of this library for this technique to the larger mass companions in our sample. For example a \(T_{eff}=2300K\) corresponds to a BD with M(\(\sim0.08 M_{\odot}\) at 5 Gyr from the~\cite{baraffe_evolutionary_2003} evolutionary models.
 
 
-Even though the BT-SETTL models are more suited for the entire range of BD temperatures down to 400K, through hydrodynamically modeling the mixing and settling of dust/clouds, we restrict ourselves to the PHOENIX-ACES synthetic spectra in this work for a number of reasons. The ease of use and availability from the spectral library webpage \footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}. The effective radius of the modelled star are provided in the fits header and required for the calculation of the flux ratio.
+Even though the BT-SETTL models are more suited for the entire range of BD temperatures down to 400K, through hydrodynamically modeling the mixing and settling of dust/clouds, we restrict ourselves to the PHOENIX-ACES synthetic spectra in this work for a number of reasons. The ease of use and availability from the spectral library webpage\footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}. The effective radius of the modelled star are provided in the fits header and required for the calculation of the flux ratio.
 
 
 
@@ -111,7 +111,7 @@ The change in the models with incremental changes in temperature is small, Chang
 
 
 \subsection{Note about a target - discussion of results}
-Another example is \object{HD 162020}, which has the lowest orbital period (8.4 days) of our targets. It should have been possible to obtain an optimal pair of observations in one semester, but the second observation was taken immediately following the first. This means that the \(\rm \delta RV = 0.363 km/s \) between the two observations, is comparable to the \(\Delta RV \) that occurs during each individual observation. With tighter scheduling restrictions this target could have been observed with the optimal RV separation at the  extrema of \(\Delta RV=2 K_{2}\)). Whether the flux ratio of \(7e^{-6}\) for this target and the interaction of different spectral lines would have made it possible to recover companion mass is a separate issue.
+Another example is \object{HD 162020}, which has the lowest orbital period (8.4 days) of our targets. It should have been possible to obtain an optimal pair of observations in one semester, but the second observation was taken immediately following the first. This means that the \(\rm \delta RV = 0.363 km/s \) between the two observations, is comparable to the \(\Delta RV \) that occurs during each individual observation. With tighter scheduling restrictions this target could have been observed with the optimal RV separation at the extrema of \(\Delta RV=2 K_{2}\)). Whether the flux ratio of \(7e^{-6}\) for this target and the interaction of different spectral lines would have made it possible to recover companion mass is a separate issue.
 
 
 
@@ -133,4 +133,4 @@ Try some Cross-correlations on simulations.
 \todo{Try cross correlation at a different wavelength 2.3 micron?}
 \todo{Try cross correlation with much larger wavelength range. 50, 100, 600, 1000 nanometres?}
 
-\todo{Try my simulations  with much larger wavelength range. 50, 100, 600 nanometres?}
+\todo{Try my simulations with much larger wavelength range. 50, 100, 600 nanometres?}
