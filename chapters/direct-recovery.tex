@@ -105,43 +105,6 @@ The observations were performed in service mode during period 89 with run ID.~08
 
 
 
-\section{Main Section 2}
-
-
-
-% from draft of paper 18/7/2017
-\subsection{Companion K}
-\label{sec:companion_RV}
-\emph{These sections might be unnecessary}\\
-
-To calculate the RV of the companion at the time of each observation. For a two-body system the RV semi-amplitude of the companion $\textrm{K}_{2}$ can be determined from the orbital host-companion mass ratio $q = \textrm{M}_{1}/\textrm{M}_{2} = \textrm{K}_{2}/\textrm{K}_{1}$.
-Note, that for the targets in which only the minimum mass (msini) is known, this will give the maximum RV semi-amplitude of the companion.
-This relation was used to estimate $\textrm{K}_2$ for the companion from the minimum mass or mass we have for each companion. These values along with the other orbital parameters of the system were use to calculate the RV of the companions for each observation. These values are provided with the observations in Table~\ref{tab:observations}.
-
-
-\subsection{Companion-host Flux ratio}
-The companion-host flux or contrast ratio of the systems are calculated using $ \frac{F_{2}}{F_{1}} \approx 2.512^{m_1-m_2} $, where $m_1$ and $m_2$ are the magnitude of the host and companion respectively.\ $m_1$ is the observed magnitude of the host while $m_2$ is obtained from stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass or minimum mass and the host age. The models, interpolated to the companion mass, also provide a first estimate of companion properties such as $T_{eff}$, $R/R_{\odot}$ and the magnitude in many wavelength bands.
-We use the K band magnitude specifically for this work to estimate the flux ratio between the host and companion using and the host K band magnitude obtained from SIMBAD~\citep{wenger_simbad_2000}. Our flux ratio estimates are presented in table~\ref{tab:estimated_fluxratio}.
-
-If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario).
-
-
-A simple tool to do this calculation was created with python. Given a host name, companion mass and a stellar age it can give a flux contrast ratio of the system. A script to work backwards from a flux-ratio to a companion mass was also created as a check for the results from \S~ref$ {subsec:companion_recovery}$. These scripts can be found at \url{https://github.com/jason-neal/baraffe_tables}.
-
-
-
-
-TAPAS XML REQUESTER
-
-Although TAPAS provides a convenient web-interface to retrieve telluric spectra, it is tedious to use when requesting many models. A script\footnote{Can be found at \url{github.com/separate repo}} was used to automatically fill-out the XML template provided by TAPAS directly from values in the header information of each observation. Although created for these CRIRES observations it could be adjusted to work with other instruments if many TAPAS spectra are required. \textbf{It can be found at \ldots. Make separate Github repo for TAPAS requests.}
-
-
-\input{./tables/stellar_params}
-\input{./tables/orbital_params}
-
-
-CHECK out LOCKWOOD 2014 - maximum likelihood with todcor 1e-4 flux ratio double lined spectra
-
     \subsection{Estimating parameters of observations}
     To estimate the differential amplitude signal we estimated the expected parameters of the impact of the
 
@@ -272,3 +235,43 @@ Our study demonstrates the importance of proposals for projects that need to be 
 
 For future observations we suggest that the known orbital solution of the companion be used to estimate the companions' RV curve during the observing period, with the companion \(M_2\sin{i}\) providing an RV upper-limit. Knowing the instrumental wavelength and resolution, a constraint can then be set to avoid taking observations when the companion spectra are insufficiently separated, or \(\Delta RV\) < FWHM.\@This constraint can be set using the absolute and relative \emph{time-link} constraints available in ESO's Phase 2 Proposal Preparation (P2PP) tool.
 Additionally, analysing the known orbital solution before-hand, to determine RV constraints will also help identify the best time to observe, if observations from separate periods will be required or, if an optimally separated companion differential is even feasible.
+
+
+
+
+
+\section{JUNK}
+
+
+% from draft of paper 18/7/2017
+\subsection{Companion K}
+\label{sec:companion_RV}
+\emph{These sections might be unnecessary}\\
+
+To calculate the RV of the companion at the time of each observation. For a two-body system the RV semi-amplitude of the companion $\textrm{K}_{2}$ can be determined from the orbital host-companion mass ratio $q = \textrm{M}_{1}/\textrm{M}_{2} = \textrm{K}_{2}/\textrm{K}_{1}$.
+Note, that for the targets in which only the minimum mass (msini) is known, this will give the maximum RV semi-amplitude of the companion.
+This relation was used to estimate $\textrm{K}_2$ for the companion from the minimum mass or mass we have for each companion. These values along with the other orbital parameters of the system were use to calculate the RV of the companions for each observation. These values are provided with the observations in Table~\ref{tab:observations}.
+
+
+\subsection{Companion-host Flux ratio}
+The companion-host flux or contrast ratio of the systems are calculated using $ \frac{F_{2}}{F_{1}} \approx 2.512^{m_1-m_2} $, where $m_1$ and $m_2$ are the magnitude of the host and companion respectively.\ $m_1$ is the observed magnitude of the host while $m_2$ is obtained from stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass or minimum mass and the host age. The models, interpolated to the companion mass, also provide a first estimate of companion properties such as $T_{eff}$, $R/R_{\odot}$ and the magnitude in many wavelength bands.
+We use the K band magnitude specifically for this work to estimate the flux ratio between the host and companion using and the host K band magnitude obtained from SIMBAD~\citep{wenger_simbad_2000}. Our flux ratio estimates are presented in table~\ref{tab:estimated_fluxratio}.
+
+If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario).
+
+
+A simple tool to do this calculation was created with python. Given a host name, companion mass and a stellar age it can give a flux contrast ratio of the system. A script to work backwards from a flux-ratio to a companion mass was also created as a check for the results from \S~ref$ {subsec:companion_recovery}$. These scripts can be found at \url{https://github.com/jason-neal/baraffe_tables}.
+
+
+
+
+TAPAS XML REQUESTER
+
+Although TAPAS provides a convenient web-interface to retrieve telluric spectra, it is tedious to use when requesting many models. A script\footnote{Can be found at \url{github.com/separate repo}} was used to automatically fill-out the XML template provided by TAPAS directly from values in the header information of each observation. Although created for these CRIRES observations it could be adjusted to work with other instruments if many TAPAS spectra are required. \textbf{It can be found at \ldots. Make separate Github repo for TAPAS requests.}
+
+
+\input{./tables/stellar_params}
+\input{./tables/orbital_params}
+
+
+CHECK out LOCKWOOD 2014 - maximum likelihood with todcor 1e-4 flux ratio double lined spectra
