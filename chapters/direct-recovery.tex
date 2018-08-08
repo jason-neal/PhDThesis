@@ -229,23 +229,6 @@ In the synthetic spectrum (and of course real spectra) neighbouring spectral lin
 
 \unfinished{Try show differences for all targets /all chips?}
 
-\subsection{RV calculation}
-\unfinished{Move location / adjust from paper}
-To determine the RV offset to apply to the simulated spectra above we calculated the RV of the companion using the published orbital parameters of the host, transforming the RV semi-amplitude of the host \(K_{1}\) into the companion semi-amplitude \(K_{2}\) using the mass ratio,
-\begin{equation}
-\label{eqn:mass_ratio}
-q = \textrm{M}_{2} / \textrm{M}_{1} = \textrm{K}_{1} / \textrm{K}_{2}
-\end{equation}
-
-We note that for the targets in which only the minimum mass (\(\textrm{M}\sin{i} \)) is known, this equation will indicate the maximum \(K_2\) value for the companion. The estimated \(K_2\) value for each companion is given in Table~\ref{tab:flux_table} while the estimated RV for each observation is calculated in Table~\ref{tab:observations}.
-
-If a direct measurement of the companion RV or \(\Delta RV\) from the differential spectra analysis was achieved, then this relation would have been used to calculate the companion mass.
-
-The error on estimated RV values is calculated using the general error propagation formula~\citep{ku_notes_1966} with the RV equation and the errors on the orbital parameters. For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc, it follows:
-\begin{align}
-	f &= f(x, y, z, ...)\\
-	\delta f &= \sqrt{{\left( \frac{\partial f}{\partial x} \delta x\right)}^2 +  {\left(\frac{\partial f}{\partial y} \delta y\right)}^2 + {\left(\frac{\partial f}{\partial z} \delta z\right)}^2 + ...}
-\end{align}
 
 
 \section{Estimating Companion-host Flux ratio}
