@@ -31,13 +31,13 @@ Focus on our observations
 
 There are 3 main effects that need to be accounted for in \nir{} spectroscopy which influence the observations and calibrations taken. We briefly detail them here and how they are corrected for
 
-\begin{figure}[h]
-\centering
-%\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
-\includegraphics[width=0.9\textwidth]{figures/reduction/master_darks_1.pdf}
-\caption{Master dark frames for exposure times of 3 and 180 seconds. Each master is created by averaging 3 images in which the detector received no incident light. Both frames are on the same scale and show dark current grows with exposure time. The color has been inverted so that black is the recorded measurement.}
-\label{fig:darkcurrent}
-\end{figure}
+%\begin{figure}[h]
+%\centering
+%%\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
+%\includegraphics[width=0.9\textwidth]{figures/reduction/master_darks_1.pdf}
+%\caption{Master dark frames for exposure times of 3 and 180 seconds. Each master is created by averaging 3 images in which the detector received no incident light. Both frames are on the same scale and show dark current grows with exposure time. The color has been inverted so that black is the recorded measurement.}
+%\label{fig:darkcurrent}
+%\end{figure}
 \begin{figure}[h]
     \centering
     %\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
@@ -53,13 +53,13 @@ The dark current is a form of instrumental noise, in which the detector measures
  The temperature of the detectors in CRIRES instrument are kept at \textbf{XXX degree C} to significantly reduce, and to maintain consistent a low dark current. The electrical components of the CRIRES detectors create thermal energy while operational which impacts the dark current. A strong glow is observed in the bottom corners of the CRIRES detector in \fref{fig:darkcurrent} due to the presence of nearby amplifiers. As per the CRIRES calibration plan, ``dark frames'' need to be taken for each exposure time used. \fref{fig:darkcurrent} shows the master dark frame created from averaging three dark frames for exposure times of 3 seconds (for the flats) and 180 seconds (for the science), both on the same amplitude scale.
 For the CRIRES detectors the dark current per pixel is around 0.2-0.4\,(\(e^{-}\)\si{\per\second}), while the glow at the two corners of the 180 second exposure shown here is around \(\sim9000 / 180\approx50\)\,\(e^{-}\)\si{\per\second}.
 
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.9\textwidth]{figures/reduction/master_flats_1.pdf}
-    \caption{A flat-field image for detector \#1 before (left) and after(right) the non-linearity corrections are performed. A perfect detector would have all pixels in the flat-field equal to 1. \bf{\red{} Remove flat and flatR titles.}}
-    \label{fig:masterflats}
-\end{figure}
+%
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[width=0.9\textwidth]{figures/reduction/master_flats_1.pdf}
+%    \caption{A flat-field image for detector \#1 before (left) and after(right) the non-linearity corrections are performed. A perfect detector would have all pixels in the flat-field equal to 1. \bf{\red{} Remove flat and flatR titles.}}
+%    \label{fig:masterflats}
+%\end{figure}
 
 
 \begin{figure}[h]
@@ -104,17 +104,17 @@ A small random vertical offset is applied to each observation which ensures that
 
 \subsection{\thar{} lamp calibration}
 \label{subsec:th-ar}
-As part of the CRIRES calibration procedure spectra are taken \thar{} lamps. The \thar{} spectra are placed into the instrument using 6 optical fibers, creating 6 uniformly spaced spectra across the detector.
+As part of the CRIRES calibration procedure spectra are taken \thar{} lamps. The \thar{} spectra are placed into the instrument using 6 optical fibres, creating 6 uniformly spaced spectra across the detector.
 \fref{fig:caliblamps} contains the \thar{} spectra for all four detectors, with the \thar{}. There are roughly 50 \thar{} lines that fall across the four detectors for the wavelength setting here, although most of them are quite faint, With the scaling shown in these images only around 10 of the brightest lines can be just detected by eye.
 
-The purpose of these fibers is to cross-correlate each with a \thar{} template, obtaining a wavelength solution across the detector. Scratches on the detector can cause a decrease in the correlation between \thar{} lines and the spectral template in ESO pipeline. This can be resolved by first applying a pixel mask (although we did not attempt it). At the top and bottom there are also 2 meteorological fibers that can not be used for wavelength calibration as they pass through a different optical pathway.  The brightest one at the bottom seems to have strong features that overwhelm or washout many columns in detector 2--4 (vertical stripes). \unfinished{Check if it is mentioned how these get corrected/ if the impact the wavelength solution.}
+The purpose of these fibres is to cross-correlate each with a \thar{} template, obtaining a wavelength solution across the detector. Scratches on the detector can cause a decrease in the correlation between \thar{} lines and the spectral template in ESO pipeline. This can be resolved by first applying a pixel mask (although we did not attempt it). At the top and bottom there are also 2 meteorological fibres that can not be used for wavelength calibration as they pass through a different optical pathway.  The brightest one at the bottom seems to have strong features that overwhelm or washout many columns in detector 2--4 (vertical stripes). \unfinished{Check if it is mentioned how these get corrected/ if the impact the wavelength solution.}
 In the end we did not use the \thar{} calibrations, this is discussed in \sref{subsec:wavecalib}. They have still been included here for completeness.
 
-\begin{figure}
-\includegraphics[width=\hsize]{./figures/reduction/lamp_plots_cbar_each.pdf}
-\caption{A Th-Ar calibration lamp frame for each detector, corrected from the dark current.}
-    \label{fig:caliblamps}
-\end{figure}
+%\begin{figure}
+%\includegraphics[width=\hsize]{./figures/reduction/lamp_plots_cbar_each.pdf}
+%\caption{A \thar{} calibration lamp frame for each detector, corrected from the dark current.}
+%    \label{fig:caliblamps}
+%\end{figure}
 
 \begin{figure}
     \begin{tabular}{cc}
@@ -122,7 +122,7 @@ In the end we did not use the \thar{} calibrations, this is discussed in \sref{s
          \includegraphics[width=.45\hsize]{./figures/reduction/Thar_3.png} & \includegraphics[width=.45\hsize]{./figures/reduction/Thar_4.png} \\
     \end{tabular}
 
-    \caption{An example Th-Ar calibration lamp frame for each detector. These have not been corrected from the dark current.}
+    \caption{An example \thar{} calibration lamp frame for each detector. These have not been corrected from the dark current, visible in the bottom corners.}
     \label{fig:caliblamps}
 \end{figure}
 
@@ -274,15 +274,15 @@ From the DRACS pipeline we have extracted the 1-D spectra of each target. The sp
 
 \subsection{Wavelength calibration}
 \label{subsec:wavecalib}
-Wavelength calibration is the process of assigning accurate wavelength values to each pixel in the spectra. For CRIRES in the \nir{} this is challenging. CRIRES uses a Thorium-Argon (\thar) lamp to place 6 emission spectra on the detector using fibers. The spectra of the \thar{} emission lines are used to determine the spatial distribution of the wavelength solution across each detector using correlation with a spectral template. \change{fix-up get a good citation, number of lines}{}\thar{} lamps are excellent at optical wavelengths where the numerous (8600 espresso) spectral lines enable precision of sub-m/s radial velocity measurements HARPS spectrograph\reference{paper for harps \thar{} lines}{(?)}. However in the \nir{}, there is a relatively low density of \thar{} lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ CRIRES-POP~\citep{nicholls_crirespop_2017}).
+Wavelength calibration is the process of assigning accurate wavelength values to each pixel in the spectra. For CRIRES in the \nir{} this is challenging. CRIRES uses a Thorium-Argon (\thar) lamp to place 6 emission spectra on the detector using fibres. The spectra of the \thar{} emission lines are used to determine the spatial distribution of the wavelength solution across each detector using correlation with a spectral template. \change{fix-up get a good citation, number of lines}{}\thar{} lamps are excellent at optical wavelengths where the numerous (8600 espresso) spectral lines enable precision of sub-m/s radial velocity measurements HARPS spectrograph\reference{paper for harps \thar{} lines}{(?)}. However in the \nir{}, there is a relatively low density of \thar{} lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ CRIRES-POP~\citep{nicholls_crirespop_2017}).
 Above 2.2~\si{\micro\meter} there are {O-H} sky lines that can be used for wavelength calibration but for our observations below 2.2~\si{\micro\meter} they are too dim.\reference{ cite crires manual, a paper about sky lines?}
 
-These wavelength calibration issues were experienced when using the ESO CRIRES pipeline, with non-Th-Ar lines features sometimes affecting the correlation.
+These wavelength calibration issues were experienced when using the ESO CRIRES pipeline, with non-\thar{} lines features sometimes affecting the correlation.
 
 At the wavelength of 2.1-2.17~\si{\micro\meter} there are roughly XXX \thar{} lines across all four detectors, as seen in \fref{fig:caliblamps}.
 The DRACS pipeline does not use the \thar{} lamp files for wavelength calibration and leaves this as a post reduction step.
 
-A common method for wavelength calibration that does not rely on Th-Ar lamps of CRIRES involves using the telluric lines present to provide the wavelength solution ~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}{\red{} \citep{ piskorz_evidence_2016}}. This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere.
+A common method for wavelength calibration that does not rely on \thar{} lamps of CRIRES involves using the telluric lines present to provide the wavelength solution ~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}{\red{} \citep{ piskorz_evidence_2016}}. This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere.
 
 We follow this method using the telluric absorption lines present in each observation as the wavelength reference. Instead of directly using the HITRAN database~\citep{rothman_hitran2012_2013} for the telluric line positions \citet[such as in ][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}), we use the TAPAS atmospheric transmission models~\citep{bertaux_tapas_2014} obtained for each observation. The TAPAS models in turns use the HITRAN database but includes atmospheric profiles and physical meteorological measurements to model the telluric absorption strength.
 
@@ -337,7 +337,7 @@ Our experiments with this method were not successful as we did not include a ste
 % 	\label{fig:detector4allspectra}
 % \end{figure*}
 
-In the future it may be plausible to combine all of the methods above, including the Th-Ar calibration lines, telluric models, and stellar templates. Also applying a fit to the 4 detectors so that neighboring detectors can help with the fit when low lines are used.
+In the future it may be plausible to combine all of the methods above, including the \thar{} calibration lines, telluric models, and stellar templates. Also applying a fit to the 4 detectors so that neighbouring detectors can help with the fit when low lines are used.
 
 We should have used the RV of the host star, and fitted against host lines also. This is what is done in other work. It is recommended to attempt one of these other solutions first before trying to roll-your-own.
 
