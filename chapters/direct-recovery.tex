@@ -16,7 +16,7 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-There many different techniques to disentangle the spectra of binary objects. In this chapter we focus on applying a direct subtraction method to near-infrared (\nir{}) spectra of FGK stars with Brown Dwarf (BD) companions. The data used was obtained with the CRIRES instrument in 2012, (before it was removed its upgrade) with the purpose to apply this technique specifically. A level of trust was placed in the quality of the observations, which was misplaced. 
+There many different techniques to disentangle the spectra of binary objects. In this chapter we focus on applying a direct subtraction method to near-infrared (\nir{}) spectra of FGK stars with Brown Dwarf (BD) companions. The data used was obtained with the CRIRES instrument in 2012, (before it was removed its upgrade) with the purpose to apply this technique specifically. A level of trust was placed in the quality of the observations, which was misplaced.
 We start this chapter by explaining the direct subtraction technique. We will then explain the motivation for the specific targets observed. We will detail the observations, showing each the orbital position of each observation. After revealing the insufficient signal from this technique we will explore the limitations of these observations followed by some simulated results.
 
 \section{Motivation}
@@ -33,8 +33,6 @@ Find direct imaging limitations ---
 
 
 
-
-
 \section{Differential subtraction (new)}
 \label{sec:spec_diff}
 {\red This is the summary in the paper}
@@ -45,55 +43,6 @@ Due to the poorly separated observation times relative to the long orbital perio
 Despite these problems, we still tried to apply the method to our data. Given the negative result, however, we decided to move this section to Appendix~\ref{sec:direct-subtraction}, where we describe the method and some exploratory results that may be useful for future studies.
 
 
-\section{Direct Subtraction Method}
-\label{sec:direct-subtraction}
-Here we outline the direct subtraction method used, which is similar to previous works~\citep{ferluga_separating_1997,kostogryz_spectral_2013}. Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately, the spectrum received from the host-companion pair is given by the superposition of two spectral components (\(J_{1} \), \(J_{2} \)), where \(\lambda-v\) represents the Doppler shift \(\lambda(1-v/c)\) by velocity \(v\).
-\begin{equation}
-\textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2})
-\end{equation}
-or shifted to the host stars rest frame,
-\begin{equation}
-\textrm{I}(\lambda + v_{1}) = \textrm{J}_{1}(\lambda) + \textrm{J}_{2}(\lambda - v_{2} + v_{1})
-\end{equation}
-Here, the subscripts 1 and 2 indicate the spectrum of the host and companion respectively, and \(\lambda \) represents the wavelength of the spectra.
-The spectra of the host star (\(\textrm{J}_{1} \)) is removed though the mutual subtraction of the host spectrum from two separate observations, denoted with subscripts \(a\) and \(b\), correcting for RV motion of the host star.
-\begin{align}
-S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
-&= \textrm{J}_{2}(\lambda - v_{2a} + v_{1a}) - \textrm{J}_{2}(\lambda - v_{2b} + v_{1b}) \nonumber \\
-%  &= \textrm{J}_{2}(\lambda - v_{2a}) - \textrm{J}_{2}(\lambda - v_{2b} - v_{1a} + v_{1b}) \nonumber \\
-S(\lambda + v_{2a}) &= \textrm{J}_{2}(\lambda) - \textrm{J}_{2}(\lambda + \Delta RV ) \label{eqn:sprofile}
-\end{align}
-where,
-\begin{equation}
-\Delta RV = v_{2a} - v_{2b} - v_{1a} + v_{1b} \label{eqn:k}
-\end{equation}
-
-is the actual RV difference (\(\Delta RV \)) between the two companion spectra.
-
-The resulting differential spectra, dubbed \emph{s-profile} by~\citet{ferluga_separating_1997}, is composed of just the companion spectra, shifted and subtracted from itself.
-
-From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the RV amplitudes of the host and companion are related through the mass ratio, \(q \), while having an opposite sign.
-\begin{align}
-v_{2}  &= -\textrm{q} * v_{1} \label{eqn:q_relation}
-\end{align}
-This equation was used to calculate the expected companion RV for each observation in Table~\ref{tab:observations}.
-
-We can simplify Eq.~\ref{eqn:k} by expressing it in terms of the host RV and mass ratio,
-\begin{align}
-k &= -q v_{1a} + q v_{1b} + v_{1a} - v_{1b} \nonumber \\
-&= (1 - \textrm{q})(v_{1a} - v_{1b}). \label{eqn:k_simplified}
-\end{align}
-If we are able to determine the \(\Delta RV \) between the the companion spectra, k, from the s-profile~\citep[see ][]{ferluga_separating_1997} then we can determine the mass ratio of the system, q, thereby constraining the mass of the companion. The values \(v_{1a} \) and \(v_{1b} \) are calculated from the orbital parameters of the system and are the same values already used to shift and mutually cancel the host spectrum.
-
-This method is very similar to~\citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated.
-
-
-
-
-
-
-
-
 
 \section{Direct Subtraction Method}
 \label{sec:direct-subtraction}
@@ -105,7 +54,7 @@ or shifted to the host stars rest frame,
 \begin{equation}
 \textrm{I}(\lambda + v_{1}) = \textrm{J}_{1}(\lambda) + \textrm{J}_{2}(\lambda - v_{2} + v_{1})
 \end{equation}
-Here, the subscripts 1 and 2 indicate the spectrum of the host and companion respectively, and \(\lambda \) represents the wavelength of the spectra.
+Here, the subscripts 1 and 2 indicate the spectrum of the host and companion respectively, and \(\lambda\) represents the wavelength of the spectra.
 The spectra of the host star (\(\textrm{J}_{1} \)) is removed though the mutual subtraction of the host spectrum from two separate observations, denoted with subscripts \(a\) and \(b\), correcting for RV motion of the host star.
 \begin{align}
 S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
@@ -133,19 +82,13 @@ We can simplify Eq.~\ref{eqn:k} by expressing it in terms of the host RV and mas
 k &= -q v_{1a} + q v_{1b} + v_{1a} - v_{1b} \nonumber \\
 &= (1 - \textrm{q})(v_{1a} - v_{1b}). \label{eqn:k_simplified}
 \end{align}
-If we are able to determine the \(\Delta RV \) between the the companion spectra, k, from the s-profile~\citep[see ][]{ferluga_separating_1997} then we can determine the mass ratio of the system, q, thereby constraining the mass of the companion. The values \(v_{1a}\) and \(v_{1b}\) are calculated from the orbital parameters of the system and are the same values already used to shift and mutually cancel the host spectrum.
+If we are able to determine the \(\Delta RV\) between the the companion spectra, k, from the s-profile~\citep[see ][]{ferluga_separating_1997} then we can determine the mass ratio of the system, q, thereby constraining the mass of the companion. The values \(v_{1a}\) and \(v_{1b}\) are calculated from the orbital parameters of the system and are the same values already used to shift and mutually cancel the host spectrum.
 
 This method is very similar to~\citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated.
 
 
 
 
-
-
-
-%-----------------------------------
-%	SUBSECTION 1
-%-----------------------------------
 \subsection{The Data}
 
 \subsection{CRIRES data}
@@ -159,9 +102,8 @@ The observations were performed in service mode during period 89 with run ID.~08
 
 
 
-%----------------------------------------------------------------------------------------
-%	SECTION 2
-%----------------------------------------------------------------------------------------
+
+
 
 \section{Main Section 2}
 
@@ -185,13 +127,6 @@ If only the companion minimum mass is known then this will correspond to the flu
 
 
 A simple tool to do this calculation was created with python. Given a host name, companion mass and a stellar age it can give a flux contrast ratio of the system. A script to work backwards from a flux-ratio to a companion mass was also created as a check for the results from \S~ref$ {subsec:companion_recovery}$. These scripts can be found at \url{https://github.com/jason-neal/baraffe_tables}.
-
-
-\subsection{CRIRES data}
-\label{subsec:CRIRESdata}
-Observations were performed with the CRIRES instrument~\citep{kaeufl_crires_2004} configured to observe a narrow wavelength domain of the K-band between \(\rm2120-2160~nm \) using the Ks and the Hx5e-2 filters. The slit width of \(0.4\sec \) resulted in an instrumental resolving power of R\(\sim50000 \), with no adaptive optics to ensure that the slit was entirely covered by each target.
-
-The observations were performed in service mode during period 89 with run ID.~089.C-0977(A) between April and August 2012. An observation is composed of 8 individual spectra with an integration time of 180 seconds, observed in the ABBAABBA nod cycle pattern to obtain a high (>100) signal-to-noise when combined. The targets and observation times taken by CRIRES are provided in Table~\ref{tab:observations}.
 
 
 
@@ -225,70 +160,67 @@ CHECK out LOCKWOOD 2014 - maximum likelihood with todcor 1e-4 flux ratio double 
 
     \begin{figure}
         \includegraphics[width=\hsize]{figures/direct-recovery/differential.pdf}\\
-        \caption{ (Top) A reduced CRIRES observation of {HD 30501} (blue) for detector 1 between 2112--2124~nm along with the tapas telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction. (Middle) The telluric corrected spectra. (Bottom) ({blue}) Differential spectra for {HD 30501} between observations 1 and 3. ({orange} dashed) Simulated ``perfect'' differential using PHOENIX-ACES spectra with parameters \(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0\), and \(\rm [Fe/H]=0.0 \), with the same \(\Delta RV \) as the observations. The shaded regions indicate where the telluric {green} and host star {blue} spectra are > 4\% deep.}
+        \caption{ (Top) A reduced CRIRES observation of {HD 30501} (blue) for detector 1 between 2112--2124\nm{} along with the tapas telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction. (Middle) The telluric corrected spectra. (Bottom) ({blue}) Differential spectra for {HD 30501} between observations 1 and 3. ({orange} dashed) Simulated ``perfect'' differential using PHOENIX-ACES spectra with parameters \(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0\), and \(\rm [Fe/H]=0.0 \), with the same \(\Delta RV\) as the observations. The shaded regions indicate where the telluric {green} and host star {blue} spectra are > 4\% deep.}
         \label{fig:spectral_example}
     \end{figure}
 
-    We performed the differential analysis for all targets but only show our most favorable case here, {HD 30501}, because it is the second largest companion in our sample at \(\rm 90~M_{Jup}\) and also has the second largest RV separation between observations. The differential spectra recovered for {HD 30501} is shown at the bottom panel of Fig.~\ref{fig:spectral_example}. The presence of deep (\(>4\% \)) stellar and telluric lines in the original spectrum is shaded by the blue and green regions respectively. This indicates that the features of the differential spectrum near these shaded regions are likely due to imperfect telluric correction and host mutual cancellation.
-    The mutual cancellation of the stellar host works well for the \(\sim40\% \) deep line near 2117~nm, being completely removed, but it does not do so well for the smaller \(\sim10\% \) deep line around 2121.5~nm. The residual for the large \(\sim40\% \) deep telluric line near 2118.5~nm is quite prominent. There is also a wider residual due to three neighboring lines \(\sim10\% \) deep around 2120~nm which cause features in the differential spectrum. One possible explanation is that the continuum normalization near 2120~nm was influenced by this grouping of lines.
+    We performed the differential analysis for all targets but only show our most favourable case here, {HD 30501}, because it is the second largest companion in our sample at \(\rm 90~M_{Jup}\) and also has the second largest RV separation between observations. The differential spectra recovered for {HD 30501} is shown at the bottom panel of Fig.~\ref{fig:spectral_example}. The presence of deep (\(>4\% \)) stellar and telluric lines in the original spectrum is shaded by the blue and green regions respectively. This indicates that the features of the differential spectrum near these shaded regions are likely due to imperfect telluric correction and host mutual cancellation.
+    The mutual cancellation of the stellar host works well for the \(\sim40\%\) deep line near 2117~nm, being completely removed, but it does not do so well for the smaller \(\sim10\%\) deep line around 2121.5~nm. The residual for the large \(\sim40\%\) deep telluric line near 2118.5\nm{} is quite prominent. There is also a wider residual due to three neighbouring lines \(\sim10\%\) deep around 2120\nm{} which cause features in the differential spectrum. One possible explanation is that the continuum normalization near 2120\nm{} was influenced by this grouping of lines.
 
-    To understand the observed differential signal we simulated a differential spectrum of {HD 30501} using a synthetic PHOENIX-ACES spectra with parameters \(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0 \), and \(\rm [Fe/H]=0.0 \), with a RV offset estimated from the observation times. These parameters represent an estimated companion \(T_{\textrm{eff}} \) with the metallicity and logg similar to the host (closest grid model). The model spectra were convolved to \(\rm R=50\,000 \), continuum normalized and scaled by the estimated flux ratio of the companion. We do not include any synthetic host or telluric spectra and as such simulate the differential result of a ``perfect'' host cancellation with no telluric contamination present. This is the ideal-case scenario, and we stress that it is impossible to simulate the effect of improper telluric correction in a meaningful way. When comparing the simulated and observed differential in the bottom panel of Fig.~\ref{fig:spectral_example}, there is a striking amplitude difference. The orange-dashed line of the simulated differential spectrum amplitude is of a much smaller scale than the observed differential. This demonstrates that the amplitude of the differential signal we are trying to detect is much smaller than the residuals created by this differential technique.
+    To understand the observed differential signal we simulated a differential spectrum of {HD 30501} using a synthetic PHOENIX-ACES spectra with parameters \(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0 \), and \(\rm [Fe/H]=0.0 \), with a RV offset estimated from the observation times. These parameters represent an estimated companion \(T_{\textrm{eff}}\) with the metallicity and logg similar to the host (closest grid model). The model spectra were convolved to \(\rm R=50\,000 \), continuum normalized and scaled by the estimated flux ratio of the companion. We do not include any synthetic host or telluric spectra and as such simulate the differential result of a ``perfect'' host cancellation with no telluric contamination present. This is the ideal-case scenario, and we stress that it is impossible to simulate the effect of improper telluric correction in a meaningful way. When comparing the simulated and observed differential in the bottom panel of Fig.~\ref{fig:spectral_example}, there is a striking amplitude difference. The orange-dashed line of the simulated differential spectrum amplitude is of a much smaller scale than the observed differential. This demonstrates that the amplitude of the differential signal we are trying to detect is much smaller than the residuals created by this differential technique.
 
     The amplitude of the differential signal is lower than we expected due to the very low \(\Delta RV\) between the observation pairs. The maximum \(\Delta RV\) between observation pairs, for the observations investigated in this work, are provided in Table~\ref{tab:estimatedparameters}. {\red{} There is no \(\Delta RV\) for {HD 4747} as there was only a single observation. We also provide the phase coverage for our targets. We calculate this as the ratio of time between the observed pairs and the orbital period, and show that the fraction of the orbit covered is very small, all except one covering less than 1 percent of the orbit.}
 
     In our best case, {HD 30501}, the \(\Delta RV\) of the companion between observations is 1.346\kmps{}. For comparison, a single Gaussian absorption line, to be shifted by \(\Delta\lambda = \rm FWHM\) would need a \(\Delta RV\) of \(v_{\textrm{FWHM}} = c/R =~\sim6\)\kmps{}. Since the \(\Delta RV\) are shifted by a smaller value than the FWHM, the spectral lines of the reconstruction mutually cancel themselves, diminishing the amplitude of the differential signal significantly. As the companion spectra are already faint (with a flux ratio at the percent level) the differential signal is not detectable within these observations and noise level.
-    When the \(\Delta RV \) of the companion is smaller than the FWHM of a line there is a mutual subtraction of the companion spectra, diminishing the detected amplitude of the differential signal, and removing the ability to detect the companions using this method. Observations need to be spaced further apart in time/phase to achieve a larger \(\Delta RV\) separation and increase the amplitude of the differential. Of course once there is a separation there will be complex interactions between neighbouring lines that need to be accounted for.
+    When the \(\Delta RV\) of the companion is smaller than the FWHM of a line there is a mutual subtraction of the companion spectra, diminishing the detected amplitude of the differential signal, and removing the ability to detect the companions using this method. Observations need to be spaced further apart in time/phase to achieve a larger \(\Delta RV\) separation and increase the amplitude of the differential. Of course once there is a separation there will be complex interactions between neighbouring lines that need to be accounted for.
 
     \subsection{Relative differential amplitude}
-    To probe this issue further we investigated how the amplitude of the differential signal changed with \(\Delta RV \). Taking the same PHOENIX-ACES spectra (\(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0 \), \(\rm [Fe/H]=0.0 \)), we computed differential spectra for a range of \(\Delta RV\)s between \(\pm10\)\kmps{}. Figure~\ref{fig:diff_amp} shows how the relative amplitude of the differential spectrum in the wavelength range 2110--2123~nm (detector 1 of our CRIRES observations) changed as the spectra are offset. At each RV step we take the maximum absolute differential value found. These are then normalized by the median value outside of the line FWHM (dashed vertical lines), between \(\pm(7-10)\)\kmps{}, to give a relative differential amplitude, independent from the depth of a specific line. For comparison we also show the relative amplitude of the differential spectrum for a single Gaussian and single Lorentzian line when Doppler shifted by the same \(\Delta RV \)s. The shape of these results is also consistent with the analytical form of the differential spectra~\citet[][eqn.~A.1]{ferluga_separating_1997}.
+    To probe this issue further we investigated how the amplitude of the differential signal changed with \(\Delta RV \). Taking the same PHOENIX-ACES spectra (\(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0 \), \(\rm [Fe/H]=0.0 \)), we computed differential spectra for a range of \(\Delta RV\)s between \(\pm10\)\kmps{}. Figure~\ref{fig:diff_amp} shows how the relative amplitude of the differential spectrum in the wavelength range 2110--2123\nm{} (detector 1 of our CRIRES observations) changed as the spectra are offset. At each RV step we take the maximum absolute differential value found. These are then normalized by the median value outside of the line FWHM (dashed vertical lines), between \(\pm(7-10)\)\kmps{}, to give a relative differential amplitude, independent from the depth of a specific line. For comparison we also show the relative amplitude of the differential spectrum for a single Gaussian and single Lorentzian line when Doppler shifted by the same \(\Delta RV \)s. The shape of these results is also consistent with the analytical form of the differential spectra~\citet[][eqn.~A.1]{ferluga_separating_1997}.
 
-    At a \(\Delta RV\) difference of zero, spectral lines of the companion completely cancel each other out, resulting in zero amplitude. As the RV separation increases, the individual lines stop canceling themselves until a maximum differential amplitude is achieved when the lines are fully separated from themselves (equal to the line depth).
+    At a \(\Delta RV\) difference of zero, spectral lines of the companion completely cancel each other out, resulting in zero amplitude. As the RV separation increases, the individual lines stop cancelling themselves until a maximum differential amplitude is achieved when the lines are fully separated from themselves (equal to the line depth).
 
     The two solid vertical lines in Fig.~\ref{fig:diff_amp} indicate the estimated \(\Delta \textrm{RV}\)=1.346\kmps{} separation for our best target, {HD 30501} from Table~\ref{tab:estimatedparameters}, given known orbital parameters and the observation times. This shows that our differentials have severely reduced amplitude, \(<20\%\) relative to well separated individual lines. As the companion spectra are faint and in combination with a host star at 1\% flux ratio the >80\% extra reduction in signal amplitude makes this detection impossible with these observations.
 
-    In the synthetic spectrum (and of course real spectra) neighboring spectral lines begin to interfere, leading to an impact on the measured relative amplitude. We suspect that the interaction of neighboring lines is one possible cause for the difference between the theoretical and simulated shape between 2 and 6\kmps{}. Beyond the RV range present the amplitude becomes complicated due to neighboring line interaction, but as the \(\Delta RV\) for all our spectra fall well short of this region we did not investigate this further.
+    In the synthetic spectrum (and of course real spectra) neighbouring spectral lines begin to interfere, leading to an impact on the measured relative amplitude. We suspect that the interaction of neighbouring lines is one possible cause for the difference between the theoretical and simulated shape between 2 and 6\kmps{}. Beyond the RV range present the amplitude becomes complicated due to neighbouring line interaction, but as the \(\Delta RV\) for all our spectra fall well short of this region we did not investigate this further.
 
 
 %%%%%%%%%%%%%%%%%%%
-
-
-
 \subsection{Results of spectral differential analysis}
 
 \label{appendix:A2}
-We applied the spectral differential procedure outlined above on the wavelength-calibrated and telluric-corrected CRIRES observations. The spectra were corrected for Earth's barycentric RV using the \emph{helcor} PyAstronomy\footnote{https://pyastronomy.readthedocs.io} function ported from the REDUCE IDL package (See~\citet[][]{piskunov_new_2002}) and Doppler shifted to the rest frame velocity of the system. The spectra were then subtracted from each other and analysd as described above.
+We applied the spectral differential procedure outlined above on the wavelength-calibrated and telluric-corrected CRIRES observations. The spectra were corrected for Earth's barycentric RV using the \emph{helcor} PyAstronomy\footnote{https://pyastronomy.readthedocs.io} function ported from the REDUCE IDL package (See~\citet[][]{piskunov_new_2002}) and Doppler shifted to the rest frame velocity of the system. The spectra were then subtracted from each other and analysed as described above.
 
 It is necessary to have a consistent instrumental setup~\citet{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g. slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted. In our case, the second observation of \object{HD 202206} and fourth of \object{HD 30501} were taken with different filters compared to the other observations. Therefore, these two observations could not be used for this differential analysis. As noted in~\citep{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
 
 
 \begin{figure}
 	\includegraphics[width=\hsize]{figures/direct-recovery/differential.pdf}\\
-	\caption{ (Top) A reduced CRIRES observation of \object{HD 30501} (blue) for detector 1 between 2112--2124~nm along with the tapas telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction. (Middle) The telluric corrected spectra. (Bottom) ({blue}) Differential spectra for \object{HD 30501} between observations 1 and 3. ({orange} dashed) Simulated ``perfect'' differential using PHOENIX-ACES spectra with parameters \(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0\), and \(\rm [Fe/H]=0.0 \), with the same \(\Delta RV \) as the observations. The shaded regions indicate where the telluric {green} and host star {blue} spectra are > 4\%  deep.}
+	\caption{ (Top) A reduced CRIRES observation of \object{HD 30501} (blue) for detector 1 between 2112--2124\nm{} along with the tapas telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction. (Middle) The telluric corrected spectra. (Bottom) ({blue}) Differential spectra for \object{HD 30501} between observations 1 and 3. ({orange} dashed) Simulated ``perfect'' differential using PHOENIX-ACES spectra with parameters \(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0\), and \(\rm [Fe/H]=0.0 \), with the same \(\Delta RV\) as the observations. The shaded regions indicate where the telluric {green} and host star {blue} spectra are > 4\%  deep.}
 	\label{fig:spectral_example}
 \end{figure}
 
 
-We performed the differential analysis for all targets but only show our most favorable case here, \object{HD 30501}, because it is the second largest companion in our sample at \(\rm 90~M_{Jup}\) and also has the second largest RV separation between observations. The differential spectra recovered for \object{HD 30501} is shown at the bottom panel of Fig.~\ref{fig:spectral_example}. The presence of deep (\(>4\% \)) stellar and telluric lines in the original spectrum is shaded by the blue and green regions respectively. This indicates that the features of the differential spectrum near these shaded regions are likely due to imperfect telluric correction and host mutual cancellation.
-The mutual cancellation of the stellar host works well for the \(\sim40\% \) deep line near 2117~nm, being completely removed, but it does not do so well for the smaller \(\sim10\% \) deep line around 2121.5~nm. The residual for the large \(\sim40\% \) deep telluric line near 2118.5~nm is quite prominent. There is also a wider residual due to three neighboring lines \(\sim10\% \) deep around 2120~nm which cause features in the differential spectrum. One possible explanation is that the continuum normalization near 2120~nm was influenced by this grouping of lines.
+We performed the differential analysis for all targets but only show our most favourable case here, \object{HD 30501}, because it is the second largest companion in our sample at \(\rm 90~M_{Jup}\) and also has the second largest RV separation between observations. The differential spectra recovered for \object{HD 30501} is shown at the bottom panel of Fig.~\ref{fig:spectral_example}. The presence of deep (\(>4\% \)) stellar and telluric lines in the original spectrum is shaded by the blue and green regions respectively. This indicates that the features of the differential spectrum near these shaded regions are likely due to imperfect telluric correction and host mutual cancellation.
+The mutual cancellation of the stellar host works well for the \(\sim40\%\) deep line near 2117~nm, being completely removed, but it does not do so well for the smaller \(\sim10\%\) deep line around 2121.5~nm. The residual for the large \(\sim40\%\) deep telluric line near 2118.5\nm{} is quite prominent. There is also a wider residual due to three neighbouring lines \(\sim10\%\) deep around 2120\nm{} which cause features in the differential spectrum. One possible explanation is that the continuum normalization near 2120\nm{} was influenced by this grouping of lines.
 
-To understand the observed differential signal we simulated a differential spectrum of \object{HD 30501} using a synthetic PHOENIX-ACES spectra with parameters \(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0 \), and \(\rm [Fe/H]=0.0 \), with a RV offset estimated from the observation times. These parameters represent an estimated companion \(T_{\textrm{eff}} \) with the metallicity and logg similar to the host (closest grid model). The model spectra were convolved to \(\rm R=50\,000 \), continuum normalized and scaled by the estimated flux ratio of the companion. We do not include any synthetic host or telluric spectra and as such simulate the differential result of a ``perfect'' host cancellation with no telluric contamination present. This is the ideal-case scenario, and we stress that it is impossible to simulate the effect of improper telluric correction in a meaningful way. When comparing the simulated and observed differential in the bottom panel of Fig.~\ref{fig:spectral_example}, there is a striking amplitude difference. The orange-dashed line of the simulated differential spectrum amplitude is of a much smaller scale than the observed differential. This demonstrates that the amplitude of the differential signal we are trying to detect is much smaller than the residuals created by this differential technique.
+To understand the observed differential signal we simulated a differential spectrum of \object{HD 30501} using a synthetic PHOENIX-ACES spectra with parameters \(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0 \), and \(\rm [Fe/H]=0.0 \), with a RV offset estimated from the observation times. These parameters represent an estimated companion \(T_{\textrm{eff}}\) with the metallicity and logg similar to the host (closest grid model). The model spectra were convolved to \(\rm R=50\,000 \), continuum normalized and scaled by the estimated flux ratio of the companion. We do not include any synthetic host or telluric spectra and as such simulate the differential result of a ``perfect'' host cancellation with no telluric contamination present. This is the ideal-case scenario, and we stress that it is impossible to simulate the effect of improper telluric correction in a meaningful way. When comparing the simulated and observed differential in the bottom panel of Fig.~\ref{fig:spectral_example}, there is a striking amplitude difference. The orange-dashed line of the simulated differential spectrum amplitude is of a much smaller scale than the observed differential. This demonstrates that the amplitude of the differential signal we are trying to detect is much smaller than the residuals created by this differential technique.
 
 The amplitude of the differential signal is lower than we expected due to the very low \(\Delta RV\) between the observation pairs. The maximum \(\Delta RV\) observed between pairs of all targets is provided in Table~\ref{tab:flux_table}.
 In our best case, \object{HD 30501},  the \(\Delta RV\) of the companion between observations is 1.346\kmps{}. For comparison, a single Gaussian absorption line, to be shifted by \(\Delta\lambda = \rm FWHM\) would need a \(\Delta RV\) of \(v_{\textrm{FWHM}} = c/R =~\sim6\)\kmps{}. Since the \(\Delta RV\) are shifted by a smaller value than the FWHM, the spectral lines of the reconstruction mutually cancel themselves, diminishing the amplitude of the differential signal significantly. As the companion spectra are already faint (with a flux ratio at the percent level) the differential signal is not detectable within these observations and noise level.
-When the \(\Delta RV \) of the companion is smaller than the FWHM of a line there is a mutual subtraction of the companion spectra, diminishing the detected amplitude of the differential signal, and removing the ability to detect the companions using this method. Observations need to be spaced further apart in time/phase to achieve a larger \(\Delta RV\) separation and increase the amplitude of the differential. Of course once there is a separation there will be complex interactions between neighboring lines that need to be accounted for.
+When the \(\Delta RV\) of the companion is smaller than the FWHM of a line there is a mutual subtraction of the companion spectra, diminishing the detected amplitude of the differential signal, and removing the ability to detect the companions using this method. Observations need to be spaced further apart in time/phase to achieve a larger \(\Delta RV\) separation and increase the amplitude of the differential. Of course once there is a separation there will be complex interactions between neighbouring lines that need to be accounted for.
 
 \subsection{Relative differential amplitude}
-To probe this issue further we investigated how the amplitude of the differential signal changed with \(\Delta RV\). Taking the same PHOENIX-ACES spectra (\(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0 \), \(\rm [Fe/H]=0.0 \)), we computed differential spectra for a range of \(\Delta RV\)s between \(\pm10\)\kmps{}. Figure~\ref{fig:diff_amp} shows how the relative amplitude of the differential spectrum in the wavelength range 2110--2123~nm (detector 1 of our CRIRES observations) changed as the spectra are offset. At each RV step we take the maximum absolute differential value found. These are then normalized by the median value outside of the line FWHM (dashed vertical lines), between \(\pm(7-10)\)\kmps{}, to give a relative differential amplitude, independent from the depth of a specific line. For comparison we also show the relative amplitude of the differential spectrum for a single Gaussian and single Lorentzian line when Doppler shifted by the same \(\Delta RV \)s. The shape of these results is also consistent with the analytical form of the differential spectra~\citet[][eqn.~A.1]{ferluga_separating_1997}.
+To probe this issue further we investigated how the amplitude of the differential signal changed with \(\Delta RV\). Taking the same PHOENIX-ACES spectra (\(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0 \), \(\rm [Fe/H]=0.0 \)), we computed differential spectra for a range of \(\Delta RV\)s between \(\pm10\)\kmps{}. Figure~\ref{fig:diff_amp} shows how the relative amplitude of the differential spectrum in the wavelength range 2110--2123\nm{} (detector 1 of our CRIRES observations) changed as the spectra are offset. At each RV step we take the maximum absolute differential value found. These are then normalized by the median value outside of the line FWHM (dashed vertical lines), between \(\pm(7-10)\)\kmps{}, to give a relative differential amplitude, independent from the depth of a specific line. For comparison we also show the relative amplitude of the differential spectrum for a single Gaussian and single Lorentzian line when Doppler shifted by the same \(\Delta RV \)s. The shape of these results is also consistent with the analytical form of the differential spectra~\citet[][eqn.~A.1]{ferluga_separating_1997}.
 
-At a \(\Delta RV\) difference of zero, spectral lines of the companion completely cancel each other out, resulting in zero amplitude. As the RV separation increases, the individual lines stop canceling themselves until a maximum differential amplitude is achieved when the lines are fully separated from themselves (equal to the line depth).
+At a \(\Delta RV\) difference of zero, spectral lines of the companion completely cancel each other out, resulting in zero amplitude. As the RV separation increases, the individual lines stop cancelling themselves until a maximum differential amplitude is achieved when the lines are fully separated from themselves (equal to the line depth).
 
 The two solid vertical lines in Fig.~\ref{fig:diff_amp} indicate the estimated \(\Delta \textrm{RV}\)=1.34\kmps{} separation for our best target, \object{HD 30501} from Table~\ref{tab:flux_table} , given known orbital parameters and the observation times. This shows that our differentials have severely reduced amplitude, \(<20\%\) relative to well separated individual lines. As the companion spectra are faint and in combination with a host star at 1\% flux ratio the >80\% extra reduction in signal amplitude makes this detection impossible with these observations.
 
-In the synthetic spectrum (and of course real spectra) neighboring spectral lines begin to interfere, leading to an impact on the measured relative amplitude. We suspect that the interaction of neighboring lines is one possible cause for the difference between the theoretical and simulated shape between 2 and 6\kmps{}. Beyond the RV range present the amplitude becomes complicated due to neighboring line interaction, but as the \(\Delta RV\) for all our spectra fall well short of this region we did not investigate this further.
+In the synthetic spectrum (and of course real spectra) neighbouring spectral lines begin to interfere, leading to an impact on the measured relative amplitude. We suspect that the interaction of neighbouring lines is one possible cause for the difference between the theoretical and simulated shape between 2 and 6\kmps{}. Beyond the RV range present the amplitude becomes complicated due to neighbouring line interaction, but as the \(\Delta RV\) for all our spectra fall well short of this region we did not investigate this further.
 
 \begin{figure}
 	\includegraphics[width=0.45\textwidth]{figures/direct-recovery/rv_diff_final.pdf}
-	\caption{Simulated relative amplitude of differential spectra at different RV separations revealing the diminished amplitude at small orbital separations. The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a PHOENIX-ACES spectrum with \(T_{\textrm{eff}}=2500~K, logg=5.0, [Fe/H]=0.0\) in the wavelength region 2110--2123~nm. The maximum difference is normalized by the average amplitude between 7--10\kmps{}, representing a complete line separation. The orange (dashed) and green (dot-dashed) lines represent the relative amplitude of a differential spectrum of a spectrum containing a single Gaussian and single Lorentzian absorption line respectively, each with a unitary amplitude and a \(\rm FWHM = \lambda / R\). Beyond the FWHM lines the difference of the synthetic spectrum becomes more complicated due to the interaction of neighboring lines. The solid vertical lines indicate the estimated companion \(\Delta RV\) in these observations while the dashed vertical lines indicate the RV corresponding to the FWHM at this wavelength and resolution. Beyond the FWHM RV the synthetic spectrum becomes complicated due to the interaction of neighboring lines.}
+	\caption{Simulated relative amplitude of differential spectra at different RV separations revealing the diminished amplitude at small orbital separations. The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a PHOENIX-ACES spectrum with \(T_{\textrm{eff}}=2500~K, logg=5.0, [Fe/H]=0.0\) in the wavelength region 2110--2123~nm. The maximum difference is normalized by the average amplitude between 7--10\kmps{}, representing a complete line separation. The orange (dashed) and green (dot-dashed) lines represent the relative amplitude of a differential spectrum of a spectrum containing a single Gaussian and single Lorentzian absorption line respectively, each with a unitary amplitude and a \(\rm FWHM = \lambda / R\). Beyond the FWHM lines the difference of the synthetic spectrum becomes more complicated due to the interaction of neighbouring lines. The solid vertical lines indicate the estimated companion \(\Delta RV\) in these observations while the dashed vertical lines indicate the RV corresponding to the FWHM at this wavelength and resolution. Beyond the FWHM RV the synthetic spectrum becomes complicated due to the interaction of neighbouring lines.}
 
 	\label{fig:diff_amp}
 \end{figure}
@@ -298,7 +230,7 @@ In the synthetic spectrum (and of course real spectra) neighboring spectral line
 
 \subsection{RV calculation}
 \unfinished{Move location / adjust from paper}
-To determine the RV offset to apply to the simulated spectra above we calculated the RV of the companion using the published orbital parameters of the host, transforming the RV semi-amplitude of the host \(K_{1} \) into the companion semi-amplitude \(K_{2} \) using the mass ratio,
+To determine the RV offset to apply to the simulated spectra above we calculated the RV of the companion using the published orbital parameters of the host, transforming the RV semi-amplitude of the host \(K_{1}\) into the companion semi-amplitude \(K_{2}\) using the mass ratio,
 \begin{equation}
 \label{eqn:mass_ratio}
 q = \textrm{M}_{2} / \textrm{M}_{1} = \textrm{K}_{1} / \textrm{K}_{2}
@@ -306,7 +238,7 @@ q = \textrm{M}_{2} / \textrm{M}_{1} = \textrm{K}_{1} / \textrm{K}_{2}
 
 We note that for the targets in which only the minimum mass (\(\textrm{M}\sin{i} \)) is known, this equation will indicate the maximum \(K_2\) value for the companion. The estimated \(K_2\) value for each companion is given in Table~\ref{tab:flux_table} while the estimated RV for each observation is calculated in Table~\ref{tab:observations}.
 
-If a direct measurement of the companion RV or \(\Delta RV \) from the differential spectra analysis was achieved, then this relation would have been used to calculate the companion mass.
+If a direct measurement of the companion RV or \(\Delta RV\) from the differential spectra analysis was achieved, then this relation would have been used to calculate the companion mass.
 
 The error on estimated RV values is calculated using the general error propagation formula~\citep{ku_notes_1966} with the RV equation and the errors on the orbital parameters. For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc, it follows:
 \begin{align}
@@ -319,7 +251,7 @@ The error on estimated RV values is calculated using the general error propagati
 
 \unfinished{Move location / adjust from paper}
 \label{compaion flux ration}
-The companion-host flux or contrast ratio of the systems are calculated using \( \frac{F_{2}}{F_{1}} \approx 2.512^{m_{1}-m_{2}} \), where \(m_{1} \) and \(m_{2} \) are the magnitude of the host and companion respectively.\ \(m_{1} \) is the magnitude of the host in the literature, while \(m_{2} \) is obtained from stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass (or \(M_{2}\sin{i}\))) and the host's age. If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario). The models, interpolated to the companion mass, also provide a first estimate of companion properties such as \(T_{\textrm{eff}}\), logg, \(R/R_{\sun}\) and the magnitude in many wavelength bands.
+The companion-host flux or contrast ratio of the systems are calculated using \( \frac{F_{2}}{F_{1}} \approx 2.512^{m_{1}-m_{2}} \), where \(m_{1}\) and \(m_{2}\) are the magnitude of the host and companion respectively.\ \(m_{1}\) is the magnitude of the host in the literature, while \(m_{2}\) is obtained from stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass (or \(M_{2}\sin{i}\))) and the host's age. If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario). The models, interpolated to the companion mass, also provide a first estimate of companion properties such as \(T_{\textrm{eff}}\), logg, \(R/R_{\sun}\) and the magnitude in many wavelength bands.
 We use the K-band magnitude specifically for this work to estimate the flux ratio between the host and companion using the host K-band magnitude obtained from SIMBAD~\citep{wenger_simbad_2000}. Our flux ratio estimates are presented in table~\ref{tab:flux_table}.
 The companion \(T_{\textrm{eff}}\) and logg values specifically are used to influence the selection of synthetic model grids to perform the \(\chi^2\) analysis over.
 
@@ -327,7 +259,6 @@ The companion \(T_{\textrm{eff}}\) and logg values specifically are used to infl
 A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to estimate the host-companion flux ratio using the~\citep{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables. The minimum requirements are the host star name, the companion mass and a stellar/system age. The host's name is used to query the SIMBAD database to obtain available stellar properties, specifically for this work the photometric \textit{K}-band magnitudes and parallax. There are several Baraffe tables for different stellar ages. If the age given does not correspond to a published table then interpolation between two tables is preformed. The table selected is interpolated to the companion mass provided and the entries returned.
 
 There is also a script available which operates in reverse. Given a host name, age, and a flux ratio it will find the table position and corresponding companion mass that It can also work in reverse to estimate the companion mass when provided with a flux ratio value.
-
 
 
 
@@ -345,8 +276,6 @@ The goal would be to observe with High-resolution and high through-put spectrogr
 
 
 
-
-
 \subsubsection{Differential scheduling challenges {copy from paper}}
 \label{subsubsec:differential-schedualing}
 This work has revealed that more care needs to be taken in planning the observations for the spectral differential analysis of faint companions in the future. Paying attention in particular to the FWHM of the lines in the region (governed by resolution and wavelength); the estimated companion \(\Delta RV \); the previous observations from different observing periods; and keeping consistent detector settings.
@@ -355,7 +284,7 @@ The original goal for the observations was to obtain two different and ``clearly
 
 The long orbital periods of these targets is also a contributing factor to the insufficient separations. Most of the targets observed here have orbital periods much longer than an observing semester (183 days). An optimal pair of observations (achieved at the extrema) would need to have been obtained from separate observing periods (between 2 months and 19 years apart). In some cases, even observations taken at the beginning and end of the semester would not be sufficient to achieve companion separation (depending on the phase). Requiring separate observing periods to even achieve the minimum \(\Delta \rm RV\) larger than the line FHWM.\@At the time it was impossible to ask for time over several semesters in a regular proposal.
 
-Our study demonstrates the importance of proposals for projects that need to be extended over several semesters or years. In the ESO context, this corresponds to ``Monitoring proposals''~\citep[e.g.][pg. 18]{eso_eso_2017}. Observations of the targets explored here, with long orbital periods in particular, would benefit from the ability for multi-period proposals and newer scheduling systems which allow for tighter scheduling constraints, such as a companion RV separation. 
+Our study demonstrates the importance of proposals for projects that need to be extended over several semesters or years. In the ESO context, this corresponds to ``Monitoring proposals''~\citep[e.g.][pg. 18]{eso_eso_2017}. Observations of the targets explored here, with long orbital periods in particular, would benefit from the ability for multi-period proposals and newer scheduling systems which allow for tighter scheduling constraints, such as a companion RV separation.
 
 For future observations we suggest that the known orbital solution of the companion be used to estimate the companions' RV curve during the observing period, with the companion \(M_2\sin{i}\) providing an RV upper-limit. Knowing the instrumental wavelength and resolution, a constraint can then be set to avoid taking observations when the companion spectra are insufficiently separated, or \(\Delta RV\) < FWHM.\@This constraint can be set using the absolute and relative \emph{time-link} constraints available in ESO's Phase 2 Proposal Preparation (P2PP) tool.
 Additionally, analysing the known orbital solution before-hand, to determine RV constraints will also help identify the best time to observe, if observations from separate periods will be required or, if an optimally separated companion differential is even feasible.
