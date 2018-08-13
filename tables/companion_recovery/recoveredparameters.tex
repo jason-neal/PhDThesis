@@ -1,0 +1,35 @@
+%!TEX root = ../thesis.tex
+
+\begin{table*}
+      \centering
+ \begin{threeparttable}
+    \caption{Input and recovered parameters on simulations and an observation when applying a single (\(\rm C^1\)) and binary (\(\rm C^2\)) models. The logg and metallicity were fixed at \(\rm logg_1 = 4.50\), \(\rm logg_2=5.0\) and [Fe/H]=0.0 equally for both components. Gaussian noise was added to both simulations with a SNR of 150. {\rd Here $m$ and $n$ are the number of data points and parameters used in each model.}}
+  
+    \begin{tabular}{c | *3c | *3c | *3c}
+        \toprule
+        & \multicolumn{3}{c|}{Simulation 1} & \multicolumn{3}{c|}{Simulation 2} & \multicolumn{3}{c}{Observed {HD 211847}} \\
+        \midrule
+        & Input & \multicolumn{2}{c|}{Recovered} & Input & \multicolumn{2}{c|}{Recovered} & Expected & \multicolumn{2}{c}{Recovered} \\
+        & & \(C^1\) & \(C^2\) & & \(C^1\) & \(C^2\) & & \(C^1\)  & \(C^2\) \\
+        \midrule
+        \(T_{\textrm{eff}_1}\) & 5800 & 5800 & 5800 & 5700 & 5800 & 5700 & \(5715 \pm 24\) & 5900 & 5800\\
+        \(T_{\textrm{eff}_2}\) & 4000 & -- & 3800 & 3200 & -- & 3100 & \(\sim\)3200 & -- & >3800\tnote{a}\\
+        \({rv}_1\) & 0 & 0.1 & 0 & 6.6 & 6.6 & 6.6 & \(6.6 \pm 0.3\) & 7& 7.6 \\
+        \({rv}_2\) &  10 & -- & 9.8 & 0.5 & -- &  -1& \(0.5 \pm 2\) & -- &-12.6\\
+        \midrule
+        \(R_1/R_2\)& 2.57 & -- & 2.71& 3.16 & - & 3.27 & 3.16 & -- & <2.71\tnote{a}\\
+        \(\rm F_2/F_1\)& 0.084 & -- & 0.066 & 0.030 & -- & 0.026 & 0.030 & -- & >0.066\tnote{a}\\
+      {\rd $m$} & - & 3072 & 3072 & -- & 3072 & 3072 & -- & 2612 & 2612\\
+        {\rd $n$} & - & 2 & 4 & -- & 2 & 4 & -- & 2 & 4\\
+        \(\chi^2\)& -- & 4978 & 3792 & -- & 3746 & 3630  & -- & 37688 & 33860\\
+        \(\chi^2_{red}\) & -- & 1.62 & 1.24 & -- & 1.22 & 1.18 & -- & 21.3 & 19.2\\
+        {\rd BIC} & -- & -20145 & -22315 & -- & -21477& -21377& -- & 18281 & 14468\\
+        \bottomrule
+    \end{tabular}
+
+\label{tab:example_params}
+    \begin{tablenotes}
+       \item [a] {At the arbitrary upper limit for companion temperature grid (3800~K).}
+    \end{tablenotes}
+\end{threeparttable}
+\end{table*}
