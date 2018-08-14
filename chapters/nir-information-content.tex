@@ -433,6 +433,53 @@ Computer code is not the important part in scientific exploration., although bec
 \# Handle any phoenix aces models.
 
 
+\section{Numerical Gradient}
+The calculation of RV precision is susceptible to difference in numerical gradients.
+Changing the spectral derivative algorithm from using  the simple dy/dx to using np.gradient()\footnote{\href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}} which preforms a second order differencing
+\citet{quarteroni_numerical_2000}  reference from np.gradient
+The difference quotient 
+By a slight change in notation (and viewpoint), for an interval [a, b], the difference quotient
+
+$\frac{f(b)-f(a)}{b-a}$
+
+The symmetric difference quotient  
+
+\(\frac {f(b)-f(a)}{b-a}\)
+  
+
+\(F'[i] = \frac{f([i+1) - F(i-1)}{\lambda(i+1)-\lambda(i-1)}\)    where the ends are handles using forwards or backwards difference quotients.   
+
+These higher order derivatives give a better estimate of the derivative ()
+
+Finally, the central difference is given by
+
+$\delta _{h}[f](x)=f(x+{\tfrac {1}{2}}h)-f(x-{\tfrac {1}{2}}h)~.$
+
+Numpy  Gradient notes:
+  The gradient is computed using second order accurate central differences in the interior points and either first or second order accurate one-sides (forward or backwards) differences at the boundaries. The returned gradient hence has the same shape as the input array
+
+  Assuming that $f\in C^{3}$ (i.e., f has at least 3 continuous derivatives) and let $h_{*}$ be a non-homogeneous stepsize, we minimize the “consistency error”$ \eta_{i} $ between the true gradient and its estimate from a linear combination of the neighboring grid-points:
+  
+  $\eta_{i} = f_{i}^{\left(1\right)} - \left[ \alpha f\left(x_{i}\right) + \beta f\left(x_{i} + h_{d}\right) + \gamma f\left(x_{i}-h_{s}\right) \right]$
+  
+  By substituting $f(x_{i} + h_{d}) and f(x_{i} - h_{s}) $with their Taylor series expansion, this translates into solving the following the linear system:
+  
+  $\left\{ \begin{array}{r} \alpha+\beta+\gamma=0 \\ \beta h_{d}-\gamma h_{s}=1 \\ \beta h_{d}^{2}+\gamma h_{s}^{2}=0 \end{array} \right.$
+  
+  The resulting approximation of $f_{i}^{(1)}$ is the following:
+  
+  $\hat f_{i}^{(1)} = \frac{ h_{s}^{2}f\left(x_{i} + h_{d}\right) + \left(h_{d}^{2} - h_{s}^{2}\right)f\left(x_{i}\right) - h_{d}^{2}f\left(x_{i}-h_{s}\right)} { h_{s}h_{d}\left(h_{d} + h_{s}\right)} + \mathcal{O}\left(\frac{h_{d}h_{s}^{2} + h_{s}h_{d}^{2}}{h_{d} + h_{s}}\right)
+  $
+  It is worth noting that if $h_{s}=h_{d}$ (i.e., data are evenly spaced) we find the standard second order approximation:
+  
+  $\hat f_{i}^{(1)}= \frac{f\left(x_{i+1}\right) - f\left(x_{i-1}\right)}{2h} + \mathcal{O}\left(h^{2}\right)$
+  
+  With a similar procedure the forward/backward approximations used for boundaries can be derived.
+  
+  
+
+
+
 \section{SPIRou and NIRPS ETC}
 Having this tool to calculate RV precisions efficiently lead to contributions to the Exposure Time Calculators (ETC) for both the SPIRou and NIRPS spectrographs.
 
