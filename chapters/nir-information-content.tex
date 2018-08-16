@@ -336,16 +336,52 @@ For the H and K band there is fairly consistent linear trend for all spectral ty
 
 
 
-\section{Code improvements}
-Care needs to be taken to optimize the code. The original code used in Figueira 2016 was very slow, taking around 2 hours per simulation, this lead to weeks of processing time to compute the precision's for the paper.
+\section{Updating RV precision software}
+A large section of this work involved optimizing the original code used in \citet{figueira_radial_2016}.
+Care needs to be taken to optimize the code. The original code used in \citet{figueira_radial_2016} was very slow, taking around 2 hours per simulation, this led to multiple weeks of processing time to compute the precision's for the original paper.
 
+In this section we document the changes made to the code in the course of improving it. 
+
+\subsection{Automated testing}
+To insure that any changes made to the code did not change the underling results. This involved writing automatic tests for the software. This practice is crucial in computer science ins commercial software development but seldom done in research but is becoming more popular. \reference{works of software testing in research.}
 Some work focused on testing ideology from computer science. Although not perfect implementation I began by adding automated tests to the code to check individual parts of it.
 Before making changes I created automated tests that would confirm the functionality of pieces of the code. I could then make changes to the code, to improve the performance without worrying that the results were different.
-Namely that the same precision were calculated in the end.
+Namely that the same precision were calculated in the end. 
 
-There was a major performance bottleneck in the convolution stage, which increased the performance around 250X itself. The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range). Turning the result into a numpy array, performing the sum for that pixel and appending it to a list.
+Functional test and unit tests.
 
+\subsection{Atmospheric masking bug}
+One thing that was revealed in testing was that there was an error in the application of Condition\#2. When the telluric mask was shifted to account for barycentric motion of the earth, and the condition of 3 consecutive pixels in the telluric spectra being lower than the limit (due to the higher sampling) there was an software bug, 
+
+
+A check for this issue was discovered using this unit test.
+\begin{lstlisting}[language=Python, caption=Example unit test to catch masking bug.]
+def test_telluric_masking(wavelength, transmission):
+    mask = telluric_mask(transmission, depth=0.98)
+    mask = barycenter_shift(mask)
+   
+    # Checks that the mask is still masking out all telluric lines.
+    assert np.all(transmission[mask] > 0.98)
+\end{lstlisting}
+The assert statements checks that when the mask is applied to the transmission spectrum again all of the values are outside of any deep telluric regions. A test like this would have caught this bug.
+
+This bug means that all the RV precision values for Condition \#2 published in \citet{figueira_radial_2016} incorrect. As the applied masking was unevenly applied \citet{figueira_radial_2016} the new values RV precision values do not all change in the same proportion or direction. Some specific wavelengths and resolutions are essentially unchanged while other results change by over 20\mps.  Even though there is an error with condition \#2 they do not change the overall conclusions of the paper. These are...\todo{add conclusions not affected}
+
+ \subsection{Performance}
+ 
+     There was a major performance bottleneck in the convolution stage, which increased the performance around 250X itself. The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range). Turning the result into a numpy array, performing the sum for that pixel and appending it to a list.
+
+
+caching convolution result to prevent recomputing the same values. Joblib.  Also embarrassingly parallel so added multiprocessing support.
+
+The convolution is still the slowest part. There are other methods that work on uniform spectra, which have not been tried to see how they affect the performance or RV precision results.
 \textbf{Insert code samples.}
+
+
+\subsection{MOdel extension}
+
+\subsection{SNR scaling}
+
 
 \begin{lstlisting}[language=Python, caption=Python example old]
 
@@ -434,50 +470,57 @@ Computer code is not the important part in scientific exploration., although bec
 
 
 \section{Numerical Gradient}
-The calculation of RV precision is susceptible to difference in numerical gradients.
-Changing the spectral derivative algorithm from using  the simple dy/dx to using np.gradient()\footnote{\href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}} which preforms a second order differencing
-\citet{quarteroni_numerical_2000}  reference from np.gradient
-The difference quotient 
-By a slight change in notation (and viewpoint), for an interval [a, b], the difference quotient
+One of the key insights from \eref{} is that radial velocity error is inversely proportional slope of the spectra, with sharper lines producing a smaller RV error. In numerically computing the RV precision, the result is dependent on method used to numerically calculate the gradient or slope of the spectral. 
 
-$\frac{f(b)-f(a)}{b-a}$
+The simplest way to calculate the derivative using finite difference methods \citep{quarteroni_numerical_2000}. These arising from the Newton's definition of the derivative for a continuous function $f(x)$ which should be familiar from introductory calculus:
+\[f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}~.\]
 
-The symmetric difference quotient  
+The original method used in \citet{figueira_radial_2016} used the simplest method to calculate the slope of the lines. \(\rm\frac{rise}{run}\) forward   
 
-\(\frac {f(b)-f(a)}{b-a}\)
-  
+There are three different varieties,  
+\[f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}, f'(x) = \lim_{h \to 0} \frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, f'(x) = \lim_{h \to 0} \frac{f(x)-f(x-h)}{h}\], called the forwards, central and backwards respectively
+The first of which should be familiar from introductory differentiation courses.
+The order of uncertainty  on the forward/backwards finite difference is $\O(h)$ while for the central difference it is $\O(h^2)$ \citep{quarteroni_numerical_2000}. As the difference between points (h) is small the central difference gives a more precise value for the gradient at each point.
 
-\(F'[i] = \frac{f([i+1) - F(i-1)}{\lambda(i+1)-\lambda(i-1)}\)    where the ends are handles using forwards or backwards difference quotients.   
+In our case \(h\) is the difference in wavelength between the two pixels considered. 
+\[\partial A_0(i)/\partial\lambda(i) = \frac{A_0(i+1) - A_0(i)}{\lambda(i+1)-\lambda(i)}\]
+At each pixel the numerical derivative is evaluated to the average slope between itself and the following point and is an approximation to the derivative.
 
-These higher order derivatives give a better estimate of the derivative ()
 
-Finally, the central difference is given by
+There are other numerical methods to calculate the derivative. The \emph{gradient}\footnote{\href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}}  function in  Numpy is implemented central differences in the interior points, accurate to the second order differential, and first order accurate one-sided (forward or backwards) differences at the boundaries...
 
-$\delta _{h}[f](x)=f(x+{\tfrac {1}{2}}h)-f(x-{\tfrac {1}{2}}h)~.$
+In full the central difference approximation for our situation is 
+\[\partial A_0(i)/\partial\lambda(i) = \frac{A_0(i+1) - A_0(i)}{\lambda(i+1)-\lambda(i)}\]
 
-Numpy  Gradient notes:
-  The gradient is computed using second order accurate central differences in the interior points and either first or second order accurate one-sides (forward or backwards) differences at the boundaries. The returned gradient hence has the same shape as the input array
+approximation of $f_{i}^{(1)}$ is the following:
 
-  Assuming that $f\in C^{3}$ (i.e., f has at least 3 continuous derivatives) and let $h_{*}$ be a non-homogeneous stepsize, we minimize the “consistency error”$ \eta_{i} $ between the true gradient and its estimate from a linear combination of the neighboring grid-points:
-  
-  $\eta_{i} = f_{i}^{\left(1\right)} - \left[ \alpha f\left(x_{i}\right) + \beta f\left(x_{i} + h_{d}\right) + \gamma f\left(x_{i}-h_{s}\right) \right]$
-  
-  By substituting $f(x_{i} + h_{d}) and f(x_{i} - h_{s}) $with their Taylor series expansion, this translates into solving the following the linear system:
-  
-  $\left\{ \begin{array}{r} \alpha+\beta+\gamma=0 \\ \beta h_{d}-\gamma h_{s}=1 \\ \beta h_{d}^{2}+\gamma h_{s}^{2}=0 \end{array} \right.$
-  
-  The resulting approximation of $f_{i}^{(1)}$ is the following:
-  
-  $\hat f_{i}^{(1)} = \frac{ h_{s}^{2}f\left(x_{i} + h_{d}\right) + \left(h_{d}^{2} - h_{s}^{2}\right)f\left(x_{i}\right) - h_{d}^{2}f\left(x_{i}-h_{s}\right)} { h_{s}h_{d}\left(h_{d} + h_{s}\right)} + \mathcal{O}\left(\frac{h_{d}h_{s}^{2} + h_{s}h_{d}^{2}}{h_{d} + h_{s}}\right)
-  $
-  It is worth noting that if $h_{s}=h_{d}$ (i.e., data are evenly spaced) we find the standard second order approximation:
-  
-  $\hat f_{i}^{(1)}= \frac{f\left(x_{i+1}\right) - f\left(x_{i-1}\right)}{2h} + \mathcal{O}\left(h^{2}\right)$
-  
-  With a similar procedure the forward/backward approximations used for boundaries can be derived.
-  
-  
+$\hat f_{i}^{(1)} = \frac{ h_{s}^{2}f\left(x_{i} + h_{d}\right) + \left(h_{d}^{2} - h_{s}^{2}\right)f\left(x_{i}\right) - h_{d}^{2}f\left(x_{i}-h_{s}\right)} { h_{s}h_{d}\left(h_{d} + h_{s}\right)} + \mathcal{O}\left(\frac{h_{d}h_{s}^{2} + h_{s}h_{d}^{2}}{h_{d} + h_{s}}\right)
+$
 
+
+Note that if the spectrum is evenly spaced $h_{s}=h_{d}$ this reduces to the standard second order approximation:
+
+$\hat f_{i}^{(1)}= \frac{f\left(x_{i+1}\right) - f\left(x_{i-1}\right)}{2h} + \mathcal{O}\left(h^{2}\right)$
+
+
+
+In \fref{fig:gradients} we show a spectral line and the calculation of the derivative using the first finite difference original used, and the higher precision version incorporated in numpy's gradient function. There a 3 notable differences between the methods.
+The first is that there is an offset in gradient as the finite difference evaluates the slope slightly ahead of itself.
+Correcting for this offset the points follow the same shape. 
+
+
+This is the RV precision without any resolution, rotation or each spectra is normalized to a maximum of 1 in the band. Each is only relative to the individual band and not comparable between bands in this instance. Only indicates the relative precision between different gradient methods.
+
+\input{tables/numerical_gradient.tex}
+
+\begin{figure}
+    \centering
+    \begin{tabular}
+    \includegraphics[width=0.7\linewidth]{figures/information-content/spectra_gradient_example1} \includegraphics[width=0.7\linewidth]{figures/information-content/spectra_gradient_example2}\\
+    \end{tabular}
+    \caption{}
+    \label{fig:spectragradientexample1}
+\end{figure}
 
 
 \section{SPIRou and NIRPS ETC}
