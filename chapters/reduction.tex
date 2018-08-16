@@ -87,12 +87,21 @@ A visual example of the nodding is shown in \fref{fig:nodimages}. On the left ar
 
 Observations of faint targets, that need long exposure times, are also broken up into multiple images so that the instrument glow from \fref{fig:darkcurrent_colour} does not saturate the detector.
 
+\todo{FIXup this table}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}  % Tablularx centered column for eqaul columns (nod cycle image)
+%\newcolumntype{Y}{>{\Centering}X}  % Tablularx centered column for eqaul columns (nod cycle image)
+
 \begin{figure}
     \centering
-    \begin{tabular}{ccc}
-        \includegraphics[width=0.4\textwidth]{figures/reduction/nod_image_sample.pdf} &  \includegraphics[width=0.35\textwidth]{figures/reduction/Nods_AB_A-B.png} &
-        \includegraphics[width=0.37\textwidth]{figures/reduction/nod_slice_example.pdf}\\
-    \end{tabular}
+    % Using new column type Y
+    %\begin{tabularx}{0.7\textwidth}{|*6{>{\Centering\arraybackslash}X}|}    % 3 Y columns (equaly spaced) 1 extra column
+        
+      \begin{tabularx}{0.75\textwidth}{|*6{Y|}|}    % 3 Y columns (equaly spaced) 1 extra column
+      A & B & A-B& & & \\
+        % \includegraphics[width=0.4\textwidth]{figures/reduction/nod_image_sample.pdf} & 
+        \multicolumn{3}{|c|}{ \includegraphics[width=0.4\textwidth]{figures/reduction/Nods_AB_A-B.png}} &
+        \multicolumn{3}{|c|}{\includegraphics[width=0.37\textwidth]{figures/reduction/nod_slice_example.pdf}}\\
+    \end{tabularx}
     \caption{Illustration of the nodding technique. Left: Sample slice of successive images at nod positions A and B, and their difference A-B for detector \#1. Right: A vertical slice along the slit at column 512 (middle of detector). The background level observed in A and B is effectively removed by the subtraction. {\red{} A and B backgrounds should be different on left. (just above zero ) and the spectra should be blacker, scale 2 A-B?}. Middle has orange around 0. {\red{} label middle panel if used}}
     \label{fig:nodimages}
 \end{figure}
