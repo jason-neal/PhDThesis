@@ -77,4 +77,8 @@ substr
 fp
 todonotes
 beebe
-
+biblatex
+biber
+mdframed
+newtx
+fontaxes
