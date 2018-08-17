@@ -18,7 +18,7 @@ test-all:
 	checktex thesis.tex
 
 build:
-	latexmk -pdf -interaction=nonstopmode thesis.tex
+	latexmk -pdf -interaction=nonstopmode thesis.tex -f
 
 clean:
 	find . -name '*.log' -exec rm --force {} +
