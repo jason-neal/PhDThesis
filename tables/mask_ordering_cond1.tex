@@ -1,0 +1,22 @@
+%!TEX root = ../thesis.tex
+
+\begin{table}
+    \caption{Relative RV precision difference for Condition \#2 due to spectral splitting and order of applying the pixel mask. The Ratio are the difference between Split and Masked implementations with the same gradient calculation. The last column is the ratio between the Masked versions using the Forward and Central difference method and are consistent with \tref{tab:numerical_gradients}. Results a for an M0 spectral type, with vsini=1 and R=100,000.}
+    \begin{tabular}{c|cccc|cccc|c}
+        \toprule
+        & Cond. \#1 & Split & Masked & Ratio &  Cond. \#1 & Split & Masked & Ratio & Masked Ratios\\
+        Gradient &  \multicolumn{4}{c|}{Forward Finite Difference}  &  \multicolumn{4}{c|}{Central Finite Difference} & \\
+        
+        Band & \mps{} & \mps{} & \mps{} &  \%  & \mps{} & \mps{} & \mps{} &   \% & \% \\
+        \midrule
+   
+        Z & 4.48 &  7.42 &  7.38 & -0.66 &  4.73 &  7.76 &  7.77 & 0.13 & 5.3\\
+        Y & 3.96 &  4.75 &  4.74 & -0.22 &  4.23 &  5.06 &  5.06 & 0.06 & 6.8\\
+        J & 7.45 & 18.58 & 18.53 & -0.29 &  7.84 & 19.57 & 19.57 & 0.01 & 5.6\\
+        H & 3.82 &  6.08 &  6.05 & -0.53 &  3.96 &  6.25 &  6.26 & 0.08 & 3.5\\
+        K & 7.12 & 32.21 & 32.14 & -0.22 &  7.42 & 33.48 & 33.49 & 0.05 & 4.2\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+{\rd The results from these spectra for conditions \#1 and \# 3 are consistent with Figueira et al. 2016. \todo{put this some where}}
