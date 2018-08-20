@@ -380,77 +380,6 @@ The convolution is still the slowest part. There are other methods that work on 
 
 \subsection{MOdel extension}
 
-\subsection{SNR scaling}
-
-
-\begin{lstlisting}[language=Python, caption=Python example old]
-
-def pixel_rot_convolution(wl_0, wl, flux, vsini, epsilon):
-flux_conv_rot = []
-counter=0
-    for wl_0 in wav_extended:
-        # select all values such that are within the FWHM limits
-        delta_wl = wl_0*vsini/3.0e5
-        mask = [i for i in range(len(wal)) if
-                         ((wl_0 - delta_wl) < wl[i] < (wl_0 + delta_wl))]
-        flux_2convolve = flux[mask[0]:mask[-1]+1]
-        rotation_profile = rotation_kernel(wl[mask[0]:mask[-1]+1] - wl_0, delta_wl, vsini, epsilon)
-        flux_conv_rot.append(np.sum(rotation_profile*flux_2convolve))
-
-flux_conv_rot = np.array(flux_conv_rot, dtype="float64")
-
-\end{lstlisting}
-
-These simple examples ignore the edge effects which are incorporated, by extending the wavelength range used by 5 fwhm.
-\begin{lstlisting}[language=Python, caption=Python example]
-
-flux_conv_rot = np.empty_like(wl)
-for i, wl_0 in enumerate(wl):
-    """Rotational convolution for pixel wl_0."""
-    # select all values such that they are within the fwhm limits
-    delta_wl = wl_0 * vsini / 3.0e5
-
-    mask = (wl > (wl_0 - delta_wl) &  (wl < (wl + delta_wl)))
-    rotation_profile = rotation_kernel(wl[index_mask] - wl_0, delta_wl, vsini, epsilon)
-
-    pixel_conv = np.sum(rotation_profile *  flux[mask]) / np.sum(rotation_profile)
-    flux_conv_rot[i] = pixel_conv
-
-\end{lstlisting}
-
-
-\begin{lstlisting}
-
-def rotation_kernel(delta_lambdas: ndarray, delta_lambda_l: float, vsini: float, epsilon: float) -> ndarray:
-"""Calculate the rotation kernel for a given wavelength
-
-Parameters
-----------
-delta_lambdas: array
-Wavelength values selected within delta_lambda_l around central value. (check)
-delta_lambda_l: float
-FWHM of rotational broadening. (check)
-vsini: float
-Projected rotational velocity [km/s]
-epsilon: float
-Linear limb-darkening coefficient (0-1).
-
-Returns
--------
-Rotational kernel
-
-Notes:
-Equations * from .... book.
-
-"""
-denominator = (np.pi * vsini * (1.0 - epsilon / 3.0))
-lambda_ratio_sqr = (delta_lambdas / delta_lambda_l) ** 2.0
-
-c1 = 2.0 * (1.0 - epsilon) / denominator
-c2 = 0.5 * np.pi * epsilon / denominator
-
-return c1 * np.sqrt(1.0 - lambda_ratio_sqr) + c2 * (1.0 - lambda_ratio_sqr)
-\end{lstlisting}
 
 The solution is to iterate over each pixel but create a mask array and use numpy indexing to select the required pixel span. (this remains in numpy )
 These operations all remain in numpy so do not waste time converting between lists and numpy arrays, in which Python need to constantly check and convert the type of each item.
@@ -534,3 +463,81 @@ The logg and metallicity, sampling rate remained at the~\citet{figueira_radial_2
 Precisions were provided for SNR of 100 relative to the J, H bands as well as to each band individually. Artigua 2018. (priv. communication)\todo{Check how to cite priv communication properly} suggested the truly relevant value is the SNR in H band for NIRPS radial velocities.
 
 A table of the precisions created for the NIRPS ETC are provided as an online table to our publication \textit{Neal et al. 2018b (in prep.)}\footnote{Available at \href{blah}{blah}} \unfinished{Inlcude correct links}
+
+
+
+
+
+
+
+\subsection{CODE examples}:
+
+\begin{lstlisting}[language=Python, caption=Python example old]
+
+def pixel_rot_convolution(wl_0, wl, flux, vsini, epsilon):
+flux_conv_rot = []
+counter=0
+for wl_0 in wav_extended:
+# select all values such that are within the FWHM limits
+delta_wl = wl_0*vsini/3.0e5
+mask = [i for i in range(len(wal)) if
+((wl_0 - delta_wl) < wl[i] < (wl_0 + delta_wl))]
+flux_2convolve = flux[mask[0]:mask[-1]+1]
+rotation_profile = rotation_kernel(wl[mask[0]:mask[-1]+1] - wl_0, delta_wl, vsini, epsilon)
+flux_conv_rot.append(np.sum(rotation_profile*flux_2convolve))
+
+flux_conv_rot = np.array(flux_conv_rot, dtype="float64")
+
+\end{lstlisting}
+
+These simple examples ignore the edge effects which are incorporated, by extending the wavelength range used by 5 fwhm.
+\begin{lstlisting}[language=Python, caption=Python example]
+
+flux_conv_rot = np.empty_like(wl)
+for i, wl_0 in enumerate(wl):
+"""Rotational convolution for pixel wl_0."""
+# select all values such that they are within the fwhm limits
+delta_wl = wl_0 * vsini / 3.0e5
+
+mask = (wl > (wl_0 - delta_wl) &  (wl < (wl + delta_wl)))
+rotation_profile = rotation_kernel(wl[index_mask] - wl_0, delta_wl, vsini, epsilon)
+
+pixel_conv = np.sum(rotation_profile *  flux[mask]) / np.sum(rotation_profile)
+flux_conv_rot[i] = pixel_conv
+
+\end{lstlisting}
+
+
+\begin{lstlisting}
+
+def rotation_kernel(delta_lambdas: ndarray, delta_lambda_l: float, vsini: float, epsilon: float) -> ndarray:
+"""Calculate the rotation kernel for a given wavelength
+
+Parameters
+----------
+delta_lambdas: array
+Wavelength values selected within delta_lambda_l around central value. (check)
+delta_lambda_l: float
+FWHM of rotational broadening. (check)
+vsini: float
+Projected rotational velocity [km/s]
+epsilon: float
+Linear limb-darkening coefficient (0-1).
+
+Returns
+-------
+Rotational kernel
+
+Notes:
+Equations * from .... book.
+
+"""
+denominator = (np.pi * vsini * (1.0 - epsilon / 3.0))
+lambda_ratio_sqr = (delta_lambdas / delta_lambda_l) ** 2.0
+
+c1 = 2.0 * (1.0 - epsilon) / denominator
+c2 = 0.5 * np.pi * epsilon / denominator
+
+return c1 * np.sqrt(1.0 - lambda_ratio_sqr) + c2 * (1.0 - lambda_ratio_sqr)
+\end{lstlisting}
+
