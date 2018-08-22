@@ -270,114 +270,25 @@ urlcolor=flatpurple]{hyperref}
 % \includeonly{introduction}
 
 \begin{document}
-
-	%% This sets the page style and numbering for preliminary sections.
-	\begin{preliminary}
-
-		%% This generates the title page from the information given above.
-		\maketitle
-		\cleardoublepage
-
-
-		\begin{dedication}
-			\centering \huge \itshape
-			To Jessica, Timothy, Amelia\\For always supporting me
-		\end{dedication}
-
-
-		\begin{acknowledgements}
-
-			Gillian - proofreading
-
-			Supervisors for guiding me
-
-			\vspace{7mm}
-
-
-		\end{acknowledgements}
-
-
-
-		\begin{abstract}
-
-			Thesis abstract
-		\end{abstract}
-
-		\begin{abstract-pt}
-
-			Thesis abstract in Portuguese
-		\end{abstract-pt}
-
-
-		 %%% remove in final version
-        \todototoc
-		\listoftodos
-
-		\tableofcontents
-		\addcontentsline{toc}{chapter}{\listtablename}
-		\listoftables
-		\addcontentsline{toc}{chapter}{\listfigurename}
-		\listoffigures
-
-
-
-
-		\begin{abbreviations}
-			\begin{longtable}{ll}
-
-				CARMENES & Calar Alto high-Resolution search for M dwarfs with Exoearths with Near-infrared and optical \'Echelle Spectrographs \\
-				CFHT & Canada France Hawaii Telescope \\
-				CRIRES & CRyogenic high-resolution InfraRed \'Echelle Spectrograph \\
-				E-ELT & European-Extremely Large Telescope \\
-				ESO & European Southern Observatory \\
-				ESPRESSO & \'Echelle SPectrograph for Rocky Exoplanet and Stable Spectroscopic Observations\\
-				FIRST & Florida InfraRed Silicon immersion grating spectromeTer \\
-				HET & Hobby-Eberly Telescope \\
-				HPF & Habitable Planet Finder \\
-				IR & Infrared\\
-				JWST & James Web Space Telescope \\
-				MIR & Mid-Infrared \\
-				MIRI & Mid-Infrared Instrument\\
-				NASA & National Aeronautics and Space Administration \\
-				NIR & Near-Infrared \\
-				SPIRou & SpectroPolarim\`etre Infra-Rouge\\
-				TMT & Thirty Meter Telescope\\
-				TNG & Telescopio Nazionale Galileo \\
-				VISIR &  VLT spectrometer and imager for the mid-infrared \\
-				VLT & Very large Telescope \\
-
-			\end{longtable}
-		\end{abbreviations}
-
-		\begin{constants}
-			\begin{longtable}{lr@{${}={}$}l}
-				 % The \SI{}{} command is provided by the siunitx package, see its documentation for instructions on how to use it
-
-				 Speed of Light & $c_{0}$ & \SI{2.99792458e8}{\meter\per\second} (exact)\\
-				 Astronomical Unit & AU & 150 million km\\
-				 %Constant Name & $Symbol$ & $Constant Value$ with units\\
-			\end{longtable}
-		\end{constants}
-
-		\begin{symbols}
-				\begin{longtable}{lll}
-
-					$a$ & distance & \si{\metre} \\
-					$P$ & power & \si{\watt} (\si{\joule\per\second}) \\
-					%Symbol & Name & Unit \\
-
-					\addlinespace % Gap to separate the Roman symbols from the Greek
-					\\
-					$\lambda$ & wavelength & \si{\nano\metre} \\
-                    \(S_{tel}\) & telescope collecting area & \si{\centi\metre\squared} \\
-                    \(N_{e^{-}}\) & number of photoelectrons & \\
-                    \(P_{avg}\) & average monochromatic stellar brightness & \si{\photons\per\second\per\centi\metre\squared\per\centi\metre}\\
-                    \(T_{exp}\) & exposure time  & \si{\second} \\
-
-                    \(\Lambda\) & wavelength range & \si{\nano\metre}
-				\end{longtable}
-		\end{symbols}
-
+	  %% This sets the page style and numbering for preliminary sections.
+    \begin{preliminary}
+		    %% This generates the title page from the information given above.
+		    \maketitle
+		    \cleardoublepage
+        \input{preface/dedication}
+        \input{preface/acknowledgements}
+        \input{preface/abstract-pt}
+        \input{preface/abstract}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		    %%% Remove in final version                  %%%
+        \todototoc{}                                 %%%
+		    \listoftodos{}                               %%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \input{preface/table_of_contents}
+        \clearpage
+        \input{preface/abbreviations}
+        \input{preface/constants}
+        \input{preface/symbols}
 	\end{preliminary}
 
 
