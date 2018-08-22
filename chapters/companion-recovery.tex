@@ -39,24 +39,24 @@ The spectral model libraries were accessed using the useful ``grid tools'' inter
 
 We multiply the synthetic spectra by the wavelength to convert it into photon counts, ignoring multiplicative constants, as done in~\citet{figueira_radial_2016}\footnote{Synthetic models provide the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)).}. The spectra were convolved with a Gaussian kernel to match the resolution of the observations (\(\rm R=50\,000\)). Due to the distributive property of convolution it is efficient to apply it once to each spectra first, before the spectral pairs are combined.
 
-The PHOENIX-ACES models include dust in equilibrium with the gas phase while ignoring dust opacity and does not include any mixing/settling which is important for cooler BD atmospheres. They set a minimum library \(T_{\textrm{eff}}=2300\)~K to avoid the temperatures at which the modelling of clouds is necessary. This unfortunately limits the use of this library for this technique to the largest mass companions in our sample. For example a \(T_{\textrm{eff}}=2300\)~K corresponds to a BD with \(\rm M\sim84~M_{Jup}\) at 5 Gyr from the~\citet{baraffe_evolutionary_2003} evolutionary models. 
+The PHOENIX-ACES models include dust in equilibrium with the gas phase while ignoring dust opacity and does not include any mixing/settling which is important for cooler BD atmospheres. They set a minimum library \(T_{\textrm{eff}}=2300\)~K to avoid the temperatures at which the modelling of clouds is necessary. This unfortunately limits the use of this library for this technique to the largest mass companions in our sample. For example a \(T_{\textrm{eff}}=2300\)~K corresponds to a BD with \(\rm M\sim84~M_{Jup}\) at 5 Gyr from the~\citet{baraffe_evolutionary_2003} evolutionary models.
 
 There are other models that extend below 2300~K such as the {BT-Settl} models\citep{allard_btsettl_2013,baraffe_new_2015}. These are discussed in Sect.~\ref{subsubsec:BT-Settl}.
 
 
 \subsection{\texorpdfstring{\(\chi^{2}\)}\ \ method}
 \label{subsec:chi2}
-The well known \(\chi^{2} \) technique measures the weighted sum of the squared deviation between the observation (\({O}_{i}\)) and the computed models (\(C_{i}\)), with the minimum \(\chi^2\) value representing the best-fit parameters.
-\[\chi^{2} = {\Sigma}_i { (O_{i} - C_{i})}^2 / {\sigma}_{i}, \] where \({\sigma}_{i}\) is the error on each measurement. We estimate the \(\sigma\) of each spectrum using the \(\beta\sigma\) method~\citep{czesla_posteriori_2018}, using the MAD (median absolute deviation about the median) robust estimator. {\rd{} This method estimates the spectral noise using numerical derivatives of the spectra. We followed the procedure outlined in~\citet{czesla_posteriori_2018}, analysing the results from successive parameter combinations to settle on an order of approximation (derivative level) of 5, and a jump parameter (pixels skipped to avoid correlations) of 2.} We apply the same \(\sigma\) value to all points \({\sigma}_{i} = \sigma\). The \(\beta\sigma\) method provided \(\sigma\) estimates for the target spectra which correspond inversely to signal-to-noise ratios between 100--500, {\rd{} similar to the values given in Table~\ref{tab:observations} calculated from the continuum of detector 2.}
+The well known \(\chi^{2}\)technique measures the weighted sum of the squared deviation between the observation (\({O}_{i}\)) and the computed models (\(C_{i}\)), with the minimum \(\chi^2\) value representing the best-fit parameters.
+\[\chi^{2} = {\Sigma}_i {(O_{i} - C_{i})}^2 / {\sigma}_{i},\] where \({\sigma}_{i}\) is the error on each measurement. We estimate the \(\sigma\) of each spectrum using the \(\beta\sigma\) method~\citep{czesla_posteriori_2018}, using the MAD (median absolute deviation about the median) robust estimator. {\rd{} This method estimates the spectral noise using numerical derivatives of the spectra. We followed the procedure outlined in~\citet{czesla_posteriori_2018}, analysing the results from successive parameter combinations to settle on an order of approximation (derivative level) of 5, and a jump parameter (pixels skipped to avoid correlations) of 2.} We apply the same \(\sigma\) value to all points \({\sigma}_{i} = \sigma\). The \(\beta\sigma\) method provided \(\sigma\) estimates for the target spectra which correspond inversely to signal-to-noise ratios between 100--500, {\rd{} similar to the values given in Table~\ref{tab:observations} calculated from the continuum of detector 2.}
 
 The computed models are described in Sect.~\ref{models} and result in a multidimensional grid of \(\chi^2\) values for each combination of parameters, namely the spectral temperature, host RV, and companion RV for each detector, observation and target.
 
-We obtain the global minimum of the multidimensional \(\chi^{2}\)-space to represent the best fit to the observed spectra. We sum the multidimensional \(\chi^{2} \) across multiple detectors and determine a global minimum \(\chi^{2} \) for the whole observation \(\chi^{2}_{obs} = \Sigma^{N}_{n=1} \chi^{2}_n \), where \(N\) is the number of detectors used. We do not, however, combine the \(\chi^{2} \) values across the separate observations as the RV parameters of the host and companion will vary between each observation. However, since the current observations are insufficiently separated, it may be possible to combine the separate observations; but in general this would not be the case, so was not performed.
+We obtain the global minimum of the multidimensional \(\chi^{2}\)-space to represent the best fit to the observed spectra. We sum the multidimensional \(\chi^{2}\)across multiple detectors and determine a global minimum \(\chi^{2}\)for the whole observation \(\chi^{2}_{obs} = \Sigma^{N}_{n=1} \chi^{2}_n\), where \(N\) is the number of detectors used. We do not, however, combine the \(\chi^{2}\)values across the separate observations as the RV parameters of the host and companion will vary between each observation. However, since the current observations are insufficiently separated, it may be possible to combine the separate observations; but in general this would not be the case, so was not performed.
 
-The inverse survival function of the \(\chi^2\) distribution is used to determine the confidence levels on the minimum \(\chi^2\) parameters. The inverse survival function returns a \(\Delta\chi^2\) value from the minimum \(\chi^2\) value for a given sigma level and degree of freedom\footnote{In \emph{Python} with the \emph{scipy} package this is a single line \texttt{scipy.stats.chi2(dof).isf(1-p)}, where \(p = 0.68\) for 1-\(\sigma\), and dof is the degree of freedom.}. 
+The inverse survival function of the \(\chi^2\) distribution is used to determine the confidence levels on the minimum \(\chi^2\) parameters. The inverse survival function returns a \(\Delta\chi^2\) value from the minimum \(\chi^2\) value for a given sigma level and degree of freedom\footnote{In \emph{Python} with the \emph{scipy} package this is a single line \texttt{scipy.stats.chi2(dof).isf(1-p)}, where \(p = 0.68\) for 1-\(\sigma\), and dof is the degree of freedom.}.
 For example, the \(\Delta \chi^2\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}. This method assumes that the measured flux is observed with a SNR sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \(\chi^2\) method appropriate.
 
-For a given observation, the \(\chi^{2}_{red}\) is computed by \(\chi^2_{red} = \chi^2 / \nu \) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or 4 in the examples explored below}, and is performed after the summation over the detectors.
+For a given observation, the \(\chi^{2}_{red}\) is computed by \(\chi^2_{red} = \chi^2 / \nu\)where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or 4 in the examples explored below}, and is performed after the summation over the detectors.
 
 
 
@@ -67,12 +67,12 @@ For a given observation, the \(\chi^{2}_{red}\) is computed by \(\chi^2_{red} = 
 \label{models}
 In this section we detail how we transform the synthetic PHOENIX-ACES spectra into the computed models (\(C_i\)) to fit to the observations. The spectra have already been converted to the correct unit and resolution.
 
-These synthetic spectra are used individually for the single component model and combined together into a binary model. The results of these models are interpolated to the wavelength grid of the observed spectra and the \(\chi^{2} \) calculated by comparing the model and observation at each point.
+These synthetic spectra are used individually for the single component model and combined together into a binary model. The results of these models are interpolated to the wavelength grid of the observed spectra and the \(\chi^{2}\)calculated by comparing the model and observation at each point.
 
 
 \subsubsection{Single component model}
 \label{subsubsec:single-model}
-The single model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \(T_{\textrm{eff}}\), logg, [Fe/H], [\(\alpha\)/Fe]) and is Doppler shifted by a RV value \({rv}_1\). 
+The single model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \(T_{\textrm{eff}}\), logg, [Fe/H], [\(\alpha\)/Fe]) and is Doppler shifted by a RV value \({rv}_1\).
 
 \begin{equation}
 \rm C^{1}_{i}(\lambda) = J(\lambda_0(1-\frac{{rv}_1}{c}))
@@ -80,13 +80,13 @@ The single model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), 
 
 where \(\lambda\) is the shifted wavelength, \(\lambda_0\), the model rest wavelength and, \(c\), the speed of light in a vacuum. The model's flux is then continuum normalized to unity to match the observed spectra, and interpolated to the wavelength grid of the observation.
 
-This single component model analysis is similar to the~\citet{passegger_fundamental_2016} \(\chi^2\) fitting. We apply the same re-normalization (see Sect.~\ref{subsec:renorm}) to account for slight differences in the continuum level and possible linear trends between the normalized observation and model. We do not, however, apply any dynamical masking to sensitive lines to make the the \(\chi^2\) minima more distinct or linearly interpolate the stellar parameters between the grid models to obtain high precision stellar parameters. This is because we are not trying to derive precise stellar parameters but to detect the spectra of the companions. We instead include radial velocity components to the \(\chi^2\) fitting, which is not included in~\citet{passegger_fundamental_2016}. 
+This single component model analysis is similar to the~\citet{passegger_fundamental_2016} \(\chi^2\) fitting. We apply the same re-normalization (see Sect.~\ref{subsec:renorm}) to account for slight differences in the continuum level and possible linear trends between the normalized observation and model. We do not, however, apply any dynamical masking to sensitive lines to make the the \(\chi^2\) minima more distinct or linearly interpolate the stellar parameters between the grid models to obtain high precision stellar parameters. This is because we are not trying to derive precise stellar parameters but to detect the spectra of the companions. We instead include radial velocity components to the \(\chi^2\) fitting, which is not included in~\citet{passegger_fundamental_2016}.
 
 
 \subsubsection{Binary model}
 \label{subsubsec:binary-model}
-In the binary situation we consider the superposition of two synthetic spectral components, one each for the host and companion respectively. Both spectra are Doppler shifted by \({rv}_1\) which represents the RV motion of the host star, while the companion spectra is also Doppler shifted by a second RV, \({rv}_2 \), representing the RV offset between the host and companion. This choice is arbitrary, but in this way the mean motion of the system relative to Earth is captured only in \({rv}_1\). The two spectra are scaled by their squared radius (see Sect.~\ref{subsection-radius}) then added together, thus fixing the relative amplitude of the two components. 
-Given two spectral components \(J_{1} \) and \(J_{2} \) with radii \(R_1, R_2\) this equates to
+In the binary situation we consider the superposition of two synthetic spectral components, one each for the host and companion respectively. Both spectra are Doppler shifted by \({rv}_1\) which represents the RV motion of the host star, while the companion spectra is also Doppler shifted by a second RV, \({rv}_2\), representing the RV offset between the host and companion. This choice is arbitrary, but in this way the mean motion of the system relative to Earth is captured only in \({rv}_1\). The two spectra are scaled by their squared radius (see Sect.~\ref{subsection-radius}) then added together, thus fixing the relative amplitude of the two components.
+Given two spectral components \(J_{1}\)and \(J_{2}\)with radii \(R_1, R_2\) this equates to
 \begin{align}
 \rm C^{2}_{i}(\lambda) = &  J_{1}(\lambda_{0}(1 - \frac{rv_{1}}{c}))\times R_{1}^2 +\nonumber \\
 & J_{2}(\lambda_{0}(1-\frac{rv_{1}}{c})(1-\frac{rv_{2}}{c}))\times R_{2}^2
@@ -99,7 +99,7 @@ We combine the models in this way to represent the correct absolute flux ratio o
 
 The binary model should provide meaningful information about the companion parameters (e.g.\ \(T_{\textrm{eff}}\)) and a estimate of the flux ratio of the system. These can be combined with the~\citet{baraffe_evolutionary_2003} models to constrain the mass of the companion. However, we need to be careful with this model as the inclusion of extra spectral components and associated parameters could also provide a better fit to observations which do not have a companion, by fitting components of the noise.\\
 
-{\rd{} The full list of grid parameters for the binary model are \(T_{\textrm{eff}}1\),  \(\rm logg_1\), [Fe/H]$_1$, [\(\alpha\)/Fe]$_1$, ${rv}_1$, \(T_{\textrm{eff}}2\), \(\rm logg_2\), [Fe/H]$_2$, [\(\alpha\)/Fe]$_2$, ${rv}_2$ where the subscripts 1 and 2 indicate the host and companion models respectively.}
+{\rd{} The full list of grid parameters for the binary model are \(T_{\textrm{eff}}1\),  \(\rm logg_1\), [Fe/H]\(_1\), [\(\alpha\)/Fe]\(_1\), \({rv}_1\), \(T_{\textrm{eff}}2\), \(\rm logg_2\), [Fe/H]\(_2\), [\(\alpha\)/Fe]\(_2\), \({rv}_2\) where the subscripts 1 and 2 indicate the host and companion models respectively.}
 
 
 
@@ -109,7 +109,7 @@ The binary model should provide meaningful information about the companion param
 \subsubsection{Effective radius}
 \label{subsection-radius}
 
-To combine the two synthetic spectra with the correct observed flux ratio we need to integrate the emitted flux over the effective surface area of each emitting body respectively. Ignoring the common multiplicative constants that will disappear with normalization, we scale the two synthetic spectra individually by the square of their respective radii, \(R_1\) and \(R_2\). 
+To combine the two synthetic spectra with the correct observed flux ratio we need to integrate the emitted flux over the effective surface area of each emitting body respectively. Ignoring the common multiplicative constants that will disappear with normalization, we scale the two synthetic spectra individually by the square of their respective radii, \(R_1\) and \(R_2\).
 
 In this work we use the effective radius (PHXREFF keyword) of each component from the PHOENIX model headers. This is the radius used in modelling of the stellar atmospheres. We use this radii as it is directly tied to each model spectrum, and already available. The ratio of the radii from the two synthetic spectra in the binary models are provided in Table~\ref{tab:example_params}.
 
@@ -126,12 +126,12 @@ F^{obs}_{re-norm} = F^{obs} \cdot \frac{\textrm{continuum fit}_{model}}{\textrm{
 \end{equation}
 The polynomial continuum fits to the normalized observations and models are used to re-normalize the observed spectrum to the continuum of the models. For detectors 1--3 a polynomial of first degree was used, while for detector 4 a quadratic is needed to fit the edge of a strong Hydrogen line (Brackett-\(\gamma\)) at 2166~nm, which lies just off of detector 4. This broad line is only observed in the synthetic spectra and not in the reduced observations. It is assumed that this was normalized out during the reduction process.
 
-For each model we further allow the continuum level to be varied by \(\pm 0.05\) as a free parameter taking the model with the smallest \(\chi^2 \) value.
+For each model we further allow the continuum level to be varied by \(\pm 0.05\) as a free parameter taking the model with the smallest \(\chi^2\)value.
 
 
 \subsection{Reducing parameters}
 \label{subsec:reduce-params}
-The high dimensionality of the binary model makes it computationally challenging and difficult to analyse the \(\chi^2\) space. 
+The high dimensionality of the binary model makes it computationally challenging and difficult to analyse the \(\chi^2\) space.
 For reference, the multiplicative parameter space is squared when increasing from one spectral component in the single model to a binary model, and therefore becomes computationally expensive. In general the number of possible parameter combinations for \(c\) spectral components each with a grid of \(m\) models increases to \(c^m\). If the full set of PHOENIX-ACES library spectra (66456) is explored with a binary fit then this naively balloons to over 4.4 billion possible combinations. Half of these are not unique as the host and companion components are swapped. This is the worst case scenario and we implement a number of assumptions to vastly reduce the parameter-space enabling faster computation.
 
 Our first assumption is to restrict ourselves to models with an Alpha element abundance ([\(\alpha\)/Fe]) of zero. This is likely a very good approximation as all our targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where [\(\alpha\)/Fe] values are close to zero (i.e., solar) -- e.g.~\citet{adibekyan_chemical_2012}. Our second is to assume that we can significantly reduce the search space with literature values for the host star. We fix the metallicity of both components to the closest grid to the literature value (usually [Fe/H] =0.00). We also fix the logg of the host star to its literature values given in Table~\ref{tab:starparams}. The uncertainties on the literature measurements for logg (\(\sim\)0.1) and metallicity (\(\sim\)0.05) are both smaller than the grid steps of 0.5 for these parameters.
@@ -143,7 +143,7 @@ The large numbers stated above also do not include the RV grid for each componen
 
 An iterative process could be implemented to refine the RV grids, starting at a larger grid with lower RV resolution then performing a higher resolution grid about the minimum \(\chi^2\) RV values. This was only done manually but could have been automated. One could expect that a good starting RV grid step be governed by the spectral resolution, e.g.\ comparable to the FWHM velocity.
 
-For the companions targets with fully resolved orbits the known RV of  the host star, \({rv}_1\) could also have been fixed. We however left this free to see if the known value would be recovered by the fitting. 
+For the companions targets with fully resolved orbits the known RV of  the host star, \({rv}_1\) could also have been fixed. We however left this free to see if the known value would be recovered by the fitting.
 
 
 
@@ -157,19 +157,19 @@ For the companions targets with fully resolved orbits the known RV of  the host 
 \label{sec:results}
 
 \input{tables/companion_recovery/recoveredparameters}
-\missingfigure{ includegraphics images/HD211847 example pcolors.pdf}
-     
+\missingfigure{includegraphics images/HD211847 example pcolors.pdf}
+
 \begin{figure*}
     \centering
    % \includegraphics[width=0.8\hsize]{images/Mdwarf_pcolors.pdf}
-    
+
     \caption{\(\chi^2\) results for companion recovery of a simulated binary observation of a Sun-like star (\(T_{\textrm{eff}_1}=5800\)~K) with an M-dwarf companion (\(T_{\textrm{eff}_2}=4000\)~K). The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)). Both left hand panels show the distribution of host temperature and host RV.\@ The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
         The red circle and yellow star indicate the location of the simulation input and recovered parameters respectively.
         The white line shows a 3-\(\sigma\) confidence level about the minimum \(\chi^2\) solution grid point. Each box is centred on the parameter values and shows the grid resolution.}
     \label{fig:Mdwarf_contours}
 \end{figure*}
 
-\missingfigure{  includegraphics {images/HD211847 example pcolors.pdf}}
+\missingfigure{includegraphics {images/HD211847 example pcolors.pdf}}
 \begin{figure*}
     \centering
    % \includegraphics[width=0.8\hsize]{images/HD211847_example_pcolors.pdf}
@@ -183,29 +183,29 @@ Here we show the results from applying the companion recovery model to simulated
 
 \subsection{Simulated binaries}
 \label{subsec:simulated_binaries}
-To test the companion recovery method we create simulated binary observations using PHOENIX-ACES spectra. White noise was added with a standard deviation \(\rm \sigma = 1/SNR\), for a given signal-to-noise (SNR) level. We then applied the grid-matching recovery technique detailed above and compared the resulting parameters to the inputs. 
+To test the companion recovery method we create simulated binary observations using PHOENIX-ACES spectra. White noise was added with a standard deviation \(\rm \sigma = 1/SNR\), for a given signal-to-noise (SNR) level. We then applied the grid-matching recovery technique detailed above and compared the resulting parameters to the inputs.
 
-The results of two example binary simulations are displayed in Figs.~\ref{fig:Mdwarf_contours} and~\ref{fig:HD211847_simulated_contours}, both simulated with a SNR of 150. The input and recovered parameters for the binary components are indicated by the red circles and yellow stars respectively, and are given in Table~\ref{tab:example_params}. 
+The results of two example binary simulations are displayed in Figs.~\ref{fig:Mdwarf_contours} and~\ref{fig:HD211847_simulated_contours}, both simulated with a SNR of 150. The input and recovered parameters for the binary components are indicated by the red circles and yellow stars respectively, and are given in Table~\ref{tab:example_params}.
 The 3-\(\sigma\) contour is shown in white on the plots to indicate the shape of the confidence level only. The 1-\(\sigma\) contours are not shown here as they are much smaller than the temperature grid step and are not easy to visualize at this scale as they are often smaller than the marker shown at the minimum location. Each coloured rectangle is centred on the grid point, with its shape indicating the resolution of the grid space searched.
 
 The first simulation shown in Fig.~\ref{fig:Mdwarf_contours} is for a Sun-like star with a M-dwarf companion, with a \(T_{\textrm{eff}_2} =4000\)~K. The top-left panel shows the recovered host parameters when the single model is applied to the simulated binary. The top-right and both bottom panels are the parameters recovered when using the binary model. Both left-hand panels display the parameters for the host component to easily compare between models. With both models the host temperature \(T_{\textrm{eff}_1}\) is correctly recovered. The host RV, \({rv}_1\), is 0.1\kmps{} (two grid spaces) different from the simulated value for the single component model and is correctly recovered with the binary model.
 
-The minimum \(\chi^2\) location for the companion temperature is 200~K below the simulated value, and the RV of the companion recovered is 0.2\kmps{} below the input value. The input values for the companion are just outside of the 3-\(\sigma\) contours shown. The flux ratio for the input is 0.08 while the flux ratio recovered is 0.066. 
+The minimum \(\chi^2\) location for the companion temperature is 200~K below the simulated value, and the RV of the companion recovered is 0.2\kmps{} below the input value. The input values for the companion are just outside of the 3-\(\sigma\) contours shown. The flux ratio for the input is 0.08 while the flux ratio recovered is 0.066.
 
 The second simulation shown in Fig.~\ref{fig:HD211847_simulated_contours} is performed with parameters to mimic the observation of our target with highest flux ratio, {HD 211847}. In this simulation the single component model recovers a host with the correct RV but a temperature 100~K higher than the input value. Again, adding the companion with the binary model recovers the correct host temperature. The companion temperature recovered is 100~K lower than the input temperature and the RV is different by 2\kmps{} which is around one third the FWHM.
 
 In this case with a companion RV offset, \({rv}_2\), near 0\kmps{} the host and companion lines are blended. The same spectral lines from both components are trying to match to the same features of the spectra, making it more difficult to recover the companion parameters. In the bottom right panel there appears to be multiple minima for different \({rv}_2\) and \(T_{\textrm{eff}_2}\) combinations, which we assume is partially due to the small \({rv}_2\).
 
-In both simulations the reduced \(\chi^2_{red}\) for the binary model is closer to 1. This is not surprising as the binary model contains extra parameters. As mentioned above, we need to be careful, as the extra components from the binary may just happen to fit components of the noise when a binary is not present, or in our case has a low flux ratio. 
+In both simulations the reduced \(\chi^2_{red}\) for the binary model is closer to 1. This is not surprising as the binary model contains extra parameters. As mentioned above, we need to be careful, as the extra components from the binary may just happen to fit components of the noise when a binary is not present, or in our case has a low flux ratio.
 {\rd{} We analysis the significance between the two models using the ``Bayesian Information Criterion''(BIC)~\citep{schwarz_estimating_1978}; }
 \begin{equation}
 BIC = n\ln{(m)} - 2\ln{(\hat{L})}.
 \end{equation}
-{\rd{} Here $n$ and $m$ are the number of parameters and data points respectively and \(\hat{L}\) is the maximum of the Gaussian likely-hood function }
+{\rd{} Here \(n\) and \(m\) are the number of parameters and data points respectively and \(\hat{L}\) is the maximum of the Gaussian likely-hood function }
 \begin{equation}
 \hat{L} = \left(\frac{1}{\sigma \sqrt{2\pi}}\right)^m \exp{\left(-\frac{\chi^2}{2}\right)},
 \end{equation}
-{\rd{} written in terms of \(\chi^2\) and a fixed $\sigma$ for all data points. The maximum likely-hood of a Gaussian distribution is equivalent  to minimizing the \(\chi^2\). In both simulations \(\Delta BIC >10\) so the preference of the binary model, with the lower BIC value, over the single component model is considered \emph{significant}.}
+{\rd{} written in terms of \(\chi^2\) and a fixed \(\sigma\) for all data points. The maximum likely-hood of a Gaussian distribution is equivalent  to minimizing the \(\chi^2\). In both simulations \(\Delta BIC >10\) so the preference of the binary model, with the lower BIC value, over the single component model is considered \emph{significant}.}
 
 
 
@@ -215,17 +215,17 @@ BIC = n\ln{(m)} - 2\ln{(\hat{L})}.
 
 For this target the metallicity of both components was fixed to 0.0 and the logg for the host was fixed at 4.5. The logg for the companion is fixed to 5.0, based on the~\citet{baraffe_new_2015} evolutionary models for the given companion mass and system age. The orbital solution was used to refine the RV search space of both components. The span RV for the companion was extended until a value inside the RV bounds was found.
 
-Again the top left panel of Fig.~\ref{fig:HD211847_result_contours} shows the recovery with a single component model with the other three for the binary model. The single component model finds a temperature of 5900~K for the host with a \({rv}_1\) of 7\kmps{}. This is 200~K and 0.4\kmps{} different above the expected parameters. The binary model finds a host temperature of 5800~K, which is the second closest model to the literature value, >100~K different. The host RV value recovered with the binary model is 7.6\kmps{}, which is 1\kmps{} higher than expected.  For the single component model there is a barely noticeable secondary minima near this 7.6\kmps{} RV value recovered by the binary model. Again these RV differences are smaller than the FWHM of the lines. The 3-\(\sigma\) contour is small, just visible on the right hand side of the star in the bottom left panel, and hidden behind the markers in the other panels. 
+Again the top left panel of Fig.~\ref{fig:HD211847_result_contours} shows the recovery with a single component model with the other three for the binary model. The single component model finds a temperature of 5900~K for the host with a \({rv}_1\) of 7\kmps{}. This is 200~K and 0.4\kmps{} different above the expected parameters. The binary model finds a host temperature of 5800~K, which is the second closest model to the literature value, >100~K different. The host RV value recovered with the binary model is 7.6\kmps{}, which is 1\kmps{} higher than expected.  For the single component model there is a barely noticeable secondary minima near this 7.6\kmps{} RV value recovered by the binary model. Again these RV differences are smaller than the FWHM of the lines. The 3-\(\sigma\) contour is small, just visible on the right hand side of the star in the bottom left panel, and hidden behind the markers in the other panels.
 
 
-For the companion in the binary model, on the right side of Fig.~\ref{fig:HD211847_result_contours}, the minimum \(\chi^2\) for the companion temperature is at the upper temperature limit of the grid shown. If we extend the grid of companion temperature towards higher temperatures the best fit location continues to increase in temperature, continually hitting the upper limit until it is close to the host temperature, >2000~K above the expected companion temperature. When the companion temperature becomes this high it also affects the recovered parameters for the host star to offset the features of the brighter companion. 
+For the companion in the binary model, on the right side of Fig.~\ref{fig:HD211847_result_contours}, the minimum \(\chi^2\) for the companion temperature is at the upper temperature limit of the grid shown. If we extend the grid of companion temperature towards higher temperatures the best fit location continues to increase in temperature, continually hitting the upper limit until it is close to the host temperature, >2000~K above the expected companion temperature. When the companion temperature becomes this high it also affects the recovered parameters for the host star to offset the features of the brighter companion.
 
 The \(\chi^2_{red}\) values for the single and binary models are 21 and 19 respectively, far from 1, indicating that both models are a poor fit to the observations. {\rd{} The $\Delta BIC = 3812 >10$ indicating that binary model is still preferred.} We plot the binary model for the best fit solution alongside the observed spectra in Fig.~\ref{fig:visualinspection-hd2118471}. We see that there is a large spectral mismatch between the synthetic models and the observation. Extra wavelength masking was applied to many of the largest mismatched synthetic lines to remove their influence. The grey areas mark regions which have been masked out, either from the centres of deep telluric lines (the thin masks matching spectral gaps), or the more prominent mismatched lines in the synthetic spectrum excluded from the \(\chi^2\) analysis. One clear example of a mismatched line is a synthetic line at 2132.5~nm that is clearly not observed in detector 2 (top right). Even with the majority of the mismatched lines removed the detection of the companion was still unsuccessful.
 
-For detectors 1 and 2 it appears that the synthetic spectra contain many more deeper lines than observed. For detector 3 the red half of the detector was masked out as there appears to be an offset between the observed lines. With 3--4 lines that appear to be consistently offset from the observation it could be a wavelength calibration issue, although the telluric lines appear to be sufficiently corrected in this region, attesting for the quality of the wavelength calibration, and making it incompatible with the offset. For detector 4 the observed lines do not agree at all with the models. With many observed lines not in the model and only one line with some agreement in wavelength, detector 4 is masked out completely and not used in the \(\chi^2\) fit. Individual inspection of the \(\chi^2\) results for each detector also revealed that there was a large discrepancy between the 4th detector and the other three, with a different RV value for the host star and a \(\chi^2\) values an order of magnitude higher. The edge of a deep Hydrogen line (Brackett-\(\gamma\)) off the edge of the detector 4 is also clearly seen in the continuum of the model >2162~nm. 
+For detectors 1 and 2 it appears that the synthetic spectra contain many more deeper lines than observed. For detector 3 the red half of the detector was masked out as there appears to be an offset between the observed lines. With 3--4 lines that appear to be consistently offset from the observation it could be a wavelength calibration issue, although the telluric lines appear to be sufficiently corrected in this region, attesting for the quality of the wavelength calibration, and making it incompatible with the offset. For detector 4 the observed lines do not agree at all with the models. With many observed lines not in the model and only one line with some agreement in wavelength, detector 4 is masked out completely and not used in the \(\chi^2\) fit. Individual inspection of the \(\chi^2\) results for each detector also revealed that there was a large discrepancy between the 4th detector and the other three, with a different RV value for the host star and a \(\chi^2\) values an order of magnitude higher. The edge of a deep Hydrogen line (Brackett-\(\gamma\)) off the edge of the detector 4 is also clearly seen in the continuum of the model >2162~nm.
 
 We applied this same method to the remaining targets, with similar results. In brief, we conclude that the companion spectra cannot be correctly detected in our data using this method.
-\missingfigure{ images HD211847 result pcolors.pdf}
+\missingfigure{images HD211847 result pcolors.pdf}
 \begin{figure*}
     \centering
 %    \includegraphics[width=0.8\hsize]{images/HD211847_result_pcolors.pdf}
@@ -247,9 +247,9 @@ We applied this same method to the remaining targets, with similar results. In b
 \label{subsection:injection-recovery}
 To determine the detection limits for this method we employ an injection-recovery approach. We take the observed spectra and inject onto them a synthetic companion, at the absolute flux ratio to which it would have been added to a synthetic host with the same parameters. The injected companion RV is set to 100\kmps{} so that the companion lines are well separated from the lines of the host. This separation chosen is slightly larger than what we have with our observations, \(rv_2\) given in Table~\ref{tab:observations}.
 
-We restrict the search space by fixing the host parameters \(T_{\textrm{eff}_1}\) and \(\rm logg_1\) to those recovered fitting the non-injected spectra by a single component model. The wavelength masking is used to reduce the level of mismatch between synthetic and observed spectra. 
+We restrict the search space by fixing the host parameters \(T_{\textrm{eff}_1}\) and \(\rm logg_1\) to those recovered fitting the non-injected spectra by a single component model. The wavelength masking is used to reduce the level of mismatch between synthetic and observed spectra.
 
-We apply the recovery method developed above on the injected spectrum, leaving only the companion \(T_{\textrm{eff}_2}\) and \({rv}_2\) parameters free, to recover the injected companion. We repeated this for injected companions with temperatures below 5000~K. 
+We apply the recovery method developed above on the injected spectrum, leaving only the companion \(T_{\textrm{eff}_2}\) and \({rv}_2\) parameters free, to recover the injected companion. We repeated this for injected companions with temperatures below 5000~K.
 
 We also perform the injection-recovery with synthetic host spectra, representing each target. The wavelength range of the synthetic spectra used for this is three sections interpolated to 1024 values in the wavelength span of detectors 1, 2, and 3. For each section, Gaussian noise is added at the level measured in the corresponding detector for the in the observation of the target being represented.
 
@@ -259,7 +259,7 @@ The grey shaded region indicates the \(\pm1000\)~K temperature range explored fo
 
 For {HD 30501} the injection onto synthetic and observed spectra produce similar results. At temperatures above 3800~K in both the real and synthetic the injected companion is recovered within 100~K. For injected companion temperatures below 3800~K the temperature recovered is systematically higher than the injected value. This indicates that the companion is not correctly recovered and is affected by the added noise. We determine this temperature to be the upper temperature limit for the recovery. For the other stars we could not conclude on the upper limit due to spectral mismatch issues. In these cases we use the results from the synthetic injection to derive a temperature recovery cut-off for each target, each simulated with the closest host star spectrum.
 
-In Fig.~\ref{fig:injection_shape} we show the minimum \(\chi^2\) for each companion temperature in the recovery grid. We do this for 7 different injected companion temperatures between 2500 and 4500~K. For the higher temperature companions, the \(\chi^2\) is parabolic in shape, recovering the correct temperature, as expected. At lower temperatures there is a strong asymmetry in the \(\chi^2\) with it flattening out on the lower temperature side. 
+In Fig.~\ref{fig:injection_shape} we show the minimum \(\chi^2\) for each companion temperature in the recovery grid. We do this for 7 different injected companion temperatures between 2500 and 4500~K. For the higher temperature companions, the \(\chi^2\) is parabolic in shape, recovering the correct temperature, as expected. At lower temperatures there is a strong asymmetry in the \(\chi^2\) with it flattening out on the lower temperature side.
 The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above the minimum \(\chi^2\) are not shown in the bottom panel of Fig.~\ref{fig:injection_shape} which is a close-up around the minimum \(\chi^2\) as are indistinguishable in the top panel due to the \(\chi^2\) y-scale. The black vertical line indicates the 2300~K temperature limit of the PHOENIX-ACES models.
 
 \missingfigure{images/inject recovery hd30501.pdf}
@@ -276,7 +276,7 @@ The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above
     \centering
 %    \includegraphics[width=0.95\hsize]{images/chi2_shape_investigation_sigmas.pdf}
     \caption{(top) Companion temperature verses \(\chi^2\) for simulations with different injected companion temperatures. Other fixed parameters for these fully synthetic simulations was \(T_{\textrm{eff}_1}=5200\)~K, \(\textrm{logg}_1=4.5\), \(\textrm{logg}_2=5.0\), and both [Fe/H] = 0.0. A fixed Gaussian noise corresponding to a SNR of 300 was used.
-        (bottom) A close up view of \(\chi^2\) < 15. The three horizontal grey lines indicate the 1, 2, 3 sigma with 2 degrees of freedom. The vertical dotted lines indicate the location of the minimum \(\chi^2\) recovered for each companion. The black solid vertical in both panels shows the 2300~K cut-off of the PHOENIX-ACES models}
+       (bottom) A close up view of \(\chi^2\) < 15. The three horizontal grey lines indicate the 1, 2, 3 sigma with 2 degrees of freedom. The vertical dotted lines indicate the location of the minimum \(\chi^2\) recovered for each companion. The black solid vertical in both panels shows the 2300~K cut-off of the PHOENIX-ACES models}
     \label{fig:injection_shape}
 \end{figure}
 
@@ -321,7 +321,7 @@ This PHOENIX-ACES lower temperature limit restricts its use to only the higher m
 
 The most recent BT-SETTL spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/BT-Settl/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1200-7000K logg = 2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer Caffau et al. (2011) solar abundances.
 
-The newer PHOENIX-ACES models are limited to \(\rm T_{eff} \) > 2300~K which only cover the larger BDs. To evaluate the lower mass BDs we use the \textbf{other model}, more suitable for cooler BDs and low mass star as they incorporate modeling of dust, clouds etc...
+The newer PHOENIX-ACES models are limited to \(\rm T_{eff}\)> 2300~K which only cover the larger BDs. To evaluate the lower mass BDs we use the \textbf{other model}, more suitable for cooler BDs and low mass star as they incorporate modeling of dust, clouds etc\ldots
 
 
 The spectral model libraries were accessed using the useful ``grid tools'' provided in the Starfish\footnote{\url{https://github.com/iancze/Starfish}} Python package\citep{czekala_constructing_2015}.
@@ -365,7 +365,7 @@ The change in the models with incremental changes in temperature is small, Chang
 
 
 \subsection{Note about a target - discussion of results}
-Another example is \object{HD 162020}, which has the lowest orbital period (8.4 days) of our targets. It should have been possible to obtain an optimal pair of observations in one semester, but the second observation was taken immediately following the first. This means that the \(\rm \delta RV = 0.363 km/s \) between the two observations, is comparable to the \(\Delta RV \) that occurs during each individual observation. With tighter scheduling restrictions this target could have been observed with the optimal RV separation at the extrema of \(\Delta RV=2 K_{2}\)). Whether the flux ratio of \(7e^{-6}\) for this target and the interaction of different spectral lines would have made it possible to recover companion mass is a separate issue.
+Another example is \object{HD 162020}, which has the lowest orbital period (8.4 days) of our targets. It should have been possible to obtain an optimal pair of observations in one semester, but the second observation was taken immediately following the first. This means that the \(\rm \delta RV = 0.363 km/s\)between the two observations, is comparable to the \(\Delta RV\)that occurs during each individual observation. With tighter scheduling restrictions this target could have been observed with the optimal RV separation at the extrema of \(\Delta RV=2 K_{2}\)). Whether the flux ratio of \(7e^{-6}\) for this target and the interaction of different spectral lines would have made it possible to recover companion mass is a separate issue.
 
 
 

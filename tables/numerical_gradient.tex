@@ -5,11 +5,11 @@
     \caption{The affect of the numerical gradient function on RV precision. The band label \(\rm VIS\) and \(\rm NIR\) indicate the full visible and \nir{} bands while  \(\rm CARM_{VIS}\)  and \(\rm CARM_{NIR}\)  indicate the two wavelength bands of the CARMENES spectrograph. \(\Delta\lambda\) is a wavelength shift applied to move the FFD values between pixels for this comparison only. The M0 spectra used here had no rotation, or instrument broadening preformed and  was normalized to a maximum of 1 in each band. The precision values given here are for accessing the relative precision change due to the different gradient methods.}
     \begin{tabular}{ccccccc}
         \toprule
-        %% Band & $\lambda$ range\_min & wl\_max &  dy/dx   & gradient & Q(dy/dx) & Q(grad) & Q(frac) & RV(dy/dx) & RV\_adj &    RV(grad)    &    RV(frac\_grad)    & RV(frac\_adj)          \\
+        %% Band & \(\lambda\) range\_min & wl\_max &  dy/dx   & gradient & Q(dy/dx) & Q(grad) & Q(frac) & RV(dy/dx) & RV\_adj &    RV(grad)    &    RV(frac\_grad)    & RV(frac\_adj)          \\
         Gradient method &  &  A &   B & C & (B-A)/A & (C-A)/A \\
-        &   $\lambda$ range & FFD & FFD+\(\Delta\lambda\) &  Numpy & \(\Delta\delta V\) ratio& \(\Delta\delta V\) ratio\\
+        &   \(\lambda\) range & FFD & FFD+\(\Delta\lambda\) &  Numpy & \(\Delta\delta V\) ratio& \(\Delta\delta V\) ratio\\
 
-        Band  &  (\si{\micro\meter}) &\multicolumn{3}{c}{\(\delta V_{rms}\) (\mps{})}  & (\%) & (\%) \\
+        Band  & (\si{\micro\meter}) &\multicolumn{3}{c}{\(\delta V_{rms}\) (\mps{})}  & (\%) & (\%) \\
         \midrule
         VIS & 0.38 -- 0.78 & 16.1 & 16.2 & 16.9  & 0.6 & 4.9\\
         \(\rm CARM_{VIS}\) & 0.52 --  0.96 & 20.9 & 21.0 & 22.0 & 0.3& 5.2 \\
