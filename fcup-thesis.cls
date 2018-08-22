@@ -380,7 +380,7 @@
 %% acknowledgements section (*not* on a separate page).
 \newenvironment*{abbreviations}%
 {\begin{center}
-		\section*{Acknowledgements}
+		\section*{Abbreviations}
 	\end{center}
 	\begingroup}%
 {\par\endgroup\newpage}
