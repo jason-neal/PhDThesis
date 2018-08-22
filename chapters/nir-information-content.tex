@@ -432,27 +432,24 @@ with an uncertainty of \(\mathcal{O}\left(\frac{\lambda(i+1){\lambda(i-1)}^{2} +
 
 The \emph{gradient} function from Numpy implements central differences for the interior points, accurate to second order, and first order accurate one-sided (forward or backward) differences at the boundaries, computed using the same compact difference procedure.
 
-\todo{Update the legend in figure  \fref{fig:gradients}}
 \begin{figure}
     \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.45\linewidth]{figures/information-content/spectra_gradient_example1}& \includegraphics[width=0.45\linewidth]{figures/information-content/spectra_gradient_example2}\\
-    \end{tabular}
-    \caption{Visualization of computing the numerical gradient. Top: The two spectral regions of a stellar spectrum the left is a large absorption line while the right is short lines near the continuum (~1). Bottom: The numerical gradients of the spectra shown in the top panels the original FFD method is given in blue dots while numpy gradient is shown by green circles. The orange stars are the FFD version shifted to the mid-points between pixels for illustrative purposes.}
+    \includegraphics[width=0.8\linewidth]{figures/information-content/spectral_gradients}\\
+    \caption{Visualization of the numerical gradient of some spectral lines. Top: The two spectral regions of a stellar spectrum the left hand slide contains short lines near the normalized continuum while on the right a single deep absorption line is shown. Bottom: The numerical gradients for the spectra shown in the top panels; the original FFD method is displayed  with \emph{blue squares} while numpy gradient is shown with \emph{green stars}. The \emph{orange circles} are the FFD version shifted to the mid-points between pixels for illustrative purposes.}
     \label{fig:gradients}
 \end{figure}
 
 
 \input{tables/numerical_gradient.tex}
 
-In \fref{fig:gradients} we visualize the gradients of two small spectral regions computed with the original FFD, and the higher precision version incorporated in numpy's gradient function. The top panels contain the spectrum in the small regions shown, indicating a large spectral line and three small lines near the continuum respectively. The derivative of the spectra is shown in the bottom panel with the FFD method shown with blue dots and the numpy gradient shown in green circles. The orange stars are the same as FFD but shifted horizontally to the midpoints between  pixels. This is for illustrative purposes and to assess the effect of this offset when calculating the pixel weights.
+In \fref{fig:gradients} we visualize the gradients of two small spectral regions computed with the original FFD, and the higher precision version incorporated in numpy's gradient function. The top panels contain the spectrum in the small regions shown, indicating a large spectral line and three small lines near the continuum respectively. The derivative of the spectra is shown in the bottom panel with the FFD method shown with \emph{blue squares} and the numpy gradient shown in \emph{green stars}. The \emph{orange circles} are the same as FFD but shifted horizontally to the midpoints between  pixels. This is for illustrative purposes and to assess the effect of this offset when calculating the pixel weights.
 
-There a three notable features observed between gradient methods. The first, which is expected from the FFD formulation is that the FFD gradient is offset to the left. The second is that when the horizontal offset is adjusted (orange stars) the gradients lie along the same curve. Both methods are trying to approximate the real gradient function of the spectrum and is again expected.
+There a three notable features observed between gradient methods. The first, which is expected from the FFD formulation is that the FFD gradient is offset to the left. The second is that when the horizontal offset is adjusted (orange circles) the gradients lie along the same curve. Both methods are trying to approximate the real gradient function of the spectrum and is again expected.
 The most important feature observed in this though is that there is a slight over-estimate of the gradient by the FFD method at the peaks. In the bottom panels of \fref{fig:gradients}, the points of highest gradient are always from the FFD method (blue/orange). This is the case for all spectral lines and as the optimal pixel weights are proportional to the gradient squared the FFD method will apply slightly higher pixel weights to these values, two points per line in the spectrum. The FFD will therefore produce a slightly smaller \(\delta V_{RMS}\) error compared to the more precise gradient function.
 
 In \tref{tab:numerical_gradients} we calculate the  \(\delta V_{RMS}\) using both gradient methods to determine their relative effect on the RV precision.
 
-We took a PHOENIX-ACES spectrum with \(T_{eff}=3900\)~K, corresponding to M0 spectral type. The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1. In this case the RV precisions are not comparable between bands and are only to assess the direct effect of the changing the numerical gradient. The bands name and the spanned wavelength are given. The columns A, B, C are the RV precision for the different gradient methods. The \(\delta V\) ratios are the relative difference in RV when changing from method A (the original FFD) to methods B and C. In this table column B is the FFD method but with the wavelength shifted to in between pixels, corresponding to the orange stars in \fref{fig:gradients} while column C is the more precise gradient from numpy.
+We took a PHOENIX-ACES spectrum with \(T_{eff}=3900\)~K, corresponding to M0 spectral type. The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1. In this case the RV precisions are not comparable between bands and are only to assess the direct effect of the changing the numerical gradient. The bands name and the spanned wavelength are given. The columns A, B, C are the RV precision for the different gradient methods. The \(\delta V\) ratios are the relative difference in RV when changing from method A (the original FFD) to methods B and C. In this table column B is the FFD method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \fref{fig:gradients} while column C is the more precise gradient from numpy.
 
 We find that changing to use the gradient from numpy increases the \(\delta V_{RMS}\) by 2.5--7\%, (decreasing the RV precision), due to the over-estimated gradient from the FFD method. As the pixel weights \eref{eq:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the RV precision, visible in \fref{fig:gradients}. This small wavelength shift red-ward does changed the RV precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using numpy's gradient method.
 
@@ -468,23 +465,26 @@ This masking function can be used in particular for the removal of telluric line
 
 This masking function can be used to easily apply the three conditions presented in~\citet{figueira_radial_2016}. First  the 3 masking functions will be defined, then followed by the quantification of how they differ from the previous implementation. The subscripts on the masking functions correspond to the three conditions.
 \begin{align}
-M_1(i) &= 1\\
+M_1(i) &= 1 \label{eq:mask1}\\
 M_2(i) &= \begin{cases}
 0, \hspace{1em} T(i) < \tau\\
 1, \hspace{1em} T(i) \ge \tau\\
-\end{cases}\\
-M_3(i) &= {T(i)}^{2}
+\end{cases}\label{eq:mask2}\\
+M_3(i) &= {T(i)}^{2} \label{eq:mask3}
 \end{align}
 
-\begin{itemize}
- \item Condition \#1:
-     Condition \#1 is simplest case in which telluric lines are not considered. All pixels are considered equal with no pixel weighting the masking function would be all one.
+Here, \(T(i)\) is the telluric transmission spectrum, while \(\tau\) is the transmission depth cut-off. For instance to mask out telluric lines deeper than 2\%,  \(\tau\) would be set at 0.98.
 
+\begin{itemize}
+    
+\item Condition \#1:
+    The first mask, \(M_1\), is the simplest case in which all pixel weights are treated equally. No telluric line masking is considered. 
 
 \item Condition \#2:
-
+    In the second mask, \(M_2\), the telluric line transmission, \(T(i)\) is used to create a boolean mask of 0's and 1's. When applying this mask to the pixel weights it set some weights to 0, removing those pixels from contributing to the {\red{} \(RV_RMS}\)}. This 
  where \(T(i)\) is the telluric transmission spectrum (between 0 and 1) and \(\tau\) is the depth limit to mask, e.g.\ for a telluric depth limit of 2\%, \(\tau\) would be 0.98.
-  \item Condition \#3:
+  \item Condition \#3: 
+  
   Condition \#3 assumes perfect telluric correction by dividing the flux variance by square of the transmission spectrum \reference{cite the equation when I refer to it}. On rearranging this is equivalent to applying a mask of the form,
 
 \end{itemize}
