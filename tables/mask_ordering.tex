@@ -2,11 +2,11 @@
 
 \begin{table}
     \centering
-    \caption{Relative RV precision difference for Condition \#2 due to spectral splitting and order of applying the pixel mask. The ratio are the difference between Split and Masked implementations with the same gradient calculation. The last column is the ratio between the Masked versions using the FFD and numpy gradient methods and are consistent with \tref{tab:numerical_gradients}. Results a for an M0 spectral type, with vsini=1 and R=100,000.}
+    \caption{Relative RV precision difference for Condition \#2 due to spectral splitting and order of applying the pixel mask. The ratio are the difference between Split and Masked implementations with the same gradient calculation. The last column is the ratio between the Masked versions using the FFD and numpy gradient methods and are consistent with \tref{tab:numerical_gradients}. Results a for an M0 spectral type, with vsini=1.0 and R=100,000.}
     \begin{tabular}{c|ccc|ccc|c}
         \toprule
         & Split & Masked & \(\Delta\)Ratio & Split & Masked & \(\Delta\)Ratio & Masked \\
-        Gradient & \multicolumn{3}{c|}{FFD}  & \multicolumn{3}{c|}{Numpy} & \(\Delta\)Ratio\\
+        Gradient & \multicolumn{3}{c|}{FFD} & \multicolumn{3}{c|}{Numpy} & \(\Delta\)Ratio\\
         Band & \mps{} & \mps{} &  \%  & \mps{} & \mps{} &   \% & \% \\
         \midrule
         Z &  7.42 &  7.38 & -0.66 &  7.76 &  7.77 & 0.13 & 5.3\\
@@ -15,7 +15,7 @@
         H &  6.08 &  6.05 & -0.53 &  6.25 &  6.26 & 0.08 & 3.5\\
         K & 32.21 & 32.14 & -0.22 & 33.48 & 33.49 & 0.05 & 4.2\\
         \bottomrule
-    \end{tabular}
+    \end{tabular}\label{tab:mask_ordering}
 \end{table}
 
 {\rd{} The results from these spectra for conditions \#1 and \#3 are consistent with Figueira et al. 2016. \todo{put this some where}}
