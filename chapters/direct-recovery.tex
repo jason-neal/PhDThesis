@@ -114,7 +114,7 @@ The observations were performed in service mode during period 89 with run ID.~08
 
     \subsection{Results of spectral differential analysis}
 
-    \label{appendix:A2}
+    \label{subsec:results}
     We applied the spectral differential procedure outlined above on the wavelength-calibrated and telluric-corrected CRIRES observations. The spectra were corrected for Earth's barycentric RV using the \emph{helcor} PyAstronomy\footnote{https://pyastronomy.readthedocs.io} function ported from the REDUCE IDL package (See~\citet[][]{piskunov_new_2002}) and Doppler shifted to the rest frame velocity of the system. The spectra were then subtracted from each other and analysd as described above.
 
     It is necessary to have a consistent instrumental setup~\citet{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g.\ slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted. In our case, the second observation of {HD 202206} and fourth of {HD 30501} were taken with different filters compared to the other observations. Therefore, these two observations could not be used for this differential analysis. As noted in~\citep{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
@@ -150,17 +150,11 @@ The observations were performed in service mode during period 89 with run ID.~08
 %%%%%%%%%%%%%%%%%%%
 \subsection{Results of spectral differential analysis}
 
-\label{appendix:A2}
 We applied the spectral differential procedure outlined above on the wavelength-calibrated and telluric-corrected CRIRES observations. The spectra were corrected for Earth's barycentric RV using the \emph{helcor} PyAstronomy\footnote{https://pyastronomy.readthedocs.io} function ported from the REDUCE IDL package (See~\citet[][]{piskunov_new_2002}) and Doppler shifted to the rest frame velocity of the system. The spectra were then subtracted from each other and analysed as described above.
 
 It is necessary to have a consistent instrumental setup~\citet{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g.\ slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted. In our case, the second observation of \object{HD 202206} and fourth of \object{HD 30501} were taken with different filters compared to the other observations. Therefore, these two observations could not be used for this differential analysis. As noted in~\citep{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
 
 
-\begin{figure}
-	\includegraphics[width=\hsize]{figures/direct-recovery/differential.pdf}\\
-	\caption{(Top) A reduced CRIRES observation of \object{HD 30501} (blue) for detector 1 between 2112--2124\nm{} along with the tapas telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction. (Middle) The telluric corrected spectra. (Bottom) ({blue}) Differential spectra for \object{HD 30501} between observations 1 and 3. ({orange} dashed) Simulated ``perfect'' differential using PHOENIX-ACES spectra with parameters \(T_{\textrm{eff}} = 2500~K\), \(\rm logg=5.0\), and \(\rm [Fe/H]=0.0\), with the same \(\Delta RV\) as the observations. The shaded regions indicate where the telluric {green} and host star {blue} spectra are > 4\%  deep.}
-	\label{fig:spectral_example}
-\end{figure}
 
 
 We performed the differential analysis for all targets but only show our most favourable case here, \object{HD 30501}, because it is the second largest companion in our sample at \(\rm 90~M_{Jup}\) and also has the second largest RV separation between observations. The differential spectra recovered for \object{HD 30501} is shown at the bottom panel of Fig.~\ref{fig:spectral_example}. The presence of deep (\(>4\%\)) stellar and telluric lines in the original spectrum is shaded by the blue and green regions respectively. This indicates that the features of the differential spectrum near these shaded regions are likely due to imperfect telluric correction and host mutual cancellation.
