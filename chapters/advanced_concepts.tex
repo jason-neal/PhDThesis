@@ -74,38 +74,16 @@ Using TAPAS is contrasted alongside Molecfit and Telfit in~\cite{ulmer-moll_tell
 
 
 \subsubsection{Vacuum wavelengths}
+\todo{a good reference that mentions the uv and optical uses could be good?}
+Astronomical light is refracted as it enters Earths atmosphere. The index of refraction, \(n\), is the factor at which the velocity, \(v\), and wavelength \(\lambda\) of electromagnetic radiation changes from their values in a vacuum.
 
-Astronomical light is refracted as it enters Earths atmosphere. The index of refraction, n, is the factor at which the velocity, \(v\), and wavelength \(\lambda\) of electromagnetic radiation changes from their values in a vacuum.
 \[ \lambda = \lambda_{vac} / n, \vspace{1em} v = v_{vac}/n\]
 
-The index of refraction of air is very close to 1, but has a complex wavelength dependence which also depends on atmospheric composition (e.g. \(\rm CO_2, H_2O\)), temperature and pressure. 
-There are several empirical formula derived to convert between air and vacuum wavelengths \citep[e.g.][]{Edlen 1953, Peck and Reeder 1972, Ciddor 1996} however their validity in the near-infrared extends only to 1.7\si{\micro\meter} \citep{Ciddor1996}. Beyond 1.7\si{\micro\meter} there are theoretical models of the refractive index of air from for example 1.3 to 24 \si{\micro\meter}~\citet{mathar_refractive_2007}.  Laboratory measurements are performed at an atmospheric standard, for instance  Standard air: dry air at 15 \(^o\)C, 101.325 kPa and with 450 ppm \(CO_2\) as done in \citep{Ciddor1996} .
+The index of refraction of air is very close to 1, but has a complex wavelength dependence which also depends on atmospheric composition (e.g. \(\rm CO_2, H_2O\)), temperature and pressure.
+There are several empirical formula derived to convert between air and vacuum wavelengths \citep[e.g.][]{edlen_dispersion_1953, peck_dispersion_1972, ciddor_refractive_1996} however their validity in the near-infrared extends only to around 1.7\si{\micro\meter} \citep{ciddor_refractive_1996}. Beyond 1.7\ \si{\micro\meter} there are theoretical models of the refractive index of air from for example 1.3 to 24\ \si{\micro\meter}~\citet{mathar_refractive_2007}.  Laboratory measurements are performed at an atmospheric standard, for instance standard air: dry air at 15 \(^o\)C, 101.325 \si{\kilo\pascal}kPa and with 450\,ppm \(CO_2\) as done in \citep{ciddor_refractive_1996}.
 
-In this work we extensively use spectral wavelengths specified in a vacuum. The first is because the empirical relations are not valid beyond 1.7\ \si{\micro\meter}, while the CRIRES spectra we investigate are observed at 2.1\si{\micro\meter} and the CRIRES instrument manual  provides all measurements in vacuum wavelengths.
+In this work we extensively use spectral wavelengths specified in a vacuum. The first is because the empirical relations are not valid beyond 1.7\ \si{\micro\meter}, while the CRIRES spectra we investigate are observed around 2.1\ \si{\micro\meter} and the CRIRES instrument manual provides all measurements in vacuum wavelengths.
 
-The TAPAS synthetic transmission models  \citet{bertaux_tapas_2014} we use for telluric correction
-The PHOENIX-ACES library of synthetic we use provides spectra in vacuum wavelengths by default.and the
+The TAPAS synthetic transmission models~\citet{bertaux_tapas_2014} we use for telluric correction are available for download in vacuum wavelengths or air wavelengths as well as wavenumber (\(1/\lambda\)). The PHOENIX-ACES library of synthetic spectra we use also provides spectra in vacuum wavelengths. 
+Since both are available in vacuum wavelengths and the TAPAS models are used for calibration, vacuum wavelength exclusively, With this there is no errors introduced from conversions between air and vacuum wavelengths.
 
-The synthetic telluric models can provide 
-
-Their are two different 3 different wavelength wavelength regimes common for spectra. As the wave number $1/\lambda$, vacuum or air. It is possible to download the telluric spectra in any of these three units. but we just use the vacuum wavelengths and calibrate against those.
-
-For this we remain in vacuum wavelengths to not incur any conversion errors when transforming to air wavelengths.
-
-correction comes from refractive index of air which changes with pressure and temperature of air.
-
-
-
-
-Citations:
-
-Edlen 1953, J. Opt. Soc. Am 43 no. 5\\
-Peck and Reeder 1972, J. Opt. Soc. 62 no. 8\\
-Ciddor 1996, Applied Optics 35 no. 9
-Morten 1991
-
-
-
-There ar but no extensive experimental formulation above 1.7 \si{\micro\meter} \citet{ciddor}.
-
-In this work we only deal with vacuum wavelengths. For one we the wavelengths specified in the CRIRES manual are all provided in vacuum wavelengths.
