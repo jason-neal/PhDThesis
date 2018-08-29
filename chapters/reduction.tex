@@ -10,7 +10,7 @@ The work of this thesis relies on the use of \nir{} spectra obtained by the CRIR
 
 \section{Summary of dataset}
 \todo{}{}
-The work preformed relies on high resolution \nir{} spectra, obtained around 2.1\si{\micro\meter} with CRIRES. We brief we have 17 individual observations of 7 target stars obtained in 2012. Each observation contains 8 individual observations preformed in an ABBAABBA nod cycle pattern. Here we detail the steps preformed to extract the stellar information from the raw observations. Further details of the observations and the motivation for them are given in \cref{cha:direct_recovery}.
+The work preformed relies on high resolution \nir{} spectra, obtained around 2.1\um{} with CRIRES. We brief we have 17 individual observations of 7 target stars obtained in 2012. Each observation contains 8 individual observations preformed in an ABBAABBA nod cycle pattern. Here we detail the steps preformed to extract the stellar information from the raw observations. Further details of the observations and the motivation for them are given in \cref{cha:direct_recovery}.
 
 
 \section{NIR spectroscopy}
@@ -246,7 +246,7 @@ EXAMPLE with the new-old \fref{fig:badpixelreplacement}.
 \begin{figure}
     \centering
     \includegraphics[width=\hsize/2]{figures/reduction/Bad_pixel_replacement}
-    \caption{Example of an artefact in the optimally extracted spectra from detector \#2 of HDXXXXXX. The top panel contains the 8 normalized nod spectra obtained using optimal extraction. The middle panel shows nod spectra using only rectangular extraction. The bottom panel shows the difference between a combined spectrum using optimal nods only and a combined spectrum in which the identified nods are replaced with their rectangular counterparts as per \ref{subsubsec:reductionartefacts}. A vertical offset is included between each spectra for clarity.The nod spectra are in observation order from top to bottom.}
+    \caption{Example of an artefact in the optimally extracted spectra from detector \#2 of {\red{} HDXXXXXX}. The top panel contains the 8 normalized nod spectra obtained using optimal extraction. The middle panel shows nod spectra using only rectangular extraction. The bottom panel shows the difference between a combined spectrum using optimal nods only and a combined spectrum in which the identified nods are replaced with their rectangular counterparts as per \ref{subsubsec:reductionartefacts}. A vertical offset is included between each spectra for clarity.The nod spectra are in observation order from top to bottom.}
     \label{fig:badpixelreplacement}
 \end{figure}
 
@@ -287,11 +287,11 @@ From the DRACS pipeline we have extracted the 1-D spectra of each target. The sp
 \subsection{Wavelength calibration}
 \label{subsec:wavecalib}
 Wavelength calibration is the process of assigning accurate wavelength values to each pixel in the spectra. For CRIRES in the \nir{} this is challenging. CRIRES uses a Thorium-Argon (\thar) lamp to place 6 emission spectra on the detector using fibres. The spectra of the \thar{} emission lines are used to determine the spatial distribution of the wavelength solution across each detector using correlation with a spectral template. \change{fix-up get a good citation, number of lines}{}\thar{} lamps are excellent at optical wavelengths where the numerous (8600 espresso) spectral lines enable precision of sub-m/s radial velocity measurements HARPS spectrograph\reference{paper for harps \thar{} lines}{(?)}. However in the \nir{}, there is a relatively low density of \thar{} lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ CRIRES-POP~\citep{nicholls_crirespop_2017}).
-Above 2.2~\si{\micro\meter} there are {O-H} sky lines that can be used for wavelength calibration but for our observations below 2.2~\si{\micro\meter} they are too dim.\reference{cite crires manual, and a paper about sky lines?}
+Above 2.2\um{} there are {O-H} sky lines that can be used for wavelength calibration but for our observations below 2.2\um{} they are too dim.\reference{cite crires manual, and a paper about sky lines?}
 
 These wavelength calibration issues were experienced when using the ESO CRIRES pipeline, with non-\thar{} lines features sometimes affecting the correlation.
 
-At the wavelength of 2.1--2.17~\si{\micro\meter} there are roughly XXX \thar{} lines across all four detectors, as seen in \fref{fig:caliblamps}.
+At the wavelength of 2.1--2.17\um{} there are roughly XXX \thar{} lines across all four detectors, as seen in \fref{fig:caliblamps}.
 The DRACS pipeline does not use the \thar{} lamp files for wavelength calibration and leaves this as a post reduction step.
 
 A common method for wavelength calibration that does not rely on \thar{} lamps of CRIRES involves using the telluric lines present to provide the wavelength solution~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}{\red{}~\citep{piskorz_evidence_2016}}. This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere.
@@ -438,5 +438,6 @@ In \sref{sec:chi2_results} we also apply a further wavelength restriction to mas
 \missingfigure{Plots showing some examples the telluric correction with and without H20 separated}
 
 \subsection{Barycentric correction}
-After the telluric correction is performed, the spectra are corrected for Earth's heliocentric motion. The heliocentric velocity is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}). This calculates radial velocity of the observatory towards the astronomical target, accounting for Earth's barycentric motion around the Sun as well as Earth's rotation. This computation requires the date and time of the observation, the location of the observatory and, the celestial coordinates of the target.
-The correction is applied by Doppler shifting the spectrum by the negative value heliocentric velocity calculated, placing all spectra as if they were observed from the reference point of the Sun.
+The orbital and rotational motion of the Earth imparts a daily and seasonal radial velocity signal offset onto observations. The maximum barycentric velocity is around 30\kmps.
+
+After the telluric correction is performed, the spectra are corrected for Earth's heliocentric motion by Doppler shifting the spectrum by the negative value of the barycentric velocity calculated, placing all spectra as if they were observed from the reference point of the Sun.. The barycentric velocity is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}). This calculates radial velocity of the observatory towards the astronomical target, accounting for Earth's barycentric motion around the Sun as well as Earth's rotation. This computation requires the date and time of the observation, the location of the observatory and, the celestial coordinates of the target.
