@@ -64,13 +64,24 @@
 % journal abbreviations
 \input{preface/literature_abbreviations}
 
-
-
 \usepackage{fix-cm} % Allows increasing the f
+
+% Sets color of toc, and links etc.
+% grey colors
+\definecolor{toccolor}{gray}{0.2}
+\definecolor{citationcolor}{gray}{0.25}
+\definecolor{hrefurlcolor}{gray}{0.25}
+
 \usepackage[colorlinks,
-linkcolor=flatorange,
-citecolor=flatblue,
-urlcolor=flatpurple]{hyperref}
+linkcolor=toccolor,
+citecolor=citationcolor,
+urlcolor=hrefurlcolor]{hyperref}
+% Coloured
+% \usepackage[colorlinks,
+% linkcolor=flatorange,
+% citecolor=flatblue,
+% urlcolor=flatpurple]{hyperref}
+
 
 \usepackage[Lenny]{fncychap}
 
