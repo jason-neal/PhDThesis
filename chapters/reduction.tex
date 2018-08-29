@@ -6,11 +6,11 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-The work of this thesis relies on the use of \nir{} spectra obtained by the CRIRES instrument. This chapter contains an overview of the steps undertaken to extract astronomical spectra, focusing on the CRIRES instrument specifically. A comparison between the two reduction pipelines is performed. Detail of some issues we encountered with the reduction output are presented as well as the post reduction steps we performed, specifically wavelength calibration and telluric correction. The reduced spectra produced in this chapter will be used in \cref{cha:direct_recovery} and \cref{cha:model_comparison}. We wrap up this chapter by highlighting other techniques in high resolution \nir{} spectra reduction and calibration which may have improved some of the results.
+The work of this thesis relies on the use of \nir{} spectra obtained by the CRIRES instrument. This chapter contains an overview of the steps undertaken to extract astronomical spectra, focusing on the CRIRES instrument specifically. A comparison between the two different reduction pipelines for CRIRES is performed. Details of the issues encountered with the reduction output are presented. The post reduction steps performed, specifically wavelength calibration and telluric correction are also included in this chapter. The reduced spectra produced in this chapter will be used in \cref{cha:direct_recovery} and \cref{cha:model_comparison}. We wrap up this chapter by highlighting other techniques in high resolution \nir{} spectra reduction and calibration which may have improved some of the results.
 
 \section{Summary of dataset}
 \todo{}{}
-Brief summary of dataset we focus reduction on. The motivation of these will be explained in \cref{cha:direct_recovery}.
+The work preformed relies on high resolution \nir{} spectra, obtained around 2.1\si{\micro\meter} with CRIRES. We brief we have 17 individual observations of 7 target stars obtained in 2012. Each observation contains 8 individual observations preformed in an ABBAABBA nod cycle pattern. Here we detail the steps preformed to extract the stellar information from the raw observations. Further details of the observations and the motivation for them are given in \cref{cha:direct_recovery}.
 
 
 \section{NIR spectroscopy}
@@ -403,6 +403,11 @@ TAPAS allows for the choice of atmospheric constituents included in the model sp
 
 \subsection{Issues with TAPAS-  Pet Peves}
 \change{Issues in an appendix}
+There are a number of issues we encountered when using TAPAS web-service, mainly due to interaction with the website. Often their service was down for weeks at a time without any warning or notification. With this you would waste time filling out the web form and attempt to submit it but would receive no response and no email with a link to the data. There was a higher success rate of successful response between different web-browsers. A number of bug reports were submitted to the owners of the webpage without any acknowledgement.
+
+The web-page is useful for quickly obtaining a small number of spectra but can be tedious for many. In our case we were requesting 3 telluric spectra, with varying molecular contributions, for each of our 17 observations. There is an ability to request multiple spectra at a time but we found this was unreliable if trying to request more than 4 spectra at once.
+
+
 Requiring data from Tapas
 - not handy for many
 - own script to derive from spectra header.
