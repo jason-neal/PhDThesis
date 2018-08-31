@@ -116,10 +116,10 @@ We note that some of these orbital parameters have been refined in the literatur
 \textit{K}-band spectra were obtained with the goal to achieve a direct detection of the companion spectra through the application of a spectral-differential approach. Doing so would enable a further constraint to be placed on their masses. The \textit{K}-band is used to achieve a high contrast relative to the host star, detected in the extreme V-K colour indexes (>7.8).
 
 % Table of stellar parameters
-\input{tables/stellarparameters}
+%\input{tables/stellarparameters}
 
 % Table of orbit parameters
-\input{tables/orbitalparameters}
+%\input{tables/orbitalparameters}
 
 %--------------------------------------------------------------------
 \section{Data and data reduction}
@@ -136,13 +136,13 @@ The observations were performed in service mode during period 89 with run ID.~08
 {\rd{} The list of observations obtained with CRIRES are provided in Table~\ref{tab:observations}.  The SNR is calculated with the formula \(\textrm{SNR} = \frac{\mu}{\sigma}\) where \(\mu\) and \(\sigma\) are the mean and standard deviation in the continuum of detector 2 between 2130 and 2134 (see Fig.~\ref{fig:spectral_example}).
 The estimated RV values for the host and companion at the time of each observation are calculated using Equation~\ref{eq:rv_equation} using the best known orbital parameters and the companion masses from Tables~\ref{tab:starparams} and~\ref{tab:orbitparams}. For hosts with multiple companions the RV value is for the largest companion only, i.e.\ {HD 202206}B and {HD 168443}c. The RV difference between the host and the companion \(rv_2\) = (\(RV_2 - RV_1\)) is parameter used in the binary model from Sect.~\ref{subsubsec:binary-model}. }
 
-\input{tables/observation_table}
+%\input{tables/observation_table}
 
 
 \subsubsection{Data reduction}
 \label{subsubsec:reduction}
 \begin{figure}
-    \includegraphics[width=\hsize]{images/Bad_pixel_replacement.pdf} % chktex 8
+%    \includegraphics[width=\hsize]{images/Bad_pixel_replacement.pdf} % chktex 8
     \caption{Example of an artefact in the optimally extracted spectra. The top panel contains the 8 normalized nod spectra after optimal extraction, while the middle panel shows the rectangular extraction for the exact same spectra. A vertical offset is included between each spectra. A single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artefact in the optimal extraction. The bottom panel shows the difference between a combined spectrum using the optimal nods only and a combined spectrum in which the seventh nod is replaced with its rectangular counterpart. The nod spectra are in observation order from top to bottom.}
     \label{fig:nod_artefacts}
 \end{figure}
@@ -163,47 +163,7 @@ The continuum normalization and nod combining steps were also performed using IR
 % One possible explanation for the artefacts present is an instrumental effect, such as instrument glow. This is known to affect CRIRES and included in the data reduction cookbook~\citep{smoker_very_2012}. These artefacts in the \textit{K}-band spectra were not observed in previous works in the \textit{H}-band using this pipeline and as such may have a wavelength dependent affect, as the higher wavelength nIR is more susceptible to thermal instrument glow.
 
 
-\subsubsection{Wavelength calibration}
-\label{subsec:wave_cal}
-There is a known issue with the wavelength calibration from the CRIRES Th-Ar calibrations~\citep{kerber_laboratory_2009}, due to the low density of Th-AR lines in the nIR and the alignment with the detectors narrow wavelength range (e.g.\ CRIRES-POP~\citep{nicholls_crirespop_2017}).
-Therefore, we use the telluric absorption lines present in each observation as the wavelength reference. Instead of directly using the HITRAN database~\citep{rothman_hitran2012_2013} for the line positions of the telluric spectra (e.g.~\citep{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}), we use TAPAS atmospheric transmission models~\citep{bertaux_tapas_2014} obtained for each observation. These in turn use the HITRAN database but include atmospheric profiles and physical measurements to model the telluric absorption strength.
-
-The centroid of each telluric line is obtained by fitting the telluric transmission spectrum, \(T \), as a sum of Gaussian functions (subtracted from the continuum) representing the telluric lines,
-
-\begin{equation}
-T(\lambda) = 1 - {\Sigma}_{i}\ G(\lambda, A_{i}, {\mu}_{i}, {\sigma}_{i}),
-\end{equation}
-
-where \(G \) is a Gaussian function of the form
-
-\begin{equation}
-G(\lambda, A, \mu, \sigma) = {A \textrm{e}}^{{-(\lambda-\mu)}^{2}/2\sigma^{2}}
-\end{equation}
-
-and \(A \), \(\mu \), \(\sigma \) are the amplitude, central wavelength, and standard deviation for each line respectively. {\rd{} Although telluric lines are actually Voigt profiles, they are not fully resolved in the nIR and their shape is dominated by the instrumental profile. The instrumental profile for CRIRES  has been shown to be well represented by a Gaussian~\citep{seifahrt_synthesising_2010}.}
-
-The observed spectra contain two different components: stellar and telluric lines overlapped. This overlapping is, in fact, a multiplication of the stellar and telluric spectra. These were fitted with two Gaussian-sum models multiplied together, with the identification of telluric and stellar lines performed {\rd{} by hand} for each spectra, using the synthetic telluric models as the reference.
-\begin{align}
-I_{obs}(x) &= I_{tell}(x) \times I_{space}(x) \nonumber \\
-I_{obs}(x) &= \Big(1 - {\Sigma}_{j}\ G(x, A_{j}, {\mu}_{j}, {\sigma}_{j})\Big) \times \Big(1 - {\Sigma}_{k} G(x, A_{k}, {\mu}_{k}, {\sigma}_{k})\Big), \label{eqn:obs}
-\end{align}
-
-where \(x \) is the pixel coordinate of the extracted spectra.
-
-The wavelength solution was obtained by fitting a second order polynomial, shown to be sufficient for higher precision RV studies~\citep[e.g.][]{bean_groundbased_2010, figueira_radial_2010, seifahrt_synthesising_2010}, to the centroid values \(\{\mu(x), \mu(\lambda)\} \) obtained from the telluric component of the observed spectra and telluric model respectively.
-
-Much like issues with Th-Ar calibrations this method only works well when there is sufficient coverage of telluric lines on the detector. For the wavelength setting of these observations, the spectra from the second detector (top right panel of Fig.~\ref{fig:detector4allspectra}) only has two large telluric lines present with several small lines, with relative depths smaller than 1\%, which are difficult to identify. This deteriorated the calibration stability for the second detector. With the lack of telluric contamination and stellar lines on the second detector it may have been ideal for the detection of a faint secondary spectra; unfortunately the wavelength calibration quality varies in an inverse way.
-
-We note that there are many variations on this wavelength-calibration technique including those integrated within programs such as \emph{TelFit}~\citet{gullikson_correcting_2014}, and ESOs \emph{Molecfit}~\citet{smette_molecfit_2015}, that perform telluric correction and re-calibrate the wavelength axis themselves. {\rd{} Including concurrent fitting of a stellar spectral model, adjusted for RV, along with the telluric model could help to improve the wavelength calibration preformed here. For example~\citet{piskorz_evidence_2016} use only a telluric line model at other nIR wavelengths but needed to include a stellar model specifically around 2\,\(\mu\)m where the telluric lines are weaker.}
-
-
-\begin{figure*}
-    \includegraphics[width=0.8\hsize]{images/Spectra_examples.pdf}
-    \caption{Extracted, normalized and wavelength calibrated spectra for a single observation of each target. The target name is given above each spectrum along with the observation number. Each panel is the spectra from a single detector 1--4 in order of increasing wavelength. The black dashed lines indicate the unique telluric spectrum used for wavelength calibration and telluric correction for each observation.}
-    \label{fig:detector4allspectra}
-\end{figure*}
-
-
+\
 \subsubsection{Telluric correction}
 \label{subsec:telluric_correction}
 Ground based observations require the removal of the absorption lines introduced by Earth's atmosphere. These observations were first taken in an atmospheric window of the \textit{K}-band in order to reduce the absorption introduced by the atmosphere~\citep{barnes_hd_2008}. To correct for the remaining telluric line contamination the spectra were divided by the TAPAS\citep{bertaux_tapas_2014} atmospheric transmission models for each observation. Synthetic telluric models were used to avoid the observing overhead necessary to perform telluric standard star exposures~\citep{vacca_method_2003}, and they have been demonstrated to be superior in the quality of the correction relative to the telluric standard approach~\citep[e.g.][]{cotton_atmospheric_2014}.
@@ -286,7 +246,7 @@ The SNR of the observed spectra is between 150--350, which is below the SNR of 3
 Our non-detection of binary companions with low flux ratios is consistent with results from other works. For example~\citet{nemravova_xtauri_2016} performed extensive spectral analysis of a quadruple-star system {\(\xi\) Tauri} using 227 spectra in 3 different wavelength bands. Of the four stars in the system they were unable to detect the spectral component of the one which had a luminosity ratio below 1\%. {\rd{} The secondary detection in optical spectra using spectral matching of KOI was also only able to reach flux ratios of 1\%~\citet{kolbl_detection_2015}.}
 
 
-\input{tables/linedepths.tex}
+%\input{tables/linedepths.tex}
 
 \subsubsection{\(\chi^2\) asymmetry}
 \label{subsubsec:chi2_assymetry}
@@ -301,7 +261,7 @@ The bump observed at 5100~K in the \(\chi^2\) curves is due to a discontinuity i
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.95\hsize]{images/companion_spectra.pdf}
+%    \includegraphics[width=0.95\hsize]{images/companion_spectra.pdf}
     \caption{PHOENIX-ACES spectra for temperatures between 2500 and 5000 K, corresponding to to the same lines in Fig.~\ref{fig:injection_shape}. The flux units are the native units of the PHOENIX-ACES spectrum, (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)), and have not been scaled by the stellar radii. All spectra have a \(\rm logg=5.0\) and \(\rm [Fe/H]=0.0\). The vertical dotted lines indicate the edges of the CRIRES detectors.}
     \label{fig:comp_spectra}
 \end{figure}
@@ -329,7 +289,7 @@ Although the newer generations synthetic spectral models are improving and match
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.95\hsize]{images/HD211847_ACES_BTSettl.pdf}
+%    \includegraphics[width=0.95\hsize]{images/HD211847_ACES_BTSettl.pdf}
     \caption{Detector 1 spectrum for {HD 211847} (blue) alongside the PHOENIX-ACES (orange dash-dot) and {BT-Settl} (green dashed) synthetic spectra for the host star only, with parameters \(T_{\textrm{eff}}=5700\)~K, \(\rm logg=4.5\) and \(\rm [Fe/H]=0.0\). Both synthetic models have been normalized and convolved to \(\rm R=50\,000\). There is a 0.05 off-set between each spectrum}
     \label{fig:hd211847-models}
 \end{figure}
@@ -457,7 +417,7 @@ This research has made use of the SIMBAD database, operated at CDS, Strasbourg, 
 
 
     \begin{figure}
-        \includegraphics[width=0.95\hsize]{images/differential.pdf}\\
+%        \includegraphics[width=0.95\hsize]{images/differential.pdf}\\
         \caption{ (Top) A reduced CRIRES observation of {HD 30501} (blue) for detector 1 between 2112--2124~nm along with the tapas telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction. (Middle) The telluric corrected spectra. (Bottom) ({blue}) Differential spectra for {HD 30501} between observations 1 and 3. ({orange} dashed) Simulated ``perfect'' differential using PHOENIX-ACES spectra with parameters \(T_{\textrm{eff}} = 2500~K \), \(\rm logg=5.0\), and \(\rm [Fe/H]=0.0 \), with the same \(\Delta RV \) as the observations. The shaded regions indicate where the telluric {green} and host star {blue} spectra are > 4\% deep.}
         \label{fig:spectral_example}
     \end{figure}
@@ -483,14 +443,14 @@ This research has made use of the SIMBAD database, operated at CDS, Strasbourg, 
 
     \begin{figure}
         \centering
-        \includegraphics[width=0.8\hsize]{images/relative_amplitude.pdf}
+  %      \includegraphics[width=0.8\hsize]{images/relative_amplitude.pdf}
         \caption{Simulated relative amplitude of differential spectra at different RV separations revealing the diminished amplitude at small orbital separations. The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a PHOENIX-ACES spectrum with \(T_{\textrm{eff}}=2500~K, \textrm{logg}=5.0, \textrm{[Fe/H]}=0.0\), in the wavelength region 2110--2123~nm. The maximum difference is normalized by the average amplitude between 7--10\kmps{}, representing a complete line separation. The orange (dashed) and green (dot-dashed) lines represent the relative amplitude of a differential spectrum for a single Gaussian and single Lorentzian absorption line respectively, each with a unitary amplitude and a \(\rm FWHM = \lambda / R \). Beyond the FWHM lines the difference of the synthetic spectrum becomes more complicated due to the interaction of neighbouring lines. The solid vertical lines indicate the estimated companion \(\Delta RV\) in these observations while the dashed vertical lines indicate the RV corresponding to the FWHM at this wavelength and resolution. Beyond the FWHM RV the synthetic spectrum becomes complicated due to the interaction of neighbouring lines.}
 
         \label{fig:diff_amp}
     \end{figure}
 
     % Table of estimates of parameters
-    \input{tables/estimatedparameters}
+%    \input{tables/estimatedparameters}
 
 
     \section{Estimating companion parameters}
