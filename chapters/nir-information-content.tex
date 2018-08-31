@@ -54,7 +54,7 @@ pedros school section other precision source \(r^1.5\)
 
 \subsection{Fundamental photon noise limitation}
 
-A optimum technique to calculate the radial velocity precision of a spectrum using the full spectral information is proposed by~\citet{Connes1985}. Here we provide the radial velocity precision derivation following~\citet{Connes1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this derivation comes from~\citet{bouchy_fundamental_2001} with some extra notes added to improve the clarity.
+A optimum technique to calculate the radial velocity precision of a spectrum using the full spectral information is proposed by~\citet{connes_absolute_1985}. Here we provide the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this derivation comes from~\citet{bouchy_fundamental_2001} with some extra notes added to improve the clarity.
 
 For each spectrum there is assigned a quality factor, Q, to compute the fundamental uncertainty on the radial velocity measurements due to noise. {\red{} i am not sure what i am trying to say in this sentence}\unfinished{Change picture spectral range to capital lambda \(\Lambda\)}
 
@@ -63,7 +63,7 @@ For each spectrum there is assigned a quality factor, Q, to compute the fundamen
     %\includegraphics[width=0.7\linewidth]{figures/spectrum_example_a}
    % \includegraphics[width=0.7\linewidth]{figures/precision_derivation.pdf}
     \includegraphics[width=0.7\linewidth]{figures/precision_derivation.png}
-    \caption{Arbitrary spectral line with a shift \(\delta \lambda\), inspired by~\citet{Connes1985}.  \(\Lambda\) is the wavelength range considered.}
+    \caption{Arbitrary spectral line with a shift \(\delta \lambda\), inspired by~\citet{connes_absolute_1985}.  \(\Lambda\) is the wavelength range considered.}
     \label{fig:precisionderivation}
 \end{figure}
 
@@ -74,7 +74,7 @@ The Doppler shift of a spectrum is given by:
 \end{equation}
 Here \(c\) is the speed of light in a vacuum, and \(\delta \lambda\) is the observed shift in wavelength \(\lambda\) caused by the velocity \(\delta V\)
 
-Using basic calculus \(\delta y = \frac{\partial y}{\partial x} \delta x,  \nonumber\) and for a Doppler shift that is small compared to the line-width\footnote{Although~\citet{Connes1985} show that this approximation in Eq.\,\ref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change at a given pixel can be expressed by:
+Using basic calculus \(\delta y = \frac{\partial y}{\partial x} \delta x,  \nonumber\) and for a Doppler shift that is small compared to the line-width\footnote{Although~\citet{connes_absolute_1985} show that this approximation in Eq.\,\ref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change at a given pixel can be expressed by:
 
 \begin{equation}
 \delta A(i) = A(i) - A_0(i) \simeq \frac{\partial A_0(i)}{\partial \lambda} \delta \lambda
@@ -155,7 +155,7 @@ The important quantity for RV measurements is not only the velocity value itself
 \end{equation}
 With this the velocity precision is inversely proportional to the sum of the optimal pixel weights.
 
-A spectral quality factor, Q, is defined as for the pure photon noise case, as in~\cite{Connes1985, connes_demonstration_1996}.
+A spectral quality factor, Q, is defined as for the pure photon noise case, as in~\cite{connes_absolute_1985, connes_demonstration_1996}.
 
 \begin{equation}
 Q = \frac{\sqrt{\Sigma{\,W(i)}}}{\sqrt{\Sigma{\,A_0(i)}}}.
@@ -198,15 +198,15 @@ In the case of several \(\delta V\) measurements computed for \(k\) spectral sli
 We follow~\cite{figueira_radial_2016} by exclusively considering a high signal-to-noise regime in which \(A(i) + D^2 \sim A(i)\) can be approximated.
 
 
-\footnote{pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\Sigma{\lambda^2 {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\Sigma{\, A_0(i)}}\) as derived by~\cite{Connes1985}. }
+\footnote{pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\Sigma{\lambda^2 {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\Sigma{\, A_0(i)}}\) as derived by~\cite{connes_absolute_1985}. }
 
 The in the photon noise limited case we assume that all measurements have same RV then the the the object has not
-\citet{Connes1985} show that the optimal weights for photon limited noise is given by \todo{finish this}
+\citet{connes_absolute_1985} show that the optimal weights for photon limited noise is given by \todo{finish this}
 
 There is also a optimal weight for detector noise but we are always assume we are in high SNR case and are photon noise limited.
 
 
-This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation~\citet{Connes1985,bouchy_fundamental_2001} and can influence the design (or use) of spectrographs
+This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation~\citet{connes_absolute_1985,bouchy_fundamental_2001} and can influence the design (or use) of spectrographs
  (e.g.\ SPIROU~\citep{artigau_spirou_2014,figueira_radial_2016})
 \unfinished{Does spectrograph pipelines such as HARPS use these equations to measure estimate/precision?}
 
@@ -460,7 +460,7 @@ The current version of the software is now implemented with the gradient method 
 
 \subsection{Masking Function}
 \label{subsec:masking_function}
-Another change made to the software is in the application of the masking function, and the treatment of telluric lines. As suggested in~\cite{Connes1985} and~\cite{bouchy_fundamental_2001} a custom masking function can be applied to the individual pixel weights in \eref{eq:optimal_weight}, such as:
+Another change made to the software is in the application of the masking function, and the treatment of telluric lines. As suggested in~\cite{connes_absolute_1985} and~\cite{bouchy_fundamental_2001} a custom masking function can be applied to the individual pixel weights in \eref{eq:optimal_weight}, such as:
 
 \[W'(i) = W(i)M(i),\label{eq:mask_function}\] where \(M(i)\) is the masking function and \(W'(i)\) are the modified pixel weights.
 This masking function can be used in particular for the removal of telluric lines, setting those weights to zero and is in essence what is done when wavelength selection is preformed; assigning zero weight to all pixels outside the desired wavelength range.
@@ -479,16 +479,16 @@ Here, \(T(i)\) is the telluric transmission spectrum, while \(\tau\) is the tran
 
 \begin{itemize}
     \item Condition \#1:
-    The first mask, \(M_1\), is the simplest case in which all pixel weights are treated equally. No telluric line masking is considered. 
+    The first mask, \(M_1\), is the simplest case in which all pixel weights are treated equally. No telluric line masking is considered.
 
     \item Condition \#2:
     In the second mask, \(M_2\), the telluric line transmission, \(T(i)\) is used to create a boolean mask of 0's and 1's. When applying this mask to the pixel weights, the pixels effected by telluric lines have 0 weight, removing their contribution to the {\red{} \(RV_RMS\)}. Accounting for seasonal variation in Earth's barycentric motion can be easily incorporated into this mask, widening the regions masked out.
 
-    \item Condition \#3: 
+    \item Condition \#3:
     The third mask, \(M_3\), assumes the application of perfect telluric correction consistent with Condition \#3. The pixel weights are modified by dividing the flux variance by the square of the transmission spectrum \reference{cite the equation when I refer to it}. As the flux variance is the denominator of \ref{eq:optimal_weight}, this is equivalent to multiplication of the weights by a mask of the form \(M_3\).
 \end{itemize}
 
-Having the three masks defined in this way makes the implementation of the RV precision simpler. In the original version there were three separate implementations, one for each condition. With this, \todo{Check this if it is previous}{as mentioned previously} there was a issue with the implementation of Condition \#2. 
+Having the three masks defined in this way makes the implementation of the RV precision simpler. In the original version there were three separate implementations, one for each condition. With this, \todo{Check this if it is previous}{as mentioned previously} there was a issue with the implementation of Condition \#2.
 
 \subsubsection{Masking order}
 \label{subsubsec:masking_order}
@@ -638,5 +638,5 @@ return c1 * np.sqrt(1.0 - lambda_ratio_sqr) + c2 * (1.0 - lambda_ratio_sqr)
 
 The rotational broadening kernel is {Grey ...}
 \begin{equation}
-Rot = 
+Rot =
 \end{equation}

@@ -1,5 +1,5 @@
 %!TEX root = ../thesis.tex
-%2 - Tools for spectral analysis
+% 2 - Advanced Concepts
 
 \chapter{Advanced Concepts}
 \label{cha:concepts}
@@ -84,13 +84,13 @@ The index of refraction of air is very close to 1, but has a complex wavelength 
 There are several empirical formula for the index of refraction of air \citep[e.g.][]{edlen_dispersion_1953, peck_dispersion_1972, ciddor_refractive_1996}. As an example the refractive index given by \citet{ciddor_refractive_1996}, based on optical and infrared measurements and valid up to 1.7\si{\micro\meter}, is:
 
 \begin{equation}
-    n -1 = \frac{0.05792105}{238.0185 - \lambda^{-2}} + \frac{0.00167917}{57.362 - \lambda^{-2}}. 
+    n -1 = \frac{0.05792105}{238.0185 - \lambda^{-2}} + \frac{0.00167917}{57.362 - \lambda^{-2}}.
 \end{equation}
 
-This is measured at starndard air, dry air at 15\si{\degreeCelsius}, 101.325\ \si{\kilo\pascal} and with 450\,ppm \(CO_2\). 
+This is measured at starndard air, dry air at 15\si{\degreeCelsius}, 101.325\ \si{\kilo\pascal} and with 450\,ppm \(CO_2\).
 Beyond 1.7\ \si{\micro\meter} there are only theoretical models of the refractive index of air, due to lack of experimental data. For example ~\citet{mathar_refractive_2007} provides theoretical values between 1.3 to 24\ \si{\micro\meter} for common air pressure and temperature of ground-based observatories.
 
 In this work we extensively use spectral wavelengths specified in a vacuum. The first is because the empirical relations are not valid beyond 1.7\ \si{\micro\meter}, while the CRIRES spectra we investigate are observed around 2.1\ \si{\micro\meter} and the CRIRES instrument manual provides all measurements in vacuum wavelengths.
 
-The TAPAS synthetic transmission models~\citet{bertaux_tapas_2014} we use for telluric correction are available for download in vacuum wavelengths or air wavelengths\footnote{The wavenumber, \(1/\lambda\), is also available.}. The PHOENIX-ACES library of synthetic spectra we use also provides spectra in vacuum wavelengths. 
+The TAPAS synthetic transmission models~\citet{bertaux_tapas_2014} we use for telluric correction are available for download in vacuum wavelengths or air wavelengths\footnote{The wavenumber, \(1/\lambda\), is also available.}. The PHOENIX-ACES library of synthetic spectra we use also provides spectra in vacuum wavelengths.
 Since both are available in vacuum wavelengths and the TAPAS models are used for calibration, vacuum wavelength exclusively, With this there is no errors introduced from conversions between air and vacuum wavelengths.
