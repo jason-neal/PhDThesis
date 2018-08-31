@@ -1,0 +1,206 @@
+\documentclass[pdftex,12pt,a4paper]{article}
+\usepackage{geometry}
+\usepackage{threeparttable}
+\geometry{a4paper, total={210mm,297mm}, left=25mm, right=25mm, top=25mm, bottom=25mm,}
+\usepackage{pdflscape}
+\usepackage[pdftex]{graphicx}
+\usepackage[]{natbib}
+
+\citestyle{aa}
+\newcommand{\aap}{A\&A}
+% Astronomy and Astrophysics
+\newcommand{\apj}{ApJ}
+% Astrophysical Journal
+\newcommand{\aj}{AJ}
+% Astronomical Journal
+\newcommand{\nat}{Nature}%
+% Nature
+\newcommand{\icarus}{Icarus}%
+% Icarus
+
+
+\begin{document}
+\input{./title.tex}
+
+\tableofcontents
+
+\newpage
+\section{Overview}
+Exo-atmospheres, one of the forefronts of exoplanetary science, has shaped science and scientific instrumentation for the last decade. In this project we propose a gradual approach to developing and perfecting the methodologies required for the detection and characterization of exo-atmospheres.\\
+
+Building on current in-house knowledge, we propose to develop the methodologies required for the extraction of the maximum amount of information, and in particular the minute signals from the NIR (near Infrared) spectra of exoplanets. The risk of this ambitious program will be minimized by a thorough and gradual pathway to this objective. The intermediary tasks and objectives have been laid out and a significant amount of observational data has already been acquired and is fully available to be explored.\\
+
+The expertise gained through this project will give the ability to efficiently reduce and explore NIR spectroscopic data, an emerging field in astronomy, in particular in the domain of extrasolar planets. The results of this project will be used for the science verification of two upgraded infrared instruments: VISIR and CRIRES+ (both at the VLT-ESO).\\
+
+The proposed research goals and an expected timeline to achieve these is outlined in this document. The current progress from the first year of the doctoral program is also provided. Sufficient introductory skills have already been acquired during the first year of this program to provide the basis to achieve the goals set out in this project and to place me in a privileged position to perform the scientific exploitation of these instruments in the best way. \\
+
+\newpage
+\section{State of the Art}
+
+Exoplanetary atmospheres is one of the holy grails of planetary sciences. This topic is one of the main science drivers of the new generation of ground and space based telescopes (e.g. NASA's JWST, ESO's E-ELT, and the TMT). The detection and characterization of exoplanetary atmospheres are necessary steps towards the detection of possible life signatures on an alien world. It also further provides key information on the mostly unknown atmospheric properties of exoplanets, and on the formation and evolution of planetary systems, two active lines of exoplanet research.\\
+
+For example, measurement of the planetary atmospheres will give the ability break degeneracies in the derived planetary properties resulting from the ambiguities in the mass-radius relationship for solid exoplanets (\citealp[e.g.] []{Valencia2006, Fortney2007}, - for a recent example see also \citealp{Miller-Ricci2012}). It may even provide important clues on the origin and evolution of a planet: different chemical atmospheric compositions will allow us to pinpoint where the planet was formed in the disk, and how it migrated \citep{Figueira2009, Mordasini2012}.\\
+
+The NIR and MIR wavelengths regions are especially important for exoplanetary and exo-atmosphere science as they allow for the detection of smaller planets around lower mass stars which are brighter in the infrared due to their cooler effective temperature. This allows for the possibility to detect Earth-like planets in the habitable zone of M dwarf stars with the current levels of RV precision \citep[e.g.][]{Reiners2010}. This wavelength region also contains a vast number of absorption lines for atmospheric constituents, such as H$_2$O, CO, CO$_2$ or CH$_4$ among many others, which make it possible to detect their presence in exoplanet emission and transmission spectra. A popular target for these atmospheric observations has been the transiting hot Jupiter HD189733b \citep[e.g.][]{Swain2008, Desert2009, Kok2013}. \\
+
+As and example of the NIR/MIR potential, a recent breakthrough in the atmospheric characterization of exoplanets was made possible with CRIRES@VLT. The high resolution ($\Delta\lambda / \lambda = 100,000$) achieved with this instrument over narrow (50 nm) spectral near-infrared regions allows tracking the wavelength shift of individual spectral features composing molecular bands of water or carbon monoxide. This (spectro-)differential method provides the resolution needed to separate telluric lines, which are stationary in wavelength, from the moving planet-star line set.\\
+
+The cross-correlation technique using the highly resolved lines from the CRIRES spectra with atmospheric line lists has been used successfully used to detect the presence of high altitude winds in the extrasolar atmospheres of transiting planets \citep[e.g.][]{Snellen2010} and characterization of atmospheres of non-transiting planets \citep[e.g.][]{Brogi2012}. There are also other interesting techniques such as fitting and removing the stellar spectra to obtain the minute signals from faint low mass companions in the residuals \citep{kolbl2015}. These techniques will all benefit from improving the spectral information recoverable.\\
+
+The exciting prospects of exoplanet atmospheric characterization has motivated a large number of ground based high resolution spectrograph's currently being developed. ESPRESSO@VLT \citep{Pepe2010} is an optical spectrograph with first light expected in 2016. In the infrared (IR), spectrographs such as GIANO@TNG (2012) and FIRST@Fairborn Observatory (2013) \citep{FIRST2013}  have recently become operational, with HPF@HET (2015) \citep{Mahadevan2012}, Carmenes@Calar Alto (2015) and SPIRou@CFHT (2017) also soon to be on the sky. As well as these new spectrographs the VISIR instrument has just been upgraded while the CRIRES spectrograph is being upgraded to CRIRES+ due to be finished in 2017, both of these located at the VLT. Even though these instruments were designed and are being developed with the objective of deriving precise radial velocities, the detection of exoplanet atmospheres is becoming one of the most important science drivers and is already shaping their technical choices. \\
+
+With these instruments and the NASA's James Webb Space Telescope (expected 2018), the direct detection of exoplanet atmospheres will become one of the hottest domains in exoplanetary research, though still a challenging task. Thanks to the combination of powerful telescopes and state of the art instruments, one can dare to dream that the presence of biomarkers in the atmosphere of an alien world may be detected for the most favourable cases (e.g. M-dwarfs) \citep{Palle2011}. \\
+
+This thesis leads to the development of tools and an expertise which is at the forefront of extrasolar planet science, and which will be of high value in a wide range of domains related to the upcoming infrared spectroscopy. These tools will be used to verify science on the new instruments in development currently due near the end of this PhD. It may even shape designs of far off spectrograph instruments such as HIRES for E-ELT ($>$2024) and beyond.\\
+
+To fully harness the scientific opportunities opened by the state-of-the-art near- (NIR) or mid-infrared (MIR) spectrographs mounted on powerful facilities, two important interconnected steps have to be further developed: the precise removal of telluric features from the Earth's atmosphere, and the extraction of faint spectral signals.\\
+
+
+\pagebreak
+\section{Research Objectives and Approach:}
+\section*{Research Description:}
+We propose to explore in detail new methodologies and approaches to use NIR and MIR spectroscopy to detect the minute signatures of planetary atmospheres. The goals of this project can be broken down to two main tasks which are described below. The first goal involves the development of tools for spectral detection of exoplanet features in precise RV searches. The second goal involves applying these tools to brown dwarf and exoplanet data.\\
+
+\subsection {Tools for high spectral fidelity}
+
+We will extract the stellar spectrum in its most pristine form by using two techniques. The first consists in the removal of the telluric spectra, removing the spectral lines from our atmosphere that are imprinted on our scientific spectra. This can be performed by TAPAS \citep{Bertaux2014}, Telfit, \citep{Telfit2014}, Molecfit \citep{Molecfit2015, Kausch2015} or even a house-brewed version of the most used code for this purpose, LBLRTM \citep{LBLRTM2014}. Some investigation will be required to determine which of these programs provides the ``best" telluric corrections.\\
+
+As an example the TAPAS telluric spectra is obtained from their website when provided with the required parameters for observations (e.g. time, observing location, wavelength range). This will then compared to the actual observations to identify the nature of the lines in our observations (e.g. which are telluric and which are stellar). In contrast Molecfit is a software tool that fits synthetic spectra to the observational data. \\
+
+It has been observed that the CRIRES observations are not correctly wavelength calibrated with the ESO CRIRES pipeline. The telluric lines will be used to wavelength calibrate the reduced spectra. Several gaussians will be fitted to the common spectral lines present in both the TAPAS spectra and the observations. The fitted parameters (i.e. the central peaks) can be then matched to create a conversion mapping from the image pixel position to wavelength. Ideally, many well defined lines that span the entire length of the spectrum would be desired to produce the best mapping.\\
+
+With wavelength correction performed, the telluric lines can then be removed by division. This is known to perform much better than typical observations of telluric standards \citep[see][for details]{Figueria2015prep} The noise levels present in the regions where the telluric lines were will be interesting to calculate and compare to unaffected regions. We will also calculate the percentage of the spectral information not thrown away from the telluric correction as RV searches usually avoid regions within $\pm$30 kms$^{-1}$ (Earths' orbital speed) of telluric lines.\\
+
+
+% Associated to this, and extensively used for the calculation of radial velocities, is the deconvolution of the instrumental profile. We propose to use the technique, already demonstrated in the NIR \citep{Blake2010} to recover the stellar spectra with a higher fidelity, and determining its radial velocity in the process. This method is only made possible due to the knowledge of the telluric spectra with a high degree of detail. \\
+
+After telluric line removal we will attempt the recovery of the faint spectral features of the planetary companion. The signal of stellar companions have been detected in the residuals of spectra after the stellar spectra has been fitted and removed \citep[e.g.][]{kolbl2015}. We will attempt to perform this for the smaller signals of faint brown dwarf and planetary companions. \\
+
+Synthetic stellar models can be obtained such as the PHENOIX-ACES models \citep{Husser2013-PHOENIX-ACES} which roughly match the host star parameters. We can compare the synthetic spectra to the observations to observe the which spectral lines belong to the host star. The wavelength difference between the observations (after telluric calibration) and the synthetic stellar spectra should be able to give us a measurement of the relative motion between the star and the Earth. We can use this  against published values as a test of our accuracy and precision level.\\
+
+We have access to these synthetic spectra and members in the exoplanets group have been working with them and have the tools to reproduce a spectra with known spectral parameters and instrumental properties (namely vsini, R and sampling). We will be able to use their knowledge while implementing this part of the project. \\ 
+ 
+The next step is to separate the combined spectra of the host and companion to recover the spectra of the companion. The synthetic spectral model for the host star will be fitted and removed from the observations. The residuals will then be searched for minute signals that are from the companions spectra. Having two (or more) epochs for observations should help us to identify features in the residuals that belong to the planet from the associated RV shifts. One way to do this is to subtract the spectra from the two different epochs. \\
+
+Using the best known planet atmosphere models and existing IR spectra of FGK and M dwarfs, we will also perform detailed spectrum simulations in all the NIR and MIR regime to explore the best observing and analysis strategy to detect exoplanetary spectra using high resolution spectroscopy and to reproduce the spectrum of a companion in high-resolution down to the brown dwarf regime. As a precursor to this \citet{Figueria2015prep} have analysed the radial velocity information obtainable from the NIR region.\\
+
+This will involve simulating the spectrum of different stars with a Brown Dwarf companions. Light transmitted, emitted and reflected from the companion's atmosphere will be present in the resulting spectra. The simulations will be run to determine at what relative flux level can the companion be identified using the tools developed and how the physical parameters (e.g. planetary mass, radius,  semi major axis) influence the detectability. The spectral coverage of NIR to MIR will let us identify if there are specific optimal wavelength ranges for planetary atmosphere characterization. 
+
+\subsection{Application to brown dwarf and exoplanet targets.}
+
+The development of the high fidelity reduction tools is to be used for the atmospheric characterization of exoplanets. These tools will be applied to observational NIR/MIR spectra of Brown Dwarfs and exoplanets to try and characterise their atmospheres. \\
+
+I currently have access to the data collected on Brown Dwarf companions (CRIRES program: ``Uncovering the true frequency of close brown dwarf companions to Sun-like stars'', led by the CAUP team). This will permit me to test the procedures on faint targets. This will be used as a stepping stone towards the detection of planetary atmospheres, and allows us to strengthen the case for the time requests. The CRIRES data already available has provided a starting point to learn NIR reduction and to understand and visualise NIR spectra. It will continue to be used to develop and test new ideas on as the tools are developed.\\
+
+The objective is to separate the spectra of the stellar host and the Brown Dwarf companion, to recover the spectra of the companion. This is made possible in the IR due to the higher contrast (relative to the visible) between the two spectra. The recovered spectra will provide clues to the atmospheric properties of the brown dwarf, most probably through absorption and emission lines present. \\
+ 
+As Brown Dwarfs are more massive than exoplanets they should be easier in theory to detect (larger RV signal) and to extract the faint spectra (e.g. larger surface area for reflection would give a higher contrast or relative brightness compared to the host). Therefore being able to characterize the atmospheres of Brown Dwarfs is a necessary step for the characterisation of smaller fainter planets. Brown Dwarfs themselves are very interesting and not well understood targets so if we are able to characterise their atmospheres but are unable to reach fainter exoplanets we will still make a valuable contribution to astronomy. \\
+
+One of the Brown Dwarf observation targets we have data for has a very good mass estimation. HD30501 as this has been confirmed to host a $90\pm12$ M$_{\textrm{Jup}}$ Brown Dwarf \citep{Sahlmann2011}. This target could be used to benchmark the whole analysis up to the spectral recovery stage. We plan to repeat the analysis for the other stars of the project and determine their masses or upper mass limits. This is made possible by two or more observational epochs (ideally placed at opposite phases) which would allow the determination of the RV motion. \\
+
+The detection of planetary atmospheres in the MIR window will also be explored. This is mostly uncharted territory, but new instruments will enable the first steps in this domain (e.g. the recent upgrade on VISIR@VLT), and in particular the instrument suite (specifically MIRI) on-board the James Web Space telescope (expected launch 2018). \\
+
+We will apply for observations on the VISIR instrument in the next available period which will allow us to explore the potential of MIR and learn how to extract the information. This will also increase the amount of data available for testing the tools during development and identifying atmospheric features. As several teams will be trying to obtain transits in the MIR we may choose to focus around objects with lesser pressure than transiting planets but that we can still learn on how to extract the information, such as Brown Dwarfs for which we already have CRIRES data for. If the VISIR proposal is accepted then it is highly like that some time will be spent in Chile to work closer to the experts while extracting the VISIR observations.\\
+
+
+Once the tools are fully developed and the simulations performed, the ground will be set for requesting more dedicated observational data in the NIR. The timeline of this program is set in order to be prepared for the upcoming CRIRES+ instrument, at ESO. I will lead an ESO application for observational data on this instruments, backed by a large team of collaborators. \\
+
+Since an instrumentation development is often subject to setbacks, the associated timelines for CRIRES+ may slip beyond the length of the PhD. If this happens we can shift our attention to concentrate on more VISIR observations in the MIR.
+
+
+\subsection{Work Plan:}
+\subsection*{Doctoral Program in Astronomy}
+The Doctoral Program in Astronomy, offered at the University of Porto, includes a Doctoral Course (30 ECTS) and a Research Component (total of 150 ECTS). The Doctoral Course component has been successfully completed. Yearly progress reports are mandatory within the Doctoral Program and will be delivered at the end of each academic year.
+
+\subsection*{Goals for Publication}
+This year I have made some minor contributions a paper \citep{Figueria2015prep} and have been a proofreader for a book recently released called ``Astro Homus". We plan to submit an observing proposal in the next period and the current work on Brown Dwarfs is likely to  end in a first author publication. Presentations are intended to be given at relevant conferences but more work needs to be performed before abstracts are submitted and results can be shown. \\
+
+\subsection*{Overseas Travel}
+If observing proposals are successful then this may require some time to be spent abroad conducting observations. If we obtain VISIR observations it would be beneficial to undertake an internship at ESO to work closer to the experts. This would result in spending a couple of months in Chile. It is also possible that some time will be spent working closely with collaborators at their host institutions. This will largely depend on how the research project develops, availability and timing. There will most likely also be overseas travel to attend relevant international conferences.
+
+\subsection*{Timeline}
+A proposed timeline is shown in Figure \ref{timeline_fig}. The time
+required for thesis writing is omitted (but expected to take approximately 4-6 months)
+
+\begin{landscape}
+\begin{figure}
+\includegraphics[width=1.5\textwidth]{timeline_jneal-crop}
+\caption{Schematic diagram showing the tentative timeline for the PhD project. The time allocation for each task is not completely rigid. The time required for thesis writing is omitted (but expected to take approximately 4-6 months).
+\label{timeline_fig}}
+\end{figure}
+\end{landscape}
+
+\newpage
+\section{Results and Current Progress:}
+\label{current_progress}
+A majority of the first year has involved undertaking 5 PDA advanced courses. The courses taken are listed in Table \ref{Courses_tab} and the grades reflect the time and effort put into them. Another large component of this year has been learning and/or developing competencies in different software packages. These have been IRAF (Image Reduction and Analysis Facility), Python, Gasgano and the ESO CRIRES Pipeline.
+Other software that I have been introduced to this year has been Period04 for frequency analysis, Systemic for orbit fitting of planets, R for statistics and time series analysis, the ESO UVES reduction Pipeline, and a handful of python modules useful for astronomy.\\
+
+Observations of 7 Brown Dwarf objects (CRIRES program: \textit{``Uncovering the true frequency of close brown dwarf companions to Sun-like stars"}) have been reduced with both the official ESO CRIRES pipeline and a in-house pipeline developed by Pedro Figueira in IRAF. Investigations are ongoing to determine which pipeline is the best, and therefore which one to continue using. The pipeline in IRAF as it stands does not correct for the blaze function, perform wavelength calibration or combine the separate nodding positions, whereas, the CRIRES pipeline natively does all these.\\
+
+TAPAS has been used to obtain telluric line transmission spectra for one of the observations so far. It reveals problems with the CRIRES wavelength calibration which need to be corrected for as there is a wavelength shift between the telluric spectra and the lines in the observation. This should not be the case as the telluric lines should have no RV shift.\\
+ 
+Other issues in the reduction such as pixel shifts in the nodding positions which lead to loss of resolution when they are combined have been observed in the data bringing these affects to my attention. These issues are important to know about and correct for when trying to maximize recoverable information. \\
+
+These initial investigations have been performed on the observation target HD30501 as this has been confirmed to host a $90\pm12$ M$_{\textrm{Jup}}$ Brown Dwarf \citep{Sahlmann2011}. The good mass estimation provided by this target could be used to benchmark the whole analysis up to the spectral recovery stage. We plan to repeat the analysis for the other stars of the project and determine their masses or upper limits of the mass. This project will result in a paper led by me. \\
+
+\begin{table}[h]
+	\centering
+ 
+	\begin{threeparttable}
+		\caption{Results from PDA course 2014-2015}
+		\begin{tabular}{ l c l c}
+			\hline
+			Course 	& Credits & Course Name & Grade /20\\
+			\hline
+			AST 602	& 6 & Advanced Topics in Stars and Planets & 18 \\
+			AST 605 & 6 & Development of Skills for Research & 20 \\
+			AST 607a & 6 & Complementary Training$^1$ & A \\
+			AST 613 & 6 & Methods and Modelling in Astronomy & 18\\
+			AST 614 & 6 & Observation and Instrumentation in Astronomy & 18\\
+			\hline
+		\end{tabular}
+		\begin{tablenotes}
+			\small
+			\item 1. Attendance in the 1st Vietri Advanced School on Exoplanetary Science in Vietri sul Mare (Salerno), Italy from 25 to 29 May, 2015. The school focused on exoplanet detection with the Radial Velocity, Photometric Transits, Gravitational Microlensing, and Direct Imaging techniques.
+		\end{tablenotes}
+ \label{Courses_tab}
+	\end{threeparttable}
+
+\end{table}
+
+
+\newpage
+\addcontentsline{toc}{section}{References}
+% % Bibliography
+\bibliography{reportbib.bib}{}
+\bibliographystyle{plainnat}
+
+
+
+\newpage
+\section*{Acronyms:}
+\vspace{2mm}
+
+Carmenes - Calar Alto high-Resolution search for M dwarfs with Exoearths with \\ Near-infrared and optical \'Echelle Spectrographs \vspace{2mm}\\
+CFHT - Canada France Hawaii Telescope \vspace{2mm} \vspace{2mm}\\
+CRIRES - CRyogenic high-resolution InfraRed \'Echelle Spectrograph \vspace{2mm}\\
+E-ELT - European-Extremely Large Telescope \vspace{2mm}\\
+ESO - European Southern Observatory\vspace{2mm} \vspace{2mm} \\ 
+ESPRESSO - \'Echelle SPectrograph for Rocky Exoplanet and Stable Spectroscopic \\Observations\vspace{2mm}\\
+FIRST - Florida InfraRed Silicon immersion grating spectromeTer \vspace{2mm}\\
+HET - Hobby-Eberly Telescope \vspace{2mm}\\
+HPF - Habitable Planet Finder \vspace{2mm}\\
+IR - Infrared \vspace{2mm}\\
+JWST - James Web Space Telescope \vspace{2mm}\\
+MIR - Mid-Infrared \vspace{2mm}\\
+MIRI - Mid-Infrared Instrument \vspace{2mm}\\
+NASA - National Aeronautics and Space Administration \vspace{2mm} \\
+NIR - Near-Infrared \vspace{2mm}\\
+SPIRou - SpectroPolarim\`etre Infra-Rouge \vspace{2mm}\\
+TMT - Thirty Meter Telescope\vspace{2mm}\\
+TNG - Telescopio Nazionale Galileo \vspace{2mm}\\
+VISIR - VLT spectrometer and imager for the mid-infrared \vspace{2mm}\\
+VLT - Very large Telescope \vspace{2mm}\\
+
+\end{document} 
