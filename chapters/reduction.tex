@@ -413,32 +413,29 @@ TAPAS allows for the choice of atmospheric constituents included in the model sp
 \change{Issues in an appendix}
 There are a number of issues we encountered when using TAPAS web-service, mainly due to interaction with the website. Often their service was down for weeks at a time without any warning or notification. With this you would waste time filling out the web form and attempt to submit it but would receive no response and no email with a link to the data. There was a higher success rate of successful response between different web-browsers. A number of bug reports were submitted to the owners of the webpage without any acknowledgement.
 
-The web-page is useful for quickly obtaining a small number of spectra but can be tedious for many. In our case we were requesting 3 telluric spectra, with varying molecular contributions, for each of our 17 observations. There is an ability to request multiple spectra at a time but we found this was unreliable if trying to request more than 4 spectra at once.
+The web-page is useful for quickly obtaining a small number of spectra but can be tedious for many. In our case we were requesting 3 telluric spectra, with varying molecular contributions, for each of our 17 observations. There is an ability to request multiple spectra at a time but we found this would not function if trying to request more than 4 spectra at once.
 
+A script\footnote{Available at \href{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}} was created to automatically generate the data necessary to fill out the a TAPAS request for each CRIRES observations. The script scanned the CRIRES header for information such as the mid-time of observations, target coordinates, slit width (defines {CRIRES}'s instrumental resolution) etc. and populated the {XML} request form provided by TAPAS. The script output is copied and pasted into the web-browser for submission. 
 
-Requiring data from Tapas
-- not handy for many
-- own script to derive from spectra header.
+Some trial and error was needed to understand all the XML form entries, such as the molecules requested and the atmospheric model to use (ARTELLY) but the real issue was with the TAPAS ID number. Each TAPAS request has an ID number (which is provided with the email response). This ID number needs to be correctly set in the XML form before submission. This number increments by 1 with each submission but its initial value is unknown unless you made the last request. If you submit the XML request with the incorrect ID number you will get a response with the correct ID number, but the failed request. You increment this ID number by 1 and hopefully make a valid request. Unfortunately if someone else has made a TAPAS request after yours then the ID number will again be invalid. It is unknown weather multiple transmission spectra could have been requested at the same time with the {XML} form.
 
-Issues regarding TAPAS - 1 hour offsets!
-Fails when trying to ask for about more than 5 at a time.
-Automated script requires unobtainable knowledge about the state of the database, the next query in the sequence.
+There is another issue with a one hour time offset between the requested and the time returned by TAPAS. For instance if the requested time was for an observation at 0200h UTC then the transmission spectrum returned by TAPAS is for 0100h UTC. This changes the position of the target, the airmass and potentially the ARTLLEY model used (6 hour time steps), affecting the strength of the telluric lines. It is tedious to remember to offset your input time by one hour to obtain the correct time, and slightly more work when you also have to adjust the date when going backwards past 0000h. When submitting the XML script the time that is returned is the time requested. Attempts were made to bring this issue to the attention of the TAPAS team in 2016 but as of August 2018 this issue is still present.   
 
 
 
 \subsubsection{Other uses}
-The telluric spectra from TAPAS can not only be used for correcting individual spectra but are also easily used to create a wavelength mask of deep telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use TAPAS spectra to mask out atmospheric lines deeper than 2\% for the computation of photon noise precision of radial velocity measurements.
+The telluric spectra from TAPAS can not only be used for correcting individual spectra but are also easily used to create a wavelength mask of deep telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use TAPAS spectra to mask out atmospheric lines deeper than 2\% for the computation of photon noise precision of radial velocity measurements. We also do this in \ref{cha:nir_content} when we extend the analysis of \citet{figueira_radial_2016}.
 
 
 \subsection{Wavelength masking}
-Throughout the course of this work we found regions of the spectra found several regions from which we cannot reliably extract information.
-We apply masks to these areas to remove them from the spectra. We collate the main reasons for the wavelength masking below
+Throughout the course of this work several wavelength regions were found were we cannot reliably extract information.
+We apply different wavelength masks to these areas to remove them from the spectra. We collate the main reasons for the wavelength masking below, although they are not always used for all analysis.
 
 Firstly, regions near the edges of each detector where the wavelength solution is extrapolated outside of the calibrating telluric lines are removed, reducing the effective size of each detector by about \(10\%\) or \(\sim100\) pixels.
 
 Secondly, we mask out any remaining artefacts present in the spectra and the centres of deep telluric lines where telluric correction was not corrected properly, sometimes resulting in ``emission-like'' peaks in the corrected spectrum. These factors combined result in masking out around a further 10\% of the observed spectra.
 
-In \sref{sec:chi2_results} we also apply a further wavelength restriction to mask out regions where there is a large mismatch between the observed spectrum and the closest synthetic spectra to the host. This significantly restricts the wavelength span utilized for that purpose to around only 43\% and the masked regions are visible in \fref{fig:visualinspection-hd2118471}.
+In \sref{sec:chi2_results} we also apply a further wavelength restriction to mask out regions where there is a large mismatch between the observed spectrum and the closest synthetic spectra to the host. This significantly restricts the wavelength span utilized for that purpose to around only 43\%. The masked regions caused created by this last mask are shown in \fref{fig:visualinspection-hd2118471}.
 
 
 \unfinished{ADD non/H20 fitting corrections.}
