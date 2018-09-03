@@ -1,0 +1,95 @@
+%!TEX root = ../thesis.tex
+
+%===========================================================================================
+% CUSTOM COLORS	and frames for Appendix (from Jorges thesis)
+%===========================================================================================
+%% Main
+%\definecolor{MainColor}{rgb}{.3,.6,1.}
+%
+%% Articles
+%\definecolor{1stAuthor}{rgb}{.8,.3,.2}
+%\definecolor{Co-Author}{rgb}{.6,.3,.4}
+%\definecolor{1stProceedings}{rgb}{.4,.3,.6}
+%\definecolor{Proceedings}{rgb}{.2,.3,.8}
+%
+%% Communications
+%\definecolor{Talk}{rgb}{.8,.3,.2}
+%\definecolor{Poster}{rgb}{.6,.3,.4}
+%\definecolor{Seminar}{rgb}{.4,.3,.6}
+%\definecolor{Outreach}{rgb}{.2,.3,.8}
+%
+%% Other
+%\definecolor{Conference}{rgb}{.8,.3,.2}
+%\definecolor{LOC}{rgb}{.6,.3,.4}
+%\definecolor{Other}{rgb}{.4,.3,.6}
+%\definecolor{MainColor}{rgb}{.3,.6,1.}
+% Main
+\definecolor{MainColor}{gray}{1}
+
+% Articles
+\definecolor{1stAuthor}{gray}{0}
+\definecolor{Co-Author}{gray}{0}
+\definecolor{1stProceedings}{gray}{0}
+\definecolor{Proceedings}{gray}{0}
+
+% Communications
+\definecolor{Talk}{gray}{0.3}
+\definecolor{Poster}{gray}{0.27}
+\definecolor{Seminar}{gray}{0.25}
+\definecolor{Outreach}{gray}{0.23}
+
+% Other
+\definecolor{Conference}{gray}{0.15}
+\definecolor{LOC}{gray}{0.13}
+\definecolor{Other}{gray}{0.11}
+
+\usepackage{colortbl}
+
+\usepackage[framemethod=TikZ,nobreak]{mdframed}
+\mdfdefinestyle{Publication}{%
+    hidealllines=true,
+    topline=true,
+    innertopmargin=0pt,
+    innerrightmargin=0pt,
+    innerleftmargin=25pt}
+
+
+\newcommand{\Communication}[8]{
+    \begin{mdframed}[style=Publication, linecolor=#1,singleextra={\fill[#1] (O) rectangle ([xshift=20pt]P-|O);
+            \node[overlay,anchor=north east,rotate=90,font=\Large\raggedright\color{white}\bfseries] at ([yshift = -5pt]O|-P) {\MakeUppercase{#1}};
+        },]
+        \normalsize
+        \begin{tabular}{>{\normalsize\bfseries}p{.1\linewidth} >{\normalsize}p{.5\linewidth} >{\normalsize\bfseries}p{.05\linewidth} >{\normalsize}p{.2\linewidth}}
+            \multicolumn{4}{>{\bfseries\Large\centering\color{#1}}p{.95\linewidth}}{#2\newline}	\\[-2em]
+            \hline	\\[-.5em]
+            Location:	& 	{#4} & Date:		&	{#3}\\
+            File:		&	\multicolumn{3}{>{\normalsize}p{.85\linewidth}}{\url{#5}}\\
+            %			Points:		&	{#6}& &	\\
+            \hline\\
+        \end{tabular}\\
+        \hspace{20pt}\textbf{Abstract: } \\
+        {#7}
+    \end{mdframed}%\vspace{3em}
+}
+
+% OTHER
+\newcommand{\Other}[8][MainColor]{
+    \begin{mdframed}[style=Publication, linecolor=#1,singleextra={\fill[#1] (O) rectangle ([xshift=20pt]P-|O);
+            \node[overlay,anchor=north east,rotate=90,font=\Large\raggedright\color{white}\bfseries] at ([yshift = -5pt]O|-P) {\MakeUppercase{#2}};
+        },]
+        \normalsize
+        \begin{tabular}{>{\normalsize\bfseries}p{.1\linewidth} >{\normalsize}p{.5\linewidth} >{\normalsize\bfseries}p{.05\linewidth} >{\normalsize}p{.2\linewidth}}
+            \multicolumn{4}{>{\bfseries\Large\centering\color{#1}}p{.95\linewidth}}{#3\newline}	\\[-2em]
+            \hline	\\[-.5em]
+            Location:	& 	{#4} & Date:		&	{#5}\\
+            Website		&	\multicolumn{3}{>{\normalsize}p{.85\linewidth}}{\url{#6}}\\
+            %			Points:		&	{#7}& &	\\
+            \hline\\
+        \end{tabular}\\
+        \textbf{Description: } \\
+        {#8}
+    \end{mdframed}%\vspace{3em}
+}
+
+
+%===========================================================================================

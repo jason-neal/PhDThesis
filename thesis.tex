@@ -58,145 +58,30 @@
 \newcommand{\red}{\color{red}}
 \newcommand*\rd{\color{red}}
 
+% Styled frames in appendix and jorges custom colors
+\input{preface/styled_frames.tex}
 
-
-
-%===========================================================================================
-% CUSTOM COLORS	and frames for Appendix (from Jorges thesis)
-%===========================================================================================
-%% Main
-%\definecolor{MainColor}{rgb}{.3,.6,1.}
-%
-%% Articles
-%\definecolor{1stAuthor}{rgb}{.8,.3,.2}
-%\definecolor{Co-Author}{rgb}{.6,.3,.4}
-%\definecolor{1stProceedings}{rgb}{.4,.3,.6}
-%\definecolor{Proceedings}{rgb}{.2,.3,.8}
-%
-%% Communications
-%\definecolor{Talk}{rgb}{.8,.3,.2}
-%\definecolor{Poster}{rgb}{.6,.3,.4}
-%\definecolor{Seminar}{rgb}{.4,.3,.6}
-%\definecolor{Outreach}{rgb}{.2,.3,.8}
-%
-%% Other
-%\definecolor{Conference}{rgb}{.8,.3,.2}
-%\definecolor{LOC}{rgb}{.6,.3,.4}
-%\definecolor{Other}{rgb}{.4,.3,.6}
-%\definecolor{MainColor}{rgb}{.3,.6,1.}
-% Main
-\definecolor{MainColor}{gray}{1}
-
-% Articles
-\definecolor{1stAuthor}{gray}{0}
-\definecolor{Co-Author}{gray}{0}
-\definecolor{1stProceedings}{gray}{0}
-\definecolor{Proceedings}{gray}{0}
-
-% Communications
-\definecolor{Talk}{gray}{0.3}
-\definecolor{Poster}{gray}{0.27}
-\definecolor{Seminar}{gray}{0.25}
-\definecolor{Outreach}{gray}{0.23}
-
-% Other
-\definecolor{Conference}{gray}{0.15}
-\definecolor{LOC}{gray}{0.13}
-\definecolor{Other}{gray}{0.11}
-
-\usepackage{colortbl}
-
-\usepackage[framemethod=TikZ,nobreak]{mdframed}
-\mdfdefinestyle{Publication}{%
-    hidealllines=true,
-    topline=true,
-    innertopmargin=0pt,
-    innerrightmargin=0pt,
-    innerleftmargin=25pt}
-
-
-\newcommand{\Communication}[8]{
-    \begin{mdframed}[style=Publication, linecolor=#1,singleextra={\fill[#1] (O) rectangle ([xshift=20pt]P-|O);
-            \node[overlay,anchor=north east,rotate=90,font=\Large\raggedright\color{white}\bfseries] at ([yshift = -5pt]O|-P) {\MakeUppercase{#1}};
-        },]
-        \normalsize
-        \begin{tabular}{>{\normalsize\bfseries}p{.1\linewidth} >{\normalsize}p{.5\linewidth} >{\normalsize\bfseries}p{.05\linewidth} >{\normalsize}p{.2\linewidth}}
-            \multicolumn{4}{>{\bfseries\Large\centering\color{#1}}p{.95\linewidth}}{#2\newline}	\\[-2em]
-            \hline	\\[-.5em]
-            Location:	& 	{#4} & Date:		&	{#3}\\
-            File:		&	\multicolumn{3}{>{\normalsize}p{.85\linewidth}}{\url{#5}}\\
-            %			Points:		&	{#6}& &	\\
-            \hline\\
-        \end{tabular}\\
-        \hspace{20pt}\textbf{Abstract: } \\
-        {#7}
-    \end{mdframed}%\vspace{3em}
-}
-
-% OTHER
-\newcommand{\Other}[8][MainColor]{
-    \begin{mdframed}[style=Publication, linecolor=#1,singleextra={\fill[#1] (O) rectangle ([xshift=20pt]P-|O);
-            \node[overlay,anchor=north east,rotate=90,font=\Large\raggedright\color{white}\bfseries] at ([yshift = -5pt]O|-P) {\MakeUppercase{#2}};
-        },]
-        \normalsize
-        \begin{tabular}{>{\normalsize\bfseries}p{.1\linewidth} >{\normalsize}p{.5\linewidth} >{\normalsize\bfseries}p{.05\linewidth} >{\normalsize}p{.2\linewidth}}
-            \multicolumn{4}{>{\bfseries\Large\centering\color{#1}}p{.95\linewidth}}{#3\newline}	\\[-2em]
-            \hline	\\[-.5em]
-            Location:	& 	{#4} & Date:		&	{#5}\\
-            Website		&	\multicolumn{3}{>{\normalsize}p{.85\linewidth}}{\url{#6}}\\
-            %			Points:		&	{#7}& &	\\
-            \hline\\
-        \end{tabular}\\
-        \textbf{Description: } \\
-        {#8}
-    \end{mdframed}%\vspace{3em}
-}
-
-
-%===========================================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-%%%%%%%%%%% Literature %%%%%%%%%%%%%%%
-% When in doubt visit this page:
-% http://adsabs.harvard.edu/abs_doc/aas_macros.html
-\usepackage[authoryear]{natbib}
-\def\aap{A\&A}
-\def\aapr{Astronomy and Astrophysics Reviews}
-\def\eprint{e-prints}
-\def\apj{ApJ}
-\def\apjs{ApJS}
-\def\apjl{ApJL}
-\def\mnras{MNRAS}
-\def\aj{AJ}
-\def\nat{Nature}
-\def\aaps{A\&A Supp.}
-\def\pasp{Publications of the ASP}
-\def\prd{Phys. Rev. D}
-\def\prl{Phys. Rev. Lett.}
-\def\araa{ARA\&A}
-\def\actaa{Acta Astronomica}
-\def\procspie{Proceedings of the SPIE}
-\def\pasj{PASJ}
-\def\icarus{Icarus}
-\def\pasa{Publications of the Astron. Soc. of Australia}
-
+% journal abbreviations
+\input{preface/literature_abbreviations}
 
 \usepackage{fix-cm} % Allows increasing the f
+
+% Sets color of toc, and links etc.
+% grey colors
+\definecolor{toccolor}{gray}{0.2}
+\definecolor{citationcolor}{gray}{0.25}
+\definecolor{hrefurlcolor}{gray}{0.25}
+
 \usepackage[colorlinks,
-linkcolor=flatorange,
-citecolor=flatblue,
-urlcolor=flatpurple]{hyperref}
+linkcolor=toccolor,
+citecolor=citationcolor,
+urlcolor=hrefurlcolor]{hyperref}
+% Coloured
+% \usepackage[colorlinks,
+% linkcolor=flatorange,
+% citecolor=flatblue,
+% urlcolor=flatpurple]{hyperref}
+
 
 \usepackage[Lenny]{fncychap}
 
