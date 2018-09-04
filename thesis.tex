@@ -11,7 +11,7 @@
 \usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage[separate-uncertainty=true]{siunitx}    % SI units
-\usepackage[version=3]{mhchem}  				           % chemical formula
+\usepackage[version=3]{mhchem}                     % chemical formula
 \usepackage{wasysym}
 \usepackage[final]{microtype}
 \usepackage[hang,multiple]{footmisc}
@@ -19,17 +19,17 @@
 \usepackage{float}
 \usepackage{placeins}
 \usepackage{xkvltxp}
-\usepackage{fixme} 						             % add fix-me to draft documents
+\usepackage{fixme}                          % add fix-me to draft documents
 \usepackage{color}
 \usepackage{rotate}
 \usepackage{rotating}
 \usepackage{listings}
-\usepackage{booktabs}   				     	     % improved quality tables
+\usepackage{booktabs}                         % improved quality tables
 \usepackage{threeparttable}
-\usepackage{threeparttablex}     			     % Lets threeparttable work with longtable
+\usepackage{threeparttablex}                  % Lets threeparttable work with longtable
 \usepackage{longtable}
 \usepackage{pdflscape}
-\usepackage{datatool}			                 % Loading in databases into table
+\usepackage{datatool}                         % Loading in databases into table
 \usepackage{tabularx}
 
 \usepackage{caption}
@@ -113,8 +113,8 @@ urlcolor=hrefurlcolor]{hyperref}
 %% A&A stuff
 \DeclareRobustCommand{\ion}[2]{\textup{#1\,\textsc{\lowercase{#2}}}}
 \newcommand*\element[1][]{%
-	\def\aa@element@tr{#1}%
-	\aa@element
+    \def\aa@element@tr{#1}%
+    \aa@element
 }
 
 %% SI units
@@ -169,32 +169,32 @@ urlcolor=hrefurlcolor]{hyperref}
     %% This generates the title page from the information given above.
     \maketitle
     \cleardoublepage{}
-        \input{preface/dedication}
-        \input{preface/acknowledgements}
-        \input{preface/abstract-pt}
-        \input{preface/abstract}
+      	\input{preface/dedication}
+      	\input{preface/acknowledgements}
+      	\input{preface/abstract-pt}
+      	\input{preface/abstract}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%% Remove in final version                  %%%
-        \todototoc{}                                 %%%
-        \listoftodos{}                               %%%
+      	\todototoc{}                                 %%%
+      	\listoftodos{}                               %%%
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \input{preface/table_of_contents}
-        \clearpage
-        \input{preface/abbreviations}
-        \input{preface/constants}
-        \input{preface/symbols}
-	\end{preliminary}
+      	\input{preface/table_of_contents}
+      	\clearpage
+      	\input{preface/abbreviations}
+      	\input{preface/constants}
+      	\input{preface/symbols}
+    \end{preliminary}
 
 
-  	%% *** Include chapter files here. ***
-  	\include{chapters/introduction}
+    %% *** Include chapter files here. ***
+    \include{chapters/introduction}
     \include{chapters/advanced_concepts}
     \include{chapters/reduction}
-  	\include{chapters/direct-recovery}
-  	\include{chapters/companion-recovery}
-  	\include{chapters/nir-information-content}
-  	\include{chapters/discussion}
-  	\include{chapters/conclusions}
+    \include{chapters/direct-recovery}
+    \include{chapters/companion-recovery}
+    \include{chapters/nir-information-content}
+    \include{chapters/discussion}
+    \include{chapters/conclusions}
 
     \appendix
     \unfinished{Precision table needs fixed up}
@@ -203,9 +203,9 @@ urlcolor=hrefurlcolor]{hyperref}
     \include{appendices/app_phd_output}
 
     % Bibliography
-  	\addcontentsline{toc}{chapter}{Bibliography}
-  	\bibliography{thesis}  % do not inlcude .bib extension
-  	\bibliographystyle{astron}
-  	\nocite{}  % include everything.
+    \addcontentsline{toc}{chapter}{Bibliography}
+    \bibliography{thesis}  % do not inlcude .bib extension
+    \bibliographystyle{astron}
+    \nocite{}  % include everything.
 
 \end{document}
