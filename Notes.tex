@@ -2,16 +2,16 @@ Notes for Thesis
 
 \section{Reduction Software:}
 
-The first main task my research involved reducing the CRIRES observations, extracting the spectra from time raw images. There were two options for reducing the data, using the ESO reduction software or a in-house built software called DRACS (Data Reduction Algorithm for Crires Spectra). Time was spent reducing the data with both methods to determine which was better.
-There were tradeoffs between the two pipelines but DRACS was chosen to be perferable of the two. The line depths of the two reduced and normalized spectra were compared for consistancy and gave compariable results.
+The first main task my research involved reducing the CRIRES observations, extracting the spectra from time raw images. There were two options for reducing the data, using the ESO reduction software or a in-house built software called {DRACS} (Data Reduction Algorithm for Crires Spectra). Time was spent reducing the data with both methods to determine which was better.
+There were tradeoffs between the two pipelines but {DRACS} was chosen to be perferable of the two. The line depths of the two reduced and normalized spectra were compared for consistancy and gave compariable results.
 
 The ESO reduced spectra had a few bad pixels still left in the reduced spectra that where not removed after trying many different settings to try and fix them.
-That were not a problem with the DRACS software.
-The DRACS reduction was quicker to implement because it could be ran in batch mode and did the full reduction of each spectra very qucikly where as the ESO pipeline with GASGANO was a manual process and time consuming to select all the files and parameters for each step of the reduction.
+That were not a problem with the {DRACS} software.
+The {DRACS} reduction was quicker to implement because it could be ran in batch mode and did the full reduction of each spectra very qucikly where as the ESO pipeline with GASGANO was a manual process and time consuming to select all the files and parameters for each step of the reduction.
 
 I also found there were inconsistency in the flat feild reduction on the ESO pipeline between software updates.
 
-The choice of DRACS required some updates from me. I had to write a couple of scripts to normalize and combined the DRACS output spectra. And add code to reduce detector $\#3$ which was not used previously.
+The choice of {DRACS} required some updates from me. I had to write a couple of scripts to normalize and combined the {DRACS} output spectra. And add code to reduce detector $\#3$ which was not used previously.
 
 
 
@@ -22,14 +22,14 @@ We note that there are other telluric modeling and correction software available
 
 
 
-Time series analysis has also recently been used to disentangle spectra for an mid-M dwarf binary~\citep{czekala_disentangling_2017}, and previously used for traditional stellar binary systems. This technique requires many observations along the orbit and is observationaly expensive for the faint, low-mass M-dwarfs and sub-stellar objects in binary systems to achieve a sufficient SNR for detection. (ref?) (\textbf{maybe this should just be in discussion section})
+Time series analysis has also recently been used to disentangle spectra for an mid-M dwarf binary~\citep{czekala_disentangling_2017}, and previously used for traditional stellar binary systems. This technique requires many observations along the orbit and is observationaly expensive for the faint, low-mass M-dwarfs and sub-stellar objects in binary systems to achieve a sufficient {SNR} for detection. (ref?) (\textbf{maybe this should just be in discussion section})
 
 
 
-We briefly attempted to apply a iterative wavelength calibration via cross correlation technique used by~\citet{brogi_rotation_2016} but the calibration was upset by the deep stellar lines. This is because we did not incorporate a stellar template, at the RV of the host. (Should look back into this!) and we did not have a nice clear feature like the CO comb\ldots
+We briefly attempted to apply a iterative wavelength calibration via cross correlation technique used by~\citet{brogi_rotation_2016} but the calibration was upset by the deep stellar lines. This is because we did not incorporate a stellar template, at the {RV} of the host. (Should look back into this!) and we did not have a nice clear feature like the CO comb\ldots
 \textbf{\emph{extra notes on this stuff}}
 
-Possible future solutions to improving the calibration could be to including a model stellar lines offset by stellar RV (e.g.\ jc paper~\citep{piskorz_evidence_2016}), including the Th-Ar lamp calibrations measurements, and combining more than one detector chip together fitting the gap between detectors. This last step could help improve the calibration on detectors that have a low number of lines.
+Possible future solutions to improving the calibration could be to including a model stellar lines offset by stellar {RV} (e.g.\ jc paper~\citep{piskorz_evidence_2016}), including the Th-Ar lamp calibrations measurements, and combining more than one detector chip together fitting the gap between detectors. This last step could help improve the calibration on detectors that have a low number of lines.
 
 
 
