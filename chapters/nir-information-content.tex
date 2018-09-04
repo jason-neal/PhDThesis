@@ -23,7 +23,7 @@ This work is not directly related to detecting exoplanet atmospheres themselves 
 
 
 \section{Radial velocity precision}
-The first detections of planets with the {RV} technique \textbf{Queloz 2995} discovered the mass and close in hot-Jupiter planets. These are the easiest to detect with the highest {RV} amplitude.
+The first detections of planets with the {RV} technique \textbf{Queloz 2\,995} discovered the mass and close in hot-Jupiter planets. These are the easiest to detect with the highest {RV} amplitude.
 
 Over the years the community has push the limits of this technique to smaller and smaller planetary masses. An example is shown in \fref{fig:year_mass}.
 \begin{figure}
@@ -45,7 +45,7 @@ We are currently aiming to extend this work over the whole M-dwarf range, from M
 
 \todo{History of Precision calculations}
 History of Precision calculations:
-Connes 1985 -
+Connes 1\,985 -
 Bouchy et al. 2001  - photon noise limit on rv measurements.
 Figueria et al. 2016 - focus on m-dwarfs parameter range to specify new instrumentation windows to focus.
 Reiners 2017 -  {CARMENES} sample. Some precision
@@ -299,7 +299,7 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
 %\input{tables/carmenes_selection_transpose.tex}
 
 \section{Metallicity logg effects}
-We explore the effect of metallicity and logg on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and logg of 4.0 -- 5.5. In \fref{fig:deviations} the variation of quality factor with broadening of R=100000 and vsini=1.0\kmps{} across the M-dwarf spectral types and the \nir{} bands is shown. We observed multiple different effects present.
+We explore the effect of metallicity and logg on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and logg of 4.0 -- 5.5. In \fref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and vsini=1.0\kmps{} across the M-dwarf spectral types and the \nir{} bands is shown. We observed multiple different effects present.
 
 
 The \emph{Z}-band has a large separation in spectral quality due to spectral type, this is because the continuum the \emph{Z}-band is severely eroded in the spectra of late M's as they cool. Each spectral type also behaves very differently to a change in \feh{} and logg. For M0 and M3 there is an increase with \feh{} below solar metallicity, above solar metallicity the slopes of the lines dramatically increase, especially for M3. For M6 and M9 there is a step slope with \feh{} below solar metallicity, which flattens off at solar metallicity, and even decreases for the M9 spectra above solar metallicity.
@@ -316,7 +316,7 @@ For the H and \emph{K}-band there is fairly consistent linear trend for all spec
 \begin{figure}
 \includegraphics[width=0.99\linewidth]{figures/information-content/metalicity_effect.pdf}\\
 \includegraphics[width=0.99\linewidth]{figures/information-content/logg_effect.pdf}
-\caption{Quality factor changes across spectral type and bands for variations in \feh{} and logg. Broadening values are R=100000 and vsini = 1.0\kmps{}. Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed logg=4.5. Bottom: Quality factor variation of logg between 4 and 5.5 with fixed \feh{}=0.0. Note a higher quality factor corresponds to an increased {RV} precision.}
+\caption{Quality factor changes across spectral type and bands for variations in \feh{} and logg. Broadening values are R=100\,000 and vsini = 1.0\kmps{}. Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed logg=4.5. Bottom: Quality factor variation of logg between 4 and 5.5 with fixed \feh{}=0.0. Note a higher quality factor corresponds to an increased {RV} precision.}
 \label{fig:deviations}
 \end{figure}
 
@@ -450,7 +450,7 @@ The most important feature observed in this though is that there is a slight ove
 
 In \tref{tab:numerical_gradients} we calculate the  \(\delta V_{RMS}\) using both gradient methods to determine their relative effect on the {RV} precision.
 
-We took a {PHOENIX-ACES} spectrum with \(T_{eff}=3900\)\K{}, corresponding to M0 spectral type. The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1. In this case the {RV} precisions are not comparable between bands and are only to assess the direct effect of the changing the numerical gradient. The bands name and the spanned wavelength are given. The columns A, B, C are the {RV} precision for the different gradient methods. The \(\delta V\) ratios are the relative difference in {RV} when changing from method A (the original {FFD}) to methods B and C. In this table column B is the {FFD} method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \fref{fig:gradients} while column C is the more precise gradient from numpy.
+We took a {PHOENIX-ACES} spectrum with \(T_{eff}=3\,900\)\K{}, corresponding to M0 spectral type. The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1. In this case the {RV} precisions are not comparable between bands and are only to assess the direct effect of the changing the numerical gradient. The bands name and the spanned wavelength are given. The columns A, B, C are the {RV} precision for the different gradient methods. The \(\delta V\) ratios are the relative difference in {RV} when changing from method A (the original {FFD}) to methods B and C. In this table column B is the {FFD} method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \fref{fig:gradients} while column C is the more precise gradient from numpy.
 
 We find that changing to use the gradient from numpy increases the \(\delta V_{RMS}\) by 2.5--7\%, (decreasing the {RV} precision), due to the over-estimated gradient from the {FFD} method. As the pixel weights \eref{eq:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the {RV} precision, visible in \fref{fig:gradients}. This small wavelength shift red-ward does changed the {RV} precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using numpy's gradient method.
 
@@ -553,8 +553,8 @@ Having this tool to calculate {RV} precisions efficiently lead to contributions 
 
 In September 2017 we were requested to provide precision calculations for the SPIRou ETC\footnote{\url{http://www.cfht.hawaii.edu/Instruments/SPIRou/SPIRou_etc.php}}. These were the same table as~\citet{figueira_radial_2016} but with a each band referenced to 100 {SNR} in its own band. The modification to use the centre of any band was made to fulfil this request. Notes on the telluric correction issue affect on Condition. 2.
 
-In May 2018 we were requested to provide precision calculations for the NIRPS ETC.\@This extended the spectral range from M0, M3, M6, M9 at 3900. 3500, 2800 2600\K{} respectively, but to all temperatures between 2500 and 4000\K{} inclusively. This provides a finer resolution coverage over the M spectral type, allowed by the {PHOENIX-ACES} library.
-Instrumental resolutions of 75000 and 100000 were requested to match the NIRPS instrument.
+In May 2018 we were requested to provide precision calculations for the NIRPS {ETC}.\@ This extended the spectral range from M0, M3, M6, M9 at 3\,900, 3\,500, 2\,800, 2\,600\K{} respectively, but to all temperatures between 2\,500 and 4\,000\K{} inclusively. This provides a finer resolution coverage over the M spectral type, allowed by the {PHOENIX-ACES} library.
+Instrumental resolutions of 75,000 and 100\,000 were requested to match the NIRPS instrument.
 The logg and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
 Precisions were provided for {SNR} of 100 relative to the \emph{J}-, \emph{H}-bands as well as to each band individually. Artigua 2018. (private communication 2018)\todo{Check how to cite priv communication properly} suggested the truly relevant value is the {SNR} in \emph{H}-band for NIRPS radial velocities.
 
