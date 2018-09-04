@@ -14,7 +14,7 @@
 \chapter{Direct Spectral Recovery}  % Main chapter title
 \label{cha:direct_recovery}
 %----------------------------------------------------------------------------------------
-%	SECTION 1
+%    SECTION 1
 %----------------------------------------------------------------------------------------
 There many different techniques to disentangle the spectra of binary objects. In this chapter we focus on applying a direct subtraction method to near-infrared (\nir{}) spectra of FGK stars with Brown Dwarf (BD) companions. The data used was obtained with the {CRIRES} instrument in 2012, (before it was removed its upgrade) with the purpose to apply this technique specifically. A level of trust was placed in the quality of the observations, which was misplaced.
 We start this chapter by explaining the direct subtraction technique. We will then explain the motivation for the specific targets observed. We will detail the observations, showing each the orbital position of each observation. After revealing the insufficient signal from this technique we will explore the limitations of these observations followed by some simulated results.
@@ -177,10 +177,10 @@ In the synthetic spectrum (and of course real spectra) neighbouring spectral lin
 
 \begin{figure}
     \centering
-	\includegraphics[width=0.45\textwidth]{figures/direct-recovery/rv_diff_final.pdf}
-	\caption{Simulated relative amplitude of differential spectra at different {RV} separations revealing the diminished amplitude at small orbital separations. The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a {PHOENIX-ACES} spectrum with \(T_{\textrm{eff}}=2500\K{}, logg=5.0, \feh{}=0.0\) in the wavelength region 2\,110--2\,123\nm{}. The maximum difference is normalized by the average amplitude between 7--10\kmps{}, representing a complete line separation. The orange (dashed) and green (dot-dashed) lines represent the relative amplitude of a differential spectrum of a spectrum containing a single Gaussian and single Lorentzian absorption line respectively, each with a unitary amplitude and a \(\rm {FWHM} = \lambda / R\). Beyond the {FWHM} lines the difference of the synthetic spectrum becomes more complicated due to the interaction of neighbouring lines. The solid vertical lines indicate the estimated companion \(\Delta {RV}\) in these observations while the dashed vertical lines indicate the {RV} corresponding to the {FWHM} at this wavelength and resolution. Beyond the {FWHM} {RV} the synthetic spectrum becomes complicated due to the interaction of neighbouring lines.}
+    \includegraphics[width=0.45\textwidth]{figures/direct-recovery/rv_diff_final.pdf}
+    \caption{Simulated relative amplitude of differential spectra at different {RV} separations revealing the diminished amplitude at small orbital separations. The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a {PHOENIX-ACES} spectrum with \(T_{\textrm{eff}}=2500\K{}, logg=5.0, \feh{}=0.0\) in the wavelength region 2\,110--2\,123\nm{}. The maximum difference is normalized by the average amplitude between 7--10\kmps{}, representing a complete line separation. The orange (dashed) and green (dot-dashed) lines represent the relative amplitude of a differential spectrum of a spectrum containing a single Gaussian and single Lorentzian absorption line respectively, each with a unitary amplitude and a \(\rm {FWHM} = \lambda / R\). Beyond the {FWHM} lines the difference of the synthetic spectrum becomes more complicated due to the interaction of neighbouring lines. The solid vertical lines indicate the estimated companion \(\Delta {RV}\) in these observations while the dashed vertical lines indicate the {RV} corresponding to the {FWHM} at this wavelength and resolution. Beyond the {FWHM} {RV} the synthetic spectrum becomes complicated due to the interaction of neighbouring lines.}
 
-	\label{fig:diff_amp}
+    \label{fig:diff_amp}
 \end{figure}
 \unfinished{Increase size of diff amp plots to two}
 
@@ -197,7 +197,7 @@ We use the \emph{K}-band magnitude specifically for this work to estimate the fl
 The companion \teff{} and logg values specifically are used to influence the selection of synthetic model grids to perform the \(\chi^2\) analysis over.
 
 \subsection{baraffe tables}
-A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to estimate the host-companion flux ratio using the~\citep{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables. The minimum requirements are the host star name, the companion mass and a stellar/system age. The host's name is used to query the SIMBAD database to obtain available stellar properties, specifically for this work the photometric \textit{K}-band magnitudes and parallax. There are several Baraffe tables for different stellar ages. If the age given does not correspond to a published table then interpolation between two tables is preformed. The table selected is interpolated to the companion mass provided and the entries returned.
+A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to estimate the host-companion flux ratio using the~\citep{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables. The minimum requirements are the host star name, the companion mass and a stellar/system age. The host's name is used to query the {SIMBAD} database to obtain available stellar properties, specifically for this work the photometric \textit{K}-band magnitudes and parallax. There are several Baraffe tables for different stellar ages. If the age given does not correspond to a published table then interpolation between two tables is preformed. The table selected is interpolated to the companion mass provided and the entries returned.
 
 There is also a script available which operates in reverse. Given a host name, age, and a flux ratio it will find the table position and corresponding companion mass that It can also work in reverse to estimate the companion mass when provided with a flux ratio value.
 
@@ -249,7 +249,7 @@ This relation was used to estimate \(\textrm{K}_2\) for the companion from the m
 
 \subsection{Companion-host Flux ratio}
 The companion-host flux or contrast ratio of the systems are calculated using \(\frac{F_{2}}{F_{1}} \approx 2.512^{m_1-m_2}\), where \(m_1\) and \(m_2\) are the magnitude of the host and companion respectively.\ \(m_1\) is the observed magnitude of the host while \(m_2\) is obtained from stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass or minimum mass and the host age. The models, interpolated to the companion mass, also provide a first estimate of companion properties such as \teff{}, \(R/R_{\odot}\) and the magnitude in many wavelength bands.
-We use the \emph{K}-band magnitude specifically for this work to estimate the flux ratio between the host and companion using and the host \emph{K}-band magnitude obtained from SIMBAD~\citep{wenger_simbad_2000}. Our flux ratio estimates are presented in table~\ref{tab:estimated_fluxratio}.
+We use the \emph{K}-band magnitude specifically for this work to estimate the flux ratio between the host and companion using and the host \emph{K}-band magnitude obtained from {SIMBAD}~\citep{wenger_simbad_2000}. Our flux ratio estimates are presented in table~\ref{tab:estimated_fluxratio}.
 
 If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario).
 
