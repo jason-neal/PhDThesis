@@ -311,15 +311,15 @@ To calibrate the wavelength the telluric lines in the model need to be associate
 T(\lambda) = 1 - {\Sigma}_{i}\ G(\lambda, A_{i}, {\mu}_{i}, {\sigma}_{i}),
 \end{equation}
 
-where \(G\)is a Gaussian function of the form
+where \(G\) is a Gaussian function of the form
 
 \begin{equation}
 G(\lambda, A, \mu, \sigma) = {A \textrm{e}}^{{-(\lambda-\mu)}^{2}/2\sigma^{2}},
 \end{equation}
 
-and \(A\), \(\mu\), \(\sigma\)are the amplitude, central wavelength, and standard deviation for each line respectively. Telluric lines actually have a Voigt profile\footnote{A Voigt profile is a convolution of two broadening profiles, a Gaussian and a Lorentzian. Gaussian broadening results from thermal Doppler broadening, and instrumental broadening while the Lorentzian broadening comes from molecular vibrational bands\citep{meier_art_2005}.} although they are not fully resolved in the \nir{} and their shape is dominated by the instrumental profile. The instrumental profile for {CRIRES}  has been measured and is shown to be well represented by a Gaussian~\citep{seifahrt_synthesising_2010} below a {SNR} of around 300. Therefore calibration using Gaussian's is sufficient.
+and \(A\), \(\mu\), \(\sigma\) are the amplitude, central wavelength, and standard deviation for each line respectively. Telluric lines actually have a Voigt profile\footnote{A Voigt profile is a convolution of two broadening profiles, a Gaussian and a Lorentzian. Gaussian broadening results from thermal Doppler broadening, and instrumental broadening while the Lorentzian broadening comes from molecular vibrational bands\citep{meier_art_2005}.} although they are not fully resolved in the \nir{} and their shape is dominated by the instrumental profile. \citet{seifahrt_synthesising_2010} measured the instrumental profile of {CRIRES} using  singular-value decomposition and show that it is extremely well represented by a single Gaussian below a {SNR} of around 300. Therefore, wavelength calibration using single Gaussian fits to each line is sufficient.
 
-The observed spectra contain two different spectral components: stellar and telluric lines overlapped. This overlapping is, in fact, a multiplication of the stellar and telluric spectra. The observed spectra are fitted with two Gaussian-sum models multiplied together. The identification between telluric and stellar lines is performed by hand for each spectra, using the telluric model as the reference. Care was taken to fit the correct components to blended spectra where possible to improved the number telluric lines use for calibration. The fits were inspected to ensure that they reasonably matched the line positions. There was difficultly in identifying the shallow lines with depths below 1--2\%. But these were needed in some spectra to obtain a suitable fit.
+The observed spectra contain two different spectral components: stellar and telluric lines, which are multiplied together. The observed spectra are therefore are fitted with a multiplication of two Gaussian-sum models. The identification between telluric and stellar lines is performed by hand for each spectra, using the telluric model as the reference. Care was taken to fit the correct components to blended spectra where possible to improved the number telluric lines use for calibration. The fits were inspected to ensure that they reasonably matched the line positions. There was difficultly in identifying the shallow lines with depths below 1--2\%. But these were needed in some spectra to obtain a suitable fit. If there were blended lines that did not look to fit correctly these lines were removed and not considered in the calibration step. 
 
 \begin{align}
 I_{obs}(x) &= {I}_{tell}(x) \times {I}_{space}(x) \nonumber \\
@@ -330,9 +330,18 @@ where \(x\)is the pixel coordinates of the extracted spectra.
 
 \missingfigure{example figures illustrating this method}
 
-After fitting \(I_{obs}(x)\) to the observed spectrum and \(T(\lambda)\) to the telluric model the wavelength solution was obtained by fitting a second order polynomial to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\}\) from the telluric components of the observed spectra and telluric model respectively. A second order polynomial has been shown to be sufficient for higher precision {RV} studies~\citep[e.g.,][]{bean_groundbased_2010, figueira_radial_2010}. This polynomial is then used to map the whole spectrum from pixels into wavelength. Higher \(3^{\textrm{rd}}\) and \(4^{\textrm{th}}\) order polynomials also used in the literature \citet[e.g.,][]{seifahrt_synthesising_2010, ulmer-moll_telluric_2018} were attempted but had limited success here due to the limited number and uneven spacing of telluric lines in the narrow wavelength range analysed here, especially on detector \#2. There were often large deviations due to the uneven spread of telluric lines, especially at the extremities. Higher order terms for wavelength calibration are usually used in regions with a higher density of telluric lines and/ or a longer wavelength span~\citep{piskorz_evidence_2016, seifahrt_synthesising_2010, ulmer-moll_telluric_2018}.
+After fitting \(I_{obs}(x)\) to the observed spectrum and \(T(\lambda)\) to the telluric model the wavelength solution was obtained by fitting a second order polynomial to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\}\) from the telluric components of the observed spectra and telluric model respectively. A second order polynomial has been shown to be sufficient for higher precision {RV} studies~\citep[e.g.,][]{bean_groundbased_2010, figueira_radial_2010}. This polynomial is then used to map the whole spectrum from pixels into wavelength. Higher \(3^{\textrm{rd}}\) and \(4^{\textrm{th}}\) order polynomials that are also used in the literature \citet[e.g.,][]{seifahrt_synthesising_2010, ulmer-moll_telluric_2018} were attempted but had limited success here due to the limited number and uneven spacing of telluric lines in the narrow wavelength range analysed here, especially on the second detector. There were often large deviations due to the uneven spread of telluric lines, especially at the extremities. Higher order terms for wavelength calibration are usually used in regions with a higher density of telluric lines and/or a longer wavelength span~\citep{piskorz_evidence_2016, seifahrt_synthesising_2010, ulmer-moll_telluric_2018}.
 
 \missingfigure{Example of coordinates and the fit. Can I calculate some errors on the polynomial coord fit.}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/reduction/calibration.pdf}
+    \caption{Wavelength calibration example.
+    The equation of the fitted line for these points is $\lambda = -1.85e^{-7} x^2 + 1.16e^{-2} x + 2111.86$ with each coefficient shown to two decimal places only. Error bars the line width set to around 0.04 nm.}
+    \label{fig:wl_calibration}
+\end{figure}
+\todo{explain the fit \fref{fig:wl_calibration}}
 
 Much like with the \thar{} calibrations, this technique performs better when there is sufficient coverage of telluric lines on the detectors. For the wavelength setting of these observations, the spectra from the second detector (top right panel of \fref{fig:spectraexamples}) only have two large telluric lines present with several small lines, with relative depths smaller than 1\%, which are often difficult to accurately identify. This deteriorated the calibration stability for the second detector. With the lack of telluric contamination and stellar lines on the second detector it may have been ideal for the detection of a faint secondary spectra; unfortunately the wavelength calibration quality varies in an inverse way.
 
@@ -352,9 +361,11 @@ Our brief experiments with this method were not successful as we did not include
 
 At one point it was considered to attempt a global fit of the wavelength calibration, using all four {CRIRES} detectors together. This would be one consistent fit to the dispersion across all 4 detectors at once. This would required extra fitting parameters such as the 3 gaps between the detectors and any vertical offsets. This may even need to be preformed on the two-dimensional images, before extraction. What this may have allowed  for the telluric lines from neighbouring detectors would help to fit the calibration on detectors were there are very few telluric lines (e.g.\ detector 2). The fitted instrument parameters such as the detector gaps may even be constrained by so that they are physically consistent across all observations. However, this idea was not explored further or implemented due to time constraints.
 \missingfigure{Diagram of idea of combined detector fitting?}
-In the future it may be possible or necessary to combine all of the methods above, including the \thar{} calibration lines, telluric models, stellar templates, and multiple detectors fitted at once to achieve accurate calibration.
+
 
 An example of the wavelength calibration using all 4 detectors is provided in \aref{appendix:wavelength_fitting}.
+
+In the future it may be possible or necessary to combine all of the methods above, including the \thar{} calibration lines, telluric models, stellar templates, and multiple detectors fitted at once to achieve accurate calibration.
 
 \begin{figure}
     \centering
@@ -364,14 +375,14 @@ An example of the wavelength calibration using all 4 detectors is provided in \a
 \end{figure}
 
 
-\missingfigure{comparison between a gasgano wavelength solution and the manual one. This has not be done by me before\ldots{} }
+\missingfigure{comparison between a Gasgano wavelength solution and the manual one. This has not be done by me before\ldots{} }
 
 
 
 \unfinished{See Solene's paper regarding Telluric correction with models and reference spectra}
 
 
-In hindsight using the wavelength solution from the {ESO} pipeline may have been a good starting point for calibration of the {DRACS} reduced spectra.
+In hindsight using the wavelength solution from the {ESO} pipeline may have been a good starting point, rather than the pixel positions, for calibration of the {DRACS} reduced spectra. This may have made the line identification simpler. 
 
 
 \subsubsection{Telluric correction}
