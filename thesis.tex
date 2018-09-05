@@ -11,7 +11,7 @@
 \usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage[separate-uncertainty=true]{siunitx}    % SI units
-\usepackage[version=3]{mhchem}  				           % chemical formula
+\usepackage[version=3]{mhchem}                     % chemical formula
 \usepackage{wasysym}
 \usepackage[final]{microtype}
 \usepackage[hang,multiple]{footmisc}
@@ -19,17 +19,17 @@
 \usepackage{float}
 \usepackage{placeins}
 \usepackage{xkvltxp}
-\usepackage{fixme} 						             % add fix-me to draft documents
+\usepackage{fixme}                          % add fix-me to draft documents
 \usepackage{color}
 \usepackage{rotate}
 \usepackage{rotating}
 \usepackage{listings}
-\usepackage{booktabs}   				     	     % improved quality tables
+\usepackage{booktabs}                         % improved quality tables
 \usepackage{threeparttable}
-\usepackage{threeparttablex}     			     % Lets threeparttable work with longtable
+\usepackage{threeparttablex}                  % Lets threeparttable work with longtable
 \usepackage{longtable}
 \usepackage{pdflscape}
-\usepackage{datatool}			                 % Loading in databases into table
+\usepackage{datatool}                         % Loading in databases into table
 \usepackage{tabularx}
 
 \usepackage{caption}
@@ -103,8 +103,8 @@ urlcolor=hrefurlcolor]{hyperref}
 %%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%%%%
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\tm}[1]{\textnormal{#1}}
-\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\dd}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\dd}[2]{\frac{\mathrm{d} {#1}}{\mathrm{d} {#2}}}
 
 %%%%%%%%%%%%% Layout %%%%%%%%%%%%%%%%%%%%%
 \setcounter{secnumdepth}{3}
@@ -113,33 +113,35 @@ urlcolor=hrefurlcolor]{hyperref}
 %% A&A stuff
 \DeclareRobustCommand{\ion}[2]{\textup{#1\,\textsc{\lowercase{#2}}}}
 \newcommand*\element[1][]{%
-	\def\aa@element@tr{#1}%
-	\aa@element
+    \def\aa@element@tr{#1}%
+    \aa@element
 }
 
 %% SI units
 \DeclareSIUnit\photons{photons}
 
 \newcommand{\kmps}{\,\si{\kilo\meter\per\second}} % kilometers per second
-\newcommand{\mps}{\,\si{\meter\per\second}} % kilometers per second
+\newcommand{\cmps}{\,\si{\centi\meter\per\second}} % centimeters per second
+\newcommand{\mps}{\,\si{\meter\per\second}} % meters per second
 \newcommand{\nm}{\,\si{\nano\meter}} % nanometer
 \newcommand{\um}{\,\si{\micro\meter}} % micrometer
+\newcommand{\K}{\,\si{\kelvin}} % kelvin
+\newcommand{\Gyr}{\,\si{\giga{yr}}} % Gigayear
+
 
 %% word shortcuts
 \newcommand{\thar}{Th-Ar}
 \newcommand{\nir}{nIR}
 \newcommand{\logg}{logg}
 \newcommand{\feh}{$\textrm{[Fe/H]}$}
-\newcommand{\teff}{T_\mathrm{eff}}
-
-
-
-
-
+\newcommand{\teff}{\(T_\mathrm{eff}\)}
+\newcommand{\teffsub}[1]{{T_{\mathrm{eff}}}_{#1}}
+\newcommand{\chisquared}{{\chi}^{2}}
+\newcommand{\textchisquared}{\(\chisquared\)}
 
 %% *** Change this example to appropriate values. ***
 \degree{Doctor of Philosophy}
-\department{Departamento de F\'isica e Astronomia}
+\department{Departamento de F\'{\i}sica e Astronomia}
 \gradyear{2018}
 \author{Jason James Neal}
 \title{Towards the nIR detection of exoplanets}
@@ -164,37 +166,37 @@ urlcolor=hrefurlcolor]{hyperref}
 %\includeonly{appendices/app_phd_output}
 
 \begin{document}
-	  %% This sets the page style and numbering for preliminary sections.
+    %% This sets the page style and numbering for preliminary sections.
     \begin{preliminary}
-		    %% This generates the title page from the information given above.
-		    \maketitle
-		    \cleardoublepage
-        \input{preface/dedication}
-        \input{preface/acknowledgements}
-        \input{preface/abstract-pt}
-        \input{preface/abstract}
+    %% This generates the title page from the information given above.
+    \maketitle
+    \cleardoublepage{}
+      	\input{preface/dedication}
+      	\input{preface/acknowledgements}
+      	\input{preface/abstract-pt}
+      	\input{preface/abstract}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		    %%% Remove in final version                  %%%
-        \todototoc{}                                 %%%
-		    \listoftodos{}                               %%%
+        %%% Remove in final version                  %%%
+      	\todototoc{}                                 %%%
+      	\listoftodos{}                               %%%
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \input{preface/table_of_contents}
-        \clearpage
-        \input{preface/abbreviations}
-        \input{preface/constants}
-        \input{preface/symbols}
-	\end{preliminary}
+      	\input{preface/table_of_contents}
+      	\clearpage
+      	\input{preface/abbreviations}
+      	\input{preface/constants}
+      	\input{preface/symbols}
+    \end{preliminary}
 
 
-  	%% *** Include chapter files here. ***
-  	\include{chapters/introduction}
+    %% *** Include chapter files here. ***
+    \include{chapters/introduction}
     \include{chapters/advanced_concepts}
     \include{chapters/reduction}
-  	\include{chapters/direct-recovery}
-  	\include{chapters/companion-recovery}
-  	\include{chapters/nir-information-content}
-  	\include{chapters/discussion}
-  	\include{chapters/conclusions}
+    \include{chapters/direct-recovery}
+    \include{chapters/companion-recovery}
+    \include{chapters/nir-information-content}
+    \include{chapters/discussion}
+    \include{chapters/conclusions}
 
     \appendix
     \unfinished{Precision table needs fixed up}
@@ -203,9 +205,9 @@ urlcolor=hrefurlcolor]{hyperref}
     \include{appendices/app_phd_output}
 
     % Bibliography
-  	\addcontentsline{toc}{chapter}{Bibliography}
-  	\bibliography{thesis}  % do not inlcude .bib extension
-  	\bibliographystyle{astron}
-  	\nocite{}  % include everything.
+    \addcontentsline{toc}{chapter}{Bibliography}
+    \bibliography{thesis}  % do not inlcude .bib extension
+    \bibliographystyle{astron}
+    \nocite{}  % include everything.
 
 \end{document}
