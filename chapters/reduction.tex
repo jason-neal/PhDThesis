@@ -411,8 +411,7 @@ We use the mid-observation time to retrieve transmission models for each observa
 {TAPAS} allows for the choice of atmospheric constituents included in the model spectra. We obtained one model with all available species present, convolved to a resolution of \(\rm R=50\,000\), and another two models without an instrumental profile convolution applied. For these two extra models, one contained only the transmission spectra of \ce{H2O}while the other contained all other constituents except \ce{H2O}. This was to explore a known issue with the depth of \ce{H2O}absorption lines in the {TAPAS}~\citet{bertaux_tapas_2014}. \sref{subsec:telluric_correction}.
 
 
-\subsection{Issues with {TAPAS}-  Pet Peves}
-\change{Issues in an appendix}
+\subsection{Issues with {TAPAS}}
 There are a number of issues we encountered when using {TAPAS} web-service, mainly due to interaction with the website. Often their service was down for weeks at a time without any warning or notification. With this you would waste time filling out the web form and attempt to submit it but would receive no response and no email with a link to the data. There was a higher success rate of successful response between different web-browsers. A number of bug reports were submitted to the owners of the webpage without any acknowledgement.
 
 The web-page is useful for quickly obtaining a small number of spectra but can be tedious for many. In our case we were requesting 3 telluric spectra, with varying molecular contributions, for each of our 17 observations. There is an ability to request multiple spectra at a time but we found this would not function if trying to request more than 4 spectra at once.
@@ -423,15 +422,17 @@ Trial and error was needed to understand all the {XML} form entries, such as the
 
 There is another issue with a one hour time offset between the requested and the time returned by {TAPAS}. For instance if the requested time was for an observation at 0200h {UTC} then the transmission spectrum returned by {TAPAS} is for 0100h {UTC}. This changes the position of the target, the airmass and potentially the {ARLETTY} model used (6 hour time steps), affecting the strength of the telluric lines. It is tedious to remember to offset your input time by one hour to obtain the correct time, and slightly more work when you also have to adjust the date when going backwards past 0000h. When submitting the {XML} script the time that is returned is the time requested. Attempts were made to bring this issue to the attention of the {TAPAS} team in 2016 but as of August 2018 this issue is still present.
 
+These issues need to be considered when requesting {TAPAS} spectra, adding unnecessary difficultly to the relatively simple process.
 
 
-\subsubsection{Other uses}
-The telluric spectra from {TAPAS} can not only be used for correcting individual spectra but are also easily used to create a wavelength mask of deep telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use {TAPAS} spectra to mask out atmospheric lines deeper than 2\% for the computation of photon noise precision of radial velocity measurements. We also do this in \cref{cha:nir_content} when we extend the analysis of \citet{figueira_radial_2016}.
+\subsubsection{Telluric masking}
+The telluric spectra from {TAPAS} can not only be used for correcting individual spectra but are also easily used to create a wavelength mask telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use {TAPAS} spectra to mask out atmospheric lines deeper than 2\% for the computation of photon noise precision of radial velocity measurements. Masking with the {TAPAS} models is similarly preformed in \cref{cha:nir_content} when we extend the analysis of \citet{figueira_radial_2016}. The telluric model used for this is an average of 52 {TAPAS} spectra (one per week in 2014), simulated at La Silla Observatory at an airmass of 1.2 (\(z = 33.5^{o}\)). This is to incorporate long-term variations of absorption over the year.
+Masking is applied by defining a cut-off line depth, typically 2\%,  at which to mask out any deeper telluric lines.  
 
 
 \subsection{Wavelength masking}
-Throughout the course of this work several wavelength regions were found were we cannot reliably extract information.
-We apply different wavelength masks to these areas to remove them from the spectra. We collate the main reasons for the wavelength masking below, although they are not always used for all analysis.
+Throughout the course of this work several wavelength regions were found were we cannot reliably extract information, due to the wavelength calibration and telluric line corrections.
+We apply different wavelength masks to these areas to remove them from the spectra. We collate the main reasons for the wavelength masking below, although these masks are not always used for all analysis.
 
 Firstly, regions near the edges of each detector where the wavelength solution is extrapolated outside of the calibrating telluric lines are removed, reducing the effective size of each detector by about \(10\%\) or \(\sim100\) pixels.
 
