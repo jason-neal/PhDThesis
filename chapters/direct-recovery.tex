@@ -132,7 +132,7 @@ The observations were performed in service mode during period 89 with run ID.~08
 
     To understand the observed differential signal we simulated a differential spectrum of {HD 30501} using a synthetic {PHOENIX-ACES} spectra with parameters \(T_{\textrm{eff}} = 2\,500\K{}\), \(\rm logg=5.0\), and \(\rm \feh{}=0.0\), with a {RV} offset estimated from the observation times. These parameters represent an estimated companion \teff{} with the metallicity and logg similar to the host (closest grid model). The model spectra were convolved to \(\rm R=50\,000\), continuum normalized and scaled by the estimated flux ratio of the companion. We do not include any synthetic host or telluric spectra and as such simulate the differential result of a ``perfect'' host cancellation with no telluric contamination present. This is the ideal-case scenario, and we stress that it is impossible to simulate the effect of improper telluric correction in a meaningful way. When comparing the simulated and observed differential in the bottom panel of \fref{fig:spectral_example}, there is a striking amplitude difference. The orange-dashed line of the simulated differential spectrum amplitude is of a much smaller scale than the observed differential. This demonstrates that the amplitude of the differential signal we are trying to detect is much smaller than the residuals created by this differential technique.
 
-    The amplitude of the differential signal is lower than we expected due to the very low \(\Delta {RV}\) between the observation pairs. The maximum \(\Delta {RV}\) between observation pairs, for the observations investigated in this work, are provided in \tref{tab:estimated_rv}. {\red{} There is no \(\Delta {RV}\) for {HD 4747} as there was only a single observation. We also provide the phase coverage for our targets. We calculate this as the ratio of time between the observed pairs and the orbital period, and show that the fraction of the orbit covered is very small, all except one covering less than 1 percent of the orbit.}
+    The amplitude of the differential signal is lower than we expected due to the very low \(\Delta {RV}\) between the observation pairs. The maximum \(\Delta {RV}\) between observation pairs, for the observations investigated in this work, are provided in \tref{tab:estimated_rv}. {\red{} There is no \(\Delta {RV}\) for {HD 4747} as there was only a single observation. We also provide the phase coverage for our targets. We calculate this as the ratio of time between the observed pairs and the orbital period, and show that the fraction of the orbit covered is very small, all except one coveringless than 1 percent of the orbit.}
 
     In our best case, {HD 30501}, the \(\Delta {RV}\) of the companion between observations is 1.346\kmps{}. For comparison, a single Gaussian absorption line, to be shifted by \(\Delta\lambda = \rm {FWHM}\) would need a \(\Delta {RV}\) of \(v_{\textrm{FWHM}} = c/R =~\sim6\)\kmps{}. Since the \(\Delta {RV}\) are shifted by a smaller value than the {FWHM}, the spectral lines of the reconstruction mutually cancel themselves, diminishing the amplitude of the differential signal significantly. As the companion spectra are already faint (with a flux ratio at the percent level) the differential signal is not detectable within these observations and noise level.
     When the \(\Delta {RV}\) of the companion is smaller than the {FWHM} of a line there is a mutual subtraction of the companion spectra, diminishing the detected amplitude of the differential signal, and removing the ability to detect the companions using this method. Observations need to be spaced further apart in time/phase to achieve a larger \(\Delta {RV}\) separation and increase the amplitude of the differential. Of course once there is a separation there will be complex interactions between neighbouring lines that need to be accounted for.
@@ -235,6 +235,112 @@ Additionally, analysing the known orbital solution before-hand, to determine {RV
 
 
 It was unable to be determined if the time differential was asked for in the 2nd proposal.... 
+
+
+\section{Orbital phase}
+
+
+The code to create plots like this orbital plots  is on Github here with documentation Link to Observationtools\footnote{\href{https://github.com/iastro-pt/ObservationTools}{https://github.com/iastro-pt/ObservationTools}} work on \href{Read the Docs}{https://ia-observationtools.readthedocs.io/en/latest/rv.html}
+
+
+
+The sampling of points in the RV curve reveal that the choice of points was not favourable...
+
+\todo{change RV scale for hd4747 orbit}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD4747_orbital_phase.pdf}& \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD4747_p89.pdf}\\
+    \end{tabular}
+    \caption{RV orbital single companion Keplerian for the HD4747. The left hand shows the RV for a whole orbit of the target while the right hand panel shows the RV curve over 6 months (period 89). The solid black line indicates the rv of the host star (with scale on the left), while the blue dashed line indicates the RV of the companion (with scale on the right axis).  The orange crosses and red stars indicate the times at which observations were obtained for the target, for the host and compnaion respectively.}
+    \label{fig:hd4747p89}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD162020_orbital_phase.pdf}&
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD162020_p89.pdf}\\
+    \end{tabular}
+    \caption{Same as \fref{fig:hd4747p89} but for HD 162020.}
+    \label{fig:hd162020p89}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD167665_orbital_phase.pdf}&
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD167665_p89.pdf}\\
+    \end{tabular}
+    \caption{Same as \fref{fig:hd4747p89} but for HD 167665.}
+    \label{fig:hd167665p89}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD168443b_orbital_phase.pdf}&
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD168443b_p89.pdf}\\
+    \end{tabular}
+    \caption{Same as \fref{fig:hd4747p89} but for HD 168443b.  Analysed if this was a single companion.}
+    \label{fig:hd168443bp89}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD168443c_orbital_phase.pdf}&
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD168443c_p89.pdf}\\
+    \end{tabular}
+    \caption{Same as \fref{fig:hd4747p89} but for HD 168443c.  Analysed if this was a single companion.}
+    \label{fig:hd168443cp89}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD202206B_orbital_phase.pdf}&
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD202206B_p89.pdf}\\
+    \end{tabular}
+    \caption{Same as \fref{fig:hd4747p89} but for HD 202206B. Analysed if this was a single companion.}
+    \label{fig:hd202206bp89}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD202206c_orbital_phase.pdf}&
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD202206c_p89.pdf}\\
+    \end{tabular}
+    \caption{Same as \fref{fig:hd4747p89} but for HD 202206c. Analysed if this was a single companion. }
+    \label{fig:hd202206cp89}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD211847_orbital_phase.pdf}&
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD211847_p89.pdf}\\
+    \end{tabular}
+    \caption{Same as \fref{fig:hd4747p89} but for HD 211847.}
+    \label{fig:hd211847p89}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD30501_orbital_phase.pdf}&
+        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD30501_p89.pdf}\\
+    \end{tabular}
+    \caption{Same as \fref{fig:hd4747p89} but for HD 30501.}
+    \label{fig:hd30501p89}
+\end{figure}
+\todo{Check M2sini labels - can we get M2 only for those that we know}
+
+
+\todo{An example of varying inclination or changing mass. Can use to show how 2 points add further constraint to the RV curve}
 
 
 \section{JUNK}
