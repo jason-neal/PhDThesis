@@ -91,7 +91,7 @@ $^{3}$European Southern Observatory, Alonso de C\'{o}rdova 3107, Vitacura, Casil
 
 % Abstract of the paper
 \begin{abstract}
-   {\rd{} In this paper we attempt to directly detect the near-infrared spectrum of candidate brown dwarf (BD) companions around FGK stars to assert or discard their stellar nature. We explore two different methods to probe the faint spectra of BD companions. The first technique involves the direct subtraction of two observations shifted to mutually cancel out the spectra of the host star. The second technique applies a \(\chi^{2}\) fit to the individual observations of a synthetic binary model comprised of two PHOENIX-ACES spectra. The observed spectra are wavelength calibrated and corrected for the atmospheric absorption with the aid of synthetic telluric models. The direct subtraction method failed to detect the signature of the companions due to poor observational constraints (the observations were insufficiently separated in radial velocity). The \(\chi^{2}\) technique developed here is able to fit the component for the host star but unable to successfully detect the faint spectra of even the largest companion in our sample. We explore how the companion recovery fitting performs on simulated observations and discuss reasons for the non-detection observed. From the injection-recovery analysis, this technique in its current form, is insufficient to recover a companion below 3800\K{} which corresponds to an upper mass limit for the companions around \(\rm 600~M_{Jup}\). This work highlights the challenges in the spectral detection of faint companions. We explore the limitations of the direct subtraction method in the case of small {RV} separation, and companion detection with synthetic models at low companion/host flux ratios below 1\%, made difficult by the discrepancy between observed and synthetic spectra around  2100\nm{}.}
+{\rd{} In this paper we attempt to directly detect the near-infrared spectrum of candidate brown dwarf (BD) companions around FGK stars to assert or discard their stellar nature. We explore two different methods to probe the faint spectra of BD companions. The first technique involves the direct subtraction of two observations shifted to mutually cancel out the spectra of the host star. The second technique applies a \(\chi^{2}\) fit to the individual observations of a synthetic binary model comprised of two PHOENIX-ACES spectra. The observed spectra are wavelength calibrated and corrected for the atmospheric absorption with the aid of synthetic telluric models. The direct subtraction method failed to detect the signature of the companions due to poor observational constraints (the observations were insufficiently separated in radial velocity). The \(\chi^{2}\) technique developed here is able to fit the component for the host star but unable to successfully detect the faint spectra of even the largest companion in our sample. We explore how the companion recovery fitting performs on simulated observations and discuss reasons for the non-detection observed. From the injection-recovery analysis, this technique in its current form, is insufficient to recover a companion below 3800\K{} which corresponds to an upper mass limit for the companions around \(\rm 600~M_{Jup}\). This work highlights the challenges in the spectral detection of faint companions. We explore the limitations of the direct subtraction method in the case of small {RV} separation, and companion detection with synthetic models at low companion/host flux ratios below 1\%, made difficult by the discrepancy between observed and synthetic spectra around  2100\nm{}.}
 \end{abstract}
 
 \begin{keywords}
@@ -137,8 +137,8 @@ The estimated {RV} values for the host and companion at the time of each observa
 \label{subsubsec:reduction}
 \begin{figure}
 %    \includegraphics[width=\hsize]{images/Bad_pixel_replacement.pdf} % chktex 8
-    \caption{Example of an artefact in the optimally extracted spectra. The top panel contains the 8 normalized nod spectra after optimal extraction, while the middle panel shows the rectangular extraction for the exact same spectra. A vertical offset is included between each spectra. A single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artefact in the optimal extraction. The bottom panel shows the difference between a combined spectrum using the optimal nods only and a combined spectrum in which the seventh nod is replaced with its rectangular counterpart. The nod spectra are in observation order from top to bottom.}
-    \label{fig:nod_artefacts}
+\caption{Example of an artefact in the optimally extracted spectra. The top panel contains the 8 normalized nod spectra after optimal extraction, while the middle panel shows the rectangular extraction for the exact same spectra. A vertical offset is included between each spectra. A single large spike in the seventh nod (pink) near pixel 230 creates a wide and noticeable artefact in the optimal extraction. The bottom panel shows the difference between a combined spectrum using the optimal nods only and a combined spectrum in which the seventh nod is replaced with its rectangular counterpart. The nod spectra are in observation order from top to bottom.}
+\label{fig:nod_artefacts}
 \end{figure}
 
 The observations were reduced using a custom reduction pipeline~\citep{figueira_radial_2010}. Written in IRAF's CL\footnote{IRAF is distributed by the National Optical Astronomy Observatories, which are operated by the Association of Universities for Research in Astronomy, {Inc.}, under cooperative agreement with the National Science Foundation.}~\citep{tody_iraf_1993} it provides for automated dark and non-linearity corrections (using the non-linearity coefficients provided by ESO), as well as the flagging and replacement of bad pixels. The images were corrected from sensitivity variations by dividing by a flat-field corrected from the blaze function effect. The nodding pairs were mutually subtracted and the order tracing was fitted by {\rd{} linear or cubic splines selected for each detector}.
@@ -254,10 +254,10 @@ The asymmetry also causes an asymmetry in the \(\chi^2\) error bars which can be
 The bump observed at 5100\K{} in the \(\chi^2\) curves is due to a discontinuity in the PHOENIX-ACES modelling. The ``reference wavelength defining the mean optical depth grid'' is changed at 5000\K{}~\citep[][Sect. 2.3]{husser_new_2013}. Care needs to be taken if trying to detect a companion near this temperature.
 
 \begin{figure}
-    \centering
+\centering
 %    \includegraphics[width=0.95\hsize]{images/companion_spectra.pdf}
-    \caption{PHOENIX-ACES spectra for temperatures between 2500 and 5000\K{}, corresponding to to the same lines in Fig.~\ref{fig:injection_shape}. The flux units are the native units of the PHOENIX-ACES spectrum, (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)), and have not been scaled by the stellar radii. All spectra have a \(\rm logg=5.0\) and \(\rm \feh{}=0.0\). The vertical dotted lines indicate the edges of the CRIRES detectors.}
-    \label{fig:comp_spectra}
+\caption{PHOENIX-ACES spectra for temperatures between 2500 and 5000\K{}, corresponding to to the same lines in Fig.~\ref{fig:injection_shape}. The flux units are the native units of the PHOENIX-ACES spectrum, (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)), and have not been scaled by the stellar radii. All spectra have a \(\rm logg=5.0\) and \(\rm \feh{}=0.0\). The vertical dotted lines indicate the edges of the CRIRES detectors.}
+\label{fig:comp_spectra}
 \end{figure}
 
 \subsubsection{Component {RV} separation}
@@ -282,10 +282,10 @@ The ease of access to find, download, and use PHOENIX-ACES spectral library, ava
 Although the newer generations synthetic spectral models are improving and match the overall spectral energy distribution reasonably well there are still regions in the H and \emph{K}-band where there is room for improvement~\citet{rajpurohit_spectral_2016}. The spectral mismatch in the region studied here is still too large for spectral recovery of companion brown dwarfs. In the nIR we have compounding problem: the model input physics of sub-stellar temperatures and chemistry combined with the general difficulty of the nIR.
 
 \begin{figure}
-    \centering
+\centering
 %    \includegraphics[width=0.95\hsize]{images/HD211847_ACES_BTSettl.pdf}
-    \caption{Detector 1 spectrum for {HD 211847} (blue) alongside the PHOENIX-ACES (orange dash-dot) and {BT-Settl} (green dashed) synthetic spectra for the host star only, with parameters \(T_{\textrm{eff}}=5700\)\K{}, \(\rm logg=4.5\) and \(\rm \feh{}=0.0\). Both synthetic models have been normalized and convolved to \(\rm R=50\,000\). There is a 0.05 off-set between each spectrum}
-    \label{fig:hd211847-models}
+\caption{Detector 1 spectrum for {HD 211847} (blue) alongside the PHOENIX-ACES (orange dash-dot) and {BT-Settl} (green dashed) synthetic spectra for the host star only, with parameters \(T_{\textrm{eff}}=5700\)\K{}, \(\rm logg=4.5\) and \(\rm \feh{}=0.0\). Both synthetic models have been normalized and convolved to \(\rm R=50\,000\). There is a 0.05 off-set between each spectrum}
+\label{fig:hd211847-models}
 \end{figure}
 
 
@@ -320,51 +320,6 @@ We note that there are many other disentangling techniques to separate mixed spe
 {\rd{}  The recent work of~\citet{piskorz_evidence_2016} use a PCA technique to correct for the telluric spectra by applying it to several (number not specified) AB nodding pairs over their 60--180 minute integration time. We are uncertain if this technique would work as effectively on our observations due to our shorter integration time (24 minutes) would have less telluric variation present across the 8 nod spectra. A recent comparison of three telluric correction methods, \emph{Molecfit} and {TelFit} and {TAPAS} to the standard star method by~\cite[][in prep.]{ulmer-moll_telluric_2018} found that all three synthetic models preform better at correcting for atmospheric H\(_2\)O compared to the standard star method with \emph{Molecfit}, being a more complete tool, preforming slightly better over {TAPAS}.}
 
 
-
-\section*{Acknowledgements}
-
-This work was supported by Funda\c{c}\~ao para a Ci\^encia e a Tecnologia (FCT) (Portugal) research grants through national funds and from FEDER through COMPETE2020 by the following grants: UID/FIS/04434/2013 \& POCI--01--0145-FEDER--007672, PTDC/FIS-AST/1526/2014 \& POCI--01--0145-FEDER--016886, and PTDC/FIS-AST/7073/2014 \& POCI-01-0145-FEDER-016880.
-J.J.N. acknowledges support from FCT though the PhD::Space fellowship PD/BD/52700/2014.
-P.F., N.C.S. acknowledge support from FCT through Investigador FCT contracts IF/01037/2013CP1191/CT0001, IF/01312/2014/CP1215/CT0004, IF/00169/2012/CP0150/CT0002, and IF/00028/2014/CP1215/CT0002. P.F. further acknowledges support from FCT in the form of an exploratory project of reference IF/01037/2013CP1191/CT0001.
-This work made use of PyAstronomy\footnote{PyAstronomy can be found at \url{https://pyastronomy.readthedocs.io}} and many other open source and under-credited software packages numpy, scipy, astropy, Starfish to name a few.
-This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France.
-
-\appendix
-
-
-    \section{Estimating companion parameters}
-    In this appendix we detail how we calculate {RV} of the components and determine the flux ratio of our targets given their literature masses  \(M_2\) or \(M_{2}\sin{i}\). We refer to these calculations as estimates as in some cases we only have the companions minimum mass.
-
-    \subsection{{RV} equation}
-    We use the Keplerian orbit {RV} equation to estimate the {RV} of the host and companions at the time of each observation, \(t\):
-    \begin{equation}
-    \label{eq:rv_equation}
-    {RV} = K [\cos{(\nu(t) + \omega)} + e\cos{(\omega)}]
-    \end{equation}
-    Here, \emph{K} is the \emph{semi-major amplitude}, \(\nu\) is the \emph{true anomaly}, \(e\) is the orbital \emph{eccentricity}, and \(omega\) is the \emph{argument of periastron}. The true anomaly is not only a function time, \(t\), but also the orbital period \(P\),  the \emph{time of periastron passage}, \(T_0\), and eccentricity. The literature parameters for each target are provided in Table~\ref{tab:orbitparams}.
-    To determine the {RV} of the companion we transformed the {RV} semi-amplitude of the host \(K_{1} \) into the semi-amplitude for the companion \(K_{2} \) using the mass ratio,
-    \begin{equation}
-    \label{eqn:mass_ratio}
-    q = \textrm{M}_{2} / \textrm{M}_{1} = \textrm{K}_{1} / \textrm{K}_{2}
-    \end{equation}
-
-    We note that for the targets in which only the minimum mass (\(\textrm{M}\sin{i} \)) is known, this equation will indicate the maximum \(K_2\) value for the companion. The estimated \(K_2\) for each companion is provided in Table~\ref{tab:estimatedparameters} while the {RV} for both components at the time of each observation is provided in Table~\ref{tab:observations}.
-
-    The error on estimated {RV} values, shown in Fig.~\ref{fig:HD211847_result_contours} is calculated by applying the general error propagation formula~\citep{ku_notes_1966} and using the  errors on the orbital parameters. For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc., it follows:
-    \begin{align}
-    f &= f(x, y, z, \ldots)\\
-    \delta f &= \sqrt{{\left( \frac{\partial f}{\partial x} \delta x\right)}^2 + {\left(\frac{\partial f}{\partial y} \delta y\right)}^2 + {\left(\frac{\partial f}{\partial z} \delta z\right)}^2 + \ldots}
-    \end{align}
-
-    \subsection{Estimating Companion-host Flux ratio}
-    \label{compaion flux ration}
-    The companion-host flux or contrast ratio of the systems are calculated using \( \frac{F_{2}}{F_{1}} \approx 2.512^{m_{1}-m_{2}} \), where \(m_{1} \) and \(m_{2} \) are the magnitude of the host and companion respectively. The noise ratio between the host and companion is also calculated using \(N_{2}/N_{1} = \sqrt{2} \times\sqrt{F_{1}/F_{2}}\).  For this work we specifically use the magnitudes in \textit{K}-band. The magnitudes of the hosts, \(m_{1} \), are obtained from SIMBAD~\citep{wenger_simbad_2000} while the magnitudes for the companions, \(m_{2} \), are estimated from stellar evolution models~\citet{baraffe_evolutionary_2003, baraffe_new_2015}. The stellar evolution models are interpolated to the companion mass (or \(M_{2}\sin{i}\)) and system age, then the magnitude in the \textit{K}-band magnitudes extracted. The \textit{K}-band magnitudes, used for the host and companions along with the calculated flux ratio for each target is given in Table~\ref{tab:estimatedparameters}. For the companions in which only the minimum mass is known then the flux-ratio will be the lower limit, or worst case scenario.
-
-    These evolution models also provide a first estimate of the companions other properties such as \teff{}, logg, \(R/R_{\odot}\) and the magnitude in many other wavelength bands.  The companion \teff{} and logg values specifically were utilized to influence the selection of synthetic model grids to perform the \(\chi^2\) analysis over in Section~\ref{sec:results}.
-
-    A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to calculate the flux ratio using the~\citep{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables. Given the host star name, the companion mass and a stellar age it interpolates the available Baraffe tables to the companion mass and age specified. The host's name is used to query the {SIMBAD} database to obtain stellar properties, specifically magnitudes, to calculate the flux ratios. It can also work in reverse to estimate a companion mass when provided with a flux ratio.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % Don't change these lines
