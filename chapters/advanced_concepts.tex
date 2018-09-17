@@ -16,20 +16,24 @@ What the Equations mean.
 
 \subsection{{RV} calculation}
 \unfinished{Move location / adjust from paper}
-To determine the {RV} offset to apply to the simulated spectra above we calculated the {RV} of the companion using the published orbital parameters of the host, transforming the {RV} semi-amplitude of the host \(K_{1}\) into the companion semi-amplitude \(K_{2}\) using the mass ratio,
+We use the Keplerian orbit {RV} equation to estimate the {RV} of the host and companions at the time of each observation, \(t\):
+\begin{equation}
+\label{eq:rv_equation}
+{RV} = K [\cos{(\nu(t) + \omega)} + e\cos{(\omega)}]
+\end{equation}
+Here, \emph{K} is the \emph{semi-major amplitude}, \(\nu\) is the \emph{true anomaly}, \(e\) is the orbital \emph{eccentricity}, and \(omega\) is the \emph{argument of periastron}. The true anomaly is not only a function time, \(t\), but also the orbital period \(P\),  the \emph{time of periastron passage}, \(T_0\), and eccentricity. The literature parameters for each target are provided in Table~\ref{tab:orbitparams}.
+To determine the {RV} of the companion we transformed the {RV} semi-amplitude of the host \(K_{1} \) into the semi-amplitude for the companion \(K_{2} \) using the mass ratio,
 \begin{equation}
 \label{eqn:mass_ratio}
 q = \textrm{M}_{2} / \textrm{M}_{1} = \textrm{K}_{1} / \textrm{K}_{2}
 \end{equation}
 
-We note that for the targets in which only the minimum mass (\(\textrm{M}\sin{i}\)) is known, this equation will indicate the maximum \(K_2\) value for the companion. The estimated \(K_2\) value for each companion is given in \tref{tab:flux_table} while the estimated {RV} for each observation is calculated in \tref{tab:observations}.
+We note that for the targets in which only the minimum mass (\(\textrm{M}\sin{i} \)) is known, this equation will indicate the maximum \(K_2\) value for the companion. The estimated \(K_2\) for each companion is provided in Table~\ref{tab:estimatedparameters} while the {RV} for both components at the time of each observation is provided in Table~\ref{tab:observations}.
 
-If a direct measurement of the companion {RV} or \(\Delta {RV}\) from the differential spectra analysis was achieved, then this relation would have been used to calculate the companion mass.
-
-The error on estimated {RV} values is calculated using the general error propagation formula~\citep{ku_notes_1966} with the {RV} equation and the errors on the orbital parameters. For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc., it follows:
+The error on estimated {RV} values, shown in Fig.~\ref{fig:HD211847_result_contours} is calculated by applying the general error propagation formula~\citep{ku_notes_1966} and using the  errors on the orbital parameters. For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc., it follows:
 \begin{align}
 f &= f(x, y, z, \ldots)\\
-\delta f &= \sqrt{{\left(\pd{f}{x} \delta x\right)}^2 +  {\left(\pd{f}{y} \delta y\right)}^2 + {\left(\pd{f}{z} \delta z\right)}^2 + \ldots}
+\delta f &= \sqrt{{\left( \frac{\partial f}{\partial x} \delta x\right)}^2 + {\left(\frac{\partial f}{\partial y} \delta y\right)}^2 + {\left(\frac{\partial f}{\partial z} \delta z\right)}^2 + \ldots}
 \end{align}
 
 
