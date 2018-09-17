@@ -39,7 +39,7 @@ The spectral model libraries were accessed using the useful ``grid tools'' inter
 
 We multiply the synthetic spectra by the wavelength to convert it into photon counts, ignoring multiplicative constants, as done in~\citet{figueira_radial_2016}\footnote{Synthetic models provide the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)).}. The spectra were convolved with a Gaussian kernel to match the resolution of the observations (\(\rm R=50\,000\)). Due to the distributive property of convolution it is efficient to apply it once to each spectra first, before the spectral pairs are combined.
 
-The {PHOENIX-ACES} models include dust in equilibrium with the gas phase while ignoring dust opacity and does not include any mixing/settling which is important for cooler BD atmospheres. They set a minimum library \(T_{\textrm{eff}}=2\,300\)\K{} to avoid the temperatures at which the modelling of clouds is necessary. This unfortunately limits the use of this library for this technique to the largest mass companions in our sample. For example a \(T_{\textrm{eff}}=2\,300\)\K{} corresponds to a BD with \(\rm M\sim84~M_{Jup}\) at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models.
+The {PHOENIX-ACES} models include dust in equilibrium with the gas phase while ignoring dust opacity and does not include any mixing/settling which is important for cooler BD atmospheres. They set a minimum library \(\teff{}=2\,300\)\K{} to avoid the temperatures at which the modelling of clouds is necessary. This unfortunately limits the use of this library for this technique to the largest mass companions in our sample. For example a \(\teff{}=2\,300\)\K{} corresponds to a BD with \(\rm M\sim84~M_{Jup}\) at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models.
 
 There are other models that extend below 2\,300\K{} such as the {BT-Settl} models\citep{allard_btsettl_2013,baraffe_new_2015}. These are discussed in \sref{subsubsec:BT-Settl}.
 
@@ -73,7 +73,7 @@ These synthetic spectra are used individually for the single component model and
 
 \subsubsection{Single component model}
 \label{subsubsec:single-model}
-The single model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \teff{}, logg, \feh{}, [\(\alpha\)/Fe]) and is Doppler shifted by a {RV} value \({rv}_1\).
+The single model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \teff{}, logg, \feh{}, [\(\alpha\)/\ce{Fe}]) and is Doppler shifted by a {RV} value \({rv}_1\).
 
 \begin{equation}
 \rm C^{1}_{i}(\lambda) = J(\lambda_0(1-\frac{{rv}_1}{c}))
@@ -100,7 +100,7 @@ We combine the models in this way to represent the correct absolute flux ratio o
 
 The binary model should provide meaningful information about the companion parameters (e.g.\ \teff{}) and a estimate of the flux ratio of the system. These can be combined with the~\citet{baraffe_evolutionary_2003} models to constrain the mass of the companion. However, we need to be careful with this model as the inclusion of extra spectral components and associated parameters could also provide a better fit to observations which do not have a companion, by fitting components of the noise.\\
 
-{\rd{} The full list of grid parameters for the binary model are \(T_{\textrm{eff}}1\),  \(\rm logg_1\), \feh{}\(_1\), [\(\alpha\)/Fe]\(_1\), \({rv}_1\), \(T_{\textrm{eff}}2\), \(\rm logg_2\), \feh{}\(_2\), [\(\alpha\)/Fe]\(_2\), \({rv}_2\) where the subscripts 1 and 2 indicate the host and companion models respectively.}
+{\rd{} The full list of grid parameters for the binary model are \(\teff{}1\),  \(\logg{}_1\), \feh{}\(_1\), [\(\alpha\)/\ce{Fe}]\(_1\), \({rv}_1\), \(\teff{}2\), \(\logg{}_2\), \feh{}\(_2\), [\(\alpha\)/\ce{Fe}]\(_2\), \({rv}_2\) where the subscripts 1 and 2 indicate the host and companion models respectively.}
 
 
 
@@ -135,8 +135,8 @@ For each model we further allow the continuum level to be varied by \(\pm 0.05\)
 The high dimensionality of the binary model makes it computationally challenging and difficult to analyse the \textchisquared{} space.
 For reference, the multiplicative parameter space is squared when increasing from one spectral component in the single model to a binary model, and therefore becomes computationally expensive. In general the number of possible parameter combinations for \(c\) spectral components each with a grid of \(m\) models increases to \(c^m\). If the full set of {PHOENIX-ACES} library spectra (66456) is explored with a binary fit then this naively balloons to over 4.4 billion possible combinations. Half of these are not unique as the host and companion components are swapped. This is the worst case scenario and we implement a number of assumptions to vastly reduce the parameter-space enabling faster computation.
 
-Our first assumption is to restrict ourselves to models with an Alpha element abundance ([\(\alpha\)/Fe]) of zero. This is likely a very good approximation as all our targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where [\(\alpha\)/Fe] values are close to zero (i.e., solar) -- e.g.~\citet{adibekyan_chemical_2012}. Our second is to assume that we can significantly reduce the search space with literature values for the host star. We fix the metallicity of both components to the closest grid to the literature value (usually \feh{}=0.00). We also fix the logg of the host star to its literature values given in \tref{tab:starparams}. The uncertainties on the literature measurements for logg (\(\sim\)0.1) and metallicity (\(\sim\)0.05) are both smaller than the grid steps of 0.5 for these parameters.
-For the logg of the companion we use the~\citet{baraffe_evolutionary_2003,baraffe_new_2015} evolutionary model value for the given companions \(\textrm{M}_2\)/\(\textrm{M}_2\sin{i}\) and hosts age.
+Our first assumption is to restrict ourselves to models with an Alpha element abundance ([\(\alpha\)/\ce{Fe}]) of zero. This is likely a very good approximation as all our targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where [\(\alpha\)/\ce{Fe}] values are close to zero (i.e., solar) -- e.g.~\citet{adibekyan_chemical_2012}. Our second is to assume that we can significantly reduce the search space with literature values for the host star. We fix the metallicity of both components to the closest grid to the literature value (usually \feh{}=0.00). We also fix the \logg{} of the host star to its literature values given in \tref{tab:starparams}. The uncertainties on the literature measurements for \logg{} (\(\sim\)0.1) and metallicity (\(\sim\)0.05) are both smaller than the grid steps of 0.5 for these parameters.
+For the \logg{} of the companion we use the~\citet{baraffe_evolutionary_2003,baraffe_new_2015} evolutionary model value for the given companions \(\textrm{M}_2\)/\(\textrm{M}_2\sin{i}\) and hosts age.
 
 We use the estimated companion temperatures from the Baraffe evolutionary models given the companion \(\rm M_2\) or \(\textrm{M}_2\sin{i}\) and stellar age as a starting point for the companion spectra grid computation and extend the grid in each direction, within the model limits. For example we show the companion temperature grid spanning \(-600\) to \(+400\)\K{} in \fref{fig:Mdwarf_contours} and \(\pm400\)\K{} in Figs.~\ref{fig:HD211847_simulated_contours} and~\ref{fig:HD211847_result_contours}.
 
@@ -214,7 +214,7 @@ In both simulations the reduced \(\chisquared_{red}\) for the binary model is cl
 \label{subsection:results-hd211847}
 {HD 211847} is the best candidate for detection as it has a \(\rm 155~M_J\) low-mass star companion~\citet{moutou_eccentricity_2017}. The angular separation of the two bodies is 222 mas (or 11.3 au). Even though it is not a BD it has the highest estimated flux ratio in our sample, of 0.03 based on the~\citet{baraffe_new_2015} evolution models and the known companion mass (see. \tref{tab:estimatedparameters}). The angular separation of HD211847B is 222 mas with a projected distance of The result of applying \textchisquared{} fitting to the second observation of {HD 211847} is shown in \fref{fig:HD211847_result_contours}.
 
-For this target the metallicity of both components was fixed to 0.0 and the logg for the host was fixed at 4.5. The logg for the companion is fixed to 5.0, based on the~\citet{baraffe_new_2015} evolutionary models for the given companion mass and system age. The orbital solution was used to refine the {RV} search space of both components. The span {RV} for the companion was extended until a value inside the {RV} bounds was found.
+For this target the metallicity of both components was fixed to 0.0 and the \logg{} for the host was fixed at 4.5. The \logg{} for the companion is fixed to 5.0, based on the~\citet{baraffe_new_2015} evolutionary models for the given companion mass and system age. The orbital solution was used to refine the {RV} search space of both components. The span {RV} for the companion was extended until a value inside the {RV} bounds was found.
 
 Again the top left panel of \fref{fig:HD211847_result_contours} shows the recovery with a single component model with the other three for the binary model. The single component model finds a temperature of 5\,900\K{} for the host with a \({rv}_1\) of 7\kmps{}. This is 200\K{} and 0.4\kmps{} different above the expected parameters. The binary model finds a host temperature of 5\,800\K{}, which is the second closest model to the literature value, >100\K{} different. The host {RV} value recovered with the binary model is 7.6\kmps{}, which is 1\kmps{} higher than expected.  For the single component model there is a barely noticeable secondary minima near this 7.6\kmps{} {RV} value recovered by the binary model. Again these {RV} differences are smaller than the {FWHM} of the lines. The 3-\(\sigma\) contour is small, just visible on the right hand side of the star in the bottom left panel, and hidden behind the markers in the other panels.
 
@@ -248,7 +248,7 @@ We applied this same method to the remaining targets, with similar results. In b
 \label{subsection:injection-recovery}
 To determine the detection limits for this method we employ an injection-recovery approach. We take the observed spectra and inject onto them a synthetic companion, at the absolute flux ratio to which it would have been added to a synthetic host with the same parameters. The injected companion {RV} is set to 100\kmps{} so that the companion lines are well separated from the lines of the host. This separation chosen is slightly larger than what we have with our observations, \(rv_2\) given in \tref{tab:observations}.
 
-We restrict the search space by fixing the host parameters \(\teffsub{1}\) and \(\rm logg_1\) to those recovered fitting the non-injected spectra by a single component model. The wavelength masking is used to reduce the level of mismatch between synthetic and observed spectra.
+We restrict the search space by fixing the host parameters \(\teffsub{1}\) and \(\logg{}_1\) to those recovered fitting the non-injected spectra by a single component model. The wavelength masking is used to reduce the level of mismatch between synthetic and observed spectra.
 
 We apply the recovery method developed above on the injected spectrum, leaving only the companion \(\teffsub{2}\) and \({rv}_2\) parameters free, to recover the injected companion. We repeated this for injected companions with temperatures below 5\,000\K{}.
 
@@ -284,7 +284,7 @@ The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above
 \input{tables/companion_recovery/uppermasslimits}
 
 
-Using the temperature cut-off values, we derive an upper mass limit for the companions around our stars using the~\citet{baraffe_new_2015} evolutionary models, finding the closest point matching the spectral temperature cut-off and \(\rm logg=5.0\). These values are given in \tref{tab:mass_limits} and are between 560 and 618 \(\rm M_{Jup}\). The flux ratio between the cut-off and the host star are also provided for, being between 5 and 15\% in this wavelength span.
+Using the temperature cut-off values, we derive an upper mass limit for the companions around our stars using the~\citet{baraffe_new_2015} evolutionary models, finding the closest point matching the spectral temperature cut-off and \(\logg{} =5.0\). These values are given in \tref{tab:mass_limits} and are between 560 and 618 \(\rm M_{Jup}\). The flux ratio between the cut-off and the host star are also provided for, being between 5 and 15\% in this wavelength span.
 
 
 
@@ -320,7 +320,7 @@ The {PHOENIX-ACES} models also provide dimensions of effective radius of the sta
 This {PHOENIX-ACES} lower temperature limit restricts its use to only the higher mass BD companions in our sample (\(~>0.08 M_{\odot}\) at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} models).
 
 
-The most recent BT-SETTL spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200--7\,000\K{} logg = 2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer Caffau et al. (2011) solar abundances.
+The most recent BT-SETTL spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200--7\,000\K{}\logg{} = 2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer Caffau et al. (2011) solar abundances.
 
 The newer {PHOENIX-ACES} models are limited to \teff{}> 2\,300\K{} which only cover the larger BDs. To evaluate the lower mass BDs we use the \textbf{other model}, more suitable for cooler BDs and low mass star as they incorporate modeling of dust, clouds etc\ldots
 
@@ -339,7 +339,7 @@ Even though the BT-SETTL models are more suited for the entire range of BD tempe
 
 
 
-The most recent BT-SETTL spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200-7\,000\K{} logg = 2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer Caffau et al. (2011) solar abundances.
+The most recent BT-SETTL spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200-7\,000\K{}\logg{} = 2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer Caffau et al. (2011) solar abundances.
 
 The {BT-Settl} grids were harder to obtain and use.
 
@@ -347,7 +347,7 @@ As we do not recover suitable results for HD211847 which is supposed to have a t
 
 
 \textbf{
-    PHOENIX ACES defines grid as Teff, logg and Mass which can then be used to determine Radii. See~\citep{husser_new_2013} section 2.3.1 Mass.}
+    PHOENIX ACES defines grid as Teff,\logg{} and Mass which can then be used to determine Radii. See~\citep{husser_new_2013} section 2.3.1 Mass.}
 
 Both {BT-Settl} and aces are spherical
 \ldots{}

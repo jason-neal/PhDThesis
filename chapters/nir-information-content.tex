@@ -284,7 +284,7 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
     \caption{CARMENES library target selection spanning the M-Dwarf spectral range.}
     \begin{tabular}{l l l r c c c c}%
         \toprule
-        Karmn & Name & SpT &  \(\textrm{SNR}_{\textrm{NIR}}\)  & Temp (K) & logg & \feh{} & v\(\sin{i}\) (\kmps{})\\
+        Karmn & Name & SpT &  \(\textrm{SNR}_{\textrm{NIR}}\)  & Temp (K) &\logg{} & \feh{} & v\(\sin{i}\) (\kmps{})\\
         \midrule
         \DTLforeach*{targets}{\id=Karmn,\name=Name,\sptype=SpT,\snr=NIR-SNR,\teff=Teff, \logg=logg,\metal=FeH, \rot=ROT-Vsini}{
             \DTLiffirstrow{}{\\}\id{} & \name{} &\sptype{} & \snr{} & \teff{} & \logg{} & \metal{} & \rot{}
@@ -298,12 +298,12 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
 \input{tables/carmenes_selection.tex}
 %\input{tables/carmenes_selection_transpose.tex}
 
-\section{Metallicity logg effects}
-We explore the effect of metallicity and logg on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and logg of 4.0 -- 5.5. In \fref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and vsini=1.0\kmps{} across the M-dwarf spectral types and the \nir{} bands is shown. We observed multiple different effects present.
+\section{Metallicity \logg{} effects}
+We explore the effect of metallicity and \logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and \logg{} of 4.0 -- 5.5. In \fref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and vsini=1.0\kmps{} across the M-dwarf spectral types and the \nir{} bands is shown. We observed multiple different effects present.
 
 
 The \emph{Z}-band has a large separation in spectral quality due to spectral type, this is because the continuum the \emph{Z}-band is severely eroded in the spectra of late M's as they cool. Each spectral type also behaves very differently to a change in \feh{} and logg. For M0 and M3 there is an increase with \feh{} below solar metallicity, above solar metallicity the slopes of the lines dramatically increase, especially for M3. For M6 and M9 there is a step slope with \feh{} below solar metallicity, which flattens off at solar metallicity, and even decreases for the M9 spectra above solar metallicity.
-As logg increases in the \emph{Z}-band there is a decrease in quality. There is a consistently large separation between early and late M's that. The quality for M6 is very shallow, while for M9 the quality is nearly flat for logg = 4.0 and 4.5 but then decreases sharply at higher logg.
+As \logg{} increases in the \emph{Z}-band there is a decrease in quality. There is a consistently large separation between early and late M's that. The quality for M6 is very shallow, while for M9 the quality is nearly flat for \logg{} = 4.0 and 4.5 but then decreases sharply at higher logg.
 
 \emph{Y}-band -\\
 
@@ -316,7 +316,7 @@ For the H and \emph{K}-band there is fairly consistent linear trend for all spec
 \begin{figure}
 \includegraphics[width=0.99\linewidth]{figures/information-content/metalicity_effect.pdf}\\
 \includegraphics[width=0.99\linewidth]{figures/information-content/logg_effect.pdf}
-\caption{Quality factor changes across spectral type and bands for variations in \feh{} and logg. Broadening values are R=100\,000 and vsini = 1.0\kmps{}. Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed logg=4.5. Bottom: Quality factor variation of logg between 4 and 5.5 with fixed \feh{}=0.0. Note a higher quality factor corresponds to an increased {RV} precision.}
+\caption{Quality factor changes across spectral type and bands for variations in \feh{} and logg. Broadening values are R=100\,000 and vsini = 1.0\kmps{}. Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed logg=4.5. Bottom: Quality factor variation of \logg{} between 4 and 5.5 with fixed \feh{}=0.0. Note a higher quality factor corresponds to an increased {RV} precision.}
 \label{fig:deviations}
 \end{figure}
 
@@ -555,7 +555,7 @@ In September 2017 we were requested to provide precision calculations for the SP
 
 In May 2018 we were requested to provide precision calculations for the NIRPS {ETC}.\@ This extended the spectral range from M0, M3, M6, M9 at 3\,900, 3\,500, 2\,800, 2\,600\K{} respectively, but to all temperatures between 2\,500 and 4\,000\K{} inclusively. This provides a finer resolution coverage over the M spectral type, allowed by the {PHOENIX-ACES} library.
 Instrumental resolutions of 75,000 and 100\,000 were requested to match the NIRPS instrument.
-The logg and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
+The \logg{} and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
 Precisions were provided for {SNR} of 100 relative to the \emph{J}-, \emph{H}-bands as well as to each band individually. Artigua 2018. (private communication 2018)\todo{Check how to cite priv communication properly} suggested the truly relevant value is the {SNR} in \emph{H}-band for NIRPS radial velocities.
 
 A table of the precisions created for the NIRPS ETC are provided as an online table to our publication \textit{Neal et al. 2018b (in prep.)}\footnote{Available at \href{blah}{blah}} \unfinished{Inlcude correct links}
