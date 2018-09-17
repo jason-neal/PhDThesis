@@ -60,7 +60,7 @@
 % Title of the paper, and the short title which is used in the headers.
 % Keep the title short and informative.
 %\title[Short title, max. 45 characters]{MNRAS \LaTeXe\ template -- title goes here}
-\title[Towards the nIR detection of BD companions]{Towards the near-infrared detection of brown dwarf companions: Exploring methods to detect low mass stellar companions from blended spectra \thanks{Based on observations collected at the European Organisation for Astronomical Research in the Southern Hemisphere under ESO programme 089.C-0977(A)}}
+\title[Towards the \nir{}detection of BD companions]{Towards the near-infrared detection of brown dwarf companions: Exploring methods to detect low mass stellar companions from blended spectra \thanks{Based on observations collected at the European Organisation for Astronomical Research in the Southern Hemisphere under ESO programme 089.C-0977(A)}}
 %\subtitle{Exploring methods to detect low mass stellar companions from blended spectra}
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
@@ -154,7 +154,7 @@ For the remainder of the paper we use combined spectra constructed by averaging 
 
 The continuum normalization and nod combining steps were also performed using IRAF while the following post reduction procedures and analysis all utilize \emph{Python}. This pipeline was chosen over the ESO CRIRES pipeline because it seemed relatively simple to use, being semi-automated, and appeared to have less bad pixel/cosmic ray artefacts in the extracted spectra. In hindsight this was not the case, with the removal of the extended artefacts that appeared.
 
-% One possible explanation for the artefacts present is an instrumental effect, such as instrument glow. This is known to affect CRIRES and included in the data reduction cookbook~\citep{smoker_very_2012}. These artefacts in the \textit{K}-band spectra were not observed in previous works in the \textit{H}-band using this pipeline and as such may have a wavelength dependent affect, as the higher wavelength nIR is more susceptible to thermal instrument glow.
+% One possible explanation for the artefacts present is an instrumental effect, such as instrument glow. This is known to affect CRIRES and included in the data reduction cookbook~\citep{smoker_very_2012}. These artefacts in the \textit{K}-band spectra were not observed in previous works in the \textit{H}-band using this pipeline and as such may have a wavelength dependent affect, as the higher wavelength \nir{}is more susceptible to thermal instrument glow.
 
 
 \
@@ -235,7 +235,7 @@ For example, with the synthetic model for the companion of {HD 211847}, the aver
 %{\bl We use the contributed line depth values to calculate the {SNR} level required to have Gaussian noise of the same height and the observed {SNR} required to achieve equivalent contribution from all N lines of the spectrum, \(\rm \textrm{SNR}_N = \textrm{SNR} /\sqrt{N}\). This is for the synthetic spectra which have many more lines than the observed spectra in this wavelength range. }
 
 The {SNR} of the observed spectra is between 150--350, which is below the {SNR} of 323 needed for the detection of the low-mass star companion of {HD 211847} with temperature 3200\K{} and logg 5.0. For our other targets with BD companions at and below the PHOENIX-ACES temperature range, we would need observed {SNR} >800 to detect the individual spectral lines of the companion. With the {SNR} increasing with \(\sqrt{N}\) this would require the observational time for each target to be increased by a factor of \(\sim\)10--64.
-{\rd{} This is in line with the recent detection of the spectrum of a non-transiting giant planet by~\cite{piskorz_evidence_2016} which utilized nIR spectra with {SNR} > 2000, from 1--3 hours of observation each.}
+{\rd{} This is in line with the recent detection of the spectrum of a non-transiting giant planet by~\cite{piskorz_evidence_2016} which utilized \nir{}spectra with {SNR} > 2000, from 1--3 hours of observation each.}
 
 Our non-detection of binary companions with low flux ratios is consistent with results from other works. For example~\citet{nemravova_xtauri_2016} performed extensive spectral analysis of a quadruple-star system {\(\xi\) Tauri} using 227 spectra in 3 different wavelength bands. Of the four stars in the system they were unable to detect the spectral component of the one which had a luminosity ratio below 1\%. {\rd{} The secondary detection in optical spectra using spectral matching of KOI was also only able to reach flux ratios of 1\%~\citet{kolbl_detection_2015}.}
 
@@ -279,7 +279,7 @@ Fig.~\ref{fig:hd211847-models} shows again the minimum \(\chi^2\) solution for d
 
 The ease of access to find, download, and use PHOENIX-ACES spectral library, available in the fits file format, compared to older {BT-Settl} libraries is another reason for the current favoured use of the PHOENIX-ACES library.
 
-Although the newer generations synthetic spectral models are improving and match the overall spectral energy distribution reasonably well there are still regions in the H and \emph{K}-band where there is room for improvement~\citet{rajpurohit_spectral_2016}. The spectral mismatch in the region studied here is still too large for spectral recovery of companion brown dwarfs. In the nIR we have compounding problem: the model input physics of sub-stellar temperatures and chemistry combined with the general difficulty of the nIR.
+Although the newer generations synthetic spectral models are improving and match the overall spectral energy distribution reasonably well there are still regions in the H and \emph{K}-band where there is room for improvement~\citet{rajpurohit_spectral_2016}. The spectral mismatch in the region studied here is still too large for spectral recovery of companion brown dwarfs. In the \nir{}we have compounding problem: the model input physics of sub-stellar temperatures and chemistry combined with the general difficulty of the \nir{}.
 
 \begin{figure}
 \centering
@@ -308,7 +308,7 @@ The future of high resolution near- and mid- IR spectrographs is looking bright,
 
 The upgrade of CRIRES to CRIRES+~\citep{dorn_crires_2016} will increase the wavelength coverage of a single shot capture by at least a factor of 3--5. This larger wavelength span would be extremely beneficial for the \(\chi^2\) performance of the spectral recovery method, increasing the number of useful lines and spectral features to be fitted with the models.
 
-On the modelling side, there are continual improvements in atmospheric modelling and their associated synthetic spectral libraries: as seen with the evolution of the {BT-Settl} models~\cite{allard_btsettl_2013}. With additional physics and improved line lists and solar abundances~\citep[e.g.][]{asplund_chemical_2009,caffau_solar_2011}, the synthetic libraries are reaching a better agreement with nIR observations. An improved agreement between the nIR observations and synthetic spectra will be crucial to improve the performance of the spectral recovery technique presented here.
+On the modelling side, there are continual improvements in atmospheric modelling and their associated synthetic spectral libraries: as seen with the evolution of the {BT-Settl} models~\cite{allard_btsettl_2013}. With additional physics and improved line lists and solar abundances~\citep[e.g.][]{asplund_chemical_2009,caffau_solar_2011}, the synthetic libraries are reaching a better agreement with \nir{}observations. An improved agreement between the \nir{}observations and synthetic spectra will be crucial to improve the performance of the spectral recovery technique presented here.
 
 Although not successful with the CRIRES data used here, the instrumental stage is set to attempt these techniques presented here using the next-generation of high resolution spectrographs. The lessons learned in this analysis need to be taken into account in order to achieve the best chance of a successful detection.
 

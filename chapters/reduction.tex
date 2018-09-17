@@ -10,13 +10,13 @@ The work of this thesis relies on the use of \nir{} spectra obtained by the {CRI
 
 \section{Summary of dataset}
 \todo{}{}
-The work performed relies on high resolution \nir{} spectra, obtained around 2.1\um{} with {CRIRES}. In brief, we have 17 individual observations of 7 target stars obtained in 2012. Each observation contains 8 individual observations performed in an ABBAABBA nod cycle pattern. Here we detail the steps performed to extract the stellar information from the raw observations. Further details of the observations and the motivation for them are given in \cref{cha:direct_recovery}.
+The work performed relies on high resolution \nir{} spectra, obtained around 2.1\um{} with {CRIRES}. In brief, we have 17 individual observations of 7 target stars obtained in 2012. Each observation contains 8 individual observations performed in an {ABBAABBA} nod cycle pattern. Here we detail the steps performed to extract the stellar information from the raw observations. Further details of the observations and the motivation for them are given in \cref{cha:direct_recovery}.
 
 
 \section{NIR spectroscopy}
 To perform spectroscopy requires an instrument called a spectrograph. The purpose of which is to take the incoming star light and separate it into its different wavelength (think colours in the visible). All spectrograph's are comprised of a few key components. The first part is the front end optics responsible for collecting the light and getting it to the spectrograph, such as a telescope. The second part dispersive elements inside the spectrograph, such as a prism or grating used to separate the wavelength components. The final part is the detector or camera, used to recording the resulting spectrum.
 
-The design of spectrographs is highly dependant on the wavelength range observed. For instance CCD cameras (based on Silicon) are readily used in the optical but silicon is a  poor detector at \nir{} wavelengths. Instead \nir{} spectrographs need to use CMOS detectors which are composed of different materials to be are sensitive to different wavelengths. CRIRES detectors specifically are made of \ce{InSb} (Indium antimonide) to perform spectroscopy between 1-5\mum{}~\cite{dorn_crires_2004}. 
+The design of spectrographs is highly dependant on the wavelength range observed. For instance CCD cameras (based on Silicon) are readily used in the optical but silicon is a  poor detector at \nir{} wavelengths. Instead \nir{} spectrographs need to use CMOS detectors which are composed of different materials to be are sensitive to different wavelengths. CRIRES detectors specifically are made of \ce{InSb} (Indium antimonide) to perform spectroscopy between 1--5\um{}~\cite{dorn_crires_2004}.
 Other considerations are needed such as the composition of the optical components as well as any anti-reflection coatings used, all of which have different wavelength characteristics that need to be matched.
 
 \todo{I don't know where I am going with this section.}
@@ -108,7 +108,7 @@ Observations of faint targets, that need long exposure times, are also broken up
 
 A small random vertical offset is applied to each observation which ensures that all spectra at the same nod position do not consistently land on the same pixels each time. This is known as the \emph{jitter} and allows for the correction of bad pixels and decreases the effect from any systematics of the detector.
 
-\change{move}{As an example, the {CRIRES} observations analysed for the work performed in \cref{cha:direct_recovery} and~\ref{cha:model_comparison} were performed with an ABBAABBA nod cycle pattern with an exposure time of 180\si{\second} each, or 24 minutes all up.}
+\change{move}{As an example, the {CRIRES} observations analysed for the work performed in \cref{cha:direct_recovery} and~\ref{cha:model_comparison} were performed with an {ABBAABBA} nod cycle pattern with an exposure time of 180\si{\second} each, or 24 minutes all up.}
 
 
 \subsection{\thar{} lamp calibration}
@@ -319,7 +319,7 @@ G(\lambda, A, \mu, \sigma) = {A \textrm{e}}^{{-(\lambda-\mu)}^{2}/2\sigma^{2}},
 
 and \(A\), \(\mu\), \(\sigma\) are the amplitude, central wavelength, and standard deviation for each line respectively. Telluric lines actually have a Voigt profile\footnote{A Voigt profile is a convolution of two broadening profiles, a Gaussian and a Lorentzian. Gaussian broadening results from thermal Doppler broadening, and instrumental broadening while the Lorentzian broadening comes from molecular vibrational bands\citep{meier_art_2005}.} although they are not fully resolved in the \nir{} and their shape is dominated by the instrumental profile. \citet{seifahrt_synthesising_2010} measured the instrumental profile of {CRIRES} using  singular-value decomposition and show that it is extremely well represented by a single Gaussian below a {SNR} of around 300. Therefore, wavelength calibration using single Gaussian fits to each line is sufficient.
 
-The observed spectra contain two different spectral components: stellar and telluric lines, which are multiplied together. The observed spectra are therefore are fitted with a multiplication of two Gaussian-sum models. The identification between telluric and stellar lines is performed by hand for each spectra, using the telluric model as the reference. Care was taken to fit the correct components to blended spectra where possible to improved the number telluric lines use for calibration. The fits were inspected to ensure that they reasonably matched the line positions. There was difficultly in identifying the shallow lines with depths below 1--2\%. But these were needed in some spectra to obtain a suitable fit. If there were blended lines that did not look to fit correctly these lines were removed and not considered in the calibration step. 
+The observed spectra contain two different spectral components: stellar and telluric lines, which are multiplied together. The observed spectra are therefore are fitted with a multiplication of two Gaussian-sum models. The identification between telluric and stellar lines is performed by hand for each spectra, using the telluric model as the reference. Care was taken to fit the correct components to blended spectra where possible to improved the number telluric lines use for calibration. The fits were inspected to ensure that they reasonably matched the line positions. There was difficultly in identifying the shallow lines with depths below 1--2\%. But these were needed in some spectra to obtain a suitable fit. If there were blended lines that did not look to fit correctly these lines were removed and not considered in the calibration step.
 
 \begin{align}
 I_{obs}(x) &= {I}_{tell}(x) \times {I}_{space}(x) \nonumber \\
@@ -382,7 +382,7 @@ In the future it may be possible or necessary to combine all of the methods abov
 \unfinished{See Solene's paper regarding Telluric correction with models and reference spectra}
 
 
-In hindsight using the wavelength solution from the {ESO} pipeline may have been a good starting point, rather than the pixel positions, for calibration of the {DRACS} reduced spectra. This may have made the line identification simpler. 
+In hindsight using the wavelength solution from the {ESO} pipeline may have been a good starting point, rather than the pixel positions, for calibration of the {DRACS} reduced spectra. This may have made the line identification simpler.
 
 
 \subsubsection{Telluric correction}
@@ -438,7 +438,7 @@ These issues need to be considered when requesting {TAPAS} spectra, adding unnec
 
 \subsubsection{Telluric masking}
 The telluric spectra from {TAPAS} can not only be used for correcting individual spectra but are also easily used to create a wavelength mask telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use {TAPAS} spectra to mask out atmospheric lines deeper than 2\% for the computation of photon noise precision of radial velocity measurements. Masking with the {TAPAS} models is similarly performed in \cref{cha:nir_content} when we extend the analysis of \citet{figueira_radial_2016}. The telluric model used for this is an average of 52 {TAPAS} spectra (one per week in 2014), simulated at La Silla Observatory at an airmass of 1.2 (\(z = 33.5^{o}\)). This is to incorporate long-term variations of absorption over the year.
-Masking is applied by defining a cut-off line depth, typically 2\%,  at which to mask out any deeper telluric lines.  
+Masking is applied by defining a cut-off line depth, typically 2\%,  at which to mask out any deeper telluric lines.
 
 
 \subsection{Wavelength masking}

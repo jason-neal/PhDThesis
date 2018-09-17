@@ -41,7 +41,7 @@ The detection of an Earth-mass planet inside the habitable zone around a solar-t
 \citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an M-dwarf, and found that state-of-the-art atmosphere models over-predict the \emph{Y}- and \emph{J}-band {RV} content by more than a factor of \(\sim 2\), while under-predicting the \emph{H} and \emph{K}-band content by half.
 {\red{} in this work we find similar?}
 
-We are currently aiming to extend this work over the whole M-dwarf range, from M0-M9.
+We are currently aiming to extend this work over the whole M-dwarf range, from {M0}-{M9}.
 
 \todo{History of Precision calculations}
 History of Precision calculations:
@@ -287,7 +287,7 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
         Karmn & Name & SpT &  \(\textrm{SNR}_{\textrm{NIR}}\)  & Temp (K) &\logg{} & \feh{} & v\(\sin{i}\) (\kmps{})\\
         \midrule
         \DTLforeach*{targets}{\id=Karmn,\name=Name,\sptype=SpT,\snr=NIR-SNR,\teff=Teff, \logg=logg,\metal=FeH, \rot=ROT-Vsini}{
-            \DTLiffirstrow{}{\\}\id{} & \name{} &\sptype{} & \snr{} & \teff{} & \logg{} & \metal{} & \rot{}
+            \DTLiffirstrow{}{\\}\id{} & \name{} &\sptype{} & \snr{} & \(\teff{}\) & \logg{} & \metal{} & \rot{}
         }
         \\
         \bottomrule
@@ -302,8 +302,8 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
 We explore the effect of metallicity and \logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and \logg{} of 4.0 -- 5.5. In \fref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and vsini=1.0\kmps{} across the M-dwarf spectral types and the \nir{} bands is shown. We observed multiple different effects present.
 
 
-The \emph{Z}-band has a large separation in spectral quality due to spectral type, this is because the continuum the \emph{Z}-band is severely eroded in the spectra of late M's as they cool. Each spectral type also behaves very differently to a change in \feh{} and logg. For M0 and M3 there is an increase with \feh{} below solar metallicity, above solar metallicity the slopes of the lines dramatically increase, especially for M3. For M6 and M9 there is a step slope with \feh{} below solar metallicity, which flattens off at solar metallicity, and even decreases for the M9 spectra above solar metallicity.
-As \logg{} increases in the \emph{Z}-band there is a decrease in quality. There is a consistently large separation between early and late M's that. The quality for M6 is very shallow, while for M9 the quality is nearly flat for \logg{} = 4.0 and 4.5 but then decreases sharply at higher logg.
+The \emph{Z}-band has a large separation in spectral quality due to spectral type, this is because the continuum the \emph{Z}-band is severely eroded in the spectra of late M's as they cool. Each spectral type also behaves very differently to a change in \feh{} and logg. For {M0} and {M3} there is an increase with \feh{} below solar metallicity, above solar metallicity the slopes of the lines dramatically increase, especially for {M3}. For {M6} and {M9} there is a step slope with \feh{} below solar metallicity, which flattens off at solar metallicity, and even decreases for the {M9} spectra above solar metallicity.
+As \logg{} increases in the \emph{Z}-band there is a decrease in quality. There is a consistently large separation between early and late M's that. The quality for {M6} is very shallow, while for {M9} the quality is nearly flat for \logg{}=4.0 and 4.5 but then decreases sharply at higher logg.
 
 \emph{Y}-band -\\
 
@@ -341,7 +341,7 @@ Namely that the same precision were calculated in the end.
 Functional test and unit tests.
 
 \subsection{Atmospheric masking bug}
-One thing that was revealed in testing was that there was an error in the application of Condition\#2. When the telluric mask was shifted to account for barycentric motion of the earth, and the condition of 3 consecutive pixels in the telluric spectra being lower than the limit (due to the higher sampling) there was an software bug,
+One thing that was revealed in testing was that there was an error in the application of Condition~\#2. When the telluric mask was shifted to account for barycentric motion of the earth, and the condition of 3 consecutive pixels in the telluric spectra being lower than the limit (due to the higher sampling) there was an software bug,
 
 
 A check for this issue was discovered using this unit test.
@@ -355,10 +355,10 @@ def test_telluric_masking(wavelength, transmission):
 \end{lstlisting}
 The assert statements checks that when the mask is applied to the transmission spectrum again all of the values are outside of any deep telluric regions. A test like this would have caught this bug.
 
-This bug means that all the {RV} precision values for Condition \#2 published in~\citet{figueira_radial_2016} incorrect. As the applied masking was unevenly applied~\citet{figueira_radial_2016} the new values {RV} precision values do not all change in the same proportion or direction. Some specific wavelengths and resolutions are essentially unchanged while other results change by over 20\mps{}.  Even though there is an error with condition \#2 they do not change the overall conclusions of the paper. These are \todo{add conclusions not affected}
+This bug means that all the {RV} precision values for Condition~\#2 published in~\citet{figueira_radial_2016} incorrect. As the applied masking was unevenly applied~\citet{figueira_radial_2016} the new values {RV} precision values do not all change in the same proportion or direction. Some specific wavelengths and resolutions are essentially unchanged while other results change by over 20\mps{}.  Even though there is an error with condition~\#2 they do not change the overall conclusions of the paper. These are \todo{add conclusions not affected}
 
  \subsection{Performance}
-    There was a major performance bottleneck in the convolution stage, which increased the performance around 250X itself. The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range). Turning the result into a numpy array, performing the sum for that pixel and appending it to a list.
+    There was a major performance bottleneck in the convolution stage, which increased the performance around 250\,X itself. The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range). Turning the result into a numpy array, performing the sum for that pixel and appending it to a list.
 
 
 caching convolution result to prevent recomputing the same values. \emph{Joblib}.  Also embarrassingly parallel so added multiprocessing support.
@@ -401,7 +401,7 @@ In our case \(h\) is the difference in wavelength between the two pixels conside
 \frac{\partial A_0(i)}{\partial\lambda(i)} = \frac{A_0(i+1) - A_0(i)}{\lambda(i+1)-\lambda(i)}, \hspace{2em} 1 \leq i \leq n-1.
 \label{eq:ffd_precision}
 \end{equation}
-At each pixel the numerical derivative is evaluated to the average slope between itself and the following pixel and is an approximation to the derivative. This only extends to \(i= n-1\), where \(n\) is the number of points in the spectrum, and the last pixel is dropped from the {RV} calculation.\footnote{This is important in the case of Condition \#2.}
+At each pixel the numerical derivative is evaluated to the average slope between itself and the following pixel and is an approximation to the derivative. This only extends to \(i= n-1\), where \(n\) is the number of points in the spectrum, and the last pixel is dropped from the {RV} calculation.\footnote{This is important in the case of Condition~\#2.}
 
 
 The \emph{gradient}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}}  method provided in Numpy contains a more advanced numerical methods to calculate the derivative. It uses a \textit{compact difference} method~\citep{quarteroni_numerical_2000} which expand the finite differences using a Taylor expansion and then selecting coefficients to minimize the \textit{consistency error}.
@@ -443,16 +443,34 @@ The \emph{gradient} function from Numpy implements central differences for the i
 
 \input{tables/numerical_gradient.tex}
 
-In \fref{fig:gradients} we visualize the gradients of two small spectral regions computed with the original {FFD}, and the higher precision version incorporated in numpy's gradient function. The top panels contain the spectrum in the small regions shown, indicating a large spectral line and three small lines near the continuum respectively. The derivative of the spectra is shown in the bottom panel with the {FFD} method shown with \emph{blue squares} and the numpy gradient shown in \emph{green stars}. The \emph{orange circles} are the same as {FFD} but shifted horizontally to the midpoints between  pixels. This is for illustrative purposes and to assess the effect of this offset when calculating the pixel weights.
+In \fref{fig:gradients} we visualize the gradients of two small spectral regions computed with the original {FFD}, and the higher precision version incorporated in numpy's gradient function. 
+The top panels contain the spectrum in the small regions shown, indicating a large spectral line and three small lines near the continuum respectively. 
+The derivative of the spectra is shown in the bottom panel with the {FFD} method shown with \emph{blue squares} and the numpy gradient shown in \emph{green stars}. 
+The \emph{orange circles} are the same as {FFD} but shifted horizontally to the midpoints between  pixels. 
+This is for illustrative purposes and to assess the effect of this offset when calculating the pixel weights.
 
-There a three notable features observed between gradient methods. The first, which is expected from the {FFD} formulation is that the {FFD} gradient is offset to the left. The second is that when the horizontal offset is adjusted (orange circles) the gradients lie along the same curve. Both methods are trying to approximate the real gradient function of the spectrum and is again expected.
-The most important feature observed in this though is that there is a slight over-estimate of the gradient by the {FFD} method at the peaks. In the bottom panels of \fref{fig:gradients}, the points of highest gradient are always from the {FFD} method (blue/orange). This is the case for all spectral lines and as the optimal pixel weights are proportional to the gradient squared the {FFD} method will apply slightly higher pixel weights to these values, two points per line in the spectrum. The {FFD} will therefore produce a slightly smaller \(\delta V_{RMS}\) error compared to the more precise gradient function.
+There a three notable features observed between gradient methods. 
+The first, which is expected from the {FFD} formulation is that the {FFD} gradient is offset to the left. 
+The second is that when the horizontal offset is adjusted (orange circles) the gradients lie along the same curve. 
+Both methods are trying to approximate the real gradient function of the spectrum and is again expected.
+The most important feature observed in this though is that there is a slight over-estimate of the gradient by the {FFD} method at the peaks. 
+In the bottom panels of \fref{fig:gradients}, the points of highest gradient are always from the {FFD} method (blue/orange). 
+This is the case for all spectral lines and as the optimal pixel weights are proportional to the gradient squared the {FFD} method will apply slightly higher pixel weights to these values, two points per line in the spectrum. 
+The {FFD} will therefore produce a slightly smaller \(\delta V_{RMS}\) error compared to the more precise gradient function.
 
 In \tref{tab:numerical_gradients} we calculate the  \(\delta V_{RMS}\) using both gradient methods to determine their relative effect on the {RV} precision.
 
-We took a {PHOENIX-ACES} spectrum with \teff{}=3\,900\K{}, corresponding to M0 spectral type. The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1. In this case the {RV} precisions are not comparable between bands and are only to assess the direct effect of the changing the numerical gradient. The bands name and the spanned wavelength are given. The columns A, B, C are the {RV} precision for the different gradient methods. The \(\delta V\) ratios are the relative difference in {RV} when changing from method A (the original {FFD}) to methods B and C. In this table column B is the {FFD} method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \fref{fig:gradients} while column C is the more precise gradient from numpy.
+We took a {PHOENIX-ACES} spectrum with \teff{}=3\,900\K{}, corresponding to {{M0}} spectral type. 
+The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1. 
+In this case the {RV} precisions are not comparable between bands and are only to assess the direct effect of the changing the numerical gradient. 
+The bands name and the spanned wavelength are given. 
+The columns A, B, C are the {RV} precision for the different gradient methods. 
+The \(\delta V\) ratios are the relative difference in {RV} when changing from method A (the original {FFD}) to methods B and C. 
+In this table column B is the {FFD} method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \fref{fig:gradients} while column C is the more precise gradient from numpy.
 
-We find that changing to use the gradient from numpy increases the \(\delta V_{RMS}\) by 2.5--7\%, (decreasing the {RV} precision), due to the over-estimated gradient from the {FFD} method. As the pixel weights \eref{eq:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the {RV} precision, visible in \fref{fig:gradients}. This small wavelength shift red-ward does changed the {RV} precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using numpy's gradient method.
+We find that changing to use the gradient from numpy increases the \(\delta V_{RMS}\) by 2.5--7\%, (decreasing the {RV} precision), due to the over-estimated gradient from the {FFD} method. 
+As the pixel weights \eref{eq:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the {RV} precision, visible in \fref{fig:gradients}. 
+This small wavelength shift red-ward does changed the {RV} precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using numpy's gradient method.
 
 Changing the method of numerical derivatives will change all the precision values given in the~\citet{figueira_radial_2016}. This is a small impact on on the precision compared to other components of the {RV} precision. For instance from \eref{eq:rv_SNR} a increase in \(\delta V_{RMS}\) of between 2.5--7\%  could equally be caused by a small decrease in the {SNR} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
 
@@ -478,23 +496,23 @@ M_3(i) &= {T(i)}^{2} \label{eq:mask3}
 Here, \(T(i)\) is the telluric transmission spectrum, while \(\tau\) is the transmission depth cut-off. For instance to mask out telluric lines deeper than 2\%,  \(\tau\) would be set at 0.98.
 
 \begin{itemize}
-    \item Condition \#1:
+    \item Condition~\#1:
     The first mask, \(M_1\), is the simplest case in which all pixel weights are treated equally. No telluric line masking is considered.
 
-    \item Condition \#2:
+    \item Condition~\#2:
     In the second mask, \(M_2\), the telluric line transmission, \(T(i)\) is used to create a boolean mask of 0's and 1's. When applying this mask to the pixel weights, the pixels effected by telluric lines have 0 weight, removing their contribution to the {\red{} \(RV_{RMS}\)}. Accounting for seasonal variation in Earth's barycentric motion can be easily incorporated into this mask, widening the regions masked out.
 
-    \item Condition \#3:
-    The third mask, \(M_3\), assumes the application of perfect telluric correction consistent with Condition \#3. The pixel weights are modified by dividing the flux variance by the square of the transmission spectrum \reference{cite the equation when I refer to it}. As the flux variance is the denominator of \eref{eq:optimal_weight}, this is equivalent to multiplication of the weights by a mask of the form \(M_3\).
+    \item Condition~\#3:
+    The third mask, \(M_3\), assumes the application of perfect telluric correction consistent with Condition~\#3. The pixel weights are modified by dividing the flux variance by the square of the transmission spectrum \reference{cite the equation when I refer to it}. As the flux variance is the denominator of \eref{eq:optimal_weight}, this is equivalent to multiplication of the weights by a mask of the form \(M_3\).
 \end{itemize}
 
-Having the three masks defined in this way makes the implementation of the {RV} precision simpler. In the original version there were three separate implementations, one for each condition. With this, \todo{Check this if it is previous}{as mentioned previously} there was a issue with the implementation of Condition \#2.
+Having the three masks defined in this way makes the implementation of the {RV} precision simpler. In the original version there were three separate implementations, one for each condition. With this, \todo{Check this if it is previous}{as mentioned previously} there was a issue with the implementation of Condition~\#2.
 
 \subsubsection{Masking order}
 \label{subsubsec:masking_order}
 The order in which the masking is preformed is also important. Masking should be applied only after calculation of the pixel weights. As the pixel weights depend on neighbouring points (through the calculation of the gradients), prematurely removing pixels will affect the precision results.
 
-The original implementation of Condition \#2 did just this, splitting the spectra into small sections in between the masked off telluric lines. The {\red{}\(RV_{RMS}\)} is calculated for each section and then the results are combined as the weighted error in {\red{} \eref{XXX}} \todo{weighted sum equation}. Analytically this identical to masking the pixel weights with \(M_2\) but not in practice when numerically implemented. \todo{Should I show the working of analytical working out of this in an appendix, or here?}
+The original implementation of Condition~\#2 did just this, splitting the spectra into small sections in between the masked off telluric lines. The {\red{}\(RV_{RMS}\)} is calculated for each section and then the results are combined as the weighted error in {\red{} \eref{XXX}} \todo{weighted sum equation}. Analytically this identical to masking the pixel weights with \(M_2\) but not in practice when numerically implemented. \todo{Should I show the working of analytical working out of this in an appendix, or here?}
 
 When the spectrum is split into small sections the number of edges increases and the number of pixels affected by any edge effects increases. Using the {FFD} method to compute the gradient the last pixel is removed/lost. A spectrum split in \(m\) sub-spectra will therefore lose \(m\) pixels due to edge effects (instead of only 1 pixel with the full spectrum).
 Even the numpy gradient is not immune to the edge effects in the sub-spectra when splitting the spectrum first. Even though there is no pixels lost, the first and last pixels of each sub-spectra are computed using forward or backward differences, rather than central differences (as they would be in the full spectrum). Hence the gradients and weights of some pixels are slightly changed due to the splitting occurring first.
@@ -509,7 +527,7 @@ The code has been adjusted to consistently apply the masking after the pixel wei
 
 \input{tables/mask_ordering}
 
-{\red{} For Condition \#2 in which there was an error there is no meaningful relation between the new and old values. \todo{put this line elsewhere.}}
+{\red{} For Condition~\#2 in which there was an error there is no meaningful relation between the new and old values. \todo{put this line elsewhere.}}
 
 
 
@@ -529,7 +547,7 @@ An automated {SNR} scaling procedure was created to remove the hard-coded values
 
 This automated procedure enabled {\red{}\textbf{4}} different features.
 \begin{itemize}
-\item The ability to analysis other spectral models, not just corresponding to M0, M3, M6, M9 spectral types.
+\item The ability to analysis other spectral models, not just corresponding to {M0}, {M3}, {M6}, {M9} spectral types.
     - Scaling to a {SNR} per pixel level other than 100.
 \item    A {SNR} per pixel other than 100 can be selected.
     - Allowing for other sampling levels (if desired)
@@ -553,7 +571,7 @@ Having this tool to calculate {RV} precisions efficiently lead to contributions 
 
 In September 2017 we were requested to provide precision calculations for the SPIRou ETC\footnote{\url{http://www.cfht.hawaii.edu/Instruments/SPIRou/SPIRou_etc.php}}. These were the same table as~\citet{figueira_radial_2016} but with a each band referenced to 100 {SNR} in its own band. The modification to use the centre of any band was made to fulfil this request. Notes on the telluric correction issue affect on Condition. 2.
 
-In May 2018 we were requested to provide precision calculations for the NIRPS {ETC}.\@ This extended the spectral range from M0, M3, M6, M9 at 3\,900, 3\,500, 2\,800, 2\,600\K{} respectively, but to all temperatures between 2\,500 and 4\,000\K{} inclusively. This provides a finer resolution coverage over the M spectral type, allowed by the {PHOENIX-ACES} library.
+In May 2018 we were requested to provide precision calculations for the NIRPS {ETC}.\@ This extended the spectral range from {M0}, {M3}, {M6}, {M9} at 3\,900, 3\,500, 2\,800, 2\,600\K{} respectively, but to all temperatures between 2\,500 and 4\,000\K{} inclusively. This provides a finer resolution coverage over the M spectral type, allowed by the {PHOENIX-ACES} library.
 Instrumental resolutions of 75,000 and 100\,000 were requested to match the NIRPS instrument.
 The \logg{} and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
 Precisions were provided for {SNR} of 100 relative to the \emph{J}-, \emph{H}-bands as well as to each band individually. Artigua 2018. (private communication 2018)\todo{Check how to cite priv communication properly} suggested the truly relevant value is the {SNR} in \emph{H}-band for NIRPS radial velocities.
@@ -561,7 +579,7 @@ Precisions were provided for {SNR} of 100 relative to the \emph{J}-, \emph{H}-ba
 A table of the precisions created for the NIRPS ETC are provided as an online table to our publication \textit{Neal et al. 2018b (in prep.)}\footnote{Available at \href{blah}{blah}} \unfinished{Inlcude correct links}
 
 
-These values were both calculated and provided using the {FFD} gradient and with the incorrect masking order for Condition \#2, splitting before calculating the pixel weights. As we demonstrated in \sref{sec:numerical_gradient} and~\ref{subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
+These values were both calculated and provided using the {FFD} gradient and with the incorrect masking order for Condition~\#2, splitting before calculating the pixel weights. As we demonstrated in \sref{sec:numerical_gradient} and~\ref{subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
 
 
 
