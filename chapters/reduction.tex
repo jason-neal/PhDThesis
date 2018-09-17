@@ -14,14 +14,12 @@ The work performed relies on high resolution \nir{} spectra, obtained around 2.1
 
 
 \section{NIR spectroscopy}
-\todo{}{}
-Specifics of \nir{} verse optical
+To perform spectroscopy requires an instrument called a spectrograph. The purpose of which is to take the incoming star light and separate it into its different wavelength (think colours in the visible). All spectrograph's are comprised of a few key components. The first part is the front end optics responsible for collecting the light and getting it to the spectrograph, such as a telescope. The second part dispersive elements inside the spectrograph, such as a prism or grating used to separate the wavelength components. The final part is the detector or camera, used to recording the resulting spectrum.
 
-NIR spectroscopy requires the use of CMOS detectors which are a different technology to the more commonly known CCD's. Their use is required in the \nir{} as the quantum efficiency (how well it measures photons) for CCD's although great for visible is poor in the \nir{}. CMOS detectors have a higher quantum efficiency in the \nir{}.
-\change{rearrange/reorganize this paragraph.}
+The design of spectrographs is highly dependant on the wavelength range observed. For instance CCD cameras (based on Silicon) are readily used in the optical but silicon is a  poor detector at \nir{} wavelengths. Instead \nir{} spectrographs need to use CMOS detectors which are composed of different materials to be are sensitive to different wavelengths. CRIRES detectors specifically are made of \ce{InSb} (Indium antimonide) to perform spectroscopy between 1-5\mum{}~\cite{dorn_crires_2004}. 
+Other considerations are needed such as the composition of the optical components as well as any anti-reflection coatings used, all of which have different wavelength characteristics that need to be matched.
 
-CCD based on Silicon which doesn't work with \nir{}
-
+\todo{I don't know where I am going with this section.}
 
 \subsection{General reduction Concepts}
 \label{subsec:nirreduction}
