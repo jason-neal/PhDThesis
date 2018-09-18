@@ -21,7 +21,7 @@ We use the Keplerian orbit {RV} equation to estimate the {RV} of the host and co
 \label{eq:rv_equation}
 {RV} = K [\cos{(\nu(t) + \omega)} + e\cos{(\omega)}]
 \end{equation}
-Here, \emph{K} is the \emph{semi-major amplitude}, \(\nu\) is the \emph{true anomaly}, \(e\) is the orbital \emph{eccentricity}, and \(omega\) is the \emph{argument of periastron}. The true anomaly is not only a function time, \(t\), but also the orbital period \(P\),  the \emph{time of periastron passage}, \(T_0\), and eccentricity. The literature parameters for each target are provided in Table~\ref{tab:orbitparams}.
+Here, \emph{K} is the \emph{semi-major amplitude}, \(\nu\) is the \emph{true anomaly}, \(e\) is the orbital \emph{eccentricity}, and \(omega\) is the \emph{argument of periastron}. The true anomaly is not only a function time, \(t\), but also the orbital period \(P\), the \emph{time of periastron passage}, \(T_0\), and eccentricity. The literature parameters for each target are provided in Table~\ref{tab:orbitparams}.
 To determine the {RV} of the companion we transformed the {RV} semi-amplitude of the host \(K_{1} \) into the semi-amplitude for the companion \(K_{2} \) using the mass ratio,
 \begin{equation}
 \label{eqn:mass_ratio}
@@ -68,7 +68,7 @@ There is also a script available which operates in reverse. Given a host name, a
 \label{sec:companion_RV}
 \emph{These sections might be unnecessary}\\
 
-To calculate the {RV} of the companion at the time of each observation. For a two-body system the {RV} semi-amplitude of the companion \(\textrm{K}_{2}\) can be determined from the orbital host-companion mass ratio $q = \textrm{M}_{1}/\textrm{M}_{2} = \textrm{K}_{2}/\textrm{K}_{1}$.
+To calculate the {RV} of the companion at the time of each observation. For a two-body system the {RV} semi-amplitude of the companion \(\textrm{K}_{2}\) can be determined from the orbital host-companion mass ratio \[q = \textrm{M}_{1}/\textrm{M}_{2} = \textrm{K}_{2}/\textrm{K}_{1}\label{eqn:q_ratio_K2}\].
 Note, that for the targets in which only the minimum mass (msini) is known, this will give the maximum {RV} semi-amplitude of the companion.
 This relation was used to estimate \(\textrm{K}_2\) for the companion from the minimum mass or mass we have for each companion. These values along with the other orbital parameters of the system were use to calculate the {RV} of the companions for each observation. These values are provided with the observations in \tref{tab:observations}.
 
