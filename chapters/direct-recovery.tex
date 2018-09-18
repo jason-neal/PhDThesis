@@ -44,48 +44,6 @@ Due to the poorly separated observation times relative to the long orbital perio
 }
 
 
-\section{Direct Subtraction Method}
-\label{sec:direct-subtraction}
-Here we outline the direct subtraction method used, which is similar to previous works~\citep{ferluga_separating_1997,kostogryz_spectral_2013}. Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately, the spectrum received from the host-companion pair is given by the superposition of two spectral components (\(J_{1}\), \(J_{2}\)), where \(\lambda-v\) represents the Doppler shift \(\lambda(1-v/c)\) by velocity \(v\).
-\begin{equation}
-\textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2})
-\end{equation}
-or shifted to the host stars rest frame,
-\begin{equation}
-\textrm{I}(\lambda + v_{1}) = \textrm{J}_{1}(\lambda) + \textrm{J}_{2}(\lambda - v_{2} + v_{1})
-\end{equation}
-Here, the subscripts 1 and 2 indicate the spectrum of the host and companion respectively, and \(\lambda\) represents the wavelength of the spectra.
-The spectra of the host star (\(\textrm{J}_{1}\)) is removed though the mutual subtraction of the host spectrum from two separate observations, denoted with subscripts \(a\) and \(b\), correcting for {RV} motion of the host star.
-\begin{align}
-S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
-&= \textrm{J}_{2}(\lambda - v_{2a} + v_{1a}) - \textrm{J}_{2}(\lambda - v_{2b}  + v_{1b}) \nonumber \\
-%  &= \textrm{J}_{2}(\lambda - v_{2a}) - \textrm{J}_{2}(\lambda - v_{2b} - v_{1a} + v_{1b}) \nonumber \\
-S(\lambda + v_{2a}) &= \textrm{J}_{2}(\lambda) - \textrm{J}_{2}(\lambda + \Delta {RV}) \label{eqn:sprofile}
-\end{align}
-where,
-\begin{equation}
-\Delta {RV} = v_{2a} - v_{2b} - v_{1a} + v_{1b} \label{eqn:k}
-\end{equation}
-
-is the actual {RV} difference (\(\Delta {RV}\)) between the two companion spectra.
-
-The resulting differential spectra, dubbed \emph{s-profile} by~\citet{ferluga_separating_1997}, is composed of just the companion spectra, shifted and subtracted from itself.
-
-From binary dynamics~\citep[e.g.,][]{murray_keplerian_2010} the {RV} amplitudes of the host and companion are related through the mass ratio, \(q\), while having an opposite sign.
-\begin{align}
-v_{2}  &= -\textrm{q} * v_{1} \label{eqn:q_relation}
-\end{align}
-This equation was used to calculate the expected companion {RV} for each observation in \tref{tab:observations}.
-
-We can simplify \eref{eqn:k} by expressing it in terms of the host {RV} and mass ratio,
-\begin{align}
-k &= -q v_{1a} + q v_{1b} + v_{1a} - v_{1b} \nonumber \\
-&= (1 - \textrm{q})(v_{1a} - v_{1b}). \label{eqn:k_simplified}
-\end{align}
-If we are able to determine the \(\Delta {RV}\) between the the companion spectra, k, from the s-profile~\citep[see][]{ferluga_separating_1997} then we can determine the mass ratio of the system, q, thereby constraining the mass of the companion. The values \(v_{1a}\) and \(v_{1b}\) are calculated from the orbital parameters of the system and are the same values already used to shift and mutually cancel the host spectrum.
-
-This method is very similar to~\citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated.
-
 
 
 
@@ -327,10 +285,73 @@ The sampling of points in the RV curve reveal that the choice of points was not 
 \todo{An example of varying inclination or changing mass. Can use to show how 2 points add further constraint to the RV curve}
 
 
+\section{Direct Subtraction Method}
+\label{sec:direct-subtraction}
+Here we present the direct subtraction method used, which is similar to previous works~\citep{ferluga_separating_1997,kostogryz_spectral_2013}. Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately the spectra of the observed targets are assumed to composed of two components. A bright host star blended with the faint companion. The spectrum received from the host-companion pair is given by the superposition of two spectral components (\(J_{1}\), \(J_{2}\)):
+\begin{equation}
+\textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2})
+\end{equation}
+where the subscripts 1 and 2 indicate the spectrum of the host and companion respectively, and \(\lambda\) represents the wavelength of the spectra and \(\lambda-v\) represents the Doppler shift \(\lambda(1-v/c)\) by a velocity \(v\).
+
+This can be shifted into the rest frame of the host star by applying the shift \(v_1\):
+\begin{equation}
+\textrm{I}(\lambda + v_{1}) = \textrm{J}_{1}(\lambda) + \textrm{J}_{2}(\lambda - v_{2} + v_{1})
+\end{equation}
+
+To analyse \(J_2\), the spectral component of interest, the component from the host needs to be carefully removed. If two observations of the same target are observed, denoted with subscripts \(a\) and \(b\), there will be relative motion between the components due to the orbit. Assuming that the stellar spectra do not change over time (\(J_{1a} = J_{2a}\)) and each spectrum can be individually Doppler shifted to the rest frame of the host star \(J_1{\lambda}\), then the spectrum of the host star (\(\textrm{J}_{1}\)) can be removed though subtraction of the two observations. Mutually cancelling the host component while leaving two components of the companion, with a relative Doppler shift between them. 
+
+\begin{align}
+S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
+&= (\textrm{J}_{1a} + \textrm{J}_{2a}(\lambda - v_{2a} + v_{1a})) - (\textrm{J}_{2b} +\textrm{J}_{2b}(\lambda - v_{2b} + v_{1b})) \nonumber \\
+&= \textrm{J}_{2a}(\lambda - v_{2a} + v_{1a}) - \textrm{J}_{2b}(\lambda - v_{2b} + v_{1b}) \nonumber \\
+% &= \textrm{J}_{2}(\lambda - v_{2a}) - \textrm{J}_{2}(\lambda - v_{2b} - v_{1a} + v_{1b}) \nonumber \\
+S(\lambda + v_{2a}-v_{1a}) &= \textrm{J}_{2a}(\lambda) - \textrm{J}_{2b}(\lambda - v_{2b} - v_{1a} + v_{1b} + v_{2a}) \label{eqn:sprofile}
+S(\lambda') &= \textrm{J}_{2a}(\lambda) - \textrm{J}_{2b}(\lambda - \Delta {RV}_2) \label{eqn:sprofile}
+\end{align}
+
+where,
+\begin{equation}
+\Delta {RV}_2 = v_{1a} - v_{1b} - v_{2a} + v_{2b} \label{eqn:companion_difference}
+\end{equation}
+
+is the {RV} difference between the two companion spectral components when the host components are mutually subtracted.
+and \(\lambda' = \lambda + v_{2a}-v_{1a}\)
+
+The resulting differential spectra \(S{\lambda'}\), dubbed \emph{s-profile} by~\citet{ferluga_separating_1997}, is composed of just the companion spectra, shifted and subtracted from itself.
+
+\cite{ferluga_separating_1997} even provide a analytical form for the \emph{s-profile} a single Gaussian line :
+ ....\begin{equation}
+ S(\lambda) = 
+ \end{equation}
+where...
 
 
+From binary dynamics~\citep[e.g.,][]{murray_keplerian_2010} the {RV} amplitudes of the host and companion are related through the mass ratio, \(q\), while having an opposite sign, due to their phase:
+\begin{align}
+v_{2} &= -q * v_{1} \label{eqn:q_relation}
+\end{align}
+
+We can simplify \eref{eqn:companion_difference} by expressing it in terms of the mass ratio and host {RV} only:
+
+\begin{align}
+\Delta RV_2 &= q v_{1a} - q v_{1b} + v_{1a} - v_{1b} \nonumber \\
+&= (1 + q)(v_{1a} - v_{1b}). \label{eqn:companion_difference_simplified}
+\end{align}
+
+If the \(\Delta {RV}_2\) between the companion spectra is able to be derived from the s-profile~\citep[see][]{ferluga_separating_1997} then we can determine the mass ratio of the system, \(q\), thereby constraining the mass of the companion.
+
+The values \(v_{1a}\) and \(v_{1b}\) are radial velocity of the host components. The values we use calculated using the RV equation \ref{eq:rv_equation} using the orbital parameters from the literature and provided in \ref{tab:orbitparams} and are used to shift each spectra to the hosts rest frame. These components can also be determined directly from the spectrum by cross-correlating the observed spectrum with a stellar template of the host and were in reasonable agreement. The same values already used to shift and mutually cancel the host spectrum.
+
+There should be checks for consistency between \(v_{1a}\), \(v_{1b}\) and how well the host component is removed in the s-profile.
+
+\textbf{If v1a and v1b are incorrect what will happen to q?}
+
+\todo{put elsewhere}{\eref{eqn:q_relation} was used to calculate the expected companion {RV} for each observation in \tref{tab:observations}.}
 
 
+Example simulations?
+
+negative auto correlation of companion spectra 
 
 \input{./tables/stellar_params}
 \input{./tables/orbital_params}
