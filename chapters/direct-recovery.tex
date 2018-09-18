@@ -160,21 +160,9 @@ In the synthetic spectrum (and of course real spectra) neighbouring spectral lin
 
 
 
-\section{Estimating Companion-host Flux ratio}
 
-\unfinished{Move location / adjust from paper}
-\label{compaion flux ration}
-The companion-host flux or contrast ratio of the systems are calculated using \(\frac{F_{2}}{F_{1}} \approx 2.512^{m_{1}-m_{2}}\), where \(m_{1}\) and \(m_{2}\) are the magnitude of the host and companion respectively.\ \(m_{1}\) is the magnitude of the host in the literature, while \(m_{2}\) is obtained from stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass (or \(M_{2}\sin{i}\)) and the host's age.
-If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario).
-The models, interpolated to the companion mass, also provide a first estimate of companion properties such as \(\teff{}\), \logg{}, \(R/R_{\odot}\) and the magnitude in many wavelength bands.
-We use the \emph{K}-band magnitude specifically for this work to estimate the flux ratio between the host and companion using the host \emph{K}-band magnitude obtained from {SIMBAD}~\citep{wenger_simbad_2000}.
-Our flux ratio estimates are presented in table~\ref{tab:flux_table}.
-The companion \(\teff{}\) and \logg{} values specifically are used to influence the selection of synthetic model grids to perform the \textchisquared{} analysis over.
 
-\subsection{Baraffe tables}
-A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to estimate the host-companion flux ratio using the~\citep{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables. The minimum requirements are the host star name, the companion mass and a stellar/system age. The host's name is used to query the {SIMBAD} database to obtain available stellar properties, specifically for this work the photometric \textit{K}-band magnitudes and parallax. There are several Baraffe tables for different stellar ages. If the age given does not correspond to a published table then interpolation between two tables is preformed. The table selected is interpolated to the companion mass provided and the entries returned.
 
-There is also a script available which operates in reverse. Given a host name, age, and a flux ratio it will find the table position and corresponding companion mass that It can also work in reverse to estimate the companion mass when provided with a flux ratio value.
 
 
 
@@ -339,13 +327,8 @@ The sampling of points in the RV curve reveal that the choice of points was not 
 \todo{An example of varying inclination or changing mass. Can use to show how 2 points add further constraint to the RV curve}
 
 
-\subsection{Estimating Companion-host Flux ratio}
-\label{compaion flux ration}
-The companion-host flux or contrast ratio of the systems are calculated using \( \frac{F_{2}}{F_{1}} \approx 2.512^{m_{1}-m_{2}} \), where \(m_{1} \) and \(m_{2} \) are the magnitude of the host and companion respectively. The noise ratio between the host and companion is also calculated using \(N_{2}/N_{1} = \sqrt{2} \times\sqrt{F_{1}/F_{2}}\).  For this work we specifically use the magnitudes in \textit{K}-band. The magnitudes of the hosts, \(m_{1} \), are obtained from SIMBAD~\citep{wenger_simbad_2000} while the magnitudes for the companions, \(m_{2} \), are estimated from stellar evolution models~\citet{baraffe_evolutionary_2003, baraffe_new_2015}. The stellar evolution models are interpolated to the companion mass (or \(M_{2}\sin{i}\)) and system age, then the magnitude in the \textit{K}-band magnitudes extracted. The \textit{K}-band magnitudes, used for the host and companions along with the calculated flux ratio for each target is given in Table~\ref{tab:estimatedparameters}. For the companions in which only the minimum mass is known then the flux-ratio will be the lower limit, or worst case scenario.
 
-These evolution models also provide a first estimate of the companions other properties such as \(\teff{}\), \logg{}, \(R/R_{\odot}\) and the magnitude in many other wavelength bands.  The companion \(\teff{}\) and \logg{} values specifically were utilized to influence the selection of synthetic model grids to perform the \(\chi^2\) analysis over in Section~\ref{sec:results}.
 
-A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to calculate the flux ratio using the~\citep{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables. Given the host star name, the companion mass and a stellar age it interpolates the available Baraffe tables to the companion mass and age specified. The host's name is used to query the {SIMBAD} database to obtain stellar properties, specifically magnitudes, to calculate the flux ratios. It can also work in reverse to estimate a companion mass when provided with a flux ratio.
 
 
 
