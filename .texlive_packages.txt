@@ -83,3 +83,5 @@ mdframed
 newtx
 fontaxes
 needspace
+texlive-fonts-recommended
+boondox
