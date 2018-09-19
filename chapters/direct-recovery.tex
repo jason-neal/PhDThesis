@@ -45,7 +45,7 @@ We note that the orbital parameters of some targets have been refined in the lit
 
 \subsection{CRIRES data}
 \label{subsec:CRIRES}
-Observations were performed with the {CRIRES} instrument~\citep{kaeufl_crires_2004} configured to observe a narrow wavelength domain of the \emph{K}-band between 2\,120--2\,160\nm{}. The slit width of \(0.4\arcsecond\) resulted in an instrumental resolving power of \(\rm R=50\,000\)\footnote{The rule of thumb resolution for {CRIRES} is \(100\,000\frac{0.2\arcsecond}{slit width}\)}. No adaptive optics were used to ensure that the entrance slit was entirely covered by each target. This is to prevent strong slit illumination variations that could change the shape of spectral lines.
+Observations were performed with the {CRIRES} instrument~\citep{kaeufl_crires_2004} configured to observe a narrow wavelength domain of the \emph{K}-band between 2\,120--2\,160\nm{}. The slit width of \(0.4^{\prime\prime}\) resulted in an instrumental resolving power of \(\rm R=50\,000\)\footnote{The rule of thumb resolution for {CRIRES} is \(100\,000\frac{0.2^{\prime\prime}}{slit width}\)}. No adaptive optics were used to ensure that the entrance slit was entirely covered by each target. This is to prevent strong slit illumination variations that could change the shape of spectral lines.
 
 The observations were performed in service mode during Period 89 with run {ID.~089.C-0977(A)} between April and August 2012. An single observation is composed of eight individual spectra with an integration time of 180\si{\second} each, observed in the {ABBAABBA} nod cycle pattern to obtain a high signal-to-noise (>100) when combined. The list of observations obtained with {CRIRES} are provided in \tref{tab:observations}.
 
@@ -211,7 +211,7 @@ S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}
 &= (\textrm{J}_{1a} + \textrm{J}_{2a}(\lambda - v_{2a} + v_{1a})) - (\textrm{J}_{2b} +\textrm{J}_{2b}(\lambda - v_{2b} + v_{1b})) \nonumber \\
 &= \textrm{J}_{2a}(\lambda - v_{2a} + v_{1a}) - \textrm{J}_{2b}(\lambda - v_{2b} + v_{1b}) \nonumber \\
 % &= \textrm{J}_{2}(\lambda - v_{2a}) - \textrm{J}_{2}(\lambda - v_{2b} - v_{1a} + v_{1b}) \nonumber \\
-S(\lambda + v_{2a}-v_{1a}) &= \textrm{J}_{2a}(\lambda) - \textrm{J}_{2b}(\lambda - v_{2b} - v_{1a} + v_{1b} + v_{2a}) \label{eqn:sprofile}
+S(\lambda + v_{2a}-v_{1a}) &= \textrm{J}_{2a}(\lambda) - \textrm{J}_{2b}(\lambda - v_{2b} - v_{1a} + v_{1b} + v_{2a})
 S(\lambda') &= \textrm{J}_{2a}(\lambda) - \textrm{J}_{2b}(\lambda - \Delta {RV}_2) \label{eqn:sprofile}
 \end{align}
 
@@ -349,7 +349,7 @@ CHECK out LOCKWOOD 2014 - maximum likelihood with todcor 1e-4 flux ratio double 
 
 
 
-\section{Direct recovery in the {\mir{}}}
+\section{Direct recovery in the \mir{}}
 \todo{find the correct notebook and fill this in. revise emails with Pedro.}
 In early 2015 it was investigated if this technique could be extended into the mid-infrared {\mir{}} domain.
 There were two reasons for this, to develop some experience with the {\mir{}} domain where the contrast ratios are higher and because we were unaware of high-resolution \nir{} instrument available, as {CRIRES} was being upgraded to {CRIRES+}.
