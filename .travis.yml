@@ -7,9 +7,9 @@ cache:
     - $HOME/.texlive
  
 script:
-    # Prefix command with travis_wait x so it times out after 3 mins, because when the LaTeX doesn't compile pdflatex just hangs instead of quitting.
-  - travis_wait 3 make build
-  - travis_wait 3 make pdf
+    # Prefix command with travis_wait x so it times out after 5 mins, because when the LaTeX doesn't compile pdflatex just hangs instead of quitting.
+  - travis_wait 5 make build
+  - travis_wait 5 make pdf
 
 
 before_deploy:
