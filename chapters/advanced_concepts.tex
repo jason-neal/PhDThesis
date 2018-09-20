@@ -40,7 +40,7 @@ f &= f(x, y, z, \ldots)\\
 
 
 \subsection{Estimating Companion-host Flux ratio}
-\label{compaion flux ration}
+\label{compaion flux ratio}
 The companion-host flux or contrast ratio of the systems are calculated using \( \frac{F_{2}}{F_{1}} \approx 2.512^{m_{1}-m_{2}} \), where \(m_{1} \) and \(m_{2} \) are the magnitude of the host and companion respectively. The noise ratio between the host and companion is also calculated using \(N_{2}/N_{1} = \sqrt{2} \times\sqrt{F_{1}/F_{2}}\).  For this work we specifically use the magnitudes in \textit{K}-band. The magnitudes of the hosts, \(m_{1} \), are obtained from SIMBAD~\citep{wenger_simbad_2000} while the magnitudes for the companions, \(m_{2} \), are estimated from stellar evolution models~\citet{baraffe_evolutionary_2003, baraffe_new_2015}. The stellar evolution models are interpolated to the companion mass (or \(M_{2}\sin{i}\)) and system age, then the magnitude in the \textit{K}-band magnitudes extracted. The \textit{K}-band magnitudes, used for the host and companions along with the calculated flux ratio for each target is given in Table~\ref{tab:estimatedparameters}. For the companions in which only the minimum mass is known then the flux-ratio will be the lower limit, or worst case scenario. This technique is used thoughout this work to estimate the flux ratio of the companions we analyse.
 
 These evolution models also provide a first estimate of the companions other properties such as \(\teff{}\), \logg{}, \(R/R_{\odot}\) and the magnitude in many other wavelength bands. The companion \(\teff{}\) and \logg{} values specifically were utilized to influence the selection of synthetic model grids to perform the \(\chi^2\) analysis over in Section~\ref{sec:results}.
@@ -49,7 +49,8 @@ A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_t
 
 
 \section{Estimating Companion-host Flux ratio}
-\label{compaion flux ration}
+\todo{combine sections}
+\label{compaion flux ratio2}
 The companion-host flux or contrast ratio of the systems are calculated using \(\frac{F_{2}}{F_{1}} \approx 2.512^{m_{1}-m_{2}}\), where \(m_{1}\) and \(m_{2}\) are the magnitude of the host and companion respectively.\ \(m_{1}\) is the magnitude of the host in the literature, while \(m_{2}\) is obtained from stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015}, using the companion mass (or \(M_{2}\sin{i}\)) and the host's age.
 If only the companion minimum mass is known then this will correspond to the flux ratio lower limit, (or worst case scenario).
 The models, interpolated to the companion mass, also provide a first estimate of companion properties such as \(\teff{}\), \logg{}, \(R/R_{\odot}\) and the magnitude in many wavelength bands.
