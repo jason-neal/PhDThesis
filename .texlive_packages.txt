@@ -85,3 +85,5 @@ fontaxes
 needspace
 texlive-fonts-recommended
 boondox
+cancel
+soul
