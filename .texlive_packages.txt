@@ -87,3 +87,4 @@ texlive-fonts-recommended
 boondox
 cancel
 soul
+genmisc
