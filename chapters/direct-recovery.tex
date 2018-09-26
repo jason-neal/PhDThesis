@@ -34,7 +34,7 @@ The work of~\citet{sahlmann_search_2011} identified several candidate brown dwar
 
 The spectral differential approach was chosen with the goal to constrain the companion masses while minimizing the observational time required to observe. It was deemed that it should be possible to obtain a detection of a companion at 1\% contrast ratio with an exposure time of around 20 minutes. Two observations at ``clearly separate RVs'' were requested to constrain each target. Observations were preformed without telluric standard star observations to avoid the wasted observing time, choosing to instead rely on synthetic model correction (see \ref{subsec:telluric_correction}). The \textit{K}-band was chosen to achieve a high contrast relative to the host star, detected in the extreme V-K colour indexes (>7.8).
 
-The list target host stars are presented in Table~\ref{tab:starparams} along with their stellar parameters, while the companion orbital parameters are provided in Table~\ref{tab:orbitparams}.
+The list target host stars are presented in \tref{tab:starparams} along with their stellar parameters, while the companion orbital parameters are provided in \tref{tab:orbitparams}.
 
 We note that the orbital parameters of some targets have been refined in the literature since the observations took place. For example three candidates have had their masses refined in recent works. The companion to {HD\,211847} was determined to be a low mass star with \(\rm M_2=155~\)\Mjup{}~\citep{moutou_eccentricity_2017}, while the companion to {HD\,4747} was found to have a mass of \(\rm M_2=60~\)\Mjup{}~\citep{crepp_trends_2016}. The two companions of {HD\,202206} (B and c) were found to have masses of \(\rm M_B =93.6\)~\Mjup{} and \(\rm M_c = 17.9\)~\Mjup{}, respectively, classifying {HD\,202206}c as a ``circumbinary brown dwarf''~\citep{benedict_hd_2017}. These three target with recently refined masses (along with {HD\,30501}) create a good set benchmarks to compare any results from the techniques developed here, and show that the masses of these targets do span the BD -- low mass star range. All target companions except {HD\,162020} (P=8.4 days) are in (very) long period orbits (P=0.7--38 years) with masses (or \mtwosini{}) greater than 10~\Mjup{}.
 
@@ -53,6 +53,8 @@ There is a slight inconsistency with the some of the observations, taken in serv
 
 There is also a inconsistency with the ordering of th observations again with {HD\,202206}. The observation that was performed first is labelled as the third in the fits header file.
 
+\todo{Check why the ordering number is incorrect for HD202206. If it is correct like this and is numbered incorrectly in the header then we should mention this.}
+
 The target {HD\,4747} only has one observation. There could be two possible reasons for this, these observations were preformed in service mode as filler and there was time to complete it, or only one observation was requested due to the very long orbital period of the target.
 
 \textbf{Is there a reason for the two different filters?}
@@ -63,11 +65,21 @@ The target {HD\,4747} only has one observation. There could be two possible reas
 
 \textbf{The filters ... using the {Ks} and the {Hx5e-2} filters. Why use the different filters???}
 
-Before we go into detail about the differential subtraction we will first calculate for the observations taken.
+All observations were reduced using the DRACS pipline (see \sref{subsec:pipeline-selection}) with artefact corrections applied.
+They were each wavelength calibrated and corrected for telluric lines following Sections~\ref{subsec:wavecalib} and~\ref{subsec:telluric_correction}.
+The spectra were corrected for Earth's barycentric {RV} using the \emph{helcor} PyAstronomy\footnote{https://pyastronomy.readthedocs.io} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}). 
+Using the date and coordinates of the targets this function calculates the induced RV from the orbital motion of the Earth around the Sun as well as the rotation of the Earth, projected towards the target.
+This calculated RV is then used to apply the appropriate Doppler shift on each spectrum to correct for the Earth's barycentric motion.
 
 
-\subsection{Estimating parameters of observations}
-To estimate the differential amplitude signal we estimated the expected parameters of the impact of the
+\subsection{Calculations using observed times}
+\todo{I am not sure if this is the best location for this section.}
+Before the differential subtraction method is presented, calculations can be preformed to estimate the RV of both components in each observations and the likely separation between the companions between observations.
+The time of each observation is combined with the orbital parameters from \tref{tab:orbitparams} and \eref{} to calculate the RV of the host star (\({RV}_{1}\) in \ref{tab:observations}).
+For the companion the mass or \mtwosini  is used alongside the stellar mass from  possible from \tref{tab:stellarparams} to calculate the RV of the companion  using \todo{~equations for companion rv with the masses still included. include 180 degree angle phase change also}{Equation~\ref{}} (\({RV}_{2}\) in \ref{tab:observations}).
+The difference in RV between the host an companion each observation is also computed as \({rv}_{2} = {RV}_{2}-{RV}_{1}\) although it will not be used until \ref{cha:model_comparison}.
+
+The magnitude of the RV separation of the two companion spectra in the differential \(\Delta RV\) is calculated following \eref{eqn:companion_difference} and provided in \ref{tab:estimated_rv}. this table also contains the estimated semi-major RV amplitude for the companion \(K_2\) and the phase coverage from the observations. The phase coverage is the fraction of the orbit covered between the observations for each target. For {HD\,4747} the \(\Delta RV\) and phase coverage values are missing due to a single observation.
 
 \input{tables/direct_recovery/estimated_rv}
 %\input{tables/old/flux_calculations} % This is the old table.
@@ -117,11 +129,12 @@ $J(\lambda) = 1- D \cdot\exp^{-\pi (\lambda - \lambda_0)^2 /W^2}$:
 where $\lambda_0$, $D$, and $W$ are the central wavelength, depth and equivalent width of the Gaussian line, and $k=\Delta {RV}_2 $ is the shift between the two companion spectra.
 
 
-From binary dynamics~\citep[e.g.,][]{murray_keplerian_2010} the {RV} amplitudes of the host and companion are related through the mass ratio, \(q\), while having an opposite sign, due to their phase:
+From binary dynamics~\citep[e.g.,][]{murray_keplerian_2010} the {RV} amplitudes of the host and companion are related through the mass ratio, \(q\), while having an opposite sign\footnote{The opposite sign arises from a \(180^\circ\) difference in the angle of periapsis, \(\omega\), for the companion.}:
 \begin{align}
 v_{2} &= -q * v_{1} \label{eqn:q_relation}
 \end{align}
-
+\todo{put in advanced concepts chapter???}
+\todo{this ignores $\gamma$}
 We can simplify \eref{eqn:companion_difference} by expressing it in terms of the mass ratio and host {RV} only:
 
 \begin{align}
@@ -129,7 +142,7 @@ We can simplify \eref{eqn:companion_difference} by expressing it in terms of the
 &= (1 + q)(v_{1a} - v_{1b}). \label{eqn:companion_difference_simplified}
 \end{align}
 
-If the \(\Delta {RV}_2\) between the companion spectra is able to be derived from the s-profile~\citep[see][]{ferluga_separating_1997} then we can determine the mass ratio of the system, \(q\), thereby constraining the mass of the companion.
+If the \(\Delta {RV}_2\) between the companion spectra is able to be derived from the s-profile~\citep[see][]{ferluga_separating_1997} then the mass ratio of the system, \(q\), can determined, thereby constraining the mass of the companion.
 
 The values \(v_{1a}\) and \(v_{1b}\) are radial velocity of the host components. The values we use calculated using the RV equation \ref{eq:rv_equation} using the orbital parameters from the literature and provided in \ref{tab:orbitparams} and are used to shift each spectra to the hosts rest frame. These components can also be determined directly from the spectrum by cross-correlating the observed spectrum with a stellar template of the host and were in reasonable agreement. The same values already used to shift and mutually cancel the host spectrum.
 
@@ -137,8 +150,7 @@ There should be checks for consistency between \(v_{1a}\), \(v_{1b}\) and how we
 
 \textbf{If v1a and v1b are incorrect what will happen to q?}
 
-\todo{put elsewhere}{\eref{eqn:q_relation} was used to calculate the expected companion {RV} for each observation in \tref{tab:observations}.}
-
+{\red{} put elsewhere: \eref{eqn:q_relation} was used to calculate the expected companion {RV} for each observation in \tref{tab:observations}.}
 
 Example simulations?
 \missingfigure{simulated example of combined binary spectra, and the subtraction, with a clear companion visible }
@@ -148,7 +160,7 @@ Example simulations?
 \subsection{Results of spectral differential analysis}
 \label{subsec:differential_results}
 
-We applied the spectral differential procedure outlined above on the wavelength-calibrated and telluric-corrected {CRIRES} observations. The spectra were corrected for Earth's barycentric {RV} using the \emph{helcor} PyAstronomy\footnote{https://pyastronomy.readthedocs.io} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}) and Doppler shifted to the rest frame velocity of the system. The spectra were then subtracted from each other and analysed as described above.
+We applied the spectral differential procedure outlined above on the wavelength-calibrated and telluric-corrected {CRIRES} observations. The spectra were first Doppler shifted to the rest frame velocity of the system by applying a shift of \(-\gamma\). The differential subtraction method was then applied by shifting each spectra so that the host lines were at rest and then subtracting one from the other as described above.
 
 It is necessary to have a consistent instrumental setup~\citet{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g.\ slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted. In our case, the second observation of {HD\,202206} and fourth of {HD\,30501} were taken with different filters compared to the other observations. Therefore, these two observations could not be used for this differential analysis. As noted in~\citep{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
 
@@ -161,7 +173,7 @@ To understand the observed differential signal we simulated a differential spect
 
 The amplitude of the differential signal is lower than we expected due to the very low \(\Delta {RV}\) between the observation pairs. The maximum \(\Delta {RV}\) between observation pairs, for the observations investigated in this work, are provided in \tref{tab:estimated_rv}. {\red{} There is no \(\Delta {RV}\) for {HD\,4747} as there was only a single observation. We also provide the phase coverage for our targets. We calculate this as the ratio of time between the observed pairs and the orbital period, and show that the fraction of the orbit covered is very small, all except one covering less than 1 percent of the orbit.}
 
-In our best case, {HD\,30501}, the \(\Delta {RV}\) of the companion between observations is 1.34\kmps{}. For comparison, a single Gaussian absorption line, to be shifted by \(\Delta\lambda = {\fwhm}\) would need a \(\Delta {RV}\) of \(v_{\fwhm} = c/\R =~\sim6\)\kmps{}. Since the \(\Delta {RV}\) are shifted by a smaller value than the {\fwhm}, the spectral lines of the reconstruction mutually cancel themselves, diminishing the amplitude of the differential signal significantly. As the companion spectra are already faint (with a flux ratio at the percent level) the differential signal is not detectable within these observations and noise level.
+In our best case, {HD\,30501}, the \(\Delta {RV}\) of the companion between observations is 1.41\kmps{}. For comparison, a single Gaussian absorption line, to be shifted by \(\Delta\lambda = {\fwhm}\) would need a \(\Delta {RV}\) of \(v_{\fwhm} = c/\R =~\sim6\)\kmps{}. Since the \(\Delta {RV}\) are shifted by a smaller value than the {\fwhm}, the spectral lines of the reconstruction mutually cancel themselves, diminishing the amplitude of the differential signal significantly. As the companion spectra are already faint (with a flux ratio at the percent level) the differential signal is not detectable within these observations and noise level.
 
 When the \(\Delta {RV}\) of the companion is smaller than the {\fwhm} of a line there is a mutual subtraction of the companion spectra, diminishing the detected amplitude of the differential signal, and removing the ability to detect the companions using this method. Observations need to be spaced further apart in time/phase to achieve a larger \(\Delta {RV}\) separation and increase the amplitude of the differential. Of course once there is a separation there will be complex interactions between neighbouring lines that need to be accounted for.
 
