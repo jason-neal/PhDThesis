@@ -72,122 +72,7 @@ To estimate the differential amplitude signal we estimated the expected paramete
 \input{tables/direct_recovery/estimated_rv}
 %\input{tables/old/flux_calculations} % This is the old table.
 
-
-
-\section{Orbital variations}
-
-The insufficient spacing becomes clear when the RV variation during the orbits are visualized. Figures~\ref{fig:hd4747p89}--\ref{fig:hd30501p89} show the RV curves for each target.
-Stars with two companions are shown twice, with each companion treated as a single Keplerian (ignoring the presence of the other companion).
-For each panel on the left hand plot shows the RV variation across a orbit of the companion, while the panel on the right shows the RV variation for the 6 months observation window of Period 89.
-The solid black line indicates the RV of the host star (with scale on the left), while the blue dashed line shows the RV of the companion (with scale on the right axis).
-The orange crosses and red stars indicate the times at which observations were obtained for each target, for the host and companion respectively.
-
-they show the phase placements, etc.
-
-the companions are calculated by ... eq ...
-
-Orbital parameters are the values provided in \tref{tab:orbitparams}.
-
-Some code to create plots like this is available on \textit{Github} under the iastro-pt/Observationtools \footnote{\href{https://github.com/iastro-pt/ObservationTools}{https://github.com/iastro-pt/ObservationTools}} repository with documentation on \href{Read the Docs}{https://ia-observationtools.readthedocs.io/en/latest/rv.html}.
-
-
-
-The sampling of points in the RV curve reveal that the choice of points was not favourable...
-
-\todo{change RV scale for hd4747 orbit}
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD4747_orbital_phase.pdf}& \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD4747_p89.pdf}\\
-    \end{tabular}
-    \caption{RV orbital single companion Keplerian for the {HD\,4747}. The left hand shows the RV for a whole orbit of the target while the right hand panel shows the RV curve over 6 months (Period 89). The solid black line indicates the RV of the host star (with scale on the left), while the blue dashed line indicates the RV of the companion (with scale on the right axis). The orange crosses and red stars indicate the times at which observations were obtained for the target, for the host and companion respectively.}
-    \label{fig:hd4747p89}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD162020_orbital_phase.pdf}&
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD162020_p89.pdf}\\
-    \end{tabular}
-    \caption{Same as \fref{fig:hd4747p89} but for {HD\,162020}.}
-    \label{fig:hd162020p89}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD167665_orbital_phase.pdf}&
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD167665_p89.pdf}\\
-    \end{tabular}
-    \caption{Same as \fref{fig:hd4747p89} but for {HD\,167665}.}
-    \label{fig:hd167665p89}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD168443b_orbital_phase.pdf}&
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD168443b_p89.pdf}\\
-    \end{tabular}
-    \caption{Same as \fref{fig:hd4747p89} but for {HD\,168443}b. Analysed as if this was a single companion.}
-    \label{fig:hd168443bp89}
-\end{figure}
-
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD168443c_orbital_phase.pdf}&
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD168443c_p89.pdf}\\
-    \end{tabular}
-    \caption{Same as \fref{fig:hd4747p89} but for {HD\,168443}c. Analysed as if this was a single companion.}
-    \label{fig:hd168443cp89}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD202206B_orbital_phase.pdf}&
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD202206B_p89.pdf}\\
-    \end{tabular}
-    \caption{Same as \fref{fig:hd4747p89} but for {HD\,202206}B. Analysed as if this was a single companion.}
-    \label{fig:hd202206bp89}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD202206c_orbital_phase.pdf}&
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD202206c_p89.pdf}\\
-    \end{tabular}
-    \caption{Same as \fref{fig:hd4747p89} but for {HD\,202206}c. Analysed as if this was a single companion. }
-    \label{fig:hd202206cp89}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD211847_orbital_phase.pdf}&
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD211847_p89.pdf}\\
-    \end{tabular}
-    \caption{Same as \fref{fig:hd4747p89} but for {HD\,211847}.}
-    \label{fig:hd211847p89}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD30501_orbital_phase.pdf}&
-        \includegraphics[width=0.45\linewidth]{figures/direct-recovery/orbital-plots/HD30501_p89.pdf}\\
-    \end{tabular}
-    \caption{Same as \fref{fig:hd4747p89} but for {HD\,30501}.}
-    \label{fig:hd30501p89}
-\end{figure}
-\todo{Check M2sini labels - can we get M2 only for those that we know}
-
-
+The full orbital solution for the components along with the times of observations are provided later in \sref{sec:orbtial_diagrams}.
 
 
 \section{Direct Subtraction Method}
@@ -294,6 +179,39 @@ Since the amplitude is so small, and the we did not attempt to pursue this furth
 We did not attempt the binary reconstruction from the combination...
 
 \citet{ferluga_separating_1997} present a reconstruction method to recover the secondary from the s-profile. Unfortunate this was not appropriate due to insufficient separation.
+
+
+\section{Orbital Solutions}
+\label{sec:orbtial_diagrams}
+The insufficient spacing becomes clear when the RV variation during the orbits are visualized. Figures~\ref{fig:hd4747p89}--\ref{fig:hd30501p89} show the RV curves for each target analysed here.
+Stars with two companions are shown twice, with each companion treated as a single Keplerian (ignoring the presence of the other companion).
+For each panel on the left hand plot shows the RV variation across a full orbit of the companion, while the panel on the right shows the RV variation for the observation window of Period 89 only (6 months).
+The solid black line indicates the RV of the host star (with scale on the left hand axis), while the blue dashed line shows the RV of the companion (with the scale on the right hand axis).
+The orange crosses and red stars indicate the times at which observations were obtained for each target, for the host and companion respectively.
+
+The first observation easily observed is that RV curves come in many different flavours(shapes). This variations in shape arise from the different orbital parameters of each target (provided in \tref{tab:orbitparams}). In the left hand plots, in which a full cycle is shown the different shapes are created from the eccentricity, $e$, and argument of periapsis, $\omega$. In the right hand panels for which a fixed time period is shown the parameter affecting the image shown is the orbital period of the companion. Specifically the ratio of Period 89 to the orbital period determines what fraction (or multiples) of the orbit to display.
+
+The RV curves of the star and the planet mirror each other about the systems mean velocity $\gamma$, with the amplitude scaled by their mass ratio (see \eref{} advanced topics for q). 
+
+All the plots apart from {HD\,4747} have more than one observations indicated but this is difficult to tell as they are nearly all on top of each other.
+
+For the companions {HD\,162020}b (\fref{fig:hd162020p98}) and {HD\,168443}b (\fref{fig:hd168443bp89}) their orbital periods are shorted than 6 months, allowing for multiple cycles during Period 89. As such the full amplitude range was available to measure if observations were taken at the locations of the extrema and it should have been possible to obtain observations in which the companion spectra were separated by more than their line \fwhm. However the two observations for these two targets were taken immediately after each other. Making any differential extremely small. This is of course ignoring the fact that the flux ratios for these short period companions are estimated to be very low, meaning they would be very difficult to detect if sampled correctly.
+
+The larger companion {HD\,168443}c in \fref{fig:hd168443cp89} the orbital period is longer, so they appear as straight lines in the right hand panel. Although the amplitude variation of the companion during Period 89 is about 8--9\kmps. Therefore observations taken at the extreme ends of Period 89 may have provided just enough separation to obtain a detection.
+
+For HD\,202206 about 3/4 of the orbit is covered in Period 89 with a RV amplitude of the companion possible of over 40\kmps{}. Therefore, in this case well separated RVs could have been obtained.
+
+For the remain targets it is clear that sufficiently separated RVs were not obtained, but also that they were not possible from a single observing period with less than 6\kmps{} variation over Period 89.
+For HD\,30501 in which there was a large time separation between observations was obtained, and is clearly visible in \fref{fig:hd30501p89}. Unfortunately this did not result in a large enough companion separation. If the observations had been obtained in the previous period (88) instead then sufficient separation could have been obtained due to the orbital eccentricity. {\red{} (this region is due to return in \ldots}
+
+\todo{Should I predict when the best time to observed these targets are is? e.g. in 2020 x and x will have sufficient RV change in one period to achieve a detection.}
+
+The code used to create orbital plots similar to those shown here is available under the iastro-pt/Observationtools \footnote{\href{https://github.com/iastro-pt/ObservationTools} {https://github.com/iastro-pt/ObservationTools}} \textit{Github} repository with documentation available on \href{Read the Docs}{https://ia-observationtools.readthedocs.io/en/latest/rv.html}.
+
+
+The sampling of points in the orbit reveal that the choice of points was not favourable for the application of the direct subtraction technique. This was however only discovered after attempting to apply the technique. 
+
+\input{chapters/orbital_plots_section}
 
 
 \subsection{Relative differential amplitude}
