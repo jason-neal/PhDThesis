@@ -44,7 +44,7 @@ They set a minimum library \(\teff{}=2\,300\)\K{} to avoid the temperatures at w
 This unfortunately limits the use of this library for this technique to the largest mass companions in our sample.
 For example a \(\teff{}=2\,300\)\K{} corresponds to a {BD} with \(\textrm{M}\sim84\)\Mjup{} at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models.
 
-There are other models that extend below 2\,300\K{} such as the {BT-Settl} models\citep{allard_btsettl_2013,baraffe_new_2015}. These are discussed in \sref{subsubsec:BT-Settl}.
+There are other models that extend below 2\,300\K{} such as the {BT-Settl} models~\citep{allard_btsettl_2013,baraffe_new_2015}. These are discussed in \sref{subsubsec:BT-Settl}.
 
 
 \subsection{\texorpdfstring{\textchisquared}\ \ method}
@@ -60,7 +60,7 @@ We obtain the global minimum of the multidimensional \textchisquared-space to re
 The inverse survival function of the \textchisquared{} distribution is used to determine the confidence levels on the minimum \textchisquared{} parameters. The inverse survival function returns a \(\Delta\chisquared\) value from the minimum \textchisquared{} value for a given sigma level and degree of freedom\footnote{In \emph{Python} with the \emph{scipy} package this is a single line \texttt{scipy.stats.chi2{(dof)}.isf{(1-p)}}, where \(p = 0.68\) for 1-\(\sigma\), and dof is the degree of freedom.}.
 For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}. This method assumes that the measured flux is observed with a {SNR} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
 
-For a given observation, the \(\chisquared_{red}\) is computed by \(\chisquared_{red} = \chisquared / \nu\)where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or 4 in the examples explored below}, and is performed after the summation over the detectors.
+For a given observation, the \(\chisquared_{red}\) is computed by \(\chisquared_{red} = \chisquared / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or 4 in the examples explored below}, and is performed after the summation over the detectors.
 
 
 
@@ -311,7 +311,7 @@ Using the temperature cut-off values, we derive an upper mass limit for the comp
 \textbf{Alot of this section needs to be cut out, lots of repeats and it is not well structured. Basically it will say there is this other model that is better for BDs as it differs ``like this'' but Fig.~\textbf{ref {fig:hd211847-models}} show that it will also have strong mismatch to make it difficult to recover.}
 
 \label{bt-setll}
-The {BT-Settl} (allard et al 2009, 2010 2011 2012 baraffe2015) models, a different flavour of Phoenix models, are more suitable for {BD} atmospheres as they include the formation of dust/cloud and hydro-dynamical modelling atmospheric mixing/settling for atmospheres with \(\teff{}\) below \(\sim2600\K{}\). These are valid across the regime from stars to BDs as cool as 400\K{}. The {PHOENIX-ACES} models completely avoid the modeling of clouds and settling by the lower temperature restriction of 2\,300\K{}.
+The {BT-Settl} (allard et al 2009, 2010 2011 2012 baraffe2015) models, a different flavour of Phoenix models, are more suitable for {BD} atmospheres as they include the formation of dust/cloud and hydro-dynamical modelling atmospheric mixing/settling for atmospheres with \(\teff{}\) below \(\sim2600\K{}\). These are valid across the regime from stars to BDs as cool as 400\K{}. The {PHOENIX-ACES} models completely avoid the modelling of clouds and settling by the lower temperature restriction of 2\,300\K{}.
 
 The {PHOENIX-ACES} models dust in equilibrium with the gas phase but ignores the dust opacity and does not include any settling. It does however include a new Astrophysical Chemical Equilibrium Solver (ACES,
 Barman 2012); adds parametrisations for the mass and mixing-length; and uses the~\citet{asplund_chemical_2009} solar abundances. All these modifications together make it difficult to quantify the spectral changes from each individual change.
@@ -331,7 +331,7 @@ The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote
 The newer {PHOENIX-ACES} models are limited to \(\teff{}> 2\,300\)\K{} which only cover the larger BDs. To evaluate the lower mass BDs we use the \textbf{other model}, more suitable for cooler BDs and low mass star as they incorporate modeling of dust, clouds etc\ldots
 
 
-The spectral model libraries were accessed using the useful ``grid tools'' provided in the Starfish\footnote{\url{https://github.com/iancze/Starfish}} Python package\citep{czekala_constructing_2015}.
+The spectral model libraries were accessed using the useful ``grid tools'' provided in the Starfish\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}.
 
 
 Both sets of synthetic models do not handle the affects of radiation from a neighbouring star, which may have an affect on the binary orbits here.
