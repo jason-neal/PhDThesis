@@ -1,17 +1,25 @@
 %!TEX root = ../thesis.tex
 % NIR-information
 
-\chapter{NIR information}
-
+\chapter{Radial Velocity Precision}
 \label{cha:nir_content}
+
+The work presented in this chapter focus on calculating the radial velocity (RV) precision of stellar spectra in the \nir{}. It is very different from the previous chapters in which the detection of the companions spectra was attempted. 
+
+The field of exoplanet detection in the \nir{} is expanding with several new high resolution \nir{} spectrographs available in the near future. For instance {CARMENES} is already performing observations while SPIRou, {NIRPS}, and CRIRES+ are still to be completed and/or verified. One science objective common to all of these instruments is the detection small mass planets around {M-dwarf} stars utilizing the radial velocity technique. 
+The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions from \citet{figueira_radial_2016} was used to influence some design choices of SPIRou, {NIRPS}. 
+
+The purpose of the work presented in this chapter is to extend the work of \citet{figueira_radial_2016}, computing the theoretical RV precision of stellar spectra over a wider range of situations. A investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of RV precision of he recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed. This is to test how the {RV} precision of synthetic models compares to reality.
+The aim is to compare the fundamental precision of \nir{} spectra to the synthetic models, to 
+
 
 \section{Overview}
 
-The pursuit of detecting exoplanets, especially ``habitable'' and ``Earth-like'' planets, requires state-of-the-art instrumentation with high precision. One of the key detection methods, the Radial Velocity ({RV}) method, measures the wobble induced on the Star by the planet as they orbit their common barycentre \reference{rv method}.  {\red{} add Some stuff about mass and period from pedros paper}
+The pursuit of detecting exoplanets, especially ``habitable'' and ``Earth-like'' planets, requires state-of-the-art instrumentation with high precision. One of the key detection methods, the Radial Velocity ({RV}) method, measures the wobble induced on the Star by the planet as they orbit their common barycentre \reference{rv method}.  {\red{} add Some stuff about mass and period from Pedros paper}  \todo{put in introduction??}
 
 
 
-A increase in the number of \nir{} spectrographs is increasing to focus on cooler M-dwarfs stars which have a easier* chance of detecting Earth-like planets in the habitable zone. \change{Check mission statements for these}{SPIRou, NIRPS} and {CARMENES}. Also {CRIRES+}\ldots{}
+A increase in the number of \nir{} spectrographs is increasing to focus on cooler {M-dwarfs} stars which have a easier* chance of detecting Earth-like planets in the habitable zone. \change{Check mission statements for these}{SPIRou, {NIRPS}} and {CARMENES}. Also {CRIRES+}\ldots{}
 This work continues the assessment of {RV} precision levels possible in this domain.
 \todo{For example from Figueira 2016 see figure} A more precise measurement can be achieved from X band then the \emph{Y}-band\ldots{} or in order XYZ of precision.
 
@@ -19,15 +27,15 @@ This work continues the assessment of {RV} precision levels possible in this dom
 
 
 
-This work is not directly related to detecting exoplanet atmospheres themselves but investigates the theoretical and observed {RV} precision of M-dwarf spectra in the \nir{}. This has previously helped the aid the direction of instrument design by identifying the wavelength regions with the best {RV} precision~\citep{figueira_radial_2016} but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed {SNR}. This can help in detecting the presence of ``habitable Earth-like'' planets around M-dwarfs which will likely have their atmospheres eventually probed.
+This work is not directly related to detecting exoplanet atmospheres themselves but investigates the theoretical and observed {RV} precision of {M-dwarf} spectra in the \nir{}. This has previously helped the aid the direction of instrument design by identifying the wavelength regions with the best {RV} precision~\citep{figueira_radial_2016} but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed {SNR}. This can help in detecting the presence of ``habitable Earth-like'' planets around {M-dwarfs} which will likely have their atmospheres eventually probed.
 
 
 \section{Radial velocity precision}
-The first detections of planets with the {RV} technique \textbf{Queloz 2\,995} discovered the mass and close in hot-Jupiter planets. These are the easiest to detect with the highest {RV} amplitude.
+The first detections of extrasolar planets with the {RV} technique were hot-Jupiters; Jupiter mass planets in close orbits to their star . The RV precision required to detector the first hot-Jupiter, 51 Peg b, was \todo{find mayor queloz precision achieved} \cite{mayor_jupitermass_1995} using \todo{what reference} Since that time the instrumental development and the detection and observations technique refined to achieve {RV} precisions better than 1\mps{}. The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}. The level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
 
 Over the years the community has push the limits of this technique to smaller and smaller planetary masses. An example is shown in \fref{fig:year_mass}.
-\begin{figure}
 
+\begin{figure}
 \includegraphics[width=0.8\linewidth]{figures/year_planet_mass.png}
 \caption{Mass of discovered planets verse year. From Exoplanet.eu}
 \label{fig:year_mass}
@@ -36,25 +44,25 @@ Over the years the community has push the limits of this technique to smaller an
 
 {RV} amplitude scales with mass of the star \({M_{\star}}^{-2/3}\) and with the planetary orbital period \({P_{\textrm{orb}}}^{-2/3}\).
 
-The detection of an Earth-mass planet inside the habitable zone around a solar-type star, the {RV} amplitude is 10 \cmps{}. If that a planet with the same characteristics is instead orbiting a M-dwarf, the {RV} amplitude is larger than 1\mps{}. This is due to two factors, the smaller mass of the host star, and the closer habitable zone, due to a lower luminosity output of the host.
+The detection of an Earth-mass planet inside the habitable zone around a solar-type star, the {RV} amplitude is 10 \cmps{}. If that a planet with the same characteristics is instead orbiting a {M-dwarf}, the {RV} amplitude is larger than 1\mps{}. This is due to two factors, the smaller mass of the host star, and the closer habitable zone, due to a lower luminosity output of the host.
 
-\citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an M-dwarf, and found that state-of-the-art atmosphere models over-predict the \emph{Y}- and \emph{J}-band {RV} content by more than a factor of \(\sim 2\), while under-predicting the \emph{H} and \emph{K}-band content by half.
+\citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an {M-dwarf}, and found that state-of-the-art atmosphere models over-predict the \emph{Y}- and \emph{J}-band {RV} content by more than a factor of \(\sim 2\), while under-predicting the \emph{H} and \emph{K}-band content by half.
 {\red{} in this work we find similar?}
 
-We are currently aiming to extend this work over the whole M-dwarf range, from {M0}-{M9}.
+We are currently aiming to extend this work over the whole {M-dwarf} range, from {M0}-{M9}.
 
 \todo{History of Precision calculations}
 History of Precision calculations:
 Connes 1\,985 -
 Bouchy et al. 2001  - photon noise limit on rv measurements.
-\cite{\fsixteen} - focus on m-dwarfs parameter range to specify new instrumentation windows to focus.
+\cite{\fsixteen} - focus on {M-dwarfs} parameter range to specify new instrumentation windows to focus.
 Reiners 2017 -  {CARMENES} sample. Some precision
 pedros school section other precision source \(r^1.5\)
 
 
 \subsection{Fundamental photon noise limitation}
-
-A optimum technique to calculate the radial velocity precision of a spectrum using the full spectral information is proposed by~\citet{connes_absolute_1985}. Here we provide the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this derivation comes from~\citet{bouchy_fundamental_2001} with some extra notes added to improve the clarity.
+\label{fundamental_precision}
+A technique to calculate the theoretical optimum radial velocity precision of a spectrum using the full spectral information was proposed by~\citet{connes_absolute_1985}. Here we provide the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this derivation follows ~\citet{bouchy_fundamental_2001} with extra explanations and notes added.
 
 For each spectrum there is assigned a quality factor, Q, to compute the fundamental uncertainty on the radial velocity measurements due to noise. {\red{} i am not sure what i am trying to say in this sentence}\unfinished{Change picture spectral range to capital lambda \(\Lambda\)}
 
@@ -351,7 +359,7 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
 
 \begin{table*}[h]
     \centering
-    \caption{CARMENES library target selection spanning the M-Dwarf spectral range.}
+    \caption{CARMENES library target selection spanning the {M-dwarf} spectral range.}
     \begin{tabular}{l l l r c c c c}%
         \toprule
         Karmn & Name & SpT &  \(\textrm{SNR}_{\textrm{NIR}}\)  & Temp (K) &\logg{} & \feh{} & v\(\sin{i}\) (\kmps{})\\
@@ -369,7 +377,7 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
 %\input{tables/carmenes_selection_transpose.tex}
 
 \section{Metallicity \logg{} effects}
-We explore the effect of metallicity and \logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and \logg{} of 4.0 -- 5.5. In \fref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and $\vsini=1.0$\kmps{} across the M-dwarf spectral types and the \nir{} bands is shown. We observed multiple different effects present.
+We explore the effect of metallicity and \logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and \logg{} of 4.0 -- 5.5. In \fref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and $\vsini=1.0$\kmps{} across the {M-dwarf} spectral types and the \nir{} bands is shown. We observed multiple different effects present.
 
 
 The \emph{Z}-band has a large separation in spectral quality due to spectral type, this is because the continuum the \emph{Z}-band is severely eroded in the spectra of late M's as they cool. Each spectral type also behaves very differently to a change in \feh{} and \logg{}. For {M0} and {M3} there is an increase with \feh{} below solar metallicity, above solar metallicity the slopes of the lines dramatically increase, especially for {M3}. For {M6} and {M9} there is a step slope with \feh{} below solar metallicity, which flattens off at solar metallicity, and even decreases for the {M9} spectra above solar metallicity.
