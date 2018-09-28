@@ -62,25 +62,25 @@ pedros school section other precision source \(r^1.5\)
 
 \subsection{Fundamental photon noise limitation}
 \label{fundamental_precision}
-A technique to calculate the theoretical optimum radial velocity precision of a spectrum using the full spectral information was proposed by~\citet{connes_absolute_1985}. Here we provide the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this derivation follows ~\citet{bouchy_fundamental_2001} with extra explanations and notes added.
-
-For each spectrum there is assigned a quality factor, Q, to compute the fundamental uncertainty on the radial velocity measurements due to noise. {\red{} i am not sure what i am trying to say in this sentence}\unfinished{Change picture spectral range to capital lambda \(\Lambda\)}
+A technique to calculate the theoretical radial velocity precision of a spectrum using the full spectral information in an optimal way was presented by~\citet{connes_absolute_1985}. Here we provide the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this derivation follows~\citet{bouchy_fundamental_2001} with extra explanations and notes added.
 
 \begin{figure}
     \centering
-    %\includegraphics[width=0.7\linewidth]{figures/spectrum_example_a}
-   % \includegraphics[width=0.7\linewidth]{figures/precision_derivation.pdf}
-    \includegraphics[width=0.7\linewidth]{figures/precision_derivation.png}
+    \includegraphics[width=0.7\linewidth]{figures/information-content/precision_plot.pdf}
     \caption{Arbitrary spectral line with a shift \(\delta \lambda\), inspired by~\citet{connes_absolute_1985}.  \(\Lambda\) is the wavelength range considered.}
     \label{fig:precisionderivation}
 \end{figure}
+
+\fref{fig:precisionderivation} show a portion of an arbitrary spectrum \(A(\lambda)\), for demonstration purposes over a wavelength range \(\Lambda\).  Here \(A_0(\lambda)\) is the reference spectrum while \(A(\lambda)\) is observed some later time with an apparent wavelength shift observed. 
 
 The Doppler shift of a spectrum is given by:
 \begin{equation}
 \frac{\delta V}{c} = \frac{\delta \lambda}{\lambda}.
 \label{eq:dopplershift}
 \end{equation}
-Here \(c\) is the speed of light in a vacuum, and \(\delta \lambda\) is the observed shift in wavelength \(\lambda\) caused by the velocity \(\delta V\)
+Here \(c\) is the speed of light in a vacuum, and \(\delta \lambda\) is the observed shift in wavelength \(\lambda\) caused by the velocity \(\delta V\).
+
+\todo{intensity change from connes is vertically in the slice d lambda}
 
 Using basic calculus \(\delta y = \pd{y}{x} \delta x,  \nonumber\) and for a Doppler shift that is small compared to the line-width\footnote{Although~\citet{connes_absolute_1985} show that this approximation in Eq.\,\ref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change at a given pixel can be expressed by:
 
