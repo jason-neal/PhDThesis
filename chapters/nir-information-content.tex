@@ -218,6 +218,21 @@ Considering that \(\sum{A_0(i)} = N_{e^-}\)is the total number of photoelectrons
 where the \({SNR}=\sqrt{N_{e^-}}\)for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?}
 
 
+In the unrealistic case where all the pixel weights are identical $W(i)=w$, then we can also see that the precision with decreases as $1/\sqrt{N}$ due to an increase in the number of pixels, or a increase in spectral range.
+ \begin{equation}
+ \delta V_{\rms} = \frac{c}{\sum{W(i)}} \approx \frac{c}{\sqrt{N w}}=  \frac{c}{\sqrt{N}\sqrt{w}}, \label{eq:sqrtN}
+ \end{equation}
+
+
+A separate general formula for RV precision is given by \citet{hatzes_spectrograph_1992} in terms of general spectral parameters.
+\begin{equation}
+\sigma = \frac{1}{\sqrt{F} \sqrt{\Lambda} R^{1.5}}
+\end{equation}
+
+Here the $\sqrt{F}$ represents the SNR of the spectrum in the possion-noise dominated regime. The $\Lambda$ comes from assuming a homogenous distribution of line, with the same line properties, per unit length. 
+
+
+The 1.5 factor. ....
 
 \subsubsection{summarize}
 Summarize the derivation
