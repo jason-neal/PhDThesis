@@ -1,7 +1,7 @@
 %!TEX root = ../thesis.tex
 % NIR-information
 
-\chapter{Radial Velocity Precision}
+\chapter{Information content of \nir{} Spectra}
 \label{cha:nir_content}
 
 The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra ,specifically the radial velocity precision in the \nir{}. \todo{this doesn't seem right}{It is very different from the previous chapters in which the detection of the companions spectra was attempted.} 
@@ -96,10 +96,10 @@ Rearranging \eref{eq:intensitychange} for \(\delta \lambda\) and combining it wi
 \end{equation}
 
 This equation shows that the radial velocity measured at pixel, i, through a change in the intensity in the recorded spectrum, \(A(i)-A_0(i)\), and inversely proportional to the slope of the spectrum, \({\partial A_0(i)}/{\partial \lambda(i)}\).
-\ref{eq:delta_v_i} provides a separate measurement of the radial velocity shift for every pixel, $i$, in the spectrum. The sensitivity of the velocity measurement can be improved, and the noise decreased by using the information from the whole  spectral range, \(\Lambda\). This is achieved by taking the weighted average\footnote{Weighted average on x is \(\bar{x} = \frac{\Sigma{ x(i)W(i)}}{\Sigma {W(i)}}\)} over all pixels in the spectral range using an optimal pixel weight \(W(i)\).
+\ref{eq:delta_v_i} provides a separate measurement of the radial velocity shift for every pixel, $i$, in the spectrum. The sensitivity of the velocity measurement can be improved, and the noise decreased by using the information from the whole  spectral range, \(\Lambda\). This is achieved by taking the weighted average\footnote{Weighted average on x is \(\bar{x} = \frac{\sum{ x(i)W(i)}}{\sum {W(i)}}\)} over all pixels in the spectral range using an optimal pixel weight \(W(i)\).
 
 \begin{equation}
-\bar{\frac{\delta V}{c}} = \frac{\Sigma{\frac{\delta V(i)}{c}W(i)}}{\Sigma {W(i)}}.
+\bar{\frac{\delta V}{c}} = \frac{\sum{\frac{\delta V(i)}{c}W(i)}}{\sum {W(i)}}.
 \end{equation}
 
 Statistically, the optimal weights are proportional to the inverse square of the individual dispersion (variance),
@@ -157,26 +157,26 @@ With the optimal weights set, the weighed average velocity change measured from 
 The important quantity for {RV} measurements is not just the velocity values themselves but also the dispersion on the measured velocity, the RV precision, \(\delta V_{\rms}\), from the spectrum. This allows one to assess the planetary detectability limitations attainable in the spectra. From rearranging \eref{eq:weights} the dispersion is given by:
 
 \begin{equation}
-    \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\Sigma {\,W(i)}} = \frac{1}{Q \sqrt{\sum{\,A_0(i)}}}. \label{eq:dv_rms}
+    \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\sqrt{\sum{\,W(i)}}} = \frac{1}{Q \sqrt{\sum{\,A_0(i)}}}. \label{eq:dv_rms}
 \end{equation}
 With this the velocity precision is inversely proportional to the sum of the optimal pixel weights.
 
 A spectral quality factor, Q, is defined as for the pure photon noise case in~\cite{connes_absolute_1985, connes_demonstration_1996}, as:
 \begin{equation}
-Q = \frac{\sqrt{\Sigma{\,W(i)}}}{\sqrt{\Sigma{\,A_0(i)}}}.
+Q = \frac{\sqrt{\sum{\,W(i)}}}{\sqrt{\sum{\,A_0(i)}}}.
 \end{equation}
 
 The radial velocity precision or uncertainty can be rearranged in terms of the spectral quality;
 
 \begin{equation}
-    \delta V_{\rms} = \frac{c}{Q \sqrt{\Sigma {\,A_0(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}} \approx \frac{c}{Q (S/N)},
+    \delta V_{\rms} = \frac{c}{Q \sqrt{\sum {\,A_0(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}} \approx \frac{c}{Q (S/N)},
 \end{equation}
 
-where \(\Sigma A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo-electrons \({N}_{{e}^{-}}\) counted in the spectral range considered.\todo{explain snr}{where the \({SNR}=\sqrt{N_{e^-}}\)for large N}
+where \(\sum A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo-electrons \({N}_{{e}^{-}}\) counted in the spectral range considered.\todo{explain snr}{where the \({SNR}=\sqrt{N_{e^-}}\)for large N}
 where the \({SNR}=\sqrt{N_{e^-}}\)for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?}
 
 
-This quality factor, Q, is flux independent and is purely a function of the spectral profile within the spectral range considered. It is a measure of the line richness, i.e. quantity and depth. For example a spectrum with many sharp lines will have a high Q. This quality factor is valid for the pure photon noise case only in which \(\simga_{D} =0\) and \([A(i)]_{\rms} = A_0\). The instrumental resolution of the spectrograph also effects the spectral quality as it induces line broadening.
+This quality factor, Q, is flux independent and is purely a function of the spectral profile within the spectral range considered. It is a measure of the line richness, i.e. quantity and depth. For example a spectrum with many sharp lines will have a high Q. This quality factor is valid for the pure photon noise case only in which \(\sigma_{D} =0\) and \([A(i)]_{\rms} = A_0\). The instrumental resolution of the spectrograph also effects the spectral quality as it induces line broadening.
 
 The number of photo-electrons counted \(N_{e^{-}}\) depends on the stellar magnitude, detector efficiency and integration time. It can be estimated using
  \begin{equation}
@@ -194,14 +194,14 @@ This can be used to determine the {RV} precision for a given instrument, and be 
 
 In the case of several \(\delta V\) measurements computed for \(k\) spectral slices (or spectral orders) then the error on the average \(\overline{\delta V}\) is given by the error on a weighted average:
 \begin{equation}
-\overline{\delta {V}_{\rms}} = \frac{1}{\sqrt{\Sigma_k{{(\frac{1}{\delta V_{\rms}(k)})}^{2}}}}
+\overline{\delta {V}_{\rms}} = \frac{1}{\sqrt{\sum_k{{(\frac{1}{\delta V_{\rms}(k)})}^{2}}}}
 \end{equation}
 
 
 This work follows~\cite{figueira_radial_2016} by exclusively considering a high signal-to-noise regime in which \(A(i) + \sigma_{D}^{2} \sim A(i)\) can be approximated.
 
 
-\footnote{pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\Sigma{\lambda^{2} {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\Sigma{\, A_0(i)}}\) as derived by~\cite{connes_absolute_1985}. }
+\footnote{pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\sum{\lambda^{2} {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\sum{\, A_0(i)}}\) as derived by~\cite{connes_absolute_1985}. }
 
 
 This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation e.g., ~\citet{connes_absolute_1985,bouchy_fundamental_2001} and can influence the design (and/or use) of spectrographs
@@ -209,7 +209,7 @@ This technique has been tested and demonstrated on observations by~\citet{connes
 \unfinished{Does spectrograph pipelines such as HARPS use these equations to measure estimate/precision?}
 
 
-Considering that \(\Sigma{A_0(i)} = N_{e^-}\)is the total number of photoelectrons counted over the whole spectral range then the uncertainty in the velocity change is finally given by:
+Considering that \(\sum{A_0(i)} = N_{e^-}\)is the total number of photoelectrons counted over the whole spectral range then the uncertainty in the velocity change is finally given by:
 
 \begin{equation}
 \delta V_{\rms} = \frac{c}{Q \sqrt{N_{e^-}}} \approx \frac{c}{Q (S/N)}, \label{eq:rv_SNR}
@@ -218,6 +218,21 @@ Considering that \(\Sigma{A_0(i)} = N_{e^-}\)is the total number of photoelectro
 where the \({SNR}=\sqrt{N_{e^-}}\)for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?}
 
 
+In the unrealistic case where all the pixel weights are identical $W(i)=w$, then we can also see that the precision with decreases as $1/\sqrt{N}$ due to an increase in the number of pixels, or a increase in spectral range.
+ \begin{equation}
+ \delta V_{\rms} = \frac{c}{\sum{W(i)}} \approx \frac{c}{\sqrt{N w}}=  \frac{c}{\sqrt{N}\sqrt{w}}, \label{eq:sqrtN}
+ \end{equation}
+
+
+A separate general formula for RV precision is given by \citet{hatzes_spectrograph_1992} in terms of general spectral parameters.
+\begin{equation}
+\sigma = \frac{1}{\sqrt{F} \sqrt{\Lambda} R^{1.5}}
+\end{equation}
+
+Here the $\sqrt{F}$ represents the SNR of the spectrum in the possion-noise dominated regime. The $\Lambda$ comes from assuming a homogenous distribution of line, with the same line properties, per unit length. 
+
+
+The 1.5 factor. ....
 
 \subsubsection{summarize}
 Summarize the derivation
@@ -233,11 +248,11 @@ Scale to 100 {SNR} per resolution element in \emph{J}-band.
 Convolutions
 
 \subsection{Rotation convolution}
-Stellar rotation has the affect of broadening spectral lines as the different portions of the stellar surface have a variation of radial velocity between \(\pm v\sini\). 
+Stellar rotation has the affect of broadening spectral lines as the different portions of the stellar surface have a variation of radial velocity between \(\pm v \sin i\). 
 Rotation is applied to a non-rotating spectrum by convolution with a rotation kernel.
 The stellar rotational kernel used is given by~\citet{gray_observation_2005};
 
-\todo{top veiw diagram of rotation?}
+\todo{top view diagram of rotation?}
 
 \begin{align}
 G(\Delta\lambda) &= \frac{2(1-\epsilon){[1-{(\Delta\lambda /{\Delta\lambda}_{L})}^{2}]}^{1/2} +   \frac{1}{2}\pi\epsilon[1-{(\Delta\lambda /{\Delta\lambda}_{L})}^{2}]}{\pi (1-\epsilon/3)\vsini}\\
@@ -301,9 +316,9 @@ To normalize the convolution result it is divided by the convolution of a unitar
 \citet{\fsixteen} performed this unitary convolution separately and applied the normalization afterwards.
 In the improved implementation the convolution normalization is performed directly after the convolution kernel multiplication at \(\textbf{*}\).
 For example for the rotational convolution result of the value for pixel $i$ becomes
-$A^\prime(\lambda_{i}) =  \frac{\Sigma A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})}{\Sigma G(\Delta\lambda_{i})}$,
+$A^\prime(\lambda_{i}) =  \frac{\sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})}{\sum G(\Delta\lambda_{i})}$,
 where $\Delta\lambda_{i}$ are the values between in the range $\lambda_{i} (1-\frac{\vsini}{c}) \le\lambda_{i} \le \lambda_{i} (1+ \frac{\vsini}{c})$,
-instead of only $A^\prime(\lambda_{i}) =  \Sigma A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})$)
+instead of only $A^\prime(\lambda_{i}) =  \sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})$)
 
 
 By default edge effects are avoided by providing an input spectra sufficiently wider than the desired output spectrum to prevent edge effects on the portion of the spectrum desired. Since two convolutions are preformed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both  addition of  rotation and instrumental broadening by $\vsini$ and R.
@@ -618,10 +633,10 @@ In the original code this was selected to be a {SNR} per pixel of 100 at the cen
 An automated {SNR} scaling procedure was created to remove the hard-coded values. This updated code finds the centre point of the band of reference for the given spectrum. Totals the photon count across one resolution element, \(\delta\lambda\), and then takes the square root. This is using the definition of the {SNR} as \({SNR} = \sqrt{N}\) for large N. This value is then used to scale the spectrum such that the {SNR} at the reference point is the desired value.
 
 \begin{equation}
-    SF =  \frac{\sqrt{\Sigma{\delta\lambda} A}} {SNR_{desired}}
+    SF =  \frac{\sqrt{\sum{\delta\lambda} A}} {SNR_{desired}}
 \end{equation}
 
-\textit{SF} where \textit{SF} is the scaling factor, \(\Sigma_{\delta\lambda} A\) is the sum of the point in one resolution element and \({SNR}_{desired}\) is the desired {SNR} level requested.
+\textit{SF} where \textit{SF} is the scaling factor, \(\sum_{\delta\lambda} A\) is the sum of the point in one resolution element and \({SNR}_{desired}\) is the desired {SNR} level requested.
 
 This automated procedure enabled {\red{}\textbf{4}} different features.
 \begin{itemize}
@@ -666,12 +681,12 @@ These values were both calculated and provided using the {FFD} gradient and with
 
 \begin{figure}
     \centering
-    \begin{tabular}{c|c}
+    \begin{tabular}{cc}
          
-    \includegraphics{} &  % Figueria plot
-    \includegraphics{} \\ % Eniric plot
+    \includegraphics[width=0.51\linewidth]{figures/information-content/Rvprec_vsini1.pdf} &  % Figueria plot
+    \includegraphics[width=0.5\linewidth]{figures/information-content/precision_fourpanel.png}\\ % eniric plot
     \end{tabular}
-    \caption{Caption}
+    \caption{Left: Figueria et al 2016, Right, Updated values from this work computed with eniric.}
     \label{fig:my_label}
 \end{figure}
 
