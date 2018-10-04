@@ -355,7 +355,7 @@
 %% \begin{dedication}...\end{dedication} formats a dedication section
 \newenvironment*{dedication}%
   {\begin{center}
-      \section*{Dedication}
+      \section*{}  %    \section*{Dedication}
    \end{center}
    \begingroup}%
   {\par\endgroup\newpage}
