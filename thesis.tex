@@ -32,7 +32,7 @@
 \usepackage{datatool}                         % Loading in databases into table
 \usepackage{tabularx}
 \usepackage[]{nth}                      % \nth{1} -> 1st
-
+\usepackage{pdfpages}            % Provideds \includepdf{}
 \usepackage{caption}
 \captionsetup{labelfont=bf}
 \captionsetup[table]{justification=justified,singlelinecheck=false,}
@@ -188,7 +188,7 @@ urlcolor=hrefurlcolor]{hyperref}
 \begin{document}
     %% This sets the page style and numbering for preliminary sections.
     % THESIS Cover
-    \includepdf[fitpaper,pages={1}]{./cover_FCUP_JasonNeal.pdf}
+    \includepdf[fitpaper,pages={1}]{./cover/cover_FCUP_JasonNeal.pdf}
     \cleardoublepage
     
     \begin{preliminary}
