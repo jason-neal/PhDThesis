@@ -608,6 +608,7 @@ The code has been adjusted to consistently apply the masking after the pixel wei
 
 
 \subsection{Atmospheric masking bug}
+\label{subsec:condition_two_bug}
 One thing that was revealed in testing was that there was an error in the application of Condition~\#2. When the telluric mask was shifted to account for barycentric motion of the earth, and the condition of 3 consecutive pixels in the telluric spectra being lower than the limit (due to the higher sampling) there was an software bug,
 
 

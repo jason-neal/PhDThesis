@@ -34,6 +34,8 @@
 \usepackage[]{nth}                      % \nth{1} -> 1st
 \usepackage{pdfpages}            % Provideds \includepdf{}
 \usepackage{caption}
+\usepackage{listings}
+
 \captionsetup{labelfont=bf}
 \captionsetup[table]{justification=justified,singlelinecheck=false,}
 
@@ -180,7 +182,7 @@ urlcolor=hrefurlcolor]{hyperref}
 %\includeonly{chapters/companion-recovery}
 %\includeonly{chapters/nir-information-content}
 %\includeonly{chapters/conclusions}
-% \include{appendices/precision_table}
+%\includeonly{appendices/nir/nir_precision_tables}
 %\includeonly{appendices/app_artefact_examples}
 %\includeonly{appendices/app_phd_output}
 %\includeonly{appendices/cv_jneal}
@@ -223,7 +225,7 @@ urlcolor=hrefurlcolor]{hyperref}
 
     \appendix
     \unfinished{Precision table needs fixed up}
-    % \include{appendices/precision_table}
+    \include{appendices/nir/nir_precision_tables}
     \include{appendices/app_artefact_examples}
     \include{appendices/wavelength_fitting}
     \include{appendices/app_phd_output}
