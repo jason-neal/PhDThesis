@@ -5,10 +5,15 @@
 
 \label{app:nir_prec_amendment}
 
-The updated relative RV precision ($\sigma_RV$ or $dV_{\rms}$) results attainable from \nir{} spectra are presented in the following tables. \tref{tab:rv_aces_btsettl} shows the precision results for the same M-dwarfs analysed in \citep{figueira_radial_2016}.
-That is stellar temperatures 3900, 3500, 2800, 2600K corresponding to spectral types M0, M3, M6, M9 respectively. \logg{}=4.5 and \feh{}=0.0. The rotation applied are $\vsini{}$=1, 5, 10\kmps{} and instrumental profiles with R = 60k, 80k, 100k.
+The updated relative RV precision ($\sigma_{RV}$ or $dV_{\rms}$) results attainable from \nir{} spectra are presented in the following tables.
+\tref{tab:rv_aces_btsettl} shows the precision results for the same M-dwarfs analysed in \citep{figueira_radial_2016}.
+That is stellar temperatures 3900, 3500, 2800, 2600\K{} corresponding to spectral types M0, M3, M6, M9 respectively, \logg =4.5 and \feh{}=0.0.
+The rotation applied are $\vsini{}$=1, 5, 10\kmps{} and instrumental profiles with R = 60k, 80k, 100k.
 
-Columns 2-4 contain the RV precision calculated using {PHOENIX-ACES} spectra, as done in \citet{figueira_radial_2016}. These values differ from two effects. There is small difference in Conditions 1 and 3 from the change in numerical differentiation implemented (see \sref{sec:numerical_gradient}). The values for Condition 2 however, are completely different due to the implementation error in the telluric masking discovered (see \sref{subsec:condition_two_bug}). 
+Columns 2-4 contain the RV precision calculated using {PHOENIX-ACES} spectra, as done in \citet{figueira_radial_2016}.
+These values differ from two effects.
+There is small difference in Conditions 1 and 3 from the change in numerical differentiation implemented (see \sref{sec:numerical_gradient}).
+The values for Condition 2 however, are completely different due to the implementation error in the telluric masking discovered (see \sref{subsec:condition_two_bug}).
 
 In columns 5-7 are the same RV precision calculation but using the {BT-Settl} spectral library instead (with same spectral parameters), a recent addition in \emph{eniric}.
 
@@ -27,12 +32,15 @@ These can be created with \emph{eniric} with the following shell incantation (af
 \end{lstlisting}
 
 
-\emph{eniric} was also used to calculate {RV} precision for the {NIRPS} and {SPIRou}. 
+\emph{eniric} was also used to calculate {RV} precision for the {NIRPS} and {SPIRou}.
 
-For {SPIRou} the requested precisions were provided with the \snr{} relative to the centre of each individual band. The values are provided in \tref{tab:spirou_precisions} and can be generated with the following code; note the change in the \emph{ref\_band} parameter.
+For {SPIRou} the requested precisions were provided with the \snr{} relative to the centre of each individual band.
+The values are provided in \tref{tab:spirou_precisions} and can be generated with the following code; note the change in the \emph{ref\_band} parameter.
 
 
-Changing the reference band for the \snr{} scaling increases and decreases the precision in different bands due to the shape of the general black-body shape of the spectral profile. Comparing the precision values between \tref{tab:rv_aces_btsettl} and \tref{tab:spirou_precisions}, it has the effect of decreasing the $\sigma_{RV}$ (increasing precision) in the \emph{H}- and \emph{K}-bands while increasing the $\sigma_{RV}$ (decreasing precision) in the \emph{Z}- and \emph{y}-bands. The RV precision for the \emph{J}-band remains unchanged, so is not included in \tref{tab:spirou_precisions}. 
+Changing the reference band for the \snr{} scaling increases and decreases the precision in different bands due to the shape of the general black-body shape of the spectral profile.
+Comparing the precision values between \tref{tab:rv_aces_btsettl} and \tref{tab:spirou_precisions}, it has the effect of decreasing the $\sigma_{RV}$ (increasing precision) in the \emph{H}- and \emph{K}-bands while increasing the $\sigma_{RV}$ (decreasing precision) in the \emph{Z}- and \emph{y}-bands.
+The RV precision for the \emph{J}-band remains unchanged, so is not included in \tref{tab:spirou_precisions}.
 
 
 \begin{lstlisting}
@@ -42,10 +50,11 @@ Changing the reference band for the \snr{} scaling increases and decreases the p
 \end{lstlisting}
 
 
-For {NIRPS} RV precisions with an instrumental resolution of 75k was requested to match the {NIRPS} instrument, and provided relative to the \emph{J} and \emph{H}-bands. The results for the {NIRPS} precision relative to the \emph{J}-band are given in \tref{tab:nirps_precisions}, and can be reproduced with the following code.
+For {NIRPS} RV precisions with an instrumental resolution of 75k was requested to match the {NIRPS} instrument, and provided relative to the \emph{J} and \emph{H}-bands.
+The results for the {NIRPS} precision relative to the \emph{J}-band are given in \tref{tab:nirps_precisions}, and can be reproduced with the following code.
 
 \begin{lstlisting}
-    phoenix_precision.py -t 3900 3500 2800 2600 -l 4.5, -m 0.5  \ 
+    phoenix_precision.py -t 3900 3500 2800 2600 -l 4.5, -m 0.5  \
         -r 60000 75000 80000 100000 -v 1.0 5.0 10.0             \
         -b Z Y J H K --snr 100 --ref_band H                     \
 \end{lstlisting}
@@ -57,4 +66,3 @@ For {NIRPS} RV precisions with an instrumental resolution of 75k was requested t
 
 
 \input{tables/appendices/precisions_nirps_table.tex}
-
