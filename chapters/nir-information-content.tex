@@ -4,13 +4,13 @@
 \chapter{Information content of \nir{} Spectra}
 \label{cha:nir_content}
 
-The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra ,specifically the radial velocity precision in the \nir{}. \todo{this doesn't seem right}{It is very different from the previous chapters in which the detection of the companions spectra was attempted.} 
+The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra ,specifically the radial velocity precision in the \nir{}. \todo{this doesn't seem right}{It is very different from the previous chapters in which the detection of the companions spectra was attempted.}
 
-The field of exoplanet detection in the \nir{} is expanding with several new high resolution \nir{} spectrographs available in the near future. For instance {CARMENES} is already performing observations while SPIRou, {NIRPS}, and CRIRES+ are near completion. One science objective common to all four instruments is the detection small mass planets around {M-dwarf} stars utilizing the radial velocity technique. 
-The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in \citet{figueira_radial_2016} was used to influence some design choices of SPIRou, {NIRPS} specifically. 
+The field of exoplanet detection in the \nir{} is expanding with several new high resolution \nir{} spectrographs available in the near future. For instance {CARMENES} is already performing observations while SPIRou, {NIRPS}, and CRIRES+ are near completion. One science objective common to all four instruments is the detection small mass planets around {M-dwarf} stars utilizing the radial velocity technique.
+The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in \citet{figueira_radial_2016} was used to influence some design choices of SPIRou, {NIRPS} specifically.
 
 The purpose of the work presented in this chapter is to extend the work of \citet{figueira_radial_2016}, computing the theoretical RV precision of stellar spectra over a wider range of situations. A investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of RV precision of he recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed. This is to test how the {RV} precision of synthetic models compares to reality.
-The aim is to compare the fundamental precision of \nir{} spectra to the synthetic models, to 
+The aim is to compare the fundamental precision of \nir{} spectra to the synthetic models, to
 
 
 \section{Overview}
@@ -55,7 +55,7 @@ We are currently aiming to extend this work over the whole {M-dwarf} range, from
 History of Precision calculations:
 Connes 1\,985 -
 Bouchy et al. 2001  - photon noise limit on rv measurements.
-\cite{\fsixteen} - focus on {M-dwarfs} parameter range to specify new instrumentation windows to focus.
+\cite{figueira_radial_2016} - focus on {M-dwarfs} parameter range to specify new instrumentation windows to focus.
 Reiners 2017 -  {CARMENES} sample. Some precision
 pedros school section other precision source \(r^1.5\)
 
@@ -229,7 +229,7 @@ A separate general formula for RV precision is given by \citet{hatzes_spectrogra
 \sigma = \frac{1}{\sqrt{F} \sqrt{\Lambda} R^{1.5}}
 \end{equation}
 
-Here the $\sqrt{F}$ represents the SNR of the spectrum in the possion-noise dominated regime. The $\Lambda$ comes from assuming a homogenous distribution of line, with the same line properties, per unit length. 
+Here the $\sqrt{F}$ represents the SNR of the spectrum in the possion-noise dominated regime. The $\Lambda$ comes from assuming a homogenous distribution of line, with the same line properties, per unit length.
 
 
 The 1.5 factor. ....
@@ -243,12 +243,12 @@ Summarize the derivation
 Convert SED to counts.
 
 
-Scale to 100 {SNR} per resolution element in \emph{J}-band.
+Scale to 100 \snr{} per resolution element in \emph{J}-band.
 
 Convolutions
 
 \subsection{Rotation convolution}
-Stellar rotation has the affect of broadening spectral lines as the different portions of the stellar surface have a variation of radial velocity between \(\pm v \sin i\). 
+Stellar rotation has the affect of broadening spectral lines as the different portions of the stellar surface have a variation of radial velocity between \(\pm v \sin i\).
 Rotation is applied to a non-rotating spectrum by convolution with a rotation kernel.
 The stellar rotational kernel used is given by~\citet{gray_observation_2005};
 
@@ -267,12 +267,12 @@ are constants which depend on the equatorial rotational velocity \(\vsini\).
 Here $\Delta\lambda$ is the wavelength position from the non-rotating line centre, $\Delta\lambda_{L}$ is the maximum line shift of the line centre at the edge of the stellar disk at which point the Doppler shift is  \(\vsini\); $\Delta\lambda_{L} = \lambda \frac{\vsini}{c}$.
 
 This kernel arises from integrating the rotational velocity profile across the surface of the stellar disk and as such the rotation kernel is bounded in the range  $[-\Delta\lambda_L, \Delta\lambda_{L}]$ from the line centre.
-This kernel also accounts for limb-darkening on the stellar disk with the linear limb darkening coefficient used in this work fixed at $\epsilon=0.6$ as done in \citet{\fsixteen}.
+This kernel also accounts for limb-darkening on the stellar disk with the linear limb darkening coefficient used in this work fixed at $\epsilon=0.6$ as done in \citet{figueira_radial_2016}.
 
 Since the synthetic models do not have a consistent wavelength grid, the discretization of applying the convolution kernel onto the changing wavelength grid causes the result of each pixel to be multiplied by a slightly different kernel area.
 Therefore, the result is divided by a convolution of a spectrum of ones with the same wavelength resolution to normalize the convolution.
 
-As the Doppler shift \(\vsini\) is transformed into wavelength by multiplication of $\lambda  / c$ there is a wavelength dependence on the rotation kernel shape. That is, the rotation kernel at each pixel is unique and requires separate calculation. For small wavelength ranges this can be held fixed to improve performance. This simplifications is not performed in this work as large wavelength ranges are considered. 
+As the Doppler shift \(\vsini\) is transformed into wavelength by multiplication of $\lambda  / c$ there is a wavelength dependence on the rotation kernel shape. That is, the rotation kernel at each pixel is unique and requires separate calculation. For small wavelength ranges this can be held fixed to improve performance. This simplifications is not performed in this work as large wavelength ranges are considered.
 
 
 \subsection{Instrumental Convolution}
@@ -313,7 +313,7 @@ The python package \emph{PyAstronomy} also contains functions that perform rotat
 One factor the needs consideration when convolving with an non-uniformly spaced spectrum is effect of the sampling on the convolution.
 For instance the number of point inside the convolution, as well as their location will effect the area of the convolution kernel.
 To normalize the convolution result it is divided by the convolution of a unitary spectrum of ones, with the same spacing.
-\citet{\fsixteen} performed this unitary convolution separately and applied the normalization afterwards.
+\citet{figueira_radial_2016} performed this unitary convolution separately and applied the normalization afterwards.
 In the improved implementation the convolution normalization is performed directly after the convolution kernel multiplication at \(\textbf{*}\).
 For example for the rotational convolution result of the value for pixel $i$ becomes
 $A^\prime(\lambda_{i}) =  \frac{\sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})}{\sum G(\Delta\lambda_{i})}$,
@@ -356,7 +356,7 @@ The bands are selected based on the strong water absorption. This can be seen th
 \subsection{Comparing models to {CARMENES}.}
 Already somewhat done in Reiners. (use all spectra). They measured the precision obtained in the spectra.
 
-Band by band like \citet{\fsixteen}?
+Band by band like \citet{figueira_radial_2016}?
 Certain\% steps like Bouchy or Artigau
 
 
@@ -372,8 +372,8 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
         \toprule
         Karmn & Name & SpT &  \(\textrm{SNR}_{\textrm{NIR}}\)  & Temp (K) &\logg{} & \feh{} & v\(\sin{i}\) (\kmps{})\\
         \midrule
-        \DTLforeach*{targets}{\id=Karmn,\name=Name,\sptype=SpT,\snr=NIR-SNR,\teff=Teff, \logg=logg,\metal=FeH, \rot=ROT-Vsini}{
-            \DTLiffirstrow{}{\\}\id{} & \name{} &\sptype{} & \snr{} & \(\teff{}\) & \logg{} & \metal{} & \rot{}
+        \DTLforeach*{targets}{\id=Karmn,\name=Name,\sptype=SpT,\SNR=NIR-SNR,\TEFF=Teff, \LOGG=logg,\metal=FeH, \rot=ROT-Vsini}{
+            \DTLiffirstrow{}{\\}\id{} & \name{} &\sptype{} & \SNR{} & \TEFF{} & \LOGG{} & \metal{} & \rot{}
         }
         \\
         \bottomrule
@@ -537,7 +537,7 @@ The {FFD} will therefore produce a slightly smaller \(\delta V_{\rms}\) error co
 
 In \tref{tab:numerical_gradients} we calculate the  \(\delta V_{\rms}\) using both gradient methods to determine their relative effect on the {RV} precision.
 
-We took a {PHOENIX-ACES} spectrum with \teff{}=3\,900\K{}, corresponding to {{M0}} spectral type.
+We took a {PHOENIX-ACES} spectrum with \txteff{}=3\,900\K{}, corresponding to {{M0}} spectral type.
 The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1.
 In this case the {RV} precisions are not comparable between bands and are only to assess the direct effect of the changing the numerical gradient.
 The bands name and the spanned wavelength are given.
@@ -549,7 +549,7 @@ We find that changing to use the gradient from numpy increases the \(\delta V_{\
 As the pixel weights \eref{eq:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the {RV} precision, visible in \fref{fig:gradients}.
 This small wavelength shift red-ward does changed the {RV} precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using numpy's gradient method.
 
-Changing the method of numerical derivatives will change all the precision values given in the~\citet{figueira_radial_2016}. This is a small impact on on the precision compared to other components of the {RV} precision. For instance from \eref{eq:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\%  could equally be caused by a small decrease in the {SNR} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
+Changing the method of numerical derivatives will change all the precision values given in the~\citet{figueira_radial_2016}. This is a small impact on on the precision compared to other components of the {RV} precision. For instance from \eref{eq:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\%  could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
 
 The current version of the software is now implemented with the gradient method provided by numpy package.
 
@@ -629,31 +629,31 @@ This bug means that all the {RV} precision values for Condition~\#2 published in
 \label{subsec:snr_scaling}
 To analyse the relative precision of different spectra they need to normalized to a common reference point. In this section we detail how this was originally done and how this was changed to be adaptable to any library spectra and any reference band.
 
-In the original code this was selected to be a {SNR} per pixel of 100 at the centre of the \textit{J}-band at 1.25\si{\micro\meter}. The normalization values for each band, \(\vsini\) and resolution combination were hard-coded into the analysis. This made it impossible to easily adapt the code to other spectra or parameter combinations.
+In the original code this was selected to be a \snr{} per pixel of 100 at the centre of the \textit{J}-band at 1.25\si{\micro\meter}. The normalization values for each band, \(\vsini\) and resolution combination were hard-coded into the analysis. This made it impossible to easily adapt the code to other spectra or parameter combinations.
 
-An automated {SNR} scaling procedure was created to remove the hard-coded values. This updated code finds the centre point of the band of reference for the given spectrum. Totals the photon count across one resolution element, \(\delta\lambda\), and then takes the square root. This is using the definition of the {SNR} as \({SNR} = \sqrt{N}\) for large N. This value is then used to scale the spectrum such that the {SNR} at the reference point is the desired value.
+An automated \snr{} scaling procedure was created to remove the hard-coded values. This updated code finds the centre point of the band of reference for the given spectrum. Totals the photon count across one resolution element, \(\delta\lambda\), and then takes the square root. This is using the definition of the \snr{} as \({SNR} = \sqrt{N}\) for large N. This value is then used to scale the spectrum such that the \snr{} at the reference point is the desired value.
 
 \begin{equation}
     SF =  \frac{\sqrt{\sum{\delta\lambda} A}} {SNR_{desired}}
 \end{equation}
 
-\textit{SF} where \textit{SF} is the scaling factor, \(\sum_{\delta\lambda} A\) is the sum of the point in one resolution element and \({SNR}_{desired}\) is the desired {SNR} level requested.
+\textit{SF} where \textit{SF} is the scaling factor, \(\sum_{\delta\lambda} A\) is the sum of the point in one resolution element and \({SNR}_{desired}\) is the desired \snr{} level requested.
 
 This automated procedure enabled {\red{}\textbf{4}} different features.
 \begin{itemize}
 \item The ability to analysis other spectral models, not just corresponding to {M0}, {M3}, {M6}, {M9} spectral types.
-    - Scaling to a {SNR} per pixel level other than 100.
-\item    A {SNR} per pixel other than 100 can be selected.
+    - Scaling to a \snr{} per pixel level other than 100.
+\item    A \snr{} per pixel other than 100 can be selected.
     - Allowing for other sampling levels (if desired)
 \item      Not restricted to a model with 3 samples per resolution element.
 \item Different reference bands available.
-    Results are not limited to being referenced from the \textit{J}-band. For instance the {RV} precision can now be calculated for a given {SNR} at the centre of the \textit{K}-band. This was one the features requested for the Exposure Time Calculators precision values. For {NIRPS} we provided precision values relative to each individual band, while for {SPIRou} they were relative to the {J}- and {H}-bands.
+    Results are not limited to being referenced from the \textit{J}-band. For instance the {RV} precision can now be calculated for a given \snr{} at the centre of the \textit{K}-band. This was one the features requested for the Exposure Time Calculators precision values. For {NIRPS} we provided precision values relative to each individual band, while for {SPIRou} they were relative to the {J}- and {H}-bands.
 \end{itemize}
-The default values for the {SNR} scaling a still 100 at the centre of the \textit{J}-band, but there is now options to easily change these values.
+The default values for the \snr{} scaling a still 100 at the centre of the \textit{J}-band, but there is now options to easily change these values.
 
-The centre of each band was visually checked to ensure that there were no spectral lines at the reference locations> If a line was present at the reference point its depth variability across spectral types would affect the {SNR} scaling levels at a greater than the normal change in continuum amplitude/shape.\todo{is this needed}
+The centre of each band was visually checked to ensure that there were no spectral lines at the reference locations> If a line was present at the reference point its depth variability across spectral types would affect the \snr{} scaling levels at a greater than the normal change in continuum amplitude/shape.\todo{is this needed}
 
-As shown in \eref{eq:snrequation} the {RV} precision is inversely proportional to the {SNR} level. To access the {RV} precision of any of the values in Table at a different {SNR} level you can apply the following
+As shown in \eref{eq:snrequation} the {RV} precision is inversely proportional to the \snr{} level. To access the {RV} precision of any of the values in Table at a different \snr{} level you can apply the following
 
 \begin{equation}
 \rm RV_{SNR2} = RV_{SNR1} * \frac{SNR1}{SNR2}
@@ -668,7 +668,7 @@ In September 2017 we were requested to provide precision calculations for the {S
 In May 2018 we were requested to provide precision calculations for the {NIRPS} {ETC}.\@ This extended the spectral range from {M0}, {M3}, {M6}, {M9} at 3\,900, 3\,500, 2\,800, 2\,600\K{} respectively, but to all temperatures between 2\,500 and 4\,000\K{} inclusively. This provides a finer resolution coverage over the M spectral type, allowed by the {PHOENIX-ACES} library.
 Instrumental resolutions of 75,000 and 100\,000 were requested to match the {NIRPS} instrument.
 The \logg{} and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
-Precisions were provided for {SNR} of 100 relative to the \emph{J}-, \emph{H}-bands as well as to each band individually. Artigua 2018. (private communication 2018)\todo{Check how to cite priv communication properly} suggested the truly relevant value is the {SNR} in \emph{H}-band for {NIRPS} radial velocities.
+Precisions were provided for \snr{} of 100 relative to the \emph{J}-, \emph{H}-bands as well as to each band individually. Artigua 2018. (private communication 2018)\todo{Check how to cite priv communication properly} suggested the truly relevant value is the \snr{} in \emph{H}-band for {NIRPS} radial velocities.
 
 The results can be manually generated using ``eniric'' with the following incantation (after installation and configuration of phoenix library spectra.)
 \textbf{A table of the precisions created for the {NIRPS} ETC are provided as an online table to our publication} \textit{Neal et al. 2018b (in prep.)}\footnote{Available at \href{blah}{blah}} \unfinished{Inlcude correct links}
@@ -683,7 +683,7 @@ These values were both calculated and provided using the {FFD} gradient and with
 \begin{figure}
     \centering
     \begin{tabular}{cc}
-         
+
     \includegraphics[width=0.48\linewidth]{figures/information-content/Rvprec_vsini1.pdf} &  % Figueria plot
     \includegraphics[width=0.47\linewidth]{figures/information-content/precision_fourpanel.png}\\ % eniric plot
     \end{tabular}

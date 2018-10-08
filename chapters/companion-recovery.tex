@@ -58,7 +58,7 @@ The computed models are described in \sref{models} and result in a multidimensio
 We obtain the global minimum of the multidimensional \textchisquared-space to represent the best fit to the observed spectra. We sum the multidimensional \textchisquared{} across multiple detectors and determine a global minimum \textchisquared{} for the whole observation \(\chisquared_{obs} = \Sigma^{N}_{n=1} \chisquared_n\), where \(N\) is the number of detectors used. We do not, however, combine the \textchisquared{} values across the separate observations as the {RV} parameters of the host and companion will vary between each observation. However, since the current observations are insufficiently separated, it may be possible to combine the separate observations; but in general this would not be the case, so was not performed.
 
 The inverse survival function of the \textchisquared{} distribution is used to determine the confidence levels on the minimum \textchisquared{} parameters. The inverse survival function returns a \(\Delta\chisquared\) value from the minimum \textchisquared{} value for a given sigma level and degree of freedom\footnote{In \emph{Python} with the \emph{scipy} package this is a single line \texttt{scipy.stats.chi2{(dof)}.isf{(1-p)}}, where \(p = 0.68\) for 1-\(\sigma\), and dof is the degree of freedom.}.
-For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}. This method assumes that the measured flux is observed with a {SNR} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
+For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}. This method assumes that the measured flux is observed with a \snr{} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
 
 For a given observation, the \(\chisquared_{red}\) is computed by \(\chisquared_{red} = \chisquared / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or 4 in the examples explored below}, and is performed after the summation over the detectors.
 
@@ -189,7 +189,7 @@ Here we show the results from applying the companion recovery model to simulated
 \label{subsec:simulated_binaries}
 To test the companion recovery method we create simulated binary observations using {PHOENIX-ACES} spectra. White noise was added with a standard deviation \(\rm \sigma = 1/{SNR}\), for a given signal-to-noise ({SNR}) level. We then applied the grid-matching recovery technique detailed above and compared the resulting parameters to the inputs.
 
-The results of two example binary simulations are displayed in Figs.~\ref{fig:Mdwarf_contours} and~\ref{fig:HD211847_simulated_contours}, both simulated with a {SNR} of 150. The input and recovered parameters for the binary components are indicated by the red circles and yellow stars respectively, and are given in \tref{tab:example_params}.
+The results of two example binary simulations are displayed in Figs.~\ref{fig:Mdwarf_contours} and~\ref{fig:HD211847_simulated_contours}, both simulated with a \snr{} of 150. The input and recovered parameters for the binary components are indicated by the red circles and yellow stars respectively, and are given in \tref{tab:example_params}.
 The 3-\(\sigma\) contour is shown in white on the plots to indicate the shape of the confidence level only. The 1-\(\sigma\) contours are not shown here as they are much smaller than the temperature grid step and are not easy to visualize at this scale as they are often smaller than the marker shown at the minimum location. Each coloured rectangle is centred on the grid point, with its shape indicating the resolution of the grid space searched.
 
 The first simulation shown in \fref{fig:Mdwarf_contours} is for a Sun-like star with a M-dwarf companion, with a \(\teffsub{2} =4\,000\)\K{}. The top-left panel shows the recovered host parameters when the single model is applied to the simulated binary. The top-right and both bottom panels are the parameters recovered when using the binary model. Both left-hand panels display the parameters for the host component to easily compare between models. With both models the host temperature \(\teffsub{1}\) is correctly recovered. The host {RV}, \({rv}_1\), is 0.1\kmps{} (two grid spaces) different from the simulated value for the single component model and is correctly recovered with the binary model.
@@ -279,7 +279,7 @@ The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above
 \begin{figure}
     \centering
 %    \includegraphics[width=0.95\hsize]{images/chi2_shape_investigation_sigmas.pdf}
-    \caption{(top) Companion temperature verses \textchisquared{} for simulations with different injected companion temperatures. Other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5\,200\)\K{}, \(\textrm{logg}_1=4.5\), \(\textrm{logg}_2=5.0\), and both \feh{}=0.0. A fixed Gaussian noise corresponding to a {SNR} of 300 was used.
+    \caption{(top) Companion temperature verses \textchisquared{} for simulations with different injected companion temperatures. Other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5\,200\)\K{}, \(\textrm{logg}_1=4.5\), \(\textrm{logg}_2=5.0\), and both \feh{}=0.0. A fixed Gaussian noise corresponding to a \snr{} of 300 was used.
        (bottom) A close up view of \textchisquared{} < 15. The three horizontal grey lines indicate the 1, 2, 3 sigma with 2 degrees of freedom. The vertical dotted lines indicate the location of the minimum \textchisquared{} recovered for each companion. The black solid vertical in both panels shows the 2\,300\K{} cut-off of the {PHOENIX-ACES} models}
     \label{fig:injection_shape}
 \end{figure}
@@ -364,7 +364,7 @@ Both {BT-Settl} and aces are spherical
 \subsection{Incremental changes}
 \textbf{incremental changes in models are small}
 
-We took the synthetic models and investigated how the synthetic binary changed as the model parameters were incremented.  For the temperature of the companion to be incremented by 100\K{} this resulted in change to the spectrum with a std of XXX. This is around a {SNR} of around 500.
+We took the synthetic models and investigated how the synthetic binary changed as the model parameters were incremented.  For the temperature of the companion to be incremented by 100\K{} this resulted in change to the spectrum with a std of XXX. This is around a \snr{} of around 500.
 The change in the models with incremental changes in temperature is small, Changes in log and feh are larger but we fixed these for the application above.
 
 
