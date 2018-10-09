@@ -55,10 +55,45 @@ Most RV detection has been performed using optical spectrographs. However, as th
 \end{figure}
 
 
-\subsection{Transit and TTV}
-The transit method detects the presence of a exoplanet by observing the periodic dimming of the star due to the passage of the exoplanet between the observer and star.  
 
-A transit example closer to home is the transit of Venus in 2012 shown in  \fref{fig:transit_venus}, although unlike exoplanets we are also internal to the Solar System.
+\subsection{Transit and TTV}
+The transit method detects the presence of a exoplanet by observing the periodic dimming of the star due to the passage of the exoplanet between the star and observer, partially blocking the star.
+Geometry requires the orbit of the exoplanet needs to be aligned edge-on to the light of sight (low inclinations) for a transit to occur.
+The geometric probability, P, that a exoplanet transits is estimated by 
+\begin{equation}
+P \approx \frac{R_{\star}}{a(1-e^^2)},
+\end{equation}
+
+where \(e\) is the eccentricity of the orbit, $R_{\star}$ is the star radii and \(a\) is the semi-major axis of the orbit (star-planet distance) \textbf{Barnes 2007}.
+The probability increase with the size of the star but decreases with distance to the star.
+
+The drop in stellar brightness during the transit allows the measurement of the planet/star radius ratio:
+\begin{equation}
+    \frac{\Delta L}{L} \sim \left(\frac{R_p}{R_{\star}})\right)^2
+\end{equation}
+where \(L\) is the luminosity of the star, \(\Delta L\) is the maximum luminosity variation (transit depth), and \(R_{\star}\) and \(R_p\) are the radius of the star and planet respectively.
+\missingfigure{transit shape}
+
+
+There are several other astrophysical phenomena which can mimic transiting exoplanet signals, created by configurations of two or more stars which may not involve an exoplanet. 
+For example a transiting low-mass or white-dwarf star, grazing binary stars, or a transit in a multi-star system \citep[e.g.][]{Cameron 2012, Santerne 2013}.
+Follow-up RV observations (e.g Santerne 2011) are usually required to confirm the planets existence. 
+Statistical validation techniques are also possible, such as the PASTIS software \cite{diaz2014}, when follow-up can not be performed.
+With RV follow-up \citet{santerne_sophie_2012} found a false positive rate as high as 35\% for short period giant planets, while \citet{santerne_2016} found a 54.6\% false positive rate of 129 giant planet with periods less than 400 days. K-2 false positive rate (jorge thesis)
+Some of the currently known exoplanet systems with the smallest radii and lightest mass have been detected through transit and confirmed with high-precision RV follow-up \citet[e.g.]{ queloz 2009, pepe 2013, lopex-morales 2016, santerne 2018?}
+
+The transit of a single planet can not directly determine the planetary mass.
+However in multiple planet systems, the masses and sometimes the presence of other planets in the system can be determined from perturbations in the transit time and duration \textbf{(e.g. Holman and Murry 2005), Holman 2010}.
+A large number of systems have been detected that show transit timing variations (TTV) and transit duration variations (TDV) \textbf{(e.g.Carter 2012, Holczer 2016)}
+The statistical validity of multi-transiting planets is also higher than single planets as probability of multiple false positive is lower than having multiple planets in the system \textbf{lissauer 2012}.
+
+The presence of star spots on the surface of a star can be observed in transit.
+A star spot is a dark region on the stellar surface due to magnetic fields, which decrease the luminosity slightly.
+If an exoplanet passes in front of a spot, the luminosity decrease from the spot is temporarily hidden and a small bump occurs in the transit shape.
+The presence of spots in successive transits can indicate the alignment of the stellar rotation to the planet orbital plane \citet{Sanchis-Ojeda et al 2012}.
+An image from the 2012 transit of Venus in shows several dark Sun spots along sided Venus in\ref{fig:transit_venus} (although Venus did not cross them).
+In this instance, unlike for other stars, the Sunspots can be spatially resolved.
+
 \begin{figure}
     \centering
     \includegraphics[width=0.3\linewidth]{./figures/introduction/SDO_2012_Venus_Transit.jpg}
@@ -66,29 +101,16 @@ A transit example closer to home is the transit of Venus in 2012 shown in  \fref
     \label{fig:transit_venus}
 \end{figure}
 
-If a planet is in an edge-on orbit relative to Earth and passes in front of the parent star 
-description
 
-detection parameters
-- narrow inclination, i
-r/r*  (requires good stellar radius.
-- period
+The vast majority of transit detections have come from Kepler(borucki 2008), which focused on a small patch of sky (0.25 \%) for almost 4 years continuously.
+However, CoRoT \textbf{(barge 2008)} and ground-based surveys are also WASP\textbf{(pollacco 2006), OGLE(udalsk 2002), TreS (alonso 2004) } have also had successful transit detections.
 
-Kepler, started at one point in the sky for 4 years, then K-2 which studies patches of the ecliptic for 4 months at a time. Limited by  Due to the number of transits required 3 to confirm a planet it would require 3+years of constant monitoring to detect a exoplanet in an 1 year orbit.
+Following in the footsteps of Kepler the the next generation transit hunter TESS has been recently launched, has announced discoveries of new transiting planets only months after launch.
+It will cover 90\% of the sky with impressive planetary yield expected of 
+.... (\textbf{TESS paper}).
+However due to the short observation window, and multiple (usually 3+) transits required to confirm an exoplanet orbit TESS will mostly detect short period exoplanets.\textbf{ ()}
+An exoplanet with an orbital period of 1 year would require 3 years of continuous monitoring to be sufficiently detected (XXX).
 
-TESS is the next generation transit hunter that will cover 90\% of the sky with impressive planetary yield expected of ....
-
-For instance, TESS, the newest satellite with the sole purpose of finding exoplanets, has announced discoveries of new transiting planets only months after launch. TESS ..2018) while they expect they will find XXXX thousand in the next few years.
-
-Sensitive to short orbits...
-
-Kepler/tess
-
-Stellar activity
-
-
-
-false positive rate \citet{santerne_sophie_2012}
 
 
 \subsection{Direct detection}
