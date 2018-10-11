@@ -84,6 +84,7 @@ The drop in stellar brightness during the transit allows the measurement of the 
 where \(L\) is the luminosity of the star, \(\Delta L\) is the maximum luminosity variation (transit depth), and \(R_{\star}\) and \(R_p\) are the radius of the star and planet respectively.
 \missingfigure{transit shape}
 
+The transit method complements RV measurements as the inclination, $i$, of the orbit to be determined from the transit. This removes the {$\sin{i}$} ambiguity found in the \msini of RV detections so that the true mass of the exoplanet to be revealed. The true mass along with the planets radius provides a value for the exoplanets average density, hinting at the possible composition.
 
 There are several other astrophysical phenomena which can mimic transiting exoplanet signals, created by configurations of two or more stars which may not involve an exoplanet. 
 For example a transiting low-mass or white-dwarf star, grazing binary stars, or a transit in a multi-star system~\citep[e.g.][]{Cameron 2012, Santerne 2013}.
@@ -121,7 +122,9 @@ However, the observation coverage is not uniform, with the majority of the eclip
 
 
 \subsection{Direct detection}
-\
+
+
+
 \subsection{Astrometry}
 
 Measuring the motion of the stars in the sky
@@ -130,10 +133,29 @@ Previously with Hipparcos.
 The most precise parallax measurements are being perform with GAIA, with...
 
 
-\subsection{Microlenseing}
+\subsection{Microlensing}
+
+Microlensing is an astronomical effect predicted by Einstein's General Theory of Relativity. The mass of an object bends space-time which causes light to be bent.
+
+As a star passes between Earth and a distant star it acts like a lens, banding and magnifying the light from the background star. The gravitation of a planet orbiting the lens star (if it exists) creates a distortion in the lens, leading to small caustics, deviations in the single lens microlensing light curve. This can be seen in \fref{fig:microlensing_example} where a  magnification of 3 is observed for OGLE2005-BLG-390~\citep{beaulieu_discovery_2006}. The small bump on the right hand side, and inset top right is due to the presence of a planet.
+
+The difficulties of microlensing is that they require the chance alignment between Earth, a nearby lens star, and a distance source star, which is unrepeatable. Some caustics are often difficult to fit and yield degenerate results, making characterization of the planet difficult. Follow-up measurements of a handful of have been performed\citep[e.g.][]{kubas 2012, batista 2015, santerne_spectroscopic_2016} \todo{finish finsing references} to break degenerices. 
+Follow-up can be difficult however as microlensing is sensitive to distant host stars, which are outside the ability of current spectrographs. It is also sensitive to planets with a wider orbital separation  compared to transits and RV. Currently there are 82 planets in 79 systems detected by microlensing, as listed in the \href{https:\\www.exoplanet.eu}{exoplanet.eu} database.
+
+Microlensing events are detected and monitors using dedicated global telescope networks \textbf{such as OGLE(), MOA(), microFUN() and PLANET(). } They focus their veiwing towards the eclipic plane where there is a majoritiy of the stars, increasing the chances of alignment.
+
+The precise stellar proper motions from the Gaia mission~\citep{collaboration_gaia_2016} are being used to predict possible future alignments what could produce microlensing events \citep{kluter_prediction_2018} 
+
+\todo{exoplanet detection book...}
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{./figures/introduction/microlensing_example} 
+\caption{Microlensing magnification of OGLE2005-BLG-390 from 
+    \citep{beaulieu_discovery_2006}. The presence of the planet causes the small bump shown in the upper right inset plot. }
+\label{fig:microlensing_example}
+\end{figure}
 
 
-Notable discoveries section? Proxima b?  
 
 \section{pulsar timing}
 
