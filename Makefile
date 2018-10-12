@@ -12,7 +12,7 @@ pdf:
 	pdflatex -interaction=nonstopmode -halt-on-error thesis.tex
 
 test:
-	chktex thesis.tex -n 8 -n 24
+	chktex thesis.tex -n 8 -n 24 -n 11
 
 test-all:
 	checktex thesis.tex
