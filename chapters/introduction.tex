@@ -43,24 +43,33 @@ Details about the various main detection methods are provided in the following s
 \label{sub:radial_velocimetry}
 This techniques measures the radial velocity (RV) of the star by analysing the relative Doppler shift of its spectral lines due to the gravitational interaction with a companion.
 As the star and companion orbit around their common centre of mass the spectrum of the star oscillates due to the change in relative motion to the observer as depicted in \fref{fig:rvdiagram-mayor}.
-The key exoplanet property determined by the {RV} technique is the companions mass, or \mtwosini.
-Where $i$ is the relative inclination of the orbital plane to the light of sight.
 
-The velocity amplitude K of a star of mass $\Mstar$ due to a companion with mass $\Mp\sin{i}$ with orbital period $P$ and eccentricity $e$ is:
+The radial velocity variation, directed along the line of sight, is given by
 
 \begin{equation}
-K = {\left(\frac{2\pi G}{P}\right)}^{1/3} \frac{\Mp \sin{i}}{{(\Mp + \Mstar)}^{2/3}} \frac{1}{\sqrt{1-{e}^{2}}},
+\label{eq:rv_equation}
+{RV} = \gamma + K [\cos{(\nu(t, P, T_0) + \omega)} + e\cos{(\omega)}]
 \end{equation}
-where ... . \citet[e.g.][]{cumming_lick_1999}.\todo{finish explaining this equation and adding the {RV} equation as well.}
+where $\gamma$ is constant barycentre velocity of the system relative to the Sun, K is the velocity semi-amplitude, and \(omega\) is the argument of periastron. The true anomaly 
+, \(\nu\) is a function of time, \(t\), orbital period \(P\), and the time of periastron passage, \(T_0\), and eccentricity.
 
+The velocity amplitude $K$ of a star of mass $\Mstar$ due to a companion with mass $\Mp$ with orbital period $P$, eccentricity $e$ and inclination $i$ is~\citet[e.g.][]{cumming_lick_1999}:
+
+\begin{equation}
+K = {\left(\frac{2\pi G}{P}\right)}^{1/3} \frac{\Mp{} \sin{i}}{{(\Mp{} + \Mstar)}^{2/3}} \frac{1}{\sqrt{1-{e}^{2}}},
+\end{equation}
+where G is the gravitational constant. 
+
+The key exoplanet property determined by the {RV} technique is the companions mass, or \mtwosini.Where $i$ is the relative inclination of the orbital plane to the light of sight.
+\todo{detail the other factors...}
 
 This method detected the first exoplanet around a solar-type star {51 Pegasi}~\citep{mayor_jupitermass_1995}, kick-starting the exoplanet field.
 However, since the {RV} signal it arises from the gravitational interaction the {RV} method is more sensitive to large mass planet, on close-in orbits.
 As such the first discoveries (\msini=0.47\Mjup{} orbiting at 0.05\AU{} for {51 Pegasi}) were surprising, unlike anything in our Solar System.
 Several exoplanet discoveries followed in quick successions~\citep[e.g.][]{butler_planet_1996, marcy_planetary_1996} with many confirming the existence of the type of planets now referred to as ``hot-Jupiters''~\citep{butler_three_1997, charbonneau_detection_2000}.
 
-The radial velocity amplitude of the first exoplanets detected were XXX \kmps....
-The radial velocity signal of the Earth in a 1 year orbit around a solar-type star however is 8.9\cmps{}~\citep{figueira_radial_2010}.
+The radial velocity amplitudes of the first exoplanets detected were XXX \kmps while 
+the radial velocity signal of the Earth in a 1 year orbit around a solar-type star however is 8.9\cmps{}~\citep{figueira_radial_2010}.
 Specially constructed spectrographs, such as HARPS~\citep{mayor_setting_2003} along with improve reduction techniques~\citet{lovis_new_2007} spectrographs in the optical pushed this mass detection limit down to the \mps{} level. \textbf{ Figure XX shows the mass of detected exoplanets over time decrease} \todo{Mass verse time plot}.
 ESPRESSO~\citep{pepe_espresso_2014, megevand_espresso_2014} is the next generation high precision optical spectrograph aiming to push the detection limits to 10\cmps, to detect an Earth twin.
 
@@ -76,8 +85,6 @@ M-dwarfs are inherently cooler and thus emit a majority of their stellar output 
     \label{fig:rvdiagram-mayor}
 \end{figure}
 
-
-activity induced signals, rotation period?
 
 \subsection{Transit methods}
 \label{sub:transit}
