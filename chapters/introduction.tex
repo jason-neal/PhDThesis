@@ -43,24 +43,33 @@ Details about the various main detection methods are provided in the following s
 \label{sub:radial_velocimetry}
 This techniques measures the radial velocity (RV) of the star by analysing the relative Doppler shift of its spectral lines due to the gravitational interaction with a companion.
 As the star and companion orbit around their common centre of mass the spectrum of the star oscillates due to the change in relative motion to the observer as depicted in \fref{fig:rvdiagram-mayor}.
-The key exoplanet property determined by the {RV} technique is the companions mass, or \mtwosini.
-Where $i$ is the relative inclination of the orbital plane to the light of sight.
 
-The velocity amplitude K of a star of mass $\Mstar$ due to a companion with mass $\Mp\sin{i}$ with orbital period $P$ and eccentricity $e$ is:
+The radial velocity variation, directed along the line of sight, is given by
 
 \begin{equation}
-K = {\left(\frac{2\pi G}{P}\right)}^{1/3} \frac{\Mp \sin{i}}{{(\Mp + \Mstar)}^{2/3}} \frac{1}{\sqrt{1-{e}^{2}}},
+\label{eq:rv_equation}
+{RV} = \gamma + K [\cos{(\nu(t, P, T_0) + \omega)} + e\cos{(\omega)}]
 \end{equation}
-where ... . \citet[e.g.][]{cumming_lick_1999}.\todo{finish explaining this equation and adding the {RV} equation as well.}
+where $\gamma$ is constant barycentre velocity of the system relative to the Sun, K is the velocity semi-amplitude, and \(omega\) is the argument of periastron. The true anomaly 
+, \(\nu\) is a function of time, \(t\), orbital period \(P\), and the time of periastron passage, \(T_0\), and eccentricity.
 
+The velocity amplitude $K$ of a star of mass $\Mstar$ due to a companion with mass $\Mp$ with orbital period $P$, eccentricity $e$ and inclination $i$ is~\citet[e.g.][]{cumming_lick_1999}:
+
+\begin{equation}
+K = {\left(\frac{2\pi G}{P}\right)}^{1/3} \frac{\Mp{} \sin{i}}{{(\Mp{} + \Mstar)}^{2/3}} \frac{1}{\sqrt{1-{e}^{2}}},
+\end{equation}
+where G is the gravitational constant. 
+
+The key exoplanet property determined by the {RV} technique is the companions mass, or \mtwosini.Where $i$ is the relative inclination of the orbital plane to the light of sight.
+\todo{detail the other factors...}
 
 This method detected the first exoplanet around a solar-type star {51 Pegasi}~\citep{mayor_jupitermass_1995}, kick-starting the exoplanet field.
 However, since the {RV} signal it arises from the gravitational interaction the {RV} method is more sensitive to large mass planet, on close-in orbits.
 As such the first discoveries (\msini=0.47\Mjup{} orbiting at 0.05\AU{} for {51 Pegasi}) were surprising, unlike anything in our Solar System.
 Several exoplanet discoveries followed in quick successions~\citep[e.g.][]{butler_planet_1996, marcy_planetary_1996} with many confirming the existence of the type of planets now referred to as ``hot-Jupiters''~\citep{butler_three_1997, charbonneau_detection_2000}.
 
-The radial velocity amplitude of the first exoplanets detected were XXX \kmps....
-The radial velocity signal of the Earth in a 1 year orbit around a solar-type star however is 8.9\cmps{}~\citep{figueira_radial_2010}.
+The radial velocity amplitudes of the first exoplanets detected were XXX \kmps while 
+the radial velocity signal of the Earth in a 1 year orbit around a solar-type star however is 8.9\cmps{}~\citep{figueira_radial_2010}.
 Specially constructed spectrographs, such as HARPS~\citep{mayor_setting_2003} along with improve reduction techniques~\citet{lovis_new_2007} spectrographs in the optical pushed this mass detection limit down to the \mps{} level. \textbf{ Figure XX shows the mass of detected exoplanets over time decrease} \todo{Mass verse time plot}.
 ESPRESSO~\citep{pepe_espresso_2014, megevand_espresso_2014} is the next generation high precision optical spectrograph aiming to push the detection limits to 10\cmps, to detect an Earth twin.
 
@@ -76,8 +85,6 @@ M-dwarfs are inherently cooler and thus emit a majority of their stellar output 
     \label{fig:rvdiagram-mayor}
 \end{figure}
 
-
-activity induced signals, rotation period?
 
 \subsection{Transit methods}
 \label{sub:transit}
@@ -142,16 +149,27 @@ It will eventually cover more than 90\% of the sky with impressive planetary yie
 However, the observation coverage is not uniform, with the majority of the ecliptic plane receiving only one month of observations, limiting the detection sensitivity to short period transiting planets.
 
 
-\subsection{Direct detection}
+\subsection{Direct Imaging}
 \label{sub:direct_detection}
+The direct imaging technique involves directly imaging an exoplanet in orbit around a star.
+The first planets directly imaged were {2MASSWJ~1207334--393254 b} using adaptive optics with NACO on the LVLT\citep{chauvin_giant_2004}, three planets around HR\,8799 using angular differential imaging on the Keck and Gemini telescopes~\citep{marois et al 2008}, and {Fomalhaut b} using chronography on the HST~\ctiep{kalas_optical_2008}.
+As an example the direct image of {HR\,8799} is shown in \fref{fig:directimaging}, where a fourth planet was revealed~\citep{marois_images_2010}.
 
+Direct imaging is best suited to detect giant planets in wide orbits (>10\AU{}) around nearby stars.
+The wide orbits are necessary to resolve the angular separation between the star and planet, and larger surface area which favour detection.
+Young giants are favoured as they are still cooling and have higher thermal emission resulting in a higher constrast ratio to the host.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{figures/introduction/DirectImaging_HR8799_MaroisEtAl2010}
-    \caption{Direct detection of 4 exoplanets around HR\,8799.}
+    \includegraphics[width=0.5\linewidth]{./figures/introduction/DirectImaging_HR8799_MaroisEtAl2010}
+    \caption{Direct detection of four exoplanets around HR\,8799~\citep{marois_images_2010}.}
     \label{fig:directimaging}
 \end{figure}
+
+High-contrast adaptive optics instruments such as SHPEHE\citet{Beuzit_sphere_2008} on the VLT and GPI at~\citet{macintosh_gemini_2008}) are being used with several different techniques to observed targets closer to the star and with smaller contrasts, usually involving blocking or cancelling out the light from the star while keeping the planet \citep[e.g.[]{marois__2005, schmid__2005, sirbu 2017, mawet_2005, wang_2017}]
+
+Along with exoplanets direct imaging has also been used to observe dust, rings and disks around young stars\textbf{reference}, and even image planets during formation \citep[e.g.][]{kraus 2012, sallum 2015}.
+Combining direct images from different photometric bands can allow for the creation of low-resolution exoplanet spectra \citep[e.g.][]{kuzuhara__2013, zurlo__2015}.
 
 
 \subsection{Astrometry}
@@ -239,10 +257,19 @@ There is still a rarity of  <10 pulsars with orbiting planets known.
 
 
 \section{Detecting atmospheres}
+After the detection of exoplanets and the measurement of bulk properties, the next goal is detecting the atmosphere. Several techniques are being developed to available to this can give rise to the composition of the atmosphere, density, thickness
+To enhance the characterization of exoplanets
+Several of the main ones are detailed below.
+
+\subsection{Phase variations}
+
+thermal profile/phase of hot spot. 
 
 \subsection{Transmission spectroscopy}
+radius changes with wavelength, extra absorbtion during transit can give molecular composition.
 
-\subsection{Reflection in optical}
+
+\subsection{Reflection }
 
 Transit and occulations~\citet{winn_transits_2010}
 
@@ -289,8 +316,6 @@ Explore what these method have found with exoplanet populations.
 
 The discovery of the hot-Jupiter class (large mass planets on close in orbits) challenged the accepted planet formation theories at the time~\citep[.e.g][]{pollack_formation_1996} in which our Solar System was thought to be typical with small rocky planets close to the Sun and large giant planets further away.
 
-
-super earth wolf503b - recent detection
 
 
 MR relation ship image arXiv:1506.05097~\citet{chen_probabilistic_2016}
