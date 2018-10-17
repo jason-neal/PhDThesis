@@ -131,7 +131,7 @@ A small random vertical offset is applied to each observation which ensures that
 As part of the {CRIRES} calibration procedure, spectra are taken of \thar{} lamps. The \thar{} spectra are placed into the instrument using 6 optical fibres, creating 6 uniformly spaced spectra across the detector.
 \fref{fig:caliblamps} contains the \thar{} spectra for all four detectors. There are \(\sim50\) \thar{} lines that fall across the four detectors for the wavelength setting here, although most of them are faint.
 
-The purpose of the \thar{} fibres is to perform cross-correlation against a \thar{} template to obtaining a wavelength solution for each detector. Optical defects (e.g. scratches on the detector) interfere with the performance of the correlation between \thar{} lines and the spectral template in {ESO} pipeline. This can be resolved by first applying a pixel mask (although we did not attempt it). At the top and bottom there are also two meteorological fibres that can not be used for wavelength calibration as they pass through a different optical pathway. The brightest one at the bottom has strong features that seem to overwhelm or washout many columns in detector 2--4 (vertical stripes). \unfinished{Check if it is mentioned how these get corrected/ if the impact the wavelength solution.}
+The purpose of the \thar{} fibres is to perform cross-correlation against a \thar{} template to obtaining a wavelength solution for each detector. Optical defects (e.g. scratches on the detector) interfere with the performance of the correlation between \thar{} lines and the spectral template in {ESO} pipeline. This can be resolved by first applying a pixel mask (although we did not attempt it). At the top and bottom there are also two meteorological fibres that can not be used for wavelength calibration as they pass through a different optical pathway. The brightest one at the bottom has strong features that seem to overwhelm or washout many columns in detector \#2--4 (vertical stripes). \unfinished{Check if it is mentioned how these get corrected/ if the impact the wavelength solution.}
 This information is included here for completeness, as the \thar{} were not used in the chosen data reduction method, see \sref{subsec:wavecalib}.
 
 %\begin{figure}
@@ -244,7 +244,7 @@ The spectra for the pipeline comparison in \ref{fig:reduction-comparison} are th
 
 \subsubsection{Reduction issues}
 \label{subsubsec:reductionartefacts}
-\textbf{\todo{After X thing}{At a later date}} some large artefacts in the {DRACS} extracted spectra were identified. An investigation into the cause of these artefacts was undertaken to identify their source and remove them from the spectra. Separating out the individual nod spectra side-by-side revealed that the artefacts were occurring in only a few of the individual nod spectra from the optimal extraction, and that they were not present in the rectangular extracted nods. \textbf{Four} examples are shown in \textbf{\ref{fig:resizednods} ad blah}. In each panel the top sub-plot contains the optimal extracted spectra, while the middle sub-plot contains the rectangularly extracted spectra.
+\textbf{\todo{After X thing}{At a later date}} some large artefacts in the {DRACS} extracted spectra were identified. An investigation into the cause of these artefacts was undertaken to identify their source and remove them from the spectra. Separating out the individual nod spectra side-by-side revealed that the artefacts were occurring in only a few of the individual nod spectra from the optimal extraction, and that they were not present in the rectangular extracted nods. \textbf{Four} examples are shown in \textbf{\ref{fig:resizednods} and blah}. In each panel the top sub-plot contains the optimal extracted spectra, while the middle sub-plot contains the rectangularly extracted spectra.
 
 
 The occurrence of artefacts in the observations did not appear to have a pattern with nod position or detector. \textbf{They do occur with large spikes in the rectangular extractions. There are many other spikes in the rectangular extractions that do not create the artefacts observed.
@@ -253,54 +253,57 @@ It is clear that the artefacts in the optimally extracted nods correspond to lar
 
 Numerous parameters in the {DRACS} pipeline were experimented with to try and remove the observed artefacts with limited success. For instance, no complete removal of the artefacts was found by manually changing the \(\sigma\) rejection limits (between \(1-5 \sigma\)) and increasing the tracing width parameter in {IRAF}s DOSLIT\footnote{Documentation for DOSLIT can be found here \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}} recipe, although it did slightly affect the shape of the artefacts.
 During the creation of this document it was discovered that enabling the automated aperture resizing\footnote{Using \href{apresize}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?apresize.hlp}} by setting the ``resize'' parameter to yes manages to remove one of the large artefacts in the observation of {HD202206-1}. We show the effect of this in \fref{fig:resizednods} with the optimal and rectangular extraction from the {DRACS} pipeline with only the ``resize'' parameter changed. The artefact in the \nth{6} nod is removed by enabling the automatic ``resize'' but the artefact in the \nth{7} nod is still present.
+
 \begin{figure}
     \centering
     \begin{tabular}{cc}
     \includegraphics[width=0.5\linewidth]{figures/reduction/bp_plots/non_resized_nods_HD202206-1_chip_2} & \includegraphics[width=0.5\linewidth]{figures/reduction/bp_plots/resized_nods_HD202206-1_chip_2}\\
     \end{tabular}
-    \caption{{DRACS} reduction of HD202206-1 detector 2 with a single pipeline parameter changed. Left: Pipeline with the ``doslit.resize'' set to ``no''. Right: The same but with ``doslit.resize'' set to ``yes''. During the order tracing the aperture size is automatically adjusted but the {\red{} finish this sentence}. Setting the resize parameter for \textbf{apextract?}. Changing this one parameter removed one large artefact but kept the other. One large artefact is removed, one is not.}
+    \caption{{DRACS} reduction for detector \#2 of HD202206-1 with a single pipeline parameter changed. Left: Reduction with the DRACS pipeline with the ``doslit.resize'' set to ``no''. Right: The reduction from the same pipeline but with ``doslit.resize'' set to ``yes''. During the order tracing the aperture size is automatically adjusted while the rest of the parameters remain identical. With this one parameter changed one large artefact is removed but a second one is not removed.}
     \label{fig:resizednods}
 \end{figure}
-\todo{finish this sentence in caption}
 
 This discovery came too late to implement for all of the observations as it would require all of the analysis to be repeated re-doing all of the analysis. However, it does indicate that some improvements may be obtained with extensive time and patience tweaking the parameters of the {DRACS} pipeline.
 
-The artefacts in the individual nod spectra were observed to create flux deviations in the fully combined optimally extracted spectra of around \(0.5\%\). The purpose of these spectra was to detect faint companion spectra with expected flux ratios \(\rm {F_2}/{F_1} < 1\%\). We therefore needed to take measures to remove these artefacts from the combined spectra.
+The artefacts in the individual nod spectra were observed to create flux deviations in the fully combined optimally extracted spectra of around \(0.5\%\). The purpose of these spectra was to detect faint companion spectra with expected flux ratios \(\rm {F_2}/{F_1} < 1\%\). Therefore, measures are needed to remove these artefacts from the combined spectra.
 
-The solution that we chose was to replace the optimally extracted nods that contained artefacts with their rectangular counterparts. Creating a combined spectra that had a mix of optimally reduced and rectangularly reduced nod spectra.
-To replace the spikes in the rectangular extraction that created the artefacts and others a iterative 4-\(\sigma\)\footnote{There is no justification why 4-\(\sigma\) was chosen over the commonly used 3-\(\sigma\).} rejection algorithm\footnote{Found at \url{https://github.com/jason-neal/nod_combination}} was applied to the rectangular extractions. The \(\sigma\) for each pixel was calculated as the standard deviation of the nearest 2 pixels on either side of it, across all 8 nod spectra. Any rejected pixels were replaced using linear interpolation along the spectra.
-
-
-Combined spectra were finally constructed by averaging the eight nod-cycle spectra together, where some of the optimally extracted spectra have been replaced using the above method. The third panel of \fref{fig:badpixelreplacement} shows the difference between the combined spectra using only optimally extracted spectra and the mixed combination with replacements. The actual spectra from the two different methods can be seen in \fref{fig:reduction-comparison} where orange is the combination of optimally reduced spectra only and green uses the replacement method outlined here.
-
-There is a clear large extended artefact on the \nth{7} nod of the top panel is created by the large spike. For the first panel a single large spike in the \nth{7} nod (pink) near pixel 230 creates a wide and noticeable artefact in the optimal extraction. This is the same spectra as the \nth{2} down the right of \fref{fig:reduction-comparison}.
+The solution that was chosen was to replace the optimally extracted nods that contained artefacts with their rectangular counterparts, creating a combined spectra that had a mix of optimally reduced and rectangularly reduced nod spectra.
+To replace the spikes in the rectangular extraction that created the artefacts and others an iterative 4-\(\sigma\)\footnote{There is no scientific justification why 4-\(\sigma\) was chosen over the commonly used 3-\(\sigma\).} rejection algorithm\footnote{Found at \url{https://github.com/jason-neal/nod_combination}} was applied to the rectangular extractions. The \(\sigma\) for each pixel was calculated as the standard deviation of the nearest 2 pixels on either side of it, across all 8 nod spectra. Any rejected pixels were replaced using linear interpolation along the spectra.
 
 
+Combined spectra were finally constructed by averaging the eight nod-cycle spectra together, where some of the optimally extracted spectra were replaced using the above method. \textbf{The third panel of \fref{fig:badpixelreplacement} shows the difference between the combined spectra using only optimally extracted spectra and the mixed combination with replacements.} The actual spectra from the two different methods can be seen in \fref{fig:reduction-comparison} where orange is the combination of optimally reduced spectra only and green uses the replacement method outlined here.
 
-EXAMPLE with the new-old \fref{fig:badpixelreplacement}.
+
+\todo{This needs to be fixe up with a different plot, possibly even removeda as there are examples in appendix}
+\textbf{There is a clear large extended artefact on the \nth{7} nod of the top panel is created by the large spike. For the first panel a single large spike in the \nth{7} nod (pink) near pixel 230 creates a wide and noticeable artefact in the optimal extraction. This is the same spectra as the \nth{2} down the right of \fref{fig:reduction-comparison}.
+}
+
+\textbf{
+EXAMPLE with the new-old \fref{fig:badpixelreplacement}}.
 \todo{CHANGE the figure here}
 \begin{figure}
     \centering
     \includegraphics[width=\hsize/2]{figures/reduction/bp_plots/Bad_pixel_replacement}
-    \caption{Example of an artefact in the optimally extracted spectra from detector \#2 of {\red{} HDXXXXXX}. The top panel contains the 8 normalized nod spectra obtained using optimal extraction. The middle panel shows nod spectra using only rectangular extraction. The bottom panel shows the difference between a combined spectrum using optimal nods only and a combined spectrum in which the identified nods are replaced with their rectangular counterparts as per \sref{subsubsec:reductionartefacts}. A vertical offset is included between each spectra for clarity. The nod spectra are in observation order from top to bottom.}
+    \caption{Example of an artefact in the optimally extracted spectra from detector \#2 of {\red{} HDXXXXXX}. The top panel contains the 8 normalized nod spectra obtained using optimal extraction. The middle panel shows the same nod spectra reduced using only rectangular extraction. The bottom panel shows the difference between a combined spectrum using optimal nods only and a combined spectrum in which the identified nods are replaced with their rectangular counterparts as per \sref{subsubsec:reductionartefacts}. A vertical offset is included between each spectra for clarity. The nod spectra are in observation order from top to bottom.}
     \label{fig:badpixelreplacement}
 \end{figure}
 
-The fraction nod spectra from all detectors and observations affected by artefacts was 14 percent. These are detailed in \tref{tab:nod_replacement}. More examples of observations that contain artefacts are given in \aref{appendix:artefacts}. Selected to show their range of variation.
+The percentage of individual nod spectra from all detectors and observations affected by artefacts was 14\%. These are detailed in \tref{tab:nod_replacement}. More examples of observations that contain artefacts are given in \aref{appendix:artefacts}, selected to show a variation in appearance.
 
 
-The continuum normalization is performed in {IRAF} while the mixed combination is carried out in \emph{Python} along with the post reduction procedures detailed below. This pipeline was chosen over the {ESO} {CRIRES} pipeline because it seemed relatively simpler to use, being semi-automated, and appeared to have less bad pixel/cosmic ray artefacts in the resulting spectra. In hindsight the artefacts that appeared in the {DRACS} reduction took longer to investigate, a create a solution. This involved a script to remove the bad-pixels that created the artefacts, something we tried to avoid by using the {DRACS} pipeline instead of the {ESO} pipeline.
-
-\unfinished{check this statement}{These artefacts in the \emph{K}-band spectra were not observed in previous works in the \emph{H}-band using this pipeline and as such may have a wavelength dependent effect. Although another possibility could be that there were artefacts in intermediate steps of the previous works that were missed due to the semi-automated pipeline, with the combined output only slightly affected.}
+The continuum normalization is performed in {IRAF} while the mixed combination is carried out in \emph{Python} along with the post reduction procedures detailed below. This pipeline was chosen over the {ESO} {CRIRES} pipeline because it seemed relatively simpler to use, being semi-automated, and appeared to have less bad pixel/cosmic ray artefacts in the resulting spectra. In hindsight the artefacts that appeared in the {DRACS} reduction took longer to investigate, and create a solution for. The solution involved a script to remove the bad pixels that created the artefacts. The avoidance of bad pixels and the creation of a removal code, was one of the original choices for using the {DRACS} pipeline instead of the {ESO} pipeline.
 
 
-\textbf{In the paper We say it could be glow. I do not think it is anymore and think it is just bad pixels not correctly removed. Either way it does not affect our results significantly\ldots{}.
-This method is likely to have a slight negative impact on the noise/{SNR}}
+One hypothesis for these artefacts is detector glow, a heating of the detector by the nearby amplifiers in the chip (see \ref{subsubsec:darkcurrent}\todo{check correct section}).
+\unfinished{check this statement}{The artefacts in the \emph{K}-band spectra were not observed in previous works in the \emph{H}-band using this pipeline~\citep[e.g.][]{figueira_radial_2010}, and as such may have a wavelength dependent effect, like detector glow. However, this no longer seems plausible as the location of the artefacts do not seem to indicate a pattern corresponding to the shape of the glow shown in \ref{fig:darkcurrent_colour}.
+It could also be that there were artefacts in intermediate steps of the previous works that were missed due to the semi-automated pipeline, with the resultant combined spectrum being only slightly affected.} 
+Anther possibility is that the artefacts are bad pixels not removed correctly.
+Regardless, they do not have a significant impact on the results found in this work, though it is expected that that mixing optimally reduced spectra with rectangularly reduced spectra will have a slight negative impact on the noise or SNR of the combined spectrum.
 
-Note for HD202206 the 1st two nods have a much higher extracted flux. I am still unsure why this is\ldots{}
+\textbf{Note for HD\,202206 the 1st two nods have a much higher extracted flux. I am still unsure why this is\ldots{}}
 
 
-Much time and effort when into trying to extract the spectra as best as possible, without artefacts to have the best chance at obtaining high quality scientific results of the faint features we were trying to detect.
+Much time and effort went into trying to extract the spectra as best as possible, without artefacts, to have the best chance at obtaining high quality scientific results of the faint features sought after in this work.
 Due to time constraints the replacement of nods with artefacts (indicated in \tref{tab:nod_replacement}) with their rectangular counterparts was performed.
 
 \subsection{Reduction experience:}
@@ -394,18 +397,18 @@ Our brief experiments with this method were not successful as we did not include
 \unfinished{Add pictures of wavelength calibrations}
 
 
-At one point it was considered to attempt a global fit of the wavelength calibration, using all four {CRIRES} detectors together. This would be one consistent fit to the dispersion across all 4 detectors at once. This would required extra fitting parameters such as the 3 gaps between the detectors and any vertical offsets. This may even need to be performed on the two-dimensional images, before extraction. What this may have allowed for the telluric lines from neighbouring detectors would help to fit the calibration on detectors were there are very few telluric lines (e.g.\ detector 2). The fitted instrument parameters such as the detector gaps may even be constrained by so that they are physically consistent across all observations. However, this idea was not explored further or implemented due to time constraints.
+At one point it was considered to attempt a global fit of the wavelength calibration, using all four {CRIRES} detectors together. This would be one consistent fit to the dispersion across all 4 detectors at once. This would required extra fitting parameters such as the 3 gaps between the detectors and any vertical offsets. This may even need to be performed on the two-dimensional images, before extraction. What this may have allowed for the telluric lines from neighbouring detectors would help to fit the calibration on detectors were there are very few telluric lines (e.g.\ detector \#2). The fitted instrument parameters such as the detector gaps may even be constrained by so that they are physically consistent across all observations. However, this idea was not explored further or implemented due to time constraints.
 \missingfigure{Diagram of idea of combined detector fitting?}
 
 
-An example of the wavelength calibration using all 4 detectors is provided in \aref{appendix:wavelength_fitting}.
+An example of the wavelength calibration using all four detectors is provided in \aref{appendix:wavelength_fitting}.
 
 In the future it may be possible or necessary to combine all of the methods above, including the \thar{} calibration lines, telluric models, stellar templates, and multiple detectors fitted at once to achieve accurate calibration.
 
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{figures/reduction/Spectra_examples}
-    \caption{An example spectra for each target and each detector 1--4 in order of increasing wavelength. The solid lines are the spectra while the black dashed lines are the telluric models used for wavelength correction, showing good alignment with the spectra.}
+    \caption{An example spectra for each target and each detector \#1--4 in order of increasing wavelength. The solid lines are the spectra while the black dashed lines are the telluric models used for wavelength correction, showing good alignment with the spectra.}
     \label{fig:spectraexamples}
 \end{figure}
 
@@ -460,7 +463,7 @@ We use the mid-observation time to retrieve transmission models for each observa
 \subsection{Issues with {TAPAS}}
 There are a number of issues we encountered when using {TAPAS} web-service, mainly due to interaction with the website. Often their service was down for weeks at a time without any warning or notification. With this you would waste time filling out the web form and attempt to submit it but would receive no response and no email with a link to the data. There was a higher success rate of successful response between different web-browsers. A number of bug reports were submitted to the owners of the webpage without any acknowledgement.
 
-The web-page is useful for quickly obtaining a small number of spectra but can be tedious for many. In our case we were requesting 3 telluric spectra, with varying molecular contributions, for each of our 17 observations. There is an ability to request multiple spectra at a time but we found this would not function if trying to request more than 4 spectra at once.
+The web-page is useful for quickly obtaining a small number of spectra but can be tedious for many. In our case we were requesting 3 telluric spectra, with varying molecular contributions, for each of our 17 observations. There is an ability to request multiple spectra at a time but we found this would not function if trying to request more than four spectra at once.
 
 A script\footnote{Available at \href{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}} was created to automatically generate the data necessary to fill out the a {TAPAS} request for each {CRIRES} observations. The script scanned the {CRIRES} header for information such as the mid-time of observations, target coordinates, slit width (defines {CRIRES}'s instrumental resolution) etc.\ and populated the {XML} request form provided by {TAPAS}. The script output is copied and pasted into the web-browser for submission.
 
