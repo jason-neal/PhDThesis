@@ -8,8 +8,8 @@ Several photometric and high-resolution spectroscopic techniques are showing pro
 
 
 \subsection{Occultation and phase variations}
-Exoplanet atmospheres are analysis by considering the observed light as containing two components, not only light from the star but also light from the planet, albeit at a much lower flux level.
-To help visualize and discuss the components of exoplanet atmospheres \fref{fig:transits_and_occultations} is provided showing a transiting planet in orbit around a star, in which the planet also passes behind the star causing an occultation. The planet is shown at several positions of the orbit indicating the proportion of dayside and night side observed.  Below the star and planet is a diagram showing the changing flux variation over time, following the orbit. 
+Secondary transit and phase variations are an extension of the transit method, requiring higher precision to detect the reflection and thermal emission of the exoplanet. The observed light curve is analysed considering is has two components, not only light from the star but also light from the planet, albeit at a much lower flux level.
+To help visualize and discuss the components of exoplanet atmospheres \fref{fig:transits_and_occultations} is provided showing a transiting planet in orbit around a star, in which the planet also passes behind the star causing an occultation. The planet is shown at several positions of the orbit indicating the proportion of dayside and night side observed.  Below the star and planet is a diagram showing the changing flux variation (solid black line) over time, following the orbit.  If the orbital alignment is such that the planet will pass behind the star it will cause an occultation of the planet. At this point the only light received is from the star alone, creating a baseline stellar measurement. While during the primary transit there is also a small thermal emission contribution from the night side of the planet, as well as it partially blocking the star.
 
 \begin{figure}
     \centering
@@ -18,12 +18,13 @@ To help visualize and discuss the components of exoplanet atmospheres \fref{fig:
     \label{fig:transits_and_occultations}
 \end{figure}
 
-Throughout the orbit of the planet there is a variation in the planetary flux due to the alternating day/night side of the planet observed.
+Throughout the orbit of the planet there is a variation in the planetary flux due to the alternating day/night side of the planet observed. .
 There are multiple components of the planetary flux, reflection and emission,  that can be analysed with multi-band phase curves \citep[e.g.][]{knutson_characterizing_2009, esteves_optical_2013}. Optical phase curves will mostly show the reflected light from the day side of the planet, allowing modelling the atmospheric albedo (fraction of light reflected by the atmosphere), and can provide details on the atmospheric scattering~\citep{madhusudhan_analytic_2012} and aerosol composition~\citep{oreshenko_optical_2016} through the optical phase function (day/night fraction). Thermal emission of the planet will provide stronger modulation of infrared phase curves and can provide insights into the atmospheres thermal
-structure and heat circulation~\citep{ goodman_thermodynamics_2009, koll_temperature_2016 }.
+structure and heat circulation~\citep{ goodman_thermodynamics_2009, koll_temperature_2016}.
 
 
-An example of phase variations in infrared spectra obtained with the Hubble Space telescope 
+An example of phase variations in the infrared spectra of {WASP-43b} obtained with the Hubble Space telescope is given in \fref{fig:stevensonphasecurve2014}. The large amplitude of phase variation between the day and night side indicates that the night side is much cooler and there is an inefficient heat circularity from the day to night side. A planet with an efficient day/night heat distribution mechanism would quickly equalize and have smaller phase variation. One key observable from \fref{stevensonphasecurve2014} is that the peak of the phase variation is offset from the location of the secondary transit. The hottest part of the atmosphere does not correspond to the sub-stellar point i.e., the point of the planets surface closest to the star. Simulations of atmospheric circulation models find that this offset is caused by super-rotating equatorial jets which move the location of hottest point of the planet~\citep[e.g.][and references therein]{heng_atmospheric_2015}. 
+
 \begin{figure}
     \centering
     \includegraphics[width=0.6\linewidth]{figures/introduction/stevenson_phasecurve2014}
@@ -32,48 +33,43 @@ An example of phase variations in infrared spectra obtained with the Hubble Spac
     \label{fig:stevensonphasecurve2014}
 \end{figure}
 
+The point of occultation, at which the planet is completely blocked by the star enables a baseline measurements for the star to be obtained without the planet. The depth of the occultation, is a direct measurement of the planet-to-star ratio between the star and the planet a \textbf{{cite secondary eclipse of reflectance, and secondary spectroscopy examples}.} Spectra obtained during the occultation will have no planetary signal and can be used remove the stellar component from spectra obtained at other phases to obtain the planetary spectrum.
 
-
-The photometric and spectroscopic technique can be understood 
-photometric and high-resolution spectroscopicphotometric and high-resolution spectroscopic
-
-Secondary transit and phase variations are an extension of the transit method, requiring higher precision to detect the reflection and thermal emission of the exoplanet. The star with orbiting exoplanet is photometrically monitored over the whole orbit. An example diagram of phase variation is shown in \fref{fig:transits_and_occultations} as the solid black line. Starting with the primary transit at the bottom, in which the planet is blocking the star. The light measured during transit is not only the unblocked light from the star but also the thermal emission from the night side of the planet. Immediately before and after transit there will be the full flux from the star plus the emission from the night side of the planet. As the planet orbits around the star the fraction of the day side of the planet visible will change up to maximum when the full day side of the planet is visible. If the alignment is correct the planet will pass behind the star causing an occultation. At this point the only light received is from the star alone.
 
 The depth of the occultation is a measure of the flux from the day side of the planet which can indicate the atmospheric reflection and thermal emission of the planets atmosphere.
-Continuing on in the orbit the phase of combined star + planet again reduces as more of the night side faces Earth.
 
-\fref{fig:stevensonphasecurve2014} shows a real example of the phase folded light curve measured with the HST over several orbits~\citep{stevenson_thermal_2014}.
 
-The primary transit is shown inset with a depth of 2.5\%. The phase variation out of primary transit reaches a maximum of around 0.04\%. The occultation occurs at a phase of 0.5 but it is clearly noticeable that the peak of brightness in the light phase curve slightly leads the occultation. This indicates that the brightest point on the planet is not directly towards the planet. and there is heat redistribution.
-
-thermal profile/phase of hot spot.
+\todo{get a  thermal profile image/phase of hot spot?.}
 
 
 
 \subsection{Transmission spectroscopy}
+When a transiting planet crosses in-front of the host star it blocks out light from the star. However, when an atmosphere is present part of the light passes through  a planet with an atmosphere is not completely solid and parts
 radius changes with wavelength, extra absorption during transit can give molecular composition.
 
-snellen  et al
 
-
-Transit and occulations~\citet{winn_transits_2010}
+transmission diagram? Snellen HORse talk?
 
 Detection of winds
 
 
 
-\citep{hoeijmakers_atomic_2018} detected Iron and titanium in ultra-hot Jupiter with Teff 4000K during transit.high resolution specrosopy
+\citep{hoeijmakers_atomic_2018} detected Iron and titanium in ultra-hot Jupiter with Teff 4000K during transit.high resolution spectroscopy
 
 
-
+The atmosphere is transparent to different wavelength at different heights in the atmosphere. Therefore the planetary radius is slightly different in different wavelength bands. This has shown ....
 
 
 
 \subsection{High resolution spectroscopy}
+Some key results from high res spectroscopy
+
 Snellen  Brogi, de Kok
+
+CRIRES  
 
 Cross correlation mle  \citet{piskorz_evidence_2016}
 
 
-For non-transiting planets ...
+For non-transiting planets ...  piskorz   with combiend stellar spectrum and planetary models.
 
