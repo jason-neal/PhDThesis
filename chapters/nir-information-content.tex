@@ -57,7 +57,7 @@ Connes 1\,985 -
 Bouchy et al. 2001  - photon noise limit on rv measurements.
 \cite{figueira_radial_2016} - focus on {M-dwarfs} parameter range to specify new instrumentation windows to focus.
 Reiners 2017 -  {CARMENES} sample. Some precision
-pedros school section other precision source \(r^1.5\)
+pedros school section other precision source \({r}^{1.5}\)
 
 
 \subsection{Fundamental photon noise limitation}
@@ -204,7 +204,7 @@ This work follows~\cite{figueira_radial_2016} by exclusively considering a high 
 \footnote{pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\sum{\lambda^{2} {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\sum{\, A_0(i)}}\) as derived by~\cite{connes_absolute_1985}. }
 
 
-This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation e.g., ~\citet{connes_absolute_1985,bouchy_fundamental_2001} and can influence the design (and/or use) of spectrographs
+This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation \citep[e.g.][]{connes_absolute_1985,bouchy_fundamental_2001} and can influence the design (and/or use) of spectrographs
  (e.g.\ SPIROU~\citep{artigau_spirou_2014,figueira_radial_2016})
 \unfinished{Does spectrograph pipelines such as HARPS use these equations to measure estimate/precision?}
 
@@ -280,10 +280,10 @@ Following the rotational convolution the spectra are convolved with Gaussian ins
 
 The Gaussian convolution kernel is of the form
 \begin{equation}
-IP(\Delta\lambda) = \frac{1}{\sigma \sqrt{2\pi}} \exp^{-\frac{\Delta\lambda^2}{2 \sigma^2}}    \label{eqn:IP_profile}
+IP(\Delta\lambda) = \frac{1}{\sigma \sqrt{2\pi}} \exp^{-\frac{{\Delta\lambda}^2}{2 {\sigma}^2}}    \label{eqn:IP_profile}
 \end{equation}
 
-with $\sigma = \frac{\fwhm} {2\sqrt{(2\ln(2)}}$, and $\Delta$$\lambda$ again the difference from the line centre (normally this would be written as $(x-\mu)$ where $\mu$ is the Gaussian centre).
+with $\sigma = \frac{\fwhm}{2\sqrt{2 \ln(2)}}$, and $\Delta \lambda$ again the difference from the line centre (normally this would be written as $(x-\mu)$ where $\mu$ is the Gaussian centre).
 
 This assumes that the instrument profile of a particular instrument is in-fact Gaussian. This assumption of a Gaussian instrumental profile is a good starting point for high-resolution spectrographs, and shown to be valid for CRIRES \citep{seifahrt_synthesising_2010}.
 If the instrument profile of a particular instrument is well characterized, then it could replace the Gaussian profile used here.
@@ -299,7 +299,7 @@ following the description from \citet{artigau_optical_2018}.  They also mention 
 
 \subsection{Numerical Convolution}
 \label{subsec:numerical_convolution}
-In this work the stellar models undergo broadening by convolution with rotation and instrumental profile kernels (Equations ~\ref{eqn:rotational_profile} and \ref{eqn:IP_profile}).
+In this work the stellar models undergo broadening by convolution with rotation and instrumental profile kernels (Equations ~\ref{eqn:rotational_profile} and~\ref{eqn:IP_profile}).
 The convolutions are performed by analysing a single pixel at a time, and selecting the neighbouring pixels that fall within the convolution window\footnote{Region in which the convolution kernel will affect this particular pixel} for that pixel.
 The value of the convolution kernel is calculated at the position of each pixel selected, multiplied by the flux of each pixel and then summed to provide the new value at the selected single pixel{$^\textbf{*}$}.
  The shape of the convolution kernels and the size of convolution window are wavelength dependant (${\fwhm}=\lambda / R$ and $\Delta\lambda_{L}=\lambda \frac{\vsini}{c}$) and must be calculated separately for each pixel, making the convolution computationally expensive.
@@ -315,10 +315,12 @@ For instance the number of point inside the convolution, as well as their locati
 To normalize the convolution result it is divided by the convolution of a unitary spectrum of ones, with the same spacing.
 \citet{figueira_radial_2016} performed this unitary convolution separately and applied the normalization afterwards.
 In the improved implementation the convolution normalization is performed directly after the convolution kernel multiplication at \(\textbf{*}\).
+
 For example for the rotational convolution result of the value for pixel $i$ becomes
-$A^\prime(\lambda_{i}) =  \frac{\sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})}{\sum G(\Delta\lambda_{i})}$,
+\[{A}^{\prime}(\lambda_{i}) =  \frac{\sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})}{\sum G(\Delta\lambda_{i})},\]
 where $\Delta\lambda_{i}$ are the values between in the range $\lambda_{i} (1-\frac{\vsini}{c}) \le\lambda_{i} \le \lambda_{i} (1+ \frac{\vsini}{c})$,
-instead of only $A^\prime(\lambda_{i}) =  \sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})$)
+instead of only
+\[{A}^{\prime}(\lambda_{i}) =  \sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i}).\]
 
 
 By default edge effects are avoided by providing an input spectra sufficiently wider than the desired output spectrum to prevent edge effects on the portion of the spectrum desired. Since two convolutions are preformed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both  addition of  rotation and instrumental broadening by $\vsini$ and R.
@@ -468,7 +470,7 @@ The simplest way to calculate the derivative using finite difference methods~\ci
 \[f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}~.\]
 
 There are three common varieties of the finite difference,
- \[{FFD} = \frac{f(x+h)-f(x)}{h},  {CFD}=\frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, {BFD}=\frac{f(x)-f(x-h)}{h}\,,\] called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite differences respectively. The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}(h^{2})\)~\citep{quarteroni_numerical_2000}. As the wavelength spacing between samples/pixels (h) is small the {CFD} will a more precise value for the gradient at each pixel.
+ \[{FFD} = \frac{f(x+h)-f(x)}{h},  {CFD}=\frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, {BFD}=\frac{f(x)-f(x-h)}{h}\,,\] called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite differences respectively. The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}({h}^{2})\)~\citep{quarteroni_numerical_2000}. As the wavelength spacing between samples/pixels (h) is small the {CFD} will a more precise value for the gradient at each pixel.
 
 In our case \(h\) is the difference in wavelength between the two pixels considered. In the {FFD} case the gradient at pixel \(i\) becomes:
 \begin{equation}
@@ -483,17 +485,17 @@ From the Numpy documentation the consistency error here is \[\eta_i = \partial{f
 With Taylor expansion this turns into solving a linear system of equations:
 \[\begin{cases}
          \alpha + \beta + \gamma = 0\\
-         -\beta h_d + \gamma h_s = 1\\
-         \beta h_d^{2} + \gamma h_s^{2} = 0
+         -\beta {h_d} + \gamma {h_s} = 1\\
+         \beta {h_{d}}^{2} + \gamma {h_{s}}^{2} = 0
     \end{cases}
 \]
 which result in the approximation of the gradient of the central values to be
 
-\[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{h_{s}^{2}f\left(x_{i} + h_{d}\right) + \left(h_{d}^{2} - h_{s}^{2}\right)f\left(x_{i}\right) - h_{d}^{2}f\left(x_{i}-h_{s}\right)} {h_{s}h_{d}\left(h_{d} + h_{s}\right)} + \mathcal{O}\left(\frac{h_{d}h_{s}^{2} + h_{s}h_{d}^{2}}{h_{d} + h_{s}}\right) \label{full_compact_difference}.\]
+\[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{{h_{s}}^{2}f\left(x_{i} + {h_{d}}\right) + \left({h_{d}}^{2} - {h_{s}}^{2}\right)f\left(x_{i}\right) - {h_{d}}^{2}f\left(x_{i}-{h_{s}}\right)} {{h_{s}}{h_{d}}\left({h_{d}} + {h_{s}}\right)} + \mathcal{O}\left(\frac{h_{d}{h_{s}}^{2} + {h_{s}}{h_{d}}^{2}}{{h_{d}} + {h_{s}}}\right) \label{full_compact_difference}.\]
 
-If the spectrum is evenly spaced $h_{s}=h_{d}$  reduces to the standard second order {CFD} approximation:
+If the spectrum is evenly spaced ${h_{s}}={h_{d}}$  reduces to the standard second order {CFD} approximation:
 
-\[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{f\left(x_{i+1}\right) - f\left(x_{i-1}\right)}{2h} + \mathcal{O}\left(h^{2}\right)\]
+\[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{f\left(x_{i+1}\right) - f\left(x_{i-1}\right)}{2h} + \mathcal{O}\left({h}^{2}\right)\]
 
 
 Applying this to our situation, similar to \eref{eq:ffd_precision}, we get:
