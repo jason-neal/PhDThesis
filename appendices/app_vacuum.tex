@@ -8,16 +8,16 @@ n  = \frac{\lambda_{vac}}{\lambda_{air}}, \frac{v_{vac}}{v_{air}}
 \end{equation}
 
 The index of refraction of air is very close to 1, but has a complex wavelength dependence which also depends on atmospheric composition (e.g., \ce{CO2}, \ce{H2O}), temperature and pressure.
-There are several empirical formula for the index of refraction of air \citep[e.g.,][]{edlen_dispersion_1953, peck_dispersion_1972, ciddor_refractive_1996}. As an example the refractive index given by \citet{ciddor_refractive_1996}, based on optical and infrared measurements and valid up to 1.7\mum{}, is:
+There are several empirical formula for the index of refraction of air \citep[e.g.,][]{edlen_dispersion_1953, peck_dispersion_1972, ciddor_refractive_1996}. As an example the refractive index given by \citet{ciddor_refractive_1996}, based on optical and infrared measurements and valid up to 1.7\um{}, is:
 
 \begin{equation}
     n -1 = \frac{0.05792105}{238.0185 - \lambda^{-2}} + \frac{0.00167917}{57.362 - \lambda^{-2}}.
 \end{equation}
 
-This is measured at standard air, dry air at 15\si{\degreeCelsius}, 101.325\,\si{\kilo\pascal} and with 450\,ppm \ce{CO2}.
-Beyond 1.7\mum{} there are only theoretical models of the refractive index of air, due to lack of experimental data. For example \citet{mathar_refractive_2007} provides theoretical values between 1.3 -- 24\mum{} for common air pressure and temperature of ground-based observatories.
+This is measured at standard, dry air at 15\si{\degreeCelsius}, 101.325\,\si{\kilo\pascal} and with 450\,ppm \ce{CO2}.
+Beyond 1.7\um{} there are only theoretical models of the refractive index of air, due to lack of experimental data. For example \citet{mathar_refractive_2007} provides theoretical values between 1.3 -- 24\um{} for common air pressure and temperature of ground-based observatories.
 
-In this work we extensively use spectral wavelengths specified in a vacuum. The first is because the empirical relations are not valid beyond 1.7\mum{}, while the {CRIRES} spectra investigated are observed around 2.1\mum{} and the {CRIRES} instrument manual provides all measurements in vacuum wavelengths.
+In this work we extensively use spectral wavelengths specified in a vacuum. The first is because the empirical relations are not valid beyond 1.7\um{}, while the {CRIRES} spectra investigated are observed around 2.1\um{} and the {CRIRES} instrument manual provides all measurements in vacuum wavelengths.
 
-The {TAPAS} synthetic transmission models~\citet{bertaux_tapas_2014} used for telluric correction are available for download in vacuum wavelengths or air wavelengths\footnote{The wavenumber, \(1/\lambda\), is also available.}. The {PHOENIX-ACES} library of synthetic spectra we use also provides spectra in vacuum wavelengths.
-Since both are available in vacuum wavelengths and the {TAPAS} models are used for calibration, vacuum wavelength exclusively, With this there is no errors introduced from conversions between air and vacuum wavelengths.
+The {TAPAS} synthetic transmission models~\citet{bertaux_tapas_2014} used for telluric correction are available for download in vacuum wavelengths or air wavelengths\footnote{The wavenumber, \(1/\lambda\), is also available.}. The {PHOENIX-ACES} library of synthetic spectra used also provide spectra in vacuum wavelengths.
+Remaining exclusively in vacuum wavelengths means that no errors are introduced from the conversion between air an vacuum wavelengths in the \nir{}. As such, the vacuum {TAPAS} models are obtained and the observations calibrated using vacuum wavelengths.
