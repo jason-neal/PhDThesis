@@ -3,15 +3,20 @@
 
 \chapter{Fundamental concepts about spectroscopy and RV}
 \label{cha:concepts}
-In this chapter we will expand  on the RV section and nir spectroscopys. Follwing that we will  detail the synthetic spectral models used in the work. both of PHOENIX aCES btsettl and tapas 
+
+NIR spectroscopy ...
+
+
+RV derivation ...
+Eliptical orbit
+
+In this chapter we will expand  on the RV section and nir spectroscopy. Follwing that we will  detail the synthetic spectral models used in the work. both of PHOENIX aCES btsettl and tapas 
 
 
 To put things too detailed for the introduction?
 
 
 Spectrograph design stuff
-
-
 
 
 Radial Velocity:
@@ -48,11 +53,28 @@ q = \mtwo / \mone = \kone / \ktwo
 
 We note that for the targets in which only the minimum mass (\mtwosini) is known, this equation will indicate the maximum \(\ktwo\) value for the companion. The estimated \(\ktwo\) for each companion is provided in \tref{tab:estimatedparameters} while the {RV} for both components at the time of each observation is provided in \tref{tab:observations}.
 
+
+\todo{Possibly just move this too the plae where it is used.}
 The error on estimated {RV} values, shown in \fref{fig:HD211847_result_contours} is calculated by applying the general error propagation formula~\citep{ku_notes_1966} and using the  errors on the orbital parameters. For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc., it follows:
 \begin{align}
 f &= f(x, y, z, \ldots)\\
 \delta f &= \sqrt{{\left( \frac{\partial f}{\partial x} \delta x\right)}^2 + {\left(\frac{\partial f}{\partial y} \delta y\right)}^2 + {\left(\frac{\partial f}{\partial z} \delta z\right)}^2 + \ldots}
 \end{align}
+
+
+
+
+% from draft of paper 18/7/2017
+\subsection{Companion K}  Maybe something can go above from this ...
+\label{sec:companion_RV}
+\emph{These sections might be unnecessary}\\
+
+To calculate the {RV} of the companion at the time of each observation. For a two-body system the {RV} semi-amplitude of the companion \(\ktwo\) can be determined from the orbital host-companion mass ratio \[q = \mone/\mtwo = \ktwo/\kone\label{eqn:q_ratio_K2}\].
+Note, that for the targets in which only the minimum mass (\mtwosini) is known, this will give the maximum {RV} semi-amplitude of the companion.
+This relation was used to estimate \(\ktwo\) for the companion from the minimum mass or mass we have for each companion. These values along with the other orbital parameters of the system were use to calculate the {RV} of the companions for each observation. These values are provided with the observations in \tref{tab:observations}.
+
+
+
 
 \section{Estimating Companion-host Flux ratio}
 \label{sec:compaion_flux_ratio}
@@ -72,7 +94,7 @@ These include the temperature, radius, luminosity, and absolute magnitudes in se
 A given companion mass, and a stellar age will uniquely identify a point in the Baraffe models which corresponds to a specific magnitude for the companion.
 The tables provided in \citet{baraffe_evolutionary_2003, baraffe_new_2015} are also interpolated to reach companion masses and stellar ages between the models provided.
 
-In \tref{tab:estimated_flux_ratios} the host-companion flux ratio estimates for the targets analysed in this work are presented. The {K}-band flux ratios are calculate as the observed spectra are in the {K}-band at 2.1\um{}. The ages for the stellar system used are given in \tref{tab:starparams} while the companion masses are given from \tref{tab:orbitparams}. These both are used to obtain the absolute magnitude for the companions.  For the companions in which only the minimum mass (\mtwosini{}) is known then the flux-ratio given will be the lower limit, or worst case scenario.
+In \tref{tab:estimated_flux_ratios} the host-companion flux ratio estimates for the targets analysed in this work are presented. The {K}-band flux ratios are calculate as the observed spectra are in the {K}-band at 2.1\um{}. The ages for the stellar system used are given in \tref{tab:starparams} while the companion masses are given from \tref{tab:orbitparams}. These both are used to obtain the absolute magnitude for the companions. For the companions in which only the minimum mass (\mtwosini{}) is known then the flux-ratio given will be the lower limit, or worst case scenario.
 
 \input{tables/advanced_concepts/estimated_fluxratios} % \label{tab:estimated_flux_ratios}
 
@@ -80,7 +102,7 @@ The magnitudes provided by {SIMBAD} are given in apparent magnitude, $m$, while 
 \begin{equation}
 \mu = 5 \log_{10}(d_{pc}) -5. \label{eqn:distance_modulus}
 \end{equation}
-Here $d_{pc}$ is the distance to the object in parsec. The distance is obtained from the trigonometric parallax  $\pi$ using the formula $d(pc) = 1 /\pi(arcsec)$, with the parallax in arcseconds\footnote{Most parallax values e.g. GAIA are tabulated in milliarcseconds (mas). Therefore it is important to remember to convert the parallax to arcseconds first, to avoid embarrassing calculation errors!}. In this work the recent high-precision parallax measurements from GAIA are used  \citet{collaboration_gaia_2018}.
+Here $d_{pc}$ is the distance to the object in parsec. The distance is obtained from the trigonometric parallax  $\pi$ using the formula $d(pc) = 1 /\pi(arcsec)$, with the parallax in arcseconds\footnote{Most parallax values e.g. GAIA are tabulated in milliarcseconds (mas). Therefore it is important to remember to convert the parallax to arcseconds first, to avoid embarrassing calculation errors!}. In this work the recent high-precision parallax measurements from GAIA are used~\citet{collaboration_gaia_2018}.
 
 From the flux ratio the noise ratio between the host and companion can also calculated in a similar way using the equation \(N_{2}/N_{1} = \sqrt{2} \times\sqrt{F_{1}/F_{2}}\).
 
@@ -90,26 +112,12 @@ From the flux ratio the noise ratio between the host and companion can also calc
 \label{subsubsec:baraffe_tables_code}
 A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to calculate/estimate the host-companion flux ratio using the \citet{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables.
 Given the name of the target star, the mass of a companion and the stellar/system age it determines the flux ratios the available spectral bands.
-The tool uses the targets name  to query\href{https://zenodo.org/record/1160627}{\emph{astroquery} package} the {SIMBAD} database to obtain the stellar properties, specifically the flux magnitudes and parallax. It then interpolates the Baraffe tables to the desired companion mass and age, calculating and returning values for all parameters of the companion given in the tables (e.g. \(\teff\), \logg, \(R/R_{\odot}\)).
+The tool uses the targets name to query\href{https://zenodo.org/record/1160627}{\emph{astroquery} package} the {SIMBAD} database to obtain the stellar properties, specifically the flux magnitudes and parallax. It then interpolates the Baraffe tables to the desired companion mass and age, calculating and returning values for all parameters of the companion given in the tables (e.g. \(\teff\), \logg, \(R/R_{\odot}\)).
 The stellar magnitudes are converted to absolute values using \eref{eqn:distance_modulus} and the flux ratios computed using  \eref{eqn:mag_flux_ratios}.
 
 An extension of this tool is that can be used to perform the reverse calculation also. That is, given the target name, age and flux ratio in a given band it can estimate the mass of the companion mass using the Baraffe tables.
 
-\todo{this section is completed i think}
-
-
-
-% from draft of paper 18/7/2017
-\subsection{Companion K}  Maybe something can go above from this ...
-\label{sec:companion_RV}
-\emph{These sections might be unnecessary}\\
-
-To calculate the {RV} of the companion at the time of each observation. For a two-body system the {RV} semi-amplitude of the companion \(\ktwo\) can be determined from the orbital host-companion mass ratio \[q = \mone/\mtwo = \ktwo/\kone\label{eqn:q_ratio_K2}\].
-Note, that for the targets in which only the minimum mass (\mtwosini) is known, this will give the maximum {RV} semi-amplitude of the companion.
-This relation was used to estimate \(\ktwo\) for the companion from the minimum mass or mass we have for each companion. These values along with the other orbital parameters of the system were use to calculate the {RV} of the companions for each observation. These values are provided with the observations in \tref{tab:observations}.
-
-
-
+\todo{This section is completed I think}
 
 
 \input{../chapters/fundamental/telluric_correction}
