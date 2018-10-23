@@ -351,21 +351,16 @@ This is made possible by the use of high resolution spectra, in which the tellur
 We follow this method using the telluric absorption lines present in each observation as the wavelength reference. Instead of directly using the {HITRAN} database~\citep{rothman_hitran2012_2013} for the telluric line positions~\citet[such as in][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}, we use the {TAPAS} atmospheric transmission models~\citep{bertaux_tapas_2014} obtained for each observation. The {TAPAS} models use the {HITRAN} database but also includes atmospheric profiles and physical meteorological measurements to model the telluric absorption strength.
 
 To calibrate the wavelength the telluric lines in the model need to be associated to the corresponding telluric lines in the observed spectrum. The centroid\footnote{Centre of the line} of each telluric line in the model is obtained by fitting the telluric transmission spectrum, \(T(\lambda)\), as a simple sum of Gaussian functions (subtracted from the continuum):
-
 \begin{equation}
 T(\lambda) = 1 - {\Sigma}_{i}\ G(\lambda, A_{i}, {\mu}_{i}, {\sigma}_{i}),
 \end{equation}
-
 where \(G\) is a Gaussian function of the form
-
 \begin{equation}
 G(\lambda, A, \mu, \sigma) = {A \textrm{e}}^{{-(\lambda-\mu)}^{2}/2\sigma^{2}},
 \end{equation}
-
 and \(A\), \(\mu\), \(\sigma\) are the amplitude, central wavelength, and standard deviation for each line respectively. Telluric lines actually have a Voigt profile\footnote{A Voigt profile is a convolution of two broadening profiles, a Gaussian and a Lorentzian. Gaussian broadening results from thermal Doppler broadening, and instrumental broadening while the Lorentzian broadening comes from molecular vibrational bands\citep{meier_art_2005}.} although they are not fully resolved in the \nir{} and their shape is dominated by the instrumental profile. \citet{seifahrt_synthesising_2010} measured the instrumental profile of {CRIRES} using singular-value decomposition and showed that it is extremely well represented by a single Gaussian below a \snr{} of around 300. Therefore, wavelength calibration using single Gaussian fits to each line is sufficient.
 
 The observed spectra contain two different spectral components: stellar and telluric lines, which are multiplied together: The observed spectra are therefore fitted with a multiplication of two Gaussian-sum models.
-
 \begin{align}
 I_{obs}(x) &= {I}_{tell}(x) \times {I}_{star}(x) \nonumber \\
 I_{obs}(x) &= {\Big(1 - {\Sigma}_{j}\ G(x, A_{j}, {\mu}_{j}, {\sigma}_{j})\Big)}_{tell} \times {\Big(1 - {\Sigma}_{k} G(x, A_{k}, {\mu}_{k}, {\sigma}_{k})\Big)}_{star}, \label{eqn:obs}

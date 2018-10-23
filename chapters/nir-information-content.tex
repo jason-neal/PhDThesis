@@ -84,9 +84,8 @@ where \(c\) is the speed of light in a vacuum, and \(\delta \lambda\) is the shi
 \todo{intensity change from connes is vertically in the slice d lambda}
 
 Using basic calculus \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{Although~\citet{connes_absolute_1985} show that the approximation in \eref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
-
 \begin{equation}
-\delta A(i) = A(i) - A_0(i) \simeq \pd{A_0(i)}{\lambda(i)} \delta \lambda
+\delta A(i) = A(i) - A_0(i) \simeq \pd{A_0(i)}{\lambda(i)} \delta \lambda.
 \label{eq:intensitychange}
 \end{equation}
 
@@ -103,12 +102,10 @@ This equation shows that the radial velocity measured at pixel, i, through a cha
 \end{equation}
 
 Statistically, the optimal weights are proportional to the inverse square of the individual dispersion (variance),
-
 \begin{equation}
 W(i) = \frac{1}{{\left(\frac{\delta V_{\rms}(i)}{c}\right)}^{2}}, \label{eq:weights}
 \end{equation}
 where \(X_{\rms}\) is the dispersion on the quantity \(X\).
-
 
 The individual dispersion of the velocity measurement \(\delta V_{\rms}(i)\) is the dispersion that would result from several measurements of the reference spectrum all with the same Doppler shift (e.g.\ zero). \eref{eq:delta_v_i} thus becomes:
 \begin{equation}
@@ -119,6 +116,7 @@ The noise of the spectrum A is the quadratic sum of the photon noise \(\sqrt{A}\
 \begin{equation}
 {[{A(i)-A_0(i)}]}_{\rms} = {[{A(i)} - 0]}_{\rms} = \sqrt{{\sqrt{A(i)}}^{2} + {{\sigma}^{2}}_{D}} \label{eq:noise}
 \end{equation}
+
 Considering that the Doppler shift is small and that \(A\) and \(A_0\) have the same intensity level, then \(A = A_0\) can be set. Using Equations~\ref{eq:delta_v_i},~\ref{eq:weights}, and~\ref{eq:noise} the optimum weights then become solely dependent on the reference spectrum.
 
 \begin{equation}
@@ -155,7 +153,6 @@ With the optimal weights set, the weighed average velocity change measured from 
 \unfinished{Try the symbolic package from PC}
 
 The important quantity for {RV} measurements is not just the velocity values themselves but also the dispersion on the measured velocity, the RV precision, \(\delta V_{\rms}\), from the spectrum. This allows one to assess the planetary detectability limitations attainable in the spectra. From rearranging \eref{eq:weights} the dispersion is given by:
-
 \begin{equation}
     \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\sqrt{\sum{\,W(i)}}} = \frac{1}{Q \sqrt{\sum{\,A_0(i)}}}. \label{eq:dv_rms}
 \end{equation}
@@ -167,22 +164,19 @@ Q = \frac{\sqrt{\sum{\,W(i)}}}{\sqrt{\sum{\,A_0(i)}}}.
 \end{equation}
 
 The radial velocity precision or uncertainty can be rearranged in terms of the spectral quality;
-
 \begin{equation}
     \delta V_{\rms} = \frac{c}{Q \sqrt{\sum {\,A_0(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}} \approx \frac{c}{Q (S/N)},
 \end{equation}
-
-where \(\sum A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo-electrons \({N}_{{e}^{-}}\) counted in the spectral range considered.\todo{explain snr}{where the \({SNR}=\sqrt{N_{{e}^{-}}}\)for large N}
+where \(\sum A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo-electrons \({N}_{{e}^{-}}\) counted in the spectral range considered.\todo{explain snr}{where the \({SNR}=\sqrt{N_{{e}^{-}}}\) for large N}
 where the \({SNR}=\sqrt{N_{{e}^{-}}}\)for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?}
 
 
 This quality factor, Q, is flux independent and is purely a function of the spectral profile within the spectral range considered. It is a measure of the line richness i.e., quantity and depth. For example a spectrum with many sharp lines will have a high Q. This quality factor is valid for the pure photon noise case only in which \(\sigma_{D} =0\) and \({[A(i)]}_{\rms} = A_0\). The instrumental resolution of the spectrograph also effects the spectral quality as it induces line broadening.
 
 The number of photo-electrons counted \(N_{{e}^{-}}\) depends on the stellar magnitude, detector efficiency and integration time. It can be estimated using
- \begin{equation}
- N_{{e}^{-}} = P_{avg} * S_{tel} * T_{\textrm{exp}} * \alpha* \Lambda,
- \end{equation}
-
+\begin{equation}
+     N_{{e}^{-}} = P_{avg} * S_{tel} * T_{\textrm{exp}} * \alpha* \Lambda,
+\end{equation}
 where \(P_{avg}\) is the average monochromatic stellar brightness
 across the wavelength range \(\Lambda\) in \si{\photons\per\second\per\centi\metre\squared\per\centi\metre},
 \(S_{tel}\) is the telescope collecting area in \si{\centi\metre\squared},
@@ -197,7 +191,6 @@ In the case of several \(\delta V\) measurements computed for \(k\) spectral sli
 \overline{\delta {V}_{\rms}} = \frac{1}{\sqrt{\sum_k{{(\frac{1}{\delta V_{\rms}(k)})}^{2}}}}
 \end{equation}
 
-
 This work follows~\cite{figueira_radial_2016} by exclusively considering a high signal-to-noise regime in which \(A(i) + \sigma_{D}^{2} \sim A(i)\) can be approximated.
 
 
@@ -210,11 +203,9 @@ This technique has been tested and demonstrated on observations by~\citet{connes
 
 
 Considering that \(\sum{A_0(i)} = N_{{e}^{-}}\)is the total number of photoelectrons counted over the whole spectral range then the uncertainty in the velocity change is finally given by:
-
 \begin{equation}
 \delta V_{\rms} = \frac{c}{Q \sqrt{N_{{e}^{-}}}} \approx \frac{c}{Q (S/N)}, \label{eq:rv_SNR}
 \end{equation}
-
 where the \({SNR}=\sqrt{N_{{e}^{-}}}\)for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?}
 
 
@@ -222,7 +213,6 @@ In the unrealistic case where all the pixel weights are identical $W(i)=w$, then
  \begin{equation}
  \delta V_{\rms} = \frac{c}{\sum{W(i)}} \approx \frac{c}{\sqrt{N w}}=  \frac{c}{\sqrt{N}\sqrt{w}}, \label{eq:sqrtN}
  \end{equation}
-
 
 A separate general formula for RV precision is given by \citet{hatzes_spectrograph_1992} in terms of general spectral parameters.
 \begin{equation}
@@ -282,7 +272,6 @@ The Gaussian convolution kernel is of the form
 \begin{equation}
 IP(\Delta\lambda) = \frac{1}{\sigma \sqrt{2\pi}} \exp^{-\frac{{\Delta\lambda}^{2}}{2 {\sigma}^{2}}}    \label{eqn:IP_profile}
 \end{equation}
-
 with $\sigma = \frac{\fwhm}{2\sqrt{2 \ln(2)}}$, and $\Delta \lambda$ again the difference from the line centre (normally this would be written as $(x-\mu)$ where $\mu$ is the Gaussian centre).
 
 This assumes that the instrument profile of a particular instrument is in-fact Gaussian. This assumption of a Gaussian instrumental profile is a good starting point for high-resolution spectrographs, and shown to be valid for CRIRES \citep{seifahrt_synthesising_2010}.
@@ -304,9 +293,8 @@ The convolutions are performed by analysing a single pixel at a time, and select
 The value of the convolution kernel is calculated at the position of each pixel selected, multiplied by the flux of each pixel and then summed to provide the new value at the selected single pixel{$^{\textbf{*}}$}.
  The shape of the convolution kernels and the size of convolution window are wavelength dependant (${\fwhm}=\lambda / R$ and $\Delta\lambda_{L}=\lambda \frac{\vsini}{c}$) and must be calculated separately for each pixel, making the convolution computationally expensive.
 
- However, the computation of the convolution of individual pixels is an ``embarrassingly parallel''\footnote{\href{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}} problem.
- What this means is that convolution result for pixel $i+1$ does not depend on the convolution result obtained for pixel $i$.
- Therefore, parallel processing was implemented to improve the performance of the convolution, roughly dividing the convolution time by the number of processors used.
+However, the computation of the convolution of individual pixels is an ``embarrassingly parallel''\footnote{\href{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}} problem. What this means is that convolution result for pixel $i+1$ does not depend on the convolution result obtained for pixel $i$.
+Therefore, parallel processing was implemented to improve the performance of the convolution, roughly dividing the convolution time by the number of processors used.
 
 The python package \emph{PyAstronomy} also contains functions that perform rotational and instrumental broadening. Those functions however require that the spectrum have uniformly spaced $x$-coordinate spacing which is not a requirement for the implementation of \emph{eniric} used here. \emph{PyAstronomy}, while implemented a ``slow'' full version of the rotational convolution, with a wavelength dependent kernel, they also provide ``fast'' convolution kernels that are fixed, taking the central wavelength value. These are significantly faster but are only valid for very short wavelength regions, in which the kernels do not significantly change. They are not suitable for use in this work due to the large wavelength span of spectroscopic bands and the wavelength dependant spacing of the spectra. A comparison of the performance between \emph{PyAstronomy} convolution and the convolutions implemented in \emph{eniric} and used here are given in a \emph{Jupyter} notebook in the repository of ``eniric'', basically they fall in between the ``fast'' and ``slow'' implementation of \emph{PyAstronomy}.
 
@@ -430,11 +418,10 @@ Namely that the same precision were calculated in the end.
 Functional test and unit tests.
 
 
- \subsection{Performance}
- \label{subsection:code_performance}
-    There was a major performance bottleneck in the convolution stage, which increased the performance around 250\,X itself.
-    The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range).
-    Turning the result into a numpy array, performing the sum for that pixel and appending it to a list.
+\subsection{Performance}
+\label{subsection:code_performance}
+There was a major performance bottleneck in the convolution stage, which increased the performance around 250\,X itself.
+The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range). Turning the result into a numpy array, performing the sum for that pixel and appending it to a list.
 The performance issue was a python implementation detail to do with applying a comprehension list to a numpy array, then slicing the numpy array with the ends of the list, then converting it back into a numpy array, all of which is preformed on a very large spectrum array.
 Creating a numpy boolean mask instead of the comprehension list, and applying the boolean mask to the array is much faster. Remaining entirely in the compiled numpy code and not converting between lists and numpy arrays (with involve type checking overhead).
 This slow operation was done for every pixel/wavelength in the spectrum twice, once for each convolution.
@@ -472,7 +459,10 @@ The simplest way to calculate the derivative using finite difference methods~\ci
 \[f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}~.\]
 
 There are three common varieties of the finite difference,
- \[{FFD} = \frac{f(x+h)-f(x)}{h},  {CFD}=\frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, {BFD}=\frac{f(x)-f(x-h)}{h}\,,\] called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite differences respectively. The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}({h}^{2})\)~\citep{quarteroni_numerical_2000}. As the wavelength spacing between samples/pixels (h) is small the {CFD} will a more precise value for the gradient at each pixel.
+\begin{equation}
+ \[{FFD} = \frac{f(x+h)-f(x)}{h},  {CFD}=\frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, {BFD}=\frac{f(x)-f(x-h)}{h}\,,
+\end{equation}
+called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite differences respectively. The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}({h}^{2})\)~\citep{quarteroni_numerical_2000}. As the wavelength spacing between samples/pixels (h) is small the {CFD} will a more precise value for the gradient at each pixel.
 
 In our case \(h\) is the difference in wavelength between the two pixels considered. In the {FFD} case the gradient at pixel \(i\) becomes:
 \begin{equation}
@@ -633,11 +623,9 @@ To analyse the relative precision of different spectra they need to normalized t
 In the original code this was selected to be a \snr{} per pixel of 100 at the centre of the \textit{J}-band at 1.25\si{\micro\meter}. The normalization values for each band, \(\vsini\) and resolution combination were hard-coded into the analysis. This made it impossible to easily adapt the code to other spectra or parameter combinations.
 
 An automated \snr{} scaling procedure was created to remove the hard-coded values. This updated code finds the centre point of the band of reference for the given spectrum. Totals the photon count across one resolution element, \(\delta\lambda\), and then takes the square root. This is using the definition of the \snr{} as \({SNR} = \sqrt{N}\) for large N. This value is then used to scale the spectrum such that the \snr{} at the reference point is the desired value.
-
 \begin{equation}
     SF =  \frac{\sqrt{\sum{\delta\lambda} A}} {SNR_{desired}}
 \end{equation}
-
 \textit{SF} where \textit{SF} is the scaling factor, \(\sum_{\delta\lambda} A\) is the sum of the point in one resolution element and \({SNR}_{desired}\) is the desired \snr{} level requested.
 
 This automated procedure enabled {\red{}\textbf{4}} different features.
@@ -655,9 +643,8 @@ The default values for the \snr{} scaling a still 100 at the centre of the \text
 The centre of each band was visually checked to ensure that there were no spectral lines at the reference locations> If a line was present at the reference point its depth variability across spectral types would affect the \snr{} scaling levels at a greater than the normal change in continuum amplitude/shape.\todo{is this needed}
 
 As shown in \eref{eq:snrequation} the {RV} precision is inversely proportional to the \snr{} level. To access the {RV} precision of any of the values in Table at a different \snr{} level you can apply the following
-
 \begin{equation}
-\rm RV_{SNR2} = RV_{SNR1} * \frac{SNR1}{SNR2}
+\rm RV_{SNR2} = RV_{SNR1} * \frac{SNR1}{SNR2}.
 \end{equation}
 
 \todo{SNR plot/diagram}
@@ -672,7 +659,7 @@ The \logg{} and metallicity, sampling rate remained at the~\citet{figueira_radia
 Precisions were provided for \snr{} of 100 relative to the \emph{J}-, \emph{H}-bands as well as to each band individually. Artigua 2018. (private communication 2018)\todo{Check how to cite priv communication properly} suggested the truly relevant value is the \snr{} in \emph{H}-band for {NIRPS} radial velocities.
 
 The results can be manually generated using ``eniric'' with the following incantation (after installation and configuration of phoenix library spectra.)
-\textbf{A table of the precisions created for the {NIRPS} ETC are provided as an online table to our publication} \textit{Neal et al. 2018b (in prep.)}\footnote{Available at \href{blah}{blah}} \unfinished{Inlcude correct links}
+\textbf{A table of the precisions created for the {NIRPS} ETC are provided as an online table to our publication} \textit{Neal et al. 2018b (in prep.)}\footnote{Available at \href{blah}{blah}} \unfinished{Include correct links}
 
 
 These values were both calculated and provided using the {FFD} gradient and with the incorrect masking order for Condition~\#2, splitting before calculating the pixel weights. As we demonstrated in \sref{sec:numerical_gradient} and~\ref{subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
@@ -684,7 +671,6 @@ These values were both calculated and provided using the {FFD} gradient and with
 \begin{figure}
     \centering
     \begin{tabular}{cc}
-
     \includegraphics[width=0.48\linewidth]{figures/information-content/Rvprec_vsini1.pdf} &  % Figueria plot
     \includegraphics[width=0.47\linewidth]{figures/information-content/precision_fourpanel.png}\\ % eniric plot
     \end{tabular}
@@ -703,7 +689,7 @@ These values were both calculated and provided using the {FFD} gradient and with
 
 - preparation of observed spectra
 
-- Barnards star (artigau 2018 comparision)
+- Banards star (artigau 2018 comparision)
 
 
 This work is work in progress. So far only 1 of 8 planned CARMENS spectra have been telluric corrected to calculate the RV precision.

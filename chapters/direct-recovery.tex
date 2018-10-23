@@ -121,7 +121,6 @@ This can be shifted into the rest frame of the host star by applying the shift \
 \end{equation}
 
 To analyse \(J_2\), the spectral component of interest, the component from the host needs to be carefully removed. If two observations of the same target are observed, denoted with subscripts \(a\) and \(b\), there will be relative motion between the components due to the orbit. Assuming that the stellar spectra do not change over time (\(J_{1a} = J_{2a}\)) and each spectrum can be individually Doppler shifted to the rest frame of the host star \(J_1{\lambda}\), then the spectrum of the host star (\(\textrm{J}_{1}\)) can be removed though subtraction of the two observations. Mutually cancelling the host component while leaving two components of the companion, with a relative Doppler shift between them.
-
 \begin{align}
 S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
 &= (\textrm{J}_{1a} + \textrm{J}_{2a}(\lambda - v_{2a} + v_{1a})) - (\textrm{J}_{2b} +\textrm{J}_{2b}(\lambda - v_{2b} + v_{1b})) \nonumber \\
@@ -130,12 +129,10 @@ S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}
 S(\lambda + v_{2a}-v_{1a}) &= \textrm{J}_{2a}(\lambda) - \textrm{J}_{2b}(\lambda - v_{2b} - v_{1a} + v_{1b} + v_{2a})\\
 S(\lambda') &= \textrm{J}_{2a}(\lambda) - \textrm{J}_{2b}(\lambda - \Delta {RV}_2) \label{eqn:sprofile}
 \end{align}
-
 where,
 \begin{equation}
 \Delta {RV}_2 = v_{1a} - v_{1b} - v_{2a} + v_{2b} \label{eqn:companion_difference}
 \end{equation}
-
 is the {RV} difference between the two companion spectral components when the host components are mutually subtracted.
 and \(\lambda' = \lambda + v_{2a}-v_{1a}\)
 
@@ -143,9 +140,9 @@ The resulting differential spectra \(S{\lambda'}\), dubbed \emph{s-profile} by~\
 
 \cite{ferluga_separating_1997} even provide a analytical form for the \emph{s-profile} given a single Gaussian line of the form
 $J(\lambda) = 1- D \cdot\exp^{{-\pi {(\lambda - \lambda_0)}^2} / {{W}^{2}}}$:
- ....\begin{equation}
- S(\lambda) = 2 D\cdot\exp^{{-\pi {D}^{2} [{(\lambda - \lambda_0)}^{2} +{(k/2)}^{2}]}/{{W}^{2}}} \cdot \sinh{\frac{\pi {D}^{2}(\lambda-\lambda_0)k}{{W}^{2}}},\label{eqn:sprofile_gaussain}
- \end{equation}
+\begin{equation}
+    S(\lambda) = 2 D\cdot\exp^{{-\pi {D}^{2} [{(\lambda - \lambda_0)}^{2} +{(k/2)}^{2}]}/{{W}^{2}}} \cdot \sinh{\frac{\pi {D}^{2}(\lambda-\lambda_0)k}{{W}^{2}}},\label{eqn:sprofile_gaussain}
+\end{equation}
 where $\lambda_0$, $D$, and $W$ are the central wavelength, depth and equivalent width of the Gaussian line, and $k=\Delta {RV}_2 $ is the shift between the two companion spectra.
 
 
@@ -156,7 +153,6 @@ v_{2} &= -q * v_{1} \label{eqn:q_relation}
 \todo{put in advanced concepts chapter???}
 \todo{this ignores $\gamma$}
 We can simplify \eref{eqn:companion_difference} by expressing it in terms of the mass ratio and host {RV} only:
-
 \begin{align}
 \Delta RV_2 &= q v_{1a} - q v_{1b} + v_{1a} - v_{1b} \nonumber \\
 &= (1 + q)(v_{1a} - v_{1b}). \label{eqn:companion_difference_simplified}
@@ -183,7 +179,6 @@ Example simulations?
 We applied the spectral differential procedure outlined above on the wavelength-calibrated and telluric-corrected {CRIRES} observations. The spectra were first Doppler shifted to the rest frame velocity of the system by applying a shift of \(-\gamma\). The differential subtraction method was then applied by shifting each spectra so that the host lines were at rest and then subtracting one from the other as described above.
 
 It is necessary to have a consistent instrumental setup~\citet{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g.\ slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted. In our case, the second observation of {HD\,202206} and fourth of {HD\,30501} were taken with different filters compared to the other observations. Therefore, these two observations could not be used for this differential analysis. As noted in~\citep{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
-
 
 We performed the differential analysis for all targets but only show our most favourable case here, {HD\,30501}, because it is the second largest companion in our sample at 90~\Mjup{} and also has the second largest {RV} separation between observations. The differential spectra recovered for {HD\,30501} is shown at the bottom panel of \fref{fig:spectral_example}. The presence of deep (\(>4\%\)) stellar and telluric lines in the original spectrum is shaded by the blue and green regions respectively. This indicates that the features of the differential spectrum near these shaded regions are likely due to imperfect telluric correction and host mutual cancellation.
 

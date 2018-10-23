@@ -72,11 +72,9 @@ These synthetic spectra are used individually for the single component model and
 \subsubsection{Single component model}
 \label{subsubsec:single-model}
 The single model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \(\teff{}\), logg, \feh{}, [\(\alpha\)/\ce{Fe}]) and is Doppler shifted by a {RV} value \({rv}_1\).
-
 \begin{equation}
 \rm C^{1}_{i}(\lambda) = J(\lambda_0(1-\frac{{rv}_1}{c}))
 \end{equation}
-
 where \(\lambda\) is the shifted wavelength, \(\lambda_0\), the model rest wavelength and, \(c\), the speed of light in a vacuum. The model's flux is then continuum normalized to unity to match the observed spectra, and interpolated to the wavelength grid of the observation.
 
 This single component model analysis is similar to the~\citet{passegger_fundamental_2016} \textchisquared{} fitting. We apply the same re-normalization (see \sref{subsec:renorm}) to account for slight differences in the continuum level and possible linear trends between the normalized observation and model. We do not, however, apply any dynamical masking to sensitive lines to make the the \textchisquared{} minima more distinct or linearly interpolate the stellar parameters between the grid models to obtain high precision stellar parameters. This is because we are not trying to derive precise stellar parameters but to detect the spectra of the companions. We instead include radial velocity components to the \textchisquared{} fitting, which is not included in~\citet{passegger_fundamental_2016}.
@@ -163,8 +161,8 @@ For the companions targets with fully resolved orbits the known {RV} of  the hos
    % \includegraphics[width=0.8\hsize]{images/Mdwarf_pcolors.pdf}
 
     \caption{\textchisquared{} results for companion recovery of a simulated binary observation of a Sun-like star (\(\teffsub{1}=5\,800\)\K{}) with an M-dwarf companion (\(\teffsub{2}=4\,000\)\K{}). The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)). Both left hand panels show the distribution of host temperature and host {RV}.\@ The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
-        The red circle and yellow star indicate the location of the simulation input and recovered parameters respectively.
-        The white line shows a 3-\(\sigma\) confidence level about the minimum \textchisquared{} solution grid point. Each box is centred on the parameter values and shows the grid resolution.}
+    The red circle and yellow star indicate the location of the simulation input and recovered parameters respectively.
+    The white line shows a 3-\(\sigma\) confidence level about the minimum \textchisquared{} solution grid point. Each box is centred on the parameter values and shows the grid resolution.}
     \label{fig:Mdwarf_contours}
 \end{figure*}
 
