@@ -37,7 +37,6 @@ The radial velocity variation, directed along the line of sight, is given by:
 \label{eq:rv_equation_intro}
 {RV} = \gamma + K [\cos{(\nu(t, P, T_0, e) + \omega)} + e\cos{(\omega)}]
 \end{equation}
-
 where $\gamma$ is constant barycentre velocity of the system relative to the Sun\footnote{Earth's barycentre motion is well known and removed.}, \(K\) is the velocity semi-amplitude, \(e\) the eccentricity, and \(\omega\) is the argument of periastron.
 The true anomaly \(\nu\), is a function of time \(t\), orbital period \(P\), and the time of periastron passage \(T_0\), and eccentricity.
 
@@ -51,6 +50,13 @@ The key exoplanet property determined by the amplitude {RV} technique is the com
 As the companion mass is in the numerator of \eref{eq:k_amplitude} the {RV} technique is more sensitive to larger mass planets.
 Also since $K \propto P^{-1/3}$ the amplitude is greater for short period close in orbits\footnote{From Kepler's Law ${P}^{2}\propto {a}^{3}$}.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/introduction/exoplanetEU_year_mass.pdf}
+    \caption{Exoplanet discovery year verses exoplanet mass showing a trend towards detecting lower mass planets. Exoplanets without a measured mass are not shown. The colours indicate the initial detection method.}
+    \label{fig:exoplaneteuyearmass}
+\end{figure}
+
 The RV method  kick-starting the exoplanet discipline by detecting the first exoplanet around a solar-type star {51 Pegasi}~\citep{mayor_jupitermass_1995}. The RV curve for {51 Pegasi} is shown on the right side of \ref{fig:rvdiagram-mayor}.
 The first discoveries were surprising as Jupiter mass planets in short period orbits\footnote{\Mpsini=0.47\,\Mjup{} orbiting at 0.05\AU{} for {51 Pegasi}} were unlike anything in our Solar System.
 Several exoplanet discoveries followed in quick successions~\citep[e.g.][]{butler_planet_1996, marcy_planetary_1996} with many confirming the existence of the type of planets now referred to as ``hot-Jupiters''~\citep{butler_three_1997, charbonneau_detection_2000}.
@@ -60,16 +66,9 @@ the radial velocity signal of the Earth in a 1 year orbit around a solar-type st
 Specially constructed spectrographs, such as HARPS~\citep{mayor_setting_2003} along with improved reduction techniques~\citep{lovis_new_2007} pushed this mass detection limit down to the \mps{} level. ESPRESSO~\citep{pepe_espresso_2014, megevand_espresso_2014} is the next generation high precision optical spectrograph aiming to push the detection limits to 10\cmps, to detect an Earth twin.
 The gradual decrease in measured mass of exoplanets over time is shown in \fref{fig:exoplaneteuyearmass}. The different symbols indicate the detection method, not necessarily the method used to measure the exoplanet mass.
 
-\begin{figure}
-    \includegraphics[width=0.5\linewidth]{figures/introduction/exoplanetEU_year_mass.pdf}
-    \caption{Exoplanet discovery year verses exoplanet mass showing a trend towards detecting lower mass planets. Exoplanets without a measured mass are not shown. Colours indicate the initial detection method.}
-    \label{fig:exoplaneteuyearmass}
-\end{figure}
-
 Most {RV} detection has been performed using optical spectrographs.
-However, as the amplitude of {RV} signal is inversely proportional to the mass of the star (RV $\propto \Mstar^{-2/3}$), there are dedicated surveys focusing on smaller mass M-dwarf stars~\citep[e.g.]{reiners_carmenes_2018}.
+However, as the amplitude of {RV} signal is inversely proportional to the mass of the star (RV $\propto \Mstar^{-2/3}$), there are dedicated surveys focusing on smaller mass M-dwarf stars~\citep[e.g.][]{reiners_carmenes_2018}.
 M-dwarfs are inherently cooler and thus emit a majority of their stellar output in the near-infrared\reference{cite an M-dwarf paper?}; new dedicated high-resolution \nir{} spectrographs have and are being designed and implemented to meet this demand e.g., {CARMENES}, {NIRPS}, {SPIRou}, {CRIRES+}.
-
 
 
 \subsection{Transit methods}
@@ -146,14 +145,15 @@ Extremely young giants observed in the infrared are favoured as they have higher
     \label{fig:directimaging}
 \end{figure}
 
-High-contrast adaptive optics instruments, such as SPHERE@VLT~\citep{beuzit_sphere_2008} and GPI~\citep{macintosh_gemini_2008}, are being used with several different techniques to observe targets closer to the star and with smaller contrasts, usually involving blocking or cancelling out the light from the star while keeping the planet \citep[e.g.][]{marois_direct_2005, mawet_annular_2005, schmid_zimpol_2005, sirbu_prospects_2017, sirbu_techniques_2017, wang_observing_2017}.
+High-contrast adaptive optics instruments, such as SPHERE@VLT~\citep{beuzit_sphere_2008} and GPI~\citep{macintosh_gemini_2008}, are being used with several different techniques to observe targets closer to the star and with smaller contrasts, usually involving blocking or cancelling out the light from the star while keeping the planet~\citep[e.g.][]{marois_direct_2005, mawet_annular_2005, schmid_zimpol_2005, sirbu_prospects_2017, sirbu_techniques_2017, wang_observing_2017}.
 Ground based direct imaging requires adaptive optics to reduce the turbulence induced by the atmosphere, increasing the angular resolution down to the telescope diffraction limit.
 
 The direct imaging technique is also used to observe circumstellar and protoplanetary disks, and has even captured images of planets during formation~\citep[e.g.][]{sallum_accreting_2015}.
-Combining direct images from different photometric bands can allow for the creation of low-resolution exoplanet spectra \citep[e.g.][]{kuzuhara_direct_2013, zurlo_new_2015}.
+Combining direct images from different photometric bands can allow for the creation of low-resolution exoplanet spectra~\citep[e.g.][]{kuzuhara_direct_2013, zurlo_new_2015}.
 
 
 \subsection{Astrometry}
+
 \label{sub:astrometry}
 Astrometry measures the precise position of the stars on the plane of the sky.
 The motion of a star with an exoplanet about its centre of mass can be observed in the periodic oscillating of position from its proper motion in the sky.

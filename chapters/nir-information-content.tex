@@ -7,9 +7,9 @@
 The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra ,specifically the radial velocity precision in the \nir{}. \todo{this doesn't seem right}{It is very different from the previous chapters in which the detection of the companions spectra was attempted.}
 
 The field of exoplanet detection in the \nir{} is expanding with several new high resolution \nir{} spectrographs available in the near future. For instance {CARMENES} is already performing observations while SPIRou, {NIRPS}, and CRIRES+ are near completion. One science objective common to all four instruments is the detection small mass planets around {M-dwarf} stars utilizing the radial velocity technique.
-The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in \citet{figueira_radial_2016} was used to influence some design choices of SPIRou, {NIRPS} specifically.
+The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to influence some design choices of SPIRou, {NIRPS} specifically.
 
-The purpose of the work presented in this chapter is to extend the work of \citet{figueira_radial_2016}, computing the theoretical RV precision of stellar spectra over a wider range of situations. A investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of RV precision of he recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed. This is to test how the {RV} precision of synthetic models compares to reality.
+The purpose of the work presented in this chapter is to extend the work of~\citet{figueira_radial_2016}, computing the theoretical RV precision of stellar spectra over a wider range of situations. A investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of RV precision of he recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed. This is to test how the {RV} precision of synthetic models compares to reality.
 The aim is to compare the fundamental precision of \nir{} spectra to the synthetic models, to
 
 
@@ -31,7 +31,7 @@ This work is not directly related to detecting exoplanet atmospheres themselves 
 
 
 \section{Radial velocity precision}
-The first detections of extrasolar planets with the {RV} technique were hot-Jupiters; Jupiter mass planets in close orbits to their star . The RV precision required to detector the first hot-Jupiter, 51 Peg b, was \todo{find mayor queloz precision achieved} \cite{mayor_jupitermass_1995} using \todo{what reference} Since that time the instrumental development and the detection and observations technique refined to achieve {RV} precisions better than 1\mps{}. The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}. The level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
+The first detections of extrasolar planets with the {RV} technique were hot-Jupiters; Jupiter mass planets in close orbits to their star . The RV precision required to detector the first hot-Jupiter, 51 Peg b, was \todo{find mayor queloz precision achieved}~\cite{mayor_jupitermass_1995} using \todo{what reference} Since that time the instrumental development and the detection and observations technique refined to achieve {RV} precisions better than 1\mps{}. The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}. The level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
 
 Over the years the community has push the limits of this technique to smaller and smaller planetary masses. An example is shown in \fref{fig:year_mass}.
 
@@ -197,7 +197,7 @@ This work follows~\cite{figueira_radial_2016} by exclusively considering a high 
 \footnote{pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\sum{{\lambda}^{2} {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\sum{\, A_0(i)}}\) as derived by~\cite{connes_absolute_1985}. }
 
 
-This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation \citep[e.g.][]{connes_absolute_1985,bouchy_fundamental_2001} and can influence the design (and/or use) of spectrographs
+This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation~\citep[e.g.][]{connes_absolute_1985,bouchy_fundamental_2001} and can influence the design (and/or use) of spectrographs
  (e.g.\ SPIROU~\citep{artigau_spirou_2014,figueira_radial_2016})
 \unfinished{Does spectrograph pipelines such as HARPS use these equations to measure estimate/precision?}
 
@@ -214,7 +214,7 @@ In the unrealistic case where all the pixel weights are identical $W(i)=w$, then
  \delta V_{\rms} = \frac{c}{\sum{W(i)}} \approx \frac{c}{\sqrt{N w}}=  \frac{c}{\sqrt{N}\sqrt{w}}, \label{eq:sqrtN}
  \end{equation}
 
-A separate general formula for RV precision is given by \citet{hatzes_spectrograph_1992} in terms of general spectral parameters.
+A separate general formula for RV precision is given by~\citet{hatzes_spectrograph_1992} in terms of general spectral parameters.
 \begin{equation}
 \sigma = \frac{1}{\sqrt{F} \sqrt{\Lambda} {R}^{1.5}}
 \end{equation}
@@ -257,7 +257,7 @@ are constants which depend on the equatorial rotational velocity \(\vsini\).
 Here $\Delta\lambda$ is the wavelength position from the non-rotating line centre, $\Delta\lambda_{L}$ is the maximum line shift of the line centre at the edge of the stellar disk at which point the Doppler shift is  \(\vsini\); $\Delta\lambda_{L} = \lambda \frac{\vsini}{c}$.
 
 This kernel arises from integrating the rotational velocity profile across the surface of the stellar disk and as such the rotation kernel is bounded in the range  $[-\Delta\lambda_L, \Delta\lambda_{L}]$ from the line centre.
-This kernel also accounts for limb-darkening on the stellar disk with the linear limb darkening coefficient used in this work fixed at $\epsilon=0.6$ as done in \citet{figueira_radial_2016}.
+This kernel also accounts for limb-darkening on the stellar disk with the linear limb darkening coefficient used in this work fixed at $\epsilon=0.6$ as done in~\citet{figueira_radial_2016}.
 
 Since the synthetic models do not have a consistent wavelength grid, the discretization of applying the convolution kernel onto the changing wavelength grid causes the result of each pixel to be multiplied by a slightly different kernel area.
 Therefore, the result is divided by a convolution of a spectrum of ones with the same wavelength resolution to normalize the convolution.
@@ -274,17 +274,17 @@ IP(\Delta\lambda) = \frac{1}{\sigma \sqrt{2\pi}} \exp^{-\frac{{\Delta\lambda}^{2
 \end{equation}
 with $\sigma = \frac{\fwhm}{2\sqrt{2 \ln(2)}}$, and $\Delta \lambda$ again the difference from the line centre (normally this would be written as $(x-\mu)$ where $\mu$ is the Gaussian centre).
 
-This assumes that the instrument profile of a particular instrument is in-fact Gaussian. This assumption of a Gaussian instrumental profile is a good starting point for high-resolution spectrographs, and shown to be valid for CRIRES \citep{seifahrt_synthesising_2010}.
+This assumes that the instrument profile of a particular instrument is in-fact Gaussian. This assumption of a Gaussian instrumental profile is a good starting point for high-resolution spectrographs, and shown to be valid for CRIRES~\citep{seifahrt_synthesising_2010}.
 If the instrument profile of a particular instrument is well characterized, then it could replace the Gaussian profile used here.
 
-For instance \citet{artigau_optical_2018}  state that the instrumental profile of a (circular) fibre-fed spectrograph such as {HARPS} is mathematically equivalent to a cosine between $\frac{-pi}{2}$ and $\frac{pi}{2}$ with a width equivalent to the Gaussian {\fwhm}.
+For instance~\citet{artigau_optical_2018}  state that the instrumental profile of a (circular) fibre-fed spectrograph such as {HARPS} is mathematically equivalent to a cosine between $\frac{-pi}{2}$ and $\frac{pi}{2}$ with a width equivalent to the Gaussian {\fwhm}.
 
 The integration of a circular fibre is given by
 \begin{equation}
 \textrm{IP}_{\textrm{fibre}(\Delta\lambda)} = \cos(B\cdot\Delta\lambda) ,  \hspace{2em} [-pi/2B, pi/2B]
 \end{equation}
 where \todo{define fwhm0}{$B = \frac{\fwhm_{0}}{\fwhm}$ } is a scales to give the same area? \todo{CHECKTHISRESUSLT!!!!!!}
-following the description from \citet{artigau_optical_2018}.  They also mention that the result using this $\textrm{IP}_{\textrm{fibre}}$ are all consistent with the Gaussian kernel.
+following the description from~\citet{artigau_optical_2018}.  They also mention that the result using this $\textrm{IP}_{\textrm{fibre}}$ are all consistent with the Gaussian kernel.
 
 \subsection{Numerical Convolution}
 \label{subsec:numerical_convolution}
@@ -346,7 +346,7 @@ The bands are selected based on the strong water absorption. This can be seen th
 \subsection{Comparing models to {CARMENES}.}
 Already somewhat done in Reiners. (use all spectra). They measured the precision obtained in the spectra.
 
-Band by band like \citet{figueira_radial_2016}?
+Band by band like~\citet{figueira_radial_2016}?
 Certain\% steps like Bouchy or Artigau
 
 
@@ -460,7 +460,7 @@ The simplest way to calculate the derivative using finite difference methods~\ci
 
 There are three common varieties of the finite difference,
 \begin{equation}
- \[{FFD} = \frac{f(x+h)-f(x)}{h},  {CFD}=\frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, {BFD}=\frac{f(x)-f(x-h)}{h}\,,
+ {FFD} = \frac{f(x+h)-f(x)}{h},  {CFD}=\frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, {BFD}=\frac{f(x)-f(x-h)}{h}\,,
 \end{equation}
 called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite differences respectively. The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}({h}^{2})\)~\citep{quarteroni_numerical_2000}. As the wavelength spacing between samples/pixels (h) is small the {CFD} will a more precise value for the gradient at each pixel.
 
@@ -674,7 +674,7 @@ These values were both calculated and provided using the {FFD} gradient and with
     \includegraphics[width=0.48\linewidth]{figures/information-content/Rvprec_vsini1.pdf} &  % Figueria plot
     \includegraphics[width=0.47\linewidth]{figures/information-content/precision_fourpanel.png}\\ % eniric plot
     \end{tabular}
-    \caption{Left: Figure 1 from \citet{figueira_radial_2016}, Right: The same style figure with values updated from this work, computed with \emph{eniric}. The main difference is the area of shaded region due to the problem with Condition~\#2 (which is the upper edge).}
+    \caption{Left: Figure 1 from~\citet{figueira_radial_2016}, Right: The same style figure with values updated from this work, computed with \emph{eniric}. The main difference is the area of shaded region due to the problem with Condition~\#2 (which is the upper edge).}
     \label{fig:my_label}
 \end{figure}
 \todo{Change to 55 m/s upper limit?}
