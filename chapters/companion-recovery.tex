@@ -26,7 +26,7 @@ Since the differential method is ineffective for our dataset due to the {RV} sep
 
 \subsection{Synthetic {PHOENIX-ACES} models}
 \label{subsec:spec_models}
-We use the {PHOENIX-ACES}~\citep{husser_new_2013} synthetic spectra library as our reference for the spectral comparison. It uses the most recent version (16) of the PHOENIX code and is suitable for the spectra of cool stars. The full parameter grid space of the {PHOENIX-ACES} spectra is given in \tref{tab:phoenix} although we only explore models constrained by the targets explored here.
+We use the {PHOENIX-ACES}~\citep{husser_new_2013} synthetic spectra library as our reference for the spectral comparison. It uses the most recent version (16) of the {PHOENIX} code and is suitable for the spectra of cool stars. The full parameter grid space of the {PHOENIX-ACES} spectra is given in \tref{tab:phoenix} although we only explore models constrained by the targets explored here.
 
 \input{tables/companion_recovery/phoenixparameters}
 
@@ -108,7 +108,7 @@ The binary model should provide meaningful information about the companion param
 
 To combine the two synthetic spectra with the correct observed flux ratio we need to integrate the emitted flux over the effective surface area of each emitting body respectively. Ignoring the common multiplicative constants that will disappear with normalization, we scale the two synthetic spectra individually by the square of their respective radii, \(R_1\) and \(R_2\).
 
-In this work we use the effective radius (PHXREFF keyword) of each component from the PHOENIX model headers. This is the radius used in modelling of the stellar atmospheres. We use this radii as it is directly tied to each model spectrum, and already available. The ratio of the radii from the two synthetic spectra in the binary models are provided in \tref{tab:example_params}.
+In this work we use the effective radius (PHXREFF keyword) of each component from the {PHOENIX} model headers. This is the radius used in modelling of the stellar atmospheres. We use this radii as it is directly tied to each model spectrum, and already available. The ratio of the radii from the two synthetic spectra in the binary models are provided in \tref{tab:example_params}.
 
 We are aware that using these radii radii has its limitations, since as stated previously, there is a degeneracy in {BD} mass, age, and luminosity of the companion, and in particular a combination of radius-mass and radius-age relationships~\citep{sorahana_radii_2013}. Using the {PHOENIX-ACES} model effective radius does not allow for any independent age constraints to be incorporated, or allow for any variability in the radii to account for uncertainties.
 
@@ -293,7 +293,7 @@ Using the temperature cut-off values, we derive an upper mass limit for the comp
 {Context. The spectral signature of an exoplanet can be separated from the spectrum of its host star using high-resolution spectroscopy. During these observations, the radial component of the planet's orbital velocity changes, resulting in a significant Doppler shift that allows its spectral features to be extracted. \\
      Aims: In this work, we aim to detect TiO in the optical transmission spectrum of HD 209458b. Gaseous TiO has been suggested as the cause of the thermal inversion layer invoked to explain the dayside spectrum of this planet. \\
      Methods: We used archival data from the 8.2 m Subaru telescope taken with the High Dispersion Spectrograph of a transit of HD 209458b in 2002. We created model transmission spectra that include absorption by TiO, and cross-correlated them with the residual spectral data after removal of the dominating stellar absorption features. We subsequently co-added the correlation signal in time, taking the change in Doppler shift due to the orbit of the planet into account. \\
-     Results: We detect no significant cross-correlation signal due to TiO, though artificial injection of our template spectra into the data indicates a sensitivity down to a volume-mixing ratio of \textasciitilde{}10\textsuperscript{-10}. However, cross-correlating the template spectra with a HARPS spectrum of Barnard's star yields only a weak wavelength-dependent correlation, even though Barnard's star is an M4V dwarf that exhibits clear TiO absorption. We infer that the TiO line list poorly matches the real positions of TiO lines at spectral resolutions of \textasciitilde{}100 000. Similar line lists are also used in the PHOENIX and Kurucz stellar atmosphere suites and we show that their synthetic M-dwarf spectra also correlate poorly with the HARPS spectra of Barnard's star and five other M dwarfs. We conclude that the lack of an accurate TiO line list is currently critically hampering this high-resolution retrieval technique.},
+     Results: We detect no significant cross-correlation signal due to TiO, though artificial injection of our template spectra into the data indicates a sensitivity down to a volume-mixing ratio of \textasciitilde{}10\textsuperscript{-10}. However, cross-correlating the template spectra with a HARPS spectrum of Barnard's star yields only a weak wavelength-dependent correlation, even though Barnard's star is an M4V dwarf that exhibits clear TiO absorption. We infer that the TiO line list poorly matches the real positions of TiO lines at spectral resolutions of \textasciitilde{}100 000. Similar line lists are also used in the {PHOENIX} and Kurucz stellar atmosphere suites and we show that their synthetic M-dwarf spectra also correlate poorly with the HARPS spectra of Barnard's star and five other M dwarfs. We conclude that the lack of an accurate TiO line list is currently critically hampering this high-resolution retrieval technique.},
 
 
 
@@ -309,11 +309,11 @@ The {BT-Settl} (allard et al 2009, 2010 2011 2012 baraffe2015) models, a differe
 The {PHOENIX-ACES} models dust in equilibrium with the gas phase but ignores the dust opacity and does not include any settling. It does however include a new Astrophysical Chemical Equilibrium Solver (ACES,
 Barman 2012); adds parametrisations for the mass and mixing-length; and uses the~\citet{asplund_chemical_2009} solar abundances. All these modifications together make it difficult to quantify the spectral changes from each individual change.
 
-The two of the recent ``flavors'' are the {BT-Settl}~\citep{allard_model_2010, baraffe_new_2015} and the {PHOENIX-ACES}~\citep{husser_new_2013} which use versions 15.5 and 16 of the PHOENIX code respectively.
+The two of the recent ``flavors'' are the {BT-Settl}~\citep{allard_model_2010, baraffe_new_2015} and the {PHOENIX-ACES}~\citep{husser_new_2013} which use versions 15.5 and 16 of the {PHOENIX} code respectively.
 
 Even though the {BT-Settl} models are more suited for the entire range of {BD} temperatures, we restrict ourselves to the {PHOENIX-ACES} synthetic spectra for a number of reasons. The ease of use and availability from the spectral library webpage\footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}. The ease of use using the Starfish tools, a wide parameter range and fairly consistent parameter grid span, and the effective radius of the modelled star provided in the fits header.
 
-These were not used in this instance for a couple of reasons, the ineffectiveness to produce a reliable detection on the observations using PHOENIX ACES spectra for our largest companions, which fall well within the PHOENIX ACES temperature limit.
+These were not used in this instance for a couple of reasons, the ineffectiveness to produce a reliable detection on the observations using  {PHOENIX-ACES}  spectra for our largest companions, which fall well within the  {PHOENIX-ACES}  temperature limit.
 
 The {PHOENIX-ACES} models also provide dimensions of effective radius of the star, in the header. This is required for the method presented here as we need to scale the spectra by their respective surface area when combining together.
 This {PHOENIX-ACES} lower temperature limit restricts its use to only the higher mass {BD} companions in our sample (\(~>0.08 M_{\odot}\) at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} models).
@@ -346,7 +346,7 @@ As we do not recover suitable results for HD211847 which is supposed to have a t
 
 
 \textbf{
-    PHOENIX ACES defines grid as Teff,\logg{} and Mass which can then be used to determine Radii. See~\citep{husser_new_2013} section 2.3.1 Mass.}
+     {PHOENIX-ACES}  defines grid as Teff,\logg{} and Mass which can then be used to determine Radii. See~\citep{husser_new_2013} section 2.3.1 Mass.}
 
 Both {BT-Settl} and aces are spherical
 \ldots{}
