@@ -1,13 +1,32 @@
 %!TEX root = ../../thesis.tex
 
-\section{Distribtion of Exoplanets}
+\section{Distribution of Exoplanets}
 
-Exoplanetary detections have challenged the theoretical formation models with their variety and distribution of sizes, locations For instance, the discovery of the hot-Jupiter class (large mass planets on close in orbits) challenged the accepted planet formation theories at the time~\citep[.e.g][]{pollack_formation_1996} in which our Solar System was thought to be typical with small rocky planets close to the Sun and large giant planets further away.
+Exoplanetary detections have challenged the theoretical formation models with their variety and distribution of sizes, locations For instance, the discovery of the hot-Jupiter class (large mass planets on close in orbits) challenged the accepted planet formation theories at the time~\citep[.e.g][]{pollack_formation_1996, boss_giant_1997} in which our Solar System was thought to be typical with small rocky planets close to the Sun and large giant planets further away.
 
-The characterization of exoplanets with the detection of exoplanetary atmospheres allows for the constraints of exoplanetary composition and formation mechanisms.
+
+The precise characterization of more exoplanets with the detection of exoplanetary atmospheres will allow for the constraints of exoplanetary composition and formation mechanisms to be improved. For instance, the core accretion model has been able to reproduce the large number of Super-Earths, the correlation be star metallicity and planet frequency~\citep[e.g.][]{santos_spectroscopic_2004, fischer_planetmetallicity_2005}, and the presence of many Hot-Jupiter and Neptune in close-in orbits, with the help of migration mechanisms~\citep[e.g.][]{Triaud_exoplanets_2016}. Recent models also combine both planetary formation and evolution to describe the observed exoplanets~\citep[e.g.][]{mordasini_characterization_2012} and can reproduce general population properties in a statistically significant way~\citep{mordasini_characterization_2009}.
+
+A proxy for the composition and structure of is the average density, computed from the mass and radius.   can be understood though A mass-radius diagram for as shown in \fref{fig:santerne2018} for Earth-like rocky planets. The tracks show lines of different theoretical compositions~\citep{brugger_constraints_2017}, while the circles indicate a number of detected small mass exoplanets, with K2-229\,b  being a Super_Earth with  Mercury-like density~\cite{santerne_earthsized_2018}.
+The density can give an approximate composition but for a given mass there are an infinite combinations of metal/silicate/ice and gas that  can produce the same  radii~\citep[e.g.][]{seager_massradius_2007}.
+Low mass planets tend to be rocky and tend to have small or no atmosphere. With rock being a approximately seen as in-compressible it is relatively insensitive to the incident flux. 
+The radii of solid exoplanets are sensitive to gas content of the atmosphere as small increase in H/He can cause a large increase in radius~\citep{adams_ocean_2008}.
+
+When the gas component becomes dominate  planets begin to have radii independent of their mass~\citep[e.g.][]{lopez_understanding_2014}. The atmospheres of gas giants are also susceptible to stellar irradiation, with close in Hot-Jupiters having inflated atmospheres and larger radii \citep[e.g][]{fortney 2009}. \todo{ Down to here}
+
+
 
 For rocky planets models there are infinite combinations of Mass-radius. 
 Models of the mass and radius for Earth like rocky planets for different compositions are given in \fref{fig:mass_radius_relation_composition}. A couple of exoplanets are shown along with the small Solar System planets. {Kepler-10\,b} and {CoRot-7\,b} seem to have similar composition to Earth/Venus of mostly mantle, while {Kepler-10\,c} is less dense with more water content. The composition varies from solid iron core (red) through a combination of silicates (rock forming minerals) out to 100\% water (blue).
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/introduction/santerne_2018}
+    \caption{Adaped from \citet{santerne_earthsized_2018}}
+    \label{fig:santerne2018}
+\end{figure}
+
 
 
 For planets with atmospheres, especially gas giants on close in orbits, the mass radius relation is more complicated with inflation due to atmospheric heating.
@@ -24,6 +43,18 @@ Several authors have found there are correlations with stellar metallicity, but 
 
 
 - Small densities - mercury like  density~\citet{dittmann_temperate_2017, santerne_earthsized_2018, ment_second_2018} rocky super-earths\todo{move elsewhere}\\
+
+
+
+Brown Dwarfs bridge the gap between low-mass stars and giant planets with masses around \(13-80~\textrm{M}_{jup} \)~\citep{chabrier_theory_2000}, 
+
+
+
+
+Recently, there has been a renewed interest in BD candidates triggered by exoplanetary searches.
+While several works found similar properties on the two populations, like a similar density~\citep{hatzes_definition_2015}, others found intriguing differences.
+One of the most recent is the different host metallicity of the Brown Dwarf and giant planet populations~\citep{santos_observational_2017, schlaufman_evidence_2018}, a very strong hint of different formation mechanisms.
+
 
 
 \subsection{Exoplanet distribution} 4 different groups
@@ -67,6 +98,8 @@ There are 4 different regoins in which the slow of the M-R diagram is different,
 \citep{santos_observational_2017} Santos et al 2017 \todo{read and quote}  Observational evidence for two distinct giant planet populations
 
 
+
+
 double peak histogram from an {RV} paper?? Faria 2018?
 
 
@@ -78,7 +111,13 @@ Theory of migration in the disk through  angular moment transfer (cite).
 
 
 
+
+\textbf{
+    brown dwarf dessert explore \citet{ranc_moa2007blg197_2015}}
+
+
 \subsection{Brown Dwarfs}
+\todo{This is mainly from the paper still.}
 Brown dwarfs (BDs) are sub-stellar objects unable to achieve hydrogen fusion, with masses around \(13-80~\textrm{M}_{jup} \)~\citep{chabrier_theory_2000}, bridging the gap between low-mass stars and giant planets.
 Without sustained fusion, brown-dwarfs cool down over time with an age-dependent cooling rate.
 Therefore, there is an inherent degeneracy between the mass, age and luminosity of a given BD~\citep{burrows_nongray_1997}.
@@ -93,31 +132,3 @@ The {RV} technique provides the mass lower-limit (\mtwosini{}) of binary and pla
 Measuring or tightening the constraints of BD masses improves the understanding of mass dependence on BD formation processes.
 For instance, there is growing evidence that the larger giant planets and BD companions do not follow the well known metallicity-giant planet correlation seen in main-sequence stars with planets~\citep[e.g.][]{santos_spectroscopic_2004,santos_observational_2017, maldonado_searching_2017}.
 Photometry along with stellar evolution models~\citep[e.g.][]{baraffe_evolutionary_2003,allard_btsettl_2013} can also be used to estimate the mass of BD companions~\citep[e.g.][]{moutou_eccentricity_2017} if there is sufficient orbital separation, and a precise determination of the age~\citep{soderblom_ages_2010}.
-
-Recently, there has been a renewed interest in BD candidates triggered by exoplanetary searches.
-While several works found similar properties on the two populations, like a similar density~\citep{hatzes_definition_2015}, others found intriguing differences.
-One of the most recent is the different host metallicity of the Brown Dwarf and giant planet populations~\citep{santos_observational_2017, schlaufman_evidence_2018}, a very strong hint of different formation mechanisms.
-
-Spectral observations of binary systems contain the spectra of both bodies, in proportion to their flux ratio, and Doppler shifted relative to each other due to their orbital motion.
-One technique to recover the spectra of the companion is secondary reconstruction through a differential spectrum~\citep{ferluga_separating_1997}.
-Spectra from different phases are shifted to the rest frame of the host star and subtracted to mutually cancel out the spectrum of the host star allowing the faint companion spectra to become visible.
-Advances in high-resolution and near-infrared (\nir{}) capabilities should enable this technique to be applied to BDs and planet companions, in which smaller {RV} shifts can be resolved and the contrast ratio of the smaller companion is improved.
-
-Observing in the \nir{} is specifically desirable for the cooler sub-stellar and giant planet companions as their thermal emission is stronger in the infrared compared to the optical.
-This improves the contrast ratio between the host star and companion, providing favourable conditions for their detection and spectral separation.
-CRIRES, a high resolution \nir{} spectrograph, has made many prominent advances in recent years with the detection of atmospheric constituents, such as \(\textrm{CO} \) and \(\textrm{H}_{2}\textrm{O} \), atmospheric winds and thermal profiles, rotation and orbital motion, for both transiting and non-transiting planets~\citep[e.g.][]{snellen_orbital_2010, brogi_signature_2012, rodler_weighing_2012, dekok_detection_2013, brogi_carbon_2014, snellen_fast_2014, piskorz_evidence_2016, brogi_rotation_2016, birkby_discovery_2017}.
-
-
-{\rd{} The search and detection of faint secondary spectra is not only relevant to planetary atmospheres.
-    \citet{kolbl_detection_2015} developed a method to detect the presence of optical secondary spectra down to a flux ratio of 1\% in the hosts of \emph{Kepler} transit candidates.
-    The presence of which can cause ambiguities in the system configuration, and increase the uncertainty of the measured planet radius.
-    The characterization of the false positive probability rate for Kepler has been found to be as high as \(\sim\)35\%~\citet{santerne_sophie_2012}.}
-
-In this paper we apply two different techniques on FGK stars with BD companions with the aim to spectroscopically detect their companions.
-In \sref{sec:data} we present the observations and reduction process as well as the spectral models used in this work.
-In \sref{sec:specdiff} we explain the differential spectral technique and its applicability to these observations while in \sref{sec:results} we apply companion recovery using a \textchisquared{} approach.
-In \sref{sec:discussion} we discuss our results and in \sref{sec:conclusions} we present our conclusions.
-
-
-\textbf{
-    brown dwarf dessert explore \citet{ranc_moa2007blg197_2015}}
