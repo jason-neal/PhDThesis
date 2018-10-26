@@ -6,45 +6,61 @@
 
 The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra ,specifically the radial velocity precision in the \nir{}. \todo{this doesn't seem right}{It is very different from the previous chapters in which the detection of the companions spectra was attempted.}
 
-The field of exoplanet detection in the \nir{} is expanding with several new high resolution \nir{} spectrographs available in the near future. For instance {CARMENES} is already performing observations while SPIRou, {NIRPS}, and CRIRES+ are near completion. One science objective common to all four instruments is the detection small mass planets around {M-dwarf} stars utilizing the radial velocity technique.
+The field of exoplanet detection in the \nir{} is expanding with several new high resolution \nir{} spectrographs available in the near future.
+For instance {CARMENES} is already performing observations while SPIRou, {NIRPS}, and CRIRES+ are near completion.
+One science objective common to all four instruments is the detection small mass planets around {M-dwarf} stars utilizing the radial velocity technique.
 The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to influence some design choices of SPIRou, {NIRPS} specifically.
 
-The purpose of the work presented in this chapter is to extend the work of~\citet{figueira_radial_2016}, computing the theoretical RV precision of stellar spectra over a wider range of situations. A investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of RV precision of he recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed. This is to test how the {RV} precision of synthetic models compares to reality.
+The purpose of the work presented in this chapter is to extend the work of~\citet{figueira_radial_2016}, computing the theoretical RV precision of stellar spectra over a wider range of situations.
+A investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of RV precision of he recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed.
+This is to test how the {RV} precision of synthetic models compares to reality.
 The aim is to compare the fundamental precision of \nir{} spectra to the synthetic models, to
 
 
 \section{Overview}
 
-The pursuit of detecting exoplanets, especially ``habitable'' and ``Earth-like'' planets, requires state-of-the-art instrumentation with high precision. One of the key detection methods, the Radial Velocity ({RV}) method, measures the wobble induced on the Star by the planet as they orbit their common barycentre \reference{rv method}.  {\red{} add Some stuff about mass and period from Pedros paper}  \todo{put in introduction??}
+The pursuit of detecting exoplanets, especially ``habitable'' and ``Earth-like'' planets, requires state-of-the-art instrumentation with high precision.
+One of the key detection methods, the Radial Velocity ({RV}) method, measures the wobble induced on the Star by the planet as they orbit their common barycentre \reference{rv method}.  {\red{} add Some stuff about mass and period from Pedros paper}  \todo{put in introduction??}
 
 
 
-A increase in the number of \nir{} spectrographs is increasing to focus on cooler {M-dwarfs} stars which have a easier* chance of detecting Earth-like planets in the habitable zone. \change{Check mission statements for these}{SPIRou, {NIRPS}} and {CARMENES}. Also {CRIRES+}\ldots{}
+A increase in the number of \nir{} spectrographs is increasing to focus on cooler {M-dwarfs} stars which have a easier* chance of detecting Earth-like planets in the habitable zone. \change{Check mission statements for these}{SPIRou, {NIRPS}} and {CARMENES}.
+Also {CRIRES+}\ldots{}
 This work continues the assessment of {RV} precision levels possible in this domain.
 \todo{For example from Figueira 2016 see figure} A more precise measurement can be achieved from X band then the \emph{Y}-band\ldots{} or in order XYZ of precision.
 
-\missingfigure{An example from Figueira et al. 2016}
+\missingfigure{An example from Figueira et al.
+2016}
 
 
 
-This work is not directly related to detecting exoplanet atmospheres themselves but investigates the theoretical and observed {RV} precision of {M-dwarf} spectra in the \nir{}. This has previously helped the aid the direction of instrument design by identifying the wavelength regions with the best {RV} precision~\citep{figueira_radial_2016} but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed {SNR}. This can help in detecting the presence of ``habitable Earth-like'' planets around {M-dwarfs} which will likely have their atmospheres eventually probed.
+This work is not directly related to detecting exoplanet atmospheres themselves but investigates the theoretical and observed {RV} precision of {M-dwarf} spectra in the \nir{}.
+This has previously helped the aid the direction of instrument design by identifying the wavelength regions with the best {RV} precision~\citep{figueira_radial_2016} but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed {SNR}.
+This can help in detecting the presence of ``habitable Earth-like'' planets around {M-dwarfs} which will likely have their atmospheres eventually probed.
 
 
 \section{Radial velocity precision}
-The first detections of extrasolar planets with the {RV} technique were hot-Jupiters; Jupiter mass planets in close orbits to their star . The RV precision required to detector the first hot-Jupiter, 51 Peg b, was \todo{find mayor queloz precision achieved}~\cite{mayor_jupitermass_1995} using \todo{what reference} Since that time the instrumental development and the detection and observations technique refined to achieve {RV} precisions better than 1\mps{}. The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}. The level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
+The first detections of extrasolar planets with the {RV} technique were hot-Jupiters; Jupiter mass planets in close orbits to their star .
+The RV precision required to detector the first hot-Jupiter, 51 Peg b, was \todo{find mayor queloz precision achieved}~\cite{mayor_jupitermass_1995} using \todo{what reference} Since that time the instrumental development and the detection and observations technique refined to achieve {RV} precisions better than 1\mps{}.
+The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}.
+The level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
 
-Over the years the community has push the limits of this technique to smaller and smaller planetary masses. An example is shown in \fref{fig:year_mass}.
+Over the years the community has push the limits of this technique to smaller and smaller planetary masses.
+An example is shown in \fref{fig:year_mass}.
 
 \begin{figure}
 \includegraphics[width=0.8\linewidth]{figures/year_planet_mass.png}
-\caption{Mass of discovered planets verse year. From Exoplanet.eu}
+\caption{Mass of discovered planets verse year.
+From Exoplanet.eu}
 \label{fig:year_mass}
 \end{figure}
 
 
 {RV} amplitude scales with mass of the star \({M_{\star}}^{-2/3}\) and with the planetary orbital period \({P_{\textrm{orb}}}^{-2/3}\).
 
-The detection of an Earth-mass planet inside the habitable zone around a solar-type star, the {RV} amplitude is 10 \cmps{}. If that a planet with the same characteristics is instead orbiting a {M-dwarf}, the {RV} amplitude is larger than 1\mps{}. This is due to two factors, the smaller mass of the host star, and the closer habitable zone, due to a lower luminosity output of the host.
+The detection of an Earth-mass planet inside the habitable zone around a solar-type star, the {RV} amplitude is 10 \cmps{}.
+If that a planet with the same characteristics is instead orbiting a {M-dwarf}, the {RV} amplitude is larger than 1\mps{}.
+This is due to two factors, the smaller mass of the host star, and the closer habitable zone, due to a lower luminosity output of the host.
 
 \citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an {M-dwarf}, and found that state-of-the-art atmosphere models over-predict the \emph{Y}- and \emph{J}-band {RV} content by more than a factor of \(\sim 2\), while under-predicting the \emph{H} and \emph{K}-band content by half.
 {\red{} in this work we find similar?}
@@ -54,15 +70,19 @@ We are currently aiming to extend this work over the whole {M-dwarf} range, from
 \todo{History of Precision calculations}
 History of Precision calculations:
 Connes 1\,985 -
-Bouchy et al. 2001  - photon noise limit on rv measurements.
+Bouchy et al.
+2001  - photon noise limit on rv measurements.
 \cite{figueira_radial_2016} - focus on {M-dwarfs} parameter range to specify new instrumentation windows to focus.
-Reiners 2017 -  {CARMENES} sample. Some precision
+Reiners 2017 -  {CARMENES} sample.
+Some precision
 pedros school section other precision source \({r}^{1.5}\)
 
 
 \subsection{Fundamental photon noise limitation}
 \label{fundamental_precision}
-A technique to calculate the theoretical radial velocity precision of a spectrum using the full spectral information in an optimal way was presented by~\citet{connes_absolute_1985}. Here we provide the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016}. A majority of this derivation follows~\citet{bouchy_fundamental_2001} with extra explanations and notes added.
+A technique to calculate the theoretical radial velocity precision of a spectrum using the full spectral information in an optimal way was presented by~\citet{connes_absolute_1985}.
+Here we provide the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016}.
+A majority of this derivation follows~\citet{bouchy_fundamental_2001} with extra explanations and notes added.
 
 \begin{figure}
     \centering
@@ -72,7 +92,9 @@ A technique to calculate the theoretical radial velocity precision of a spectrum
 \end{figure}
 \todo{add \(\delta A\) to plots}
 
-For demonstration purposes  \fref{fig:precisionderivation} show a portion of an arbitrary spectrum \(A(\lambda)\), for demonstration purposes over a wavelength range \(\Lambda\). Here \(A_0(\lambda)\) is the reference spectrum while \(A(\lambda)\) is observed some later time with an apparent wavelength shift observed. It shows most of a single Gaussian line as spectral lines contain the most information but the requirement of spectral lines is not a requirement.
+For demonstration purposes  \fref{fig:precisionderivation} show a portion of an arbitrary spectrum \(A(\lambda)\), for demonstration purposes over a wavelength range \(\Lambda\).
+Here \(A_0(\lambda)\) is the reference spectrum while \(A(\lambda)\) is observed some later time with an apparent wavelength shift observed.
+It shows most of a single Gaussian line as spectral lines contain the most information but the requirement of spectral lines is not a requirement.
 
 The Doppler shift of a spectrum is given by:
 \begin{equation}
@@ -95,7 +117,9 @@ Rearranging \eref{eq:intensitychange} for \(\delta \lambda\) and combining it wi
 \end{equation}
 
 This equation shows that the radial velocity measured at pixel, i, through a change in the intensity in the recorded spectrum, \(A(i)-A_0(i)\), and inversely proportional to the slope of the spectrum, \({\partial A_0(i)}/{\partial \lambda(i)}\).
-\ref{eq:delta_v_i} provides a separate measurement of the radial velocity shift for every pixel, $i$, in the spectrum. The sensitivity of the velocity measurement can be improved, and the noise decreased by using the information from the whole  spectral range, \(\Lambda\). This is achieved by taking the weighted average\footnote{Weighted average on x is \(\bar{x} = \frac{\sum{ x(i)W(i)}}{\sum {W(i)}}\)} over all pixels in the spectral range using an optimal pixel weight \(W(i)\).
+\ref{eq:delta_v_i} provides a separate measurement of the radial velocity shift for every pixel, $i$, in the spectrum.
+The sensitivity of the velocity measurement can be improved, and the noise decreased by using the information from the whole  spectral range, \(\Lambda\).
+This is achieved by taking the weighted average\footnote{Weighted average on x is \(\bar{x} = \frac{\sum{ x(i)W(i)}}{\sum {W(i)}}\)} over all pixels in the spectral range using an optimal pixel weight \(W(i)\).
 
 \begin{equation}
 \bar{\frac{\delta V}{c}} = \frac{\sum{\frac{\delta V(i)}{c}W(i)}}{\sum {W(i)}}.
@@ -111,19 +135,23 @@ The individual dispersion of the velocity measurement \(\delta V_{\rms}(i)\) is 
 \begin{equation}
     \frac{\delta V_{\rms}(i)}{c} = \frac{{[A(i) - A_0(i)]}_{\rms} }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))}. \label{eq:delta_v_i_rms}
 \end{equation}
-The noise of the spectrum A is the quadratic sum of the photon noise \(\sqrt{A}\) and the detector noise \(\sigma_D\). The spectrum \(A_0\) is considered noise free.
+The noise of the spectrum A is the quadratic sum of the photon noise \(\sqrt{A}\) and the detector noise \(\sigma_D\).
+The spectrum \(A_0\) is considered noise free.
 
 \begin{equation}
 {[{A(i)-A_0(i)}]}_{\rms} = {[{A(i)} - 0]}_{\rms} = \sqrt{{\sqrt{A(i)}}^{2} + {{\sigma}^{2}}_{D}} \label{eq:noise}
 \end{equation}
 
-Considering that the Doppler shift is small and that \(A\) and \(A_0\) have the same intensity level, then \(A = A_0\) can be set. Using Equations~\ref{eq:delta_v_i},~\ref{eq:weights}, and~\ref{eq:noise} the optimum weights then become solely dependent on the reference spectrum.
+Considering that the Doppler shift is small and that \(A\) and \(A_0\) have the same intensity level, then \(A = A_0\) can be set.
+Using Equations~\ref{eq:delta_v_i},~\ref{eq:weights}, and~\ref{eq:noise} the optimum weights then become solely dependent on the reference spectrum.
 
 \begin{equation}
 W(i) = \frac{{\lambda}^{2}(i) {({\partial A_0(i)}/{\partial \lambda(i)})}^{2}}{A(i) + {\sigma}^{2}_{D}} \label{eq:optimal_weight}
 \end{equation}
 
-This weighting function can be modified to mask out and eliminate unwanted lines in the spectrum. For instance in the removal of telluric absorption lines in observed spectra. This is achieved to setting the particular pixel weights to zero.
+This weighting function can be modified to mask out and eliminate unwanted lines in the spectrum.
+For instance in the removal of telluric absorption lines in observed spectra.
+This is achieved to setting the particular pixel weights to zero.
 
 With the optimal weights set, the weighed average velocity change measured from the full spectral range \(\Lambda\), is given by:
 
@@ -152,7 +180,9 @@ With the optimal weights set, the weighed average velocity change measured from 
 \end{eqnarray}\unfinished{Finish this equation (9 of bouchy 2001)}
 \unfinished{Try the symbolic package from PC}
 
-The important quantity for {RV} measurements is not just the velocity values themselves but also the dispersion on the measured velocity, the RV precision, \(\delta V_{\rms}\), from the spectrum. This allows one to assess the planetary detectability limitations attainable in the spectra. From rearranging \eref{eq:weights} the dispersion is given by:
+The important quantity for {RV} measurements is not just the velocity values themselves but also the dispersion on the measured velocity, the RV precision, \(\delta V_{\rms}\), from the spectrum.
+This allows one to assess the planetary detectability limitations attainable in the spectra.
+From rearranging \eref{eq:weights} the dispersion is given by:
 \begin{equation}
     \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\sqrt{\sum{\,W(i)}}} = \frac{1}{Q \sqrt{\sum{\,A_0(i)}}}. \label{eq:dv_rms}
 \end{equation}
@@ -171,9 +201,14 @@ where \(\sum A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of ph
 where the \({SNR}=\sqrt{N_{{e}^{-}}}\)for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?}
 
 
-This quality factor, Q, is flux independent and is purely a function of the spectral profile within the spectral range considered. It is a measure of the line richness i.e., quantity and depth. For example a spectrum with many sharp lines will have a high Q. This quality factor is valid for the pure photon noise case only in which \(\sigma_{D} =0\) and \({[A(i)]}_{\rms} = A_0\). The instrumental resolution of the spectrograph also effects the spectral quality as it induces line broadening.
+This quality factor, Q, is flux independent and is purely a function of the spectral profile within the spectral range considered.
+It is a measure of the line richness i.e., quantity and depth.
+For example a spectrum with many sharp lines will have a high Q.
+This quality factor is valid for the pure photon noise case only in which \(\sigma_{D} =0\) and \({[A(i)]}_{\rms} = A_0\).
+The instrumental resolution of the spectrograph also effects the spectral quality as it induces line broadening.
 
-The number of photo-electrons counted \(N_{{e}^{-}}\) depends on the stellar magnitude, detector efficiency and integration time. It can be estimated using
+The number of photo-electrons counted \(N_{{e}^{-}}\) depends on the stellar magnitude, detector efficiency and integration time.
+It can be estimated using
 \begin{equation}
      N_{{e}^{-}} = P_{avg} * S_{tel} * T_{\textrm{exp}} * \alpha* \Lambda,
 \end{equation}
@@ -219,7 +254,8 @@ A separate general formula for RV precision is given by~\citet{hatzes_spectrogra
 \sigma = \frac{1}{\sqrt{F} \sqrt{\Lambda} {R}^{1.5}}
 \end{equation}
 
-Here the $\sqrt{F}$ represents the SNR of the spectrum in the possion-noise dominated regime. The $\Lambda$ comes from assuming a homogenous distribution of line, with the same line properties, per unit length.
+Here the $\sqrt{F}$ represents the SNR of the spectrum in the possion-noise dominated regime.
+The $\Lambda$ comes from assuming a homogenous distribution of line, with the same line properties, per unit length.
 
 
 The 1.5 factor. ....
@@ -262,7 +298,10 @@ This kernel also accounts for limb-darkening on the stellar disk with the linear
 Since the synthetic models do not have a consistent wavelength grid, the discretization of applying the convolution kernel onto the changing wavelength grid causes the result of each pixel to be multiplied by a slightly different kernel area.
 Therefore, the result is divided by a convolution of a spectrum of ones with the same wavelength resolution to normalize the convolution.
 
-As the Doppler shift \(\vsini\) is transformed into wavelength by multiplication of $\lambda  / c$ there is a wavelength dependence on the rotation kernel shape. That is, the rotation kernel at each pixel is unique and requires separate calculation. For small wavelength ranges this can be held fixed to improve performance. This simplifications is not performed in this work as large wavelength ranges are considered.
+As the Doppler shift \(\vsini\) is transformed into wavelength by multiplication of $\lambda  / c$ there is a wavelength dependence on the rotation kernel shape.
+That is, the rotation kernel at each pixel is unique and requires separate calculation.
+For small wavelength ranges this can be held fixed to improve performance.
+This simplifications is not performed in this work as large wavelength ranges are considered.
 
 
 \subsection{Instrumental Convolution}
@@ -274,7 +313,8 @@ IP(\Delta\lambda) = \frac{1}{\sigma \sqrt{2\pi}} \exp^{-\frac{{\Delta\lambda}^{2
 \end{equation}
 with $\sigma = \frac{\fwhm}{2\sqrt{2 \ln(2)}}$, and $\Delta \lambda$ again the difference from the line centre (normally this would be written as $(x-\mu)$ where $\mu$ is the Gaussian centre).
 
-This assumes that the instrument profile of a particular instrument is in-fact Gaussian. This assumption of a Gaussian instrumental profile is a good starting point for high-resolution spectrographs, and shown to be valid for CRIRES~\citep{seifahrt_synthesising_2010}.
+This assumes that the instrument profile of a particular instrument is in-fact Gaussian.
+This assumption of a Gaussian instrumental profile is a good starting point for high-resolution spectrographs, and shown to be valid for CRIRES~\citep{seifahrt_synthesising_2010}.
 If the instrument profile of a particular instrument is well characterized, then it could replace the Gaussian profile used here.
 
 For instance~\citet{artigau_optical_2018}  state that the instrumental profile of a (circular) fibre-fed spectrograph such as {HARPS} is mathematically equivalent to a cosine between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$ with a width equivalent to the Gaussian {\fwhm}.
@@ -293,10 +333,15 @@ The convolutions are performed by analysing a single pixel at a time, and select
 The value of the convolution kernel is calculated at the position of each pixel selected, multiplied by the flux of each pixel and then summed to provide the new value at the selected single pixel{$^{\textbf{*}}$}.
  The shape of the convolution kernels and the size of convolution window are wavelength dependant (${\fwhm}=\lambda / R$ and $\Delta\lambda_{L}=\lambda \frac{\vsini}{c}$) and must be calculated separately for each pixel, making the convolution computationally expensive.
 
-However, the computation of the convolution of individual pixels is an ``embarrassingly parallel''\footnote{\href{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}} problem. What this means is that convolution result for pixel $i+1$ does not depend on the convolution result obtained for pixel $i$.
+However, the computation of the convolution of individual pixels is an ``embarrassingly parallel''\footnote{\href{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}} problem.
+What this means is that convolution result for pixel $i+1$ does not depend on the convolution result obtained for pixel $i$.
 Therefore, parallel processing was implemented to improve the performance of the convolution, roughly dividing the convolution time by the number of processors used.
 
-The python package \emph{PyAstronomy} also contains functions that perform rotational and instrumental broadening. Those functions however require that the spectrum have uniformly spaced $x$-coordinate spacing which is not a requirement for the implementation of \emph{eniric} used here. \emph{PyAstronomy}, while implemented a ``slow'' full version of the rotational convolution, with a wavelength dependent kernel, they also provide ``fast'' convolution kernels that are fixed, taking the central wavelength value. These are significantly faster but are only valid for very short wavelength regions, in which the kernels do not significantly change. They are not suitable for use in this work due to the large wavelength span of spectroscopic bands and the wavelength dependant spacing of the spectra. A comparison of the performance between \emph{PyAstronomy} convolution and the convolutions implemented in \emph{eniric} and used here are given in a \emph{Jupyter} notebook in the repository of ``eniric'', basically they fall in between the ``fast'' and ``slow'' implementation of \emph{PyAstronomy}.
+The python package \emph{PyAstronomy} also contains functions that perform rotational and instrumental broadening.
+Those functions however require that the spectrum have uniformly spaced $x$-coordinate spacing which is not a requirement for the implementation of \emph{eniric} used here. \emph{PyAstronomy}, while implemented a ``slow'' full version of the rotational convolution, with a wavelength dependent kernel, they also provide ``fast'' convolution kernels that are fixed, taking the central wavelength value.
+These are significantly faster but are only valid for very short wavelength regions, in which the kernels do not significantly change.
+They are not suitable for use in this work due to the large wavelength span of spectroscopic bands and the wavelength dependant spacing of the spectra.
+A comparison of the performance between \emph{PyAstronomy} convolution and the convolutions implemented in \emph{eniric} and used here are given in a \emph{Jupyter} notebook in the repository of ``eniric'', basically they fall in between the ``fast'' and ``slow'' implementation of \emph{PyAstronomy}.
 
 One factor the needs consideration when convolving with an non-uniformly spaced spectrum is effect of the sampling on the convolution.
 For instance the number of point inside the convolution, as well as their location will effect the area of the convolution kernel.
@@ -311,7 +356,8 @@ instead of only
 \[{A}^{\prime}(\lambda_{i}) =  \sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i}).\]
 
 
-By default edge effects are avoided by providing an input spectra sufficiently wider than the desired output spectrum to prevent edge effects on the portion of the spectrum desired. Since two convolutions are preformed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both  addition of  rotation and instrumental broadening by $\vsini$ and R.
+By default edge effects are avoided by providing an input spectra sufficiently wider than the desired output spectrum to prevent edge effects on the portion of the spectrum desired.
+Since two convolutions are preformed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both  addition of  rotation and instrumental broadening by $\vsini$ and R.
 
 %-----------------------------------
 %    SUBSECTION 2
@@ -323,7 +369,9 @@ Preparation of {CARMENES} spectra.
 \missingfigure{Example of {CARMENES} spectra before and after correction}
 
 \subsection{Bands}
-The bands are selected based on the strong water absorption. This can be seen the {CARMENES} spectra in Figure~\reference{Add figure here}\todo{Add figure here}. The wavelength ranges used in this work~\citet{figueira_radial_2016} and used in this work are given in \tref{tab:band_ranges}.
+The bands are selected based on the strong water absorption.
+This can be seen the {CARMENES} spectra in Figure~\reference{Add figure here}\todo{Add figure here}.
+The wavelength ranges used in this work~\citet{figueira_radial_2016} and used in this work are given in \tref{tab:band_ranges}.
 \begin{table}
     \centering
     \caption{The wavelength ranges of the \nir{} spectral bands.}
@@ -344,7 +392,8 @@ The bands are selected based on the strong water absorption. This can be seen th
 
 
 \subsection{Comparing models to {CARMENES}.}
-Already somewhat done in Reiners. (use all spectra). They measured the precision obtained in the spectra.
+Already somewhat done in Reiners. (use all spectra).
+They measured the precision obtained in the spectra.
 
 Band by band like~\citet{figueira_radial_2016}?
 Certain\% steps like Bouchy or Artigau
@@ -375,24 +424,36 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
 %\input{tables/carmenes_selection_transpose.tex}
 
 \section{Metallicity \logg{} effects}
-We explore the effect of metallicity and \logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and \logg{} of 4.0 -- 5.5. In \fref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and $\vsini=1.0$\kmps{} across the {M-dwarf} spectral types and the \nir{} bands is shown. We observed multiple different effects present.
+We explore the effect of metallicity and \logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and \logg{} of 4.0 -- 5.5.
+In \fref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and $\vsini=1.0$\kmps{} across the {M-dwarf} spectral types and the \nir{} bands is shown.
+We observed multiple different effects present.
 
 
-The \emph{Z}-band has a large separation in spectral quality due to spectral type, this is because the continuum the \emph{Z}-band is severely eroded in the spectra of late M's as they cool. Each spectral type also behaves very differently to a change in \feh{} and \logg{}. For {M0} and {M3} there is an increase with \feh{} below solar metallicity, above solar metallicity the slopes of the lines dramatically increase, especially for {M3}. For {M6} and {M9} there is a step slope with \feh{} below solar metallicity, which flattens off at solar metallicity, and even decreases for the {M9} spectra above solar metallicity.
-As \logg{} increases in the \emph{Z}-band there is a decrease in quality. There is a consistently large separation between early and late M's that. The quality for {M6} is very shallow, while for {M9} the quality is nearly flat for \logg{}=4.0 and 4.5 but then decreases sharply at higher \logg{}.
+The \emph{Z}-band has a large separation in spectral quality due to spectral type, this is because the continuum the \emph{Z}-band is severely eroded in the spectra of late M's as they cool.
+Each spectral type also behaves very differently to a change in \feh{} and \logg{}.
+For {M0} and {M3} there is an increase with \feh{} below solar metallicity, above solar metallicity the slopes of the lines dramatically increase, especially for {M3}.
+For {M6} and {M9} there is a step slope with \feh{} below solar metallicity, which flattens off at solar metallicity, and even decreases for the {M9} spectra above solar metallicity.
+As \logg{} increases in the \emph{Z}-band there is a decrease in quality.
+There is a consistently large separation between early and late M's that.
+The quality for {M6} is very shallow, while for {M9} the quality is nearly flat for \logg{}=4.0 and 4.5 but then decreases sharply at higher \logg{}.
 
 \emph{Y}-band -\\
 
 \emph{J}-band - \\
 
-For the H and \emph{K}-band there is fairly consistent linear trend for all spectral types, with the quality factor increasing with an increase in \feh{} and decreasing with an increase in \logg{}. There is also only a relatively small variation in quality factor due to the spectral type.
+For the H and \emph{K}-band there is fairly consistent linear trend for all spectral types, with the quality factor increasing with an increase in \feh{} and decreasing with an increase in \logg{}.
+There is also only a relatively small variation in quality factor due to the spectral type.
 
 
 
 \begin{figure}
 \includegraphics[width=0.99\linewidth]{figures/information-content/metalicity_effect.pdf}\\
 \includegraphics[width=0.99\linewidth]{figures/information-content/logg_effect.pdf}
-\caption{Quality factor changes across spectral type and bands for variations in \feh{} and \logg{}. Broadening values are R=100\,000 and \(\vsini\) = 1.0\kmps{}. Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed \logg{}=4.5. Bottom: Quality factor variation of \logg{} between 4 and 5.5 with fixed \feh{}=0.0. Note a higher quality factor corresponds to an increased {RV} precision.}
+\caption{Quality factor changes across spectral type and bands for variations in \feh{} and \logg{}.
+Broadening values are R=100\,000 and \(\vsini\) = 1.0\kmps{}.
+Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed \logg{}=4.5.
+Bottom: Quality factor variation of \logg{} between 4 and 5.5 with fixed \feh{}=0.0.
+Note a higher quality factor corresponds to an increased {RV} precision.}
 \label{fig:deviations}
 \end{figure}
 
@@ -402,17 +463,23 @@ For the H and \emph{K}-band there is fairly consistent linear trend for all spec
 \section{Updating {RV} precision software}
 To undertake the calculation of RV precisions
 A large section of this work involved optimizing the original code used in~\citet{figueira_radial_2016}.
-Care needs to be taken to optimize the code. The original code used in~\citet{figueira_radial_2016} was slow, taking around 2 hours per simulation, this led to multiple weeks of processing time to compute the precision's for the original paper.
+Care needs to be taken to optimize the code.
+The original code used in~\citet{figueira_radial_2016} was slow, taking around 2 hours per simulation, this led to multiple weeks of processing time to compute the precision's for the original paper.
 
-In this section we document the changes made to the code in the course of attempting to improving it. Features that change the derived {RV} precision are specifically documented in detail, with relative precision changes provided.
+In this section we document the changes made to the code in the course of attempting to improving it.
+Features that change the derived {RV} precision are specifically documented in detail, with relative precision changes provided.
 
 This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}} (JOSS) {Neal and Figueria 2018 (in prep.)} with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}.
 
 
 \subsection{Automated testing}
-To insure that any changes made to the code did not change the underling results. This involved writing automatic tests for the software. This practice is crucial in computer science ins commercial software development but seldom done in research but is becoming more popular. \reference{works of software testing in research.}
-Some work focused on testing ideology from computer science. Although not perfect implementation I began by adding automated tests to the code to check individual parts of it.
-Before making changes I created automated tests that would confirm the functionality of pieces of the code. I could then make changes to the code, to improve the performance without worrying that the results were different.
+To insure that any changes made to the code did not change the underling results.
+This involved writing automatic tests for the software.
+This practice is crucial in computer science ins commercial software development but seldom done in research but is becoming more popular. \reference{works of software testing in research.}
+Some work focused on testing ideology from computer science.
+Although not perfect implementation I began by adding automated tests to the code to check individual parts of it.
+Before making changes I created automated tests that would confirm the functionality of pieces of the code.
+I could then make changes to the code, to improve the performance without worrying that the results were different.
 Namely that the same precision were calculated in the end.
 
 Functional test and unit tests.
@@ -421,14 +488,17 @@ Functional test and unit tests.
 \subsection{Performance}
 \label{subsection:code_performance}
 There was a major performance bottleneck in the convolution stage, which increased the performance around 250\,X itself.
-The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range). Turning the result into a numpy array, performing the sum for that pixel and appending it to a list.
+The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range).
+Turning the result into a numpy array, performing the sum for that pixel and appending it to a list.
 The performance issue was a python implementation detail to do with applying a comprehension list to a numpy array, then slicing the numpy array with the ends of the list, then converting it back into a numpy array, all of which is preformed on a very large spectrum array.
-Creating a numpy boolean mask instead of the comprehension list, and applying the boolean mask to the array is much faster. Remaining entirely in the compiled numpy code and not converting between lists and numpy arrays (with involve type checking overhead).
+Creating a numpy boolean mask instead of the comprehension list, and applying the boolean mask to the array is much faster.
+Remaining entirely in the compiled numpy code and not converting between lists and numpy arrays (with involve type checking overhead).
 This slow operation was done for every pixel/wavelength in the spectrum twice, once for each convolution.
 
 caching convolution result to prevent recomputing the same values. \emph{Joblib}.  Also embarrassingly parallel so added multiprocessing support.
 
-The convolution is still the slowest part. There are other methods that work on uniform spectra, which have not been tried to see how they affect the performance or {RV} precision results.
+The convolution is still the slowest part.
+There are other methods that work on uniform spectra, which have not been tried to see how they affect the performance or {RV} precision results.
 \textbf{Insert code samples.}
 
 
@@ -439,13 +509,16 @@ These operations all remain in numpy so do not waste time converting between lis
 This shows a lesson in the usefulness of test driven development, or testing of code in science.
 
 
-An normalization step was originally done after the convolution, to normalize out the effect of the convolution on a spectrum of 1s, due to the changing wavelength grids sampling. This was brought inside the main convolution by dividing the pixel by the convolution of a spectrum of ones at the same time. (again in numpy so it is quick)
+An normalization step was originally done after the convolution, to normalize out the effect of the convolution on a spectrum of 1s, due to the changing wavelength grids sampling.
+This was brought inside the main convolution by dividing the pixel by the convolution of a spectrum of ones at the same time. (again in numpy so it is quick)
 
 Parallelization as embarrassingly parallel, the result of each pixel is independent of result of neighbours.
 
-This is not a criticism of the work done by the original author (my supervisor). It is easier to modify a working system then to create one from scratch.
+This is not a criticism of the work done by the original author (my supervisor).
+It is easier to modify a working system then to create one from scratch.
 
-Computer code is not the important part in scientific exploration., although becoming more important in open source and reproducibility efforts. Often forgotten in
+Computer code is not the important part in scientific exploration., although becoming more important in open source and reproducibility efforts.
+Often forgotten in
 
 \# Handle any phoenix aces models.
 
@@ -453,26 +526,34 @@ Computer code is not the important part in scientific exploration., although bec
 \section{Numerical Gradient}
 \label{sec:numerical_gradient}
 One of the key insights from Equations~\ref{eq:optimal_weight} and~\ref{eq:dv_rms} is that the radial velocity error is inversely proportional gradient of the spectra, In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
-In original code used in~\citet{figueira_radial_2016} the gradient or slope is approximated using the forward finite difference method. The numpy package provides a function to calculate the gradient using a more advanced methods that compute a more precise gradient. In this section we explore the affect of improving the precision of the numerical gradient on the final {RV} precision.
+In original code used in~\citet{figueira_radial_2016} the gradient or slope is approximated using the forward finite difference method.
+The numpy package provides a function to calculate the gradient using a more advanced methods that compute a more precise gradient.
+In this section we explore the affect of improving the precision of the numerical gradient on the final {RV} precision.
 
-The simplest way to calculate the derivative using finite difference methods~\citep{quarteroni_numerical_2000}. These arising from the Newton's definition of the derivative for a continuous function \(f(x)\) which should be familiar from introductory calculus:
+The simplest way to calculate the derivative using finite difference methods~\citep{quarteroni_numerical_2000}.
+These arising from the Newton's definition of the derivative for a continuous function \(f(x)\) which should be familiar from introductory calculus:
 \[f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}~.\]
 
 There are three common varieties of the finite difference,
 \begin{equation}
  {FFD} = \frac{f(x+h)-f(x)}{h},  {CFD}=\frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, {BFD}=\frac{f(x)-f(x-h)}{h}\,,
 \end{equation}
-called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite differences respectively. The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}({h}^{2})\)~\citep{quarteroni_numerical_2000}. As the wavelength spacing between samples/pixels (h) is small the {CFD} will a more precise value for the gradient at each pixel.
+called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite differences respectively.
+The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}({h}^{2})\)~\citep{quarteroni_numerical_2000}.
+As the wavelength spacing between samples/pixels (h) is small the {CFD} will a more precise value for the gradient at each pixel.
 
-In our case \(h\) is the difference in wavelength between the two pixels considered. In the {FFD} case the gradient at pixel \(i\) becomes:
+In our case \(h\) is the difference in wavelength between the two pixels considered.
+In the {FFD} case the gradient at pixel \(i\) becomes:
 \begin{equation}
 \frac{\partial A_0(i)}{\partial\lambda(i)} = \frac{A_0(i+1) - A_0(i)}{\lambda(i+1)-\lambda(i)}, \hspace{2em} 1 \leq i \leq n-1.
 \label{eq:ffd_precision}
 \end{equation}
-At each pixel the numerical derivative is evaluated to the average slope between itself and the following pixel and is an approximation to the derivative. This only extends to \(i= n-1\), where \(n\) is the number of points in the spectrum, and the last pixel is dropped from the {RV} calculation.\footnote{This is important in the case of Condition~\#2.}
+At each pixel the numerical derivative is evaluated to the average slope between itself and the following pixel and is an approximation to the derivative.
+This only extends to \(i= n-1\), where \(n\) is the number of points in the spectrum, and the last pixel is dropped from the {RV} calculation.\footnote{This is important in the case of Condition~\#2.}
 
 
-The \emph{gradient}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}}  method provided in Numpy contains a more advanced numerical methods to calculate the derivative. It uses a \textit{compact difference} method~\citep{quarteroni_numerical_2000} which expand the finite differences using a Taylor expansion and then selecting coefficients to minimize the \textit{consistency error}.
+The \emph{gradient}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}}  method provided in Numpy contains a more advanced numerical methods to calculate the derivative.
+It uses a \textit{compact difference} method~\citep{quarteroni_numerical_2000} which expand the finite differences using a Taylor expansion and then selecting coefficients to minimize the \textit{consistency error}.
 From the Numpy documentation the consistency error here is \[\eta_i = \partial{f(x_i)}/\partial{x} -  [\alpha f(x_i) + \beta f(x_i +h_d) + \gamma f(x_i - h_s)],\] where \(h_s\) and \(h_d\) are the spacing to the left and right of \(i\) respectively.
 With Taylor expansion this turns into solving a linear system of equations:
 \[\begin{cases}
@@ -496,7 +577,8 @@ Applying this to our situation, similar to \eref{eq:ffd_precision}, we get:
 with an uncertainty of \(\mathcal{O}\left(\frac{\lambda(i+1){\lambda(i-1)}^{2} + \lambda(i-1){\lambda(i+1)}^{2}}{\lambda(i+1) + \lambda(i-1)}\right)\).
 
 
-{\red{} Wavelength spacing \(\delta\lambda\) between pixels is a function of \(\lambda\), Resolution and sampling choices. Can I do something with this??}
+{\red{} Wavelength spacing \(\delta\lambda\) between pixels is a function of \(\lambda\), Resolution and sampling choices.
+Can I do something with this??}
 
 The \emph{gradient} function from Numpy implements central differences for the interior points, accurate to second order, and first order accurate one-sided (forward or backward) differences at the boundaries, computed using the same compact difference procedure.
 
@@ -504,7 +586,10 @@ The \emph{gradient} function from Numpy implements central differences for the i
 \begin{figure}
     \centering
    \includegraphics[width=0.8\linewidth]{figures/information-content/spectral_gradients}\\
-    \caption{Visualization of the numerical gradient of some spectral lines. Top: The two spectral regions of a stellar spectrum the left hand slide contains short lines near the normalized continuum while on the right a single deep absorption line is shown. Bottom: The numerical gradients for the spectra shown in the top panels; the original {FFD} method is displayed  with \emph{blue squares} while numpy gradient is shown with \emph{green stars}. The \emph{orange circles} are the {FFD} version shifted to the mid-points between pixels for illustrative purposes.}
+    \caption{Visualization of the numerical gradient of some spectral lines.
+Top: The two spectral regions of a stellar spectrum the left hand slide contains short lines near the normalized continuum while on the right a single deep absorption line is shown.
+Bottom: The numerical gradients for the spectra shown in the top panels; the original {FFD} method is displayed  with \emph{blue squares} while numpy gradient is shown with \emph{green stars}.
+The \emph{orange circles} are the {FFD} version shifted to the mid-points between pixels for illustrative purposes.}
     \label{fig:gradients}
 \end{figure}
 
@@ -540,18 +625,23 @@ We find that changing to use the gradient from numpy increases the \(\delta V_{\
 As the pixel weights \eref{eq:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the {RV} precision, visible in \fref{fig:gradients}.
 This small wavelength shift red-ward does changed the {RV} precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using numpy's gradient method.
 
-Changing the method of numerical derivatives will change all the precision values given in the~\citet{figueira_radial_2016}. This is a small impact on on the precision compared to other components of the {RV} precision. For instance from \eref{eq:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\%  could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
+Changing the method of numerical derivatives will change all the precision values given in the~\citet{figueira_radial_2016}.
+This is a small impact on on the precision compared to other components of the {RV} precision.
+For instance from \eref{eq:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\%  could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
 
 The current version of the software is now implemented with the gradient method provided by numpy package.
 
 \subsection{Masking Function}
 \label{subsec:masking_function}
-Another change made to the software is in the application of the masking function, and the treatment of telluric lines. As suggested in~\cite{connes_absolute_1985} and~\cite{bouchy_fundamental_2001} a custom masking function can be applied to the individual pixel weights in \eref{eq:optimal_weight}, such as:
+Another change made to the software is in the application of the masking function, and the treatment of telluric lines.
+As suggested in~\cite{connes_absolute_1985} and~\cite{bouchy_fundamental_2001} a custom masking function can be applied to the individual pixel weights in \eref{eq:optimal_weight}, such as:
 
 \[W'(i) = W(i)M(i),\label{eq:mask_function}\] where \(M(i)\) is the masking function and \(W'(i)\) are the modified pixel weights.
 This masking function can be used in particular for the removal of telluric lines, setting those weights to zero and is in essence what is done when wavelength selection is preformed; assigning zero weight to all pixels outside the desired wavelength range.
 
-This masking function can be used to easily apply the three conditions presented in~\citet{figueira_radial_2016}. First  the 3 masking functions will be defined, then followed by the quantification of how they differ from the previous implementation. The subscripts on the masking functions correspond to the three conditions.
+This masking function can be used to easily apply the three conditions presented in~\citet{figueira_radial_2016}.
+First  the 3 masking functions will be defined, then followed by the quantification of how they differ from the previous implementation.
+The subscripts on the masking functions correspond to the three conditions.
 \begin{align}
 M_1(i) &= 1 \label{eq:mask1}\\
 M_2(i) &= \begin{cases}
@@ -561,37 +651,57 @@ M_2(i) &= \begin{cases}
 M_3(i) &= {T(i)}^{2} \label{eq:mask3}
 \end{align}
 
-Here, \(T(i)\) is the telluric transmission spectrum, while \(\tau\) is the transmission depth cut-off. For instance to mask out telluric lines deeper than 2\%,  \(\tau\) would be set at 0.98.
+Here, \(T(i)\) is the telluric transmission spectrum, while \(\tau\) is the transmission depth cut-off.
+For instance to mask out telluric lines deeper than 2\%,  \(\tau\) would be set at 0.98.
 
 \begin{itemize}
     \item Condition~\#1:
-    The first mask, \(M_1\), is the simplest case in which all pixel weights are treated equally. No telluric line masking is considered.
+    The first mask, \(M_1\), is the simplest case in which all pixel weights are treated equally.
+No telluric line masking is considered.
 
     \item Condition~\#2:
-    In the second mask, \(M_2\), the telluric line transmission, \(T(i)\) is used to create a boolean mask of 0's and 1's. When applying this mask to the pixel weights, the pixels effected by telluric lines have 0 weight, removing their contribution to the {\red{} \(RV_{\rms}\)}. Accounting for seasonal variation in Earth's barycentric motion can be easily incorporated into this mask, widening the regions masked out.
+    In the second mask, \(M_2\), the telluric line transmission, \(T(i)\) is used to create a boolean mask of 0's and 1's.
+When applying this mask to the pixel weights, the pixels effected by telluric lines have 0 weight, removing their contribution to the {\red{} \(RV_{\rms}\)}.
+Accounting for seasonal variation in Earth's barycentric motion can be easily incorporated into this mask, widening the regions masked out.
 
     \item Condition~\#3:
-    The third mask, \(M_3\), assumes the application of perfect telluric correction consistent with Condition~\#3. The pixel weights are modified by dividing the flux variance by the square of the transmission spectrum \reference{cite the equation when I refer to it}. As the flux variance is the denominator of \eref{eq:optimal_weight}, this is equivalent to multiplication of the weights by a mask of the form \(M_3\).
+    The third mask, \(M_3\), assumes the application of perfect telluric correction consistent with Condition~\#3.
+The pixel weights are modified by dividing the flux variance by the square of the transmission spectrum \reference{cite the equation when I refer to it}.
+As the flux variance is the denominator of \eref{eq:optimal_weight}, this is equivalent to multiplication of the weights by a mask of the form \(M_3\).
 \end{itemize}
 
-Having the three masks defined in this way makes the implementation of the {RV} precision simpler. In the original version there were three separate implementations, one for each condition. With this, \todo{Check this if it is previous}{as mentioned previously} there was a issue with the implementation of Condition~\#2.
+Having the three masks defined in this way makes the implementation of the {RV} precision simpler.
+In the original version there were three separate implementations, one for each condition.
+With this, \todo{Check this if it is previous}{as mentioned previously} there was a issue with the implementation of Condition~\#2.
 
 \subsubsection{Masking order}
 \label{subsubsec:masking_order}
-The order in which the masking is preformed is also important. Masking should be applied only after calculation of the pixel weights. As the pixel weights depend on neighbouring points (through the calculation of the gradients), prematurely removing pixels will affect the precision results.
+The order in which the masking is preformed is also important.
+Masking should be applied only after calculation of the pixel weights.
+As the pixel weights depend on neighbouring points (through the calculation of the gradients), prematurely removing pixels will affect the precision results.
 
-The original implementation of Condition~\#2 did just this, splitting the spectra into small sections in between the masked off telluric lines. The {\red{}\(RV_{\rms}\)} is calculated for each section and then the results are combined as the weighted error in {\red{} \eref{XXX}} \todo{weighted sum equation}. Analytically this identical to masking the pixel weights with \(M_2\) but not in practice when numerically implemented. \todo{Should I show the working of analytical working out of this in an appendix, or here?}
+The original implementation of Condition~\#2 did just this, splitting the spectra into small sections in between the masked off telluric lines.
+The {\red{}\(RV_{\rms}\)} is calculated for each section and then the results are combined as the weighted error in {\red{} \eref{XXX}} \todo{weighted sum equation}.
+Analytically this identical to masking the pixel weights with \(M_2\) but not in practice when numerically implemented. \todo{Should I show the working of analytical working out of this in an appendix, or here?}
 
-When the spectrum is split into small sections the number of edges increases and the number of pixels affected by any edge effects increases. Using the {FFD} method to compute the gradient the last pixel is removed/lost. A spectrum split in \(m\) sub-spectra will therefore lose \(m\) pixels due to edge effects (instead of only 1 pixel with the full spectrum).
-Even the numpy gradient is not immune to the edge effects in the sub-spectra when splitting the spectrum first. Even though there is no pixels lost, the first and last pixels of each sub-spectra are computed using forward or backward differences, rather than central differences (as they would be in the full spectrum). Hence the gradients and weights of some pixels are slightly changed due to the splitting occurring first.
+When the spectrum is split into small sections the number of edges increases and the number of pixels affected by any edge effects increases.
+Using the {FFD} method to compute the gradient the last pixel is removed/lost.
+A spectrum split in \(m\) sub-spectra will therefore lose \(m\) pixels due to edge effects (instead of only 1 pixel with the full spectrum).
+Even the numpy gradient is not immune to the edge effects in the sub-spectra when splitting the spectrum first.
+Even though there is no pixels lost, the first and last pixels of each sub-spectra are computed using forward or backward differences, rather than central differences (as they would be in the full spectrum).
+Hence the gradients and weights of some pixels are slightly changed due to the splitting occurring first.
 
-We quantify the effect of splitting the spectrum before and after calculating the weights in \tref{tab:mask_ordering}. The columns label \emph{Split} represents splitting the spectrum before calculating the pixel weights while the \emph{Mask} columns calculate all the pixel weights first and then apply the \(M_2\) mask. The difference in {RV} precision between both situations and for both gradient methods are given.
+We quantify the effect of splitting the spectrum before and after calculating the weights in \tref{tab:mask_ordering}.
+The columns label \emph{Split} represents splitting the spectrum before calculating the pixel weights while the \emph{Mask} columns calculate all the pixel weights first and then apply the \(M_2\) mask.
+The difference in {RV} precision between both situations and for both gradient methods are given.
 For the {FFD} gradient the ordering of masking changes decreases the {\red{}\(RV_{\rms}\)} by 0.2--0.7\%, while for the numpy gradient it is increase but an order of magnitude smaller between 0.01--0.13\%.
 The {FFD} gradient is causes a larger difference as points that were masked out are now included where as with the numpy gradient the end values are always included but their gradients are slightly changed.
 The last column is the difference ratio between the \emph{Mask} column of both gradient method, this is consistent with \tref{tab:numerical_gradients} with the differences from two gradient methods between 2--7\%.
 It shows that the difference from changing order of masking is 1-2 orders of magnitude smaller than changing the gradient method.
 
-The code has been adjusted to consistently apply the masking after the pixel weights are calculated. This retains the most pixels, with the more accurate pixel weights. It has also been changed to just apply \(M_2\) rather than splitting and performing the weighted error calculation.\todo{did I check this was equivalent} This simplifies the implementation in calculating the {RV} precision.
+The code has been adjusted to consistently apply the masking after the pixel weights are calculated.
+This retains the most pixels, with the more accurate pixel weights.
+It has also been changed to just apply \(M_2\) rather than splitting and performing the weighted error calculation.\todo{did I check this was equivalent} This simplifies the implementation in calculating the {RV} precision.
 
 \input{tables/mask_ordering}
 
@@ -600,7 +710,8 @@ The code has been adjusted to consistently apply the masking after the pixel wei
 
 \subsection{Atmospheric masking bug}
 \label{subsec:condition_two_bug}
-One thing that was revealed in testing was that there was an error in the application of Condition~\#2. When the telluric mask was shifted to account for barycentric motion of the earth, and the condition of 3 consecutive pixels in the telluric spectra being lower than the limit (due to the higher sampling) there was an software bug,
+One thing that was revealed in testing was that there was an error in the application of Condition~\#2.
+When the telluric mask was shifted to account for barycentric motion of the earth, and the condition of 3 consecutive pixels in the telluric spectra being lower than the limit (due to the higher sampling) there was an software bug,
 
 
 A check for this issue was discovered using this unit test.
@@ -612,17 +723,28 @@ def test_telluric_masking(wavelength, transmission):
     # Checks that the mask is still masking out all telluric lines.
     assert np.all(transmission[mask] > 0.98)
 \end{lstlisting}
-The assert statements checks that when the mask is applied to the transmission spectrum again all of the values are outside of any deep telluric regions. A test like this would have caught this bug.
+The assert statements checks that when the mask is applied to the transmission spectrum again all of the values are outside of any deep telluric regions.
+A test like this would have caught this bug.
 
-This bug means that all the {RV} precision values for Condition~\#2 published in~\citet{figueira_radial_2016} incorrect. As the applied masking was unevenly applied~\citet{figueira_radial_2016} the new values {RV} precision values do not all change in the same proportion or direction. Some specific wavelengths and resolutions are essentially unchanged while other results change by over 20\mps{}.  Even though there is an error with condition~\#2 they do not change the overall conclusions of the paper. These are \todo{add conclusions not affected}
+This bug means that all the {RV} precision values for Condition~\#2 published in~\citet{figueira_radial_2016} incorrect.
+As the applied masking was unevenly applied~\citet{figueira_radial_2016} the new values {RV} precision values do not all change in the same proportion or direction.
+Some specific wavelengths and resolutions are essentially unchanged while other results change by over 20\mps{}.  Even though there is an error with condition~\#2 they do not change the overall conclusions of the paper.
+These are \todo{add conclusions not affected}
 
 \subsection{SNR scaling}
 \label{subsec:snr_scaling}
-To analyse the relative precision of different spectra they need to normalized to a common reference point. In this section we detail how this was originally done and how this was changed to be adaptable to any library spectra and any reference band.
+To analyse the relative precision of different spectra they need to normalized to a common reference point.
+In this section we detail how this was originally done and how this was changed to be adaptable to any library spectra and any reference band.
 
-In the original code this was selected to be a \snr{} per pixel of 100 at the centre of the \textit{J}-band at 1.25\si{\micro\meter}. The normalization values for each band, \(\vsini\) and resolution combination were hard-coded into the analysis. This made it impossible to easily adapt the code to other spectra or parameter combinations.
+In the original code this was selected to be a \snr{} per pixel of 100 at the centre of the \textit{J}-band at 1.25\si{\micro\meter}.
+The normalization values for each band, \(\vsini\) and resolution combination were hard-coded into the analysis.
+This made it impossible to easily adapt the code to other spectra or parameter combinations.
 
-An automated \snr{} scaling procedure was created to remove the hard-coded values. This updated code finds the centre point of the band of reference for the given spectrum. Totals the photon count across one resolution element, \(\delta\lambda\), and then takes the square root. This is using the definition of the \snr{} as \({SNR} = \sqrt{N}\) for large N. This value is then used to scale the spectrum such that the \snr{} at the reference point is the desired value.
+An automated \snr{} scaling procedure was created to remove the hard-coded values.
+This updated code finds the centre point of the band of reference for the given spectrum.
+Totals the photon count across one resolution element, \(\delta\lambda\), and then takes the square root.
+This is using the definition of the \snr{} as \({SNR} = \sqrt{N}\) for large N.
+This value is then used to scale the spectrum such that the \snr{} at the reference point is the desired value.
 \begin{equation}
     SF =  \frac{\sqrt{\sum{\delta\lambda} A}} {SNR_{desired}}
 \end{equation}
@@ -636,13 +758,17 @@ This automated procedure enabled {\red{}\textbf{4}} different features.
     - Allowing for other sampling levels (if desired)
 \item      Not restricted to a model with 3 samples per resolution element.
 \item Different reference bands available.
-    Results are not limited to being referenced from the \textit{J}-band. For instance the {RV} precision can now be calculated for a given \snr{} at the centre of the \textit{K}-band. This was one the features requested for the Exposure Time Calculators precision values. For {NIRPS} we provided precision values relative to each individual band, while for {SPIRou} they were relative to the {J}- and {H}-bands.
+    Results are not limited to being referenced from the \textit{J}-band.
+For instance the {RV} precision can now be calculated for a given \snr{} at the centre of the \textit{K}-band.
+This was one the features requested for the Exposure Time Calculators precision values.
+For {NIRPS} we provided precision values relative to each individual band, while for {SPIRou} they were relative to the {J}- and {H}-bands.
 \end{itemize}
 The default values for the \snr{} scaling a still 100 at the centre of the \textit{J}-band, but there is now options to easily change these values.
 
 The centre of each band was visually checked to ensure that there were no spectral lines at the reference locations> If a line was present at the reference point its depth variability across spectral types would affect the \snr{} scaling levels at a greater than the normal change in continuum amplitude/shape.\todo{is this needed}
 
-As shown in \eref{eq:snrequation} the {RV} precision is inversely proportional to the \snr{} level. To access the {RV} precision of any of the values in Table at a different \snr{} level you can apply the following
+As shown in \eref{eq:snrequation} the {RV} precision is inversely proportional to the \snr{} level.
+To access the {RV} precision of any of the values in Table at a different \snr{} level you can apply the following
 \begin{equation}
 \rm RV_{SNR2} = RV_{SNR1} * \frac{SNR1}{SNR2}.
 \end{equation}
@@ -651,18 +777,25 @@ As shown in \eref{eq:snrequation} the {RV} precision is inversely proportional t
 \section{{SPIRou} and {NIRPS} {ETC}}\label{sec:spirou_nirps_etc}
 Having this tool to calculate {RV} precisions efficiently lead to contributions to the Exposure Time Calculators (ETC) for both the {SPIRou} and {NIRPS} spectrographs.
 
-In September 2017 we were requested to provide precision calculations for the {SPIRou} ETC\footnote{\url{http://www.cfht.hawaii.edu/Instruments/SPIRou/SPIRou_etc.php}}. These were the same table as~\citet{figueira_radial_2016} but with a each band referenced to 100~{SNR} in its own band. The modification to use the centre of any band was made to fulfil this request. Notes on the telluric correction issue affect on Condition~2.
+In September 2017 we were requested to provide precision calculations for the {SPIRou} ETC\footnote{\url{http://www.cfht.hawaii.edu/Instruments/SPIRou/SPIRou_etc.php}}.
+These were the same table as~\citet{figueira_radial_2016} but with a each band referenced to 100~{SNR} in its own band.
+The modification to use the centre of any band was made to fulfil this request.
+Notes on the telluric correction issue affect on Condition~2.
 
-In May 2018 we were requested to provide precision calculations for the {NIRPS} {ETC}.\@ This extended the spectral range from {M0}, {M3}, {M6}, {M9} at 3\,900, 3\,500, 2\,800, 2\,600\K{} respectively, but to all temperatures between 2\,500 and 4\,000\K{} inclusively. This provides a finer resolution coverage over the M spectral type, allowed by the {PHOENIX-ACES} library.
+In May 2018 we were requested to provide precision calculations for the {NIRPS} {ETC}.\@ This extended the spectral range from {M0}, {M3}, {M6}, {M9} at 3\,900, 3\,500, 2\,800, 2\,600\K{} respectively, but to all temperatures between 2\,500 and 4\,000\K{} inclusively.
+This provides a finer resolution coverage over the M spectral type, allowed by the {PHOENIX-ACES} library.
 Instrumental resolutions of 75,000 and 100\,000 were requested to match the {NIRPS} instrument.
 The \logg{} and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
-Precisions were provided for \snr{} of 100 relative to the \emph{J}-, \emph{H}-bands as well as to each band individually. Artigua 2018. (private communication 2018)\todo{Check how to cite priv communication properly} suggested the truly relevant value is the \snr{} in \emph{H}-band for {NIRPS} radial velocities.
+Precisions were provided for \snr{} of 100 relative to the \emph{J}-, \emph{H}-bands as well as to each band individually.
+Artigua 2018. (private communication 2018)\todo{Check how to cite priv communication properly} suggested the truly relevant value is the \snr{} in \emph{H}-band for {NIRPS} radial velocities.
 
 The results can be manually generated using ``eniric'' with the following incantation (after installation and configuration of phoenix library spectra.)
-\textbf{A table of the precisions created for the {NIRPS} ETC are provided as an online table to our publication} \textit{Neal et al. 2018b (in prep.)}\footnote{Available at \href{blah}{blah}} \unfinished{Include correct links}
+\textbf{A table of the precisions created for the {NIRPS} ETC are provided as an online table to our publication} \textit{Neal et al.
+2018b (in prep.)}\footnote{Available at \href{blah}{blah}} \unfinished{Include correct links}
 
 
-These values were both calculated and provided using the {FFD} gradient and with the incorrect masking order for Condition~\#2, splitting before calculating the pixel weights. As we demonstrated in \sref{sec:numerical_gradient} and~\ref{subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
+These values were both calculated and provided using the {FFD} gradient and with the incorrect masking order for Condition~\#2, splitting before calculating the pixel weights.
+As we demonstrated in \sref{sec:numerical_gradient} and~\ref{subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
 
 
 \section{ Updated Figueira 2016 results}
@@ -674,7 +807,8 @@ These values were both calculated and provided using the {FFD} gradient and with
     \includegraphics[width=0.48\linewidth]{figures/information-content/Rvprec_vsini1.pdf} &  % Figueria plot
     \includegraphics[width=0.47\linewidth]{figures/information-content/precision_fourpanel.png}\\ % eniric plot
     \end{tabular}
-    \caption{Left: Figure 1 from~\citet{figueira_radial_2016}, Right: The same style figure with values updated from this work, computed with \emph{eniric}. The main difference is the area of shaded region due to the problem with Condition~\#2 (which is the upper edge).}
+    \caption{Left: Figure 1 from~\citet{figueira_radial_2016}, Right: The same style figure with values updated from this work, computed with \emph{eniric}.
+The main difference is the area of shaded region due to the problem with Condition~\#2 (which is the upper edge).}
     \label{fig:my_label}
 \end{figure}
 \todo{Change to 55 m/s upper limit?}
@@ -692,6 +826,7 @@ These values were both calculated and provided using the {FFD} gradient and with
 - Banards star (artigau 2018 comparision)
 
 
-This work is work in progress. So far only 1 of 8 planned CARMENS spectra have been telluric corrected to calculate the RV precision.
+This work is work in progress.
+So far only 1 of 8 planned CARMENS spectra have been telluric corrected to calculate the RV precision.
 
 {I can calculate the rv precision from models though.}

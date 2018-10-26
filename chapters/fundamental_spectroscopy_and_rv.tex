@@ -40,7 +40,7 @@ The magnitudes provided by {SIMBAD} are given in apparent magnitude, $m$, while 
 \begin{equation}
 \mu = 5 \log_{10}(d_{pc}) -5. \label{eqn:distance_modulus}
 \end{equation}
-Here $d_{pc}$ is the distance to the object in parsec. The distance is obtained from the trigonometric parallax  $\pi$ using the formula $d(pc) = 1 /\pi(arcsec)$, with the parallax in arcseconds\footnote{Most parallax values e.g. GAIA are tabulated in milliarcseconds (mas). Therefore it is important to remember to convert the parallax to arcseconds first, to avoid embarrassing calculation errors!}. In this work the recent high-precision parallax measurements from GAIA are used~\citet{collaboration_gaia_2018}.
+Here $d_{pc}$ is the distance to the object in parsec. The distance is obtained from the trigonometric parallax  $\pi$ using the formula $d(pc) = 1 /\pi(arcsec)$, with the parallax in arcseconds\footnote{Most parallax values e.g.\ GAIA are tabulated in milliarcseconds (mas). Therefore it is important to remember to convert the parallax to arcseconds first, to avoid embarrassing calculation errors!}. In this work the recent high-precision parallax measurements from GAIA are used~\citet{collaboration_gaia_2018}.
 
 From the flux ratio the noise ratio between the host and companion can also be calculated in a similar way using the equation \(N_{2}/N_{1} = \sqrt{2} \times\sqrt{F_{1}/F_{2}}\).
 
@@ -50,7 +50,7 @@ From the flux ratio the noise ratio between the host and companion can also be c
 \label{subsubsec:baraffe_tables_code}
 A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to calculate/estimate the host-companion flux ratio using the \citet{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables.
 Given the name of the target star, the mass of a companion and the stellar/system age the tool determines the flux ratios in the available spectral bands.
-The tool uses the targets name to query\href{https://zenodo.org/record/1160627}{\emph{astroquery} package} the {SIMBAD} database to obtain the stellar properties, specifically the flux magnitudes and parallax. It then interpolates the Baraffe tables to the desired companion mass and age, calculating and returning values for all parameters of the companion given in the tables (e.g. \(\teff\), \logg, \(R/R_{\odot}\)).
+The tool uses the targets name to query\href{https://zenodo.org/record/1160627}{\emph{astroquery} package} the {SIMBAD} database to obtain the stellar properties, specifically the flux magnitudes and parallax. It then interpolates the Baraffe tables to the desired companion mass and age, calculating and returning values for all parameters of the companion given in the tables (e.g.\ \(\teff\), \logg, \(R/R_{\odot}\)).
 The stellar magnitudes are converted to absolute values using \eref{eqn:distance_modulus} and the flux ratios computed using  \eref{eqn:mag_flux_ratios}.
 
 An extension of this tool is that can be used to perform the reverse calculation also. That is, given the target name, age and flux ratio in a given band it can estimate the mass of the companion mass using the Baraffe tables.
