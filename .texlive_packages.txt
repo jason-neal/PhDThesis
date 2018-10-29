@@ -88,3 +88,4 @@ boondox
 cancel
 soul
 genmisc
+cleveref

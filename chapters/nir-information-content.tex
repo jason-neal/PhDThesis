@@ -46,7 +46,7 @@ The recently commissioned ESPRESSO optical spectrograph is designed with the goa
 The level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
 
 Over the years the community has push the limits of this technique to smaller and smaller planetary masses.
-An example is shown in \fref{fig:year_mass}.
+An example is shown in \cref{fig:year_mass}.
 
 \begin{figure}
 \includegraphics[width=0.8\linewidth]{figures/year_planet_mass.png}
@@ -92,7 +92,7 @@ A majority of this derivation follows~\citet{bouchy_fundamental_2001} with extra
 \end{figure}
 \todo{add \(\delta A\) to plots}
 
-For demonstration purposes  \fref{fig:precisionderivation} show a portion of an arbitrary spectrum \(A(\lambda)\), for demonstration purposes over a wavelength range \(\Lambda\).
+For demonstration purposes  \cref{fig:precisionderivation} show a portion of an arbitrary spectrum \(A(\lambda)\), for demonstration purposes over a wavelength range \(\Lambda\).
 Here \(A_0(\lambda)\) is the reference spectrum while \(A(\lambda)\) is observed some later time with an apparent wavelength shift observed.
 It shows most of a single Gaussian line as spectral lines contain the most information but the requirement of spectral lines is not a requirement.
 
@@ -105,19 +105,19 @@ where \(c\) is the speed of light in a vacuum, and \(\delta \lambda\) is the shi
 
 \todo{intensity change from connes is vertically in the slice d lambda}
 
-Using basic calculus \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{Although~\citet{connes_absolute_1985} show that the approximation in \eref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
+Using basic calculus \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{Although~\citet{connes_absolute_1985} show that the approximation in \cref{eq:intensitychange} is adequate under all circumstances}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
 \begin{equation}
 \delta A(i) = A(i) - A_0(i) \simeq \pd{A_0(i)}{\lambda(i)} \delta \lambda.
 \label{eq:intensitychange}
 \end{equation}
 
-Rearranging \eref{eq:intensitychange} for \(\delta \lambda\) and combining it with \eref{eq:dopplershift}, the Doppler shift of then becomes:
+Rearranging \cref{eq:intensitychange} for \(\delta \lambda\) and combining it with \cref{eq:dopplershift}, the Doppler shift of then becomes:
 \begin{equation}
     \frac{\delta V(i)}{c} = \frac{A(i) - A_0(i) }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))} \label{eq:delta_v_i}
 \end{equation}
 
 This equation shows that the radial velocity measured at pixel, i, through a change in the intensity in the recorded spectrum, \(A(i)-A_0(i)\), and inversely proportional to the slope of the spectrum, \({\partial A_0(i)}/{\partial \lambda(i)}\).
-\ref{eq:delta_v_i} provides a separate measurement of the radial velocity shift for every pixel, $i$, in the spectrum.
+\Cref{eq:delta_v_i} provides a separate measurement of the radial velocity shift for every pixel, $i$, in the spectrum.
 The sensitivity of the velocity measurement can be improved, and the noise decreased by using the information from the whole  spectral range, \(\Lambda\).
 This is achieved by taking the weighted average\footnote{Weighted average on x is \(\bar{x} = \frac{\sum{ x(i)W(i)}}{\sum {W(i)}}\)} over all pixels in the spectral range using an optimal pixel weight \(W(i)\).
 
@@ -131,7 +131,7 @@ W(i) = \frac{1}{{\left(\frac{\delta V_{\rms}(i)}{c}\right)}^{2}}, \label{eq:weig
 \end{equation}
 where \(X_{\rms}\) is the dispersion on the quantity \(X\).
 
-The individual dispersion of the velocity measurement \(\delta V_{\rms}(i)\) is the dispersion that would result from several measurements of the reference spectrum all with the same Doppler shift (e.g.\ zero). \eref{eq:delta_v_i} thus becomes:
+The individual dispersion of the velocity measurement \(\delta V_{\rms}(i)\) is the dispersion that would result from several measurements of the reference spectrum all with the same Doppler shift (e.g.\ zero). \Cref{eq:delta_v_i} thus becomes:
 \begin{equation}
     \frac{\delta V_{\rms}(i)}{c} = \frac{{[A(i) - A_0(i)]}_{\rms} }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))}. \label{eq:delta_v_i_rms}
 \end{equation}
@@ -143,7 +143,7 @@ The spectrum \(A_0\) is considered noise free.
 \end{equation}
 
 Considering that the Doppler shift is small and that \(A\) and \(A_0\) have the same intensity level, then \(A = A_0\) can be set.
-Using Equations~\ref{eq:delta_v_i},~\ref{eq:weights}, and~\ref{eq:noise} the optimum weights then become solely dependent on the reference spectrum.
+Using \cref{eq:delta_v_i, eq:weights, eq:noise} the optimum weights then become solely dependent on the reference spectrum.
 
 \begin{equation}
 W(i) = \frac{{\lambda}^{2}(i) {({\partial A_0(i)}/{\partial \lambda(i)})}^{2}}{A(i) + {\sigma}^{2}_{D}} \label{eq:optimal_weight}
@@ -182,7 +182,7 @@ With the optimal weights set, the weighed average velocity change measured from 
 
 The important quantity for {RV} measurements is not just the velocity values themselves but also the dispersion on the measured velocity, the RV precision, \(\delta V_{\rms}\), from the spectrum.
 This allows one to assess the planetary detectability limitations attainable in the spectra.
-From rearranging \eref{eq:weights} the dispersion is given by:
+From rearranging \cref{eq:weights} the dispersion is given by:
 \begin{equation}
     \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\sqrt{\sum{\,W(i)}}} = \frac{1}{Q \sqrt{\sum{\,A_0(i)}}}. \label{eq:dv_rms}
 \end{equation}
@@ -328,7 +328,7 @@ following the description from~\citet{artigau_optical_2018}.  They also mention 
 
 \subsection{Numerical Convolution}
 \label{subsec:numerical_convolution}
-In this work the stellar models undergo broadening by convolution with rotation and instrumental profile kernels (Equations~\ref{eqn:rotational_profile} and~\ref{eqn:IP_profile}).
+In this work the stellar models undergo broadening by convolution with rotation and instrumental profile kernels (\cref{eqn:rotational_profile, eqn:IP_profile}).
 The convolutions are performed by analysing a single pixel at a time, and selecting the neighbouring pixels that fall within the convolution window\footnote{Region in which the convolution kernel will affect this particular pixel} for that pixel.
 The value of the convolution kernel is calculated at the position of each pixel selected, multiplied by the flux of each pixel and then summed to provide the new value at the selected single pixel{$^{\textbf{*}}$}.
  The shape of the convolution kernels and the size of convolution window are wavelength dependant (${\fwhm}=\lambda / R$ and $\Delta\lambda_{L}=\lambda \frac{\vsini}{c}$) and must be calculated separately for each pixel, making the convolution computationally expensive.
@@ -371,7 +371,7 @@ Preparation of {CARMENES} spectra.
 \subsection{Bands}
 The bands are selected based on the strong water absorption.
 This can be seen the {CARMENES} spectra in Figure~\reference{Add figure here}\todo{Add figure here}.
-The wavelength ranges used in this work~\citet{figueira_radial_2016} and used in this work are given in \tref{tab:band_ranges}.
+The wavelength ranges used in this work~\citet{figueira_radial_2016} and used in this work are given in \cref{tab:band_ranges}.
 \begin{table}
     \centering
     \caption{The wavelength ranges of the \nir{} spectral bands.}
@@ -425,7 +425,7 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
 
 \section{Metallicity \logg{} effects}
 We explore the effect of metallicity and \logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and \logg{} of 4.0 -- 5.5.
-In \fref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and $\vsini=1.0$\kmps{} across the {M-dwarf} spectral types and the \nir{} bands is shown.
+In \cref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and $\vsini=1.0$\kmps{} across the {M-dwarf} spectral types and the \nir{} bands is shown.
 We observed multiple different effects present.
 
 
@@ -525,7 +525,7 @@ Often forgotten in
 
 \section{Numerical Gradient}
 \label{sec:numerical_gradient}
-One of the key insights from Equations~\ref{eq:optimal_weight} and~\ref{eq:dv_rms} is that the radial velocity error is inversely proportional gradient of the spectra, In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
+One of the key insights from \cref{eq:optimal_weight, eq:dv_rms} is that the radial velocity error is inversely proportional gradient of the spectra, In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
 In original code used in~\citet{figueira_radial_2016} the gradient or slope is approximated using the forward finite difference method.
 The numpy package provides a function to calculate the gradient using a more advanced methods that compute a more precise gradient.
 In this section we explore the affect of improving the precision of the numerical gradient on the final {RV} precision.
@@ -571,7 +571,7 @@ If the spectrum is evenly spaced ${h_{s}}={h_{d}}$  reduces to the standard seco
 \[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{f\left(x_{i+1}\right) - f\left(x_{i-1}\right)}{2h} + \mathcal{O}\left({h}^{2}\right)\]
 
 
-Applying this to our situation, similar to \eref{eq:ffd_precision}, we get:
+Applying this to our situation, similar to \cref{eq:ffd_precision}, we get:
 \[\frac{\partial A_0(i)}{\partial\lambda(i)} = \frac{{\lambda(i-1)}^{2} A_0(i+1) + ({\lambda(i+1)}^{2}-{\lambda(i-1)}^{2}) A_0(i) - {\lambda(i+1)}^{2} A_0(i-1)} {\lambda(i-1)\lambda(i+1)(\lambda(i+1) + \lambda(i-1))}, \hspace{1em} 2 \leq i \leq n-1\]
 
 with an uncertainty of \(\mathcal{O}\left(\frac{\lambda(i+1){\lambda(i-1)}^{2} + \lambda(i-1){\lambda(i+1)}^{2}}{\lambda(i+1) + \lambda(i-1)}\right)\).
@@ -596,7 +596,7 @@ The \emph{orange circles} are the {FFD} version shifted to the mid-points betwee
 
 \input{tables/numerical_gradient.tex}
 
-In \fref{fig:gradients} we visualize the gradients of two small spectral regions computed with the original {FFD}, and the higher precision version incorporated in numpy's gradient function.
+In \cref{fig:gradients} we visualize the gradients of two small spectral regions computed with the original {FFD}, and the higher precision version incorporated in numpy's gradient function.
 The top panels contain the spectrum in the small regions shown, indicating a large spectral line and three small lines near the continuum respectively.
 The derivative of the spectra is shown in the bottom panel with the {FFD} method shown with \emph{blue squares} and the numpy gradient shown in \emph{green stars}.
 The \emph{orange circles} are the same as {FFD} but shifted horizontally to the midpoints between  pixels.
@@ -607,11 +607,11 @@ The first, which is expected from the {FFD} formulation is that the {FFD} gradie
 The second is that when the horizontal offset is adjusted (orange circles) the gradients lie along the same curve.
 Both methods are trying to approximate the real gradient function of the spectrum and is again expected.
 The most important feature observed in this though is that there is a slight over-estimate of the gradient by the {FFD} method at the peaks.
-In the bottom panels of \fref{fig:gradients}, the points of highest gradient are always from the {FFD} method (blue/orange).
+In the bottom panels of \cref{fig:gradients}, the points of highest gradient are always from the {FFD} method (blue/orange).
 This is the case for all spectral lines and as the optimal pixel weights are proportional to the gradient squared the {FFD} method will apply slightly higher pixel weights to these values, two points per line in the spectrum.
 The {FFD} will therefore produce a slightly smaller \(\delta V_{\rms}\) error compared to the more precise gradient function.
 
-In \tref{tab:numerical_gradients} we calculate the  \(\delta V_{\rms}\) using both gradient methods to determine their relative effect on the {RV} precision.
+In \cref{tab:numerical_gradients} we calculate the  \(\delta V_{\rms}\) using both gradient methods to determine their relative effect on the {RV} precision.
 
 We took a {PHOENIX-ACES} spectrum with \txteff{}=3\,900\K{}, corresponding to {{M0}} spectral type.
 The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1.
@@ -619,22 +619,22 @@ In this case the {RV} precisions are not comparable between bands and are only t
 The bands name and the spanned wavelength are given.
 The columns A, B, C are the {RV} precision for the different gradient methods.
 The \(\delta V\) ratios are the relative difference in {RV} when changing from method A (the original {FFD}) to methods B and C.
-In this table column B is the {FFD} method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \fref{fig:gradients} while column C is the more precise gradient from numpy.
+In this table column B is the {FFD} method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \cref{fig:gradients} while column C is the more precise gradient from numpy.
 
 We find that changing to use the gradient from numpy increases the \(\delta V_{\rms}\) by 2.5--7\%, (decreasing the {RV} precision), due to the over-estimated gradient from the {FFD} method.
-As the pixel weights \eref{eq:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the {RV} precision, visible in \fref{fig:gradients}.
+As the pixel weights \cref{eq:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the {RV} precision, visible in \cref{fig:gradients}.
 This small wavelength shift red-ward does changed the {RV} precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using numpy's gradient method.
 
 Changing the method of numerical derivatives will change all the precision values given in the~\citet{figueira_radial_2016}.
 This is a small impact on on the precision compared to other components of the {RV} precision.
-For instance from \eref{eq:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\%  could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
+For instance from \cref{eq:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\%  could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
 
 The current version of the software is now implemented with the gradient method provided by numpy package.
 
 \subsection{Masking Function}
 \label{subsec:masking_function}
 Another change made to the software is in the application of the masking function, and the treatment of telluric lines.
-As suggested in~\cite{connes_absolute_1985} and~\cite{bouchy_fundamental_2001} a custom masking function can be applied to the individual pixel weights in \eref{eq:optimal_weight}, such as:
+As suggested in~\citet{connes_absolute_1985} and~\citet{bouchy_fundamental_2001} a custom masking function can be applied to the individual pixel weights in \cref{eq:optimal_weight}, such as:
 
 \[W'(i) = W(i)M(i),\label{eq:mask_function}\] where \(M(i)\) is the masking function and \(W'(i)\) are the modified pixel weights.
 This masking function can be used in particular for the removal of telluric lines, setting those weights to zero and is in essence what is done when wavelength selection is preformed; assigning zero weight to all pixels outside the desired wavelength range.
@@ -667,7 +667,7 @@ Accounting for seasonal variation in Earth's barycentric motion can be easily in
     \item Condition~\#3:
     The third mask, \(M_3\), assumes the application of perfect telluric correction consistent with Condition~\#3.
 The pixel weights are modified by dividing the flux variance by the square of the transmission spectrum \reference{cite the equation when I refer to it}.
-As the flux variance is the denominator of \eref{eq:optimal_weight}, this is equivalent to multiplication of the weights by a mask of the form \(M_3\).
+As the flux variance is the denominator of \cref{eq:optimal_weight}, this is equivalent to multiplication of the weights by a mask of the form \(M_3\).
 \end{itemize}
 
 Having the three masks defined in this way makes the implementation of the {RV} precision simpler.
@@ -681,7 +681,7 @@ Masking should be applied only after calculation of the pixel weights.
 As the pixel weights depend on neighbouring points (through the calculation of the gradients), prematurely removing pixels will affect the precision results.
 
 The original implementation of Condition~\#2 did just this, splitting the spectra into small sections in between the masked off telluric lines.
-The {\red{}\(RV_{\rms}\)} is calculated for each section and then the results are combined as the weighted error in {\red{} \eref{XXX}} \todo{weighted sum equation}.
+The {\red{}\(RV_{\rms}\)} is calculated for each section and then the results are combined as the weighted error in {\red{} \cref{XXX}} \todo{weighted sum equation}.
 Analytically this identical to masking the pixel weights with \(M_2\) but not in practice when numerically implemented. \todo{Should I show the working of analytical working out of this in an appendix, or here?}
 
 When the spectrum is split into small sections the number of edges increases and the number of pixels affected by any edge effects increases.
@@ -691,12 +691,12 @@ Even the numpy gradient is not immune to the edge effects in the sub-spectra whe
 Even though there is no pixels lost, the first and last pixels of each sub-spectra are computed using forward or backward differences, rather than central differences (as they would be in the full spectrum).
 Hence the gradients and weights of some pixels are slightly changed due to the splitting occurring first.
 
-We quantify the effect of splitting the spectrum before and after calculating the weights in \tref{tab:mask_ordering}.
+We quantify the effect of splitting the spectrum before and after calculating the weights in \cref{tab:mask_ordering}.
 The columns label \emph{Split} represents splitting the spectrum before calculating the pixel weights while the \emph{Mask} columns calculate all the pixel weights first and then apply the \(M_2\) mask.
 The difference in {RV} precision between both situations and for both gradient methods are given.
 For the {FFD} gradient the ordering of masking changes decreases the {\red{}\(RV_{\rms}\)} by 0.2--0.7\%, while for the numpy gradient it is increase but an order of magnitude smaller between 0.01--0.13\%.
 The {FFD} gradient is causes a larger difference as points that were masked out are now included where as with the numpy gradient the end values are always included but their gradients are slightly changed.
-The last column is the difference ratio between the \emph{Mask} column of both gradient method, this is consistent with \tref{tab:numerical_gradients} with the differences from two gradient methods between 2--7\%.
+The last column is the difference ratio between the \emph{Mask} column of both gradient method, this is consistent with \cref{tab:numerical_gradients} with the differences from two gradient methods between 2--7\%.
 It shows that the difference from changing order of masking is 1-2 orders of magnitude smaller than changing the gradient method.
 
 The code has been adjusted to consistently apply the masking after the pixel weights are calculated.
@@ -767,7 +767,7 @@ The default values for the \snr{} scaling a still 100 at the centre of the \text
 
 The centre of each band was visually checked to ensure that there were no spectral lines at the reference locations> If a line was present at the reference point its depth variability across spectral types would affect the \snr{} scaling levels at a greater than the normal change in continuum amplitude/shape.\todo{is this needed}
 
-As shown in \eref{eq:snrequation} the {RV} precision is inversely proportional to the \snr{} level.
+As shown in \cref{eq:snrequation} the {RV} precision is inversely proportional to the \snr{} level.
 To access the {RV} precision of any of the values in Table at a different \snr{} level you can apply the following
 \begin{equation}
 \rm RV_{SNR2} = RV_{SNR1} * \frac{SNR1}{SNR2}.
@@ -795,7 +795,7 @@ The results can be manually generated using ``eniric'' with the following incant
 
 
 These values were both calculated and provided using the {FFD} gradient and with the incorrect masking order for Condition~\#2, splitting before calculating the pixel weights.
-As we demonstrated in \sref{sec:numerical_gradient} and~\ref{subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
+As we demonstrated in \cref{sec:numerical_gradient, subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
 
 
 \section{ Updated Figueira 2016 results}

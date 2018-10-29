@@ -36,7 +36,7 @@ These include the temperature, radius, luminosity, and absolute magnitudes in se
 A given companion mass, and a stellar age will uniquely identify a point in the Baraffe models which corresponds to a specific magnitude for the companion.
 The tables provided in \citet{baraffe_evolutionary_2003, baraffe_new_2015} are also interpolated to reach companion masses and stellar ages between the models provided.
 
-In \tref{tab:estimated_flux_ratios} the host-companion flux ratio estimates for the targets analysed in this work are presented. The {K}-band flux ratios are calculated to match the observed {CRIRES} spectra at 2.1\um{}. The stellar ages used for the each system are given in \tref{tab:starparams} while the companion masses are given from \tref{tab:orbitparams}. The age and companion mass are both used to obtain the absolute magnitude for the companions. For the companions in which only the minimum mass (\mtwosini{}) is known then the flux-ratio given will be the lower limit, or worst case scenario.
+In \cref{tab:estimated_flux_ratios} the host-companion flux ratio estimates for the targets analysed in this work are presented. The {K}-band flux ratios are calculated to match the observed {CRIRES} spectra at 2.1\um{}. The stellar ages used for the each system are given in \cref{tab:starparams} while the companion masses are given from \cref{tab:orbitparams}. The age and companion mass are both used to obtain the absolute magnitude for the companions. For the companions in which only the minimum mass (\mtwosini{}) is known then the flux-ratio given will be the lower limit, or worst case scenario.
 
 \input{./tables/advanced_concepts/estimated_fluxratios} % \label{tab:estimated_flux_ratios}
 
@@ -55,7 +55,7 @@ From the flux ratio the noise ratio between the host and companion can also be c
 A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to calculate/estimate the host-companion flux ratio using the \citet{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables.
 Given the name of the target star, the mass of a companion and the stellar/system age the tool determines the flux ratios in the available spectral bands.
 The tool uses the targets name to query\href{https://zenodo.org/record/1160627}{\emph{astroquery} package} the {SIMBAD} database to obtain the stellar properties, specifically the flux magnitudes and parallax. It then interpolates the Baraffe tables to the desired companion mass and age, calculating and returning values for all parameters of the companion given in the tables (e.g.\ \(\teff\), \logg, \(R/R_{\odot}\)).
-The stellar magnitudes are converted to absolute values using \eref{eqn:distance_modulus} and the flux ratios computed using  \eref{eqn:mag_flux_ratios}.
+The stellar magnitudes are converted to absolute values using \cref{eqn:distance_modulus} and the flux ratios computed using  \cref{eqn:mag_flux_ratios}.
 
 An extension of this tool is that can be used to perform the reverse calculation also. That is, given the target name, age and flux ratio in a given band it can estimate the mass of the companion mass using the Baraffe tables.
 

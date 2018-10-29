@@ -71,10 +71,10 @@ That is, to refine the mass of the companions to distinguish if they companion i
 The spectral differential approach was chosen with the goal to constrain the companion masses while minimizing the observational time required to observe.
 It was deemed that it should be possible to obtain a detection of a companion at 1\% contrast ratio with an exposure time of around 20 minutes.
 Two observations at ``clearly separate RVs'' were requested to constrain each target.
-Observations were preformed without telluric standard star observations to avoid the wasted observing time, choosing to instead rely on synthetic model correction (see \sref{subsec:telluric_correction}).
+Observations were preformed without telluric standard star observations to avoid the wasted observing time, choosing to instead rely on synthetic model correction (see \cref{subsec:telluric_correction}).
 The \textit{K}-band was chosen to achieve a high contrast relative to the host star, detected in the extreme V-K colour indexes (>7.8).
 
-The list target host stars are presented in \tref{tab:starparams} along with their stellar parameters, while the companion orbital parameters are provided in \tref{tab:orbitparams}.
+The list target host stars are presented in \cref{tab:starparams} along with their stellar parameters, while the companion orbital parameters are provided in \cref{tab:orbitparams}.
 
 We note that the orbital parameters of some targets have been refined in the literature since the observations took place.
 For example three candidates have had their masses refined in recent works.
@@ -97,7 +97,7 @@ This is to prevent strong slit illumination variations that could change the sha
 
 The observations were performed in service mode during Period 89 with run {ID.~089.C-0977(A)} between April and August 2012.
 An single observation is composed of eight individual spectra with an integration time of 180\si{\second} each, observed in the {ABBAABBA} nod cycle pattern to obtain a high signal-to-noise (>100) when combined.
-The list of observations obtained with {CRIRES} are provided in \tref{tab:observations}.
+The list of observations obtained with {CRIRES} are provided in \cref{tab:observations}.
 
 There is a slight inconsistency with the some of the observations, taken in service mode.
 For instance {HD\,202206} has two observations taken with the {Ks} filter, while one is taken with the {J} filter.
@@ -123,8 +123,8 @@ There could be two possible reasons for this, these observations were preformed 
 using the {Ks} and the {Hx5e-2} filters.
 Why use the different filters???}
 
-All observations were reduced using the DRACS pipline (see \sref{subsec:pipeline-selection}) with artefact corrections applied.
-They were each wavelength calibrated and corrected for telluric lines following Sections~\ref{subsec:wavecalib} and~\ref{subsec:telluric_correction}.
+All observations were reduced using the DRACS pipline (see \cref{subsec:pipeline-selection}) with artefact corrections applied.
+They were each wavelength calibrated and corrected for telluric lines following  \cref{subsec:wavecalib,subsec:telluric_correction}.
 The spectra were corrected for Earth's barycentric {RV} using the \emph{helcor} PyAstronomy\footnote{https://pyastronomy.readthedocs.io} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
 Using the date and coordinates of the targets this function calculates the induced RV from the orbital motion of the Earth around the Sun as well as the rotation of the Earth, projected towards the target.
 This calculated RV is then used to apply the appropriate Doppler shift on each spectrum to correct for the Earth's barycentric motion.
@@ -132,21 +132,22 @@ This calculated RV is then used to apply the appropriate Doppler shift on each s
 
 \subsection{Calculations using observed times}
 \todo{I am not sure if this is the best location for this section.}
+{\red{}
 Before the differential subtraction method is presented, calculations can be preformed to estimate the RV of both components in each observations and the likely separation between the companions between observations.
-The time of each observation is combined with the orbital parameters from \tref{tab:orbitparams} and \eref{} to calculate the RV of the host star (\({RV}_{1}\) in \tref{tab:observations}).
-For the companion the mass or \mtwosini  is used alongside the stellar mass from  possible from \tref{tab:stellarparams} to calculate the RV of the companion  using \todo{~equations for companion rv with the masses still included.
-include 180 degree angle phase change also}{Equation~\ref{}} (\({RV}_{2}\) in \tref{tab:observations}).
+The time of each observation is combined with the orbital parameters from \cref{tab:orbitparams} and~\ref{blah} to calculate the RV of the host star (\({RV}_{1}\) in \cref{tab:observations}).
+For the companion the mass or \mtwosini  is used alongside the stellar mass from  possible from \cref{tab:stellarparams} to calculate the RV of the companion using \todo{~equations for companion rv with the masses still included, include 180 degree angle phase change also}{\cref{blah}} (\({RV}_{2}\) in \cref{tab:observations}).
 The difference in RV between the host an companion each observation is also computed as \({rv}_{2} = {RV}_{2}-{RV}_{1}\) although it will not be used until \cref{cha:model_comparison}.
 
-The magnitude of the RV separation of the two companion spectra in the differential \(\Delta RV\) is calculated following \eref{eqn:companion_difference} and provided in \tref{tab:estimated_rv}.
+The magnitude of the RV separation of the two companion spectra in the differential \(\Delta RV\) is calculated following \cref{eqn:companion_difference} and provided in \cref{tab:estimated_rv}.
 this table also contains the estimated semi-major RV amplitude for the companion \(K_2\) and the phase coverage from the observations.
 The phase coverage is the fraction of the orbit covered between the observations for each target.
 For {HD\,4747} the \(\Delta RV\) and phase coverage values are missing due to a single observation.
+}
 
 \input{tables/direct_recovery/estimated_rv}
 %\input{tables/old/flux_calculations} % This is the old table.
 
-The full orbital solution for the components along with the times of observations are provided later in \sref{sec:orbtial_diagrams}.
+The full orbital solution for the components along with the times of observations are provided later in \cref{sec:orbtial_diagrams}.
 
 
 \section{Direct Subtraction Method}
@@ -200,7 +201,7 @@ v_{2} &= -q * v_{1} \label{eqn:q_relation}
 \end{align}
 \todo{put in advanced concepts chapter???}
 \todo{this ignores $\gamma$}
-We can simplify \eref{eqn:companion_difference} by expressing it in terms of the mass ratio and host {RV} only:
+We can simplify \cref{eqn:companion_difference} by expressing it in terms of the mass ratio and host {RV} only:
 \begin{align}
 \Delta RV_2 &= q v_{1a} - q v_{1b} + v_{1a} - v_{1b} \nonumber \\
 &= (1 + q)(v_{1a} - v_{1b}). \label{eqn:companion_difference_simplified}
@@ -209,7 +210,7 @@ We can simplify \eref{eqn:companion_difference} by expressing it in terms of the
 If the \(\Delta {RV}_2\) between the companion spectra is able to be derived from the s-profile~\citep[see][]{ferluga_separating_1997} then the mass ratio of the system, \(q\), can determined, thereby constraining the mass of the companion.
 
 The values \(v_{1a}\) and \(v_{1b}\) are radial velocity of the host components.
-The values we use calculated using the \eref{eq:rv_equation} using the orbital parameters from the literature and provided in \tref{tab:orbitparams} and are used to shift each spectra to the hosts rest frame.
+The values we use calculated using the \cref{eqn:rv_equation} using the orbital parameters from the literature and provided in \cref{tab:orbitparams} and are used to shift each spectra to the hosts rest frame.
 These components can also be determined directly from the spectrum by cross-correlating the observed spectrum with a stellar template of the host and were in reasonable agreement.
 The same values already used to shift and mutually cancel the host spectrum.
 
@@ -217,14 +218,14 @@ There should be checks for consistency between \(v_{1a}\), \(v_{1b}\) and how we
 
 \textbf{If v1a and v1b are incorrect what will happen to q?}
 
-{\red{} put elsewhere: \eref{eqn:q_relation} was used to calculate the expected companion {RV} for each observation in \tref{tab:observations}.}
+{\red{} put elsewhere: \cref{eqn:q_relation} was used to calculate the expected companion {RV} for each observation in \cref{tab:observations}.}
 
 Example simulations?
 \missingfigure{simulated example of combined binary spectra, and the subtraction, with a clear companion visible }
 
 \textbf{\citet{kostogryz_spectral_2013} use a very similar method, choosing two observations from the extrema.
 They also preform a number of simulations regarding observing CRIRES spectra with different brown dwarfs.
-Figure our the flux ratio limit they get too???}
+Figure out the flux ratio limit they get too???}
 
 \subsection{Results of spectral differential analysis}
 \label{subsec:differential_results}
@@ -239,7 +240,7 @@ Therefore, these two observations could not be used for this differential analys
 As noted in~\citep{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
 
 We performed the differential analysis for all targets but only show our most favourable case here, {HD\,30501}, because it is the second largest companion in our sample at 90~\Mjup{} and also has the second largest {RV} separation between observations.
-The differential spectra recovered for {HD\,30501} is shown at the bottom panel of \fref{fig:spectral_example}.
+The differential spectra recovered for {HD\,30501} is shown at the bottom panel of \cref{fig:spectral_example}.
 The presence of deep (\(>4\%\)) stellar and telluric lines in the original spectrum is shaded by the blue and green regions respectively.
 This indicates that the features of the differential spectrum near these shaded regions are likely due to imperfect telluric correction and host mutual cancellation.
 
@@ -253,12 +254,12 @@ These parameters represent an estimated companion \(\teff{}\) with the metallici
 The model spectra were convolved to \(\R=50\,000\), continuum normalized and scaled by the estimated flux ratio of the companion.
 We do not include any synthetic host or telluric spectra and as such simulate the differential result of a ``perfect'' host cancellation with no telluric contamination present.
 This is the ideal-case scenario, and we stress that it is impossible to simulate the effect of improper telluric correction in a meaningful way.
-When comparing the simulated and observed differential in the bottom panel of \fref{fig:spectral_example}, there is a striking amplitude difference.
+When comparing the simulated and observed differential in the bottom panel of \cref{fig:spectral_example}, there is a striking amplitude difference.
 The orange-dashed line of the simulated differential spectrum amplitude is of a much smaller scale than the observed differential.
 This demonstrates that the amplitude of the differential signal we are trying to detect is much smaller than the residuals created by this differential technique.
 
 The amplitude of the differential signal is lower than we expected due to the very low \(\Delta {RV}\) between the observation pairs.
-The maximum \(\Delta {RV}\) between observation pairs, for the observations investigated in this work, are provided in \tref{tab:estimated_rv}. {\red{} There is no \(\Delta {RV}\) for {HD\,4747} as there was only a single observation.
+The maximum \(\Delta {RV}\) between observation pairs, for the observations investigated in this work, are provided in \cref{tab:estimated_rv}. {\red{} There is no \(\Delta {RV}\) for {HD\,4747} as there was only a single observation.
 We also provide the phase coverage for our targets.
 We calculate this as the ratio of time between the observed pairs and the orbital period, and show that the fraction of the orbit covered is very small, all except one covering less than 1\% of the orbit.}
 
@@ -291,29 +292,29 @@ Unfortunate this was not appropriate due to insufficient separation.
 \section{Orbital Solutions}
 \label{sec:orbtial_diagrams}
 The insufficient spacing becomes clear when the RV variation during the orbits are visualized.
-Figures~\ref{fig:hd4747p89}--\ref{fig:hd30501p89} show the RV curves for each target analysed here.
+\Crefrange{fig:hd4747p89}{fig:hd30501p89} show the RV curves for each target analysed here.
 Stars with two companions are shown twice, with each companion treated as a single Keplerian (ignoring the presence of the other companion).
 For each panel on the left hand plot shows the RV variation across a full orbit of the companion, while the panel on the right shows the RV variation for the observation window of Period 89 only (6 months).
 The solid black line indicates the RV of the host star (with scale on the left hand axis), while the blue dashed line shows the RV of the companion (with the scale on the right hand axis).
 The orange crosses and red stars indicate the times at which observations were obtained for each target, for the host and companion respectively.
 
 The first observation easily observed is that RV curves come in many different shapes.
-This variations in shape arise from the different orbital parameters of each target (provided in \tref{tab:orbitparams}).
+This variations in shape arise from the different orbital parameters of each target (provided in \cref{tab:orbitparams}).
 In the left hand plots, in which a full cycle is shown the different shapes are created from the eccentricity, $e$, and argument of periapsis, $\omega$.
 In the right hand panels for which a fixed time period is shown the parameter affecting the image shown is the orbital period of the companion.
 Specifically the ratio of Period 89 to the orbital period determines what fraction (or multiples) of the orbit to display.
 
-The RV curves of the star and the planet mirror each other about the systems mean velocity $\gamma$, with the amplitude scaled by their mass ratio (see \eref{} advanced topics for q).
+The RV curves of the star and the planet mirror each other about the systems mean velocity $\gamma$, with the amplitude scaled by their mass ratio (see \ref{} advanced topics for q).
 
 All the plots apart from {HD\,4747} have more than one observations indicated but this is difficult to tell as they are nearly all on top of each other.
 
-For the companions {HD\,162020}b (\fref{fig:hd162020p98}) and {HD\,168443}b (\fref{fig:hd168443bp89}) their orbital periods are shorted than 6 months, allowing for multiple cycles during Period 89.
+For the companions {HD\,162020}b (\cref{fig:hd162020p98}) and {HD\,168443}b (\cref{fig:hd168443bp89}) their orbital periods are shorted than 6 months, allowing for multiple cycles during Period 89.
 As such the full amplitude range was available to measure if observations were taken at the locations of the extrema and it should have been possible to obtain observations in which the companion spectra were separated by more than their line \fwhm.
 However the two observations for these two targets were taken immediately after each other.
 Making any differential extremely small.
 This is of course ignoring the fact that the flux ratios for these short period companions are estimated to be very low, meaning they would be very difficult to detect if sampled correctly.
 
-The larger companion {HD\,168443}c in \fref{fig:hd168443cp89} the orbital period is longer, so they appear as straight lines in the right hand panel.
+The larger companion {HD\,168443}c in \cref{fig:hd168443cp89} the orbital period is longer, so they appear as straight lines in the right hand panel.
 Although the amplitude variation of the companion during Period 89 is about 8--9\kmps.
 Therefore observations taken at the extreme ends of Period 89 may have provided just enough separation to obtain a detection.
 
@@ -321,7 +322,7 @@ For HD\,202206 about 3/4 of the orbit is covered in Period 89 with a RV amplitud
 Therefore, in this case well separated RVs could have been obtained.
 
 For the remain targets it is clear that sufficiently separated RVs were not obtained, but also that they were not possible from a single observing period with less than 6\kmps{} variation over Period 89.
-For HD\,30501 in which there was a large time separation between observations was obtained, and is clearly visible in \fref{fig:hd30501p89}.
+For HD\,30501 in which there was a large time separation between observations was obtained, and is clearly visible in \cref{fig:hd30501p89}.
 Unfortunately this did not result in a large enough companion separation.
 If the observations had been obtained in the previous period (88) instead then sufficient separation could have been obtained due to the orbital eccentricity. {\red{} (this region is due to return in \ldots)}
 
@@ -344,12 +345,12 @@ The differential spectra was created for each by taking the synthetic spectrum f
 At each {RV} step the maximum absolute differential amplitude (peak to peak) of the simulated differential spectrum observed was recorded.
 Again these simulations are performed assuming perfect telluric correction and removal of the host star by only considering the spectrum of the companion alone.
 
-The result of this simulation is given in \fref{fig:diff_amp}.
+The result of this simulation is given in \cref{fig:diff_amp}.
 As this absolute amplitude is specific to the lines present in the analysed wavelength range, the values were normalized by the median amplitude value outside of the line {\fwhm} (dashed vertical lines), between \(\pm(7-10)\)\kmps{}, to give a relative differential amplitude, independent from the depth of a specific line.
-Differential subtraction simulations we also performed using a spectrum made up of a single Gaussian line and a single Lorentzian, these are shown in \fref{fig:diff_amp} as the orange dashed and green dash-dotted lines respectively.
-The spectral profile shape of differential for the Gaussian line was also checked for consistency with the analytical form of the differential spectra~\citet[][Equation~A.1]{ferluga_separating_1997} (included above as \eref{eqn:sprofile_gaussain}).
+Differential subtraction simulations we also performed using a spectrum made up of a single Gaussian line and a single Lorentzian, these are shown in \cref{fig:diff_amp} as the orange dashed and green dash-dotted lines respectively.
+The spectral profile shape of differential for the Gaussian line was also checked for consistency with the analytical form of the differential spectra~\citet[][Equation~A.1]{ferluga_separating_1997} (included above as \cref{eqn:sprofile_gaussain}).
 
-\fref{fig:diff_amp} that a \(\Delta {RV}\) of zero between companion spectra, the spectral lines of the companion completely cancel each other out, resulting in zero amplitude.
+\cref{fig:diff_amp} that a \(\Delta {RV}\) of zero between companion spectra, the spectral lines of the companion completely cancel each other out, resulting in zero amplitude.
 As the {RV} separation increases in either direction, the individual lines begin separating, and stop cancelling themselves out.
 A maximum differential amplitude is achieved when the individual lines are fully separated.
 We did not consider the shape/width of the differential spectral lobes as done in \citet[][eqn.~A.1]{ferluga_separating_1997}, but this could also have been measured.
@@ -359,7 +360,7 @@ The shape of the relative amplitude becomes complicated due to the interaction b
 It is suspected that the interaction of neighbouring lines is one possible cause for the difference in the relative differential amplitude between the single theoretical line profiles and synthetic spectrum between 2 and 6\kmps{}.
 
 The vertical dotted lines indicate the line \(\rm {\fwhm} = \lambda /\R=v /c \)velocity of 6\kmps{} at 2\um{} with \R=50\,000, showing that the amplitude is almost maximum when the lines are separated beyond their line width.
-The two solid vertical lines in \fref{fig:diff_amp} indicate the \(\Delta \textrm{RV}\)=1.41\kmps{} separation calculated for our best target, {HD\,30501} from \tref{tab:estimated_rv}, given known orbital parameters and the observation times.
+The two solid vertical lines in \cref{fig:diff_amp} indicate the \(\Delta \textrm{RV}\)=1.41\kmps{} separation calculated for our best target, {HD\,30501} from \cref{tab:estimated_rv}, given known orbital parameters and the observation times.
 This shows that our differentials have severely reduced amplitude, \(<20\%\) relative to well separated individual lines.
 As the companion spectra are already faint and in combination with a host star at >1\% flux ratio the >80\% extra reduction in signal amplitude makes this detection impossible with these observations.
 
@@ -440,7 +441,7 @@ As such the direct separation approach was not continued further in the \mir{}.
 This method is very similar to~\citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated. \todo{They get a result???}
 
 \section{Summary}
-This Chapter  presented the observations that were gathered having in mind the application of a differential subtraction method~\citep[e.g.][]{ferluga_separating_1997, kostogryz_spectral_2013} to recover the spectra of the faint {BD} companions.  Due to the poorly separated observation times relative to the long orbital periods, the differential subtraction method presented in \sref{sec:direct-subtraction} was revealed to be inappropriate for these observations as the {RV} separation of the companion spectra between observations is significantly smaller than the width of individual spectral lines.
+This Chapter  presented the observations that were gathered having in mind the application of a differential subtraction method~\citep[e.g.][]{ferluga_separating_1997, kostogryz_spectral_2013} to recover the spectra of the faint {BD} companions.  Due to the poorly separated observation times relative to the long orbital periods, the differential subtraction method presented in \cref{sec:direct-subtraction} was revealed to be inappropriate for these observations as the {RV} separation of the companion spectra between observations is significantly smaller than the width of individual spectral lines.
 The small separation of the companion causes the lines of the companion to also mutually cancel, severely reducing the residual signal to well below the available noise level.
 The requirement of well separated RVs for the companion spectra was clearly stated in the original proposal but was not satisfied by the observations. {\red{} The very large orbital periods of some of the targets would not produce a sufficient {RV} signal during one semester.
-This was a possible oversight during the proposal stage.} The largest estimated companion \(\Delta {RV}\) separation between the observations of each target is provided in the  \nth{7} column of \tref{tab:estimated_rv}. \todo{move}{Radial velocity constraints are also valid for other studies such as the detection of reflected light from exoplanets~\cite{martins_evidence_2015}.}
+This was a possible oversight during the proposal stage.} The largest estimated companion \(\Delta {RV}\) separation between the observations of each target is provided in the  \nth{7} column of \cref{tab:estimated_rv}. \todo{move}{Radial velocity constraints are also valid for other studies such as the detection of reflected light from exoplanets~\cite{martins_evidence_2015}.}

@@ -32,18 +32,18 @@ We use the Keplerian orbit {RV} equation to estimate the {RV} of the host and co
 \end{equation}
 Here, \emph{K} is the \emph{semi-major amplitude}, \(\nu\) is the \emph{true anomaly}, \(e\) is the orbital \emph{eccentricity}, and \(omega\) is the \emph{argument of periastron}.
 The true anomaly is not only a function time, \(t\), but also the orbital period \(P\), the \emph{time of periastron passage}, \(T_0\), and eccentricity.
-The literature parameters for each target are provided in \tref{tab:orbitparams}.
+The literature parameters for each target are provided in \cref{tab:orbitparams}.
 To determine the {RV} of the companion we transformed the {RV} semi-amplitude of the host \(\kone\) into the semi-amplitude for the companion \(\ktwo\) using the mass ratio,
 \begin{equation}
 \label{eqn:mass_ratio}
 q = \mtwo / \mone = \kone / \ktwo
 \end{equation}
 
-We note that for the targets in which only the minimum mass (\mtwosini) is known, this equation will indicate the maximum \(\ktwo\) value for the companion. The estimated \(\ktwo\) for each companion is provided in \tref{tab:estimatedparameters} while the {RV} for both components at the time of each observation is provided in \tref{tab:observations}.
+We note that for the targets in which only the minimum mass (\mtwosini) is known, this equation will indicate the maximum \(\ktwo\) value for the companion. The estimated \(\ktwo\) for each companion is provided in \cref{tab:estimatedparameters} while the {RV} for both components at the time of each observation is provided in \cref{tab:observations}.
 
 
 \todo{Possibly just move this too the plae where it is used.}
-The error on estimated {RV} values, shown in \fref{fig:HD211847_result_contours}, is calculated by applying the general error propagation formula~\citep{ku_notes_1966} and using the errors on the orbital parameters. For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc., it follows:
+The error on estimated {RV} values, shown in \cref{fig:HD211847_result_contours}, is calculated by applying the general error propagation formula~\citep{ku_notes_1966} and using the errors on the orbital parameters. For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc., it follows:
 \begin{align}
 f &= f(x, y, z, \ldots)\\
 \delta f &= \sqrt{{\left( \frac{\partial f}{\partial x} \delta x\right)}^2 + {\left(\frac{\partial f}{\partial y} \delta y\right)}^2 + {\left(\frac{\partial f}{\partial z} \delta z\right)}^2 + \ldots}
@@ -59,7 +59,7 @@ f &= f(x, y, z, \ldots)\\
 
 To calculate the {RV} of the companion at the time of each observation. For a two-body system the {RV} semi-amplitude of the companion \(\ktwo\) can be determined from the orbital host-companion mass ratio \[q = \mone/\mtwo = \ktwo/\kone\label{eqn:q_ratio_K2}\].
 Note, that for the targets in which only the minimum mass (\mtwosini) is known, this will give the maximum {RV} semi-amplitude of the companion.
-This relation was used to estimate \(\ktwo\) for the companion from the minimum mass or mass we have for each companion. These values along with the other orbital parameters of the system were used to calculate the {RV} of the companions for each observation. These values are provided with the observations in \tref{tab:observations}.
+This relation was used to estimate \(\ktwo\) for the companion from the minimum mass or mass we have for each companion. These values along with the other orbital parameters of the system were used to calculate the {RV} of the companions for each observation. These values are provided with the observations in \cref{tab:observations}.
 
 
 
