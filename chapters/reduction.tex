@@ -9,7 +9,7 @@ This chapter contains an overview of the steps undertaken to extract astronomica
 A comparison between two different reduction pipelines for {CRIRES} is performed.
 Details of the issues encountered with the reduction output are presented.
 The post reduction steps performed, specifically wavelength calibration and telluric correction, are also included in this chapter.
-The reduced spectra produced in this chapter will be analysed in \cref{cha:direct_recovery} and \cref{cha:model_comparison}.
+The reduced spectra produced in this chapter will be analysed in \chref{cha:direct_recovery} and \chref{cha:model_comparison}.
 We wrap up this chapter by highlighting other techniques in high resolution \nir{} spectra reduction and calibration which may have improved some of the results.
 
 \section{Summary of dataset}
@@ -18,7 +18,7 @@ The work performed relies on high resolution \nir{} spectra, obtained around 2.1
 In brief, we have 17 individual observations of 7 target stars obtained in 2012.
 Each observation contains 8 individual observations performed in an {ABBAABBA} nod cycle pattern.
 Here we detail the steps performed to extract the stellar information from the raw observations.
-Further details of the observations and the motivation for them are given in \cref{cha:direct_recovery}.
+Further details of the observations and the motivation for them are given in \chref{cha:direct_recovery}.
 
 
 \subsection{General reduction Concepts}
@@ -137,7 +137,7 @@ The background level observed in A and B is effectively removed by the subtracti
 A small random vertical offset is applied to each observation which ensures that all spectra at the same nod position do not consistently land on the same pixels each time.
 This is known as the \emph{jitter} and allows for the correction of bad pixels and decreases the effect from any systematics of the detector.
 
-\change{move}{As an example, the {CRIRES} observations analysed for the work performed in \cref{cha:direct_recovery} and~\ref{cha:model_comparison} were performed with an {ABBAABBA} nod cycle pattern with an exposure time of 180\si{\second} each, or 24 minutes all up.}
+\change{move}{As an example, the {CRIRES} observations analysed for the work performed in \chref{cha:direct_recovery} and~\ref{cha:model_comparison} were performed with an {ABBAABBA} nod cycle pattern with an exposure time of 180\si{\second} each, or 24 minutes all up.}
 
 
 \subsection{\thar{} lamp calibration}
@@ -653,7 +653,7 @@ These issues need to be considered when requesting {TAPAS} spectra, adding unnec
 \subsubsection{Telluric masking}
 The telluric spectra from {TAPAS} can not only be used for correcting individual spectra but are also easily used to create a wavelength mask telluric lines.
 For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use {TAPAS} spectra to mask out atmospheric lines deeper than 2\% for computing the photon noise limited radial velocity precision.
-Masking with the {TAPAS} model is similarly performed in \cref{cha:nir_content} when we extend the analysis of \citet{figueira_radial_2016}.
+Masking with the {TAPAS} model is similarly performed in \chref{cha:nir_content} when we extend the analysis of \citet{figueira_radial_2016}.
 The telluric model used for this is an average of 52 {TAPAS} spectra (one per week in 2014), simulated at La Silla Observatory at an airmass of 1.2 (\(z = 33.5^{o}\)).
 This is to incorporate long-term variations of absorption over the year.
 Masking is applied by defining a cut-off line depth, typically 2\%, at which to mask out any deeper telluric lines.
