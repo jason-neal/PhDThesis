@@ -30,17 +30,35 @@ This improves the contrast ratio between the host star and companion, providing 
 \textbf{Goal for 29th October 2018 - Details about spectrographs complete }
 
 \subsection{CRIRES}
-CRIES (Cryogenic Infrared Echelle Spectrograph) is an ESO IR spectrogrpah that was mounted on the Unit Telescope (UT1, Autu) of the European Southern Observatory Very Large Telescope (VLT)~\citep{kaeufl 2004 } from XXX \textbf{p 79} - though July 2014\footnote{Note this PhD research began in October 2014.}.
+CRIRES (Cryogenic InfraRed Echelle Spectrograph) is an ESO IR spectrogrpah that was mounted on the Unit Telescope (UT1, Autu) of the European Southern Observatory Very Large Telescope (VLT)~\citep{kaeufl 2004 } from XXX \textbf{p 79} - though July 2014\footnote{Note this PhD research began in October 2014.}.
 
-The main optical elements consist of a prism pre-disperser and a 31.6\,lines/mm echelle grating. The instrument provides resolutions up to 100\,000 when used with a 0.2\arcsec slit.\footnote{The rule of thumb resolution is R = 100\000\times\frac{{slit width}}{0.2\arcsec}}. The wavelength range is 960--5200\nm with an instantaneous wavelength coverage of \(\sim \lamda/50\). The spectra are imaged on a detector mosaic, consisting of four Aladdin III detectors (\(4096 \times 512\) pixel) in a row, with a gap of \(\sim 250\) pixels between each chip. Adaptive optics (MACAO - Multi-Applications Curvature Adaptive optics) can be used to optimize the signal-to-noise ratio and the spatial resolution. \Cref{fig:criresschematic} displays the schematic representation of the CRIRES optical layout.
+The main optical elements consist of a prism pre-disperser and a 31.6\,lines/mm echelle grating. The instrument provides resolutions up to 100\,000 when used with a 0.2\arcsec slit.\footnote{The rule of thumb for the resolution of CRIRES is \(R = 100\000\times\frac{\textrm{slit width}}{0.2\arcsec}\), with the slit width in arcseconds.}. The wavelength range is 960--5200\nm with an instantaneous wavelength coverage of \(\sim \lamda/50\). The spectra are imaged on a detector mosaic, consisting of four Aladdin III detectors (\(4096 \times 512\) pixel) in a row, with a gap of \(\sim 250\) pixels between each chip. Adaptive optics (MACAO - Multi-Applications Curvature Adaptive optics) can be used to optimize the signal-to-noise ratio and the spatial resolution. \Cref{fig:criresschematic} displays the schematic representation of the CRIRES optical layout.
 
-CRIES lead the way for high-resolution spectrograph in the IR with a resolution higher than any of its predecessors, and unique capabilities, like AO. As with any new instrument there were several problems that affected CRIRES during its Science operations. For instance there were several mechanical issues with the slit; the slit edges were not parallel and there were issues with precise and reproducible positioning. Other issues such as Detector glow, the odd even effect and the wavelength calibration are corrected detailed in \cref{subsubsec:darkcurrent,subsec:flat-field,subsec:wavecalib}.
+CRIRES lead the way for high-resolution spectrograph in the IR with a resolution higher than any of its predecessors, and unique capabilities, like AO. As with any new instrument there were several problems that affected CRIRES during its Science operations. For instance there were several mechanical issues with the slit; the slit edges were not parallel and there were issues with precise and reproducible positioning. Other issues such as detector glow, the odd even effect and the wavelength calibration are corrected detailed in \cref{subsubsec:darkcurrent,subsec:flat-field,subsec:wavecalib}.
 
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{figures/advanced_material/CRIRES_schematic}
+    \includegraphics[width=0.7\linewidth]{figures/advanced_material/CRIRES_schematic.pdf}
     \caption{CRIRES layout schematic, from the CRIRES manual v93.}
     \label{fig:criresschematic}
+\end{figure}
+
+
+\subsection{CRIRES+}
+CRIRES was removed from operation in 2014 to undergo significant upgrades\citep{dorn_crires_2014}.
+These include adding a cross-disperser to increase the simultaneous wavelength coverage by up to a factor of 10, improving the wavelength calibration by replacing the \thar{} calibration lamp with a \une{} lamp which has a richer set lines in the IR, and developing new multi-species gas absorption cells for the IR. 
+The new upgrade adds the capability for spectropolarimetry using a polarization selective beam-splitter, in which the polarization of light in the spectrum can be analysed.
+The current detector mosaic will be replaced by 3 Hawaii 2RG detectors (\(6144\times 2048\) pixels) at a pixel size of 18\um{}. A comparison between the new and old detector size is shown in \cref{fig:criresplus_detecotrs}. 
+The new detector mosaic will not only provide a larger area but also lower noise, higher quantum efficiency, better cosmetic quality and much lower dark current\footnote{\href{https://www.eso.org/sci/facilities/develop/instruments/crires_up.html}{https://www.eso.org/sci/facilities/develop/instruments/crires_up.html}}.
+The current estimate for the first light of CRIRES+ is Q1 of 2019.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/advanced_material/CRIRES_schematic.pdf}
+    \caption{CRIRES detector focal plane array comparison with the new detectors.
+        Credit \citep{dorn_crires_2014}.}
+    \label{fig:criresplus_detecotrs}
 \end{figure}
 
