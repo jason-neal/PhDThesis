@@ -224,7 +224,7 @@ urlcolor=hrefurlcolor]{hyperref}
       	\listoftodos{}                               %%%
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       	\input{preface/table_of_contents}
-      	\clearpage
+      	\cleardoublepage{}
       	%\input{preface/abbreviations}
       	%\input{preface/constants}
       	%\input{preface/symbols}
@@ -232,23 +232,34 @@ urlcolor=hrefurlcolor]{hyperref}
 
 
     %% *** Include chapter files here. ***
+    \cleardoublepage{}
     \include{chapters/introduction}
+    \cleardoublepage{}
     \include{chapters/fundamental_spectroscopy_and_rv}
+    \cleardoublepage{}
     \include{chapters/reduction}
+    \cleardoublepage{}
     \include{chapters/direct-recovery}
+    \cleardoublepage{}
     \include{chapters/companion-recovery}
+    \cleardoublepage{}
     \include{chapters/nir-information-content}
+    \cleardoublepage{}
     \include{chapters/conclusions}
-
+    \cleardoublepage{}
     \appendix
     \unfinished{Precision table needs fixed up}
     \include{appendices/nir/nir_precision_tables}
+    \cleardoublepage{}
     \include{appendices/app_artefact_examples}
+    \cleardoublepage{}
     \include{appendices/wavelength_fitting}
+    \cleardoublepage{}
     \include{appendices/app_vacuum}
+    \cleardoublepage{}
     \include{appendices/app_phd_output}
     %\include{appendices/cv_jneal}
-
+    \cleardoublepage{}
     % Bibliography
     \addcontentsline{toc}{chapter}{Bibliography}
     \bibliography{thesis}  % do not inlcude .bib extension
