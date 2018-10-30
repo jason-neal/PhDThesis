@@ -133,12 +133,15 @@ urlcolor=hrefurlcolor]{hyperref}
 \newcommand{\um}{\,\si{\micro\meter}} % micrometer
 \newcommand{\K}{\,\si{\kelvin}} % kelvin
 \newcommand{\Gyr}{\,\si{\giga{yr}}} % Gigayear
-\newcommand{\arcsec}{\,$^{\prime\prime}$} % arcsecond
-\newcommand{\AU}{\,\si{\astronomicalunit}}
-\newcommand{\mas}{\,\si{\milli\siarcsecond}}
-\newcommand{\siarcsecond}{\si{{as}}}
 \newcommand{\pc}{\,\si{{pc}}}
 \newcommand{\masperyr}{\,\si[per-mode=reciprocal]{\mas.{yr}^{-1}}}
+\newcommand{\AU}{\,\si{\astronomicalunit}}
+
+\newcommand{\arcsec}{$^{\prime\prime}$} % arcsecond
+\newcommand{\matharcsec}{^{\prime\prime}} % arcsecond without math
+\newcommand{\mas}{\,\si{\milli\siarcsecond}}
+\newcommand{\siarcsecond}{\si{{as}}}
+
 
 
 %% word shortcuts
@@ -193,6 +196,7 @@ urlcolor=hrefurlcolor]{hyperref}
 %%%%%%%%%%%%      MAIN DOCUMENT      %%%%%%%%%%%%
 % To work on one section at a time.
 %\includeonly{chapters/introduction}
+%\includeonly{chapters/introduction, chapters/fundamental_spectroscopy_and_rv, chapters/reduction}
 %\includeonly{chapters/fundamental_spectroscopy_and_rv}
 %\includeonly{chapters/reduction}
 %\includeonly{chapters/direct-recovery}
