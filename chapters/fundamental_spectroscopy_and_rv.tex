@@ -50,12 +50,12 @@ From the flux ratio the noise ratio between the host and companion can also be c
 
 \subsubsection{Baraffe tables}
 \label{subsubsec:baraffe_tables_code}
-A simple tool\footnote{Available at \url{https://github.com/jason-neal/baraffe_tables}} was created to calculate/estimate the host-companion flux ratio using the \citet{baraffe_evolutionary_2003,baraffe_new_2015} evolution tables.
+A simple tool\footnote{Available at \href{https://github.com/jason-neal/baraffe_tables}{https://github.com/jason-neal/baraffe\_tables}} was created to calculate/estimate the host-companion flux ratio using the~\citet{baraffe_evolutionary_2003, baraffe_new_2015} evolution tables.
 Given the name of the target star, the mass of a companion and the stellar/system age the tool determines the flux ratios in the available spectral bands.
 The tool uses the targets name to query\href{https://zenodo.org/record/1160627}{\emph{astroquery} package} the {SIMBAD} database to obtain the stellar properties, specifically the flux magnitudes and parallax. It then interpolates the Baraffe tables to the desired companion mass and age, calculating and returning values for all parameters of the companion given in the tables (e.g.\ \(\teff\), \logg, \(R/R_{\odot}\)).
-The stellar magnitudes are converted to absolute values using \cref{eqn:distance_modulus} and the flux ratios computed using  \cref{eqn:mag_flux_ratios}.
+The stellar magnitudes are converted to absolute values using \cref{eqn:distance_modulus} and the flux ratios computed using \cref{eqn:mag_flux_ratios}.
 
-An extension of this tool is that can be used to perform the reverse calculation also. That is, given the target name, age and flux ratio in a given band it can estimate the mass of the companion mass using the Baraffe tables.
+An extension of this tool is that can be used to perform the reverse calculation also. That is, given the target name, age and flux ratio in a given band it can estimate the mass of the companion mass using the evolution tables.
 
 \todo{This section is completed I think}
 
