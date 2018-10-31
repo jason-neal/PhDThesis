@@ -46,3 +46,64 @@
 	\ignorespaces
 	#2\ \ignorespaces%
 }
+
+
+% Unit Definitions
+%--------------------------------------------------
+
+\usepackage[separate-uncertainty=true]{siunitx}    % SI units
+%% SI units
+\DeclareSIUnit\photons{photons}
+
+\newcommand{\kmps}{\,\si{\kilo\meter\per\second}} % kilometers per second
+\newcommand{\cmps}{\,\si{\centi\meter\per\second}} % centimeters per second
+\newcommand{\mps}{\,\si{\meter\per\second}} % meters per second
+\newcommand{\nm}{\,\si{\nano\meter}} % nanometer
+\newcommand{\um}{\,\si{\micro\meter}} % micrometer
+\newcommand{\K}{\,\si{\kelvin}} % kelvin
+\newcommand{\Gyr}{\,\si{\giga{yr}}} % Gigayear
+\newcommand{\pc}{\,\si{{pc}}}
+\newcommand{\masperyr}{\,\si[per-mode=reciprocal]{\mas.{yr}^{-1}}}
+\newcommand{\AU}{\,\si{\astronomicalunit}}
+
+\newcommand{\arcsec}{$^{\prime\prime}$} % arcsecond
+\newcommand{\matharcsec}{^{\prime\prime}} % arcsecond without math
+\newcommand{\mas}{\,\si{\milli\siarcsecond}}
+\newcommand{\siarcsecond}{\si{{as}}}
+
+
+
+%% word shortcuts
+\newcommand{\thar}{\textrm{\ce{Th}-\ce{Ar}}}
+\newcommand{\une}{\textrm{\ce{U}-\ce{Ne}}}
+\newcommand{\nir}{\textrm{nIR}}
+\newcommand{\mir}{\textrm{mIR}}
+\newcommand{\snr}{\textrm{SNR}}
+\newcommand{\logg}{textrm{logg}}
+\newcommand{\feh}{${[\ce{Fe}/\ce{H}]}$}
+\newcommand{\teff}{T_{\mathrm{eff}}}
+\newcommand{\txteff}{$T_{\mathrm{eff}}$}
+\newcommand{\teffsub}[1]{{T_{\mathrm{eff}}}_{#1}}
+%\newcommand{\teff}{Teff}
+%\newcommand{\teffsub}[1]{{Teff}_{#1}}
+\newcommand{\chisquared}{{\chi}^{2}}
+\newcommand{\textchisquared}{\(\chisquared\)}
+\newcommand{\vsini}{v\sin{i}}
+\newcommand{\msini}{$\textrm{M}\sin{i}$}
+\newcommand{\Mpsini}{$\Mp\sin{i}$}
+\newcommand{\mtwosini}{$\mtwo\sin{i}$}
+\newcommand{\mtwo}{\textrm{M}_{2}}
+\newcommand{\mone}{\textrm{M}_{1}}
+\newcommand{\ktwo}{\textrm{K}_{2}}
+\newcommand{\kone}{\textrm{K}_{1}}
+\newcommand{\fwhm}{\textrm{FWHM}}
+\newcommand{\R}{\textrm{R}}
+\newcommand{\Mjup}{$M_{\mathrm{Jup}}$}
+\newcommand{\Modot}{$M_{\odot}$}
+\newcommand{\Msun}{\,\Modot}
+\newcommand{\Mp}{\textrm{M}_{p}}   % planet mass
+\newcommand{\Rp}{\textrm{R}_{p}}   % planet radius
+\newcommand{\Mstar}{\textrm{M}_{\star}}   % star mass
+\newcommand{\Rstar}{\textrm{R}_{\star}}   % star radius
+
+\newcommand{\rms}{\textrm{RMS}}
