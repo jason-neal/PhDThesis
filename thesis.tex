@@ -181,6 +181,23 @@ urlcolor=hrefurlcolor]{hyperref}
 
 \extrafloats{50}
 
+\usepackage[
+%  				backend=bibtex,
+style=authoryear,
+natbib=true,
+sorting=nyt,
+maxcitenames=2,
+maxbibnames=7,	
+minbibnames=4,	
+backend=biber,
+uniquelist=false,
+giveninits=true,
+uniquename=false,
+doi=false,isbn=false,url=false
+]{biblatex}
+\addbibresource{thesis.bib}
+
+
 %% *** Change this example to appropriate values. ***
 \degree{Doctor of Philosophy}
 \department{Departamento de F\'{\i}sica e Astronomia}
@@ -243,6 +260,7 @@ urlcolor=hrefurlcolor]{hyperref}
     \include{chapters/fundamental_spectroscopy_and_rv}
     \cleardoublepage{}
     \include{chapters/models}
+    \cleardoublepage{}
     \include{chapters/reduction}
     \cleardoublepage{}
     \include{chapters/direct-recovery}
@@ -267,9 +285,7 @@ urlcolor=hrefurlcolor]{hyperref}
     %\include{appendices/cv_jneal}
     \cleardoublepage{}
     % Bibliography
-    \addcontentsline{toc}{chapter}{Bibliography}
-    \bibliography{thesis}  % do not inlcude .bib extension
-    \bibliographystyle{astron}
+    \printbibliography[heading=bibintoc]
     \nocite{}  % include everything.
 
 \end{document}
