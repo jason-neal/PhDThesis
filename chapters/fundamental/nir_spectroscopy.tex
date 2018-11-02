@@ -1,11 +1,50 @@
 %!TEX root = ../../thesis.tex
 
-NIR spectroscopy...
+\section{Near-infrared spectroscopy}
 
-Spectrograph design stuff
+In this chapter  the basics of spectroscopy will be laid out, with the difference between optical and infrared spectroscopy given.
+A summary of several high-resolution \nir{} spectrographs relevant to this thesis will end this chapter. 
+
+\subsection{Spectrograph basics}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/spectroscopy/spectrograph_elements}
+    \caption{Diagram of the basic components of a spectrograph.}
+    \label{fig:spectrographelements}
+\end{figure}
+A spectrograph is a instrument of measuring the electromagnetic flux as a function of wavelength. All spectrographs have a few basic components common to all. A simple diagram with the basic components is shown in \cref{fig:spectrographelements}. The first is the telescope which is used to collect light and focus the image of the sky onto its focal plane. A slit (or an optical fibre\footnote{Fibres allow for the spectrograph to be situated far from the telescope.}) is placed on the telescopes' focal plane to block all but the light from desired target. The light passing through the slit is diverging so a collimator is used turn the diverging light into a parallel beam. The dispersing element is next and is responsible for dispersing the light into its separate components. This can be either a prism, grating (or even both). Following the dispersive elements are the optics for the camera, used to focus the dispersed (but still fairly collimated) light onto the detector, commonly a two-dimensional array of light sensitive pixels situated at the focal plane. Usually several optical elements, both lenses and mirrors, are used in combination to meet the constraints of the design specifications. 
+
+Figure \cref{fig:dispersion_elements} shows the schematic for 3 different dispersions mechanisms, the refraction of light due to a change (Snells law) a transmission grating and a reflection grating.
+\begin{figure}
+    \centering
+    \begin{tabular}{ccc}
+   \includegraphics[width=0.3\linewidth]{figures/spectroscopy/snells_law} & \includegraphics[width=0.2\linewidth]{figures/spectroscopy/dispersion_grism-transmission} & \includegraphics[width=0.3\linewidth]{figures/spectroscopy/dispersion_grism-reflection} \\
+\end{tabular}
+    \caption{Left: Dispersion at an optical boundary due to Snell's law, Middle: Dispersion from a transmission grating. Right: Dispersion from reflection grating.}
+    \label{fig:dispersion_elements}
+\end{figure}
+The left hand picture depicts in which refraction of light occurs when passing between two materials of different refraction index, $n_i$, and $n_r$. The angle of incidence $theta_i$ and angle of refraction $theta_r$ relative to the normal (perpendicular) of the surface are related through Snell's law:
+\[n_i \sin(\theta_i) = n_r \sin(\theta_r).\] 
+The index of refraction of a material is wavelength dependant the angle of refraction will be different for each wavelength, causing dispersion, like a prism. 
+
+The two dispersion gratings in \cref{fig:dispersion_elements} are comprised of parallel narrow slits (transmission) or grooves (reflection), very close together. Diffraction from these slits/groves constructively and destructively interfere to create spectral orders that obey the grating equation:
+\begin{equation}
+]m \lambda = d [\sin(\theta_i) \pm \sin(theta_r)].
+\end{equation}
+Here $m$ is the order number, $\lambda$ the wavelength, d the spacing between the slits/grooves, and again $\theta_i$ and $\theta_r$ the incident and reflection angles respectively, relative to the normal.
+
+This equation has degeneracy as different combinations of $m \lambda$ will be dispersed at the same angles. For instance the value $m \lambda$ for order $m=54$ at $\lambda=2100$\nm is that same as to order $m=55$ at $\lambda=2061.8$\nm. This degeneracy can be overcome in two ways, either apply a wavelength filter to specifically select only one order or by adding a cross-disperser. A \emph{cross-disperser} is a second dispersive element oriented to disperse the orders perpendicular to the grating. this allows for multiple orders to recorded simultaneously on a 2d detector, dramatically increasing the wavelength coverage.
+Echelle spectrographs are a special type of spectrograph, with a groove shape and orientation specifically for high reflection angles, and to observe at a high spectral order (high $m$) to achieve a high dispersion and high resolution.
+
+Some important concepts for discussing spectrographs are the spectral resolution, resolving power, spectral coverage and spectral sampling.
+The spectral resolution, \(\delta \lambda\), is smallest difference in wavelength able to be identified. It is related to resolving power which is defined as \(R=\frac{\lambda}{\delta\lambda}\). The resolving power, R is colloquially also referred to as the resolution\footnote{This document is no different.} The higher the resolution (resolving power), R, the smaller the \(\delta\lambda\) that can be measured, leading to a high sampled spectral lines and more precise measurement. To be considered high-resolution, spectrographs typically have to have an \(R>20\,000\), but the definition of "high" can differ between fields of astronomy.  
+The spectral coverage is the range of wavelengths able to be covered by the spectrograph, while the spectral sampling is the number of pixels required to sample the FWHM of the spectral lines. This value should be higher than 2 pixels to satisfy Nyquist sampling.
+
+\subsection{Detectors}
+
+Optical and Infrared Spectroscopy have the same basic principles although their designs are similar usually the optics are chosen specifically for the wavelengths. I.e anti-reflection coatings, glass properties.  
 
 
-\section{NIR spectroscopy}
 To perform spectroscopy requires an instrument called a spectrograph. The purpose of which is to take the incoming star light and disperse it so that the different wavelength components separate. A simple example of this is the splitting of white light into a rainbow when passed through a prism.
 
 All spectrographs are comprised of a few key components.
@@ -27,7 +66,6 @@ Observing in the \nir{} is specifically desirable for the cooler sub-stellar and
 This improves the contrast ratio between the host star and companion, providing favourable conditions for their detection and spectral separation.
 
 
-\textbf{Goal for 29th October 2018 - Details about spectrographs complete }
 
 \subsection{CRIRES}
 CRIRES (Cryogenic InfraRed Echelle Spectrograph) is an ESO IR spectrogrpah that was mounted on the Unit Telescope (UT1, Autu) of the European Southern Observatory Very Large Telescope (VLT)~\citep{kaeufl 2004 } from XXX \textbf{p 79} - though July 2014\footnote{Note this PhD research began in October 2014.}.
@@ -46,7 +84,6 @@ CRIRES lead the way for high-resolution spectrograph in the IR with a resolution
     \caption{CRIRES layout schematic, from the CRIRES manual v93.}
     \label{fig:criresschematic}
 \end{figure}
-
 
 
 \subsection{The new generation}
