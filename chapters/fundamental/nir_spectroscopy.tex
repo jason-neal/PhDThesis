@@ -1,18 +1,28 @@
 %!TEX root = ../../thesis.tex
 
-\section{Near-infrared spectroscopy}
-
+\chapter{Near-infrared spectroscopy}
+\label{cha:nir_spectroscopy}
 In this chapter  the basics of spectroscopy will be laid out, with the difference between optical and infrared spectroscopy given.
-A summary of several high-resolution \nir{} spectrographs relevant to this thesis will end this chapter. 
+A summary of several high-resolution \nir{} spectrographs relevant to this thesis will end this chapter.
 
-\subsection{Spectrograph basics}
+\section{Spectrograph basics}
+\label{sec:spectrosccopy basics}
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/spectroscopy/spectrograph_elements}
     \caption{Diagram of the basic components of a spectrograph.}
     \label{fig:spectrographelements}
 \end{figure}
-A spectrograph is a instrument of measuring the electromagnetic flux as a function of wavelength. All spectrographs have a few basic components common to all. A simple diagram with the basic components is shown in \cref{fig:spectrographelements}. The first is the telescope which is used to collect light and focus the image of the sky onto its focal plane. A slit (or an optical fibre\footnote{Fibres allow for the spectrograph to be situated far from the telescope.}) is placed on the telescopes' focal plane to block all but the light from desired target. The light passing through the slit is diverging so a collimator is used turn the diverging light into a parallel beam. The dispersing element is next and is responsible for dispersing the light into its separate components. This can be either a prism, grating (or even both). Following the dispersive elements are the optics for the camera, used to focus the dispersed (but still fairly collimated) light onto the detector, commonly a two-dimensional array of light sensitive pixels situated at the focal plane. Usually several optical elements, both lenses and mirrors, are used in combination to meet the constraints of the design specifications. 
+A spectrograph is a instrument of measuring the electromagnetic flux as a function of wavelength.
+All spectrographs have a few basic components common to all.
+A simple diagram with the basic components is shown in \cref{fig:spectrographelements}.
+The first is the telescope which is used to collect light and focus the image of the sky onto its focal plane.
+A slit (or an optical fibre\footnote{Fibres allow for the spectrograph to be situated far from the telescope.}) is placed on the telescopes' focal plane to block all but the light from desired target.
+The light passing through the slit is diverging so a collimator is used turn the diverging light into a parallel beam.
+The dispersing element is next and is responsible for dispersing the light into its separate components.
+This can be either a prism, grating (or even both).
+Following the dispersive elements are the optics for the camera, used to focus the dispersed (but still fairly collimated) light onto the detector, commonly a two-dimensional array of light sensitive pixels situated at the focal plane.
+Usually several optical elements, both lenses and mirrors, are used in combination to meet the constraints of the design specifications.
 
 Figure \cref{fig:dispersion_elements} shows the schematic for 3 different dispersions mechanisms, the refraction of light due to a change (Snells law) a transmission grating and a reflection grating.
 \begin{figure}
@@ -20,39 +30,54 @@ Figure \cref{fig:dispersion_elements} shows the schematic for 3 different disper
     \begin{tabular}{ccc}
    \includegraphics[width=0.3\linewidth]{figures/spectroscopy/snells_law} & \includegraphics[width=0.2\linewidth]{figures/spectroscopy/dispersion_grism-transmission} & \includegraphics[width=0.3\linewidth]{figures/spectroscopy/dispersion_grism-reflection} \\
 \end{tabular}
-    \caption{Left: Dispersion at an optical boundary due to Snell's law, Middle: Dispersion from a transmission grating. Right: Dispersion from reflection grating.}
+    \caption{Left: Dispersion at an optical boundary due to Snell's law.
+        Middle: Dispersion from a transmission grating.
+        Right: Dispersion from reflection grating.}
     \label{fig:dispersion_elements}
 \end{figure}
-The left hand picture depicts in which refraction of light occurs when passing between two materials of different refraction index, $n_i$, and $n_r$. The angle of incidence $theta_i$ and angle of refraction $theta_r$ relative to the normal (perpendicular) of the surface are related through Snell's law:
-\[n_i \sin(\theta_i) = n_r \sin(\theta_r).\] 
-The index of refraction of a material is wavelength dependant the angle of refraction will be different for each wavelength, causing dispersion, like a prism. 
+The left hand picture depicts in which refraction of light occurs when passing between two materials of different refraction index, $n_i$, and $n_r$.
+The angle of incidence $theta_i$ and angle of refraction $theta_r$ relative to the normal (perpendicular) of the surface are related through Snell's law:
+\[n_i \sin(\theta_i) = n_r \sin(\theta_r).\]
+The index of refraction of a material is wavelength dependant the angle of refraction will be different for each wavelength, causing dispersion, like a prism.
 
-The two dispersion gratings in \cref{fig:dispersion_elements} are comprised of parallel narrow slits (transmission) or grooves (reflection), very close together. Diffraction from these slits/groves constructively and destructively interfere to create spectral orders that obey the grating equation:
+The two dispersion gratings in \cref{fig:dispersion_elements} are comprised of parallel narrow slits (transmission) or grooves (reflection), very close together.
+Diffraction from these slits/groves constructively and destructively interfere to create spectral orders that obey the grating equation:
 \begin{equation}
 ]m \lambda = d [\sin(\theta_i) \pm \sin(theta_r)].
 \end{equation}
 Here $m$ is the order number, $\lambda$ the wavelength, d the spacing between the slits/grooves, and again $\theta_i$ and $\theta_r$ the incident and reflection angles respectively, relative to the normal.
 
-This equation has degeneracy as different combinations of $m \lambda$ will be dispersed at the same angles. For instance the value $m \lambda$ for order $m=54$ at $\lambda=2100$\nm is that same as to order $m=55$ at $\lambda=2061.8$\nm. This degeneracy can be overcome in two ways, either apply a wavelength filter to specifically select only one order or by adding a cross-disperser. A \emph{cross-disperser} is a second dispersive element oriented to disperse the orders perpendicular to the grating. this allows for multiple orders to recorded simultaneously on a 2d detector, dramatically increasing the wavelength coverage.
+This equation has degeneracy as different combinations of $m \lambda$ will be dispersed at the same angles.
+For instance the value $m \lambda$ for order $m=54$ at $\lambda=2100$\nm{} is that same as to order $m=55$ at $\lambda=2061.8$\nm{}.
+This degeneracy can be overcome in two ways, either apply a wavelength filter to specifically select only one order or by adding a cross-disperser.
+A \emph{cross-disperser} is a second dispersive element oriented to disperse the orders perpendicular to the grating.
+This allows for multiple orders to recorded simultaneously on a 2d detector, dramatically increasing the wavelength coverage.
 Echelle spectrographs are a special type of spectrograph, with a groove shape and orientation specifically for high reflection angles, and to observe at a high spectral order (high $m$) to achieve a high dispersion and high resolution.
 
 Some important concepts for discussing spectrographs are the spectral resolution, resolving power, spectral coverage and spectral sampling.
-The spectral resolution, \(\delta \lambda\), is smallest difference in wavelength able to be identified. It is related to resolving power which is defined as \(R=\frac{\lambda}{\delta\lambda}\). The resolving power, R is colloquially also referred to as the resolution\footnote{This document is no different.} The higher the resolution (resolving power), R, the smaller the \(\delta\lambda\) that can be measured, leading to a high sampled spectral lines and more precise measurement. To be considered high-resolution, spectrographs typically have to have an \(R>20\,000\), but the definition of "high" can differ between fields of astronomy.  
-The spectral coverage is the range of wavelengths able to be covered by the spectrograph, while the spectral sampling is the number of pixels required to sample the FWHM of the spectral lines. This value should be higher than 2 pixels to satisfy Nyquist sampling.
+The spectral resolution, \(\delta \lambda\), is smallest difference in wavelength able to be identified.
+It is related to resolving power which is defined as \(R=\frac{\lambda}{\delta\lambda}\).
+The resolving power, R is colloquially also referred to as the resolution\footnote{This document is no different.} The higher the resolution (resolving power), R, the smaller the \(\delta\lambda\) that can be measured, leading to a high sampled spectral lines and more precise measurement.
+To be considered high-resolution, spectrographs typically have to have an \(R>20\,000\), but the definition of "high" can differ between fields of astronomy.
+The spectral coverage is the range of wavelengths able to be covered by the spectrograph, while the spectral sampling is the number of pixels required to sample the FWHM of the spectral lines.
+This value should be higher than 2 pixels to satisfy Nyquist sampling.
 
-\subsection{Detectors}
+\section{Detectors}
 
-Optical and Infrared Spectroscopy have the same basic principles although their designs are similar usually the optics are chosen specifically for the wavelengths. I.e anti-reflection coatings, glass properties.  
+Optical and Infrared Spectroscopy have the same basic principles although their designs are similar usually the optics are chosen specifically for the wavelengths i.e anti-reflection coatings, glass properties.
 
 
-To perform spectroscopy requires an instrument called a spectrograph. The purpose of which is to take the incoming star light and disperse it so that the different wavelength components separate. A simple example of this is the splitting of white light into a rainbow when passed through a prism.
+To perform spectroscopy requires an instrument called a spectrograph.
+The purpose of which is to take the incoming star light and disperse it so that the different wavelength components separate.
+A simple example of this is the splitting of white light into a rainbow when passed through a prism.
 
 All spectrographs are comprised of a few key components.
 The first part is the front end optics responsible for collecting the light and getting it to the spectrograph, such as a telescope, entrance slit or fibre.
 The second part component dispersive elements inside the spectrograph, such as a prism or grating used to separate the wavelength components.
 The final part is the detector or camera, used to record the resulting spectrum.
 
-The design of spectrographs is highly dependant on the wavelength range observed. For instance {CCD} cameras (based on silicon) are readily used in the optical but silicon is a poor detector at \nir{} wavelengths.
+The design of spectrographs is highly dependant on the wavelength range observed.
+For instance {CCD} cameras (based on silicon) are readily used in the optical but silicon is a poor detector at \nir{} wavelengths.
 Instead \nir{} spectrographs need to use CMOS detectors which are composed of different materials that are sensitive to different wavelengths.
 {CRIRES} detectors specifically are made of \ce{InSb} (Indium antimonide) to perform spectroscopy between 1--5\um{}~\cite{dorn_crires_2004}.
 Other considerations are needed such as the composition of the optical components as well as any anti-reflection coatings used, all of which have different wavelength characteristics that need to be matched.
@@ -66,16 +91,22 @@ Observing in the \nir{} is specifically desirable for the cooler sub-stellar and
 This improves the contrast ratio between the host star and companion, providing favourable conditions for their detection and spectral separation.
 
 
+CRYOSTATS!
 
-\subsection{CRIRES}
+
+\section{CRIRES}
 CRIRES (Cryogenic InfraRed Echelle Spectrograph) is an ESO IR spectrogrpah that was mounted on the Unit Telescope (UT1, Autu) of the European Southern Observatory Very Large Telescope (VLT)~\citep{kaeufl 2004 } from XXX \textbf{p 79} - though July 2014\footnote{Note this PhD research began in October 2014.}.
 The main optical elements consist of a prism pre-disperser and a 31.6\,lines/mm echelle grating.
 The instrument provides resolutions up to 100\,000 when used with a 0.2$\matharcsec$ slit\footnote{The rule of thumb for the resolution of CRIRES is \(R = 100000 \times \frac{\textrm{slit width}}{0.2\matharcsec}\), with the slit width in arcseconds.}.
-The wavelength range is 960--5200\nm with an instantaneous wavelength coverage of \(\sim \lambda/50\). The spectra are imaged on a detector mosaic, consisting of four Aladdin III detectors (\(4096 \times 512\) pixel) in a row, with a gap of \(\sim 250\) pixels between each chip.
+The wavelength range is 960--5200\nm with an instantaneous wavelength coverage of \(\sim \lambda/50\).
+The spectra are imaged on a detector mosaic, consisting of four Aladdin III detectors (\(4096 \times 512\) pixel) in a row, with a gap of \(\sim 250\) pixels between each chip.
 Adaptive optics (MACAO - Multi-Applications Curvature Adaptive optics) can be used to optimize the signal-to-noise ratio and the spatial resolution.
 \Cref{fig:criresschematic} displays the schematic representation of the CRIRES optical layout.
 
-CRIRES lead the way for high-resolution spectrograph in the IR with a resolution higher than any of its predecessors, and unique capabilities, like AO. As with any new instrument there were several problems that affected CRIRES during its Science operations. For instance there were several mechanical issues with the slit; the slit edges were not parallel and there were issues with precise and reproducible positioning. Other issues such as detector glow, the odd even effect and the wavelength calibration are corrected detailed in \cref{subsubsec:darkcurrent, subsec:flat-field, subsec:wavecalib}.
+CRIRES lead the way for high-resolution spectrograph in the IR with a resolution higher than any of its predecessors, and unique capabilities, like AO.
+As with any new instrument there were several problems that affected CRIRES during its Science operations.
+For instance there were several mechanical issues with the slit; the slit edges were not parallel and there were issues with precise and reproducible positioning.
+Other issues such as detector glow, the odd even effect and the wavelength calibration are corrected detailed in \cref{subsubsec:darkcurrent, subsec:flat-field, subsec:wavecalib}.
 
 
 \begin{figure}
@@ -86,7 +117,7 @@ CRIRES lead the way for high-resolution spectrograph in the IR with a resolution
 \end{figure}
 
 
-\subsection{The new generation}
+\section{The new generation}
 \label{subsec:new_generation}
 Building off the success of CRIRES several other \nir{} spectrograph have and being developed for different telescopes.
 
@@ -109,15 +140,15 @@ A few points about some of the \nir{} instruments used in this work are detailed
         & {CRIRES+} & {CARMENS} (Red arm) & {NIRPS} & {SPIRou}\\
         \midrule
         Location & Paranal, Chile & Calar Alto, Spain & La Silla, Chile& Mauna Kea, Hawaii \\
-        Latitude (N) & \(-24^\circ 40^\prime\) & \(37^\circ 13^\prime\) & \(-29^\circ 15^\prime\) & \(19^\circ 49^\prime\) \\ 
+        Latitude (N) & \(-24^\circ 40^\prime\) & \(37^\circ 13^\prime\) & \(-29^\circ 15^\prime\) & \(19^\circ 49^\prime\) \\
         Available (* expected) & 2019* & 2016 & 2019* & 2019* \\
         Telescope diameter (\si{\metre}) & 8.2 & 3.5 & 3.6 & 3.6 \\
         Wavelength Range (\nm) & 920--5200 & 960--1710 & 970--1810 & 980--2350 \\
         Resolution & 50\,000/100\,000 & 80400 & 75\,000/100\,000 & \\
-        
+
         %Mean sampling (pixels) & & 2.8 & 3 & \textbf{1.8}??? \todo{Pedro do you have this number? from a velocity size of 2.28 km/s I think I calculate a sampling of 1.8}\\
-        
-        RV precision(\mps) & 2--3 & $\sim$ 1 & 1 & 1\\ 
+
+        RV precision(\mps) & 2--3 & $\sim$ 1 & 1 & 1\\
         Operating Temperature (\K)& & 285, 140 & 80 & 77 \\
         %Website &\href{http://www.eso.org/sci/facilities/develop/instruments/crires_up.html}{http://www.eso.org/sci/facilities/develop/instruments/crires\_up.html} & \href{carmenes.caha.es}{carmenes.caha.es} & \href{http://www.astro.umontreal.ca/nirps/}{http://www.astro.umontreal.ca/nirps/} & \href{}{}\\
         \bottomrule
@@ -126,16 +157,16 @@ A few points about some of the \nir{} instruments used in this work are detailed
 
 \todo{Is there other properties I should add}
 
-\subsubsection{CRIRES+}
-\label{subsubsec:criresplus}
+\subsection{CRIRES+}
+\label{subsec:criresplus}
 CRIRES was removed from operation in 2014 to undergo significant upgrades\citep{dorn_crires_2014}.
 These include adding a cross-disperser to increase the simultaneous wavelength coverage by up to a factor of 10, improving the wavelength calibration by replacing the \thar{} calibration lamp with a \une{} lamp which has a richer set lines in the IR, and developing new multi-species gas absorption cells for the IR.
 The new upgrade adds the capability for spectropolarimetry using a polarization selective beam-splitter, in which the polarization of light in the spectrum can be analysed.
 The current detector mosaic will be replaced by 3 Hawaii 2RG detectors (\(6144\times 2048\) pixels) at a pixel size of 18\um{}.
-A comparison between the new and old detector size is shown in \cref{fig:criresplus_detecotrs}. 
+A comparison between the new and old detector size is shown in \cref{fig:criresplus_detecotrs}.
 The new detector mosaic will not only provide a larger area but also lower noise, higher quantum efficiency, better cosmetic quality and much lower dark current
 \footnote{\href{https://www.eso.org/sci/facilities/develop/instruments/crires_up.html}{https://www.eso.org/sci/facilities/develop/instruments/crires\_up.html}}.
-The current estimate for the first light of CRIRES+ is Q1 of 2019.
+The current estimate for the first light of CRIRES+ is first quarter of 2019.
 
 \begin{figure}
     \centering
@@ -145,23 +176,33 @@ The current estimate for the first light of CRIRES+ is Q1 of 2019.
     \label{fig:criresplus_detecotrs}
 \end{figure}
 
-\subsubsection{CARMENES}
-\label{subsubsec:carmenes}
-{CARMENES} (Calar Alto high-Resolution search for M dwarfs with Exoearths with Near-infrared an optical \'Echelle Spectrographs) has been operating since 2016, performing an dedicated RV survey of \(\sim300\) late-type main-sequence stars with the goal of detecting low-mass planets in the habitable zone. It is mounted on the 3.5\si{\metre} telescope at the Calar Alto Observatory in Spain, the light from the telescope is passes through a beam splitter and enters into two separate spectrographs, one in the optical (520--960\nm) and the other in the infrared (960--1710\nm). A library of single spectra of the {M-dwarf} targets CARMENES is monitoring was recently released in~\citep{reiners_carmenes_2018}.
+\subsection{CARMENES}
+\label{subsec:carmenes}
+{CARMENES} (Calar Alto high-Resolution search for M dwarfs with Exoearths with Near-infrared an optical \'Echelle Spectrographs) has been operating since 2016, performing an dedicated RV survey of \(\sim300\) late-type main-sequence stars with the goal of detecting low-mass planets in the habitable zone.
+It is mounted on the 3.5\si{\metre} telescope at the Calar Alto Observatory in Spain, the light from the telescope is passes through a beam splitter and enters into two separate spectrographs, one in the optical (520--960\nm) and the other in the infrared (960--1710\nm).
+A library of single spectra of the {M-dwarf} targets CARMENES is monitoring was recently released in~\citep{reiners_carmenes_2018}.
 
 \subsubsection{NIRPS}
-{NIRPS} (Near-InfraRed Planet Searcher) is a \nir{} extension to the HARPS spectrograph on the 3.6\si{\metre} telescope at La Silia, Chile. One of the most prominent spectrographs detecting exoplanets via a RV method. A replacement for the HARPS telescope adapter will be used to split the light and send the optical wavelengths to HARPS and IR to NIRPS via fibres. The adaptor also includes AO and new calibration unit. 
+\label{subsec:nirps}
+{NIRPS} (Near-InfraRed Planet Searcher) is a \nir{} extension to the HARPS spectrograph on the 3.6\si{\metre} telescope at La Silia, Chile.
+One of the most prominent spectrographs detecting exoplanets via a RV method.
+A replacement for the HARPS telescope adapter will be used to split the light and send the optical wavelengths to HARPS and IR to NIRPS via fibres.
+The adaptor also includes AO and new calibration unit.
 
 This will allow for the RV monitoring of cooler stars which, emit more of their photons in the infrared but also have less stable optical spectra due to convection; infrared spectra are less affected by the stellar activity.
 
 \subsubsection{SPIRou}
+\label{subsec:spirou}
 {SPIRou} (SPectroplorim\`etre InfraROUge) is another high-resolution \nir{} spectrograph that will be installed at the CFHT (Canada-France-Hawaii Telescope) in Hawaii.
-It will provide a spectrum covering from 950--2340\nm{} in a single exposure at a resolution of around \(\sim75\,000\). Like the other spectrographs detailed here it is built to obtain very high radial velocity accuracy, of the order meters/second over several year. It also includes spectropolarimetry, being able to derive the linear and circularly polarized state of the observed target.
+It will provide a spectrum covering from 950--2340\nm{} in a single exposure at a resolution of around \(\sim75\,000\).
+Like the other spectrographs detailed here it is built to obtain very high radial velocity accuracy, of the order meters/second over several year.
+It also includes spectropolarimetry, being able to derive the linear and circularly polarized state of the observed target.
 
 A physical side-by-side comparison of the {NIRPS} and {SPRIou} spectrographs is shown in \cref{fig:nirps-vs-spirou}, with {NIRPS} towards the front left.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/spectroscopy/NIRPS-vs-SPIROU}
-    \caption{Side by side comparison of the {NIRPS} and {SPIRou} spectrographs. {NIRPS} is the one in front on the left. Credit \href{http://www.astro.umontreal.ca/nirps/}{http://www.astro.umontreal.ca/nirps/}.}
+    \caption{Side by side comparison of the {NIRPS} and {SPIRou} spectrographs. {NIRPS} is the one in front on the left.
+Credit \href{http://www.astro.umontreal.ca/nirps/}{http://www.astro.umontreal.ca/nirps/}.}
     \label{fig:nirps-vs-spirou}
 \end{figure}
