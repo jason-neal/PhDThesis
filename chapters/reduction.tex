@@ -678,11 +678,12 @@ The masked regions created by this last mask are shown in \cref{fig:visualinspec
 
 \missingfigure{Plots showing some examples the telluric correction with and without \ce{H2O} separated}
 
-\subsection{Barycentric correction}
-The orbital and rotational motion of the Earth imparts a daily and seasonal radial velocity signal offset onto observations.
-The maximum barycentric velocity is around 30\kmps{}.
+\subsection{Barycentric RV correction}
+After the telluric correction is performed, the spectra are corrected for Earth's barycentric motion. The orbital and rotational motion of the Earth imparts a daily and seasonal radial velocity measurement offset onto observations. To accurately compare the radial velocity (or spectral shift) between two measurements, they need to be translated into a common rest frame. The rest frame of choice is the barycentre of the Solar System.  Equations to relate the observed spectral shift to the RV shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in \citep{lindegren_fundamental_2003}.
 
-After the telluric correction is performed, the spectra are corrected for Earth's heliocentric motion by Doppler shifting the spectrum by the negative value of the barycentric velocity calculated, placing all spectra as if they were observed from the reference point of the Sun.
-The barycentric velocity is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
-This calculates radial velocity of the observatory towards the astronomical target, accounting for Earth's barycentric motion around the Sun as well as Earth's rotation.
+In this work the barycentric velocity correction is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
+This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion around the Sun as well as Earth's rotation.
 This computation requires the date and time of the observation, the location of the observatory and the celestial coordinates of the target.
+The observed spectra are Doppler shifted by the negative value of the barycentric velocity calculated, placing all spectra as if they were observed from the barycentre of the Solar System.
+
+The maximum barycentric velocity of the Earth is around 30\kmps{}. It is common to see spectral regions $\pm30$\kmps{} either side of telluric lines with an absorption depth >2\% avoided in analysis (such as RV determination), as these will be affected by the telluric lines at some point in the year.
