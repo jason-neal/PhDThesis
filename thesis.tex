@@ -127,18 +127,21 @@ urlcolor=hrefurlcolor]{hyperref}
 \extrafloats{50}
 
 \usepackage[
-%  				backend=bibtex,
+% backend=bibtex,
+backend=biber,
+date=year,
 style=authoryear,
 natbib=true,
 sorting=nyt,
 maxcitenames=2,
+maxcitenames=1,
 maxbibnames=7,	
 minbibnames=4,	
-backend=biber,
-uniquelist=false,
 giveninits=true,
-uniquename=false,
-doi=false,isbn=false,url=false
+doi=false,
+isbn=false,
+url=false,
+bibwarn=true,
 ]{biblatex}
 \addbibresource{thesis.bib}
 
@@ -229,8 +232,12 @@ doi=false,isbn=false,url=false
     \include{appendices/app_phd_output}
     %\include{appendices/cv_jneal}
     \cleardoublepage{}
+
     % Bibliography
+    %------------------------------------------------------------------------------
     \printbibliography[heading=bibintoc]
+    %------------------------------------------------------------------------------
+
     \nocite{}  % include everything.
 
 \end{document}
