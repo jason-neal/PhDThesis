@@ -1,4 +1,3 @@
-
 graphics
 tools
 exam
@@ -89,3 +88,6 @@ cancel
 soul
 genmisc
 cleveref
+logreq
+url
+bibtex
