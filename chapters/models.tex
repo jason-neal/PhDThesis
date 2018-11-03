@@ -29,8 +29,19 @@ Models help us to understand model, fit and predict the measurements and results
 
 
 \section{Evolutionary models}
+
+This work makes use of stellar evolutionary models, in particular those of Baraffe. 
+
+These models, try to model the evolution of stars from 
 Baraffe evolutionary models.
 \todo{Example from their paper of evolutionary tracks or something}
+
+
+The recent BT-Settl spectra also incorporate evolutionary track of baraffe 2015. for low mass stars.
+
+These models tabulate several properties of low-mass stars and BDs during their evolution.
+These include the temperature, radius, luminosity, and absolute magnitudes in several photometric bands, for a range of companion masses and stellar ages.
+
 
 
 \section{Estimating Companion-host Flux ratio}
@@ -45,9 +56,7 @@ where \(m_{1}\) and \(m_{2}\) are the magnitude of the host and companion respec
 
 The photometric apparent magnitudes for the host stars, \(m_{1}\), in several wavelength bands are easily obtained through online catalogues such as {SIMBAD}~\citep{wenger_simbad_2000} or {2MASS} \citep{skrutskie_two_2006}.
 However, the magnitudes of the companions, \(m_{2}\), are not readily available as they have not been directly measured.
-Stellar evolution models of \citet{baraffe_evolutionary_2003, baraffe_new_2015} are used to estimate the magnitude of the companion.
-These models tabulate several properties of low-mass stars and BDs during their evolution.
-These include the temperature, radius, luminosity, and absolute magnitudes in several photometric bands, for a range of companion masses and stellar ages.
+The stellar evolution models of \citet{baraffe_evolutionary_2003, baraffe_new_2015} are used to estimate the magnitude of the companion.
 A given companion mass, and a stellar age will uniquely identify a point in the Baraffe models which corresponds to a specific magnitude for the companion.
 The tables provided in \citet{baraffe_evolutionary_2003, baraffe_new_2015} are also interpolated to reach companion masses and stellar ages between the models provided.
 
