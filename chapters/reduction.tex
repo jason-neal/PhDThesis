@@ -679,10 +679,11 @@ The masked regions created by this last mask are shown in \cref{fig:visualinspec
 \missingfigure{Plots showing some examples the telluric correction with and without \ce{H2O} separated}
 
 \subsection{Barycentric RV correction}
+\label{{subsec:barycentriccorrection}}
 After the telluric correction is performed, the spectra are corrected for Earth's barycentric motion. The orbital and rotational motion of the Earth imparts a daily and seasonal radial velocity measurement offset onto observations. To accurately compare the radial velocity (or spectral shift) between two measurements, they need to be translated into a common rest frame. The rest frame of choice is the barycentre of the Solar System.  Equations to relate the observed spectral shift to the RV shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in \citep{lindegren_fundamental_2003}.
 
 In this work the barycentric velocity correction is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
-This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion around the Sun as well as Earth's rotation.
+This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion as well as Earth's rotation.
 This computation requires the date and time of the observation, the location of the observatory and the celestial coordinates of the target.
 The observed spectra are Doppler shifted by the negative value of the barycentric velocity calculated, placing all spectra as if they were observed from the barycentre of the Solar System.
 
