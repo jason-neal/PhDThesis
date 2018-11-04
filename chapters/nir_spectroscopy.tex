@@ -51,37 +51,45 @@ This equation has degeneracy as different combinations of $m \lambda$ will be di
 For instance the value $m \lambda$ for order $m=54$ at $\lambda=2100$\nm{} is that same as to order $m=55$ at $\lambda=2061.8$\nm{}.
 This degeneracy can be overcome in two ways, either apply a wavelength filter to specifically select only one order or by adding a cross-disperser.
 A \emph{cross-disperser} is a second dispersive element oriented to disperse the orders perpendicular to the grating.
-This allows for multiple orders to recorded simultaneously on a 2d detector, dramatically increasing the wavelength coverage.
+This allows for multiple orders to recorded simultaneously on a two-dimensional detector, dramatically increasing the wavelength coverage.
 Echelle spectrographs are a special type of spectrograph, with a groove shape and orientation specifically for high reflection angles, and to observe at a high spectral order (high $m$) to achieve a high dispersion and high resolution.
 
 Some important concepts for discussing spectrographs are the spectral resolution, resolving power, spectral coverage and spectral sampling.
 The spectral resolution, \(\delta \lambda\), is smallest difference in wavelength able to be identified.
 It is related to resolving power which is defined as \(R=\frac{\lambda}{\delta\lambda}\).
 The resolving power, R is colloquially also referred to as the resolution\footnote{This document is no different.} The higher the resolution (resolving power), R, the smaller the \(\delta\lambda\) that can be measured, leading to a high sampled spectral lines and more precise measurement.
-To be considered high-resolution, spectrographs typically have to have an \(R>20\,000\), but the definition of "high" can differ between fields of astronomy.
+To be considered high-resolution, spectrographs typically have \(R>20\,000\), but the definition of "high" can differ between sub-fields of astronomy.
 The spectral coverage is the range of wavelengths able to be covered by the spectrograph, while the spectral sampling is the number of pixels required to sample the FWHM of the spectral lines.
-This value should be higher than 2 pixels to satisfy Nyquist sampling.
+This value should be higher than 2 pixels per resolution element to satisfy Nyquist sampling.
+
 
 \todo{Finish this 3/11/18}
-\section{Detectors}
+\section{The detectors}
+The basic principles of spectroscopy are the same for optical and infrared are the same one difference is the design of the detector.
+Nowdays the most common type of detector are focal plane arrays, a two-dimensional of pixels located at the focal plane of the spectrographs camera. The purpose of the detector is to count the number of photons hitting each pixel in the array. This is achieved via the photoelectric effect on a crystalline structure, in which incident photons are transformed into electrons which can be recorded electronically. The energy necessary to excite an electron from the \emph{valence band} to the \emph{conduction band}, the characteristic band gap, is different for every material. Silicon is the best material for the detection of optical light (0.3-1.1\um), while in the near-infrared (1-5\um) two materials are used: {Mercury-Cadmium-Telluride} (\si{HgCdTe}) and {Indium Antimonide} (\si{InSb}). In the mid-infrared (5-20\um) arsenic doped Silicon is used (\si{Si}:\si{As}).
 
-Optical and Infrared Spectroscopy have the same basic principles although their designs are similar usually the optics are chosen specifically for the wavelengths i.e anti-reflection coatings, glass properties.
+Since photon energy is inversely proportional to wavelength\footnote{\(E_{photon} = \frac{h c}{\lambda}\), where $c$ is the speed of light, $h$ is Plank's constant and $\lamda$ wavelength.}, longer wavelength must have smaller band gaps. However, smaller band gaps are also more susceptible to electrons excited by thermal energy, known as the dark current. The dark current is dependant on detector temperature, the pixel size, quality of material and the materials cutoff wavelength $\lambda_c$. A summary of values for different material properties is given in \cref{}.
 
+\begin{table}
+    \caption{Properties of popular optical/IR detector materials. \epsilon_{g} is the material band gap, the minimum excitation energy. $\lamda_c$ is the cutoff wavelength corresponding to the maximum wavelength for each material. Common values for the detector operating temperature for the materials is given as $T_op$.}
+    \begin{tabular}{lcccc}
+        \toprule
+        Material   & Symbol & $\epsilon_{g}$[eV] & $\lambda_c$[\um] & T_{op}[\K]\\
+        \midrule
+        Silicon & \si{Si} & 1.12 & 1.1 & 163-300 \\
+        Mer-Cad-Tel & \si{HgCdTe} & 0.09-1.00 & 1.24-14& 20-80\\
+        Indium Antimonide & \si{InSb} & 0.23 & 5.5 & 30 \\
+        Arsenic doped Silicon & \si{Si}:\si{As} & 0.05 & 25 & 4 \\
+        \bottomrule
+    \end{tabular}
+\end{table} 
 
-To perform spectroscopy requires an instrument called a spectrograph.
-The purpose of which is to take the incoming star light and disperse it so that the different wavelength components separate.
-A simple example of this is the splitting of white light into a rainbow when passed through a prism.
+The technologies for optical and IR detectors are very different. A very brief comparison follows.
+Charge-Coupled Devices (CCDs) are used in the visible. Their use of silicon allows for the photo-induced electrons to methodically transfer the charge be from pixel to pixel along to an amplifier situated at one edge and measured with an analog-to-digital converter (ADC). CCDs require high charge transfer efficiency (CTE) to not leave charge behind, which would be assigned to the incorrect pixels. CCDs have an almost 100\% filling of photosensitive material.
+However the $\lambda_c$ cutoff of silicon makes them unsuitable for the IR. 
+More information on CCDs can be found in~\citep{howell_handbook_2000}.
 
-All spectrographs are comprised of a few key components.
-The first part is the front end optics responsible for collecting the light and getting it to the spectrograph, such as a telescope, entrance slit or fibre.
-The second part component dispersive elements inside the spectrograph, such as a prism or grating used to separate the wavelength components.
-The final part is the detector or camera, used to record the resulting spectrum.
-
-The design of spectrographs is highly dependant on the wavelength range observed.
-For instance {CCD} cameras (based on silicon) are readily used in the optical but silicon is a poor detector at \nir{} wavelengths.
-Instead \nir{} spectrographs need to use CMOS detectors which are composed of different materials that are sensitive to different wavelengths.
-{CRIRES} detectors specifically are made of \ce{InSb} (Indium antimonide) to perform spectroscopy between 1--5\um{}~\cite{dorn_crires_2004}.
-Other considerations are needed such as the composition of the optical components as well as any anti-reflection coatings used, all of which have different wavelength characteristics that need to be matched.
+composition of the optical components as well as any anti-reflection coatings used, all of which have different wavelength characteristics that need to be matched.
 
 \todo{I don't know where I am going with this section.}
 
@@ -93,6 +101,8 @@ This improves the contrast ratio between the host star and companion, providing 
 
 
 CRYOSTATS!
+
+Along the same line as the crystals in the detectors, the glass in the optics will have wavelength dependant transmission/absorption properties. These are tuned and specified for the maximum efficiency in the wavelength of interest. Even wavelength specific anti-reflection coatings are applied to stop
 
 
 \section{CRIRES}
