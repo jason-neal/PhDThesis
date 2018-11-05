@@ -62,62 +62,70 @@ To be considered high-resolution, spectrographs typically have \(R>20\,000\), bu
 The spectral coverage is the range of wavelengths able to be covered by the spectrograph, while the spectral sampling is the number of pixels required to sample the FWHM of the spectral lines.
 This value should be higher than 2 pixels per resolution element to satisfy Nyquist sampling.
 
-
-\todo{Finish this 3/11/18}
 \section{The detectors}
+\label{subsec:nir_detectors}
 The basic principles of spectroscopy are the same for optical and infrared are the same one difference is the design of the detector.
-Nowdays the most common type of detector are focal plane arrays, a two-dimensional of pixels located at the focal plane of the spectrographs camera. The purpose of the detector is to count the number of photons hitting each pixel in the array. This is achieved via the photoelectric effect on a crystalline structure, in which incident photons are transformed into electrons which can be recorded electronically. The energy necessary to excite an electron from the \emph{valence band} to the \emph{conduction band}, the characteristic band gap, is different for every material. Silicon is the best material for the detection of optical light (0.3-1.1\um), while in the near-infrared (1-5\um) two materials are used: {Mercury-Cadmium-Telluride} (\si{HgCdTe}) and {Indium Antimonide} (\si{InSb}). In the mid-infrared (5-20\um) arsenic doped Silicon is used (\si{Si}:\si{As}).
+Nowadays the most common type of detector are focal plane arrays, a two-dimensional of pixels located at the focal plane of the spectrographs camera. The purpose of the detector is to count the number of photons hitting each pixel in the array. This is achieved via the photoelectric effect on a crystalline structure, in which incident photons are transformed into electrons which can be recorded electronically. The energy necessary to excite an electron from the \emph{valence band} to the \emph{conduction band}, the characteristic band gap, is different for every material. Silicon is the best material for the detection of optical light (0.3-1.1\um), while in the near-infrared (1-5\um) two materials are used: {Mercury-Cadmium-Telluride} (\si{HgCdTe}) and {Indium Antimonide} (\si{InSb}). In the mid-infrared (5-20\um) arsenic doped Silicon is used (\si{Si}:\si{As}).
 
-Since photon energy is inversely proportional to wavelength\footnote{\(E_{photon} = \frac{h c}{\lambda}\), where $c$ is the speed of light, $h$ is Plank's constant and $\lamda$ wavelength.}, longer wavelength must have smaller band gaps. However, smaller band gaps are also more susceptible to electrons excited by thermal energy, known as the dark current. The dark current is dependant on detector temperature, the pixel size, quality of material and the materials cutoff wavelength $\lambda_c$. A summary of values for different material properties is given in \cref{}.
+Since photon energy is inversely proportional to wavelength\footnote{\(E_{photon} = \frac{h c}{\lambda}\), where $c$ is the speed of light, $h$ is Plank's constant and $\lambda$ wavelength.}, longer wavelength must have smaller band gaps. However, smaller band gaps are also more susceptible to electrons excited by thermal energy, known as the dark current. The dark current is dependant on detector temperature, the pixel size, quality of material and the materials cut-off wavelength $\lambda_c$. A summary of values for different material properties is given in \cref{tab:semiconductor_properties}.
 
 \begin{table}
-    \caption{Properties of popular optical/IR detector materials. \epsilon_{g} is the material band gap, the minimum excitation energy. $\lamda_c$ is the cutoff wavelength corresponding to the maximum wavelength for each material. Common values for the detector operating temperature for the materials is given as $T_op$.}
+    \caption{Properties of popular optical/{IR} detector materials. \(\epsilon_{g}\) is the material band gap, the minimum excitation energy. $\lambda_c$ is the cut-off wavelength corresponding to the maximum wavelength for each material. Common values for the detector operating temperature for the materials is given as $T_{op}$.}
     \begin{tabular}{lcccc}
         \toprule
-        Material   & Symbol & $\epsilon_{g}$[eV] & $\lambda_c$[\um] & T_{op}[\K]\\
+        Material & Symbol & $\epsilon_{g}$[eV] & $\lambda_c$[\um] & $T_{op}$[\K]\\
         \midrule
         Silicon & \si{Si} & 1.12 & 1.1 & 163-300 \\
         Mer-Cad-Tel & \si{HgCdTe} & 0.09-1.00 & 1.24-14& 20-80\\
         Indium Antimonide & \si{InSb} & 0.23 & 5.5 & 30 \\
         Arsenic doped Silicon & \si{Si}:\si{As} & 0.05 & 25 & 4 \\
         \bottomrule
-    \end{tabular}
+    \end{tabular}\label{tab:semiconductor_properties}
 \end{table} 
 
-The technologies for optical and IR detectors are very different. A very brief comparison follows.
-Charge-Coupled Devices (CCDs) are used in the visible. Their use of silicon allows for the photo-induced electrons to methodically transfer the charge be from pixel to pixel along to an amplifier situated at one edge and measured with an analog-to-digital converter (ADC). CCDs require high charge transfer efficiency (CTE) to not leave charge behind, which would be assigned to the incorrect pixels. CCDs have an almost 100\% filling of photosensitive material.
-However the $\lambda_c$ cutoff of silicon makes them unsuitable for the IR. 
-More information on CCDs can be found in~\citep{howell_handbook_2000}.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/spectroscopy/CMOS-vs-CCD-schema}
+    \caption{Schema differentiating {CCD} and {CMOS} detectors. In {CCDs} the charge is transferred to a specific pixel for measurement while in {CMOS} the charge is measured at the location of each pixel by individual amplifiers and ADCs.}
+    \label{fig:cmos-vs-ccd-schema}
+\end{figure}
 
-For IR the technology of choice is {CMOS} ( -Metal-Oxide- ). The design of CMOS is vastly different to CDDs, with every pixel having an individual amplifier and ADC. Unlike CCDs the no charge to be lost transfering between pixels. While reading out the pixels on a CCD is a destructive process (one-time) the circuitry on in CMOS can measure and remeasure the pixel without affecting the value. Multiple samplings can be performed to average out the read noise of the amplifiers, referred to as Fowler sampling ().
+The technologies for optical and {IR} detectors are very different. \Cref{fig:cmos-vs-ccd-schema} shows the main architectural difference between {CCD} and {CMOS} is given, with a very brief comparison  between them below.
+Charge-Coupled Devices ({CCDs}) are used in the visible. Their use of silicon allows for the photo-induced electrons to methodically transfer the charge be from pixel to pixel along to one end.
+The electrons from each pixel pass to into  amplifier to increase the signal, and then measured as a voltage difference with an analog-to-digital converter (ADC).
+As the charge is shifted between pixels {CCDs} require high charge transfer efficiency (CTE) to not leave charge behind, which would be assigned to the incorrect pixels.
+{CCDs} have an almost 100\% filling of photosensitive material. However the $\lambda_c$ cut-off of silicon makes them unsuitable for the {IR}. 
+More information on {CCDs} can be found in~\citep{howell_handbook_2000}.
 
-Having individual amplifiers leads to non-linearities in gain between pixels.  As there are slight differences between each pixel. Where as all pixels in a CCDs are uniformly read by the same circuitry.
+For {IR} the technology of choice is {CMOS} (Complementary Metal Oxide Semiconductor). Unlike {CCDs}, each individual pixel contains the circuity to read and amplify measure the charge in itself. Since the charge is read and amplified at each pixel there is no charge transfer between pixels and the readout is non-destructive.  As a consequence, the same pixel can be read several times, averaging and thus reducing the effective readout noise of each pixel. In theory, if one average $N$ measurements before an observation (of a freshly reset detector), and $N$ measurements of the observed charge after integration, the readout noise can be reduced by a factor of $\sqrt{(N)}$, referred to as Fowler Sampling~\citep{fowler_demonstration_1990}. Reading a {CMOS} detector is very versatile as it can be read in multiple ways, with the ability to randomly read any pixel at any time. 
+The filling area of the photosensitive material is reduced in {CMOS} due to the presence of support architecture that is required for the circulation the top surface, partially blocking some of the incident light, reducing their efficiency. 
 
-The design of CMOS detectors also requires circuity on the top-side of the pixels, effectively blocking parts of the photosensitive surface, reducing the detector efficiency.
+As it is impossible to have every individual amplifier perfectly identical amplifier, there is a small sensitivity and gain difference between {CMOS} pixels, which are exposed by calibrating with a uniform light source. This contrasts with the one or few amplifiers used in CCDs, which lead to extremely homogenous amplification (as all pixels are amplified by the same amplifier).
+The {CMOS} circuitry is also intrinsically non-linear due to the changing capacitance as charge is collected. Irrespective if the charge is photo-induced or dark current, the circuitry measurement changes with the pixel charge level. This requires careful characterization of the non-linearities in the detector by calibrating its response to a uniform light source for a large range of integration times.  For CRIRES there are a set of non-linearity coefficients that are applied while performing the flat-field corrections (see \cref{subsec:flat-field}).
 
-CMOS detectors can be produced with many different crystals with specific band gaps and sensitive to different wavelengths.
-
-
-
-
-composition of the optical components as well as any anti-reflection coatings used, all of which have different wavelength characteristics that need to be matched.
-
-\todo{I don't know where I am going with this section.}
-
-
-
-
-Observing in the \nir{} is specifically desirable for the cooler sub-stellar and giant planet companions as their thermal emission is stronger in the infrared compared to the optical.
-This improves the contrast ratio between the host star and companion, providing favourable conditions for their detection and spectral separation.
+Other benefits of {CMOS} detectors are that they use lower power, and do not need a mechanical shutter (they can be reset electronically). While {CCDs} have been manufactured almost the same way for the last 40 years, {CMOS} technology is still advancing, partially driven by the consumer electronics market. Nowadays, most cellphone and laptop cameras use {CMOS} chips, helping to push investment in this technology. After the charge has been digitized into a number, the processes once again similar for both technologies.
 
 
-CRYOSTATS!
+\subsection{Spectrograph cooling}
+\label{subsec:cold_spectrogrpah}
+Spectrographs must be cooled down for their detectors operate effectively as seen in \cref{tab:band_ranges}. 
+This is achieved by placing spectrographs and their supporting components inside a vacuum chamber, away from all warm (radiating) component and cooled to low temperature.
+These are often referred to as cryostats.
+Modern instruments use closed-cycle refrigerators, with for example, helium as the working fluid to achieve very stable low temperatures inside the cyrostat.
+Providing a isolated, and stable environment for the spectrograph allows spectra science to be performed with the high precision possible, essential for detecting and charactering  exoplanets.
 
-Along the same line as the crystals in the detectors, the glass in the optics will have wavelength dependant transmission/absorption properties. These are tuned and specified for the maximum efficiency in the wavelength of interest. Even wavelength specific anti-reflection coatings are applied to stop
+Cooling plays two important roles for IR astronomy.
+Firstly, the thermal infrared emission from the components of the spectrograph surrounding the detector is reduced, diminishing the local background.
+Secondly, the detectors own thermally-generated background (dark current) is greatly reduced at low temperatures, leading to a gain in sensitivity.
 
+Examples of two cryostat housings surrounding the spectrograph (but shown open) can be seen below in \cref{fig:nirps-vs-spirou}.
 
-\section{CRIRES}
-CRIRES (Cryogenic InfraRed Echelle Spectrograph) is an ESO IR spectrogrpah that was mounted on the Unit Telescope (UT1, Autu) of the European Southern Observatory Very Large Telescope (VLT)~\citep{kaeufl 2004 } from XXX \textbf{p 79} - though July 2014\footnote{Note this PhD research began in October 2014.}.
+\section{A few nIR spectrographs}
+In this last section the details about the \nir{} spectrographs relevant to this work are presented.
+
+\subsection{CRIRES}
+\label{section:CRIRES}
+CRIRES (Cryogenic InfraRed Echelle Spectrograph) is an ESO {IR} spectrogrpah that was mounted on the Unit Telescope (UT1, Autu) of the European Southern Observatory Very Large Telescope (VLT)~\citep{kaeufl 2004 } from XXX \textbf{p 79} - though July 2014\footnote{Note this PhD research began in October 2014.}.
 The main optical elements consist of a prism pre-disperser and a 31.6\,lines/mm echelle grating.
 The instrument provides resolutions up to 100\,000 when used with a 0.2$\matharcsec$ slit\footnote{The rule of thumb for the resolution of CRIRES is \(R = 100000 \times \frac{\textrm{slit width}}{0.2\matharcsec}\), with the slit width in arcseconds.}.
 The wavelength range is 960--5200\nm with an instantaneous wavelength coverage of \(\sim \lambda/50\).
@@ -125,7 +133,7 @@ The spectra are imaged on a detector mosaic, consisting of four Aladdin III dete
 Adaptive optics (MACAO - Multi-Applications Curvature Adaptive optics) can be used to optimize the signal-to-noise ratio and the spatial resolution.
 \Cref{fig:criresschematic} displays the schematic representation of the CRIRES optical layout.
 
-CRIRES lead the way for high-resolution spectrograph in the IR with a resolution higher than any of its predecessors, and unique capabilities, like AO.
+CRIRES lead the way for high-resolution spectrograph in the {IR} with a resolution higher than any of its predecessors, and unique capabilities, like AO.
 As with any new instrument there were several problems that affected CRIRES during its Science operations.
 For instance there were several mechanical issues with the slit; the slit edges were not parallel and there were issues with precise and reproducible positioning.
 Other issues such as detector glow, the odd even effect and the wavelength calibration are corrected detailed in \cref{subsubsec:darkcurrent, subsec:flat-field, subsec:wavecalib}.
@@ -168,7 +176,7 @@ A few points about some of the \nir{} instruments used in this work are detailed
         Wavelength Range (\nm) & 920--5200 & 960--1710 & 970--1810 & 980--2350 \\
         Resolution & 50\,000/100\,000 & 80400 & 75\,000/100\,000 & \\
 
-        %Mean sampling (pixels) & & 2.8 & 3 & \textbf{1.8}??? \todo{Pedro do you have this number? from a velocity size of 2.28 km/s I think I calculate a sampling of 1.8}\\
+        % Mean sampling (pixels) & & 2.8 & 3 & \textbf{1.8}??? \todo{Pedro do you have this number? from a velocity size of 2.28 km/s I think I calculate a sampling of 1.8}\\
 
         RV precision(\mps) & 2--3 & $\sim$ 1 & 1 & 1\\
         Operating Temperature (\K)& & 285, 140 & 80 & 77 \\
@@ -179,10 +187,10 @@ A few points about some of the \nir{} instruments used in this work are detailed
 
 \todo{Is there other properties I should add}
 
-\subsection{CRIRES+}
+\subsubsection{CRIRES+}
 \label{subsec:criresplus}
 CRIRES was removed from operation in 2014 to undergo significant upgrades\citep{dorn_crires_2014}.
-These include adding a cross-disperser to increase the simultaneous wavelength coverage by up to a factor of 10, improving the wavelength calibration by replacing the \thar{} calibration lamp with a \une{} lamp which has a richer set lines in the IR, and developing new multi-species gas absorption cells for the IR.
+These include adding a cross-disperser to increase the simultaneous wavelength coverage by up to a factor of 10, improving the wavelength calibration by replacing the \thar{} calibration lamp with a \une{} lamp which has a richer set lines in the IR, and developing new multi-species gas absorption cells for the {IR}.
 The new upgrade adds the capability for spectropolarimetry using a polarization selective beam-splitter, in which the polarization of light in the spectrum can be analysed.
 The current detector mosaic will be replaced by 3 Hawaii 2RG detectors (\(6144\times 2048\) pixels) at a pixel size of 18\um{}.
 A comparison between the new and old detector size is shown in \cref{fig:criresplus_detecotrs}.
@@ -198,7 +206,7 @@ The current estimate for the first light of CRIRES+ is first quarter of 2019.
     \label{fig:criresplus_detecotrs}
 \end{figure}
 
-\subsection{CARMENES}
+\subsubsection{CARMENES}
 \label{subsec:carmenes}
 {CARMENES} (Calar Alto high-Resolution search for M dwarfs with Exoearths with Near-infrared an optical \'Echelle Spectrographs) has been operating since 2016, performing an dedicated RV survey of \(\sim300\) late-type main-sequence stars with the goal of detecting low-mass planets in the habitable zone.
 It is mounted on the 3.5\si{\metre} telescope at the Calar Alto Observatory in Spain, the light from the telescope is passes through a beam splitter and enters into two separate spectrographs, one in the optical (520--960\nm) and the other in the infrared (960--1710\nm).
@@ -206,16 +214,16 @@ A library of single spectra of the {M-dwarf} targets CARMENES is monitoring was 
 
 \subsubsection{NIRPS}
 \label{subsec:nirps}
-{NIRPS} (Near-InfraRed Planet Searcher) is a \nir{} extension to the HARPS spectrograph on the 3.6\si{\metre} telescope at La Silia, Chile.
+{NIRPS} (Near-InfraRed Planet Searcher) is a \nir{} extension to the {HARPS} spectrograph on the 3.6\si{\metre} telescope at La Silia, Chile.
 One of the most prominent spectrographs detecting exoplanets via a RV method.
-A replacement for the HARPS telescope adapter will be used to split the light and send the optical wavelengths to HARPS and IR to NIRPS via fibres.
+A replacement for the {HARPS} telescope adapter will be used to split the light and send the optical wavelengths to {HARPS} and {IR} to {NIRPS} via fibres.
 The adaptor also includes AO and new calibration unit.
 
 This will allow for the RV monitoring of cooler stars which, emit more of their photons in the infrared but also have less stable optical spectra due to convection; infrared spectra are less affected by the stellar activity.
 
 \subsubsection{SPIRou}
 \label{subsec:spirou}
-{SPIRou} (SPectroplorim\`etre InfraROUge) is another high-resolution \nir{} spectrograph that will be installed at the CFHT (Canada-France-Hawaii Telescope) in Hawaii.
+{SPIRou} (SPectroplorim\`etre InfraROUge) is another high-resolution \nir{} spectrograph that will be installed at the {CFHT} (Canada-France-Hawaii Telescope) in Hawaii.
 It will provide a spectrum covering from 950--2340\nm{} in a single exposure at a resolution of around \(\sim75\,000\).
 Like the other spectrographs detailed here it is built to obtain very high radial velocity accuracy, of the order meters/second over several year.
 It also includes spectropolarimetry, being able to derive the linear and circularly polarized state of the observed target.
@@ -228,3 +236,7 @@ A physical side-by-side comparison of the {NIRPS} and {SPRIou} spectrographs is 
 Credit \href{http://www.astro.umontreal.ca/nirps/}{http://www.astro.umontreal.ca/nirps/}.}
     \label{fig:nirps-vs-spirou}
 \end{figure}
+
+
+\todo{the Atmopshere in the nir}
+
