@@ -89,6 +89,17 @@ Charge-Coupled Devices (CCDs) are used in the visible. Their use of silicon allo
 However the $\lambda_c$ cutoff of silicon makes them unsuitable for the IR. 
 More information on CCDs can be found in~\citep{howell_handbook_2000}.
 
+For IR the technology of choice is {CMOS} ( -Metal-Oxide- ). The design of CMOS is vastly different to CDDs, with every pixel having an individual amplifier and ADC. Unlike CCDs the no charge to be lost transfering between pixels. While reading out the pixels on a CCD is a destructive process (one-time) the circuitry on in CMOS can measure and remeasure the pixel without affecting the value. Multiple samplings can be performed to average out the read noise of the amplifiers, referred to as Fowler sampling ().
+
+Having individual amplifiers leads to non-linearities in gain between pixels.  As there are slight differences between each pixel. Where as all pixels in a CCDs are uniformly read by the same circuitry.
+
+The design of CMOS detectors also requires circuity on the top-side of the pixels, effectively blocking parts of the photosensitive surface, reducing the detector efficiency.
+
+CMOS detectors can be produced with many different crystals with specific band gaps and sensitive to different wavelengths.
+
+
+
+
 composition of the optical components as well as any anti-reflection coatings used, all of which have different wavelength characteristics that need to be matched.
 
 \todo{I don't know where I am going with this section.}
