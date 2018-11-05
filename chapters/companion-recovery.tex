@@ -45,8 +45,8 @@ They set a minimum library \(\teff{}=2\,300\)\K{} to avoid the temperatures at w
 This unfortunately limits the use of this library for this technique to the largest mass companions in our sample.
 For example a \(\teff{}=2\,300\)\K{} corresponds to a {BD} with \(\textrm{M}\sim84\)\Mjup{} at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models.
 
-There are other models that extend below 2\,300\K{} such as the {BT-Settl} models~\citep{allard_btsettl_2013,baraffe_new_2015}.
-These are discussed in \cref{subsubsec:BT-Settl}.
+There are other models that extend below 2\,300\K{} such as the {BT-Settl} models~\citep{allard_btsettl_2013, baraffe_new_2015}.
+These are discussed in \cref{subsec:btsettl}.
 
 
 \subsection{\texorpdfstring{\textchisquared}\ \ method}
@@ -65,7 +65,7 @@ We do not, however, combine the \textchisquared{} values across the separate obs
 However, since the current observations are insufficiently separated, it may be possible to combine the separate observations; but in general this would not be the case, so was not performed.
 
 The inverse survival function of the \textchisquared{} distribution is used to determine the confidence levels on the minimum \textchisquared{} parameters.
-The inverse survival function returns a \(\Delta\chisquared\) value from the minimum \textchisquared{} value for a given sigma level and degree of freedom\footnote{In \emph{Python} with the \emph{scipy} package this is a single line \texttt{scipy.stats.chi2{(dof)}.isf{(1-p)}}, where \(p = 0.68\) for 1-\(\sigma\), and dof is the degree of freedom.}.
+The inverse survival function returns a \(\Delta\chisquared\) value from the minimum \textchisquared{} value for a given $\sigma$ level and degree of freedom\footnote{In \emph{Python} with the \emph{scipy} package this is a single line \texttt{scipy.stats.chi2{(dof)}.isf{(1-p)}}, where \(p = 0.68\) for 1-\(\sigma\), and dof is the degree of freedom.}.
 For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}.
 This method assumes that the measured flux is observed with a \snr{} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
 
@@ -121,7 +121,7 @@ In the case of a {BD} companion around an FGK star investigated here, the contin
 We combine the models in this way to represent the correct absolute flux ratio of the components.
 The median flux ratio between the two components is calculated for the wavelength range used here as an indication of the flux ratio level.
 
-The binary model should provide meaningful information about the companion parameters (e.g.\ \(\teff{}\)) and a estimate of the flux ratio of the system.
+The binary model should provide meaningful information about the companion parameters (e.g.\ \(\teff{}\)) and an estimate of the flux ratio of the system.
 These can be combined with the~\citet{baraffe_evolutionary_2003} models to constrain the mass of the companion.
 However, we need to be careful with this model as the inclusion of extra spectral components and associated parameters could also provide a better fit to observations which do not have a companion, by fitting components of the noise.\\
 
@@ -139,11 +139,11 @@ To combine the two synthetic spectra with the correct observed flux ratio we nee
 Ignoring the common multiplicative constants that will disappear with normalization, we scale the two synthetic spectra individually by the square of their respective radii, \(R_1\) and \(R_2\).
 
 In this work we use the effective radius (PHXREFF keyword) of each component from the {PHOENIX} model headers.
-This is the radius used in modelling of the stellar atmospheres.
+This is the radius used in modelling the stellar atmospheres.
 We use this radii as it is directly tied to each model spectrum, and already available.
 The ratio of the radii from the two synthetic spectra in the binary models are provided in \cref{tab:example_params}.
 
-We are aware that using these radii radii has its limitations, since as stated previously, there is a degeneracy in {BD} mass, age, and luminosity of the companion, and in particular a combination of radius-mass and radius-age relationships~\citep{sorahana_radii_2013}.
+We are aware that using these radii has its limitations since as stated previously: there is a degeneracy in {BD} mass, age, and luminosity of the companion, and in particular a combination of radius-mass and radius-age relationships~\citep{sorahana_radii_2013}.
 Using the {PHOENIX-ACES} model effective radius does not allow for any independent age constraints to be incorporated, or allow for any variability in the radii to account for uncertainties.
 
 The targets analysed here do not have transits, but if the radius ratio can be independently determined from the photometric transit method~\citep{deeg_photometric_1998} then this could be used to constrain the radius ratio used when combing the binary model spectra instead.
@@ -151,7 +151,7 @@ The targets analysed here do not have transits, but if the radius ratio can be i
 
 \subsection{Re-normalization}
 \label{subsec:renorm}
-Slight trends in the continuum level between the observed spectra and computed models were removed using the re-normalization following~\citep{passegger_fundamental_2016}:
+Slight trends in the continuum level between the observed spectra and computed models were removed using the re-normalization following~\citet{passegger_fundamental_2016}:
 \begin{equation}
 F^{obs}_{re-norm} = F^{obs} \cdot \frac{\textrm{continuum fit}_{model}}{\textrm{continuum fit}_{observations}}.
 \end{equation}
@@ -178,9 +178,9 @@ Our second is to assume that we can significantly reduce the search space with l
 We fix the metallicity of both components to the closest grid to the literature value (usually \feh{}=0.00).
 We also fix the \logg{} of the host star to its literature values given in \cref{tab:starparams}.
 The uncertainties on the literature measurements for \logg{} (\(\sim\)0.1) and metallicity (\(\sim\)0.05) are both smaller than the grid steps of 0.5 for these parameters.
-For the \logg{} of the companion we use the~\citet{baraffe_evolutionary_2003,baraffe_new_2015} evolutionary model value for the given companions \(\textrm{M}_2\)/\mtwosini{} and hosts age.
+The \logg{} of the companion is obtained from the~\citet{baraffe_evolutionary_2003,baraffe_new_2015} evolutionary models for the given companions \(\mtwo\)/\mtwosini{} and hosts age.
 
-We use the estimated companion temperatures from the Baraffe evolutionary models given the companion \(\rm M_2\) or \mtwosini{} and stellar age as a starting point for the companion spectra grid computation and extend the grid in each direction, within the model limits.
+We use the estimated companion temperatures from the Baraffe evolutionary models given the companion (minimum) mass and stellar age as a starting point for the companion spectra grid computation and extend the grid in each direction, within the model limits.
 For example we show the companion temperature grid spanning \(-600\) to \(+400\)\K{} in \cref{fig:Mdwarf_contours} and \(\pm400\)\K{} in \cref{fig:HD211847_simulated_contours, fig:HD211847_result_contours}.
 
 The large numbers stated above also do not include the {RV} grid for each component.
@@ -272,11 +272,11 @@ In the bottom right panel there appears to be multiple minima for different \({r
 In both simulations the reduced \(\chisquared_{red}\) for the binary model is closer to 1.
 This is not surprising as the binary model contains extra parameters.
 As mentioned above, we need to be careful, as the extra components from the binary may just happen to fit components of the noise when a binary is not present, or in our case has a low flux ratio.
-{\red{} We analysis the significance between the two models using the ``Bayesian Information Criterion'' ({BIC})~\citep{schwarz_estimating_1978}; }
+{\red{} the significance between the two models is analysed using the ``Bayesian Information Criterion'' ({BIC})~\citep{schwarz_estimating_1978}; }
 \begin{equation}
 {BIC} = n\ln{(m)} - 2\ln{(\hat{L})}.
 \end{equation}
-{\red{} Here \(n\) and \(m\) are the number of parameters and data points respectively and \(\hat{L}\) is the maximum of the Gaussian likely-hood function }
+{\red{} Here \(n\) and \(m\) are the number of parameters and data points respectively and \(\hat{L}\) is the maximum of the Gaussian likely-hood function}
 \begin{equation}
 \hat{L} = {\left(\frac{1}{\sigma \sqrt{2\pi}}\right)}^{m} \exp{\left(-\frac{\chisquared}{2}\right)},
 \end{equation}
@@ -284,14 +284,12 @@ As mentioned above, we need to be careful, as the extra components from the bina
 The maximum likely-hood of a Gaussian distribution is equivalent  to minimizing the \textchisquared.
 In both simulations \(\Delta {BIC} >10\) so the preference of the binary model, with the lower {BIC} value, over the single component model is considered \emph{significant}.}
 
-
-
 \subsection{HD211847 observation}
 \label{subsection:results-hd211847}
 {HD 211847} is the best candidate for detection as it has a \(\rm 155~M_J\) low-mass star companion~\citet{moutou_eccentricity_2017}.
-The angular separation of the two bodies is 222 mas (or 11.3 au).
+The angular separation of the two bodies is 222\mas{} (or 11.3\AU).
 Even though it is not a {BD} it has the highest estimated flux ratio in our sample, of 0.03 based on the~\citet{baraffe_new_2015} evolution models and the known companion mass (see \cref{tab:estimatedparameters}).
-The angular separation of HD211847B is 222 mas with a projected distance of The result of applying \textchisquared{} fitting to the second observation of {HD 211847} is shown in \cref{fig:HD211847_result_contours}.
+The angular separation of HD211847B is 222\mas{} with a projected distance of \todo{find projected distance}{XXX}. The result of applying \textchisquared{} fitting to the second observation of {HD 211847} is shown in \cref{fig:HD211847_result_contours}.
 
 For this target the metallicity of both components was fixed to 0.0 and the \logg{} for the host was fixed at 4.5.
 The \logg{} for the companion is fixed to 5.0, based on the~\citet{baraffe_new_2015} evolutionary models for the given companion mass and system age.
@@ -370,7 +368,7 @@ We repeated this for injected companions with temperatures below 5\,000\K{}.
 
 We also perform the injection-recovery with synthetic host spectra, representing each target.
 The wavelength range of the synthetic spectra used for this is three sections interpolated to 1\,024 values in the wavelength span of detectors 1, 2, and 3.
-For each section, Gaussian noise is added at the level measured in the corresponding detector for the in the observation of the target being represented.
+For each section, Gaussian noise is added at the level measured in the corresponding detector in the observation of the target being represented.
 
 In \cref{fig:injection-recovery} we show the results of the injection-recovery on {HD 30501}.
 The blue dots represent the recovered companion temperature when injected into real observations, while the orange triangles represent injection into a synthetic host.
@@ -381,7 +379,7 @@ The grey shaded region indicates the \(\pm1\,000\)\K{} temperature range explore
 This shows how the bounds of the grid are recovered at low temperatures.
 
 For {HD 30501} the injection onto synthetic and observed spectra produce similar results.
-At temperatures above 3\,800\K{} in both the real and synthetic the injected companion is recovered within 100\K{}.
+At temperatures above 3\,800\K{}, in both the real and synthetic spectra, the injected companion is recovered within 100\K{}.
 For injected companion temperatures below 3\,800\K{} the temperature recovered is systematically higher than the injected value.
 This indicates that the companion is not correctly recovered and is affected by the added noise.
 We determine this temperature to be the upper temperature limit for the recovery.
@@ -414,10 +412,10 @@ Gaussian noise added to the synthetic spectra was derived from the observed spec
     \centering
 %    \includegraphics[width=0.95\hsize]{images/chi2_shape_investigation_sigmas.pdf}
     \caption{(top) Companion temperature verses \textchisquared{} for simulations with different injected companion temperatures.
-Other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5\,200\)\K{}, \(\textrm{logg}_1=4.5\), \(\textrm{logg}_2=5.0\), and both \feh{}=0.0.
+Other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5\,200\)\K{}, \(\logg_1=4.5\), \(\logg{}_2=5.0\), and both \feh{}=0.0.
 A fixed Gaussian noise corresponding to a \snr{} of 300 was used.
        (bottom) A close up view of \textchisquared{} < 15.
-The three horizontal grey lines indicate the 1, 2, 3 sigma with 2 degrees of freedom.
+The three horizontal grey lines indicate the 1-, 2-, 3-$\sigma$ with 2 degrees of freedom.
 The vertical dotted lines indicate the location of the minimum \textchisquared{} recovered for each companion.
 The black solid vertical in both panels shows the 2\,300\K{} cut-off of the {PHOENIX-ACES} models}
     \label{fig:injection_shape}
