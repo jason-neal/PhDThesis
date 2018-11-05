@@ -36,58 +36,9 @@ This has previously helped to aid the direction of instrument design by identify
 
 
 
-\section{Radial velocity precision}
-The first detections of extrasolar planets with the {RV} technique were hot-Jupiters; Jupiter mass planets in close orbits to their star.
-The RV precision required to detect the first hot-Jupiter, 51 Peg b, was \todo{find mayor queloz precision achieved}~\cite{mayor_jupitermass_1995} \textbf{using }\todo{what reference} Since that time the instrumental development and the detection and observation techniques have been refined to achieve {RV} precisions better than 1\mps{}.
-The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}, which is the level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
+\subsubsection{summarize}
+Summarize the derivation from \cref{section:rv_precision}.
 
-Over the years the community has pushed the limits of this technique to smaller and smaller planetary masses.
-An example is shown in \cref{fig:year_mass}.
-
-\begin{figure}
-\includegraphics[width=0.8\linewidth]{figures/year_planet_mass.png}
-\caption{Mass of discovered planets verse year.
-From Exoplanet.eu}
-\label{fig:year_mass}
-\end{figure}
-
-
-{RV} amplitude scales with mass of the star \({M_{\star}}^{-2/3}\) and with the planetary orbital period \({P_{\textrm{orb}}}^{-2/3}\).
-
-The detection of an Earth-mass planet inside the habitable zone around a solar-type star, the {RV} amplitude is 10 \cmps{}.
-If a planet with the same characteristics is instead orbiting an {M-dwarf}, the {RV} amplitude is larger than 1\mps{}.
-This is due to two factors, the smaller mass of the host star, and the closer habitable zone, due to a lower luminosity output of the host.
-
-\missingfigure{table of rv precisions}
-
-\begin{table}
-    \centering
-    \caption{The RV semi-amplitude induced by the plants with different masses and periods around a 1 \Msun-mass star.}
-    \begin{tabular}{lcccc}
-       \toprule
-       \(M_2\) & \(K_1\)( $P = 3$\,d) & \(K_1\) ($P = 1$\si{yr}) & \(K_1\) ($P = 5$\si{yr})& \\
-       \midrule
-       \Mjup  & 140.8 & 28.4 & 16.6& \mps{}\\
-       \(\textrm{M}_{Nep}\) & 7.60 & 1.53& 0.90 \mps{}\\
-        \Modot & 44.3 & 8.9 & 5. & \mps{}\\
-       
-       \bottomrule
-    \end{tabular}
-\end{table}
-\citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an {M-dwarf}, and found that state-of-the-art atmosphere models over-predict the \emph{Y}- and \emph{J}-band {RV} content by more than a factor of \(\sim 2\), while under-predicting the \emph{H} and \emph{K}-band content by half.
-{\red{} in this work we find similar?}
-
-We are currently aiming to extend this work over the whole {M-dwarf} range, from {M0}-{M9}.
-
-\todo{History of Precision calculations}
-History of Precision calculations:
-Connes 1\,985 -
-Bouchy et al.
-2001  - photon noise limit on rv measurements.
-\cite{figueira_radial_2016} - focus on {M-dwarfs} parameter range to specify new instrumentation windows to focus.
-Reiners 2017 -  {CARMENES} sample.
-Some precision
-pedros school section other precision source \({r}^{1.5}\)
 
 
 \subsection{Fundamental photon noise limitation}
@@ -270,10 +221,6 @@ Here the $\sqrt{F}$ represents the SNR of the spectrum in the possion-noise domi
 The $\Lambda$ comes from assuming a homogenous distribution of line, with the same line properties, per unit length.
 
 
-The 1.5 factor.....
-
-\subsubsection{summarize}
-Summarize the derivation
 
 \subsection{Prepare phoenix aces models}:
 \# see~\citet{figueira_radial_2016}
