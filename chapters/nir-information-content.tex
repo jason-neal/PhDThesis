@@ -4,47 +4,44 @@
 \chapter{Information content of \nir{} Spectra}
 \label{cha:nir_content}
 
-The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra, specifically the radial velocity precision in the \nir{}. \todo{this doesn't seem right}{It is very different from the previous chapters in which the detection of the companions spectra was attempted.}
+The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra,  specifically the radial velocity precision in the \nir{}.
+This work is not directly related to detecting exoplanet atmospheres themselves but investigates the theoretical and observed {RV} precision of {M-dwarf} spectra in the \nir{}. Aiding future detections of the detection of future 
+This can help in detecting the presence of ``habitable Earth-like'' planets around {M-dwarfs} which could become prime targets for future exoplanet atmosphere studies.
 
-The field of exoplanet detection in the \nir{} is expanding with several new high resolution \nir{} spectrographs available in the near future (see \cref{subsec:new_generation}).
-One science objective common to all four instruments is the detection small mass planets around {M-dwarf} stars utilizing the radial velocity technique.
-The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to influence some design choices of {SPIRou}, {NIRPS}. For instance NIRPS opted not to cover the K-band, favouring a higher spectral resolution and simplicity, but preserved the possibility for adding a K-band spectrograph in a separate cyrostat in the future.
+The field of exoplanet detection in the \nir{} is expanding with several new high-resolution \nir{} spectrographs becoming available in the near future (see \cref{subsec:new_generation}).
+One science objective common to all four instruments is the detection of small mass planets around {M-dwarf} stars utilizing the radial velocity technique.
+The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to influence some design choices of {SPIRou}, {NIRPS}. For instance {NIRPS} opted not to cover the \emph{K}-band, favouring a higher spectral resolution and simplicity, but preserved the possibility for adding a K-band spectrograph in a separate cyrostat in the future.
 
 The purpose of the work presented in this chapter is to extend the work of~\citet{figueira_radial_2016}, computing the theoretical RV precision of stellar spectra over a wider range of situations.
-A investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of RV precision of he recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed.
+An investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of RV precision of the recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed.
 This is to test how the {RV} precision of synthetic models compares to reality.
-The aim is to compare the fundamental precision of \nir{} spectra to the synthetic models, to
+The aim is to compare the fundamental precision of observed \nir{} spectra to the synthetic models.
 
 
 \section{Overview}
-
+\todo{remove duplication}
 The pursuit of detecting exoplanets, especially ``habitable'' and ``Earth-like'' planets, requires state-of-the-art instrumentation with high precision.
 One of the key detection methods, the Radial Velocity ({RV}) method, measures the wobble induced on the Star by the planet as they orbit their common barycentre \reference{rv method}.  {\red{} add Some stuff about mass and period from Pedros paper}  \todo{put in introduction??}
 
+\todo{derivation of rv?}
 
-
-A increase in the number of \nir{} spectrographs is increasing to focus on cooler {M-dwarfs} stars which have a easier* chance of detecting Earth-like planets in the habitable zone. \change{Check mission statements for these}{SPIRou, {NIRPS}} and {CARMENES}.
-Also {CRIRES+}\ldots{}
-This work continues the assessment of {RV} precision levels possible in this domain.
-\todo{For example from Figueira 2016 see figure} A more precise measurement can be achieved from X band then the \emph{Y}-band\ldots{} or in order XYZ of precision.
+The number of \nir{} spectrographs focusing on cooler {M-dwarfs} stars is increasing, which have a relatively better chance of detecting Earth-like planets in the habitable zone. This work continues the assessment of {RV} precision levels possible in the the \nir{} domain, an extension of~\citep{figueira_radial_2016}.
 
 \missingfigure{An example from Figueira et al.
 2016}
 
 
 
-This work is not directly related to detecting exoplanet atmospheres themselves but investigates the theoretical and observed {RV} precision of {M-dwarf} spectra in the \nir{}.
-This has previously helped the aid the direction of instrument design by identifying the wavelength regions with the best {RV} precision~\citep{figueira_radial_2016} but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed {SNR}.
-This can help in detecting the presence of ``habitable Earth-like'' planets around {M-dwarfs} which will likely have their atmospheres eventually probed.
+This has previously helped to aid the direction of instrument design by identifying the wavelength regions with the best {RV} precision~\citep{figueira_radial_2016} but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed {SNR}.
+
 
 
 \section{Radial velocity precision}
 The first detections of extrasolar planets with the {RV} technique were hot-Jupiters; Jupiter mass planets in close orbits to their star.
-The RV precision required to detector the first hot-Jupiter, 51 Peg b, was \todo{find mayor queloz precision achieved}~\cite{mayor_jupitermass_1995} using \todo{what reference} Since that time the instrumental development and the detection and observations technique refined to achieve {RV} precisions better than 1\mps{}.
-The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}.
-The level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
+The RV precision required to detect the first hot-Jupiter, 51 Peg b, was \todo{find mayor queloz precision achieved}~\cite{mayor_jupitermass_1995} \textbf{using }\todo{what reference} Since that time the instrumental development and the detection and observation techniques have been refined to achieve {RV} precisions better than 1\mps{}.
+The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}, which is the level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
 
-Over the years the community has push the limits of this technique to smaller and smaller planetary masses.
+Over the years the community has pushed the limits of this technique to smaller and smaller planetary masses.
 An example is shown in \cref{fig:year_mass}.
 
 \begin{figure}
@@ -58,9 +55,25 @@ From Exoplanet.eu}
 {RV} amplitude scales with mass of the star \({M_{\star}}^{-2/3}\) and with the planetary orbital period \({P_{\textrm{orb}}}^{-2/3}\).
 
 The detection of an Earth-mass planet inside the habitable zone around a solar-type star, the {RV} amplitude is 10 \cmps{}.
-If that a planet with the same characteristics is instead orbiting a {M-dwarf}, the {RV} amplitude is larger than 1\mps{}.
+If a planet with the same characteristics is instead orbiting an {M-dwarf}, the {RV} amplitude is larger than 1\mps{}.
 This is due to two factors, the smaller mass of the host star, and the closer habitable zone, due to a lower luminosity output of the host.
 
+\missingfigure{table of rv precisions}
+
+\begin{table}
+    \centering
+    \caption{ The RV semi-amplitude induced by the plants with different masses and periods around a 1 \Msun-mass star.}
+    \begin{tabluar}{lcccc}
+       \toprule
+       \(M_2\) & \(K_1\)( $P = 3$\,d) & \(K_1\) ($P = 1$\si{yr}) & \(K_1\) ($P = 5$\si{yr})& \\
+       \midrule
+       \Mjup  & 140.8 & 28.4 & 16.6& \mps{}\\
+       \(\texrm{M}_{Nep}\) & 7.60 & 1.53& 0.90 \mps{}\\
+        \Modot & 44.3 & 8.9 & 5. & \mps{}\\
+       
+       \bottomrule
+    \end{tabular}
+\end{table}
 \citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an {M-dwarf}, and found that state-of-the-art atmosphere models over-predict the \emph{Y}- and \emph{J}-band {RV} content by more than a factor of \(\sim 2\), while under-predicting the \emph{H} and \emph{K}-band content by half.
 {\red{} in this work we find similar?}
 
