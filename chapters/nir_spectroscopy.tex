@@ -192,16 +192,17 @@ A few points about some of the \nir{} instruments used in this work are detailed
     \caption{A comparison between some high-resolution \nir{} spectrographs.}
     \begin{tabular} {lcccc}
         \toprule
-        & {CRIRES+} & {CARMENS} (Red arm) & {NIRPS} & {SPIRou}\\
+        & {CRIRES+} & {CARMENS} (red) & {NIRPS} & {SPIRou}\\
         \midrule
-        Location & Paranal, Chile & Calar Alto, Spain & La Silla, Chile& Mauna Kea, Hawaii \\
-        Latitude (N) & \(-24^\circ 40^\prime\) & \(37^\circ 13^\prime\) & \(-29^\circ 15^\prime\) & \(19^\circ 49^\prime\) \\
+        \multirow{2}*{Location} & Paranal, & Calar Alto, & La Silla, & Mauna Kea,\\
+              &  Chile & Spain & Chile & Hawaii \\
+        Latitude & \(24^\circ 40^\prime\) S & \(37^\circ 13^\prime\) N & \(29^\circ 15^\prime\) S & \(19^\circ 49^\prime\) N \\
         Available (* expected) & 2019* & 2016 & 2019* & 2019* \\
         Telescope diameter (\si{\metre}) & 8.2 & 3.5 & 3.6 & 3.6 \\
         Wavelength Range (\nm) & 920--5200 & 960--1710 & 970--1810 & 980--2350 \\
         Resolution & 50\,000/100\,000 & 80\,400 & 75\,000/100\,000 & 70\,000\\
         % Mean sampling (pixels) & & 2.8 & 3 & \textbf{1.8}??? \todo{Pedro do you have this number? from a velocity size of 2.28 km/s I think I calculate a sampling of 1.8}\\
-        RV precision(\mps) & 2--3 & $\sim$ 1 & 1 & 1\\
+        RV precision(\mps) & 2--3 & $\sim$1 & 1 & 1\\
         Operating Temperature (\K)& 70 & 140 & 80 & 77 \\
         %Website &\href{http://www.eso.org/sci/facilities/develop/instruments/crires_up.html}{http://www.eso.org/sci/facilities/develop/instruments/crires\_up.html} & \href{carmenes.caha.es}{carmenes.caha.es} & \href{http://www.astro.umontreal.ca/nirps/}{http://www.astro.umontreal.ca/nirps/} & \href{}{}\\
         \bottomrule
@@ -212,7 +213,7 @@ A few points about some of the \nir{} instruments used in this work are detailed
 
 \subsection{CRIRES+}
 \label{subsec:criresplus}
-CRIRES was removed from operation in 2014 to undergo significant upgrades\citep{dorn_crires_2014}.
+CRIRES was removed from operation in 2014 to undergo significant upgrades~\citep{dorn_crires_2014}.
 These include adding a cross-disperser to increase the simultaneous wavelength coverage by up to a factor of 10, improving the wavelength calibration by replacing the \thar{} calibration lamp with a \une{} lamp which has a richer set lines in the IR, and developing new multi-species gas absorption cells for the {IR}.
 The new upgrade adds the capability for spectropolarimetry using a polarization selective beam-splitter, in which the polarization of light in the spectrum can be analysed.
 The current detector mosaic will be replaced by 3 Hawaii 2RG detectors (\(6144\times 2048\) pixels) at a pixel size of 18\um{}.
@@ -225,7 +226,7 @@ The current estimate for the first light of CRIRES+ is first quarter of 2019.
     \centering
     \includegraphics[width=0.5\linewidth]{figures/spectroscopy/criresplus_detectors.pdf}
     \caption{CRIRES detector focal plane array comparison with the new detectors.
-    Credit \citep{dorn_crires_2014}.}
+    Credit~\citet{dorn_crires_2014}.}
     \label{fig:criresplus_detecotrs}
 \end{figure}
 
