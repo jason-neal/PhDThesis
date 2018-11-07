@@ -9,7 +9,7 @@ These standard stars need to be observed close in the sky and right before or af
 To have similar atmospheric absorption to the science target.
 The science target can be corrected for the telluric line by division by the telluric standard star \textbf{cite standard star paper}. 
 For high-resolution spectroscopy this technique is not sufficient to correct telluric with residuals greater than 2\% remaining. 
-Recently synthetic modelling of telluric absorption has gained popularity with several works focusing on correcting telluric absorption with synthetic models~\citep[e.g.][]{baily_2007, seifart_synthesising_2010} and achieving better correction than the standard star method. 
+Recently synthetic modelling of telluric absorption has gained popularity with several works focusing on correcting telluric absorption with synthetic models~\citep[e.g.][]{baily_correcting_2007, cotton_atmospheric_2014, seifart_synthesising_2010} and achieving better correction than the standard star method. 
 Several different software available which usually build upon  the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995}.
 Some examples are TelFit~\citep{guilkson_correctiong_2014}, and ESO's Molecfit~\citep{smette_molecfit_2015} which both model and fit a synthetic absorption spectra to observations, where as TAPAS~\citep{bertaux_tapas_2014} just creates synthetic models based on atmospheric data for an observation (without fitting).
 The synthetic models at high resolution are very sensitive to atmospheric constituents, especially water vapour, and observing conditions such as the airmass.
@@ -36,7 +36,7 @@ Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of t
 
 The {ARLETTY} atmospheric profiles have a 6 hour resolution, so there may be a slight difference between the actual profile at the time of observation.
 
-There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra.
+There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra. TAPAS produces the telluric spectrum and sends a link to the results via email. 
 
 
 \subsection{Requests for this work}
@@ -47,37 +47,8 @@ The mid-observation time for each observation was used to request a synthetic sp
 The telluric models were retrieved without barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument.
 For each observation one model was requested with all available atmospheric species present, convolved to a resolution of \(\rm R=50\,000\), and a further two models without the instrumental profile convolution applied.
 For these two extra models, one contained only the transmission spectra of \ce{H2O} while the other contained contributions from the all other constituents except \ce{H2O}.
-This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS}~\citet{bertaux_tapas_2014}.
-\textbf{will i discuss this, if so where}
-
-
-\section{This should possibly go as post-reduction}
-These observations were first taken in an atmospheric window of the \emph{K}-band in order to reduce the absorption introduced by the atmosphere~\citep{barnes_hd_2008}.
-\missingfigure{The telluric spectrum around 2\um{} showing the 2.1\um{} window of low telluric absorption} To correct for the remaining telluric line contamination the spectra were divided by the {TAPAS}\citep{bertaux_tapas_2014} atmospheric transmission models for each observation.
-Synthetic telluric models were used to avoid the observing overhead necessary to perform telluric standard star exposures~\citep{vacca_method_2003}, and they have been demonstrated to be superior in the quality of the correction relative to the telluric standard approach~\citep[e.g.][]{cotton_atmospheric_2014}.
-
-Before the correction, the depth of the telluric lines were re-scaled to match the airmass of the observation using the relation \(\rm T = T^{\beta}\), where \(\rm T\) is the telluric spectrum and \(\beta\) is the airmass ratio between the observation and model.
-This changed the depth of most absorption lines to match the observations, but does not correctly scale the deeper \ce{H2O} lines.
-The scaled telluric model is interpolated to the wavelengths of the observed spectrum and then used to correct the observed spectra through division, leaving behind a telluric corrected spectra.
-An example of a telluric corrected spectra is shown in the middle panel of \cref{fig:spectral_example}, with the light blue shading indicating where the deeper telluric lines were.
-
-We attempted the technique suggested by~\citet{bertaux_tapas_2014} to address the poor \ce{H2O} airmass scaling, to fit a scaling factor to the  \ce{H2O} absorption lines before convolution to the instrument resolution.
-This was achieved by first dividing the spectrum by a telluric model with only non-\ce{H2O} constituents, convolved to the observed resolution, and scaled by the airmass to remove the non-\ce{H2O} lines.
-Then a model with only \ce{H2O} lines at full resolution was scaled by a factor \(\textrm{T}^{x}\), convolved to \(\rm R=50\,000\) and compared to the observed spectra.
-The factor \(x\) was fitted to find the best scaling factor for the \ce{H2O} lines.
-
-We found that for a few spectra in our sample this method corrected the deeper telluric lines well, but in many cases we found that the fitted scaling factor was affected by the presence of blended stellar lines (attempting to fit those also).
-It was also strongly influenced by the deepest  \ce{H2O} telluric lines present.
-We find that the telluric correction of the deep \ce{H2O} lines could be improved with this technique, but at the cost of worsening the correction of the many smaller \ce{H2O} lines.
-Since the smaller \ce{H2O} lines covered more of the spectrum in this region than the larger lines the separate \ce{H2O} scaling was not continued.
-One possible solution for this would be to perform a piece-wise telluric correction, performing this step only for the deeper \ce{H2O} lines, or by using one of the other tools that fits the telluric model to the observations.
-This technique could also benefit from a larger wavelength span that would enable blended lines to be ignored while having sufficient deep \ce{H2O} lines to fit the scaling factor correctly.
-This small experiment shows that a simple scaling is not enough to correct for the absorption in an effective way, for this case.
-
-\unfinished{Still uneven line coverage on all detectors in this small range}
-
-\unfinished{\ce{H2O} corrections} example of good and bad fitting\ldots
-
+This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS}~\citet{bertaux_tapas_2014}. \cref{subsec:telluric_correction_application}
+\todo{will i discuss this?, if so where}
 
 
 \subsection{Issues with {TAPAS}}

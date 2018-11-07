@@ -128,6 +128,35 @@ This may have made the line identification simpler.
 
 
 \subsection{Telluric correction}
+\label{subsec:telluric_correction_application}
+
+To correct for the telluric line contamination {TAPAS}\citep{bertaux_tapas_2014} atmospheric transmission models for obtained for each observation see \cref{sec:telluric_correction} were used.
+
+There were slight differences in the airmass, $m$, between the synthetic spectra and the airmass in the fits header so the depth of the telluric lines were re-scaled to match the airmass of the observations using the relation \(\rm T = T^{\beta}\), where \(\rm T\) is the transmission of the telluric spectrum and \(\beta\) is the airmass ratio between the observation and model $\beta ={m_{observed}/m_{model}}$.
+This scaling adjusted the depth of most absorption lines to match the observations, but does not correctly scale the deeper \ce{H2O} lines, for which there were still issues.
+
+The scaled telluric model is interpolated to the wavelengths of the observed spectrum and then used to correct the observed spectra through division, leaving behind a telluric corrected spectra.
+An example of a telluric corrected spectra is shown in the middle panel of \textbf{\cref{fig:spectral_example}, with the light blue shading indicating where the deeper telluric lines were.
+}
+\missingfigure{example of before and after scaling,}
+
+A technique suggested by~\citet{bertaux_tapas_2014} was attempted to address the poor \ce{H2O} airmass scaling. This involved fitting a scaling factor to the  \ce{H2O} absorption lines before convolution to the instrument resolution.
+This was achieved by first dividing the spectrum by a telluric model containing the non-\ce{H2O} constituents, convolved to the observed resolution, and scaled by the airmass to remove the non-\ce{H2O} lines.
+Then the telluric model with only \ce{H2O} lines at full resolution was scaled by a factor \(\textrm{T}^{x}\) and convolved to the instrumental resolution\footnote{\(\rm R=50\,000\) for this work} and compared to the remaining telluric lines in the observed spectra. This scaled and convolved model was fitted to the observations to find the best was fitted to find the best scaling factor \(x\),  for the \ce{H2O} lines.
+
+We found that for a few spectra in our sample this method corrected the deeper telluric lines well, but in many cases we found that the fitted scaling factor was affected by the presence of blended stellar lines (attempting to fit those also).
+It was also strongly influenced by the deepest  \ce{H2O} telluric lines present.
+We find that the telluric correction of the deep \ce{H2O} lines could be improved with this technique, but at the cost of worsening the correction of the many smaller \ce{H2O} lines.
+Since the smaller \ce{H2O} lines covered more of the spectrum in this region than the larger lines the separate \ce{H2O} scaling was not continued.
+One possible solution for this would be to perform some sort of a piece-wise telluric correction, performing this step only for the deeper \ce{H2O} lines, or by using one of the other tools that fits the telluric model to the observations.
+This technique could also benefit from a larger wavelength span that would enable blended lines to be ignored while having sufficient deep \ce{H2O} lines to fit the scaling factor correctly.
+This small experiment shows that a simple scaling is not enough to correct for the absorption of \ce{H20} in an effective way, for this case.
+
+\unfinished{Still uneven line coverage on all detectors in this small range}
+
+\unfinished{\ce{H2O} corrections} example of good and bad fitting\ldots
+
+\missingfigure{example of telluric spectra from both methods}
 
 
 
