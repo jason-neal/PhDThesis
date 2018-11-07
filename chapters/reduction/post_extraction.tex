@@ -16,14 +16,13 @@ The spectra of the \thar{} emission lines are used to determine the spatial dist
 \change{fix-up get a good citation, number of lines}{}\thar{} lamps are excellent at optical wavelengths where the numerous spectral lines enable precision of sub\,-\mps{} radial velocity measurements {HARPS} spectrograph.
 For example the new ESPRESSO spectrograph uses \(\sim8600\) \thar{} lines\reference{paper for harps \thar{} lines}{(?)}.
 However in the \nir{}, there is a relatively low density of \thar{} lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ {CRIRES}-POP~\citep{nicholls_crirespop_2017}).
-Above 2.2\um{} there are {O-H} sky lines that can be used for wavelength calibration but for our observations below 2.2\um{} they are too dim.\reference{cite crires manual, and a paper about sky lines?}
-
+Above 2.2\um{} there are {O-H} sky lines that can be used for wavelength calibration but according to the CRIRES manual for our observations below 2.2\um{} they are too dim.
 These wavelength calibration issues were experienced when using the {ESO} {CRIRES} pipeline, with non-\thar{} features sometimes affecting the correlation.
 
 Between the wavelength range 2.1--2.17\um{} there are roughly 80 \thar{} lines across all four detectors, as seen in \cref{fig:caliblamps}.
 The {DRACS} pipeline does not use the \thar{} lamp files for wavelength calibration and leaves this as a post reduction step.
 
-A common method for wavelength calibration that does not rely on \thar{} lamps of {CRIRES} involves using the telluric lines present to provide the wavelength solution~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}{\red{}~\citep{piskorz_evidence_2016}}.
+A common method for wavelength calibration that does not rely on \thar{} lamps of {CRIRES} involves using the telluric lines present to provide the wavelength solution~\citep[e.g.][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013,piskorz_evidence_2016}.
 This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere.
 
 We follow this method using the telluric absorption lines present in each observation as the wavelength reference.
@@ -82,7 +81,7 @@ Unfortunately the wavelength calibration quality varies in an inverse way, being
 
 We note that there are many variations on this wavelength calibration technique including those integrated within programs such as \emph{TelFit}~\citet{gullikson_correcting_2014}, and {ESO}'s \emph{Molecfit}~\citet{smette_molecfit_2015}, that perform telluric correction and re-calibrate the wavelength axis themselves at the same time.
 
-One improvement could have been to include a concurrent fitting of a stellar spectral model, adjusted for {RV}, along with the telluric model, could help to improve the wavelength calibration performed here. \citet{piskorz_evidence_2016} performed wavelength calibration using only a telluric line model at other \nir{} wavelengths {\red{} (e.g.\ 3.0--3.4\um{})}\todo{check value} successfully.
+One improvement could have been to include a concurrent fitting of a stellar spectral model, adjusted for {RV}, along with the telluric model, could help to improve the wavelength calibration performed here. \citet{piskorz_evidence_2016} performed wavelength calibration using only a telluric line model at other \nir{} wavelengths (\emph{L}-band between 3.0--3.4\um{}) successfully.
 However, around 2\um{} they needed to include a fitted stellar model to obtain good wavelength calibration due to the weaker telluric lines in this region.
 This is the same wavelength region of the data analysed here.
 Having experience of performing wavelength calibration at other wavelengths may have revealed the difficulties of calibration from the telluric lines at 2\um{} sooner.
@@ -95,7 +94,6 @@ Our brief experiments with this method were not successful as we did not include
 Without adding any stellar masking the telluric lines would strongly correlate to the stellar lines present, especially were there were blended lines.
 This lead to visibly incorrect wavelength solutions and this method was abandoned.
 If a stellar mask was used it may have been possible to achieve more sensible results, although still challenging to the low density of telluric lines at this wavelength range.
-
 
 At one point it was considered to attempt a global fit of the wavelength calibration, using all four {CRIRES} detectors together.
 This would create a consistent fit to the dispersion across all 4 detectors at once.
@@ -129,17 +127,12 @@ This may have made the line identification simpler.
 
 \subsection{Telluric correction}
 \label{subsec:telluric_correction_application}
+After wavelength calibration telluric correction is performed using the same {TAPAS} atmospheric transmission models. When inspecting the models and observations there was slight difference in the airmass, $m$, between the synthetic spectra and the airmass in the fits header. The depth of the telluric lines were re-scaled to match the airmass of the observations using the relation \(\rm T = T^{\beta}\), where \(\rm T\) is the transmission of the telluric spectrum and \(\beta\) is the airmass ratio between the observation and model $\beta ={m_{observed}/m_{model}}$.
+This scaling adjusted the depth of most absorption lines to better match the observations, but does not correctly scale the deeper \ce{H2O} lines, for which there were still differences.
 
-To correct for the telluric line contamination {TAPAS}\citep{bertaux_tapas_2014} atmospheric transmission models for obtained for each observation see \cref{sec:telluric_correction} were used.
+The scaled telluric model is interpolated to the wavelengths of the observed spectrum and then used to correct the observed spectra through division, leaving behind a telluric corrected spectra. Telluric spectra used for correction can be observed along side the non-corrected spectra in \cref{fig:spectraexamples} as the black dashed lines. 
 
-There were slight differences in the airmass, $m$, between the synthetic spectra and the airmass in the fits header so the depth of the telluric lines were re-scaled to match the airmass of the observations using the relation \(\rm T = T^{\beta}\), where \(\rm T\) is the transmission of the telluric spectrum and \(\beta\) is the airmass ratio between the observation and model $\beta ={m_{observed}/m_{model}}$.
-This scaling adjusted the depth of most absorption lines to match the observations, but does not correctly scale the deeper \ce{H2O} lines, for which there were still issues.
-
-The scaled telluric model is interpolated to the wavelengths of the observed spectrum and then used to correct the observed spectra through division, leaving behind a telluric corrected spectra.
-An example of a telluric corrected spectra is shown in the middle panel of \textbf{\cref{fig:spectral_example}, with the light blue shading indicating where the deeper telluric lines were.
-}
-\missingfigure{example of before and after scaling,}
-
+\subsubsection{Separate \si{H2O} scaling.}
 A technique suggested by~\citet{bertaux_tapas_2014} was attempted to address the poor \ce{H2O} airmass scaling. This involved fitting a scaling factor to the  \ce{H2O} absorption lines before convolution to the instrument resolution.
 This was achieved by first dividing the spectrum by a telluric model containing the non-\ce{H2O} constituents, convolved to the observed resolution, and scaled by the airmass to remove the non-\ce{H2O} lines.
 Then the telluric model with only \ce{H2O} lines at full resolution was scaled by a factor \(\textrm{T}^{x}\) and convolved to the instrumental resolution\footnote{\(\rm R=50\,000\) for this work} and compared to the remaining telluric lines in the observed spectra. This scaled and convolved model was fitted to the observations to find the best was fitted to find the best scaling factor \(x\),  for the \ce{H2O} lines.
@@ -148,16 +141,10 @@ We found that for a few spectra in our sample this method corrected the deeper t
 It was also strongly influenced by the deepest  \ce{H2O} telluric lines present.
 We find that the telluric correction of the deep \ce{H2O} lines could be improved with this technique, but at the cost of worsening the correction of the many smaller \ce{H2O} lines.
 Since the smaller \ce{H2O} lines covered more of the spectrum in this region than the larger lines the separate \ce{H2O} scaling was not continued.
-One possible solution for this would be to perform some sort of a piece-wise telluric correction, performing this step only for the deeper \ce{H2O} lines, or by using one of the other tools that fits the telluric model to the observations.
+One possible solution for this would be to perform a piece-wise telluric correction, performing this step only for the deeper \ce{H2O} lines. 
 This technique could also benefit from a larger wavelength span that would enable blended lines to be ignored while having sufficient deep \ce{H2O} lines to fit the scaling factor correctly.
-This small experiment shows that a simple scaling is not enough to correct for the absorption of \ce{H20} in an effective way, for this case.
-
-\unfinished{Still uneven line coverage on all detectors in this small range}
-
-\unfinished{\ce{H2O} corrections} example of good and bad fitting\ldots
-
-\missingfigure{example of telluric spectra from both methods}
-
+This small experiment shows that a simple scaling is not enough to correct for the absorption of \ce{H20} in an effective way, for this case. 
+Another better solution would be using proper atmospheric fitting tools that fits the telluric model to the observations, such as {Molecfit}, in which the atmospheric composition can be changed to match the observed telluric line strengths.
 
 
 \subsection{Wavelength masking}

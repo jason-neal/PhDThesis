@@ -3,26 +3,22 @@
 \section{Telluric correction}
 \label{sec:telluric_correction}
 
-Typically atmospheric absorption correction has been performed by observing a standard star, a very hot (O- or A-type), fast rotating star~\citep{vacca_method_2003}.
+Typically atmospheric absorption correction has been performed by observing a standard star, a very hot (O- or A-type), fast rotating star.
 These stars have minimal spectral features, so reveal the atmospheric absorption when observed.
 These standard stars need to be observed close in the sky and right before or after the science observation.
 To have similar atmospheric absorption to the science target.
-The science target can be corrected for the telluric line by division by the telluric standard star \textbf{cite standard star paper}. 
+The science target can be corrected for the telluric line by division by the telluric standard star~\citep[e.g.][]{vacca_method_2003}. 
 For high-resolution spectroscopy this technique is not sufficient to correct telluric with residuals greater than 2\% remaining. 
 Recently synthetic modelling of telluric absorption has gained popularity with several works focusing on correcting telluric absorption with synthetic models~\citep[e.g.][]{baily_correcting_2007, cotton_atmospheric_2014, seifart_synthesising_2010} and achieving better correction than the standard star method. 
 Several different software available which usually build upon  the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995}.
-Some examples are TelFit~\citep{guilkson_correctiong_2014}, and ESO's Molecfit~\citep{smette_molecfit_2015} which both model and fit a synthetic absorption spectra to observations, where as TAPAS~\citep{bertaux_tapas_2014} just creates synthetic models based on atmospheric data for an observation (without fitting).
+Some examples are {TelFit}~\citep{guilkson_correctiong_2014}, and ESO's {Molecfit}~\citep{smette_molecfit_2015} which both model and fit a synthetic absorption spectra to observations, where as {TAPAS}~\citep{bertaux_tapas_2014} just creates synthetic models based on atmospheric data for an observation (without fitting).
 The synthetic models at high resolution are very sensitive to atmospheric constituents, especially water vapour, and observing conditions such as the airmass.
 
-{\red{} Recently~\citet{ulmer-moll_telluric_2018} compared the telluric correction efficiency between Telfit,  Molecfit, TAPAS, and against the standard star method.
-Finding that the synthetic methods perform well for \textbf{specific species} with Molecfit performing best overall.
+{\red{} Recently~\citet{ulmer-moll_telluric_2018} compared the telluric correction efficiency between {TelFit},  {Molecfit}, {TAPAS}, and the standard star method.
+Finding that the synthetic methods perform well for \textbf{specific species} with {Molecfit} performing best overall.
 However they could not reproduces\textbf{ XX} correction as well as s better the standard star.
 Suggesting there is still room for improvements in the modelling.} \todo{finish}
 
-Since sufficient telluric correction be achieved through synthetic modelling, the observation requirement is halved as a standard star is not required, allowing more observing time for science.
-This is the case with the CRIRES observations analysed in this work.
-This work utilizes the synthetic spectra produced from TAPAS models are used correction the telluric lines in CRIRES spectra.
-These are detailed further below.
 
 As an example \cref{fig:telluricmodelcomparision} shows the telluric correction using the three different methods, {Molecfit}, {TelFit} and {TAPAS}\footnote{Performed here by Sol\`{e}ne Ulmer-moll.}, of a spectrum extracted for this work, detector \#4 of observation HD\,4747-1  (see \cref{tab:observations}). There are differences between the models of around 2\% level, with the largest difference near the large telluric line around 2163\nm{}.
 \begin{figure}
@@ -33,8 +29,12 @@ As an example \cref{fig:telluricmodelcomparision} shows the telluric correction 
 \end{figure}
 
 
+Since sufficient telluric correction can be achieved through synthetic modelling, the observational requirement is halved as the standard star is not required, allowing more observing time for science.
+This is the case with the CRIRES observations analysed in this work.
+This work utilizes the synthetic spectra produced from {TAPAS} models are used correction the telluric lines in CRIRES spectra.
+These are detailed further below.
 
-\subsection{TAPAS web-service}
+\subsection{{TAPAS} web-service}
 \label{subsubsec:TAPAS}
 
 Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of the AtmosPhere for AStronomical data) web-service\footnote{\href{http://cds-espri.ipsl.fr/tapas}{http://cds-espri.ipsl.fr/tapas}}~\citep{bertaux_tapas_2014}.
@@ -42,11 +42,11 @@ Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of t
 
 The {ARLETTY} atmospheric profiles have a 6 hour resolution, so there may be a slight difference between the actual profile at the time of observation.
 
-There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra. TAPAS produces the telluric spectrum and sends a link to the results via email. 
+There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra. {TAPAS} produces the telluric spectrum and sends a link to the results via email. 
 
 
 \subsection{Requests for this work}
-Synthetic telluric absorption were requested from the TAPAS web service for this work.
+Synthetic telluric absorption were requested from the {TAPAS} web-service for this work.
 These were to match the CRIRES observations which are presented in \cref{tab:observations}.
  
 The mid-observation time for each observation was used to request a synthetic spectra individually for each observation, with the {ARLETTY} atmospheric profiles and vacuum wavelengths selected.
@@ -65,7 +65,7 @@ There was also a variable level of success between different web-browsers.
 A number of bug reports were submitted to the owners of the webpage without any acknowledgement.
 
 The web-page is useful for quickly obtaining a small number of spectra but can be tedious for many spectra.
-For this work this was around upwards of 50 telluric spectra, (3 for each of the 17 observations). TAPAS offers the ability to request multiple spectra at a time but this was found to be unreliable when attempting to request more than four spectra in a single request.
+For this work this was around upwards of 50 telluric spectra, (3 for each of the 17 observations). {TAPAS} offers the ability to request multiple spectra at a time but this was found to be unreliable when attempting to request more than four spectra in a single request.
 
 A script\footnote{Available at \href{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}} was created to automatically generate the data necessary to fill out a {TAPAS} request for each {CRIRES} observations.
 The script scanned the {CRIRES} header for information such as the mid-time of observations, target coordinates, slit width etc.\ and populated the {XML} request form provided by {TAPAS}.
