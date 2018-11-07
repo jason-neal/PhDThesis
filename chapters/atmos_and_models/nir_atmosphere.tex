@@ -5,13 +5,14 @@
 While the Earth's atmosphere is important life on Earth, it can be a nuisance for ground-based observations astronomical observations.
 While the atmosphere is mostly transparent in the visible, with only minor transmission and emission features, it is not uniformly transparent in the infrared.
 
-As light form astronomical sources passes through Earth's atmosphere, the molecular species absorb specific wavelengths (corresponding to molecular rotational and vibrational energy levels) densely populating the \nir{} with absorption lines, commonly referred to as telluric absorption. \Cref{fig:croppedmolecfitabsorbtion} contains the model telluric absorption spectrum for the atmosphere from 0.3--30\um{} at a high resolution of \textbf{XXXX} from~\citet{smette_molecfit_2015}.
-It clearly shows that there are regions where the atmosphere is mostly transparent (transmission of 1), with other wavelength regions (e.g. at 4.5\um) that are completely opaque.
+As light form astronomical sources passes through Earth's atmosphere, the molecular species absorb specific wavelengths (corresponding to molecular rotational and vibrational energy levels) densely populating the \nir{} with absorption lines, commonly referred to as telluric absorption.
+\Cref{fig:croppedmolecfitabsorbtion} contains the model telluric absorption spectrum for the atmosphere from 0.3--30\um{} at a high resolution of \textbf{XXXX} from~\citet{smette_molecfit_2015}.
+It clearly shows that there are regions where the atmosphere is mostly transparent (transmission of 1), with other wavelength regions (e.g.\ at 4.5\um{}) that are completely opaque.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{figures/atmos_and_models/cropped_molecfit_absorption}
-    \caption{Telluric absorption map from 0.3-30\um at a resolution of \textbf{XXXX}. ~\citet[][Figure~1]{smette_molecfit_2015}.
+    \caption{Telluric absorption map from 0.3-30\um{} at a resolution of \textbf{XXXX}~\citet[][Figure~1]{smette_molecfit_2015}.
 The molecular species that are responsible for the large absorption features are indicated.
         Original caption:\textbf{add more here / see if original caption has anything else to add}}
     \label{fig:croppedmolecfitabsorbtion}
@@ -39,28 +40,24 @@ These photometric bands are chosen for high average photometric\footnote{Conside
         N & 10.6 & 2.5 \\
         Q & 21 & 5.8 \\
         \bottomrule
-    \end{tabular} \label{tab:infrared_bands} 
-    e.g. \citep{binney_galactic_1998, sterken_astronomical_1992}   
+    \end{tabular} \label{tab:infrared_bands}
 \end{table}
 
 The most prominent absorber in the infrared is water vapour (\si{H2O}) which is a strong absorber defining the photometric bands as seen in \cref{tab:infrared_bands}.
 Water vapour is mostly concentrated in the lower 5\,\si{\kilo\metre}, so infrared observatories are situated in dry places at high altitude.
 Even under ideal conditions the absorption of water vapour defines the IR bands.
-Other molecular species in the atmosphere are also important at various wavelengths, such as, \ce{CO}, \ce{CO2}, \ce{CH4}. 
-
+Other molecular species in the atmosphere are also important at various wavelengths, such as, \ce{CO}, \ce{CO2}, \ce{CH4}.
 
 When performing spectroscopy the spectrum of Earth's contaminates the spectrum of the intended target.
 In high-resolution spectroscopy the stellar and atmospheric lines can be resolved allowing for the identification and separation of the spectra.
 The removal or correction for the telluric lines is very important for accurate science, especially for detecting exoplanet atmospheres in which the species trying to be detected also reside in our atmosphere~\citep{snellen_orbital_2010, brogi_carbon_2014, dekok_detection_2013}.
 
-
 The absorption of atmosphere is highly variable on many different time scales.
 The change in water vapour can occur rapidly over the course of the night while the concentrations of atmospheric constituents, vary seasonal and even longer\footnote{For instance the increase in atmospheric \ce{CO2} caused by anthropamorphic climate change has caused a 6\% change to \ce{CO2} line depths since 2000~\citep{smette_molecfit_2015}.}.
 
-On top of this also the observational dependence on the airmass of the target. 
-The airmass\footnote{Airmass $m=\sec{\theta}$ where $\theta$ is the zenith angle.} is the relative path length through the atmosphere compared to zenith. 
-The light of a target at a higher airmass passes through more of the atmosphere and is contaminated with deeper telluric liens. 
-
+On top of this also the observational dependence on the airmass of the target.
+The airmass\footnote{Airmass $m=\sec{\theta}$ where $\theta$ is the zenith angle.} is the relative path length through the atmosphere compared to zenith.
+The light of a target at a higher airmass passes through more of the atmosphere and is contaminated with deeper telluric liens.
 
 Works such as \citet{snellen_orbital_2010}, fit and remove the telluric variation during a series of continuous observations\footnote{51 spectrum of the same target in 180 minutes for \citet{snellen_orbital_2010}}, to accurately remove the varing telluric lines and detect the absorption lines of exoplanet atmospheres.
 
