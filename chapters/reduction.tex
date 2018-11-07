@@ -32,7 +32,10 @@ We briefly detail them here and how they are corrected...
 %\centering
 %%\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
 %\includegraphics[width=0.9\textwidth]{figures/reduction/master_darks_1.pdf}
-%\caption{Master dark frames for exposure times of 3 and 180 seconds. Each master is created by averaging 3 images in which the detector received no incident light. Both frames are on the same scale and show dark current grows with exposure time. The colour has been inverted so that black is the recorded measurement.}
+%\caption{Master dark frames for exposure times of 3 and 180 seconds.
+%Each master is created by averaging 3 images in which the detector received no incident light.
+%Both frames are on the same scale and show dark current grows with exposure time.
+%The colour has been inverted so that black is the recorded measurement.}
 %\label{fig:darkcurrent}
 %\end{figure}
 \begin{figure}[h]
@@ -55,7 +58,8 @@ Calibration and removal of the dark current is performed by taking exposures in 
 The detectors in the {CRIRES} instrument are cryogenically cooled to a temperature of \(\sim 27\)\K{} (within 0.1\K{}) to significantly reduce the dark current, and to maintain consistency.
 The electrical components of the {CRIRES} detectors create thermal energy while operational which impacts the dark current.
 A strong glow is observed in the bottom corners of the {CRIRES} detector in \cref{fig:darkcurrent_colour} due to nearby amplifiers.
-As per the {CRIRES} calibration plan, ``dark frames'' need to be taken for each exposure time used. \Cref{fig:darkcurrent_colour} shows the master dark frame created from averaging three dark frames for exposure times of 3 seconds (for the flats) and 180 seconds (for the science), both on the same amplitude scale.
+As per the {CRIRES} calibration plan, ``dark frames'' need to be taken for each exposure time used.
+\Cref{fig:darkcurrent_colour} shows the master dark frame created from averaging three dark frames for exposure times of 3 seconds (for the flats) and 180 seconds (for the science), both on the same amplitude scale.
 For the {CRIRES} detectors the dark current per pixel is around 0.2-0.4\,(\(e^{-}\)\si{\per\second}), while the glow at the two corners of the 180 second exposure shown here is around \(\sim9000 / 180\approx50\)\,\(e^{-}\)\si{\per\second}.
 
 %
@@ -63,7 +67,8 @@ For the {CRIRES} detectors the dark current per pixel is around 0.2-0.4\,(\(e^{-
 %    \centering
 %    \includegraphics[width=0.9\textwidth]{figures/reduction/master_flats_1.pdf}
 %    \caption{A flat-field image for detector \#1 before (left) and after (right) the non-linearity corrections are performed.
-%    A perfect detector would have all pixels in the flat-field equal to 1. \bf{\red{} Remove flat and flatR titles.}}
+%    A perfect detector would have all pixels in the flat-field equal to 1.
+%    \bf{\red{} Remove flat and flatR titles.}}
 %    \label{fig:masterflats}
 %\end{figure}
 
@@ -150,7 +155,8 @@ The purpose of the \thar{} fibres is to perform cross-correlation against a \tha
 Optical defects (e.g.\ scratches on the detector) interfere with the performance of the correlation between \thar{} lines and the spectral template in {ESO} pipeline.
 This can be resolved by first applying a pixel mask (although we did not attempt it).
 At the top and bottom there are also two meteorological fibres that can not be used for wavelength calibration as they pass through a different optical pathway.
-The brightest one at the bottom has strong features that seem to overwhelm or washout many columns in detector \#2--4 (vertical stripes). \unfinished{Check if it is mentioned how these get corrected/ if the impact the wavelength solution.}
+The brightest one at the bottom has strong features that seem to overwhelm or washout many columns in detector \#2--4 (vertical stripes).
+\unfinished{Check if it is mentioned how these get corrected/ if the impact the wavelength solution.}
 This information is included here for completeness, as the \thar{} were not used in the chosen data reduction method, see \cref{subsec:wavecalib}.
 
 %\begin{figure}
@@ -204,7 +210,7 @@ A target and a very brief aim of each science case is given below.
 \item Barnard's Star\footnote{Programme {{ID}}: 085.D-0161(A)}: The carefully reduced \nir{} spectra of Barnard's Star was meant to extend the work of~\citet{andreasen_nearinfrared_2016} in deriving the spectroscopic parameters of cool M-stars in the \nir{}.
 Unfortunately the work did not advance enough to analyse M-star's and a spectrum of {Arcturus} (K0) and a fully reduced spectrum of {10Leo} (K1) from the {CRIRES}-POP library~\cite{nicholls_crirespop_2017} were analysed instead in~{Andreasen et al. (in prep.)}.
 \item \(\eta\) Tel\footnote{Programme {{ID}}: 083.C-0759(A)}: The spectra of a telluric standard star (HIP100090) and {HR\,7329-B} (\(\eta\) Tel-B) a rapidly rotating Brown Dwarf, were reduced to accurately determine the BD rotation rate by measuring the line broadening.
-The results from this data will be published in an upcoming paper Hagelberg et al. (in prep.).
+The results from this data will be published in an upcoming paper {Hagelberg et al. (in prep.)}.
 \item The same spectra of {HR\,7329-B} were also used in~\citet{ulmer-moll_telluric_2018} to compare different telluric correction methods in the \nir{}.
 An example from~\citet[][(B.3)]{ulmer-moll_telluric_2018} of the reduced target spectrum (black), the telluric model () and the telluric corrected spectrum (green) is provided in \cref{fig:ulmermol2018tellcorrcrires48}.
 \end{itemize}

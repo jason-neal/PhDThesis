@@ -35,17 +35,17 @@ Figure \cref{fig:dispersion_elements} shows the schematic for 3 different disper
         Right: Dispersion from reflection grating.}
     \label{fig:dispersion_elements}
 \end{figure}
-The left hand picture depicts in which refraction of light occurs when passing between two materials of different refraction index, $n_i$, and $n_r$.
-The angle of incidence $theta_i$ and angle of refraction $theta_r$ relative to the normal (perpendicular) of the surface are related through Snell's law:
-\[n_i \sin(\theta_i) = n_r \sin(\theta_r).\]
+The left hand picture depicts in which refraction of light occurs when passing between two materials of different refraction index, $n_{i}$, and $n_{r}$.
+The angle of incidence $theta_{i}$ and angle of refraction $\theta_{r}$ relative to the normal (perpendicular) of the surface are related through Snell's law:
+\[n_{i} \sin(\theta_{i}) = n_{r} \sin(\theta_{r}).\]
 The index of refraction of a material is wavelength dependant the angle of refraction will be different for each wavelength, causing dispersion, like a prism.
 
 The two dispersion gratings in \cref{fig:dispersion_elements} are comprised of parallel narrow slits (transmission) or grooves (reflection), very close together.
 Diffraction from these slits/groves constructively and destructively interfere to create spectral orders that obey the grating equation:
 \begin{equation}
-]m \lambda = d [\sin(\theta_i) \pm \sin(theta_r)].
+m \lambda = d [\sin(\theta_{i}) \pm \sin(\theta_{r})].
 \end{equation}
-Here $m$ is the order number, $\lambda$ the wavelength, d the spacing between the slits/grooves, and again $\theta_i$ and $\theta_r$ the incident and reflection angles respectively, relative to the normal.
+Here $m$ is the order number, $\lambda$ the wavelength, d the spacing between the slits/grooves, and again $\theta_{i}$ and $\theta_{r}$ the incident and reflection angles respectively, relative to the normal.
 
 This equation has degeneracy as different combinations of $m \lambda$ will be dispersed at the same angles.
 For instance the value $m \lambda$ for order $m=54$ at $\lambda=2100$\nm{} is that same as to order $m=55$ at $\lambda=2061.8$\nm{}.
@@ -65,13 +65,24 @@ This value should be higher than 2 pixels per resolution element to satisfy Nyqu
 \section{The detectors}
 \label{subsec:nir_detectors}
 The basic principles of spectroscopy are the same for optical and infrared are the same one difference is the design of the detector.
-Nowadays the most common type of detector are focal plane arrays, a two-dimensional of pixels located at the focal plane of the spectrographs camera. The purpose of the detector is to count the number of photons hitting each pixel in the array. This is achieved via the photoelectric effect on a crystalline structure, in which incident photons are transformed into electrons which can be recorded electronically. The energy necessary to excite an electron from the \emph{valence band} to the \emph{conduction band}, the characteristic band gap, is different for every material. Silicon is the best material for the detection of optical light (0.3--1.1\um), while in the near-infrared (1--5\um) two materials are used: {Mercury-Cadmium-Telluride} (\si{HgCdTe}) and {Indium Antimonide} (\si{InSb}). In the mid-infrared (5--20\um) arsenic doped Silicon is used (\si{Si}:\si{As}).
+Nowadays the most common type of detector are focal plane arrays, a two-dimensional of pixels located at the focal plane of the spectrographs camera.
+The purpose of the detector is to count the number of photons hitting each pixel in the array.
+This is achieved via the photoelectric effect on a crystalline structure, in which incident photons are transformed into electrons which can be recorded electronically.
+The energy necessary to excite an electron from the \emph{valence band} to the \emph{conduction band}, the characteristic band gap, is different for every material.
+Silicon is the best material for the detection of optical light (0.3--1.1\um), while in the near-infrared (1--5\um) two materials are used: {Mercury-Cadmium-Telluride} (\si{HgCdTe}) and {Indium Antimonide} (\si{InSb}).
+In the mid-infrared (5--20\um) arsenic doped Silicon is used (\si{Si}:\si{As}).
 
-Since photon energy is inversely proportional to wavelength\footnote{\(E_{photon} = \frac{h c}{\lambda}\), where $c$ is the speed of light, $h$ is Plank's constant and $\lambda$ wavelength.}, longer wavelength must have smaller band gaps. However, smaller band gaps are also more susceptible to electrons excited by thermal energy, known as the dark current. The dark current is dependant on detector temperature, the pixel size, quality of material and the materials cut-off wavelength $\lambda_c$. A summary of values for different material properties is given in \cref{tab:semiconductor_properties}.
+Since photon energy is inversely proportional to wavelength\footnote{\(E_{photon} = \frac{h c}{\lambda}\), where $c$ is the speed of light, $h$ is Plank's constant and $\lambda$ wavelength.}, longer wavelength must have smaller band gaps.
+However, smaller band gaps are also more susceptible to electrons excited by thermal energy, known as the dark current.
+The dark current is dependant on detector temperature, the pixel size, quality of material and the materials cut-off wavelength $\lambda_c$.
+A summary of values for different material properties is given in \cref{tab:semiconductor_properties}.
 
 \begin{table}
     \centering
-    \caption{Properties of popular optical/{IR} detector materials. \(\epsilon_{g}\) is the material band gap, the minimum excitation energy. $\lambda_c$ is the cut-off wavelength corresponding to the maximum wavelength for each material. Common values for the detector operating temperature for the materials is given as $T_{op}$.}
+    \caption{Properties of popular optical/{IR} detector materials.
+        \(\epsilon_{g}\) is the material band gap, the minimum excitation energy.
+        $\lambda_c$ is the cut-off wavelength corresponding to the maximum wavelength for each material.
+        Common values for the detector operating temperature for the materials is given as $T_{op}$.}
     \begin{tabular}{lcccc}
         \toprule
         Material & Symbol & $\epsilon_{g}$[eV] & $\lambda_c$[\um] & $T_{op}$[\K]\\
@@ -87,28 +98,45 @@ Since photon energy is inversely proportional to wavelength\footnote{\(E_{photon
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{figures/spectroscopy/CMOS-vs-CCD-schema}
-    \caption{Schema differentiating {CCD} and {CMOS} detectors. In {CCDs} the charge is transferred to a specific pixel for measurement while in {CMOS} the charge is measured at the location of each pixel by individual amplifiers and {ADCs}. Credit \href{https://automatie-pma.com/pma/innovatie-en-technologie-pma/cmos-vervangt-steeds-meer-hoogwaardige-ccd-toepassingen/}{https://automatie-pma.com}.}
+    \caption{Schema differentiating {CCD} and {CMOS} detectors.
+In {CCDs} the charge is transferred to a specific pixel for measurement while in {CMOS} the charge is measured at the location of each pixel by individual amplifiers and {ADCs}.
+Credit \href{https://automatie-pma.com/pma/innovatie-en-technologie-pma/cmos-vervangt-steeds-meer-hoogwaardige-ccd-toepassingen/}{https://automatie-pma.com}.}
     \label{fig:cmos-vs-ccd-schema}
 \end{figure}
 
-The technologies for optical and {IR} detectors are very different. \Cref{fig:cmos-vs-ccd-schema} shows the main architectural difference between {CCD} and {CMOS} is given, with a very brief comparison between them below.
-Charge-Coupled Devices ({CCDs}) are used in the visible. Their use of silicon allows for the photo-induced electrons to methodically transfer the charge be from pixel to pixel along to one end.
+The technologies for optical and {IR} detectors are very different.
+\Cref{fig:cmos-vs-ccd-schema} shows the main architectural difference between {CCD} and {CMOS} is given, with a very brief comparison between them below.
+Charge-Coupled Devices ({CCDs}) are used in the visible.
+Their use of silicon allows for the photo-induced electrons to methodically transfer the charge be from pixel to pixel along to one end.
 The electrons from each pixel pass to into amplifier to increase the signal, and then measured as a voltage difference with an analogue-to-digital converter (ADC).
 As the charge is shifted between pixels {CCDs} require high charge transfer efficiency (CTE) to not leave charge behind, which would be assigned to the incorrect pixels.
-{CCDs} have an almost 100\% filling of photosensitive material. However the $\lambda_c$ cut-off of silicon makes them unsuitable for the {IR}. 
+{CCDs} have an almost 100\% filling of photosensitive material.
+However the $\lambda_c$ cut-off of silicon makes them unsuitable for the {IR}.
 More information on {CCDs} can be found in~\citep{howell_handbook_2000}.
 
-For {IR} the technology of choice is {CMOS} (Complementary Metal Oxide Semiconductor). Unlike {CCDs}, each individual pixel contains the circuity to read and amplify measure the charge in itself. Since the charge is read and amplified at each pixel there is no charge transfer between pixels and the readout is non-destructive. As a consequence, the same pixel can be read several times, averaging and thus reducing the effective readout noise of each pixel. In theory, if one average $N$ measurements before an observation (of a freshly reset detector), and $N$ measurements of the observed charge after integration, the readout noise can be reduced by a factor of $\sqrt{(N)}$, referred to as \emph{Fowler Sampling}~\citep{fowler_demonstration_1990}. Reading a {CMOS} detector is very versatile as it can be read in multiple ways, with the ability to randomly read any pixel at any time. 
+For {IR} the technology of choice is {CMOS} (Complementary Metal Oxide Semiconductor).
+Unlike {CCDs}, each individual pixel contains the circuity to read and amplify measure the charge in itself.
+Since the charge is read and amplified at each pixel there is no charge transfer between pixels and the readout is non-destructive.
+As a consequence, the same pixel can be read several times, averaging and thus reducing the effective readout noise of each pixel.
+In theory, if one average $N$ measurements before an observation (of a freshly reset detector), and $N$ measurements of the observed charge after integration, the readout noise can be reduced by a factor of $\sqrt{(N)}$, referred to as \emph{Fowler Sampling}~\citep{fowler_demonstration_1990}.
+Reading a {CMOS} detector is very versatile as it can be read in multiple ways, with the ability to randomly read any pixel at any time.
 The filling area of the photosensitive material is reduced in {CMOS} due to the presence of support architecture that is required for the circulation the top surface, partially blocking some of the incident light, reducing their efficiency.
 
-As it is impossible to have every individual amplifier perfectly identical amplifier, there is a small sensitivity and gain difference between {CMOS} pixels, which are exposed by calibrating with a uniform light source. This contrasts with the one or few amplifiers used in CCDs, which lead to extremely homogenous amplification (as all pixels are amplified by the same amplifier).
-The {CMOS} circuitry is also intrinsically non-linear due to the changing capacitance as charge is collected. Irrespective if the charge is photo-induced or dark current, the circuitry measurement changes with the pixel charge level. This requires careful characterization of the non-linearities in the detector by calibrating its response to a uniform light source for a large range of integration times. For CRIRES there are a set of non-linearity coefficients that are applied while performing the flat-field corrections (see \cref{subsubsec:flat-field}).
+As it is impossible to have every individual amplifier perfectly identical amplifier, there is a small sensitivity and gain difference between {CMOS} pixels, which are exposed by calibrating with a uniform light source.
+This contrasts with the one or few amplifiers used in CCDs, which lead to extremely homogenous amplification (as all pixels are amplified by the same amplifier).
+The {CMOS} circuitry is also intrinsically non-linear due to the changing capacitance as charge is collected.
+Irrespective if the charge is photo-induced or dark current, the circuitry measurement changes with the pixel charge level.
+This requires careful characterization of the non-linearities in the detector by calibrating its response to a uniform light source for a large range of integration times.
+For CRIRES there are a set of non-linearity coefficients that are applied while performing the flat-field corrections (see \cref{subsubsec:flat-field}).
 
-Other benefits of {CMOS} detectors are that they use lower power, and do not need a mechanical shutter (they can be reset electronically). While {CCDs} have been manufactured almost the same way for the last 40 years, {CMOS} technology is still advancing, partially driven by the consumer electronics market. Nowadays, most cellphone and laptop cameras use {CMOS} chips, helping to push investment in this technology. After the charge has been digitized into a number, the processes once again similar for both technologies.
+Other benefits of {CMOS} detectors are that they use lower power, and do not need a mechanical shutter (they can be reset electronically).
+While {CCDs} have been manufactured almost the same way for the last 40 years, {CMOS} technology is still advancing, partially driven by the consumer electronics market.
+Nowadays, most cellphone and laptop cameras use {CMOS} chips, helping to push investment in this technology.
+After the charge has been digitized into a number, the processes once again similar for both technologies.
 
 \subsection{Spectrograph cooling}
 \label{subsec:cold_spectrogrpah}
-Spectrographs must be cooled down for their detectors operate effectively as seen in \cref{tab:band_ranges}. 
+Spectrographs must be cooled down for their detectors operate effectively as seen in \cref{tab:band_ranges}.
 This is achieved by placing spectrographs and their supporting components inside a vacuum chamber, away from all warm (radiating) component and precisely cooled\footnote{Temperature stability in the milli-\K range.} to low temperature.
 These are often referred to as cryostat's.
 Modern instruments use closed-cycle refrigerators, with for example, helium as the working fluid to achieve very stable low temperatures inside the cyrostat.
@@ -227,8 +255,9 @@ A physical side-by-side comparison of the {NIRPS} and {SPRIou} spectrographs is 
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/spectroscopy/NIRPS-vs-SPIROU}
-    \caption{Side by side comparison of the {NIRPS} and {SPIRou} spectrographs. {NIRPS} is the one in front on the left.
-Credit \href{http://www.astro.umontreal.ca/nirps/}{http://www.astro.umontreal.ca/nirps/}.}
+    \caption{Side by side comparison of the {NIRPS} and {SPIRou} spectrographs.
+        {NIRPS} is the one in front on the left.
+        Credit \href{http://www.astro.umontreal.ca/nirps/}{http://www.astro.umontreal.ca/nirps/}.}
     \label{fig:nirps-vs-spirou}
 \end{figure}
 
