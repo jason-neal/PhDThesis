@@ -1,61 +1,61 @@
 %!TEX root = ../../thesis.tex
 
-
 \section{Telluric correction}
 \label{sec:telluric_correction}
 
+Typically atmospheric absorption correction has been performed by observing a standard star, a very hot (O- or A-type), fast rotating star~\citep{vacca_method_2003}.
+These stars have minimal spectral features, so reveal the atmospheric absorption when observed.
+These standard stars need to be observed close in the sky and right before or after the science observation.
+To have similar atmospheric absorption to the science target.
+The science target can be corrected for the telluric line by division by the telluric standard star \textbf{cite standard star paper}. 
+For high-resolution spectroscopy this technique is not sufficient to correct telluric with residuals greater than 2\% remaining. 
+Recently synthetic modelling of telluric absorption has gained popularity with several works focusing on correcting telluric absorption with synthetic models~\citep[e.g.][]{baily_2007, seifart_synthesising_2010} and achieving better correction than the standard star method. 
+Several different software available which usually build upon  the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995}.
+Some examples are TelFit~\citep{guilkson_correctiong_2014}, and ESO's Molecfit~\citep{smette_molecfit_2015} which both model and fit a synthetic absorption spectra to observations, where as TAPAS~\citep{bertaux_tapas_2014} just creates synthetic models based on atmospheric data for an observation (without fitting).
+The synthetic models at high resolution are very sensitive to atmospheric constituents, especially water vapour, and observing conditions such as the airmass.
 
-Reieners correction by models.
+{\red{} Recently~\citet{ulmer-moll_telluric_2018} compared the telluric correction efficiency between Telfit,  Molecfit, TAPAS, and against the standard star method.
+Finding that the synthetic methods perform well for \textbf{specific species} with Molecfit performing best overall.
+However they could not reproduces\textbf{ XX} correction as well as s better the standard star.
+Suggesting there is still room for improvements in the modelling.} \todo{finish}
+
+Since sufficient telluric correction be achieved through synthetic modelling, the observation requirement is halved as a standard star is not required, allowing more observing time for science.
+This is the case with the CRIRES observations analysed in this work.
+This work utilizes the synthetic spectra produced from TAPAS models are used correction the telluric lines in CRIRES spectra.
+These are detailed further below.
 
 
+\missingfigure{residual between tapas and molecfit for a Crires observation.}
 
 
-\subsection{Telluric models}
-
-Utilizing telluric models has been shown to be better than the standard star method.
-\subsubsection{TAPAS}
+\subsection{TAPAS web-service}
 \label{subsubsec:TAPAS}
 
-\subsection{Tapas models}
-\todo{ADAPT THis section to explain the models more generally.
-    Move the usage back to Reduction section}
-\label{subsec:tapas_models}
-For the wavelength calibration and telluric correction methods we use telluric line models.
-These have been show to provide as good or better telluric correction compared to the telluric standard method \reference{telluric model correction methods original}and~\citep{ulmer-moll_telluric_2018}.
-
-We utilized the {TAPAS} (Transmissions of the AtmosPhere for AStronomical data) web-service\footnote{\href{http://www.pole-ether.fr/tapas/}{http://www.pole-ether.fr/tapas/}}~\citep{bertaux_tapas_2014} to obtain atmospheric transmission models for each observation. {TAPAS} uses the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995} along with the 2008 {HITRAN} spectroscopic database~\citep{rothman_hitran_2009} and {ARLETTY} atmospheric profiles derived using meteorological measurements from the {ETHER} data center\footnote{\href{http://www.pole-ether.fr}{http://www.pole-ether.fr}} to create telluric line models.
+Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of the AtmosPhere for AStronomical data) web-service\footnote{\href{http://cds-espri.ipsl.fr/tapas}{http://cds-espri.ipsl.fr/tapas}}~\citep{bertaux_tapas_2014}.
+{TAPAS} uses the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995} along with the 2008 {HITRAN} spectroscopic database~\citep{rothman_hitran_2009} and {ARLETTY} atmospheric profiles derived using meteorological measurements from the ESPRI data centre\footnote{\href{https://cds-espri.ipsl.upmc.fr}{https://cds-espri.ipsl.upmc.fr}} to create telluric line models.
 
 The {ARLETTY} atmospheric profiles have a 6 hour resolution, so there may be a slight difference between the actual profile at the time of observation.
 
-We use the mid-observation time to retrieve transmission models for each observation, with the {ARLETTY} atmospheric profiles\footnote{Nearest of the 6 hourly profiles} and vacuum wavelengths selected.
-The telluric models were retrieved without any barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument.
-
-{TAPAS} allows for the choice of atmospheric constituents included in the model spectra.
-We obtained one model with all available species present, convolved to a resolution of \(\rm R=50\,000\), and another two models without an instrumental profile convolution applied.
-For these two extra models, one contained only the transmission spectra of \ce{H2O} while the other contained all other constituents except \ce{H2O}.
-This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS}~\citet{bertaux_tapas_2014}. \cref{subsec:telluric_correction}.
-
-
-\todo{Look at} -> synthesizing telluric spectra \nir{} for {CRIRES}~\cite{seifahrt_synthesising_2010}
-
-Using {TAPAS} is contrasted alongside Molecfit and Telfit in~\cite{ulmer-moll_telluric_2018}.
-We conclude that \ldots
+There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra.
 
 
 
+\subsection{Requests for this work}
 
-\#\#\#\#
+Synthetic telluric absorption were requested from the TAPAS web service for this work.
+These were to match the CRIRES observations which are presented in \cref{tab:observations}.
+ 
+The mid-observation time for each observation was used to request a synthetic spectra individually for each observation, with the {ARLETTY} atmospheric profiles and vacuum wavelengths selected.
+The telluric models were retrieved without barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument.
+For each observation one model was requested with all available atmospheric species present, convolved to a resolution of \(\rm R=50\,000\), and a further two models without the instrumental profile convolution applied.
+For these two extra models, one contained only the transmission spectra of \ce{H2O} while the other contained contributions from the all other constituents except \ce{H2O}.
+This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS}~\citet{bertaux_tapas_2014}.
+\textbf{will i discuss this, if so where}
 
-\subsubsection{Telluric correction}
-\label{subsec:telluric_correction}
-The Earth's atmosphere is a spectral filter for all ground-based astronomical observations, imprinting the absorption profile of the atmosphere onto the spectrum observed.
-To accurately recover the spectra of the observed target the removal of the absorption lines introduced by Earth's atmosphere is extremely important.
-The motion, changing composition and \todo{See solenes paper for matereial here}.
-A number of methods are available to correct for the telluric lines, telluric reference (cite), models (tapas), modelling/fitting (molecfit tellfit).
-The effectiveness between these three methods has recently been performed in~\cite{ulmer-moll_telluric_2018}. \todo{Expand this section\ldots{}}. \todo{Should this be more in the introduction?}.
 
-In this work we use telluric models without fitting, using the {TAPAS} spectra.
 
+
+\section{This should possibly go as post-reduction}
 These observations were first taken in an atmospheric window of the \emph{K}-band in order to reduce the absorption introduced by the atmosphere~\citep{barnes_hd_2008}.
 \missingfigure{The telluric spectrum around 2\um{} showing the 2.1\um{} window of low telluric absorption} To correct for the remaining telluric line contamination the spectra were divided by the {TAPAS}\citep{bertaux_tapas_2014} atmospheric transmission models for each observation.
 Synthetic telluric models were used to avoid the observing overhead necessary to perform telluric standard star exposures~\citep{vacca_method_2003}, and they have been demonstrated to be superior in the quality of the correction relative to the telluric standard approach~\citep[e.g.][]{cotton_atmospheric_2014}.
@@ -78,36 +78,16 @@ One possible solution for this would be to perform a piece-wise telluric correct
 This technique could also benefit from a larger wavelength span that would enable blended lines to be ignored while having sufficient deep \ce{H2O} lines to fit the scaling factor correctly.
 This small experiment shows that a simple scaling is not enough to correct for the absorption in an effective way, for this case.
 
-\unfinished{Add telluric spectra for \nir{} band? the plot from Molecfit?}
-
 \unfinished{Still uneven line coverage on all detectors in this small range}
 
 \unfinished{\ce{H2O} corrections} example of good and bad fitting\ldots
 
 
-\subsection{Tapas models}
-\todo{ADAPT this section to the usage of the models.}
-\label{subsec:tapas_models_usage}
-For the wavelength calibration and telluric correction methods we use telluric line models.
-These have been show to provide as good or better telluric correction compared to the telluric standard method \reference{telluric model correction methods original}and~\citep{ulmer-moll_telluric_2018}.
-
-We utilized the {TAPAS} (Transmissions of the {AtmosPhere} for {AStronomical} data) web-service\footnote{\href{http://www.pole-ether.fr/tapas/}{http://www.pole-ether.fr/tapas/}}~\citep{bertaux_tapas_2014} to obtain atmospheric transmission models for each observation. {TAPAS} uses the standard line-by-line radiative transfer model code {LBLRTM}~\citep{clough_linebyline_1995} along with the 2008 {HITRAN} spectroscopic database~\citep{rothman_hitran_2009} and {ARLETTY} atmospheric profiles derived using meteorological measurements from the {ETHER} data centre\footnote{\href{http://www.pole-ether.fr}{http://www.pole-ether.fr}} to create telluric line models.
-
-The {ARLETTY} atmospheric profiles have a 6 hour resolution, so there may be a slight difference between the actual profile at the time of observation.
-
-We use the mid-observation time to retrieve transmission models for each observation, with the {ARLETTY} atmospheric profiles\footnote{Nearest of the 6 hourly profiles} and vacuum wavelengths selected.
-The telluric models were retrieved without any barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument.
-
-{TAPAS} allows for the choice of atmospheric constituents included in the model spectra.
-We obtained one model with all available species present, convolved to a resolution of \(\rm R=50\,000\), and another two models without an instrumental profile convolution applied.
-For these two extra models, one contained only the transmission spectra of \ce{H2O} while the other contained all other constituents except \ce{H2O}.
-This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS}~\citet{bertaux_tapas_2014}. \Cref{subsec:telluric_correction}.
-
 
 \subsection{Issues with {TAPAS}}
-There are a number of issues we encountered when using the {TAPAS} web-service, mainly due to interaction with the website.
-Often their service was down for weeks at a time without any warning or notification.
-With this you would waste time filling out the web form and attempt to submit it but would receive no response and no email with a link to the data.
+There are a number of issues encountered when using the {TAPAS} web-service, mainly due to interaction with the website.
+Often their service were down for weeks at a time without any warning or notification.
+With this, time would be wasted filling out the web form and attempt to submit the application it but would receive no response and no email with a link to the data.
 There was a higher success rate of successful response between different web-browsers.
 A number of bug reports were submitted to the owners of the webpage without any acknowledgement.
 
@@ -140,9 +120,8 @@ These issues need to be considered when requesting {TAPAS} spectra, adding unnec
 
 
 \subsubsection{Telluric masking}
-The telluric spectra from {TAPAS} can not only be used for correcting individual spectra but are also easily used to create a wavelength mask telluric lines.
-For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use {TAPAS} spectra to mask out atmospheric lines deeper than 2\% for computing the photon noise limited radial velocity precision.
-Masking with the {TAPAS} model is similarly performed in \cref{cha:nir_content} when we extend the analysis of \citet{figueira_radial_2016}.
+The telluric spectra from {TAPAS} can not only be used for correcting individual spectra but are also easily used to create a wavelength mask telluric lines.For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use {TAPAS} spectra to mask out atmospheric lines deeper than 2\% for computing the photon noise limited radial velocity precision.
+A telluric wavelength mask is similarly used in \cref{cha:nir_content} when extending the analysis of \citet{figueira_radial_2016}.
 The telluric model used for this is an average of 52 {TAPAS} spectra (one per week in 2014), simulated at La Silla Observatory at an airmass of 1.2 (\(z = 33.5^{o}\)).
 This is to incorporate long-term variations of absorption over the year.
 Masking is applied by defining a cut-off line depth, typically 2\%, at which to mask out any deeper telluric lines.
