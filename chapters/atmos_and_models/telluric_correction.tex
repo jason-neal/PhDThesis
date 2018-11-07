@@ -39,9 +39,7 @@ The {ARLETTY} atmospheric profiles have a 6 hour resolution, so there may be a s
 There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra.
 
 
-
 \subsection{Requests for this work}
-
 Synthetic telluric absorption were requested from the TAPAS web service for this work.
 These were to match the CRIRES observations which are presented in \cref{tab:observations}.
  
@@ -51,8 +49,6 @@ For each observation one model was requested with all available atmospheric spec
 For these two extra models, one contained only the transmission spectra of \ce{H2O} while the other contained contributions from the all other constituents except \ce{H2O}.
 This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS}~\citet{bertaux_tapas_2014}.
 \textbf{will i discuss this, if so where}
-
-
 
 
 \section{This should possibly go as post-reduction}
@@ -87,26 +83,25 @@ This small experiment shows that a simple scaling is not enough to correct for t
 \subsection{Issues with {TAPAS}}
 There are a number of issues encountered when using the {TAPAS} web-service, mainly due to interaction with the website.
 Often their service were down for weeks at a time without any warning or notification.
-With this, time would be wasted filling out the web form and attempt to submit the application it but would receive no response and no email with a link to the data.
-There was a higher success rate of successful response between different web-browsers.
+With this, time was wasted filling out and submitting a requests via the the web form without a response, or a returned spectra.
+There was also a variable level of success between different web-browsers.
 A number of bug reports were submitted to the owners of the webpage without any acknowledgement.
 
-The web-page is useful for quickly obtaining a small number of spectra but can be tedious for many.
-In our case we were requesting 3 telluric spectra, with varying molecular contributions, for each of our 17 observations.
-There is an ability to request multiple spectra at a time but we found this would not function if trying to request more than four spectra at once.
+The web-page is useful for quickly obtaining a small number of spectra but can be tedious for many spectra.
+For this work this was around upwards of 50 telluric spectra, (3 for each of the 17 observations). TAPAS offers the ability to request multiple spectra at a time but this was found to be unreliable when attempting to request more than four spectra in a single request.
 
 A script\footnote{Available at \href{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}} was created to automatically generate the data necessary to fill out a {TAPAS} request for each {CRIRES} observations.
-The script scanned the {CRIRES} header for information such as the mid-time of observations, target coordinates, slit width (defines {CRIRES}'s instrumental resolution) etc.\ and populated the {XML} request form provided by {TAPAS}.
+The script scanned the {CRIRES} header for information such as the mid-time of observations, target coordinates, slit width etc.\ and populated the {XML} request form provided by {TAPAS}.
 The script output is copied and pasted into the web-browser for submission.
 
 Trial and error was needed to understand all the {XML} form entries, such as the molecules requested and the atmospheric model to use ({ARLETTY}) and achieve a valid {TAPAS} request.
 The real issue was with the {TAPAS} {{ID}} number.
 Each {TAPAS} request has an {ID} number (which is provided with the email response).
 This {ID} number needs to be correctly set in the {XML} form before submission.
-This number increments by 1 with each submission but its initial value is unknown unless you made the last request.
-If you submit the {XML} request with the incorrect {ID} number you will get a response with the correct {ID} number, but the failed request.
-You increment this {ID} number by 1 and hopefully make a valid request.
-Unfortunately if someone else has made a {TAPAS} request after yours then the {ID} number will again be invalid.
+This number increments by 1 with each submission but its initial value is unknown unless you made the very last request.
+If a submission is made via the {XML} request with the incorrect {ID} number a response will be returned with the correct {ID} number, but the failed request will be returned.
+This can then be used to increment the {ID} number by 1 and hopefully make a valid request.
+Unfortunately, if another user makes a {TAPAS} request between submissions the {ID} number will again be invalid.
 It is unknown if multiple transmission spectra could have been requested at the same time with the {XML} form.
 
 There is another issue with a one hour time offset between the requested and the time returned by {TAPAS}.
@@ -124,5 +119,4 @@ The telluric spectra from {TAPAS} can not only be used for correcting individual
 A telluric wavelength mask is similarly used in \cref{cha:nir_content} when extending the analysis of \citet{figueira_radial_2016}.
 The telluric model used for this is an average of 52 {TAPAS} spectra (one per week in 2014), simulated at La Silla Observatory at an airmass of 1.2 (\(z = 33.5^{o}\)).
 This is to incorporate long-term variations of absorption over the year.
-Masking is applied by defining a cut-off line depth, typically 2\%, at which to mask out any deeper telluric lines.
-
+Masking is applied by defining a cut-off line depth, typically 2\%, at which to mask out any deeper  lines.
