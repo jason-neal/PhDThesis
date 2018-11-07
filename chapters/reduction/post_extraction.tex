@@ -127,15 +127,20 @@ This may have made the line identification simpler.
 
 \subsection{Telluric correction}
 \label{subsec:telluric_correction_application}
-After wavelength calibration telluric correction is performed using the same {TAPAS} atmospheric transmission models. When inspecting the models and observations there was slight difference in the airmass, $m$, between the synthetic spectra and the airmass in the fits header. The depth of the telluric lines were re-scaled to match the airmass of the observations using the relation \(\rm T = T^{\beta}\), where \(\rm T\) is the transmission of the telluric spectrum and \(\beta\) is the airmass ratio between the observation and model $\beta ={m_{observed}/m_{model}}$.
+After wavelength calibration telluric correction is performed using the same {TAPAS} atmospheric transmission models.
+When inspecting the models and observations there was slight difference in the airmass, $m$, between the synthetic spectra and the airmass in the fits header.
+The depth of the telluric lines were re-scaled to match the airmass of the observations using the relation \(\rm T = T^{\beta}\), where \(\rm T\) is the transmission of the telluric spectrum and \(\beta\) is the airmass ratio between the observation and model $\beta ={m_{observed}/m_{model}}$.
 This scaling adjusted the depth of most absorption lines to better match the observations, but does not correctly scale the deeper \ce{H2O} lines, for which there were still differences.
 
-The scaled telluric model is interpolated to the wavelengths of the observed spectrum and then used to correct the observed spectra through division, leaving behind a telluric corrected spectra. Telluric spectra used for correction can be observed along side the non-corrected spectra in \cref{fig:spectraexamples} as the black dashed lines. 
+The scaled telluric model is interpolated to the wavelengths of the observed spectrum and then used to correct the observed spectra through division, leaving behind a telluric corrected spectra.
+Telluric spectra used for correction can be observed along side the non-corrected spectra in \cref{fig:spectraexamples} as the black dashed lines. 
 
 \subsubsection{Separate \si{H2O} scaling.}
-A technique suggested by~\citet{bertaux_tapas_2014} was attempted to address the poor \ce{H2O} airmass scaling. This involved fitting a scaling factor to the  \ce{H2O} absorption lines before convolution to the instrument resolution.
+A technique suggested by~\citet{bertaux_tapas_2014} was attempted to address the poor \ce{H2O} airmass scaling.
+This involved fitting a scaling factor to the  \ce{H2O} absorption lines before convolution to the instrument resolution.
 This was achieved by first dividing the spectrum by a telluric model containing the non-\ce{H2O} constituents, convolved to the observed resolution, and scaled by the airmass to remove the non-\ce{H2O} lines.
-Then the telluric model with only \ce{H2O} lines at full resolution was scaled by a factor \(\textrm{T}^{x}\) and convolved to the instrumental resolution\footnote{\(\rm R=50\,000\) for this work} and compared to the remaining telluric lines in the observed spectra. This scaled and convolved model was fitted to the observations to find the best was fitted to find the best scaling factor \(x\),  for the \ce{H2O} lines.
+Then the telluric model with only \ce{H2O} lines at full resolution was scaled by a factor \(\textrm{T}^{x}\) and convolved to the instrumental resolution\footnote{\(\rm R=50\,000\) for this work} and compared to the remaining telluric lines in the observed spectra.
+This scaled and convolved model was fitted to the observations to find the best was fitted to find the best scaling factor \(x\),  for the \ce{H2O} lines.
 
 We found that for a few spectra in our sample this method corrected the deeper telluric lines well, but in many cases we found that the fitted scaling factor was affected by the presence of blended stellar lines (attempting to fit those also).
 It was also strongly influenced by the deepest  \ce{H2O} telluric lines present.
@@ -169,11 +174,15 @@ The masked regions created by this last mask are shown in \cref{fig:visualinspec
 
 \subsection{Barycentric RV correction}
 \label{{subsec:barycentriccorrection}}
-After the telluric correction is performed, the spectra are corrected for Earth's barycentric motion. The orbital and rotational motion of the Earth imparts a daily and seasonal radial velocity measurement offset onto observations. To accurately compare the radial velocity (or spectral shift) between two measurements, they need to be translated into a common rest frame. The rest frame of choice is the barycentre of the Solar System.  Equations to relate the observed spectral shift to the RV shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in~\citep{lindegren_fundamental_2003}.
+After the telluric correction is performed, the spectra are corrected for Earth's barycentric motion.
+The orbital and rotational motion of the Earth imparts a daily and seasonal radial velocity measurement offset onto observations.
+To accurately compare the radial velocity (or spectral shift) between two measurements, they need to be translated into a common rest frame.
+The rest frame of choice is the barycentre of the Solar System.  Equations to relate the observed spectral shift to the RV shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in~\citep{lindegren_fundamental_2003}.
 
 In this work the barycentric velocity correction is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
 This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion as well as Earth's rotation.
 This computation requires the date and time of the observation, the location of the observatory and the celestial coordinates of the target.
 The observed spectra are Doppler shifted by the negative value of the barycentric velocity calculated, placing all spectra as if they were observed from the barycentre of the Solar System.
 
-The maximum barycentric velocity of the Earth is around 30\kmps{}. It is common to see spectral regions $\pm30$\kmps{} either side of telluric lines with an absorption depth >2\% avoided in analysis (such as RV determination), as these will be affected by the telluric lines at some point in the year.
+The maximum barycentric velocity of the Earth is around 30\kmps{}.
+It is common to see spectral regions $\pm30$\kmps{} either side of telluric lines with an absorption depth >2\% avoided in analysis (such as RV determination), as these will be affected by the telluric lines at some point in the year.

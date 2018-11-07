@@ -133,7 +133,8 @@ Each observation was wavelength calibrated and corrected for telluric lines then
 {\red{}
 Before the differential subtraction method is presented, calculations can be preformed to estimate the RV of both components in each observations and the likely separation between the companions between observations.
 The time of each observation is combined with the orbital parameters from \cref{tab:orbitparams} to calculate the RV of the host star (\({RV}_{1}\) in \cref{tab:observations}) using \textbf{EQUATION XX}.
-For the companion, the mass ($\mtwo{}$ or \mtwosini{})  is used alongside the stellar mass from \cref{tab:stellarparams} to calculate the RV of the companion using \todo{~equations for companion rv with the masses still included, include 180 degree angle phase change also}{\textbf{cref{}}}. This is given as \({RV}_{2}\) in \cref{tab:observations}.
+For the companion, the mass ($\mtwo{}$ or \mtwosini{})  is used alongside the stellar mass from \cref{tab:stellarparams} to calculate the RV of the companion using \todo{~equations for companion rv with the masses still included, include 180 degree angle phase change also}{\textbf{cref{}}}.
+This is given as \({RV}_{2}\) in \cref{tab:observations}.
 The estimated difference in RV between the host and companion for each observation is also computed as \({rv}_{2} = {RV}_{2}-{RV}_{1}\) although it will not be used until \cref{cha:model_comparison}.
 
 For these observations the maximum estimated RV separation between the two companion spectra in  \(\Delta RV\) is calculated following \cref{eqn:companion_difference} and provided in \cref{tab:estimated_rv}.
@@ -394,8 +395,10 @@ In the ESO context, this corresponds to ``Monitoring proposals''~\citep[e.g.][pg
 Observations of the targets explored here, with long orbital periods in particular, would benefit from the ability for multi-period proposals and newer scheduling systems which allow for tighter scheduling constraints, such as a companion {RV} separation.
 
 For future observations we suggest that the known orbital solution of the companion be used to estimate the companions' {RV} curve during the observing period, with the companion \mtwosini{} providing an {RV} upper-limit.
-Knowing the instrumental wavelength and resolution, a constraint can then be set to avoid taking observations when the companion spectra are insufficiently separated, or \(\Delta {RV}\) < {\fwhm}. This constraint can be set using the absolute and relative \emph{time-link} constraints available in {ESO}'s {Phase 2 Proposal Preparation} (P2PP) tool.
-Additionally, analysing the known orbital solution beforehand to determine {RV} constraints will also help identify the best time to observe, if observations from separate periods will be required or, if an optimally separated companion differential is even feasible. Again the phase 2 proposal documentation for these observations could not be obtained to check if these observations had used any of these features, which were available at the time.
+Knowing the instrumental wavelength and resolution, a constraint can then be set to avoid taking observations when the companion spectra are insufficiently separated, or \(\Delta {RV}\) < {\fwhm}.
+This constraint can be set using the absolute and relative \emph{time-link} constraints available in {ESO}'s {Phase 2 Proposal Preparation} (P2PP) tool.
+Additionally, analysing the known orbital solution beforehand to determine {RV} constraints will also help identify the best time to observe, if observations from separate periods will be required or, if an optimally separated companion differential is even feasible.
+Again the phase 2 proposal documentation for these observations could not be obtained to check if these observations had used any of these features, which were available at the time.
 
 
 

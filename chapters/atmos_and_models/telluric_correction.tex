@@ -22,11 +22,14 @@ However they could not reproduces\textbf{ XX} correction as well as s better the
 Suggesting there is still room for improvements in the modelling.} \todo{finish}
 
 
-As an example \cref{fig:telluricmodelcomparision} shows the telluric correction using the three different methods, {Molecfit}, {TelFit} and {TAPAS}\footnote{Performed here by Sol\`{e}ne Ulmer-moll.}, of a spectrum extracted for this work, detector \#4 of observation HD\,4747-1  (see \cref{tab:observations}). There are differences between the models of around 2\% level, with the largest difference near the large telluric line around 2163\nm{}.
+As an example \cref{fig:telluricmodelcomparision} shows the telluric correction using the three different methods, {Molecfit}, {TelFit} and {TAPAS}\footnote{Performed here by Sol\`{e}ne Ulmer-moll.}, of a spectrum extracted for this work, detector \#4 of observation HD\,4747-1  (see \cref{tab:observations}).
+There are differences between the models of around 2\% level, with the largest difference near the large telluric line around 2163\nm{}.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/atmos_and_models/Telluric_model_comparision}
-    \caption{CRIRES spectra with telluric correction applied using the  {Molecfit}, {TelFit} and {TAPAS}. Top: The telluric corrected spectra. Bottom: Difference between the corrected spectra from the different methods. }
+    \caption{CRIRES spectra with telluric correction applied using the {Molecfit}, {TelFit} and {TAPAS}.
+        Top: The telluric corrected spectra.
+        Bottom: Difference between the corrected spectra from the different methods.}
     \label{fig:telluricmodelcomparision}
 \end{figure}
 
@@ -36,10 +39,10 @@ This is the case with the CRIRES observations analysed in this work.
 This work utilizes the synthetic spectra produced from {TAPAS} models are used correction the telluric lines in CRIRES spectra.
 These are detailed further below.
 
-\subsection{{TAPAS} web-service}
+\subsection{{TAPAS} web service}
 \label{subsubsec:TAPAS}
 
-Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of the AtmosPhere for AStronomical data) web-service\footnote{\href{http://cds-espri.ipsl.fr/tapas}{http://cds-espri.ipsl.fr/tapas}}~\citep{bertaux_tapas_2014}.
+Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of the AtmosPhere for AStronomical data) web service\footnote{\href{http://cds-espri.ipsl.fr/tapas}{http://cds-espri.ipsl.fr/tapas}}~\citep{bertaux_tapas_2014}.
 {TAPAS} uses the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995} along with the 2008 {HITRAN} spectroscopic database~\citep{rothman_hitran_2009} and {ARLETTY} atmospheric profiles derived using meteorological measurements from the ESPRI data centre\footnote{\href{https://cds-espri.ipsl.upmc.fr}{https://cds-espri.ipsl.upmc.fr}} to create telluric line models.
 
 The {ARLETTY} atmospheric profiles have a 6 hour resolution, so there may be a slight difference between the actual profile at the time of observation.
@@ -48,30 +51,33 @@ There are several parameters that can be submitted to the web service to define 
 
 
 \subsection{Requests for this work}
-Synthetic telluric absorption were requested from the {TAPAS} web-service for this work.
+Synthetic telluric absorption were requested from the {TAPAS} web service for this work.
 These were to match the CRIRES observations which are presented in \cref{tab:observations}.
  
 The mid-observation time for each observation was used to request a synthetic spectra individually for each observation, with the {ARLETTY} atmospheric profiles and vacuum wavelengths selected.
 The telluric models were retrieved without barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument.
 For each observation one model was requested with all available atmospheric species present, convolved to a resolution of \(\rm R=50\,000\), and a further two models without the instrumental profile convolution applied.
 For these two extra models, one contained only the transmission spectra of \ce{H2O} while the other contained contributions from the all other constituents except \ce{H2O}.
-This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS}~\citet{bertaux_tapas_2014}. \cref{subsec:telluric_correction_application}
+This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS}~\citet{bertaux_tapas_2014}.
+
+\cref{subsec:telluric_correction_application}
 \todo{will i discuss this?, if so where}
 
 
 \subsection{Issues with {TAPAS}}
-There are a number of issues encountered when using the {TAPAS} web-service, mainly due to interaction with the website.
+There are a number of issues encountered when using the {TAPAS} web service, mainly due to interaction with the website.
 Often their service were down for weeks at a time without any warning or notification.
 With this, time was wasted filling out and submitting a requests via the the web form without a response, or a returned spectra.
-There was also a variable level of success between different web-browsers.
+There was also a variable level of success between different web browsers.
 A number of bug reports were submitted to the owners of the webpage without any acknowledgement.
 
-The web-page is useful for quickly obtaining a small number of spectra but can be tedious for many spectra.
-For this work this was around upwards of 50 telluric spectra, (3 for each of the 17 observations). {TAPAS} offers the ability to request multiple spectra at a time but this was found to be unreliable when attempting to request more than four spectra in a single request.
+The webpage is useful for quickly obtaining a small number of spectra but can be tedious for many spectra.
+For this work this was around upwards of 50 telluric spectra, (3 for each of the 17 observations).
+{TAPAS} offers the ability to request multiple spectra at a time but this was found to be unreliable when attempting to request more than four spectra in a single request.
 
 A script\footnote{Available at \href{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}} was created to automatically generate the data necessary to fill out a {TAPAS} request for each {CRIRES} observations.
 The script scanned the {CRIRES} header for information such as the mid-time of observations, target coordinates, slit width etc.\ and populated the {XML} request form provided by {TAPAS}.
-The script output is copied and pasted into the web-browser for submission.
+The script output is copied and pasted into the web browser for submission.
 
 Trial and error was needed to understand all the {XML} form entries, such as the molecules requested and the atmospheric model to use ({ARLETTY}) and achieve a valid {TAPAS} request.
 The real issue was with the {TAPAS} {{ID}} number.
