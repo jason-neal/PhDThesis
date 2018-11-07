@@ -3,15 +3,17 @@
 \section{Telluric correction}
 \label{sec:telluric_correction}
 
-Typically atmospheric absorption correction has been performed by observing a standard star, a very hot (O- or A-type), fast rotating star.
+Typically atmospheric absorption correction has been performed by observing a standard star, a very hot (O or A-type), fast rotating star.
 These stars have minimal spectral features, so reveal the atmospheric absorption when observed.
 These standard stars need to be observed close in the sky and right before or after the science observation.
 To have similar atmospheric absorption to the science target.
 The science target can be corrected for the telluric line by division by the telluric standard star~\citep[e.g.][]{vacca_method_2003}. 
 For high-resolution spectroscopy this technique is not sufficient to correct telluric with residuals greater than 2\% remaining. 
-Recently synthetic modelling of telluric absorption has gained popularity with several works focusing on correcting telluric absorption with synthetic models~\citep[e.g.][]{baily_correcting_2007, cotton_atmospheric_2014, seifart_synthesising_2010} and achieving better correction than the standard star method. 
+
+Recently synthetic modelling of telluric absorption has gained popularity with several works focusing on correcting telluric absorption with synthetic models~\citep[e.g.][]{bailey_correcting_2007, cotton_atmospheric_2014, seifahrt_synthesising_2010} and achieving better correction than the standard star method. 
+
 Several different software available which usually build upon  the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995}.
-Some examples are {TelFit}~\citep{guilkson_correctiong_2014}, and ESO's {Molecfit}~\citep{smette_molecfit_2015} which both model and fit a synthetic absorption spectra to observations, where as {TAPAS}~\citep{bertaux_tapas_2014} just creates synthetic models based on atmospheric data for an observation (without fitting).
+Some examples are {TelFit}~\citep{gullikson_correcting_2014}, and ESO's {Molecfit}~\citep{smette_molecfit_2015} which both model and fit a synthetic absorption spectra to observations, where as {TAPAS}~\citep{bertaux_tapas_2014} just creates synthetic models based on atmospheric data for an observation (without fitting).
 The synthetic models at high resolution are very sensitive to atmospheric constituents, especially water vapour, and observing conditions such as the airmass.
 
 {\red{} Recently~\citet{ulmer-moll_telluric_2018} compared the telluric correction efficiency between {TelFit},  {Molecfit}, {TAPAS}, and the standard star method.
@@ -75,7 +77,7 @@ Trial and error was needed to understand all the {XML} form entries, such as the
 The real issue was with the {TAPAS} {{ID}} number.
 Each {TAPAS} request has an {ID} number (which is provided with the email response).
 This {ID} number needs to be correctly set in the {XML} form before submission.
-This number increments by 1 with each submission but its initial value is unknown unless you made the very last request.
+This number is incremented by 1 with each submission but its initial value is unknown unless you made the very last request.
 If a submission is made via the {XML} request with the incorrect {ID} number a response will be returned with the correct {ID} number, but the failed request will be returned.
 This can then be used to increment the {ID} number by 1 and hopefully make a valid request.
 Unfortunately, if another user makes a {TAPAS} request between submissions the {ID} number will again be invalid.
