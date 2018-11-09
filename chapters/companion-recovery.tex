@@ -340,6 +340,14 @@ The white line shows a 3-\(\sigma\) confidence level about the minimum \textchis
     \label{fig:HD211847_result_contours}
 \end{figure*}
 
+\todo{Put error paragraph in a good location}
+The error on estimated {RV} values, shown in \cref{fig:HD211847_result_contours}, is calculated by applying the general error propagation formula~\citep{ku_notes_1966} to the RV equation (\cref{eqn:rv2_equation}) and using the errors on the published orbital parameters.
+For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc., it follows:
+\begin{align}
+f &= f(x, y, z, \ldots)\\
+\delta f &= \sqrt{{\left( \frac{\partial f}{\partial x} \delta x\right)}^2 + {\left(\frac{\partial f}{\partial y} \delta y\right)}^2 + {\left(\frac{\partial f}{\partial z} \delta z\right)}^2 + \ldots}.
+\end{align}
+
 
 \missingfigure{images/visualize result residuals.pdf}
 \begin{figure*}
