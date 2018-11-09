@@ -10,8 +10,8 @@ The notes given here mainly follow \citep{bozza_methods_2016}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{figures/fundamental_rv/orbit_diagram}
-    \caption{The basic elements of the Keplerian orbit. Credit~\citep{bozza_methods_2016}.}
+    \includegraphics[width=0.6\linewidth]{figures/fundamental_rv/orbit_diagram2.pdf}
+    \caption{The basic elements of the Keplerian orbit. Adapted from~\citep{bozza_methods_2016}.}
     \label{fig:orbitdiagram}
 \end{figure}
 
@@ -28,81 +28,81 @@ $\Omega$ is irrelevant for determining the orbital mass, but inclination $i$ is 
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{figures/fundamental_rv/eclipes_orbit2}
-    \caption{Elements of an elliptical orbit about the common centre of mass \(\textrm{F}_1\). {\(\nu\)} is the angle to the position of the orbiting body from the periapse (closest point to barycentre). The auxiliary circle is a circle with radius of the semi-major axis of the ellipse. Adapted from~\citep{bozza_methods_2016}.}
+    \includegraphics[width=0.55\linewidth]{figures/fundamental_rv/eclipes_orbit2.pdf}
+    \caption{Elements of an elliptical orbit about the common centre of mass \(\textrm{F}_1\). {\(\nu\)} is the angle to the position of the orbiting body from the periapse (closest point to barycentre). The auxiliary circle has a radius equal to the semi-major axis of the ellipse. Adapted from~\citep{bozza_methods_2016}.}
     \label{fig:eclipesorbit}
 \end{figure}
 
 With a two body system with masses \Mone{} and \Mtwo{}, under the force of gravity, their orbits are elliptical orbit about their barycentre mass, as seen in \cref{fig:eclipesorbit}.
 In polar coordinates the ellipse of an orbit about the centre of mass (located at the focus $\textrm{F}_1$) is described by:
 \begin{equation}
-    r = \frac{a(\oneminusetwo)}{1 + e \cos(\nu(t))},
+    r = \frac{a(\oneminusetwo)}{1 + e \cos{\nu(t)}},
 \end{equation}
 where $a$ is the length of the semi-major axis for the body, $e$ is the eccentricity, $\nu$ is the \emph{true anomaly} the angle between the current position of the orbiting body and periastron.
 
 The true anomaly is not only a function time, \(t\), but also the orbital period \(P\), the \emph{time of periastron passage}, \(T_0\), and eccentricity.
 It is geometrically related to the eccentric anomaly:
 \begin{equation}
-    \cos(\nu(t)) = \frac{\cos(E(t))}{1 - e \cos(E(t))}
+    \cos{\nu(t)} = \frac{\cos{E(t)}}{1 - e \cos{E(t)}}
 \end{equation} 
-which can be numerically determined from the mean anomaly M(t):
+which can be numerically determined from the mean anomaly \(M(t)\):
 \begin{equation}
-    M(t) = \frac{2 \pi}{P}(t - T_0) = E(t) - e \sin(E(t))
+    M(t) = \frac{2 \pi}{P}(t - T_0) = E(t) - e \sin{E(t)}
 \end{equation}
 The mean anomaly is the angle for the average orbital motion of the body at a time after periastron passage \(t-T_0\).
 
 
-
-From Kepler's second law\footnote{Orbit sweeps out equal areas in equal times} \(1/2 r^{2} d\nu/dt\) = constant, while in one full period P, the total area of the ellipse \(\pi a^{2}{(\oneminusetwo)}^{1/2} \) will be covered, leading to: 
+From Kepler's second law\footnote{Orbit sweeps out equal areas in equal times} \(\frac{1}{2} r^{2} d\nu/dt\) = constant, while in one full period P, the total area of the ellipse \(\pi a^{2}{(\oneminusetwo)}^{1/2} \) will be covered, leading to: 
 \begin{equation}
-    r^2 \frac{d\nu}{dt} = \frac{2\pi a^{2}(\oneminusetwo)^{1/2}}{P} \label{eqn:kepler_area}
+    r^{2} \frac{d\nu}{dt} = \frac{2\pi a^{2}(\oneminusetwo)^{1/2}}{P} \label{eqn:kepler_area}
 \end{equation}
 
 The radial velocity is the change in $r$ along the line of sight $z$.
 The component of $r$ along the line of sight (from \cref{fig:orbitdiagram}) is:
 \begin{equation}
-    r_z =  r_1 \sin(\nu_1(t) + \omega)\sin(i) + \gamma \label{eqn:r_z}
+    r_z =  r_1 \sin{(\nu_1(t) + \omega)}\sin{i} + \gamma \label{eqn:r_z}
 \end{equation}
 where $\gamma$ is the mean velocity of the barycentre, and the subscripts `1' and `2' refer to the star and planet (or companion star), respectively.
 Differentiating \cref{eqn:r_z} and substituting in \cref{eqn:kepler_area} leaves the common RV equation:
-\begin{equation}
-    {RV} = \dot{r}_z= \frac{2 \pi a_1 \sin(i)}{P{(\oneminusetwo)}^{1/2}} [\cos{(\nu(t) + \omega)} + e\cos{(\omega)}] + \gamma  \label{eqn:rv_equation} \\
-     = \kone [\cos{(\nu(t) + \omega)} + e\cos{(\omega)}] + \gamma,
-\end{equation}
-where several parameters and constants have been condensed into $K$, referred to as the \emph{semi amplitude}.
+\begin{align}
+    {RV} = \dot{r}_z &= \frac{2 \pi a_1 \sin{i}}{P{(\oneminusetwo)}^{1/2}} [\cos{(\nu(t) + \omega)} + e\cos{\omega}] + \gamma  \label{eqn:rv_equation} \\
+     &= \kone [\cos{(\nu(t) + \omega)} + e\cos{\omega}] + \gamma,
+\end{align}
+where several parameters and constants have been condensed into $\textrm{K}$, referred to as the \emph{semi amplitude}.
 In this case \Kone{} is the semi amplitude for the star.
 
 
 \subsection{Mass function}
 Once the orbital parameters have been determined then it is possible to determine the mass function of the system.
-From the centre of mass the distance between the two bodies is \(a = a_1 + a_2\) where $a_1$ and $a_2$ are the respective distances to the barycentre, while the value \(\mone a_1 = \mtwo a_2\) can allow these rearrangements:
+From the centre of mass the distance between the two bodies is \(a = a_1 + a_2\) where $a_1$ and $a_2$ are the respective distances to the barycentre, while the value \(\mone a_1 = \mtwo a_2\) can allow these re-arrangements:
 \begin{equation}
     a = a_{1} (1 + \frac{a_{2}}{a_{1}}) = a_{1}(1 + \frac{\mone}{\mtwo}) = \frac{a_{1}}{\mtwo} (\mone + \mtwo)
 \end{equation}
 
-Kepler's third law (\(\frac{G}{4\pi^{2}}(\mone + \mtwo)P^{2} = {(a)}^{3}\)) can be written as:
+Kepler's third law (\({G (\mone + \mtwo)}/{4\pi^{2}}= {a}^{3}/{P}^{2}\)) can be written as:
 \begin{equation}
-    \frac{G}{4\pi^{2}}(\mone + \mtwo)P^{2} = a_{1}^{3}{(\frac{\mone + \mtwo}{\mtwo})}^{3}
+    \frac{G (\mone + \mtwo)}{4\pi^{2}} = \frac{a_{1}^{3}}{P^{2}}{\left(\frac{\mone + \mtwo}{\mtwo}\right)}^{3}
 \end{equation}
-replacing $a_{1}$ with $\kone$ from \cref{eqn:rv_equation} results in the mass function $f(M)$:
+replacing $a_{1}$ with $\kone$ from \cref{eqn:rv_equation} results in the \emph{mass function}, $f(M)$:
 \begin{equation}
-    f{M} = \frac{{(\mtwosini)}^{3}}{{(\mone + \mtwo)}^{2}} = \kone^{3} P {(\oneminusetwo)}^{3/2} \label{eqn:mass_function}
+    f(M) = \frac{{(\mtwosini)}^{3}}{{(\mone + \mtwo)}^{2}} = \frac{\kone^{3} P {(\oneminusetwo)}^{3/2}}{2 \pi G} \label{eqn:mass_function}
 \end{equation}
 This function can be determined directly from the measurable parameters $P$, $e$ and \Kone{}.
 It also depends on the stellar mass \Mone{}, which needs to be measured by some other means to determine the planet mass.
 Also from this function that the true mass of the planet \Mtwo{} is not obtained but only the projected mass \Mtwosini{}.
 
 For a planetary companion the approximation $\mtwo \ll \mone$ can be made and for circular orbit the radial velocity semi-amplitude can be re-written as:
-
 \begin{equation}
-    \kone = \frac{28.4}{\sqrt{\oneminusetwo}} \frac{\mtwosini}{\mjup} {\left(\frac{\mone}{\modot}\right)}^{-2/3} {\left(\frac{P}{1 yr}\right)}^{-1/3}  [\mps] \label{eqn:k_relation}
+    \kone = \frac{28.4}{\sqrt{\oneminusetwo}} \frac{\mtwosini}{\mjup} {\left(\frac{\mone}{\modot}\right)}^{-2/3} {\left(\frac{P}{1 \si{yr}}\right)}^{-1/3}  [\mps] \label{eqn:k_relation}
 \end{equation}
 
 This can be used to calculate the RV amplitude create by different mass planets in various circular orbits as given in \cref{tab:rv_amplitudes}.
 
-If there is more than one companion/planet then there will be gravitational influence each other and their orbits become non-Keplerian, i.e.\ a N-body problem~\citep[e.g.][]{chenciner_three_2007}.
-Assuming that the gravitational influence is negligible the RV signal of the host star can be treated as a sum of tugs from each companion.
-In this work were a star has two companions, they will be treated independently, as if they were alone.
+\input{./tables/rv_semi_amplitudes}
+
+If there is more than one companion/planet then there will be a gravitational influence between each other and their orbits become non-Keplerian, i.e.\ a N-body problem~\citep[e.g.][]{chenciner_three_2007}.
+Assuming that the gravitational influence between companions is negligible the RV signal observed in the host star can be treated as just a sum of tugs from each companion.
+For the two instances in this work where the target star has two companions, the companions will be treated separately, as if they were alone.
 
 
 \subsection{Binary mass ratio}
@@ -113,7 +113,7 @@ In the above equation RV of the companion has not yet been addressed.
 \end{equation}
 where \(\omega_{2} = \omega + 180^\circ\) due to the phase difference between the two components, resulting in the relative velocity (ignoring $\gamma$) of the companion being opposite the star and:
 \begin{equation}
-    \ktwo  = {\left(  \frac{2 \pi G}{P{(\oneminusetwo)}^{3/2}} \right)}^{1/3} \frac{\mone \sin(i)}{{(\mone + \mtwo)}^{2/3}} = \frac{2 \pi a_2 \sin(i)}{P{(\oneminusetwo)}^{1/2}} \label{eqn:ktwo}
+    \ktwo  = {\left(  \frac{2 \pi G}{P{(\oneminusetwo)}^{3/2}} \right)}^{1/3} \frac{\mone \sin{i}}{{(\mone + \mtwo)}^{2/3}} = \frac{2 \pi a_2 \sin{i}}{P{(\oneminusetwo)}^{1/2}} \label{eqn:ktwo}
 \end{equation}
 
 The orbits of the host and companion are directly related through the mass ratio of the star and companion:
@@ -121,18 +121,23 @@ The orbits of the host and companion are directly related through the mass ratio
 q = \frac{\mtwo}{\mone} = \frac{\kone}{\ktwo} = \frac{RV_{1}}{RV_{2}} = \frac{r_2}{r_1} \label{eqn:q_ratio_K2}.
 \end{equation}
 
-Typically in exoplanet detections the companion (planet) is two faint to measure the planetary velocity. However in double lined spectroscopic binary the spectrum of both stars can be identified in the blended spectra and the RV of both star and companion can be measured and monitored over the orbit. With both both velocities the mass ratio of the binary can be found. The individual masses however is still not determinable due to the inclination $\sin{i}$ of the orbit. 
+Typically in exoplanet detections the companion (planet) is two faint to measure the planetary velocity. However in double lined spectroscopic binary the spectrum of both stars can be identified in the blended spectra and the RV of both star and companion can be measured and monitored over the orbit. With both velocities the mass ratio of the binary can be found. The individual masses however is still not determinable due to the inclination $\sin{i}$ of the orbit. 
 
-In \cref{cha:direct_recovery} the detection of the faint spectra is of known companions is attempted, in order to determine the velocity change of the companion and hence the mass ratio. To help with the analysis and simulations the known orbital parameters (see \cref{tab: orbtit aprats, tab: star parsms} ) are used along with the companion mass ( \Mtwo{} or \Mtwosini{}) to predict or estimate the RV of the companion using \cref{eqn:q_ratio_K2, eqn:rv2_equation}.
+In \cref{cha:direct_recovery} the detection of the faint spectra is of known companions is attempted, in order to determine the velocity change of the companion and hence the mass ratio. To help with the analysis and simulations the known orbital parameters (see \cref{tab: orbtit aprats, tab: star parsms} ) are used along with the companion mass (\Mtwo{} or \Mtwosini{}) to predict or estimate the RV of the companion using \cref{eqn:q_ratio_K2, eqn:rv2_equation}.
 Note, that for the targets in which only the minimum mass (\Mtwosini) is known and used in the mass ratio, this will result in the maximum {RV} semi amplitude for the companions orbit.
 The estimated \Ktwo{} for each companion is provided in \cref{tab:estimatedparameters} while the {RV} for both components at the time of each observation is provided in \cref{tab:observations}.
 
 \todo{I think this is finished}
 
 
+\section{Measuring the RV}
+\todo{something about measuring the RV and CCF}
+Slight motion of the spectral lines on the detector. To use the information form the whole spectrum the cross correlation is common to add all the lines together into a single line. see. ..
+
+This then be comes a property of the spectrum such as line density and number of deep strong lines.
 
 
-
+Transition into precision.
 
 
 
