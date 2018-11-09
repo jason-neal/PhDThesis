@@ -16,6 +16,7 @@ caption
 chngcntr
 cleveref
 collection-fontsrecommended
+csquotes
 datatool
 enumitem
 environ
