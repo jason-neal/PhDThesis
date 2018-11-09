@@ -89,6 +89,29 @@ This can be used to calculate the RV amplitude create by different mass planets 
 \todo{Find the table to velocities}
 
 
+If there is more than one companion/planet then there will be gravitational influence each other and their orbits become non-Keplerian, i.e.\ a N-body problem? {\textbf{ref}}. Assuming that the gravitational influence is negligible the RV signal of the host star can be treated as a sum of tugs from each companion.
+In this work were a star has two companions, they will be treated independently, as if they were alone.
+
+
+
+% from draft of paper 18/7/2017
+\subsection{Companion K}  Maybe something can go above from this...
+\label{sec:companion_RV}
+\emph{These sections might be unnecessary}\\
+
+To calculate the {RV} of the companion at the time of each observation.
+For a two-body system the {RV} semi-amplitude of the companion \(\ktwo\) can be determined from the orbital host-companion mass ratio
+\begin{equation}
+q = \mone/\mtwo = \ktwo/\kone\label{eqn:q_ratio_K2}.
+\end{equation}
+Note, that for the targets in which only the minimum mass (\Mtwosini) is known, this will give the maximum {RV} semi-amplitude of the companion.
+This relation was used to estimate \(\ktwo\) for the companion from the minimum mass or mass we have for each companion.
+These values along with the other orbital parameters of the system were used to calculate the {RV} of the companions for each observation.
+These values are provided with the observations in \cref{tab:observations}.
+
+
+
+
 \subsection{{RV} calculation}
 \unfinished{Move location / adjust from paper}
 We use the Keplerian orbit {RV} equation (\cref{eqn:rv_equation}) to estimate the {RV} of the host and companions at the time of each observation, \(t\):
@@ -117,23 +140,5 @@ f &= f(x, y, z, \ldots)\\
 
 
 
-% from draft of paper 18/7/2017
-\subsection{Companion K}  Maybe something can go above from this...
-\label{sec:companion_RV}
-\emph{These sections might be unnecessary}\\
-
-To calculate the {RV} of the companion at the time of each observation.
-For a two-body system the {RV} semi-amplitude of the companion \(\ktwo\) can be determined from the orbital host-companion mass ratio
-\begin{equation}
-q = \mone/\mtwo = \ktwo/\kone\label{eqn:q_ratio_K2}.
-\end{equation}
-Note, that for the targets in which only the minimum mass (\Mtwosini) is known, this will give the maximum {RV} semi-amplitude of the companion.
-This relation was used to estimate \(\ktwo\) for the companion from the minimum mass or mass we have for each companion.
-These values along with the other orbital parameters of the system were used to calculate the {RV} of the companions for each observation.
-These values are provided with the observations in \cref{tab:observations}.
 
 
-
-
-If more than one planet is present then they gravitationally influence each other and their orbits become non-Keplerian, i.e.\ a N-body problem? {\textbf{ref}}.
-In this work were a star has two companions we will only assume Keplerian orbits for the companion, independently.
