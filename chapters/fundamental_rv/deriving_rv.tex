@@ -51,7 +51,7 @@ Differentiating \cref{eqn:r_z} and substituting in \cref{eqn:kepler_area} leaves
 \begin{equation}
 \label{eqn:rv_equation}
 {RV} = \dot{r}_z= \frac{2 \pi a_1 \sin(i)}{P{(1-e^{2})}^{1/2}} [\cos{(\nu(t) + \omega)} + e\cos{(\omega)}] + \gamma
-     = K_1 [\cos{(\nu(t) + \omega)} + e\cos{(\omega)}] + \gamma,
+     = \kone [\cos{(\nu(t) + \omega)} + e\cos{(\omega)}] + \gamma,
 \end{equation}
 where several parameters and constants have been condensed into $K$, referred to as the \emph{semi amplitude}. In this case $\kone$ is the semi amplitude for the star.
 
@@ -60,31 +60,31 @@ where several parameters and constants have been condensed into $K$, referred to
 
 Once the orbital parameters have been determined then it is possible to determine the mass function of the system. From the centre of mass the distance between the two bodies is \(a = a_1 + a_2\) where $a_1$ and $a_2$ are the respective distances to the barycentre, while the value \(\mone a_1 = \mtwo a_2\) can allow these rearrangements:
 \begin{equation}
-a = a_{1} (1 + \frac{a_{2}}{a_{1}}) = a_{1}(1 + \frac{M_{1}}{M_{2}}) = \frac{a_{1}}{M_{2}} (M_{1} + M_{2})
+a = a_{1} (1 + \frac{a_{2}}{a_{1}}) = a_{1}(1 + \frac{\mone}{\mtwo}) = \frac{a_{1}}{\mtwo} (\mone + \mtwo)
 \end{equation}
 
 Kepler's third law can be written as:
 \begin{equation}
-    \frac{G}{4\pi^{2}}(M_{1} + M_{2})P^{2} = {(a_1 + a_2)}^{3}
+    \frac{G}{4\pi^{2}}(\mone + \mtwo)P^{2} = {(a_1 + a_2)}^{3}
 \end{equation}
 
 \begin{equation}
-\frac{G}{4\pi^{2}}(M_{1} + M_{2})P^{2} = a_{1}^{3}{(\frac{M_{1} + M_{2}}{M_{2}})}^{3}
+\frac{G}{4\pi^{2}}(\mone + \mtwo)P^{2} = a_{1}^{3}{(\frac{\mone + \mtwo}{\mtwo})}^{3}
 \end{equation}
-replacing $a_1$ with $K_1$ from \cref{eqn:rv_equation} results in the mass function $f(M)$:
+replacing $a_{1}$ with $\kone$ from \cref{eqn:rv_equation} results in the mass function $f(M)$:
 \begin{equation}
-f{M} = \frac{{(M_{2}\sin(i))}^{3}}{{(M_{1} + M_{2})}^{2}} = K^3_1 P {(1-e^{2})}^{3/2}
+f{M} = \frac{{(\mtwosini)}^{3}}{{(\mone + \mtwo)}^{2}} = \kone^{3} P {(1-e^{2})}^{3/2}
 \end{equation}
 
-This function can be determined directly from the measurable parameters $P$ $e$ and $K_1$. It also depends on the stellar mass $M_1$, which needs to be known  (by some other means) to determined the planet mass. Also from this function that the true mass of the planet $M_2$ is not obtained but only the projected mass $M_{2}\sin{i}$.
+This function can be determined directly from the measurable parameters $P$ $e$ and $\kone$. It also depends on the stellar mass $\mone$, which needs to be known  (by some other means) to determined the planet mass. Also from this function that the true mass of the planet $\mtwo$ is not obtained but only the projected mass \Mtwosini.
 
-For a planetary companion the approximation $M_2 \ll M_1$ can be made and for circular orbit the radial velocity semi-amplitude can be re-written as:
+For a planetary companion the approximation $\mtwo \ll \mone$ can be made and for circular orbit the radial velocity semi-amplitude can be re-written as:
 
 \begin{equation}
-K_1 = \frac{28.4}{\sqrt{1-e^{2}}} \frac{\mtwosini}{\Mjup} {\left(\frac{\mone}{\Msun}\right)}^{-2/3} {\left(\frac{P}{1 yr}\right)}^{-1/3}  [\mps]
+\kone = \frac{28.4}{\sqrt{1-e^{2}}} \frac{\mtwosini}{\mjup} {\left(\frac{\mone}{\modot}\right)}^{-2/3} {\left(\frac{P}{1 yr}\right)}^{-1/3}  [\mps] \label{eqn:k_relation}
 \end{equation}
 
-This can be used to calculate the RV amplitude create by different mass planets in various circular orbits as given in \cref{}.
+This can be used to calculate the RV amplitude create by different mass planets in various circular orbits as given in \textbf{cref{}}.
 
 \todo{Find the table to velocities}
 
@@ -102,7 +102,7 @@ To determine the {RV} of the companion we transformed the {RV} semi-amplitude of
 q = \mtwo / \mone = \kone / \ktwo
 \end{equation}
 
-We note that for the targets in which only the minimum mass (\mtwosini) is known, this equation will indicate the maximum \(\ktwo\) value for the companion.
+We note that for the targets in which only the minimum mass (\Mtwosini) is known, this equation will indicate the maximum \(\ktwo\) value for the companion.
 The estimated \(\ktwo\) for each companion is provided in \cref{tab:estimatedparameters} while the {RV} for both components at the time of each observation is provided in \cref{tab:observations}.
 
 
@@ -127,7 +127,7 @@ For a two-body system the {RV} semi-amplitude of the companion \(\ktwo\) can be 
 \begin{equation}
 q = \mone/\mtwo = \ktwo/\kone\label{eqn:q_ratio_K2}.
 \end{equation}
-Note, that for the targets in which only the minimum mass (\mtwosini) is known, this will give the maximum {RV} semi-amplitude of the companion.
+Note, that for the targets in which only the minimum mass (\Mtwosini) is known, this will give the maximum {RV} semi-amplitude of the companion.
 This relation was used to estimate \(\ktwo\) for the companion from the minimum mass or mass we have for each companion.
 These values along with the other orbital parameters of the system were used to calculate the {RV} of the companions for each observation.
 These values are provided with the observations in \cref{tab:observations}.
