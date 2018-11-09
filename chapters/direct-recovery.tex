@@ -43,6 +43,9 @@ Spectral Disentangling techniques
 - Differencing Fruluga
 - Templates?
 
+TODCOR - 2-d  from binary analysis \citep{zucker_study_1994} 
+\citep{mazeh_detecting_1997}
+
 2D-cross-correlation?   \citet{piskorz_evidence_2016} seems to have promising technique
 
 
@@ -53,6 +56,14 @@ See \citet{kostogryz_spectral_2013} for lots of useful references regarding diff
 
 
 
+{\red{} \citet{kolbl_detection_2015} Use HIRES spectra at 364-799\nm{} (R=60\,000) to determine statistically determine the presence of a faint secondary companion spectra (if any). 
+They use \textchisquared fitting of the observed spectra against the {SPecMatch} library of observed spectra to find a spectra to best remove the primary star lines, 
+accounting for dilution and rotational broadening.
+They also find that a secondary spectrum with a $\Delta RV$ relative to the host would blend and remain undetectable.
+When searching for the secondary they median normalize the spectra into 100K spectra since the difference between stars  <100K different is almost indiscernible in the secondary. The residuals are renormalized and then a \textchisquared fit is again preformed to identify any secondary spectra.
+For a low temperature companion (3500K) at a 1\% flux ratio to a 5000-6000\K{} primary star their recovery technique achieves 80\% injection-recovery.}
+
+ 
 
 \section{Motivation}
 
