@@ -10,20 +10,12 @@ The notes given here mainly follow \citep{bozza_methods_2016}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.3\linewidth]{figures/fundamental_rv/orbit}
-    \caption{The basic elements of the Keplerian orbit.
-        Credit \href{https://commons.wikimedia.org/w/index.php?curid=8971052}{Lasunncty}.}
-    \label{fig:orbit}
-\end{figure}
-\todo{The plot from summer school book would be better}
-\begin{figure}
-    \centering
     \includegraphics[width=0.5\linewidth]{figures/fundamental_rv/orbit_diagram}
-    \caption{}
+    \caption{The basic elements of the Keplerian orbit. Credit~\citep{bozza_methods_2016}.}
     \label{fig:orbitdiagram}
 \end{figure}
 
-\Cref{fig:orbit} shows the basic elements of the Keplerian orbit.
+\Cref{fig:orbitdiagram} shows the basic elements of the Keplerian orbit.
 There are several parameters required to situate the orbit in space.
 There is a \textit{reference plane}, tangential to the celestial sphere, that cuts the orbital plane with a \textit{line of nodes}.
 The \textit{ascending node} is the point on the plane at which the body crosses the reference plane moving away from the observer, and is defined relative to the vernal reference point, \Aries, with the \textit{longitude of the ascending node}, $\Omega$, setting the orientation.
@@ -33,8 +25,16 @@ These are: $a$ the semi-major axis of the elliptical orbit, $e$ the orbital ecce
 From RV measurements alone all of these parameters except for $i$ and $\Omega$ can be determined.
 $\Omega$ is irrelevant for determining the orbital mass, but inclination $i$ is very important as it effects the projection of the velocity towards the observer.
 
-With system of two bodies with masses \Mone{} and \Mtwo{}, under the force of gravity their orbits describe elliptical orbits as seen in \textbf{cref{Figure}}.
-In polar coordinates the ellipse of an orbit for each a body with the centre of mass at one focus is described by:
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/fundamental_rv/eclipes_orbit2}
+    \caption{Elements of an elliptical orbit about the common centre of mass \(\textrm{F}_1\). {\(\nu\)} is the angle to the position of the orbiting body from the periapse (closest point to barycentre). The auxiliary circle is a circle with radius of the semi-major axis of the ellipse. Adapted from~\citep{bozza_methods_2016}.}
+    \label{fig:eclipesorbit}
+\end{figure}
+
+With a two body system with masses \Mone{} and \Mtwo{}, under the force of gravity, their orbits are elliptical orbit about their barycentre mass, as seen in \cref{fig:eclipesorbit}.
+In polar coordinates the ellipse of an orbit about the centre of mass (located at the focus $\textrm{F}_1$) is described by:
 \begin{equation}
     r = \frac{a(1-e^{2})}{1 + e \cos(\nu(t))},
 \end{equation}
@@ -51,14 +51,6 @@ M(t) = \frac{2 \pi}{P}(t - T_0) = E(t) - e \sin(E(t))
 \end{equation}
 The mean anomaly is the angle for the average orbital motion of the body at a time after periastron passage \(t-T_0\).
 
-\missingfigure{elipical orbit plot}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{figures/fundamental_rv/eclipes_orbit}
-    \caption{}
-    \label{fig:eclipesorbit}
-\end{figure}
-
 
 
 From Kepler's second law\footnote{Orbit sweeps out equal areas in equal times} \(1/2 r^{2} d\nu/dt\) = constant, while in one full period P, the total area of the ellipse \(\pi a^{2}{(1 - e^{2})}^{1/2} \) will be covered, leading to: 
@@ -67,7 +59,7 @@ r^2 \frac{d\nu}{dt} = \frac{2\pi a^{2}(1-e^{2})^{1/2}}{P} \label{eqn:kepler_area
 \end{equation}
 
 The radial velocity is the change in $r$ along the line of sight $z$.
-The component of $r$ along the line of sight (from \cref{fig:orbit}) is:
+The component of $r$ along the line of sight (from \cref{fig:orbitdiagram}) is:
 \begin{equation}
    r_z =  r_1 \sin(\nu_1(t) + \omega)\sin(i) + \gamma \label{eqn:r_z}
 \end{equation}
