@@ -26,29 +26,6 @@ Model fitting two components.
 Since the differential method is ineffective for our dataset due to the {RV} separation between observations, we explored a second approach to detect the presence of the faint companion spectra.
 This second approach compares the observed spectra to combinations of synthetic spectral models using \textchisquared{} methods which have been extensively used in the literature~\citep[e.g.][]{astudillo-defru_harps_2015, passegger_fundamental_2016, zechmeister_spectrum_2018, nemravova_xtauri_2016, kolbl_detecting_2015}. {\red{} The temperature of synthetic spectra fitted to  the companion will provide some indication of the companions spectral type, but will not produce a direct mass constraint that was the original aim of this work.}
 
-\subsection{Synthetic {PHOENIX-ACES} models}
-\label{subsec:spec_models}
-We use the {PHOENIX-ACES}~\citep{husser_new_2013} synthetic spectra library as our reference for the spectral comparison.
-It uses the most recent version (16) of the {PHOENIX} code and is suitable for the spectra of cool stars.
-The full parameter grid space of the {PHOENIX-ACES} spectra is given in \cref{tab:phoenix} although we only explore models constrained by the targets explored here.
-
-\input{tables/companion_recovery/phoenixparameters}
-
-The spectral model libraries were accessed using the useful ``grid tools'' interface provided in the \emph{Starfish}\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}, which made it efficient to load in the spectra when needed.
-
-We multiply the synthetic spectra by the wavelength to convert it into photon counts, ignoring multiplicative constants, as done in~\citet{figueira_radial_2016}\footnote{Synthetic models provide the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)).}.
-The spectra were convolved with a Gaussian kernel to match the resolution of the observations (\(\rm R=50\,000\)).
-Due to the distributive property of convolution it is efficient to apply it once to each spectra first, before the spectral pairs are combined.
-
-The {PHOENIX-ACES} models include dust in equilibrium with the gas phase while ignoring dust opacity and does not include any mixing/settling which is important for cooler {BD} atmospheres.
-They set a minimum library \(\teff{}=2\,300\)\K{} to avoid the temperatures at which the modelling of clouds is necessary.
-This unfortunately limits the use of this library for this technique to the largest mass companions in our sample.
-For example a \(\teff{}=2\,300\)\K{} corresponds to a {BD} with \(\textrm{M}\sim84\)\Mjup{} at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models.
-
-There are other models that extend below 2\,300\K{} such as the {BT-Settl} models~\citep{allard_btsettl_2013, baraffe_new_2015}.
-These are discussed in \cref{subsec:btsettl}.
-
-
 \subsection{\texorpdfstring{\textchisquared}\ \ method}
 \label{subsec:chi2}
 The well known \textchisquared{} technique measures the weighted sum of the squared deviation between the observation (\({O}_{i}\)) and the computed models (\(C_{i}\)), with the minimum \textchisquared{} value representing the best-fit parameters:

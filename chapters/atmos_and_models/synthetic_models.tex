@@ -12,6 +12,30 @@ A collection of several theoretical stellar spectral libraries can be found at S
 Available \todo{FINISH}
 
 
+\subsection{Synthetic {PHOENIX-ACES} models}
+\label{subsec:spec_models}
+\todo{this section is from \cref{cha:model_comparison}}
+We use the {PHOENIX-ACES}~\citep{husser_new_2013} synthetic spectra library as our reference for the spectral comparison.
+It uses the most recent version (16) of the {PHOENIX} code and is suitable for the spectra of cool stars.
+The full parameter grid space of the {PHOENIX-ACES} spectra is given in \cref{tab:phoenix} although we only explore models constrained by the targets explored here.
+
+\input{tables/companion_recovery/phoenixparameters}
+
+The spectral model libraries were accessed using the useful ``grid tools'' interface provided in the \emph{Starfish}\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}, which made it efficient to load in the spectra when needed.
+
+We multiply the synthetic spectra by the wavelength to convert it into photon counts, ignoring multiplicative constants, as done in~\citet{figueira_radial_2016}\footnote{Synthetic models provide the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)).}.
+The spectra were convolved with a Gaussian kernel to match the resolution of the observations (\(\rm R=50\,000\)).
+Due to the distributive property of convolution it is efficient to apply it once to each spectra first, before the spectral pairs are combined.
+
+The {PHOENIX-ACES} models include dust in equilibrium with the gas phase while ignoring dust opacity and does not include any mixing/settling which is important for cooler {BD} atmospheres.
+They set a minimum library \(\teff{}=2\,300\)\K{} to avoid the temperatures at which the modelling of clouds is necessary.
+This unfortunately limits the use of this library for this technique to the largest mass companions in our sample.
+For example a \(\teff{}=2\,300\)\K{} corresponds to a {BD} with \(\textrm{M}\sim84\)\Mjup{} at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models.
+
+There are other models that extend below 2\,300\K{} such as the {BT-Settl} models~\citep{allard_btsettl_2013, baraffe_new_2015}.
+These are discussed in \cref{subsec:btsettl}.
+
+
 
 
 \subsection{BT-Settl}
