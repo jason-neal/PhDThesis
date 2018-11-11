@@ -179,17 +179,18 @@ We however left this free to see if the known value would be recovered by the fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\todo{Example with a large mass companion? and/or SNR.} 
 
 \section{Results}
 \label{sec:results}
 
 \input{tables/companion_recovery/recoveredparameters}
-\missingfigure{includegraphics images/HD211847 example pcolors.pdf}
+
 
 \begin{figure*}
     \centering
-   % \includegraphics[width=0.8\hsize]{images/Mdwarf_pcolors.pdf}
-
+    % \includegraphics[width=0.8\hsize]{images/Mdwarf_pcolors.pdf}
+    \includegraphics[width=0.7\linewidth]{figures/companion_recovery/Mdwarf_pcolors}
     \caption{\textchisquared{} results for companion recovery of a simulated binary observation of a Sun-like star (\(\teffsub{1}=5\,800\)\K{}) with an M-dwarf companion (\(\teffsub{2}=4\,000\)\K{}).
 The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)).
 Both left hand panels show the distribution of host temperature and host {RV}.\@ The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
@@ -199,16 +200,16 @@ Each box is centred on the parameter values and shows the grid resolution.}
     \label{fig:Mdwarf_contours}
 \end{figure*}
 
-\missingfigure{includegraphics {images/HD211847 example pcolors.pdf}}
 \begin{figure*}
     \centering
-   % \includegraphics[width=0.8\hsize]{images/HD211847_example_pcolors.pdf}
+    \includegraphics[width=0.7\linewidth]{figures/companion_recovery/HD211847_example_pcolors}
     \caption{Similar to \cref{fig:Mdwarf_contours}, \textchisquared{} results for companion recovery of a simulated binary observation similar to {HD 211847}, (\(\teffsub{1} = 5\,800\)\K{}, \(\teffsub{2}=3\,200\)\K{}).
-The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)).
-Both left hand panels show the distribution of host temperature and host {RV}.\@ The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
-        The red circle and yellow star indicate the location of the simulation input and recovered parameters respectively.
-        The white line shows a 3-\(\sigma\) confidence level about the minimum \textchisquared{} solution grid point.
-Each box is centred on the parameter values and shows the grid resolution.}
+    The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)).
+    Both left hand panels show the distribution of host temperature and host {RV}.
+    The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
+    The red circle and yellow star indicate the location of the simulation input and recovered parameters respectively.
+    The white line shows a 3-\(\sigma\) confidence level about the minimum \textchisquared{} solution grid point.
+    Each box is centred on the parameter values and shows the grid resolution.}
     \label{fig:HD211847_simulated_contours}
 \end{figure*}
 Here we show the results from applying the companion recovery model to simulated observations and to an observation.
@@ -304,10 +305,11 @@ The edge of a deep Hydrogen line (Brackett-\(\gamma\)) off the edge of the detec
 
 We applied this same method to the remaining targets, with similar results.
 In brief, we conclude that the companion spectra cannot be correctly detected in our data using this method.
-\missingfigure{images HD211847 result pcolors.pdf}
+
 \begin{figure*}
     \centering
 %    \includegraphics[width=0.8\hsize]{images/HD211847_result_pcolors.pdf}
+    \includegraphics[width=0.7\linewidth]{figures/companion_recovery/HD211847_result_pcolors}
     \caption{\textchisquared{} result grid for observation 2 of {HD 211847}, similar to \cref{fig:Mdwarf_contours,fig:HD211847_simulated_contours}.
 The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)).
 Both left hand panels show the distribution of host temperature and host {RV}.\@ The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
@@ -326,16 +328,17 @@ f &= f(x, y, z, \ldots)\\
 \end{align}
 
 
-\missingfigure{images/visualize result residuals.pdf}
 \begin{figure*}
     \centering
   %  \includegraphics[width=0.8\hsize]{images/visualize_result_residuals.pdf}
+   \includegraphics[width=0.7\linewidth]{figures/companion_recovery/visualize_result_residuals}
     \caption{Comparison between the observed {HD 211847} spectrum (blue) and the best fit synthetic binary model (orange dashed) for each detector.
 The bottom section of each panel shows the residuals between the parts of the observation used in the \textchisquared{} fit and recovered binary model (\(\rm O-C^2\)) in purple.
 The red dashed line shows the difference between the recovered binary model and the binary model with the exact same parameters except for the estimated companion temperature of 3\,200\K{} (\(\rm C^2[3200\K{}]- C^2\)).
 The grey shading indicated the wavelength regions where masking has been applied.
 The thinner masked regions that match with cuts in the observed spectra are where the centres of deep (>5\%) telluric lines that have been masked out are.}
     \label{fig:visualinspection-hd2118471}
+    %\label{fig:visualizeresultresiduals}
 \end{figure*}
 
 
@@ -356,7 +359,7 @@ We also perform the injection-recovery with synthetic host spectra, representing
 The wavelength range of the synthetic spectra used for this is three sections interpolated to 1\,024 values in the wavelength span of detectors 1, 2, and 3.
 For each section, Gaussian noise is added at the level measured in the corresponding detector in the observation of the target being represented.
 
-In \cref{fig:injection-recovery} we show the results of the injection-recovery on {HD 30501}.
+In \cref{fig:injectrecoveryhd30501} we show the results of the injection-recovery on {HD 30501}.
 The blue dots represent the recovered companion temperature when injected into real observations, while the orange triangles represent injection into a synthetic host.
 Error bars of \(\pm100\)\K{} are included to indicate the grid size, and do not come from the recovery itself.
 The black dashed diagonal is the temperature 1:1 relation, where a correctly recovered companion should lie.
@@ -379,32 +382,34 @@ At lower temperatures there is a strong asymmetry in the \textchisquared{} with 
 The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above the minimum \textchisquared{} are not shown in the bottom panel of \cref{fig:injection_shape} which is a close-up around the minimum \textchisquared{} as are indistinguishable in the top panel due to the \textchisquared{} y-scale.
 The black vertical line indicates the 2\,300\K{} temperature limit of the {PHOENIX-ACES} models.
 
-\missingfigure{images/inject recovery hd30501.pdf}
 \begin{figure}
     \centering
  %   \includegraphics[width=0.95\hsize]{images/inject_recovery_hd30501.pdf}
+    \includegraphics[width=0.6\linewidth]{figures/companion_recovery/inject_recovery_hd30501.pdf}
     \caption{Result of simulated injection-recovery of synthetic companions on {HD 30501}.
 The blue dots and orange triangles indicate the recovered companion temperature for the observed and synthetic spectra respectively.
 The \(\pm100\)\K{} error bars are the grid step of the synthetic models.
 The black dashed diagonal shows the 1:1 temperature relation.
 The grey shaded region indicates the \(\pm1\,000\)\K{} temperature range explored.
 Gaussian noise added to the synthetic spectra was derived from the observed spectra.}
-    \label{fig:injection-recovery}
+    \label{fig:injectrecoveryhd30501}
 \end{figure}
 
 
-\missingfigure{images/chi2 shape investigation sigmas.pdf}
 \begin{figure}
     \centering
 %    \includegraphics[width=0.95\hsize]{images/chi2_shape_investigation_sigmas.pdf}
+    \includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation}
+    \includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation_with_delta}
     \caption{(top) Companion temperature verses \textchisquared{} for simulations with different injected companion temperatures.
-Other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5\,200\)\K{}, \(\logg_1=4.5\), \(\logg{}_2=5.0\), and both \feh{}=0.0.
-A fixed Gaussian noise corresponding to a \snr{} of 300 was used.
-       (bottom) A close up view of \textchisquared{} < 15.
-The three horizontal grey lines indicate the 1-, 2-, 3-$\sigma$ with 2 degrees of freedom.
-The vertical dotted lines indicate the location of the minimum \textchisquared{} recovered for each companion.
-The black solid vertical in both panels shows the 2\,300\K{} cut-off of the {PHOENIX-ACES} models}
+    Other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5\,200\)\K{}, \(\logg_1=4.5\), \(\logg{}_2=5.0\), and both \feh{}=0.0.
+    A fixed Gaussian noise corresponding to a \snr{} of 300 was used.
+    (bottom) A close up view of \textchisquared{} < 15.
+    The three horizontal grey lines indicate the 1-, 2-, 3-$\sigma$ with 2 degrees of freedom.
+    The vertical dotted lines indicate the location of the minimum \textchisquared{} recovered for each companion.
+    The black solid vertical in both panels shows the 2\,300\K{} cut-off of the {PHOENIX-ACES} models}
     \label{fig:injection_shape}
+    %\label{fig:chi2shapeinvestigation}
 \end{figure}
 
 \input{tables/companion_recovery/uppermasslimits}
