@@ -43,7 +43,7 @@ Spectral Disentangling techniques
 - Differencing Fruluga
 - Templates?
 
-TODCOR - 2-d  from binary analysis \citep{zucker_study_1994} 
+TODCOR - 2-d from binary analysis \citep{zucker_study_1994}
 \citep{mazeh_detecting_1997}
 
 2D-cross-correlation?   \citet{piskorz_evidence_2016} seems to have promising technique
@@ -56,14 +56,14 @@ See \citet{kostogryz_spectral_2013} for lots of useful references regarding diff
 
 
 
-{\red{} \citet{kolbl_detection_2015} Use HIRES spectra at 364-799\nm{} (R=60\,000) to determine statistically determine the presence of a faint secondary companion spectra (if any). 
-They use \textchisquared fitting of the observed spectra against the {SPecMatch} library of observed spectra to find a spectra to best remove the primary star lines, 
+{\red{} \citet{kolbl_detection_2015} Use HIRES spectra at 364-799\nm{} (R=60\,000) to determine statistically determine the presence of a faint secondary companion spectra (if any).
+They use \textchisquared fitting of the observed spectra against the {SPecMatch} library of observed spectra to find a spectra to best remove the primary star lines,
 accounting for dilution and rotational broadening.
 They also find that a secondary spectrum with a $\Delta RV$ relative to the host would blend and remain undetectable.
 When searching for the secondary they median normalize the spectra into 100K spectra since the difference between stars  <100K different is almost indiscernible in the secondary. The residuals are renormalized and then a \textchisquared fit is again preformed to identify any secondary spectra.
 For a low temperature companion (3500K) at a 1\% flux ratio to a 5000-6000\K{} primary star their recovery technique achieves 80\% injection-recovery.}
 
- 
+
 
 \section{Motivation}
 
@@ -119,14 +119,14 @@ The list of observations obtained with {CRIRES} are provided in \cref{tab:observ
 
 There is a slight inconsistency with the some of the observations, taken in service mode.
 For instance {HD\,202206} has two observations taken with the {Ks} filter, while one is taken with the {J} filter.
-There is also the last observation of {HD\,30501} taken with a different filter that  the others.
+There is also the last observation of {HD\,30501} taken with a different filter that the others.
 The phase two observing proposal documents were unable to obtained to access determine if these odd filters were requested like this or if it was an observational mistake.
 
 There is also an inconsistency with the ordering of the observations again with the target {HD\,202206}.
 The observation that was performed first in time is labelled with the observation name of {HD\,202206-3} in the fits header file, while the second and third observations are labelled -1 and -2 respectively.
 
 There could be two possible reasons for the single observation of {HD\,4747}.
-One is that only one observation was requested due to the very long orbital period of the target, although this would not fulfil the science goal. 
+One is that only one observation was requested due to the very long orbital period of the target, although this would not fulfil the science goal.
 The other more likely reason is that these observations were preformed in service mode as a filler program and in the ned there was no time to observe a second observation of {HD\,4747}.
 
 \textbf{Is there a reason for the two different filters?}
@@ -329,7 +329,7 @@ Therefore, in this case well separated RVs could have been obtained.
 For the remaining targets it is clear that sufficiently separated RVs were not obtained, but also that they were not possible from a single observing period with less than 6\kmps{} variation over Period 89.
 For HD\,30501 in which there was a large time separation between observations obtained, is clearly visible in \cref{fig:hd30501p89}.
 Unfortunately this did not result in a large enough companion separation.
-If the observations had been obtained in the previous period (88) instead then sufficient separation could have been obtained due to the orbital eccentricity. 
+If the observations had been obtained in the previous period (88) instead then sufficient separation could have been obtained due to the orbital eccentricity.
 
 The code used to create orbital plots similar to those shown here is available under the \href{https://github.com/iastro-pt/ObservationTools}{iastro-pt/Observationtools} \emph{Github} repository with documentation available on \href{https://ia-observationtools.readthedocs.io/en/latest/rv.html}{Read the Docs}.
 
@@ -426,11 +426,11 @@ It was investigated if this differential technique could be extended into the mi
 There were two reasons for this: to develop experience with the {\mir{}} domain where the contrast ratios are higher, and due to the lack of high-resolution \nir{} spectrographs available at the time (see \cref{subsec:new_generation}).
 
 {VISIR} is a \mir{} spectrograph on the {VLT}, offering diffraction-limited imaging at high sensitivity in three mid-infrared (\mir) atmospheric windows: the \emph{M}-band at 5\um{}, the \emph{N}-band between 8--13\um{} and the \emph{Q}-band between 17--20\um{}, respectively.
-The use of {VISIR} to detect the spectra of Brown Dwarf companions in the {\mir{}} was explored .
+The use of {VISIR} to detect the spectra of Brown Dwarf companions in the {\mir{}} was briefly explored.
 The candidate selected as the best target to investigate was {HD\,219828} which has a hot-Neptune (\Mtwosini{}=21\Mearth)~\citep{melo_new_2007} and a recently discovered super Jupiter (\Mtwosini{}=15.1\,\Mjup) on a long period (13 yr) eccentric orbit (e=0.81)\citep{santos_extreme_2016}.
 
 Based on the spectra of a cool brown dwarfs in the \mir{}, and the detector configuration available at the time, the best option for the observations was the low resolution mode covering the wavelength region 8--13\um{}.
-This wavelength region would have encompassed the \ce{NH4} signature at 10.5\um{} and the edge of  a \ce{CH4} band at 7.7\um{}, both large features in the BD \mir{} spectrum.
+This wavelength region would have encompassed the \ce{NH4} signature at 10.5\um{} and the edge of a \ce{CH4} band at 7.7\um{}, both large features in the BD \mir{} spectrum.
 
 After performing flux ratio calculations between the host and companion using the~\citet{baraffe_evolutionary_2003} models (see \cref{sec:compaion_flux_ratio}) and considering the performance of the {VISIR} instrument and the exposure time calculator it was determined that observations with {VISIR} to achieve a \snr{} of 100 were infeasible, requiring 1\,000's of hours of observing time to achieve the necessary signal-to-noise level to separate the companion from a blended spectra.
 As such the direct separation approach was not continued further in the \mir{}.
@@ -446,4 +446,3 @@ This Chapter presented the observations that were gathered having in mind the ap
 The small separation of the companion causes the lines of the companion to also mutually cancel, severely reducing the residual signal to well below the available noise level.
 The requirement of well separated RVs for the companion spectra was clearly stated in the original proposal but was not satisfied by the observations. {\red{} The very large orbital periods of some of the targets would not produce a sufficient {RV} signal during one semester.
 This was a possible oversight during the proposal stage.} The largest estimated companion \(\Delta {RV}\) separation between the observations of each target is provided in the  \nth{7} column of \cref{tab:estimated_rv}. \todo{move}{Radial velocity constraints are also valid for other studies such as the detection of reflected light from exoplanets~\cite[e.g.]{martins_evidence_2015}.}
-
