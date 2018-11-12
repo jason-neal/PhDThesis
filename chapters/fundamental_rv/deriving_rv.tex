@@ -44,7 +44,7 @@ The true anomaly is not only a function time, \(t\), but also the orbital period
 It is geometrically related to the eccentric anomaly:
 \begin{equation}
     \cos{\nu(t)} = \frac{\cos{E(t)}}{1 - e \cos{E(t)}}
-\end{equation} 
+\end{equation}
 which can be numerically determined from the mean anomaly \(M(t)\):
 \begin{equation}
     M(t) = \frac{2 \pi}{P}(t - T_0) = E(t) - e \sin{E(t)}
@@ -52,7 +52,7 @@ which can be numerically determined from the mean anomaly \(M(t)\):
 The mean anomaly is the angle for the average orbital motion of the body at a time after periastron passage \(t-T_0\).
 
 
-From Kepler's second law\footnote{Orbit sweeps out equal areas in equal times} \(\frac{1}{2} r^{2} d\nu/dt\) = constant, while in one full period P, the total area of the ellipse \(\pi a^{2}{(\oneminusetwo)}^{1/2} \) will be covered, leading to: 
+From Kepler's second law\footnote{Orbit sweeps out equal areas in equal times} \(\frac{1}{2} r^{2} d\nu/dt\) = constant, while in one full period P, the total area of the ellipse \(\pi a^{2}{(\oneminusetwo)}^{1/2} \) will be covered, leading to:
 \begin{equation}
     r^{2} \frac{d\nu}{dt} = \frac{2\pi a^{2}(\oneminusetwo)^{1/2}}{P} \label{eqn:kepler_area}
 \end{equation}
@@ -106,7 +106,7 @@ For the two instances in this work where the target star has two companions, the
 
 
 \subsection{Binary mass ratio}
-In the above equation RV of the companion has not yet been addressed. 
+In the above equation RV of the companion has not yet been addressed.
 \cref{eqn:rv_equation} above is the RV of the star in an elliptical orbit around the centre of mass between it and its companion. Similarly the elliptical orbit of the planet around the centre of mass is given by:
 \begin{equation}
     {RV_{2}} = \ktwo [\cos{(\nu(t) + \omega_{2})} + e\cos{(\omega_{2})}] + \gamma, \label{eqn:rv2_equation}
@@ -121,7 +121,7 @@ The orbits of the host and companion are directly related through the mass ratio
 q = \frac{\mtwo}{\mone} = \frac{\kone}{\ktwo} = \frac{RV_{1}}{RV_{2}} = \frac{r_2}{r_1} \label{eqn:q_ratio_K2}.
 \end{equation}
 
-Typically in exoplanet detections the companion (planet) is two faint to measure the planetary velocity. However in double lined spectroscopic binary the spectrum of both stars can be identified in the blended spectra and the RV of both star and companion can be measured and monitored over the orbit. With both velocities the mass ratio of the binary can be found. The individual masses however is still not determinable due to the inclination $\sin{i}$ of the orbit. 
+Typically in exoplanet detections the companion (planet) is two faint to measure the planetary velocity. However in double lined spectroscopic binary the spectrum of both stars can be identified in the blended spectra and the RV of both star and companion can be measured and monitored over the orbit. With both velocities the mass ratio of the binary can be found. The individual masses however is still not determinable due to the inclination $\sin{i}$ of the orbit.
 
 In \cref{cha:direct_recovery} the detection of the faint spectra is of known companions is attempted, in order to determine the velocity change of the companion and hence the mass ratio. To help with the analysis and simulations the known orbital parameters (see \cref{tab: orbtit aprats, tab: star parsms} ) are used along with the companion mass (\Mtwo{} or \Mtwosini{}) to predict or estimate the RV of the companion using \cref{eqn:q_ratio_K2, eqn:rv2_equation}.
 Note, that for the targets in which only the minimum mass (\Mtwosini) is known and used in the mass ratio, this will result in the maximum {RV} semi amplitude for the companions orbit.
@@ -138,6 +138,3 @@ This then be comes a property of the spectrum such as line density and number of
 
 
 Transition into precision.
-
-
-
