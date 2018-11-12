@@ -2,6 +2,7 @@
 %4-Snellen/Brogi analysis
 % ability to detect singal??
 
+
 \chapter{Companion Recovery using synthetic models}  % Main chapter title
 \label{cha:model_comparison}
 
@@ -11,12 +12,6 @@ We develop this new method, preform some tests and then show the results obtaine
 There were numerous issues encountered and unsuccessful results.
 
 Contrast our result to other works.  More phases, longer integration time, higher {SNR}.
-
-
-
-
-\section{Main Section 1}
-Model fitting two components.
 
 
 
@@ -447,16 +442,16 @@ We conclude that the lack of an accurate\ce{TiO} line list is currently critical
 Basically it will say there is this other model that is better for BDs as it differs ``like this'' but \textbf{cref {fig:hd211847-models}} show that it will also have strong mismatch to make it difficult to recover.}
 
 \label{bt-setll-junk}
-The {BT-Settl} (allard et al 2009, 2010 2011 2012 baraffe2015) models, a different flavour of Phoenix models, are more suitable for {BD} atmospheres as they include the formation of dust/cloud and hydro-dynamical modelling atmospheric mixing/settling for atmospheres with \(\teff{}\) below \(\sim2600\K{}\).
+The {BT-Settl}  models~\citep{allard_model_2010, allard_btsettl_2013, baraffe_new_2015}, are different flavour of Phoenix models, that are more suitable for {BD} atmospheres as they include the formation of dust/cloud and hydro-dynamical modelling atmospheric mixing/settling for atmospheres with \(\teff{}\) below \(\sim2600\K{}\).
 These are valid across the regime from stars to BDs as cool as 400\K{}.
 The {PHOENIX-ACES} models completely avoid the modelling of clouds and settling by the lower temperature restriction of 2\,300\K{}.
 
 The {PHOENIX-ACES} models dust in equilibrium with the gas phase but ignores the dust opacity and does not include any settling.
 It does however include a new Astrophysical Chemical Equilibrium Solver (ACES,
-Barman 2012); adds parametrisations for the mass and mixing-length; and uses the~\citet{asplund_chemical_2009} solar abundances.
+\textbf{Barman 2012}); adds parametrisations for the mass and mixing-length; and uses the~\citet{asplund_chemical_2009} solar abundances.
 All these modifications together make it difficult to quantify the spectral changes from each individual change.
 
-The two of the recent ``flavors'' are the {BT-Settl}~\citep{allard_model_2010, baraffe_new_2015} and the {PHOENIX-ACES}~\citep{husser_new_2013} which use versions 15.5 and 16 of the {PHOENIX} code respectively.
+The two of the recent ``flavours'' are the {BT-Settl}~\citep{allard_model_2010, baraffe_new_2015} and the {PHOENIX-ACES}~\citep{husser_new_2013} which use versions 15.5 and 16 of the {PHOENIX} code respectively.
 
 Even though the {BT-Settl} models are more suited for the entire range of {BD} temperatures, we restrict ourselves to the {PHOENIX-ACES} synthetic spectra for a number of reasons.
 The ease of use and availability from the spectral library webpage\footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}.
@@ -469,10 +464,10 @@ This is required for the method presented here as we need to scale the spectra b
 This {PHOENIX-ACES} lower temperature limit restricts its use to only the higher mass {BD} companions in our sample (\(~>0.08 M_{\odot}\) at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} models).
 
 
-The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200--7\,000\K{}\logg{}=2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer Caffau et al. (2011) solar abundances.
+The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200--7\,000\K{}\logg{}=2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer \citet{caffau_solar_2011} solar abundances.
 
 The newer {PHOENIX-ACES} models are limited to \(\teff{}> 2\,300\)\K{} which only cover the larger BDs.
-To evaluate the lower mass BDs we use the \textbf{other model}, more suitable for cooler BDs and low mass star as they incorporate modeling of dust, clouds etc\ldots
+To evaluate the lower mass BDs we use the \textbf{other model}, more suitable for cooler BDs and low mass star as they incorporate modelling of dust, clouds etc\ldots
 
 
 The spectral model libraries were accessed using the useful ``grid tools'' provided in the Starfish\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}.
@@ -488,13 +483,13 @@ This unfortunately limits the use of this library for this technique to the larg
 For example a \(\teff{}=2300\)\K{} corresponds to a {BD} with M\(\sim0.08\)\Modot at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models.
 
 
-Even though the {BT-Settl} models are more suited for the entire range of {BD} temperatures down to 400\K{}, through hydrodynamically modeling the mixing and settling of dust/clouds, we restrict ourselves to the {PHOENIX-ACES} synthetic spectra in this work for a number of reasons.
+Even though the {BT-Settl} models are more suited for the entire range of {BD} temperatures down to 400\K{}, through hydrodynamically modelling the mixing and settling of dust/clouds, we restrict ourselves to the {PHOENIX-ACES} synthetic spectra in this work for a number of reasons.
 The ease of use and availability from the spectral library webpage\footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}.
 The effective radius of the modelled star are provided in the fits header and required for the calculation of the flux ratio.
 
 
 
-The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200-7\,000\K{}\logg{}=2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer Caffau et al. (2011) solar abundances.
+The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200-7\,000\K{}\logg{}=2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer \citet{caffau_solar_2011} solar abundances.
 
 The {BT-Settl} grids were harder to obtain and use.
 
@@ -545,7 +540,15 @@ We note that if the wavelength range is increased by taking separate observation
 
 
 
+\subsection{Comparison to other methods}
+kolbl 2014,  passenger 2016, 2018
 
+
+
+
+\section{Summary}
+
+...
 
 
 
