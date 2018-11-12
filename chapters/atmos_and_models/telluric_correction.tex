@@ -7,19 +7,18 @@ Typically atmospheric absorption correction has been performed by observing a st
 These stars have minimal spectral features, so reveal the atmospheric absorption when observed.
 These standard stars need to be observed close in the sky and right before or after the science observation.
 To have similar atmospheric absorption to the science target.
-The science target can be corrected for the telluric line by division by the telluric standard star~\citep[e.g.][]{vacca_method_2003}. 
-For high-resolution spectroscopy this technique is not sufficient to correct telluric with residuals greater than 2\% remaining. 
+The science target can be corrected for the telluric line by division by the telluric standard star~\citep[e.g.][]{vacca_method_2003}.
+For high-resolution spectroscopy this technique is not sufficient to correct telluric with residuals greater than 2\% remaining.
 
-Recently synthetic modelling of telluric absorption has gained popularity with several works focusing on correcting telluric absorption with synthetic models~\citep[e.g.][]{bailey_correcting_2007, cotton_atmospheric_2014, seifahrt_synthesising_2010} and achieving better correction than the standard star method. 
-
+Recently synthetic modelling of telluric absorption has gained popularity with several works focusing on correcting telluric absorption with synthetic models~\citep[e.g.][]{bailey_correcting_2007, cotton_atmospheric_2014, seifahrt_synthesising_2010} and achieving better correction than the standard star method.
 Several different software available which usually build upon the standard line-by-line radiative transfer model code {LBLRTM}~\citep{clough_linebyline_1995}.
 Some examples are {TelFit}~\citep{gullikson_correcting_2014}, and ESO's {Molecfit}~\citep{smette_molecfit_2015} which both model and fit a synthetic absorption spectra to observations, where as {TAPAS}~\citep{bertaux_tapas_2014} just creates synthetic models based on atmospheric data for an observation (without fitting).
 The synthetic models at high resolution are very sensitive to atmospheric constituents, especially water vapour, and observing conditions such as the airmass.
 
 Recently~\citet{ulmer-moll_telluric_2018} compared the telluric correction efficiency between {TelFit},  {Molecfit}, {TAPAS}, and the standard star method.
-They found that {Molecfit} and {Telfit} synthetic corrections lead to smaller residuals for lines arising from \ce{}H2O}, while the standard star method corrects for \ce{O_2} lines best.
+They found that {Molecfit} and {Telfit} synthetic corrections lead to smaller residuals for lines arising from \ce{H2O}, while the standard star method corrects for \ce{O_2} lines best.
 All methods (synthetic and standard star) result in a scatter inside the telluric lines of 3--7\%.
-They also find that an observatory tailored atmospheric profile leads to reduced scatter inside telluric lines and that the correction performed better with lower precipitable water vapour.} 
+They also find that an observatory tailored atmospheric profile leads to reduced scatter inside telluric lines and that the correction performed better with lower precipitable water vapour.
 
 As an example \cref{fig:telluricmodelcomparision} shows the telluric correction using the three different methods, {Molecfit}, {TelFit} and {TAPAS}\footnote{Performed here by Sol\`{e}ne Ulmer-moll.}, of a spectrum extracted for this work, detector \#4 of observation HD\,4747-1  (see \cref{tab:observations}).
 There are differences between the models of around 2\% level, with the largest difference near the deep telluric line around 2163\nm{}.
@@ -43,15 +42,15 @@ These are detailed further below.
 Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of the AtmosPhere for AStronomical data) web service\footnote{\href{http://cds-espri.ipsl.fr/tapas}{http://cds-espri.ipsl.fr/tapas}}~\citep{bertaux_tapas_2014}.
 {TAPAS} uses the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995} along with the 2008 {HITRAN} spectroscopic database~\citep{rothman_hitran_2009} and {ARLETTY} atmospheric profiles derived using meteorological measurements from the ESPRI data centre\footnote{\href{https://cds-espri.ipsl.upmc.fr}{https://cds-espri.ipsl.upmc.fr}} to create telluric line models.
 
-The {ARLETTY} atmospheric profiles have a 6 hour resolution, so there may be a slight difference between the actual profile at the time of observation.
+The {ARLETTY} atmospheric profiles have a 6~hour resolution, so there may be a slight difference between the actual profile at the time of observation.
 
-There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra. {TAPAS} produces the telluric spectrum and sends a link to the results via email. 
+There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra. {TAPAS} produces the telluric spectrum and sends a link to the results via email.
 
 
 \subsection{Requests for this work}
 Synthetic telluric absorption were requested from the {TAPAS} web service for this work.
 These were to match the CRIRES observations which are presented in \cref{tab:observations}.
- 
+
 The mid-observation time for each observation was used to request a synthetic spectra individually for each observation, with the {ARLETTY} atmospheric profiles and vacuum wavelengths selected.
 The telluric models were retrieved without barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument.
 For each observation one model was requested with all available atmospheric species present, convolved to a resolution of \(\rm R=50\,000\), and a further two models without the instrumental profile convolution applied.
