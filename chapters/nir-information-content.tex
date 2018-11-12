@@ -677,13 +677,13 @@ When the telluric mask was shifted to account for barycentric motion of the eart
 
 
 A check for this issue was discovered using this unit test.
-\begin{lstlisting}[language=Python, caption=Example unit test to catch masking bug.]
+\begin{lstlisting}[language=Python, caption=Example unit test to catch masking bug. The assert statement checks that the mask continues to remove all absorption lines deeper than 2\%.]
 def test_telluric_masking(wavelength, transmission):
-    mask = telluric_mask(transmission, depth=0.98)
-    mask = barycenter_shift(mask)
-
-    # Checks that the mask is still masking out all telluric lines.
-    assert np.all(transmission[mask] > 0.98)
+    """Check mask still masks out all telluric lines > 0.98 after
+    accounting for barycentre motion."""
+    mask = telluric_mask(transmission, depth=0.98)  # Create mask
+    mask = barycentre_shift(wavelength, mask)       # Extend mask
+    assert numpy.all(transmission[mask] >= 0.98)    # Check mask
 \end{lstlisting}
 The assert statements checks that when the mask is applied to the transmission spectrum again all of the values are outside of any deep telluric regions.
 A test like this would have caught this bug.
