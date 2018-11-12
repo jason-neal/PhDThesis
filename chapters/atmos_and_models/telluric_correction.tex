@@ -16,14 +16,13 @@ Several different software available which usually build upon the standard line-
 Some examples are {TelFit}~\citep{gullikson_correcting_2014}, and ESO's {Molecfit}~\citep{smette_molecfit_2015} which both model and fit a synthetic absorption spectra to observations, where as {TAPAS}~\citep{bertaux_tapas_2014} just creates synthetic models based on atmospheric data for an observation (without fitting).
 The synthetic models at high resolution are very sensitive to atmospheric constituents, especially water vapour, and observing conditions such as the airmass.
 
-{\red{} Recently~\citet{ulmer-moll_telluric_2018} compared the telluric correction efficiency between {TelFit},  {Molecfit}, {TAPAS}, and the standard star method.
-Finding that the synthetic methods perform well for \textbf{specific species} with {Molecfit} performing best overall.
-However they could not reproduces\textbf{ XX} correction as well as s better the standard star.
-Suggesting there is still room for improvements in the modelling.} \todo{finish}
-
+Recently~\citet{ulmer-moll_telluric_2018} compared the telluric correction efficiency between {TelFit},  {Molecfit}, {TAPAS}, and the standard star method.
+They found that {Molecfit} and {Telfit} synthetic corrections lead to smaller residuals for lines arising from \ce{}H2O}, while the standard star method corrects for \ce{O_2} lines best.
+All methods (synthetic and standard star) result in a scatter inside the telluric lines of 3--7\%.
+They also find that an observatory tailored atmospheric profile leads to reduced scatter inside telluric lines and that the correction performed better with lower precipitable water vapour.} 
 
 As an example \cref{fig:telluricmodelcomparision} shows the telluric correction using the three different methods, {Molecfit}, {TelFit} and {TAPAS}\footnote{Performed here by Sol\`{e}ne Ulmer-moll.}, of a spectrum extracted for this work, detector \#4 of observation HD\,4747-1  (see \cref{tab:observations}).
-There are differences between the models of around 2\% level, with the largest difference near the large telluric line around 2163\nm{}.
+There are differences between the models of around 2\% level, with the largest difference near the deep telluric line around 2163\nm{}.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/atmos_and_models/Telluric_model_comparision}
@@ -32,7 +31,6 @@ There are differences between the models of around 2\% level, with the largest d
         Bottom: Difference between the corrected spectra from the different methods.}
     \label{fig:telluricmodelcomparision}
 \end{figure}
-
 
 Since sufficient telluric correction can be achieved through synthetic modelling, the observational requirement is halved as the standard star is not required, allowing more observing time for science.
 This is the case with the CRIRES observations analysed in this work.
