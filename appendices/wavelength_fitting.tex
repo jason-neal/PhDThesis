@@ -10,13 +10,13 @@ To try and improve the wavelength calibration on detectors in which limited numb
 The combined fit is made assigning each detector the position between 0--4095.
 In coordinates of the actual CRIRES detectors.
 A transformation is made into pixel coordinates from the left edge of the first detector by adding the detector gaps (in pixels) to each detector.
-The parameters gap1, gap2, gap3 are the 3 gaps between neighbouring detectors gaps and are defined in pixel space as follows:
+The parameters \(gap_{1}\), \(gap_{2}\), \(gap_{3}\) are the 3 gaps between neighbouring detectors gaps and are defined in pixel space as follows:
 \[
 gap =\begin{cases}
 0,                      &~~~~0=<pxl<1024\\
-gap1,                   &1024=<pxl<2048\\
-gap1 + gap2,            &2048=<pxl<3072\\
-gap1 + gap2 + gap3,     &3072=<pxl<4096
+gap_1,                   &1024=<pxl<2048\\
+gap_1 + gap_2,            &2048=<pxl<3072\\
+gap_1 + gap_2 + gap_3,     &3072=<pxl<4096
 \end{cases}
 \]
 
@@ -59,15 +59,15 @@ This example does not take the \nth{2} position of the spectrum along the detect
     \caption{Example fitting parameters obtained for HD30501 observation 2 under different scenarios.}
     \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
     	\toprule
-    	~    &    \multicolumn{8}{c|}{Individual Detectors}    &    \multicolumn{4}{c|}{Combined}    \\
-    	~    & \multicolumn{2}{c|}{\#1} & \multicolumn{2}{c|}{\#2} & \multicolumn{2}{c|}{\#3} & \multicolumn{2}{c|}{\#4} & \multicolumn{2}{c|}{Fixed Gaps} & \multicolumn{2}{c|}{Variable Gaps} \\ \midrule
+    	  &    \multicolumn{8}{c|}{Individual Detectors}    &    \multicolumn{4}{c|}{Combined}    \\
+    	  & \multicolumn{2}{c|}{\#1} & \multicolumn{2}{c|}{\#2} & \multicolumn{2}{c|}{\#3} & \multicolumn{2}{c|}{\#4} & \multicolumn{2}{c|}{Fixed Gaps} & \multicolumn{2}{c|}{Variable Gaps} \\ \midrule
     	a3 (u)    &  -   &    1e-4    &  -   &    &  -   &    &  -   &    &  -   &    &  -   &    blah    \\
     	a2 (q)    &      &    &    &    &    &    &    &    &    &    &    &    blah    \\
     	a1 (m)   &      &    &    &    &    &    &    &    &    &    &    &    blah    \\
     	a0 (b)    & 2111 &    2111    & 2111 &    2111    & 2111 &    2111    & 2111 &    2111    & 2111 &    2111    & 2111 & blah \\
-        Gap1 &      &    &    &    &    &    &    &    &   1367  & 1367   &   & x\\
-        Gap2 &      &    &    &    &    &    &    &    &  2700   &  2700  &   & x\\
-        Gap3 &      &    &    &    &    &    &    &    &   3900 &   3900 &    & x\\
+        \(gap_{1}\) &      &    &    &    &    &    &    &    &   1367  & 1367   &   & x\\
+        \(gap_{2}\) &      &    &    &    &    &    &    &    &  2700   &  2700  &   & x\\
+        \(gap_{3}\) &      &    &    &    &    &    &    &    &   3900 &   3900 &    & x\\
     	\textchisquared{} &    &    &    &    &    &    &    &    &    &    &    &    blah    \\
     	BIC        & -234      &    -234    & -234 &    -234    & -234 &    -234    &    &    -234    & -234 &    -234    & -234 &    blah  \\
         \bottomrule
