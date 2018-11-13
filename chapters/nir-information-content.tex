@@ -161,7 +161,7 @@ Q = \frac{\sqrt{\sum{\,W(i)}}}{\sqrt{\sum{\,A_0(i)}}}.
 
 The radial velocity precision or uncertainty can be rearranged in terms of the spectral quality;
 \begin{equation}
-    \delta V_{\rms} = \frac{c}{Q \sqrt{\sum {\,A_0(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}} \approx \frac{c}{Q (S/N)},
+    \delta V_{\rms} = \frac{c}{Q \sqrt{\sum {\,A_0(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}} \approx \frac{c}{Q (S/N)},  \label{eqn:snr_relation}
 \end{equation}
 where \(\sum A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo-electrons \({N}_{{e}^{-}}\) counted in the spectral range considered.\todo{explain snr}{where the \({SNR}=\sqrt{N_{{e}^{-}}}\) for large N}
 where the \({SNR}=\sqrt{N_{{e}^{-}}}\)for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different S/N.?}
@@ -189,7 +189,7 @@ This can be used to determine the {RV} precision for a given instrument, and be 
 
 In the case of several \(\delta V\) measurements computed for \(k\) spectral slices (or spectral orders) then the error on the average \(\overline{\delta V}\) is given by the error on a weighted average:
 \begin{equation}
-\overline{\delta {V}_{\rms}} = \frac{1}{\sqrt{\sum_k{{(\frac{1}{\delta V_{\rms}(k)})}^{2}}}}
+\overline{\delta {V}_{\rms}} = \frac{1}{\sqrt{\sum_k{{(\frac{1}{\delta V_{\rms}(k)})}^{2}}}}  \label{eqn:weighted_average_error}
 \end{equation}
 
 This work follows~\cite{figueira_radial_2016} by exclusively considering a high signal-to-noise regime in which \(A(i) + \sigma_{D}^{2} \sim A(i)\) can be approximated.
@@ -432,10 +432,10 @@ Functional test and unit tests.
 \label{subsec:code_performance}
 There was a major performance bottleneck in the convolution stage, which increased the performance around 250\,X itself.
 The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range).
-Turning the result into a numpy array, performing the sum for that pixel and appending it to a list.
-The performance issue was a python implementation detail to do with applying a comprehension list to a numpy array, then slicing the numpy array with the ends of the list, then converting it back into a numpy array, all of which is preformed on a very large spectrum array.
-Creating a numpy boolean mask instead of the comprehension list, and applying the boolean mask to the array is much faster.
-Remaining entirely in the compiled numpy code and not converting between lists and numpy arrays (with involve type checking overhead).
+Turning the result into a \emph{numpy} array, performing the sum for that pixel and appending it to a list.
+The performance issue was a python implementation detail to do with applying a comprehension list to a \emph{numpy} array, then slicing the \emph{numpy} array with the ends of the list, then converting it back into a \emph{numpy} array, all of which is preformed on a very large spectrum array.
+Creating a \emph{numpy} boolean mask instead of the comprehension list, and applying the boolean mask to the array is much faster.
+Remaining entirely in the compiled \emph{numpy} code and not converting between lists and \emph{numpy} arrays (with involve type checking overhead).
 This slow operation was done for every pixel/wavelength in the spectrum twice, once for each convolution.
 
 caching convolution result to prevent recomputing the same values. \emph{Joblib}.  Also embarrassingly parallel so added multiprocessing support.
@@ -446,14 +446,14 @@ There are other methods that work on uniform spectra, which have not been tried 
 
 
 \subsection{Model extension}
-The solution is to iterate over each pixel but create a mask array and use numpy indexing to select the required pixel span. (this remains in numpy)
-These operations all remain in numpy so do not waste time converting between lists and numpy arrays, in which Python need to constantly check and convert the type of each item.
+The solution is to iterate over each pixel but create a mask array and use \emph{numpy} indexing to select the required pixel span. (this remains in \emph{numpy})
+These operations all remain in \emph{numpy} so do not waste time converting between lists and \emph{numpy} arrays, in which Python need to constantly check and convert the type of each item.
 
 This shows a lesson in the usefulness of test driven development, or testing of code in science.
 
 
 An normalization step was originally done after the convolution, to normalize out the effect of the convolution on a spectrum of 1s, due to the changing wavelength grids sampling.
-This was brought inside the main convolution by dividing the pixel by the convolution of a spectrum of ones at the same time. (again in numpy so it is quick)
+This was brought inside the main convolution by dividing the pixel by the convolution of a spectrum of ones at the same time. (again in \emph{numpy} so it is quick)
 
 Parallelization as embarrassingly parallel, the result of each pixel is independent of result of neighbours.
 
@@ -470,7 +470,7 @@ Often forgotten in
 \label{sec:numerical_gradient}
 One of the key insights from \cref{eqn:optimal_weight,eqn:dv_rms} is that the radial velocity error is inversely proportional gradient of the spectra, In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
 In original code used in~\citet{figueira_radial_2016} the gradient or slope is approximated using the forward finite difference method.
-The numpy package provides a function to calculate the gradient using a more advanced methods that compute a more precise gradient.
+The \emph{numpy} package provides a function to calculate the gradient using a more advanced methods that compute a more precise gradient.
 In this section we explore the affect of improving the precision of the numerical gradient on the final {RV} precision.
 
 The simplest way to calculate the derivative using finite difference methods~\citep{quarteroni_numerical_2000}.
@@ -495,9 +495,9 @@ At each pixel the numerical derivative is evaluated to the average slope between
 This only extends to \(i= n-1\), where \(n\) is the number of points in the spectrum, and the last pixel is dropped from the {RV} calculation.\footnote{This is important in the case of Condition~\#2.}
 
 
-The \emph{gradient}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}}  method provided in Numpy contains a more advanced numerical methods to calculate the derivative.
+The \emph{gradient}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}}  method provided in \emph{numpy} contains a more advanced numerical methods to calculate the derivative.
 It uses a \textit{compact difference} method~\citep{quarteroni_numerical_2000} which expand the finite differences using a Taylor expansion and then selecting coefficients to minimize the \textit{consistency error}.
-From the Numpy documentation the consistency error here is \[\eta_i = \partial{f(x_i)}/\partial{x} -  [\alpha f(x_i) + \beta f(x_i +h_d) + \gamma f(x_i - h_s)],\] where \(h_s\) and \(h_d\) are the spacing to the left and right of \(i\) respectively.
+From the \emph{numpy} documentation the consistency error here is \[\eta_i = \partial{f(x_i)}/\partial{x} -  [\alpha f(x_i) + \beta f(x_i +h_d) + \gamma f(x_i - h_s)],\] where \(h_s\) and \(h_d\) are the spacing to the left and right of \(i\) respectively.
 With Taylor expansion this turns into solving a linear system of equations:
 \[\begin{cases}
          \alpha + \beta + \gamma = 0\\
@@ -523,7 +523,7 @@ with an uncertainty of \(\mathcal{O}\left(\frac{\lambda(i+1){\lambda(i-1)}^{2} +
 {\red{} Wavelength spacing \(\delta\lambda\) between pixels is a function of \(\lambda\), Resolution and sampling choices.
 Can I do something with this??}
 
-The \emph{gradient} function from Numpy implements central differences for the interior points, accurate to second order, and first order accurate one-sided (forward or backward) differences at the boundaries, computed using the same compact difference procedure.
+The \emph{gradient} function from \emph{numpy} implements central differences for the interior points, accurate to second order, and first order accurate one-sided (forward or backward) differences at the boundaries, computed using the same compact difference procedure.
 
 \missingfigure{uncomment this one}
 \begin{figure}
@@ -531,7 +531,7 @@ The \emph{gradient} function from Numpy implements central differences for the i
    \includegraphics[width=0.8\linewidth]{figures/information-content/spectral_gradients}\\
     \caption{Visualization of the numerical gradient of some spectral lines.
 Top: The two spectral regions of a stellar spectrum the left hand slide contains short lines near the normalized continuum while on the right a single deep absorption line is shown.
-Bottom: The numerical gradients for the spectra shown in the top panels; the original {FFD} method is displayed with \emph{blue squares} while numpy gradient is shown with \emph{green stars}.
+Bottom: The numerical gradients for the spectra shown in the top panels; the original {FFD} method is displayed with \emph{blue squares} while \emph{numpy} gradient is shown with \emph{green stars}.
 The \emph{orange circles} are the {FFD} version shifted to the mid-points between pixels for illustrative purposes.}
     \label{fig:gradients}
 \end{figure}
@@ -541,7 +541,7 @@ The \emph{orange circles} are the {FFD} version shifted to the mid-points betwee
 
 In \cref{fig:gradients} we visualize the gradients of two small spectral regions computed with the original {FFD}, and the higher precision version incorporated in numpy's gradient function.
 The top panels contain the spectrum in the small regions shown, indicating a large spectral line and three small lines near the continuum respectively.
-The derivative of the spectra is shown in the bottom panel with the {FFD} method shown with \emph{blue squares} and the numpy gradient shown in \emph{green stars}.
+The derivative of the spectra is shown in the bottom panel with the {FFD} method shown with \emph{blue squares} and the \emph{numpy} gradient shown in \emph{green stars}.
 The \emph{orange circles} are the same as {FFD} but shifted horizontally to the midpoints between pixels.
 This is for illustrative purposes and to assess the effect of this offset when calculating the pixel weights.
 
@@ -564,7 +564,7 @@ The columns A, B, C are the {RV} precision for the different gradient methods.
 The \(\delta V\) ratios are the relative difference in {RV} when changing from method A (the original {FFD}) to methods B and C.
 In this table column B is the {FFD} method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \cref{fig:gradients} while column C is the more precise gradient from numpy.
 
-We find that changing to use the gradient from numpy increases the \(\delta V_{\rms}\) by 2.5--7\%, (decreasing the {RV} precision), due to the over-estimated gradient from the {FFD} method.
+We find that changing to use the gradient from \emph{numpy} increases the \(\delta V_{\rms}\) by 2.5--7\%, (decreasing the {RV} precision), due to the over-estimated gradient from the {FFD} method.
 As the pixel weights \cref{eqn:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the {RV} precision, visible in \cref{fig:gradients}.
 This small wavelength shift red-ward does changed the {RV} precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using numpy's gradient method.
 
@@ -572,7 +572,7 @@ Changing the method of numerical derivatives will change all the precision value
 This is a small impact on on the precision compared to other components of the {RV} precision.
 For instance from \cref{eqn:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\%  could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
 
-The current version of the software is now implemented with the gradient method provided by numpy package.
+The current version of the software is now implemented with the gradient method provided by \emph{numpy} package.
 
 \subsection{Masking Function}
 \label{subsec:masking_function}
@@ -624,21 +624,21 @@ Masking should be applied only after calculation of the pixel weights.
 As the pixel weights depend on neighbouring points (through the calculation of the gradients), prematurely removing pixels will affect the precision results.
 
 The original implementation of Condition~\#2 did just this, splitting the spectra into small sections in between the masked off telluric lines.
-The {\red{}\(RV_{\rms}\)} is calculated for each section and then the results are combined as the weighted error in {\red{} \cref{XXX}} \todo{weighted sum equation}.
+The {\red{}\(RV_{\rms}\)} is calculated for each section and then the results are combined as the error on the weighted average in \cref{eqn:weighted_average_error}.
 Analytically this identical to masking the pixel weights with \(M_2\) but not in practice when numerically implemented. \todo{Should I show the working of analytical working out of this in an appendix, or here?}
 
 When the spectrum is split into small sections the number of edges increases and the number of pixels affected by any edge effects increases.
 Using the {FFD} method to compute the gradient the last pixel is removed/lost.
 A spectrum split in \(m\) sub-spectra will therefore lose \(m\) pixels due to edge effects (instead of only 1 pixel with the full spectrum).
-Even the numpy gradient is not immune to the edge effects in the sub-spectra when splitting the spectrum first.
+Even the \emph{numpy} gradient is not immune to the edge effects in the sub-spectra when splitting the spectrum first.
 Even though there is no pixels lost, the first and last pixels of each sub-spectra are computed using forward or backward differences, rather than central differences (as they would be in the full spectrum).
 Hence the gradients and weights of some pixels are slightly changed due to the splitting occurring first.
 
 We quantify the effect of splitting the spectrum before and after calculating the weights in \cref{tab:mask_ordering}.
 The columns label \emph{Split} represents splitting the spectrum before calculating the pixel weights while the \emph{Mask} columns calculate all the pixel weights first and then apply the \(M_2\) mask.
 The difference in {RV} precision between both situations and for both gradient methods are given.
-For the {FFD} gradient the ordering of masking changes decreases the {\red{}\(RV_{\rms}\)} by 0.2--0.7\%, while for the numpy gradient it is increase but an order of magnitude smaller between 0.01--0.13\%.
-The {FFD} gradient is causes a larger difference as points that were masked out are now included where as with the numpy gradient the end values are always included but their gradients are slightly changed.
+For the {FFD} gradient the ordering of masking changes decreases the {\red{}\(RV_{\rms}\)} by 0.2--0.7\%, while for the \emph{numpy} gradient it is increase but an order of magnitude smaller between 0.01--0.13\%.
+The {FFD} gradient is causes a larger difference as points that were masked out are now included where as with the \emph{numpy} gradient the end values are always included but their gradients are slightly changed.
 The last column is the difference ratio between the \emph{Mask} column of both gradient method, this is consistent with \cref{tab:numerical_gradients} with the differences from two gradient methods between 2--7\%.
 It shows that the difference from changing order of masking is 1-2 orders of magnitude smaller than changing the gradient method.
 
