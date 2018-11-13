@@ -7,25 +7,25 @@ Modelling of stellar structure, atmospheres and evolution is use to try and unde
 One output from these models is synthetic stellar spectra.
 These spectra can be compared to observed spectra to attempt to classify and understand the stellar populations.
 There is an ever evolving effort to improve these stellar models and synthetic spectra to better match the observations; incorporating more physics, chemical reactions and line lists, and using the latest element abundances.
-In the work we make extensive use of the {PHOENIX-ACES} models with some experimentation with the {BT-Settl} models.
+In this work extensive use of the {PHOENIX-ACES} models is made with some experimentation with the {BT-Settl} models.
 A collection of several theoretical stellar spectral libraries can be found at Spanish Virtual Observatory \href{http://svo2.cab.inta-csic.es/theory/newov/index.php}{Theoretical Spectra Web Server}.
 
-The \citet{kurucz_model_1979} models are popular synthetic models for stars ranging between G-O type with effective temperatures between 5\,500--50\,000\K.
+The~\citet{kurucz_model_1979} models are popular synthetic models for stars ranging between G-O type with effective temperatures between 5\,500--50\,000\K.
 For cooler stars, M-dwarfs and even Brown Dwarfs the stellar models are based on the {PHOENIX} code~\citep[e.g.][]{hauschildt_parallel_1997}.
 Initially created for studying the ejecta of Novae it was \emph{Extended} to low mass stars and Brown Dwarfs~\citep{allard_model_1995}.
 The PHOENIX modelling code has evolved overtime incorporating new physical models to better explain the atmospheres.
 The \emph{NextGen} models~\citep{hauschildt_nextgen_1999b} treated the stellar atmosphere as a gas in chemical equilibrium, but the resulting spectra for very low mass stars was poor due to no treatment of dust in the stellar atmospheres.
 
-The \citep{allard_limiting_2001} \emph{COND} and \emph{DUSTY} models investigate the both extreme limits of clouds in the atmospheres of cool stars.
+The~\citep{allard_limiting_2001} \emph{COND} and \emph{DUSTY} models investigate the both extreme limits of clouds in the atmospheres of cool stars.
 They include condensation physics (Gibbs free energy, gas partial pressures etc.) into the chemical equilibrium model, as well as the optical interaction of light with the dust/condensates (dust opacities and scattering).
 The \emph{DUSTY} models simulate `inefficient/no settling' where condensation/dust forms and stays in the atmosphere and it affects the spectrum through the dust opacities.
 At the other extreme the \emph{COND} models ignore the dust opacities and simulate `efficient settling', in which all the condensates and dust clouds fall below the spectrum forming region.
 
 The treatment of clouds and dust is important for the modelling of low mass stars and Brown Dwarfs.
-The \emph{DUSTY}/\emph{COND} models are similar above 2600\K but below this temperature they diverge below this temperature due to the crystallization of silicates in the atmosphere~\citep{allard_limiting_2001}.
+The \emph{DUSTY}/\emph{COND} models are similar above 2600\K{} but below this temperature they diverge below this temperature due to the crystallization of silicates in the atmosphere~\citep{allard_limiting_2001}.
 These are only a few of the physical consideration implemented in the synthetic models.
 The other notable changes in the name convention for the synthetic spectra are due to use of specific line lists.
-The models beginning with {AMES} use the {NASA-AMES} \ce{H20} and \ce{TiO} line lists, while the {BT} models use the \citet{barber_highaccuracy_2006} \ce{H2O} line list.
+The models beginning with {AMES} use the {NASA-AMES} \ce{H20} and \ce{TiO} line lists, while the {BT} models use the~\citet{barber_highaccuracy_2006} \ce{H2O} line list.
 Between models improved solar abundance measurements are also implemented~\citep[][]{asplund_chemical_2009}.
 
 In this work synthetic spectral from the {PHOENIX-ACES} and to a lesser extent the {BT-Settl} stellar models are used.
@@ -38,61 +38,104 @@ Both sets of synthetic models do not handle the affects of radiation from a neig
 
 The {PHOENIX-ACES} models~\citep{husser_new_2013} are a descendant fo the \emph{COND} models.
 They include condensation in equilibrium with the gas phase while ignoring dust opacity and any mixing or settling which is important for cooler atmospheres.
-As such the {PHONEIX-ACES} models are restricted to \txteff{} >2300\K{} as the treatment of dust/clouds is not handled.
+As such the {PHONEIX-ACES} models are restricted to \txteff{}>2300\K{} as the treatment of dust/clouds is not handled.
 It uses the most recent version (16) of the {PHOENIX} code and is suitable for the spectra of cool stars.
-THE PHOENIX-ACES models uses the Astrophysical Chemical Equilibrium Solver (ACES, Barman 2012) new in version 16 of PHOENIX to perform state-of-the-art treatment of the chemical equilibrium. It also adds parametrisations for the mass and mixing-length, and uses the solar abundances of \citet{asplund_checmial_2009}.
+THE {PHOENIX-ACES} models uses the Astrophysical Chemical Equilibrium Solver (ACES, Barman 2012) new in version 16 of PHOENIX to perform state-of-the-art treatment of the chemical equilibrium.
+It also adds parametrisations for the mass and mixing-length, and uses the solar abundances of~\citet{asplund_chemical_2009}.
 
-As noted in \citep{husser_new_2013} there are significant differences between the spectra from PHOENIX-ACES and previous PHOENIX model spectra.
+As noted in~\citep{husser_new_2013} there are significant differences between the spectra from {PHOENIX-ACES} and previous PHOENIX model spectra.
 For instance the equation of state solver ACES strongly affects the stellar structure and different line and molecular band strengths.
 Unfortunately there are several changes introduced with {PHOENIX-ACES} making it difficult to distinguish and quantify the different effects.
 
-The full parameter grid space of the pre-computed {PHOENIX-ACES} spectra is given in \cref{tab:phoenix} although this full range is not utilized in this work. This work uses models below >7000\K{} with no $\alpha$ variation. The spectral sampling of the grid is are $R \approx 50000$ for 300--2500\nm, covering the wavelengths used here.
+The full parameter grid space of the pre-computed {PHOENIX-ACES} spectra is given in \cref{tab:phoenix} although this full range is not utilized in this work.
+This work uses models below >7000\K{} with no $\alpha$ variation.
+The spectral sampling of the grid is are $R \approx 50\,000$ for 300--2500\nm, covering the wavelengths used here.
 
 \input{./tables/atmos_and_models/phoenixparameters}
 
 The lower temperature limits of this library limits the stellar mass to the highest mass BDs or higher.
-For example a \(\teff{}=2\,300\)\K{} corresponds to a {BD} with \(\textrm{M}\sim84\)\Mjup{} at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models, (see \cref{subsec:evolution_models}).
+For example a \(\teff{}=2\,300\)\K{} corresponds to a {BD} with \(\textrm{M}\sim84\)\,\Mjup{} at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models, (see \cref{sec:evolutionary_models}).
 
 
-The reference wavelength defining the mean optical depth grid, is fixed to $\lambda_{\tau}=1\,200\nm$ for \txteff{}>5000\K and $\lambda_{\tau}=500\nm$ for hotter stars.
-This is observed to create a discontinuity in the spectra at 5000\K{} used here [see \textbf{XXXX}].
-
-\todo{Difference between models in 100k increments.}
+While using the {PHOENIX-ACES} models a discontinuity in the stellar flux is observed between 5000\K{} and 5100\K.
+In \cref{fig:phoenixdiffereceat5000k} several {PHOENIX-ACES} spectra in incremental steps are shown in a small wavelength range of 2113--2115\nm{}.
+The line profile seems to change suddenly between the model with 5000\K{} and 5100\K, causing a slight discontinuity in the models.
+This slightly impacts the use of these models while attempting \textchisquared{} fitting in \cref{cha:model_comparison}.
+The bottom panel shows the flux difference between models separated in temperatures of 100\K{} (one grid step).
+The difference between 5000 and 5100\K{} (green) is offset from the other model differences.
+This is potentially caused by the change in treatment of the model atmospheres at 5000\K.
+For instance~\citet{husser_new_2013} mention that the reference wavelength defining the mean optical depth grid, is fixed to $\lambda_{\tau}=1\,200$\nm{} for \txteff{}>5000\K{} and $\lambda_{\tau}=500$\nm{} for hotter stars in the {PHOENIX-ACES} modelling.
 \begin{figure}
-    \caption{Difference increment at 5000\K{}.}
-%    \includegraphics{./figures/atmos_and_models/phoeix_aces_differences.pdf}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/atmos_and_models/phoenix_differece_at_5000K}
+    \caption{Top: Incremental {PHOENIX-ACES} model spectra between 4800--5300\K{} with \logg=4.5 and \feh=0.0 fixed.
+    Bottom: Difference in flux between successive models separated by 100\K.
+    Apart from near absorption lines there a discontinuity in the flux of the PHONEIX-ACES modes between 5000 and 5100\K.}
+    \label{fig:phoenixdiffereceat5000k}
 \end{figure}
 
 
 \subsection{BT-Settl}
 \label{subsec:btsettl}
-The {BT-Settl} models~\citep{allard_btsettl_2013, baraffe_new_2015}, are an evolution of both the \emph{DUSTY} and \emph{COND} models. They better suited for the entire range of {BD} temperatures down to 400\K{}, through hydrodynamically modelling the mixing and settling of dust/clouds in the atmosphere of cool dwarfs \textbf{3d hydrodynamical modelling ...}.
+The {BT-Settl} models~\citep{allard_btsettl_2013, baraffe_new_2015}, are an evolution of both the \emph{DUSTY} and \emph{COND} models.
+They are better suited for the entire range of {BD} temperatures down to 400\K{}, through hydrodynamical modelling of the mixing and settling of dust/clouds in the atmosphere of cool dwarfs \textbf{3d hydrodynamical modelling ...}.
 
 They work on the version 15.5 of the PHOENIX code.
 
 They are also suppose to have matching spectra on the range \nir{}-IR wavelengths~\citep{allard...}.
 
-In this work the {BT-Settl} models used did not go lower than the PHOENIX-ACES limit of 2300\K{}, but they were available if needed. Above this temperature there are some difference observed between the two models but their spectra are fairly similar at 2100-2160\nm{} used here. 
+In this work the {BT-Settl} models used did not go lower than the {PHOENIX-ACES} limit of 2300\K{}, but they were available if needed.
+Above this temperature there are some difference observed between the two models but their spectra are fairly similar at 2100-2160\nm{} used here.
 
-The newest version of the {BT-Settl} models are combined with evolutionary models~\citep{barrafe_new_2015} and incorporate even newer \citet{caffau_solar_2011} solar abundances.
-
-The {BT-Settl} are generally more difficult to work with (in comparison to PHOENIX-ACES) although the newest version (CIFIST\_2011\_2015) are  available in an easier to use fits format.
-
-
-
+The {BT-Settl} are generally more difficult to work with (in comparison to {PHOENIX-ACES}).
+The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} includes newer~\citet{caffau_solar_2011} solar abundances and is combined with evolutionary modelling.
+It is available in a fits format which is easier to use.
+The parameter range available from the pre-computed library is given in \cref{tab:btsettl_params}.
 
 
-The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200--7\,000\K{} \logg{}=2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer \citet{caffau_solar_2011} solar abundances.
+\input{./tables/atmos_and_models/btsettlparameters}
 
 
 \subsection{Model access}
 \label{subsec:model_access}
-The pre-computed synthetic spectral libraries for the PHOENIX-ACES models \cref{tab:phoenix} are easily obtainable from \href{http://phoenix.astro.physik.uni-goettingen.de/}{http://phoenix.astro.physik.uni-goettingen.de/}.
+The pre-computed synthetic spectral libraries for the {PHOENIX-ACES} models \cref{tab:phoenix} are easily obtainable from \href{http://phoenix.astro.physik.uni-goettingen.de/}{http://phoenix.astro.physik.uni-goettingen.de/}.
 
-Pre-computed models for the {BT-Settl} and other PHOENIX spectra can be found  at \href{https://phoenix.ens-lyon.fr/Grids/}{https://phoenix.ens-lyon.fr/Grids/} while 
+Pre-computed models for the {BT-Settl} and other PHOENIX spectra can be found  at \href{https://phoenix.ens-lyon.fr/Grids/}{https://phoenix.ens-lyon.fr/Grids/} while
 A simulator is also available to generate {BT-Settl} spectra or other {PHOENIX} spectra from {Allard France} at \href{phoenix.ens-lyon.fr}{phoenix.ens-lyon.fr}, for specific parameters or abundances.
 
-The spectral model libraries were downloaded using the above links and accessed using the useful ``grid tools'' interface provided in the \emph{Starfish}\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}. The ``grid tools'' enables the fast, efficient, and simple loading of stellar spectra for use in the simulation performed in this work. For instance a spectra from a given modelled can be loaded simply using the four values of identifying parameter values [\txteff, \logg, \feh, $\alpha$].
+The spectral model libraries were downloaded using the above links and accessed using the useful ``grid tools'' interface provided in the \emph{Starfish}\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}.
+The ``grid tools'' enables the fast, efficient, and simple loading of stellar spectra for use in the simulation performed in this work.
+For instance a spectra from a given modelled can be loaded simply using the four values of identifying parameter values [\txteff, \logg, \feh, $\alpha$].
 
 
-\missingfigure{Example spectra from PHOENIX-ACES/BT-SETTL??}
+
+\subsection{Comparing models}
+Here a comparison between the {PHOENIX-ACES} and {BT-Settl} spectra is briefly given.
+\Cref{fig:phoenixlargescalecomparision} shows the model spectral flux in the \nir{} range of 0.9--3\um{} for three different stellar temperatures: 5500, 4000, and 2300\K{}.
+At this large scale the spectra look fairly similar.
+
+On closer inspection though the spectra are slightly different with the {PHOENIX-ACES} spectra having deeper absorption lines compared to the {BT-Settl} models, however they do appear to have most of the same absorption lines.
+This can be seen in \cref{fig:artucus1-2micron} which contains the {PHOENIX-ACES} and {BT-Settl} at two different regions in the \nir, 1013\nm and 2110\nm.
+Temperature of both models is 4300\K{} while the \logg{} is 1.5 for {PHOENIX-ACES} and 2.5 for {BT-Settl} (closest available) and the models are convolved to R=100,000.
+This is in an attempt to match the parameters to the observations of {Arcturus} at R=100\,000 shown blue.
+Cross-correlation and a Doppler shift has been used to align the model spectra to the observations.
+There is a striking difference between the models and observations which several lines present in the models that are not seen in the real observation, while a few lines observed that are not seen in the models.
+When the observed absorption lines do align with the models the is a difference in the depth of the lines.
+These difference are shown at two different wavelengths and reveal that there is still room for improvement in the synthetic models to match observed spectra in the \nir and at high resolution.
+
+A further example of this is shown given in \cref{fig:visualinspection-hd2118471} in which the fitted model, dominated by a single {PHOENIX-ACES} model, is compared to the observed CRIRES spectra.
+This caused issues with the fitting procedure in \cref{cha:model_comparison}.
+
+ \begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/atmos_and_models/phoenix_large_scale_comparision}
+    \caption{{PHOENIX-ACES} (left) and {BT-Settl} (right) spectra in the \nir{} wavelength region for three different temperature stars, \logg{}=4.5, \feh{}=0.}
+    \label{fig:phoenixlargescalecomparision}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.45\linewidth]{figures/atmos_and_models/artucus_1micron}     \includegraphics[width=0.45\linewidth]{figures/atmos_and_models/artucus_2micron}
+    \caption{}
+    \label{fig:artucus1-2micron}
+\end{figure}
