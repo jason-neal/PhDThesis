@@ -1,24 +1,14 @@
 %!TEX root = ../../thesis.tex
 
-
 \section{Evolutionary models}
+\label{sec:evolutionary_models}
+Modelling of the evolution of a star, from birth thorough its journey on the main sequence until its death as it slowly cools as a dwarf or explodes as a super-novae, is important for understanding how the observable properties  (temperature/ photometric colours) change over time. The main factor for the fate and evolution rate  is a stars mass, with large stars evolving quickly and dying explosive deaths while low mass stars sustain fusion for several orders of magnitudes longer. Brown Dwarfs do not have enough mass to achieve stable hydrogen fusion and slowly cool down over their lifetime.
 
-This work makes use of stellar evolutionary models, in particular those of Baraffe.
+This work uses stellar evolutionary models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015} to estimate the properties of the giant planets, brown dwarfs and low-mass stars given the mass and age. The models range in mass between 0.0005--1.4\Msun{} and ages 0.001--10.0\Gyr{} of which span temperatures $sim100$--6000\K{}. 
+Stellar/BD properties such as \txteff{}, \logg, radius, and absolute magnitudes in different photometric bands  can be determined from the tables given by the evolution models. 
 
-These models, try to model the evolution of stars from
-Baraffe evolutionary models.
-\todo{Example from their paper of evolutionary tracks or something}
-
-
-The recent {BT-Settl} spectra also incorporate evolutionary track of baraffe 2015 for low mass stars.
-
-These models tabulate several properties of low-mass stars and BDs during their evolution.
-These include the temperature, radius, luminosity, and absolute magnitudes in several photometric bands, for a range of companion masses and stellar ages.
-
-
-
-\section{Estimating Companion-host Flux ratio}
-\label{sec:compaion_flux_ratio}
+\subsection{Estimating Companion-host Flux ratio}
+\label{subsec:compaion_flux_ratio}
 In order to visually or spectroscopically detect binary or planetary companions it is helpful to calculate the flux/contrast ratio between the host and companion.
 
 The companion-host flux or contrast ratio of the system can be estimated using:
@@ -27,15 +17,15 @@ The companion-host flux or contrast ratio of the system can be estimated using:
 \end{equation}
 where \(m_{1}\) and \(m_{2}\) are the magnitude of the host and companion respectively.
 
-The photometric apparent magnitudes for the host stars, \(m_{1}\), in several wavelength bands are easily obtained through online catalogues such as {SIMBAD}~\citep{wenger_simbad_2000} or {2MASS} \citep{skrutskie_two_2006}.
+The photometric apparent magnitudes for the host stars, \(m_{1}\), in several wavelength bands are easily obtained through online catalogues such as {SIMBAD}~\citep{wenger_simbad_2000} or {2MASS}~\citep{skrutskie_two_2006}.
 However, the magnitudes of the companions, \(m_{2}\), are not readily available as they have not been directly measured.
-The stellar evolution models of \citet{baraffe_evolutionary_2003, baraffe_new_2015} are used to estimate the magnitude of the companion.
+The stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015} are used to estimate the magnitude of the companion.
 A given companion mass, and a stellar age will uniquely identify a point in the Baraffe models which corresponds to a specific magnitude for the companion.
-The tables provided in \citet{baraffe_evolutionary_2003, baraffe_new_2015} are also interpolated to reach companion masses and stellar ages between the models provided.
+The evolution tables are also interpolated to reach companion masses and stellar ages between the models provided.
 
 In \cref{tab:estimated_flux_ratios} the host-companion flux ratio estimates for the targets analysed in this work are presented.
 The {K}-band flux ratios are calculated to match the observed {CRIRES} spectra at 2.1\um{}.
-The stellar ages used for the each system are given in \cref{tab:starparams} while the companion masses are given from \cref{tab:orbitparams}.
+The stellar ages used for the each system are given in \cref{tab:star_params} while the companion masses are given from \cref{tab:orbitparams}.
 The age and companion mass are both used to obtain the absolute magnitude for the companions.
 For the companions in which only the minimum mass (\Mtwosini{}) is known then the flux-ratio given will be the lower limit, or worst case scenario.
 
@@ -56,7 +46,8 @@ From the flux ratio the noise ratio between the host and companion can also be c
 
 \todo{this section is completed i think}
 
-\subsubsection{Baraffe tables}
+
+\subsection{Baraffe tables}
 \label{subsubsec:baraffe_tables_code}
 A simple tool\footnote{Available at \href{https://github.com/jason-neal/baraffe_tables}{https://github.com/jason-neal/baraffe\_tables}} was created to calculate/estimate the host-companion flux ratio using the~\citet{baraffe_evolutionary_2003, baraffe_new_2015} evolution tables.
 Given the name of the target star, the mass of a companion and the stellar/system age the tool determines the flux ratios in the available spectral bands.
