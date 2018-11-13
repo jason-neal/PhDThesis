@@ -57,6 +57,11 @@ These synthetic spectra are used individually for the single component model and
 The results of these models are interpolated to the wavelength grid of the observed spectra and the \textchisquared{} calculated by comparing the model and observation at each point.
 
 
+{\red{} We multiply the synthetic spectra by the wavelength to convert it into photon counts, ignoring multiplicative constants, as done in~\citet{figueira_radial_2016}\footnote{Synthetic models provide the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)).}.
+The spectra were convolved with a Gaussian kernel to match the resolution of the observations (\(\rm R=50\,000\)).
+Due to the distributive property of convolution it is efficient to apply it once to each spectra first, before the spectral pairs are combined.}
+
+
 \subsubsection{Single component model}
 \label{subsubsec:single-model}
 The single model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \(\teff{}\), logg, \feh{}, [\(\alpha\)/\ce{Fe}]) and is Doppler shifted by a {RV} value \({rv}_1\).
@@ -437,61 +442,12 @@ We conclude that the lack of an accurate\ce{TiO} line list is currently critical
 
 \subsection{Junk from paper about BT-settl}
 
-
-\textbf{Alot of this section needs to be cut out, lots of repeats and it is not well structured.
-Basically it will say there is this other model that is better for BDs as it differs ``like this'' but \textbf{cref {fig:hd211847-models}} show that it will also have strong mismatch to make it difficult to recover.}
-
-\label{bt-setll-junk}
-The {BT-Settl}  models~\citep{allard_model_2010, allard_btsettl_2013, baraffe_new_2015}, are different flavour of Phoenix models, that are more suitable for {BD} atmospheres as they include the formation of dust/cloud and hydro-dynamical modelling atmospheric mixing/settling for atmospheres with \(\teff{}\) below \(\sim2600\K{}\).
-These are valid across the regime from stars to BDs as cool as 400\K{}.
-The {PHOENIX-ACES} models completely avoid the modelling of clouds and settling by the lower temperature restriction of 2\,300\K{}.
-
-The {PHOENIX-ACES} models dust in equilibrium with the gas phase but ignores the dust opacity and does not include any settling.
-It does however include a new Astrophysical Chemical Equilibrium Solver (ACES,
-\textbf{Barman 2012}); adds parametrisations for the mass and mixing-length; and uses the~\citet{asplund_chemical_2009} solar abundances.
-All these modifications together make it difficult to quantify the spectral changes from each individual change.
-
-The two of the recent ``flavours'' are the {BT-Settl}~\citep{allard_model_2010, baraffe_new_2015} and the {PHOENIX-ACES}~\citep{husser_new_2013} which use versions 15.5 and 16 of the {PHOENIX} code respectively.
-
-Even though the {BT-Settl} models are more suited for the entire range of {BD} temperatures, we restrict ourselves to the {PHOENIX-ACES} synthetic spectra for a number of reasons.
-The ease of use and availability from the spectral library webpage\footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}.
-The ease of use using the Starfish tools, a wide parameter range and fairly consistent parameter grid span, and the effective radius of the modelled star provided in the fits header.
-
-These were not used in this instance for a couple of reasons, the ineffectiveness to produce a reliable detection on the observations using  {PHOENIX-ACES}  spectra for our largest companions, which fall well within the  {PHOENIX-ACES}  temperature limit.
-
 The {PHOENIX-ACES} models also provide dimensions of effective radius of the star, in the header.
 This is required for the method presented here as we need to scale the spectra by their respective surface area when combining together.
-This {PHOENIX-ACES} lower temperature limit restricts its use to only the higher mass {BD} companions in our sample (\(~>0.08 M_{\odot}\) at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} models).
 
 
-The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200--7\,000\K{}\logg{}=2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer \citet{caffau_solar_2011} solar abundances.
-
-The newer {PHOENIX-ACES} models are limited to \(\teff{}> 2\,300\)\K{} which only cover the larger BDs.
-To evaluate the lower mass BDs we use the \textbf{other model}, more suitable for cooler BDs and low mass star as they incorporate modelling of dust, clouds etc\ldots
-
-
-The spectral model libraries were accessed using the useful ``grid tools'' provided in the Starfish\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}.
-
-
-Both sets of synthetic models do not handle the affects of radiation from a neighbouring star, which may have an affect on the binary orbits here.
-
-
-
-{PHOENIX-ACES} models dust in equilibrium with gas phase but ignores the dust opacity and does not include any mixing/settling in cooler atmospheres.
-This is avoided by having a minimum library \(\teff{}=2\,300\)\K{}.
-This unfortunately limits the use of this library for this technique to the larger mass companions in our sample.
-For example a \(\teff{}=2300\)\K{} corresponds to a {BD} with M\(\sim0.08\)\Modot at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models.
-
-
-Even though the {BT-Settl} models are more suited for the entire range of {BD} temperatures down to 400\K{}, through hydrodynamically modelling the mixing and settling of dust/clouds, we restrict ourselves to the {PHOENIX-ACES} synthetic spectra in this work for a number of reasons.
-The ease of use and availability from the spectral library webpage\footnote{\url{http://phoenix.astro.physik.uni-goettingen.de/?page_id=15}}.
 The effective radius of the modelled star are provided in the fits header and required for the calculation of the flux ratio.
 
-
-
-The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} is only available for 1\,200-7\,000\K{}\logg{}=2.5 to 5.5 and a fixed metallicity and alpha of 0 and includes newer \citet{caffau_solar_2011} solar abundances.
-
-The {BT-Settl} grids were harder to obtain and use.
 
 As we do not recover suitable results for HD211847 which is supposed to have a temperature around 3\,400\K{} we suspect that it is not possible for lower temperature either so don't try to extend to the {BT-Settl} models.
 
@@ -500,8 +456,6 @@ As we do not recover suitable results for HD211847 which is supposed to have a t
      {PHOENIX-ACES}  defines grid as Teff,\logg{} and Mass which can then be used to determine Radii.
 See~\citep{husser_new_2013} section 2.3.1 Mass.}
 
-Both {BT-Settl} and aces are spherical
-\ldots{}
 
 
 
