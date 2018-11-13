@@ -43,20 +43,20 @@ Spectral Disentangling techniques
 - Differencing Fruluga
 - Templates?
 
-TODCOR - 2-d from binary analysis \citep{zucker_study_1994}
+TODCOR - 2-d from binary analysis~\citep{zucker_study_1994}
 \citep{mazeh_detecting_1997}
 
-2D-cross-correlation?   \citet{piskorz_evidence_2016} seems to have promising technique
+2D-cross-correlation?  ~\citet{piskorz_evidence_2016} seems to have promising technique
 
 
 \textbf{
-See \citet{kostogryz_spectral_2013} for lots of useful references regarding differential works \citet{simon_disentangling_1994}}
+See~\citet{kostogryz_spectral_2013} for lots of useful references regarding differential works~\citet{simon_disentangling_1994}}
 
 \citet{rodler_weighing_2012} uses differential of a series of phases to construct a stellar mask for the host to subtract from all measurements.
 
 
 
-{\red{} \citet{kolbl_detection_2015} Use HIRES spectra at 364-799\nm{} (R=60\,000) to determine statistically determine the presence of a faint secondary companion spectra (if any).
+{\red{}~\citet{kolbl_detection_2015} Use HIRES spectra at 364-799\nm{} (R=60\,000) to determine statistically determine the presence of a faint secondary companion spectra (if any).
 They use \textchisquared fitting of the observed spectra against the {SPecMatch} library of observed spectra to find a spectra to best remove the primary star lines,
 accounting for dilution and rotational broadening.
 They also find that a secondary spectrum with a $\Delta RV$ relative to the host would blend and remain undetectable.
@@ -89,10 +89,10 @@ That is, to refine the mass of the companions to distinguish if their companion 
 The spectral differential approach was chosen with the goal to constrain the companion masses while minimizing the observational time required to observe.
 It was deemed that it should be possible to obtain a detection of a companion at 1\% contrast ratio with an exposure time of around 20 minutes.
 Two observations at ``clearly separate RVs'' were requested to constrain each target.
-Observations were preformed without telluric standard star observations to avoid the wasted observing time, choosing to instead rely on synthetic model correction (see \cref{subsec:telluric_correction}).
+Observations were preformed without telluric standard star observations to avoid the wasted observing time, choosing to instead rely on synthetic model correction (see \cref{sec:telluric_correction}).
 The \textit{K}-band was chosen to achieve a high contrast relative to the host star, detected in the extreme V-K colour indexes (>7.8).
 
-The list target host stars are presented in \cref{tab:starparams} along with their stellar parameters, while the companion orbital parameters are provided in \cref{tab:orbitparams}.
+The list target host stars are presented in \cref{tab:star_params} along with their stellar parameters, while the companion orbital parameters are provided in \cref{tab:orbitparams}.
 
 We note that the orbital parameters of some targets have been refined in the literature since the observations took place.
 For example three candidates have had their masses refined in recent works.
@@ -127,7 +127,7 @@ The observation that was performed first in time is labelled with the observatio
 
 There could be two possible reasons for the single observation of {HD\,4747}.
 One is that only one observation was requested due to the very long orbital period of the target, although this would not fulfil the science goal.
-The other more likely reason is that these observations were preformed in service mode as a filler program and in the ned there was no time to observe a second observation of {HD\,4747}.
+The other more likely reason is that these observations were preformed in service mode as a filler program and in the end there was no time to observe a second observation of {HD\,4747}.
 
 \textbf{Is there a reason for the two different filters?}
 
@@ -136,7 +136,7 @@ The other more likely reason is that these observations were preformed in servic
 \textbf{The filters...using the {Ks} and the {Hx5e-2} filters, Why use the different filters???}
 
 All observations were reduced using the {DRACS} pipeline with the artefact corrections applied (see \cref{subsec:pipeline-selection}).
-Each observation was wavelength calibrated and corrected for telluric lines then corrected for the barycentric RV following  \cref{subsec:wavecalib, subsec:telluric_correction, subsec:barycentriccorrection}.
+Each observation was wavelength calibrated and corrected for telluric lines then corrected for the barycentric RV following  \cref{subsec:wavecalib,subsec:telluric_correction,subsec:barycentriccorrection}.
 
 
 \subsection{Calculations using observed times}
@@ -144,7 +144,7 @@ Each observation was wavelength calibrated and corrected for telluric lines then
 {\red{}
 Before the differential subtraction method is presented, calculations can be preformed to estimate the RV of both components in each observations and the likely separation between the companions between observations.
 The time of each observation is combined with the orbital parameters from \cref{tab:orbitparams} to calculate the RV of the host star (\({RV}_{1}\) in \cref{tab:observations}) using \textbf{EQUATION XX}.
-For the companion, the mass (\Mtwo or \Mtwosini{})  is used alongside the stellar mass from \cref{tab:stellarparams} to calculate the RV of the companion using \todo{~equations for companion rv with the masses still included, include 180 degree angle phase change also}{\textbf{cref{}}}.
+For the companion, the mass (\Mtwo or \Mtwosini{}) is used alongside the stellar mass from \cref{tab:star_params} to calculate the RV of the companion using \todo{~equations for companion rv with the masses still included, include 180 degree angle phase change also}{\textbf{cref{}}}.
 This is given as \({RV}_{2}\) in \cref{tab:observations}.
 The estimated difference in RV between the host and companion for each observation is also computed as \({rv}_{2} = {RV}_{2}-{RV}_{1}\) although it will not be used until \cref{cha:model_comparison}.
 
@@ -432,7 +432,7 @@ The candidate selected as the best target to investigate was {HD\,219828} which 
 Based on the spectra of a cool brown dwarfs in the \mir{}, and the detector configuration available at the time, the best option for the observations was the low resolution mode covering the wavelength region 8--13\um{}.
 This wavelength region would have encompassed the \ce{NH4} signature at 10.5\um{} and the edge of a \ce{CH4} band at 7.7\um{}, both large features in the BD \mir{} spectrum.
 
-After performing flux ratio calculations between the host and companion using the~\citet{baraffe_evolutionary_2003} models (see \cref{sec:compaion_flux_ratio}) and considering the performance of the {VISIR} instrument and the exposure time calculator it was determined that observations with {VISIR} to achieve a \snr{} of 100 were infeasible, requiring 1\,000's of hours of observing time to achieve the necessary signal-to-noise level to separate the companion from a blended spectra.
+After performing flux ratio calculations between the host and companion using the~\citet{baraffe_evolutionary_2003} models (see \cref{subsec:compaion_flux_ratio}) and considering the performance of the {VISIR} instrument and the exposure time calculator it was determined that observations with {VISIR} to achieve a \snr{} of 100 were infeasible, requiring 1\,000's of hours of observing time to achieve the necessary signal-to-noise level to separate the companion from a blended spectra.
 As such the direct separation approach was not continued further in the \mir{}.
 
 

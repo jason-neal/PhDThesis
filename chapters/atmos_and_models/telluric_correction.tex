@@ -15,7 +15,7 @@ Several different software available which usually build upon the standard line-
 Some examples are {TelFit}~\citep{gullikson_correcting_2014}, and ESO's {Molecfit}~\citep{smette_molecfit_2015} which both model and fit a synthetic absorption spectra to observations, where as {TAPAS}~\citep{bertaux_tapas_2014} just creates synthetic models based on atmospheric data for an observation (without fitting).
 The synthetic models at high resolution are very sensitive to atmospheric constituents, especially water vapour, and observing conditions such as the airmass.
 
-Recently~\citet{ulmer-moll_telluric_2018} compared the telluric correction efficiency between {TelFit},  {Molecfit}, {TAPAS}, and the standard star method.
+Recently~\citet{ulmer-moll_telluric_2018} compared the telluric correction efficiency between {TelFit}, {Molecfit}, {TAPAS}, and the standard star method.
 They found that {Molecfit} and {Telfit} synthetic corrections lead to smaller residuals for lines arising from \ce{H2O}, while the standard star method corrects for \ce{O_2} lines best.
 All methods (synthetic and standard star) result in a scatter inside the telluric lines of 3--7\%.
 They also find that an observatory tailored atmospheric profile leads to reduced scatter inside telluric lines and that the correction performed better with lower precipitable water vapour.
@@ -55,11 +55,7 @@ The mid-observation time for each observation was used to request a synthetic sp
 The telluric models were retrieved without barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument.
 For each observation one model was requested with all available atmospheric species present, convolved to a resolution of \(\rm R=50\,000\), and a further two models without the instrumental profile convolution applied.
 For these two extra models, one contained only the transmission spectra of \ce{H2O} while the other contained contributions from the all other constituents except \ce{H2O}.
-This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS}~\citet{bertaux_tapas_2014}.
-
-\cref{subsec:telluric_correction_application}
-\todo{will i discuss this?, if so where}
-
+This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS} models~\citet{bertaux_tapas_2014} (see \cref{subsec:telluric_correction_application}).
 
 \subsection{Issues with {TAPAS}}
 There are a number of issues encountered when using the {TAPAS} web service, mainly due to interaction with the website.

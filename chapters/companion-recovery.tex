@@ -153,12 +153,12 @@ Our first assumption is to restrict ourselves to models with an Alpha element ab
 This is likely a very good approximation as all our targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where [\(\alpha\)/\ce{Fe}] values are close to zero (i.e., solar)~\citet[e.g.]{adibekyan_chemical_2012}.
 Our second is to assume that we can significantly reduce the search space with literature values for the host star.
 We fix the metallicity of both components to the closest grid to the literature value (usually \feh{}=0.00).
-We also fix the \logg{} of the host star to its literature values given in \cref{tab:starparams}.
+We also fix the \logg{} of the host star to its literature values given in \cref{tab:star_params}.
 The uncertainties on the literature measurements for \logg{} (\(\sim\)0.1) and metallicity (\(\sim\)0.05) are both smaller than the grid steps of 0.5 for these parameters.
 The \logg{} of the companion is obtained from the~\citet{baraffe_evolutionary_2003,baraffe_new_2015} evolutionary models for the given companions \(\mtwo/\mtwosini\) and hosts age.
 
 We use the estimated companion temperatures from the Baraffe evolutionary models given the companion (minimum) mass and stellar age as a starting point for the companion spectra grid computation and extend the grid in each direction, within the model limits.
-For example we show the companion temperature grid spanning \(-600\) to \(+400\)\K{} in \cref{fig:Mdwarf_contours} and \(\pm400\)\K{} in \cref{fig:HD211847_simulated_contours, fig:HD211847_result_contours}.
+For example we show the companion temperature grid spanning \(-600\) to \(+400\)\K{} in \cref{fig:Mdwarf_contours} and \(\pm400\)\K{} in \cref{fig:HD211847_simulated_contours,fig:HD211847_result_contours}.
 
 The large numbers stated above also do not include the {RV} grid for each component.
 The {RV} grid is user defined and the number of spectra /models to consider increases when the {RV} grid step size is decreased (finer {RV} resolution).
@@ -182,7 +182,7 @@ We however left this free to see if the known value would be recovered by the fi
 \todo{Example with a large mass companion? and/or SNR.}
 
 \section{Results}
-\label{sec:results}
+\label{sec:chi2_results}
 
 \input{tables/companion_recovery/recoveredparameters}
 
@@ -220,7 +220,7 @@ To test the companion recovery method we create simulated binary observations us
 White noise was added with a standard deviation \(\rm \sigma = 1/{SNR}\), for a given signal-to-noise ({SNR}) level.
 We then applied the grid-matching recovery technique detailed above and compared the resulting parameters to the inputs.
 
-The results of two example binary simulations are displayed in \cref{fig:Mdwarf_contours, fig:HD211847_simulated_contours}, both simulated with a \snr{} of 150.
+The results of two example binary simulations are displayed in \cref{fig:Mdwarf_contours,fig:HD211847_simulated_contours}, both simulated with a \snr{} of 150.
 The input and recovered parameters for the binary components are indicated by the red circles and yellow stars respectively, and are given in \cref{tab:example_params}.
 The 3-\(\sigma\) contour is shown in white on the plots to indicate the shape of the confidence level only.
 The 1-\(\sigma\) contours are not shown here as they are much smaller than the temperature grid step and are not easy to visualize at this scale as they are often smaller than the marker shown at the minimum location.
@@ -265,7 +265,7 @@ In both simulations \(\Delta {BIC} >10\) so the preference of the binary model, 
 \label{subsec:results-hd211847}
 {HD 211847} is the best candidate for detection as it has a \(\rm 155~M_J\) low-mass star companion~\citet{moutou_eccentricity_2017}.
 The angular separation of the two bodies is 222\mas{} (or 11.3\AU).
-Even though it is not a {BD} it has the highest estimated flux ratio in our sample, of 0.03 based on the~\citet{baraffe_new_2015} evolution models and the known companion mass (see \cref{tab:estimatedparameters}).
+Even though it is not a {BD} it has the highest estimated flux ratio in our sample, of 0.03 based on the~\citet{baraffe_new_2015} evolution models and the known companion mass (see \cref{tab:estimated_flux_ratios}).
 The angular separation of HD211847B is 222\mas{} with a projected distance of \todo{find projected distance}{XXX}.
 The result of applying \textchisquared{} fitting to the second observation of {HD 211847} is shown in \cref{fig:HD211847_result_contours}.
 
@@ -453,7 +453,7 @@ As we do not recover suitable results for HD211847 which is supposed to have a t
 
 
 \textbf{
-     {PHOENIX-ACES}  defines grid as Teff,\logg{} and Mass which can then be used to determine Radii.
+     {PHOENIX-ACES} defines grid as Teff,\logg{} and Mass which can then be used to determine Radii.
 See~\citep{husser_new_2013} section 2.3.1 Mass.}
 
 
@@ -482,10 +482,9 @@ We note that if the wavelength range is increased by taking separate observation
 
 
 \subsection{Comparison to other methods}
-kolbl 2014,  passenger 2016, 2018
+kolbl 2014, passenger 2016, 2018
 
 
 
 
 \section{Summary}
-

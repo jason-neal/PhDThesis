@@ -4,7 +4,7 @@
 \chapter{Information content of \nir{} Spectra}
 \label{cha:nir_content}
 
-The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra,  specifically the radial velocity precision in the \nir{}.
+The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra, specifically the radial velocity precision in the \nir{}.
 This work is not directly related to detecting exoplanet atmospheres themselves but investigates the theoretical and observed {RV} precision of {M-dwarf} spectra in the \nir{}.
 Aiding future detections of the detection of future
 This can help in detecting the presence of ``habitable Earth-like'' planets around {M-dwarfs} which could become prime targets for future exoplanet atmosphere studies.
@@ -28,7 +28,7 @@ One of the key detection methods, the Radial Velocity ({RV}) method, measures th
 \todo{derivation of rv?}
 
 The number of \nir{} spectrographs focusing on cooler {M-dwarfs} stars is increasing, which have a relatively better chance of detecting Earth-like planets in the habitable zone.
-This work continues the assessment of {RV} precision levels possible in the the \nir{} domain, an extension of~\citep{figueira_radial_2016}.
+This work continues the assessment of {RV} precision levels possible in the \nir{} domain, an extension of~\citep{figueira_radial_2016}.
 
 \missingfigure{An example from Figueira et al.
 2016}
@@ -109,7 +109,7 @@ The spectrum \(A_0\) is considered noise free.
 \end{equation}
 
 Considering that the Doppler shift is small and that \(A\) and \(A_0\) have the same intensity level, then \(A = A_0\) can be set.
-Using \cref{eqn:delta_v_i, eq:weights, eq:noise} the optimum weights then become solely dependent on the reference spectrum.
+Using \cref{eqn:delta_v_i,eqn:weights,eqn:noise} the optimum weights then become solely dependent on the reference spectrum.
 
 \begin{equation}
 W(i) = \frac{{\lambda}^{2}(i) {({\partial A_0(i)}/{\partial \lambda(i)})}^{2}}{A(i) + {\sigma}^{2}_{D}} \label{eqn:optimal_weight}
@@ -290,7 +290,7 @@ following the description from~\citet{artigau_optical_2018}.  They also mention 
 
 \subsection{Numerical Convolution}
 \label{subsec:numerical_convolution}
-In this work the stellar models undergo broadening by convolution with rotation and instrumental profile kernels (\cref{eqn:rotational_profile, eqn:IP_profile}).
+In this work the stellar models undergo broadening by convolution with rotation and instrumental profile kernels (\cref{eqn:rotational_profile,eqn:IP_profile}).
 The convolutions are performed by analysing a single pixel at a time, and selecting the neighbouring pixels that fall within the convolution window\footnote{Region in which the convolution kernel will affect this particular pixel} for that pixel.
 The value of the convolution kernel is calculated at the position of each pixel selected, multiplied by the flux of each pixel and then summed to provide the new value at the selected single pixel{$^{\textbf{*}}$}.
  The shape of the convolution kernels and the size of convolution window are wavelength dependant (${\fwhm}=\lambda / R$ and $\Delta\lambda_{L}=\lambda \frac{\vsini}{c}$) and must be calculated separately for each pixel, making the convolution computationally expensive.
@@ -386,7 +386,7 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
 %\input{tables/carmenes_selection_transpose.tex}
 
 \section{Metallicity \logg{} effects}
-We explore the effect of metallicity and \logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1 -- 1 and \logg{} of 4.0 -- 5.5.
+We explore the effect of metallicity and \logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1--1 and \logg{} of 4.0--5.5.
 In \cref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and $\vsini=1.0$\kmps{} across the {M-dwarf} spectral types and the \nir{} bands is shown.
 We observed multiple different effects present.
 
@@ -487,7 +487,7 @@ Often forgotten in
 
 \section{Numerical Gradient}
 \label{sec:numerical_gradient}
-One of the key insights from \cref{eqn:optimal_weight, eq:dv_rms} is that the radial velocity error is inversely proportional gradient of the spectra, In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
+One of the key insights from \cref{eqn:optimal_weight,eqn:dv_rms} is that the radial velocity error is inversely proportional gradient of the spectra, In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
 In original code used in~\citet{figueira_radial_2016} the gradient or slope is approximated using the forward finite difference method.
 The numpy package provides a function to calculate the gradient using a more advanced methods that compute a more precise gradient.
 In this section we explore the affect of improving the precision of the numerical gradient on the final {RV} precision.
@@ -498,7 +498,7 @@ These arising from the Newton's definition of the derivative for a continuous fu
 
 There are three common varieties of the finite difference,
 \begin{equation}
- {FFD} = \frac{f(x+h)-f(x)}{h},  {CFD}=\frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, {BFD}=\frac{f(x)-f(x-h)}{h}\,,
+ {FFD} = \frac{f(x+h)-f(x)}{h}, {CFD}=\frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, {BFD}=\frac{f(x)-f(x-h)}{h}\,,
 \end{equation}
 called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite differences respectively.
 The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}({h}^{2})\)~\citep{quarteroni_numerical_2000}.
@@ -757,7 +757,7 @@ The results can be manually generated using ``eniric'' with the following incant
 
 
 These values were both calculated and provided using the {FFD} gradient and with the incorrect masking order for Condition~\#2, splitting before calculating the pixel weights.
-As we demonstrated in \cref{sec:numerical_gradient, subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
+As we demonstrated in \cref{sec:numerical_gradient,subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
 
 
 \section{ Updated Figueira 2016 results}
