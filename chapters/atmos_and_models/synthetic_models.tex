@@ -77,23 +77,21 @@ For instance~\citet{husser_new_2013} mention that the reference wavelength defin
 
 \subsection{BT-Settl}
 \label{subsec:btsettl}
-The {BT-Settl} models~\citep{allard_btsettl_2013, baraffe_new_2015}, are an evolution of both the \emph{DUSTY} and \emph{COND} models.
-They are better suited for the entire range of {BD} temperatures down to 400\K{}, through hydrodynamical modelling of the mixing and settling of dust/clouds in the atmosphere of cool dwarfs \textbf{3d hydrodynamical modelling ...}.
+The {BT-Settl} models~\citep{allard_models_2012,allard_atmospheres_2012,rajpurohit_effective_2013,baraffe_new_2015}, are an evolution of both the \emph{DUSTY} and \emph{COND} models.
+They are better suited for the entire range of {BD} temperatures down to 400\K{}, through hydrodynamical modelling of the mixing and settling of dust/clouds in the atmosphere of cool dwarfs~\citep{freytag_role_2010}.
+The {BT-Settl} models now also include 3D radiation transfer~\citep{seelmann_3d_2010}.
 
-They work on the version 15.5 of the PHOENIX code.
 
-They are also suppose to have matching spectra on the range \nir{}-IR wavelengths~\citep{allard...}.
-
-In this work the {BT-Settl} models used did not go lower than the {PHOENIX-ACES} limit of 2300\K{}, but they were available if needed.
-Above this temperature there are some difference observed between the two models but their spectra are fairly similar at 2100-2160\nm{} used here.
-
-The {BT-Settl} are generally more difficult to work with (in comparison to {PHOENIX-ACES}).
+The {BT-Settl} are generally more difficult to work with due to their file format (in comparison to {PHOENIX-ACES}).
 The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} includes newer~\citet{caffau_solar_2011} solar abundances and is combined with evolutionary modelling.
 It is available in a fits format which is easier to use.
+They work on the version 15.5 of the PHOENIX code.
 The parameter range available from the pre-computed library is given in \cref{tab:btsettl_params}.
 
-
 \input{./tables/atmos_and_models/btsettlparameters}
+
+In this work the {BT-Settl} models used did not go below the {PHOENIX-ACES} limit of 2300\K{}, used as a comparisons.
+Above this temperature there are some difference observed between the two models but their spectra are fairly similar in the \nIR{} (see \cref{subsec:phoenix_comparision}).
 
 
 \subsection{Model access}
@@ -110,6 +108,7 @@ For instance a spectra from a given modelled can be loaded simply using the four
 
 
 \subsection{Comparing models}
+\label{subsec:phoenix_comparision}
 Here a comparison between the {PHOENIX-ACES} and {BT-Settl} spectra is briefly given.
 \Cref{fig:phoenixlargescalecomparision} shows the model spectral flux in the \nir{} range of 0.9--3\um{} for three different stellar temperatures: 5500, 4000, and 2300\K{}.
 At this large scale the spectra look fairly similar.
@@ -122,6 +121,7 @@ Cross-correlation and a Doppler shift has been used to align the model spectra t
 There is a striking difference between the models and observations which several lines present in the models that are not seen in the real observation, while a few lines observed that are not seen in the models.
 When the observed absorption lines do align with the models the is a difference in the depth of the lines.
 These difference are shown at two different wavelengths and reveal that there is still room for improvement in the synthetic models to match observed spectra in the \nir and at high resolution.
+Spectral decadencies in the {BT-Settl} models are noted by ~\citet{rajpurohit_effective_2013}.
 
 A further example of this is shown given in \cref{fig:visualinspection-hd2118471} in which the fitted model, dominated by a single {PHOENIX-ACES} model, is compared to the observed CRIRES spectra.
 This caused issues with the fitting procedure in \cref{cha:model_comparison}.
