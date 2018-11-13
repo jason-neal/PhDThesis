@@ -19,7 +19,7 @@ It is also observed that the artefacts created are not localized to the region a
 Numerous parameters in the {DRACS} pipeline were experimented with to try and remove the observed artefacts with limited success.
 For instance, no complete removal of the artefacts was found by manually changing the \(\sigma\) rejection limits (between \(1-5 \sigma\)) and increasing the tracing width parameter in {IRAF}s DOSLIT\footnote{Documentation for DOSLIT can be found here \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}} recipe, although it did slightly affect the shape of the artefacts.
 During the creation of this document it was discovered that enabling the automated aperture resizing\footnote{Using \href{apresize}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?apresize.hlp}} by setting the ``resize'' parameter to yes manages to remove one of the large artefacts in the observation of {HD202206-1}.
-We show the effect of this in \cref{fig:resizednods} with the optimal and rectangular extraction from the {DRACS} pipeline with only the ``resize'' parameter changed.
+The effect of this is shown in \cref{fig:resizednods} with the optimal and rectangular extraction from the {DRACS} pipeline with only the ``resize'' parameter changed.
 The artefact in the \nth{6} nod is removed by enabling the automatic ``resize'' but the artefact in the \nth{7} nod is still present.
 
 \begin{figure}
