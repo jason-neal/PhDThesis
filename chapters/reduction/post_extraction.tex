@@ -135,15 +135,15 @@ This scaling adjusted the depth of most absorption lines to better match the obs
 The scaled telluric model is interpolated to the wavelengths of the observed spectrum and then used to correct the observed spectra through division, leaving behind a telluric corrected spectra.
 Telluric spectra used for correction can be observed along side the non-corrected spectra in \cref{fig:spectraexamples} as the black dashed lines. 
 
-\subsubsection{Separate \si{H2O} scaling.}
+\subsubsection{Separate \ce{H2O} scaling.}
 A technique suggested by~\citet{bertaux_tapas_2014} was attempted to address the poor \ce{H2O} airmass scaling.
 This involved fitting a scaling factor to the  \ce{H2O} absorption lines before convolution to the instrument resolution.
 This was achieved by first dividing the spectrum by a telluric model containing the non-\ce{H2O} constituents, convolved to the observed resolution, and scaled by the airmass to remove the non-\ce{H2O} lines.
 Then the telluric model with only \ce{H2O} lines at full resolution was scaled by a factor \(\textrm{T}^{x}\) and convolved to the instrumental resolution\footnote{\(\rm R=50\,000\) for this work} and compared to the remaining telluric lines in the observed spectra.
-This scaled and convolved model was fitted to the observations to find the best was fitted to find the best scaling factor \(x\),  for the \ce{H2O} lines.
+This scaled and convolved model was fitted to the observations to find the best was fitted to find the best scaling factor \(x\), for the \ce{H2O} lines.
 
 We found that for a few spectra in our sample this method corrected the deeper telluric lines well, but in many cases we found that the fitted scaling factor was affected by the presence of blended stellar lines (attempting to fit those also).
-It was also strongly influenced by the deepest  \ce{H2O} telluric lines present.
+It was also strongly influenced by the deepest \ce{H2O} telluric lines present.
 We find that the telluric correction of the deep \ce{H2O} lines could be improved with this technique, but at the cost of worsening the correction of the many smaller \ce{H2O} lines.
 Since the smaller \ce{H2O} lines covered more of the spectrum in this region than the larger lines the separate \ce{H2O} scaling was not continued.
 One possible solution for this would be to perform a piece-wise telluric correction, performing this step only for the deeper \ce{H2O} lines. 
