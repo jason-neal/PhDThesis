@@ -79,7 +79,7 @@ For instance~\citet{husser_new_2013} mention that the reference wavelength defin
 \label{subsec:btsettl}
 The {BT-Settl} models~\citep{allard_models_2012,allard_atmospheres_2012,rajpurohit_effective_2013,baraffe_new_2015}, are an evolution of both the \emph{DUSTY} and \emph{COND} models.
 They are better suited for the entire range of {BD} temperatures down to 400\K{}, through hydrodynamical modelling of the mixing and settling of dust/clouds in the atmosphere of cool dwarfs~\citep{freytag_role_2010}.
-The {BT-Settl} models now also include 3D radiation transfer~\citep{seelmann_3d_2010}.
+The {BT-Settl} models now also include 3-D radiation transfer~\citep{seelmann_3d_2010}.
 
 
 The {BT-Settl} are generally more difficult to work with due to their file format (in comparison to {PHOENIX-ACES}).
@@ -108,6 +108,22 @@ For instance a spectra from a given modelled can be loaded simply using the four
 
 \subsection{Comparing models}
 \label{subsec:phoenix_comparision}
+ \begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/atmos_and_models/phoenix_large_scale_comparision}
+    \caption{{PHOENIX-ACES} (left) and {BT-Settl} (right) spectra in the \nir{} wavelength region for three different temperature stars, \logg{}=4.5, \feh{}=0.}
+    \label{fig:phoenixlargescalecomparision}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.48\linewidth]{figures/atmos_and_models/artucus_1micron} & \includegraphics[width=0.48\linewidth]{figures/atmos_and_models/artucus_2micron}\\
+    \end{tabular}
+    \caption{Spectrum of Arcturus compared to synthetic spectra with the closest spectral parameters at wavelengths around 1014\nm{} (left) and 2145\nm{} (right).}
+    \label{fig:artucus1-2micron}
+\end{figure}
+
 Here a comparison between the {PHOENIX-ACES} and {BT-Settl} spectra is briefly given.
 \Cref{fig:phoenixlargescalecomparision} shows the model spectral flux in the \nir{} range of 0.9--3\um{} for three different stellar temperatures: 5500, 4000, and 2300\K{}.
 At this large scale the spectra look fairly similar.
@@ -122,19 +138,17 @@ When the observed absorption lines do align with the models the is a difference 
 These difference are shown at two different wavelengths and reveal that there is still room for improvement in the synthetic models to match observed spectra in the \nir{} and at high resolution.
 Spectral decadencies in the {BT-Settl} models are noted by ~\citet{rajpurohit_effective_2013}.
 
+
 A further example of this is shown given in \cref{fig:visualinspection-hd2118471} in which the fitted model, dominated by a single {PHOENIX-ACES} model, is compared to the observed CRIRES spectra.
 This caused issues with the fitting procedure in \cref{cha:model_comparison}.
+\Cref{fig:crires-pop-mismatch} is a further example of the spectral differences at the \nir{} wavelengths specifically used in this work, in a spectra from (in reduced form) the CRIRES-POP library~\citep{lebzelter_crirespop_2012,nicholls_crirespop_2017}.
+It shows differences between the CRIRES-POP \emph{K}-band spectra of {10\,Leo} and the PHOENIX-ACES spectrum with corresponding parameters (\texteff=4800, \logg=3.00, \feh{}=0.0).
 
- \begin{figure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{figures/atmos_and_models/phoenix_large_scale_comparision}
-    \caption{{PHOENIX-ACES} (left) and {BT-Settl} (right) spectra in the \nir{} wavelength region for three different temperature stars, \logg{}=4.5, \feh{}=0.}
-    \label{fig:phoenixlargescalecomparision}
-\end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.45\linewidth]{figures/atmos_and_models/artucus_1micron}     \includegraphics[width=0.45\linewidth]{figures/atmos_and_models/artucus_2micron}
-    \caption{}
-    \label{fig:artucus1-2micron}
+    \includegraphics[width=0.7\linewidth]{figures/atmos_and_models/CRIRES-POP-mismatch}
+    \caption{CRIRES-POP spectra of {10\,Leo} compared for PHOENIX-ACES model for the wavelength range setting used in \cref{cha:direct_recovery,cha:model_comparison}.}
+    \label{fig:crires-pop-mismatch}
 \end{figure}
+\todo{\cref{fig:crires-pop-mismatch} needs improved style}
