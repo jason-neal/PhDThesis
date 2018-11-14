@@ -1,49 +1,46 @@
 %!TEX root = ../../thesis.tex
 
-\section{Radial velocity precision}
+\section{Measuring the RV}
+\todo{something about measuring the RV and CCF}
+The motion of the star towards and away from the Earth shifts the lines of its spectra through he Doppler Effect. In the non-relativistic limit this can be written as:
+\begin{equation}
+\frac{\Delta\lambda}{\lambda} = \frac{v}{c},
+\end{equation}
+where $\Delta\lambda$ is the wavelength shift of wavelength $\lambda$ with a velocity relative to the observe of \(v\). The \emph{speed of light} is the constant $c$. 
+To measure the RV the relative positions of the stellar lines need to be measured over time. Typically this is done via the cross-correlation (CCF) of the observed spectrum with a template mask\footnote{binary mask~\citep{baranne 1996} or weighted~\citep{pepe 2002} mask} suitable for the spectral type of the observed star \citep[e.g.][]{Baranne 1996, pepe 2002}. The {CCF} stacks together the spectral lines crating and ``average'' line, reducing the random noise on the individual $N$ spectral lines by a factor of $\sqrt{N}$. The {CCF} collapses the RV from all the lines into one number with higher precision than individual lines.
+
+
+\section{RV precision}
 \label{section:rv_precision}
-The first detections of extrasolar planets with the {RV} technique were hot-Jupiters; Jupiter mass planets in close orbits to their star.
-The RV precision required to detect the first hot-Jupiter, 51 Peg b, was \todo{find mayor queloz precision achieved}~\cite{mayor_jupitermass_1995} \textbf{using }\todo{what reference} Since that time the instrumental development and the detection and observation techniques have been refined to achieve {RV} precisions better than 1\mps{}.
-The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}, which is the level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
+One important factor in RV measurements is the level of precision attainable from the stellar spectra in the presence of noise. The fundamental source of noise is photon noise, which follows a Poisson distribution. That is an observable with an average value of $N$ has a standard deviation $\sqrt{N}$.
 
-Over the years the community has pushed the limits of this technique to smaller and smaller planetary masses.
-An example is shown in \cref{fig:year_mass}.
+A very general formula for the RV precision of a spectrum, in terms of general spectral parameters is given by~\citet{hatzes_spectrograph_1992} as:
 
-\begin{figure}
-    \includegraphics[width=0.8\linewidth]{figures/year_planet_mass.png}
-    \caption{Mass of discovered planets verse year.
-        From Exoplanet.eu}
-    \label{fig:year_mass}
-\end{figure}
+\begin{equation}
+\sigma \propto \frac{1}{\sqrt{F} \sqrt{\delta \lambda} R^{1.5}}.
+\end{equation}
+$\sqrt{F}$ represents the S/N of the spectrum in the poison-dominated noise regime, while $\Delta \lambda$ is the bandwidth of the observed spectrum. {red{} This assumes that the spectrum contains a homogeneous distribution of uniform lines, per unit wavelength.
+The factor of $R^{-1.5}$ occurs due having a fixed size detector with the bandwidth or the number of lines fitting on the detector decreasing with increased resolution. In high resolution  RVs this tends to $R^-{1}$ indicating the higher precision at the expense of wavelength coverage is desired.
 
+Pedros school section other precision source \({r}^{1.5}\)\todo{}
 
-{RV} amplitude scales with mass of the star \({M_{\star}}^{-2/3}\) and with the planetary orbital period \({P_{\textrm{orb}}}^{-2/3}\).
+The S/N of an observation increases with the number of photons collected which depends on the targets brightness as well as distance\footnote{Basically the stars apparent magnitude}, coupled telescope size and with the exposure time. This limits the highest precision RV measurements to relatively nearby stars. The precision also depends on the spectral content of the stars, that is the spectral line strength and density (dependant on spectral type) and how many can be recorded in an observation (band-width). The wavelength coverage can be dramatically increased using cross-dispersion.
 
-The detection of an Earth-mass planet inside the habitable zone around a solar-type star, the {RV} amplitude is 10\cmps{}.
-If a planet with the same characteristics is instead orbiting an {M-dwarf}, the {RV} amplitude is larger than 1\mps{}.
-This is due to two factors, the smaller mass of the host star, and the closer habitable zone, due to a lower luminosity output of the host.
+With dependence on R related to the width of spectra lines other broadening function have a similar dependence. Such as the broadening by stellar rotation, $\vsini$ (see \cref{subsec:rotational_convolution}). This will generally have a similar $\vsini^{1.5}$ relation.
 
-\missingfigure{table of rv precisions}
+ice shows that the achievable precision depends on the brightness
+The precision of a stellar spectra achievable is
 
+An alternate derivation comes from \citet{bouchy_fundamental_2001} in which the optimal weight for each pixel is calculated for a spectrum $A_0$ via:
+\begin{equation}
+    W(i) = \frac{\lambda^{2}(i) {(\partial A_0(i)/\partial\lambda)}^{2}}{A_0(i) + \sigma_D} \label{eqn:pixel_weigth}
+\end{equation}
+with the RV precision calculated over all pixels as
+\begin{equation}
+    \delta v_{RMS} = \frac{c}{\sqrt{\Sigma_i W(i)}}.
+\end{equation}
+where $\lambda$ the wavelength and $\sigma_D$ the detector noise. An important thing to note from \cref{eqn:pixel_weigth} is that the RV information comes from the gradient of the spectral lines, and therefore the edges or wings of the spectral lines.
 
-\citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an {M-dwarf}, and found that state-of-the-art atmosphere models over-predict the \emph{Y}- and \emph{J}-band {RV} content by more than a factor of \(\sim 2\), while under-predicting the \emph{H} and \emph{K}-band content by half.
-{\red{} in this work we find similar?}
-
-We are currently aiming to extend this work over the whole {M-dwarf} range, from {M0}-{M9}.
-
-\todo{History of Precision calculations}
-History of Precision calculations:
-Connes 1\,985 -
-Bouchy et al.
-2001  - photon noise limit on rv measurements.
-\cite{figueira_radial_2016} - focus on {M-dwarfs} parameter range to specify new instrumentation windows to focus.
-Reiners 2017 -  {CARMENES} sample.
-Some precision
-Pedros school section other precision source \({r}^{1.5}\)
-
-
-The 1.5 factor.....
-
-
-\missingfigure{Bouchy 2001 inspired precision plot.}
-\todo{Bouchy inspired precision plot}
+These formula have recently been used to assess the theoretical RV precision of synthetic spectra for the development of instrument designs of new \nir{} spectrographs~\citep[e.g.][]{figueira_radial_2016} as well as compare precision of real and synthetic spectra~\citep[e.g.][]{artigau_optical_2018}.
+ 
+The RV precision will be analysed further in \cref{cha:nir_content} in which a detailed derivation of the \citet{bouchy_fundamental_2001} method is given and implemented to analysis the precision of \nir{} spectra.
