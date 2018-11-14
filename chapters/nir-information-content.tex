@@ -643,7 +643,7 @@ The difference in {RV} precision between both situations and for both gradient m
 For the {FFD} gradient the ordering of masking changes decreases the {\red{}\(RV_{\rms}\)} by 0.2--0.7\%, while for the \emph{numpy} gradient it is increase but an order of magnitude smaller between 0.01--0.13\%.
 The {FFD} gradient is causes a larger difference as points that were masked out are now included where as with the \emph{numpy} gradient the end values are always included but their gradients are slightly changed.
 The last column is the difference ratio between the \emph{Mask} column of both gradient method, this is consistent with \cref{tab:numerical_gradients} with the differences from two gradient methods between 2--7\%.
-It shows that the difference from changing order of masking is 1-2 orders of magnitude smaller than changing the gradient method.
+It shows that the difference from changing order of masking is 1--2 orders of magnitude smaller than changing the gradient method.
 
 The code has been adjusted to consistently apply the masking after the pixel weights are calculated.
 This retains the most pixels, with the more accurate pixel weights.
