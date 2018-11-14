@@ -41,7 +41,7 @@ This has previously helped to aid the direction of instrument design by identify
 
 
 \textbf{THIS is from spie 2018 conference.}
-{red{} \citep{quirrenbach_carmenes_2018} With this strategy it has been possible to achieve 1--2 m/s precision in the visible and 5--10 m/s precision in the near-IR; further improvements are expected from ongoing work on temperature control, calibration procedures and data reduction. Comparing the RV precision achieved in different wavelength bands, we find a ``sweet spot'' between 0.7 and 0.8\um, where deep \ce{TiO} bands provide rich RV information in mid-M dwarfs. This is in contrast to our pre-survey models, which predicted comparatively better performance in the near-IR around 1\um, and explains in part why our near-IR RVs do not reach the same precision level as those taken with the visible spectrograph.}
+{red{} \citep{quirrenbach_carmenes_2018} With this strategy it has been possible to achieve 1--2 m/s precision in the visible and 5--10 m/s precision in the {near-IR}; further improvements are expected from ongoing work on temperature control, calibration procedures and data reduction. Comparing the RV precision achieved in different wavelength bands, we find a ``sweet spot'' between 0.7 and 0.8\um, where deep \ce{TiO} bands provide rich RV information in mid-M dwarfs. This is in contrast to our pre-survey models, which predicted comparatively better performance in the near-IR around 1\um, and explains in part why our near-IR RVs do not reach the same precision level as those taken with the visible spectrograph.}
 
 
 
@@ -253,9 +253,9 @@ where
 \begin{equation}
 c_1 = \frac{2(1-\epsilon)} {\pi (1-\epsilon/3)\vsini},  \hspace{4em} c_2 = \frac{\frac{1}{2}\pi\epsilon} {\pi (1-\epsilon/3)\vsini},
 \end{equation}
-are constants which depend on the equatorial rotational velocity \(\vsini\).
+are constants which depend on the equatorial rotational velocity \Vsini{}.
 
-Here $\Delta\lambda$ is the wavelength position from the non-rotating line centre, $\Delta\lambda_{L}$ is the maximum line shift of the line centre at the edge of the stellar disk at which point the Doppler shift is  \(\vsini\); $\Delta\lambda_{L} = \lambda \frac{\vsini}{c}$.
+Here $\Delta\lambda$ is the wavelength position from the non-rotating line centre, $\Delta\lambda_{L}$ is the maximum line shift of the line centre at the edge of the stellar disk at which point the Doppler shift is  \Vsini{}; $\Delta\lambda_{L} = \lambda \frac{\vsini}{c}$.
 
 This kernel arises from integrating the rotational velocity profile across the surface of the stellar disk and as such the rotation kernel is bounded in the range  $[-\Delta\lambda_L, \Delta\lambda_{L}]$ from the line centre.
 This kernel also accounts for limb-darkening on the stellar disk with the linear limb darkening coefficient used in this work fixed at $\epsilon=0.6$ as done in~\citet{figueira_radial_2016}.
@@ -263,7 +263,7 @@ This kernel also accounts for limb-darkening on the stellar disk with the linear
 Since the synthetic models do not have a consistent wavelength grid, the discretization of applying the convolution kernel onto the changing wavelength grid causes the result of each pixel to be multiplied by a slightly different kernel area.
 Therefore, the result is divided by a convolution of a spectrum of ones with the same wavelength resolution to normalize the convolution.
 
-As the Doppler shift \(\vsini\) is transformed into wavelength by multiplication of $\lambda  / c$ there is a wavelength dependence on the rotation kernel shape.
+As the Doppler shift \Vsini{} is transformed into wavelength by multiplication of $\lambda  / c$ there is a wavelength dependence on the rotation kernel shape.
 That is, the rotation kernel at each pixel is unique and requires separate calculation.
 For small wavelength ranges this can be held fixed to improve performance.
 This simplifications is not performed in this work as large wavelength ranges are considered.
@@ -322,7 +322,7 @@ instead of only
 
 
 By default edge effects are avoided by providing an input spectra sufficiently wider than the desired output spectrum to prevent edge effects on the portion of the spectrum desired.
-Since two convolutions are preformed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both addition of rotation and instrumental broadening by $\vsini$ and R.
+Since two convolutions are preformed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both addition of rotation and instrumental broadening by \Vsini{} and R.
 
 %-----------------------------------
 %    SUBSECTION 2
@@ -396,7 +396,7 @@ There is also only a relatively small variation in quality factor due to the spe
 \includegraphics[width=0.99\linewidth]{figures/information-content/metalicity_effect.pdf}\\
 \includegraphics[width=0.99\linewidth]{figures/information-content/logg_effect.pdf}
 \caption{Quality factor changes across spectral type and bands for variations in \feh{} and \logg{}.
-Broadening values are R=100\,000 and \(\vsini\) = 1.0\kmps{}.
+Broadening values are R=100\,000 and \Vsini{} = 1.0\kmps{}.
 Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed \logg{}=4.5.
 Bottom: Quality factor variation of \logg{} between 4 and 5.5 with fixed \feh{}=0.0.
 Note a higher quality factor corresponds to an increased {RV} precision.}
@@ -683,7 +683,7 @@ To analyse the relative precision of different spectra they need to normalized t
 In this section we detail how this was originally done and how this was changed to be adaptable to any library spectra and any reference band.
 
 In the original code this was selected to be a \snr{} per pixel of 100 at the centre of the \textit{J}-band at 1.25\si{\micro\meter}.
-The normalization values for each band, \(\vsini\) and resolution combination were hard-coded into the analysis.
+The normalization values for each band, \Vsini{} and resolution combination were hard-coded into the analysis.
 This made it impossible to easily adapt the code to other spectra or parameter combinations.
 
 An automated \snr{} scaling procedure was created to remove the hard-coded values.
