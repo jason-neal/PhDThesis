@@ -56,6 +56,15 @@ The telluric models were retrieved without barycentric correction to keep the te
 For each observation one model was requested with all available atmospheric species present, convolved to a resolution of \(\rm R=50\,000\), and a further two models without the instrumental profile convolution applied.
 For these two extra models, one contained only the transmission spectra of \ce{H2O} while the other contained contributions from the all other constituents except \ce{H2O}.
 This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS} models~\citet{bertaux_tapas_2014} (see \cref{subsec:telluric_correction_application}).
+An example of the telluric spectrum for the \ce{H2O} and the non-\ce{H2O} species is given in \cref{fig:telluriccomponents}. To obtained a combined model of all species these two can be multiplied together.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/atmos_and_models/telluric_components}
+    \caption{Telluric absorption spectrum for \ce{H2O} and the non-\ce{H2O} species available from {TAPAS}. In the wavelength range 2110--2170\nm{} and both at a resolution of 50\,000.}
+    \label{fig:telluriccomponents}
+\end{figure}
+
 
 \subsection{Issues with {TAPAS}}
 There are a number of issues encountered when using the {TAPAS} web service, mainly due to interaction with the website.

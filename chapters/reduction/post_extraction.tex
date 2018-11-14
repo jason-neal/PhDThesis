@@ -159,14 +159,13 @@ The main reasons that wavelength masking is used are collated below.
 
 Firstly, regions near the edges of each detector where the wavelength solution is extrapolated outside of the calibrating telluric lines are removed, reducing the effective size of each detector by about \(10\%\) or \(\sim100\) pixels.
 
-Secondly, any remaining artefacts present in the spectra and the centres of deep telluric lines where telluric correction was not corrected properly are masked out. The telluric correction sometimes results in ``emission-like'' peaks in the corrected spectrum, which are removed.
+Secondly, any remaining artefacts present in the spectra and the centres of deep telluric lines where telluric correction was not corrected properly are masked out.
+The telluric correction sometimes results in ``emission-like'' peaks in the corrected spectrum, which are removed.
 These factors combined result in masking out around a further 10\% of the observed spectra.
 
 In \cref{sec:chi2_results} a further wavelength restriction is applied to mask out regions where there is a large mismatch between the observed spectrum and the closest synthetic spectra to the host.
 This significantly restricts the wavelength span utilized for that purpose to around only 43\%.
 The masked regions created by this last mask are shown in \cref{fig:visualinspection-hd2118471}.
-
-\missingfigure{Plots showing the h20 and non-h20  components of the telluric spectrum}
 
 
 \subsection{Barycentric RV correction}
