@@ -1,27 +1,18 @@
 %!TEX root = ../thesis.tex
-%4-Snellen/Brogi analysis
-% ability to detect singal??
 
-
-\chapter{Companion Recovery using synthetic models}  % Main chapter title
+\chapter{Synthetic companion recovery}  % Main chapter title
 \label{cha:model_comparison}
 
-Because the differential subtraction technique was unsuccessful, not being separable in time, a second method was attempted to try and extract something useful out of the spectra.
-
-We develop this new method, preform some tests and then show the results obtained.
-There were numerous issues encountered and unsuccessful results.
-
-Contrast our result to other works.  More phases, longer integration time, higher {\snr{}}.
+Following on from \cref{cha:direct_recovery}, in which the differential subtraction technique was unsuccessful due to the insufficient separation observations, a second method was attempted to detect the presence of the faint companions. In this chapter \textchisquared fitting is used to fit the observed spectra with a two component binary model comprised of synthetic spectra. The preparation of the models is presented as well as and overview of the method. A simulation with an M-dwarf companion is presented first then the observations are attempted. Injection-recovery simulations are performed to understand the results obtained. 
+A discussion of the results and a comparison to other similar techniques is presented at the end.
 
 
-
-
-\section{Binary synthetic spectral recovery}
+\section{Binary \texorpdfstring{\textchisquared} spectral recovery}
 \label{subsec:companion_recovery}
-Since the differential method is ineffective for our dataset due to the {RV} separation between observations, we explored a second approach to detect the presence of the faint companion spectra.
-This second approach compares the observed spectra to combinations of synthetic spectral models using \textchisquared{} methods which have been extensively used in the literature~\citep[e.g.][]{astudillo-defru_harps_2015, passegger_fundamental_2016, zechmeister_spectrum_2018, nemravova_xtauri_2016, kolbl_detection_2015}. {\red{} The temperature of synthetic spectra fitted to the companion will provide some indication of the companions spectral type, but will not produce a direct mass constraint that was the original aim of this work.}
+The approach developed here is to fit the observed CRIRES spectra with model comprised of a combination of two synthetic spectra, one for the host star and one for the companion. This will be done using \textchisquared{} methods which have been extensively used in the literature~\citep[e.g.][]{astudillo-defru_harps_2015, passegger_fundamental_2016, zechmeister_spectrum_2018, nemravova_xtauri_2016, kolbl_detection_2015}.
+The recoverable from the models will be the temperature of synthetic spectra fitted to the companion which will provide some indication of the companions spectral type, but will not produce a direct mass constraint that was the original aim of this work.
 
-\subsection{\texorpdfstring{\textchisquared}\ \ method}
+\subsection{The \texorpdfstring{\textchisquared}\ \ method}
 \label{subsec:chi2}
 The well known \textchisquared{} technique measures the weighted sum of the squared deviation between the observation (\({O}_{i}\)) and the computed models (\(C_{i}\)), with the minimum \textchisquared{} value representing the best-fit parameters:
 \[\chisquared = {\sum}_i \frac{{(O_{i} - C_{i})}^2}{{\sigma}_{i}},\] where \({\sigma}_{i}\) is the error on each measurement.
@@ -484,6 +475,7 @@ We note that if the wavelength range is increased by taking separate observation
 \subsection{Comparison to other methods}
 kolbl 2014, passenger 2016, 2018
 
+Contrast our result to other works.  More phases, longer integration time, higher {\snr{}}.
 
 
 
