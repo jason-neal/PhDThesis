@@ -10,7 +10,7 @@ There is an ever evolving effort to improve these stellar models and synthetic s
 In this work extensive use of the {PHOENIX-ACES} models is made with some experimentation with the {BT-Settl} models.
 A collection of several theoretical stellar spectral libraries can be found at Spanish Virtual Observatory \href{http://svo2.cab.inta-csic.es/theory/newov/index.php}{Theoretical Spectra Web Server}.
 
-The~\citet{kurucz_model_1979} models are popular synthetic models for stars ranging between G-O type with effective temperatures between 5\,500--50\,000\K.
+The~\citet{kurucz_model_1979} models are popular synthetic models for stars ranging between G-O type with effective temperatures between 5\,500--50\,000\K{}.
 For cooler stars, M-dwarfs and even Brown Dwarfs the stellar models are based on the {PHOENIX} code~\citep[e.g.][]{hauschildt_parallel_1997}.
 Initially created for studying the ejecta of Novae it was \emph{Extended} to low mass stars and Brown Dwarfs~\citep{allard_model_1995}.
 The PHOENIX modelling code has evolved overtime incorporating new physical models to better explain the atmospheres.
@@ -57,20 +57,20 @@ The lower temperature limits of this library limits the stellar mass to the high
 For example a \(\teff{}=2\,300\)\K{} corresponds to a {BD} with \(\textrm{M}\sim84\)\,\Mjup{} at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models, (see \cref{sec:evolutionary_models}).
 
 
-While using the {PHOENIX-ACES} models a discontinuity in the stellar flux is observed between 5000\K{} and 5100\K.
+While using the {PHOENIX-ACES} models a discontinuity in the stellar flux is observed between 5000\K{} and 5100\K{}.
 In \cref{fig:phoenixdiffereceat5000k} several {PHOENIX-ACES} spectra in incremental steps are shown in a small wavelength range of 2113--2115\nm{}.
-The line profile seems to change suddenly between the model with 5000\K{} and 5100\K, causing a slight discontinuity in the models.
+The line profile seems to change suddenly between the model with 5000\K{} and 5100\K{}, causing a slight discontinuity in the models.
 This slightly impacts the use of these models while attempting \textchisquared{} fitting in \cref{cha:model_comparison}.
 The bottom panel shows the flux difference between models separated in temperatures of 100\K{} (one grid step).
 The difference between 5000 and 5100\K{} (green) is offset from the other model differences.
-This is potentially caused by the change in treatment of the model atmospheres at 5000\K.
+This is potentially caused by the change in treatment of the model atmospheres at 5000\K{}.
 For instance~\citet{husser_new_2013} mention that the reference wavelength defining the mean optical depth grid, is fixed to $\lambda_{\tau}=1\,200$\nm{} for \txteff{}>5000\K{} and $\lambda_{\tau}=500$\nm{} for hotter stars in the {PHOENIX-ACES} modelling.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/atmos_and_models/phoenix_differece_at_5000K}
     \caption{Top: Incremental {PHOENIX-ACES} model spectra between 4800--5300\K{} with \logg=4.5 and \feh=0.0 fixed.
-    Bottom: Difference in flux between successive models separated by 100\K.
-    Apart from near absorption lines there a discontinuity in the flux of the PHONEIX-ACES modes between 5000 and 5100\K.}
+    Bottom: Difference in flux between successive models separated by 100\K{}.
+    Apart from near absorption lines there a discontinuity in the flux of the PHONEIX-ACES modes between 5000 and 5100\K{}.}
     \label{fig:phoenixdiffereceat5000k}
 \end{figure}
 
@@ -113,13 +113,13 @@ Here a comparison between the {PHOENIX-ACES} and {BT-Settl} spectra is briefly g
 At this large scale the spectra look fairly similar.
 
 On closer inspection though the spectra are slightly different with the {PHOENIX-ACES} spectra having deeper absorption lines compared to the {BT-Settl} models, however they do appear to have most of the same absorption lines.
-This can be seen in \cref{fig:artucus1-2micron} which contains the {PHOENIX-ACES} and {BT-Settl} at two different regions in the \nir, 1013\nm and 2110\nm.
+This can be seen in \cref{fig:artucus1-2micron} which contains the {PHOENIX-ACES} and {BT-Settl} at two different regions in the \nir, 1013\nm{} and 2110\nm{}.
 Temperature of both models is 4300\K{} while the \logg{} is 1.5 for {PHOENIX-ACES} and 2.5 for {BT-Settl} (closest available) and the models are convolved to R=100,000.
 This is in an attempt to match the parameters to the observations of {Arcturus} at R=100\,000 shown blue.
 Cross-correlation and a Doppler shift has been used to align the model spectra to the observations.
 There is a striking difference between the models and observations which several lines present in the models that are not seen in the real observation, while a few lines observed that are not seen in the models.
 When the observed absorption lines do align with the models the is a difference in the depth of the lines.
-These difference are shown at two different wavelengths and reveal that there is still room for improvement in the synthetic models to match observed spectra in the \nir and at high resolution.
+These difference are shown at two different wavelengths and reveal that there is still room for improvement in the synthetic models to match observed spectra in the \nir{} and at high resolution.
 Spectral decadencies in the {BT-Settl} models are noted by ~\citet{rajpurohit_effective_2013}.
 
 A further example of this is shown given in \cref{fig:visualinspection-hd2118471} in which the fitted model, dominated by a single {PHOENIX-ACES} model, is compared to the observed CRIRES spectra.
