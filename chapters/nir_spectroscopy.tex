@@ -48,7 +48,7 @@ m \lambda = d [\sin(\theta_{i}) \pm \sin(\theta_{r})].
 Here $m$ is the order number, $\lambda$ the wavelength, d the spacing between the slits/grooves, and again $\theta_{i}$ and $\theta_{r}$ the incident and reflection angles respectively, relative to the normal.
 
 This equation has degeneracy as different combinations of $m \lambda$ will be dispersed at the same angles.
-For instance the value $m \lambda$ for order $m$=54 at $\lambda$=2100\nm{} is that same as to order $m$=55 at $\lambda$=2061.8\nm{}.
+For instance the value $m \lambda$ for order $m$=54 at $\lambda$=2100\nm{} is that same as to order $m=55$ at $\lambda=2061.8$\nm{}.
 This degeneracy can be overcome in two ways, either apply a wavelength filter to specifically select only one order or by adding a cross-disperser.
 A \emph{cross-disperser} is a second dispersive element oriented to disperse the orders perpendicular to the grating.
 This allows for multiple orders to recorded simultaneously on a two-dimensional detector, dramatically increasing the wavelength coverage.
@@ -59,7 +59,7 @@ The spectral resolution, \(\delta \lambda\), is smallest difference in wavelengt
 It is related to resolving power which is defined as \(R=\frac{\lambda}{\delta\lambda}\).
 The resolving power, R is colloquially also referred to as the resolution\footnote{This document is no different.} The higher the resolution (resolving power), R, the smaller the \(\delta\lambda\) that can be measured, leading to a high sampled spectral lines and more precise measurement.
 To be considered high-resolution, spectrographs typically have \(R>20\,000\), but the definition of ``high'' can differ between sub-fields of astronomy.
-The spectral coverage is the range of wavelengths able to be covered by the spectrograph, while the spectral sampling is the number of pixels required to sample the {FWHM} of the spectral lines.
+The spectral coverage is the range of wavelengths able to be covered by the spectrograph, while the spectral sampling is the number of pixels required to sample the \fwhm{} of the spectral lines.
 This value should be higher than 2 pixels per resolution element to satisfy Nyquist sampling.
 
 \section{The detectors}
@@ -127,7 +127,7 @@ This contrasts with the one or few amplifiers used in CCDs, which lead to extrem
 The {CMOS} circuitry is also intrinsically non-linear due to the changing capacitance as charge is collected.
 Irrespective if the charge is photo-induced or dark current, the circuitry measurement changes with the pixel charge level.
 This requires careful characterization of the non-linearities in the detector by calibrating its response to a uniform light source for a large range of integration times.
-For CRIRES there are a set of non-linearity coefficients that are applied while performing the flat-field corrections (see \cref{subsubsec:flat-field}).
+For {CRIRES} there are a set of non-linearity coefficients that are applied while performing the flat-field corrections (see \cref{subsubsec:flat-field}).
 
 Other benefits of {CMOS} detectors are that they use lower power, and do not need a mechanical shutter (they can be reset electronically).
 While {CCDs} have been manufactured almost the same way for the last 40 years, {CMOS} technology is still advancing, partially driven by the consumer electronics market.
@@ -151,30 +151,30 @@ Examples of two cryostat housings surrounding the spectrograph (but shown open) 
 
 \section{CRIRES}
 \label{sec:CRIRES}
-CRIRES (Cryogenic InfraRed Echelle Spectrograph) is an ESO {IR} spectrograph that was mounted on the Unit Telescope (UT1, Autu) of the European Southern Observatory's Very Large Telescope (VLT)~\citep{kaeufl_crires_2004} and available from April 2007 through July 2014\footnote{Note this PhD research began in October 2014.}.
+CRIRES (Cryogenic InfraRed Echelle Spectrograph) is an {ESO} {IR} spectrograph that was mounted on the Unit Telescope (UT1, Autu) of the European Southern Observatory's Very Large Telescope (VLT)~\citep{kaeufl_crires_2004} and available from April 2007 through July 2014\footnote{Note this PhD research began in October 2014.}.
 The main optical elements consist of a prism pre-disperser and a 31.6\,lines/mm echelle grating.
-The instrument provides resolutions up to 100\,000 when used with a 0.2$\matharcsec$ slit\footnote{The rule of thumb for the resolution of CRIRES is \(R=100\,000 \times \frac{\textrm{slit width}}{0.2\matharcsec}\), with the slit width in arcseconds.}.
+The instrument provides resolutions up to 100\,000 when used with a 0.2$\matharcsec$ slit\footnote{The rule of thumb for the resolution of {CRIRES} is \(R=100\,000 \times \frac{\textrm{slit width}}{0.2\matharcsec}\), with the slit width in arcseconds.}.
 The wavelength range is 960--5200\nm{} with an instantaneous wavelength coverage of \(\sim \lambda/50\).
 The spectra are imaged on a detector mosaic, consisting of four Aladdin III detectors (\(4096 \times 512\) pixel) in a row, with a gap of \(\sim 250\) pixels between each chip.
 Adaptive optics (MACAO - Multi-Applications Curvature Adaptive optics) can be used to optimize the signal-to-noise ratio and the spatial resolution.
-\Cref{fig:criresschematic} displays the schematic representation of the CRIRES optical layout.
+\Cref{fig:criresschematic} displays the schematic representation of the {CRIRES} optical layout.
 
 CRIRES lead the way for high-resolution spectrograph in the {IR} with a resolution higher than any of its predecessors, and unique capabilities, like adaptive optics.
-As with any new instrument there were several problems that affected CRIRES during its science operations.
+As with any new instrument there were several problems that affected {CRIRES} during its science operations.
 For instance there were several mechanical issues with the slit; the slit edges were not parallel and there were issues with precise and reproducible positioning.
 Other issues that require post observation correction such as detector glow, the odd even effect, and the wavelength calibration are detailed in \cref{subsubsec:darkcurrent,subsubsec:flat-field,subsec:wavecalib}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/spectroscopy/CRIRES_schematic.pdf}
-    \caption{CRIRES layout schematic, taken from the CRIRES manual v93.}
+    \caption{CRIRES layout schematic, taken from the {CRIRES} manual v93.}
     \label{fig:criresschematic}
 \end{figure}
 
 
 \section{The new generation}
 \label{subsec:new_generation}
-Building off the success of CRIRES several other \nir{} spectrograph have and being developed for different telescopes.
+Building off the success of {CRIRES} several other \nir{} spectrograph have and being developed for different telescopes.
 
 Their science goals for these instruments involve some or all of the following:
 

@@ -2,21 +2,19 @@
 
 \section{Pipeline Comparison}
 \label{sec:pipelines}
-\change{Reword}{To be able to extract the target spectra from the calibration and observation images, a number of steps (some outlined above in \cref{subsec:nirreduction}) have to be performed in sequence.} The series of steps, performed by various software tools, is referred to as a \emph{pipeline}.
+To transform the observed 2-D image from the telescope into an extracted 1-D spectrum of the target a number of steps (some outlined above in \cref{subsec:nirreduction}) have to be performed in sequence. The series of steps, performed by various software tools, is referred to as a \emph{pipeline}.
 Each stage in the pipeline performs a specific task, for example creating the master dark frame, or performing the nod subtraction.
 The result of one stage is passed to the next (either automatically or manually).
 Two different pipelines were available to reduce the {CRIRES} observations used in this work.
 The first is the standard {CRIRES} pipeline\footnote{\href{https://www.eso.org/sci/software/pipelines/}{https://www.eso.org/sci/software/pipelines/}}, available from {ESO}.
-The second is an in-house pipeline previously used in~\citet{figueira_radial_2010} called {DRACS} (Data Reduction Algorithm for {CRIRES} Spectra) \change{Pedro it is my understanding that the {ESO} pipeline did not exist/was not publicly available when you created {DRACS}, correct?}
-
-In these next sections the experience gained using both pipelines, comparing the extracted spectra and user experience is documented.
+The second is an in-house pipeline previously used in~\citet{figueira_radial_2010} called {DRACS} (Data Reduction Algorithm for {CRIRES} Spectra)\change{Pedro it is my understanding that the {ESO} pipeline did not exist/was not publicly available when you created {DRACS}, correct?}. In these next sections the experience gained using both pipelines, comparing the extracted spectra and user experience is documented.
 
 
 \subsection{{ESO} {CRIRES} pipeline}
 \label{subsec:eso-crires}
 The {ESO} {CRIRES} pipeline was used to reduce {CRIRES} nodding spectra following direction from the {CRIRES} pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the {CRIRES} reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-{ESO}-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-{ESO}-14200-4032\_v91.pdf}}
 
-The GASGANO\footnote{\href{https://www.eso.org/sci/software/gasgano.html}{https://www.eso.org/sci/software/gasgano.html}} graphical user interface (GUI) was used to interact with the pipeline with guidance from the GASGANO manual\footnote{\href{https://www.eso.org/sci/software/gasgano/VLT-PRO-{ESO}-19000-1932-V4.pdf}{https://www.eso.org/sci/software/gasgano/VLT-PRO-{ESO}-19000-1932-V4.pdf}}.
+The GASGANO\footnote{\href{https://www.eso.org/sci/software/gasgano.html}{https://www.eso.org/sci/software/gasgano.html}} graphical user interface (GUI) was used to interact with the pipeline with guidance from the {GASGANO} manual\footnote{\href{https://www.eso.org/sci/software/gasgano/VLT-PRO-{ESO}-19000-1932-V4.pdf}{https://www.eso.org/sci/software/gasgano/VLT-PRO-{ESO}-19000-1932-V4.pdf}}.
 This pipeline provides a number of \emph{recipes} which perform the required extraction steps.
 From the GUI each recipe is manually selected, then the correct calibration and observation files need to be selected to use with each recipe.
 The final output from the {ESO} pipeline is a table in a fits format with the combined extracted spectra (both \emph{rectangular} and \emph{optimal} extractions), pixel errors and a wavelength solution.
@@ -58,7 +56,7 @@ The parameters adjusted were the tracing and normalization polynomial functions 
 Also, there was initially no reduction parameters present for detector \#3 (as this had been not used with in previous works using this pipeline).
 Therefore, the pipeline was extended to be able to reduce detector \#3 of CRIRES, by adjusting the pipeline code and finding suitable parameters for detector \#3.
 
-When using the {DRACS} pipeline on a new target, the tedious part is initially creating the lists of files identifying which files are the dark, flat, and the science frames\footnote{The GASGANO GUI was helpful to identify the distinction of each fits file for a beginner.}.
+When using the {DRACS} pipeline on a new target, the tedious part is initially creating the lists of files identifying which files are the dark, flat, and the science frames\footnote{The {GASGANO} {GUI} was helpful to identify the distinction of each fits file for a beginner.}.
 After these lists are created, the reduction pipeline can be run and re-run easily, making the effort worth it.
 
 The first time through is interactive with a number of manual checks decisions to be made (e.g.\ confirming the order tracing position, and fit is good).
@@ -95,7 +93,7 @@ The last drawback is the discovery of artefacts present in the nod spectra, whic
 \end{figure}
 
 Both reduction methods were applied to the same {CRIRES} spectra to check the quality and consistency of both methods.
-Two examples of the extraction for HD30501-1 (left) and HD202206-1 (right) from both pipelines are provided in \cref{fig:reduction-comparison}.
+Two examples of the extraction for HD\,30501-1 (left) and HD\,202206-1 (right) from both pipelines are provided in \cref{fig:reduction-comparison}.
 The blue lines are the extracted spectra from the {ESO} pipeline, the orange dashed lines are the optimal extraction from the {DRACS} pipeline, while the green dash-dotted line is the {DRACS} extraction after dealing with artefacts in the optimal extraction addressed in \cref{subsubsec:reductionartefacts}.
 
 One of the important things checked was the line depths of each spectra to ensure that the pipelines were consistent.
@@ -105,7 +103,7 @@ There also appears to be problem with edges of the {ESO} reduced spectra, with v
 At this stage the {DRACS} pipeline was chosen, as it was considered that the {DRACS} pipeline produced better extracted spectra than the {ESO} pipeline.
 This decision was based on the quality of the reduced spectra, as well as the relative ease of use of the pipeline (being semi-automated once set up).
 Another deciding factor was the need to create software to remove the bad pixels observed in the {ESO} reduced spectra.
-However, this was unavoidable as it was eventually required for the {DRACS} reduced spectra\footnote{see \cref{subsubsec:reductionartefacts}!}.
+However, this was unavoidable as it was eventually required for the {DRACS} reduced spectra (see \cref{subsubsec:reductionartefacts}).
 Though the {ESO} pipeline provided a wavelength solution for the spectra, this did not factor into the decision as it was considered too unreliable due to known issues with {CRIRES} wavelength calibration, necessitating a new wavelength calibration anyway.
 
 The spectra for the pipeline comparison in \cref{fig:reduction-comparison} are the combination of the 8 nod spectra.

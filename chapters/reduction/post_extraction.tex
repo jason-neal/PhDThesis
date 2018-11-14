@@ -16,7 +16,7 @@ The spectra of the \thar{} emission lines are used to determine the spatial dist
 \thar{} lamps are excellent at optical wavelengths where the numerous (several thousand) spectral lines enable precision of sub\,-\mps{} radial velocity measurements {HARPS} spectrograph.
 
 However, in the \nir{} there is a relatively low density of \thar{} lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ {CRIRES}-POP~\citep{nicholls_crirespop_2017}).
-Above 2.2\um{} there are {O-H} sky lines that can be used for wavelength calibration but according to the CRIRES manual for observations below 2.2\um{} they are too dim.
+Above 2.2\um{} there are {O-H} sky lines that can be used for wavelength calibration but according to the {CRIRES} manual for observations below 2.2\um{} they are too dim.
 These wavelength calibration issues were experienced when using the {ESO} {CRIRES} pipeline, with non-\thar{} features sometimes affecting the correlation.
 
 Between the wavelength range 2.1--2.17\um{} there are roughly 80 \thar{} lines across all four detectors, as seen in \cref{fig:caliblamps}.
@@ -110,12 +110,7 @@ This would require extra fitting parameters to define the size of the 3 gaps bet
 This fit may even need to be performed on the two-dimensional images, before the 1-D extraction.
 This may have allowed for the telluric lines from neighbouring detectors to help fit the calibration on detectors were there are very few telluric lines (e.g.\ detector \#2).
 The fitted instrument parameters such as the detector gaps may even be constrained so that they are physically consistent across all observations.
-However, this idea was not explored further or implemented due to time constraints.
-
-\missingfigure{Diagram of idea of combined detector fitting?}
-
-An example of the wavelength calibration using all four detectors is provided in \cref{appendix:wavelength_fitting}.
-
+However, this idea was not explored further or implemented due to time constraints. An example of the wavelength calibration using all four detectors is provided in \cref{appendix:wavelength_fitting}.
 In the future it may be possible or necessary to combine all of the methods above, including the \thar{} calibration lines, telluric models, stellar templates, and multiple detectors fitted at once to achieve precise wavelength calibration.
 
 \begin{figure}
@@ -125,10 +120,6 @@ In the future it may be possible or necessary to combine all of the methods abov
 The solid lines are the spectra while the black dashed lines are the telluric models used for wavelength correction, showing good alignment with the spectra.}
     \label{fig:spectraexamples}
 \end{figure}
-
-
-\unfinished{See Solene's paper regarding Telluric correction with models and reference spectra}
-
 
 In hindsight using the wavelength solution from the {ESO} pipeline may have been a good starting point, rather than the pixel positions, for calibration of the {DRACS} reduced spectra.
 This may have made the line identification simpler.

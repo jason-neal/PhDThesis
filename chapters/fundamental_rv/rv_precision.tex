@@ -1,7 +1,6 @@
 %!TEX root = ../../thesis.tex
 
 \section{Measuring the RV}
-\todo{something about measuring the RV and CCF}
 The motion of the star towards and away from the Earth shifts the lines of its spectra through he Doppler Effect.
 In the non-relativistic limit this can be written as:
 \begin{equation}
@@ -34,9 +33,9 @@ In a similar way to the resolution the RV precision is dependant on rotational v
 
 Assuming a spectral line is comprised of Gaussian-shaped absorption lines it, the precision of a line can be shown to be:
 \begin{equation}
-    \sigma \sim \frac{\sqrt{FWHM}}{C \cdot \snr}
+    \sigma \sim \frac{\sqrt{\fwhm{}}}{C \cdot \snr}
 \end{equation}
-where $FWHM$ is the full width at half maximum of the line, $C$ is the line contrast (depth relative to continuum) and \snr{} the signal-to-noise of the continuum.
+where \fwhm{} is the full width at half maximum of the line, $C$ is the line contrast (depth relative to continuum) and \snr{} the signal-to-noise of the continuum.
 An alternate derivation comes from \citet{bouchy_fundamental_2001} in which the optimal weight for each pixel is calculated for a spectrum $A_0$ via:
 \begin{equation}
     W(i) = \frac{\lambda^{2}(i) {(\partial A_0(i)/\partial\lambda)}^{2}}{A_0(i) + \sigma_D} \label{eqn:pixel_weigth}
@@ -48,7 +47,7 @@ with the RV precision calculated over all pixels as
 where $\lambda$ the wavelength and $\sigma_D$ the detector noise.
 
 In all these formulations there are some key properties to achieve high RV precision: a high stellar flux $F$ to achieve a high \snr{}, observed at high resolution to have sharp spectral line.
-The deeper (high C) and narrower (small FWHM) a spectral line\footnote{With steeper gradients $\partial A_0(i)/\partial\lambda$.}, the better defined the position of the line will be, allowing for a higher precision measurement of the RV.
+The deeper (high C) and narrower (small \fwhm{}) a spectral line\footnote{With steeper gradients $\partial A_0(i)/\partial\lambda$.}, the better defined the position of the line will be, allowing for a higher precision measurement of the RV.
 The flux $F$ or \snr{} of an observation increases with the number of photons collected which depends on the stellar brightness as well as distance\footnote{Basically the stars apparent magnitude}, coupled with the telescope size and with the exposure time.
 This limits the highest precision RV measurements to relatively nearby stars.
 Cross-dispersed echelle spectrographs mounted on the largest telescopes are capable of delivering the high-resolution, high \snr{} and high bandwidth requirements necessary to achieve high precision RV measurements.

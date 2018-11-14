@@ -13,7 +13,7 @@ A collection of several theoretical stellar spectral libraries can be found at S
 The~\citet{kurucz_model_1979} models are popular synthetic models for stars ranging between G-O type with effective temperatures between 5\,500--50\,000\K{}.
 For cooler stars, M-dwarfs and even Brown Dwarfs the stellar models are based on the {PHOENIX} code~\citep[e.g.][]{hauschildt_parallel_1997}.
 Initially created for studying the ejecta of Novae it was \emph{Extended} to low mass stars and Brown Dwarfs~\citep{allard_model_1995}.
-The PHOENIX modelling code has evolved overtime incorporating new physical models to better explain the atmospheres.
+The {PHOENIX} modelling code has evolved overtime incorporating new physical models to better explain the atmospheres.
 The \emph{NextGen} models~\citep{hauschildt_nextgen_1999} treated the stellar atmosphere as a gas in chemical equilibrium, but the resulting spectra for very low mass stars was poor due to no treatment of dust in the stellar atmospheres.
 
 The~\citep{allard_limiting_2001} \emph{COND} and \emph{DUSTY} models investigate the both extreme limits of clouds in the atmospheres of cool stars.
@@ -40,10 +40,10 @@ The {PHOENIX-ACES} models~\citep{husser_new_2013} are a descendant fo the \emph{
 They include condensation in equilibrium with the gas phase while ignoring dust opacity and any mixing or settling which is important for cooler atmospheres.
 As such the {PHONEIX-ACES} models are restricted to \txteff{}>2300\K{} as the treatment of dust/clouds is not handled.
 It uses the most recent version (16) of the {PHOENIX} code and is suitable for the spectra of cool stars.
-THE {PHOENIX-ACES} models uses the Astrophysical Chemical Equilibrium Solver (ACES, Barman 2012) new in version 16 of PHOENIX to perform state-of-the-art treatment of the chemical equilibrium.
+THE {PHOENIX-ACES} models uses the Astrophysical Chemical Equilibrium Solver (ACES, Barman 2012) new in version 16 of {PHOENIX} to perform state-of-the-art treatment of the chemical equilibrium.
 It also adds parametrisations for the mass and mixing-length, and uses the solar abundances of~\citet{asplund_chemical_2009}.
 
-As noted in~\citep{husser_new_2013} there are significant differences between the spectra from {PHOENIX-ACES} and previous PHOENIX model spectra.
+As noted in~\citep{husser_new_2013} there are significant differences between the spectra from {PHOENIX-ACES} and previous {PHOENIX} model spectra.
 For instance the equation of state solver ACES strongly affects the stellar structure and different line and molecular band strengths.
 Unfortunately there are several changes introduced with {PHOENIX-ACES} making it difficult to distinguish and quantify the different effects.
 
@@ -84,9 +84,9 @@ The {BT-Settl} models now also include 3-D radiation transfer~\citep{seelmann_3d
 
 
 The {BT-Settl} are generally more difficult to work with due to their file format (in comparison to {PHOENIX-ACES}).
-The most recent {BT-Settl} spectral library designated CIFIST2011\_2015\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} includes newer~\citet{caffau_solar_2011} solar abundances and is combined with evolutionary modelling.
+The most recent {BT-Settl} spectral library designated {CIFIST2011\_2015}\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} includes newer~\citet{caffau_solar_2011} solar abundances and is combined with evolutionary modelling.
 It is available in a fits format which is easier to use.
-They work on the version 15.5 of the PHOENIX code.
+They work on the version 15.5 of the {PHOENIX} code.
 The parameter range available from the pre-computed library is given in \cref{tab:btsettl_params}.
 
 \input{./tables/atmos_and_models/btsettlparameters}
@@ -99,7 +99,7 @@ Above this temperature there are some difference observed in the line strengths 
 \label{subsec:model_access}
 The pre-computed synthetic spectral libraries for the {PHOENIX-ACES} models \cref{tab:phoenix} are easily obtainable from \href{http://phoenix.astro.physik.uni-goettingen.de/}{http://phoenix.astro.physik.uni-goettingen.de/}.
 
-Pre-computed models for the {BT-Settl} and other PHOENIX spectra can be found  at \href{https://phoenix.ens-lyon.fr/Grids/}{https://phoenix.ens-lyon.fr/Grids/} while
+Pre-computed models for the {BT-Settl} and other {PHOENIX} spectra can be found  at \href{https://phoenix.ens-lyon.fr/Grids/}{https://phoenix.ens-lyon.fr/Grids/} while
 A simulator is also available to generate {BT-Settl} spectra or other {PHOENIX} spectra from {Allard France} at \href{phoenix.ens-lyon.fr}{phoenix.ens-lyon.fr}, for specific parameters or abundances.
 
 The spectral model libraries were downloaded using the above links and accessed using the useful ``grid tools'' interface provided in the \emph{Starfish}\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}.
@@ -140,16 +140,16 @@ These difference are shown at two different wavelengths and reveal that there is
 Spectral decadencies in the {BT-Settl} models are noted by ~\citet{rajpurohit_effective_2013}.
 
 
-A further example of this is shown given in \cref{fig:visualinspection-hd2118471} in which the fitted model, dominated by a single {PHOENIX-ACES} model, is compared to the observed CRIRES spectra.
+A further example of this is shown given in \cref{fig:visualinspection-hd2118471} in which the fitted model, dominated by a single {PHOENIX-ACES} model, is compared to the observed {CRIRES} spectra.
 This caused issues with the fitting procedure in \cref{cha:model_comparison}.
 \Cref{fig:crires-pop-mismatch} is a further example of the spectral differences at the \nir{} wavelengths specifically used in this work, in a spectra from (in reduced form) the CRIRES-POP library~\citep{lebzelter_crirespop_2012,nicholls_crirespop_2017}.
-It shows differences between the CRIRES-POP \emph{K}-band spectra of {10\,Leo} and the PHOENIX-ACES spectrum with corresponding parameters (\txteff=4800, \logg=3.00, \feh{}=0.0).
+It shows differences between the CRIRES-POP \emph{K}-band spectra of {10\,Leo} and the {PHOENIX-ACES} spectrum with corresponding parameters (\txteff=4800, \logg=3.00, \feh{}=0.0).
 
 
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/atmos_and_models/CRIRES-POP-mismatch}
-    \caption{CRIRES-POP spectra of {10\,Leo} compared for PHOENIX-ACES model for the wavelength range setting used in \cref{cha:direct_recovery,cha:model_comparison}.}
+    \caption{CRIRES-POP spectra of {10\,Leo} compared for {PHOENIX-ACES} model for the wavelength range setting used in \cref{cha:direct_recovery,cha:model_comparison}.}
     \label{fig:crires-pop-mismatch}
 \end{figure}
 \todo{\cref{fig:crires-pop-mismatch} needs improved style}
