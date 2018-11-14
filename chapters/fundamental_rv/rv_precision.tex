@@ -19,11 +19,17 @@ A very general formula for the RV precision of a spectrum, in terms of general s
 \begin{equation}
 \sigma \propto \frac{1}{\sqrt{F} \sqrt{\delta \lambda} R^{1.5}}.
 \end{equation}
-$\sqrt{F}$ represents the S/N of the spectrum in the poison-dominated noise regime, while $\Delta \lambda$ is the bandwidth of the observed spectrum. {red{} This assumes that the spectrum contains a homogeneous distribution of uniform lines, per unit wavelength. \todo{Finish this relation, R 1.5}}
-
+$\sqrt{F}$ represents the S/N of the spectrum in the poison-dominated noise regime, while $\Delta \lambda$ is the bandwidth of the observed spectrum. {red{} This assumes that the spectrum contains a homogeneous distribution of uniform lines, per unit wavelength.
+The factor of $R^{-1.5}$ occurs due having a fixed size detector with the bandwidth or the number of lines fitting on the detector decreasing with increased resolution. In high resolution  RVs this tends to $R^-{1}$ indicating the higher precision at the expense of wavelength coverage is desired.
 
 Pedros school section other precision source \({r}^{1.5}\)\todo{}
 
+The S/N of an observation increases with the number of photons collected which depends on the targets brightness as well as distance\footnote{Basically the stars apparent magnitude}, coupled telescope size and with the exposure time. This limits the highest precision RV measurements to relatively nearby stars. The precision also depends on the spectral content of the stars, that is the spectral line strength and density (dependant on spectral type) and how many can be recorded in an observation (band-width). The wavelength coverage can be dramatically increased using cross-dispersion.
+
+With dependence on R related to the width of spectra lines other broadening function have a similar dependence. Such as the broadening by stellar rotation, $\vsini$ (see \cref{subsec:rotational_convolution}). This will generally have a similar $\vsini^{1.5}$ relation.
+
+ice shows that the achievable precision depends on the brightness
+The precision of a stellar spectra achievable is
 
 An alternate derivation comes from \citet{bouchy_fundamental_2001} in which the optimal weight for each pixel is calculated for a spectrum $A_0$ via:
 \begin{equation}
