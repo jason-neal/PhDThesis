@@ -47,7 +47,7 @@ Unfortunately, it is not available for the {CRIRES} pipeline.
 It provides for automated dark and nonlinearity corrections (using the nonlinearity coefficients provided by {ESO}), as well as the flagging and replacement of bad pixels.
 Sensitivity variations are corrected by dividing by a flat-field which was corrected from the blaze function effect.
 The nodding pairs are mutually subtracted and the order tracing is accomplished by fitting cubic splines.
-Order tracing allows the extraction algorithm to follow the shape for the dispersion across the detector \unfinished{is footnote correct ``instruments optics''}\footnote{The spectra do not fall perfectly horizontally on the detector and usually contain some curvature due to the optics of the instruments.}.
+Order tracing allows the extraction algorithm to follow the shape for the dispersion across the detector\footnote{The spectra do not fall perfectly horizontally on the detector and usually contain some curvature due to the optics of the instruments.}.
 By default the pipeline returns the \emph{optimal} extraction~\citep{horne_optimal_1986}, but the \emph{rectangular} extraction can also be obtained.
 The extracted spectra from each nod is continuum normalized by dividing by a polynomial fitted to the continuum, with the polynomial degree selected individually for each spectrum and detector.
 Finally, the normalized nod-cycle spectra are averaged together to give a single reduced spectrum, normalized to 1.
