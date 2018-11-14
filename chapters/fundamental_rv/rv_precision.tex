@@ -1,10 +1,8 @@
 %!TEX root = ../../thesis.tex
 
-
-
 \section{Measuring the RV}
 \todo{something about measuring the RV and CCF}
-The motion of the star towards and away from the Earth shifts the lines of its spectra throught he Doppler Effect. In the non-relativisitic limit this can be written as:
+The motion of the star towards and away from the Earth shifts the lines of its spectra through he Doppler Effect. In the non-relativistic limit this can be written as:
 \begin{equation}
 \frac{\Delta\lambda}{\lambda} = \frac{v}{c},
 \end{equation}
@@ -16,21 +14,18 @@ To measure the RV the relative positions of the stellar lines need to be measure
 \label{section:rv_precision}
 One important factor in RV measurements is the level of precision attainable from the stellar spectra in the presence of noise. The fundamental source of noise is photon noise, which follows a Poisson distribution. That is an observable with an average value of $N$ has a standard deviation $\sqrt{N}$.
 
-
-
-A very general formula for the RV precision of a spectrum, in terms of general spectral parameters is given by~\citet{hatzes_1992} as:
+A very general formula for the RV precision of a spectrum, in terms of general spectral parameters is given by~\citet{hatzes_spectrograph_1992} as:
 
 \begin{equation}
 \sigma \propto \frac{1}{\sqrt{F} \sqrt{\delta \lambda} R^{1.5}}.
 \end{equation}
-$\sqrt{F}$ represents the S/N of the spectrum in the poison-dominated noise regime, while $\Delta \lambda$ is the bandwidth of the observed spectrum. {red{} This assumes that the spectrum contains a homogenous distribution of uniform lines, per unit wavelength. \todo{Finish this relation, R 1.5}}
+$\sqrt{F}$ represents the S/N of the spectrum in the poison-dominated noise regime, while $\Delta \lambda$ is the bandwidth of the observed spectrum. {red{} This assumes that the spectrum contains a homogeneous distribution of uniform lines, per unit wavelength. \todo{Finish this relation, R 1.5}}
 
 
-Pedros school section other precision source \({r}^{1.5}\)
+Pedros school section other precision source \({r}^{1.5}\)\todo{}
 
 
-
-An alternate derivation comes from \citet{bocuhy_fundamental_2001} in which the optimal weight for each pixel is calculated for a spectrum $A_0$ via:
+An alternate derivation comes from \citet{bouchy_fundamental_2001} in which the optimal weight for each pixel is calculated for a spectrum $A_0$ via:
 \begin{equation}
     W(i) = \frac{\lambda^{2}(i) {(\partial A_0(i)/\partial\lambda)}^{2}}{A_0(i) + \sigma_D} \label{eqn:pixel_weigth}
 \end{equation}
@@ -42,4 +37,4 @@ where $\lambda$ the wavelength and $\sigma_D$ the detector noise. An important t
 
 These formula have recently been used to assess the theoretical RV precision of synthetic spectra for the development of instrument designs of new \nir{} spectrographs~\citep[e.g.][]{figueira_radial_2016} as well as compare precision of real and synthetic spectra~\citep[e.g.][]{artigau_optical_2018}.
  
-The RV precision will be analysed further in \cref{cha:nir_content} in which a detailed derivation of the \citet{bouchy_fundamemtntal_2001} method is given and implemented to analysis the precision of \nir{} spectra.
+The RV precision will be analysed further in \cref{cha:nir_content} in which a detailed derivation of the \citet{bouchy_fundamental_2001} method is given and implemented to analysis the precision of \nir{} spectra.
