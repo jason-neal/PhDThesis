@@ -97,7 +97,7 @@ A set of coefficients for each pixel is provided by {ESO}\footnote{Available at 
 This also corrects for a slight difference in sensitivity between the pixels from the odd and even columns in the {CRIRES} detectors, commonly called the ``odd-even effect''.
 The frame on the right of \cref{fig:masterflats_colour} has been corrected for the nonlinearities.
 
-The flat-field can also reveal defects in the detector e.g.\ dead pixels, dust or scratches; a large scratch is show clearly visible in \cref{fig:masterflats_colour}.
+The flat-field can also reveal defects in the detector e.g.\ dead pixels, dust and scratches; a large scratch is clearly visible in \cref{fig:masterflats_colour}.
 
 \subsubsection{Nodding and Jitter}
 \label{subsec:nod-jitter}
@@ -105,7 +105,7 @@ The technique of \emph{nodding} is used to remove sky emission, detector dark cu
 First, an observation is divide into multiple separate exposures.
 Between each exposure the telescope is moved to change the vertical position of the target in the slit.
 The light from the star travels through a slightly different optical path and is recorded on a different part of the detector.
-The frames from the two nod positions (A, B) are then subtracted (A-B) to remove the background measurement from each spectra.
+The frames from the two nod positions (A, B) are then subtracted (A - B) to remove the background measurement from each spectra.
 
 A visual example of the nodding is shown in \cref{fig:nodimages}.
 On the left are slices of 150 pixel columns from successive nod positions A and B as well as the difference A minus B.
@@ -116,33 +116,20 @@ This efficiently removes the background signal/noise from the observed spectra t
 Observations of faint targets, that need long exposure times to achieve a sufficient \snr{}, are also broken up into multiple images so that the instrument glow from \cref{fig:darkcurrent_colour} does not saturate the detector.
 A small random vertical offset is applied to each observation which ensures that all spectra at the same nod position do not consistently land on the same pixels each time.
 This is known as the \emph{jitter} and allows for the correction of bad pixels and decreases the effect from any systematics of the detector.
-As an example, the {CRIRES} observations analysed for the work performed in \cref{cha:direct_recovery,cha:model_comparison} were performed with an {ABBAABBA} nod cycle pattern (including jitter) with an exposure time of 180\si{\second} each, totalling 24 minutes when combined.
-
-
-\todo{FIXup this table}
-\newcolumntype{Y}{>{\centering\arraybackslash}X}  % Tablularx centered column for eqaul columns (nod cycle image)
-%\newcolumntype{Y}{>{\Centering}X}  % Tablularx centered column for eqaul columns (nod cycle image)
+As an example, the {CRIRES} observations analysed for the work performed in \cref{cha:direct_recovery,cha:model_comparison} were performed with an {ABBAABBA} nod cycle pattern (including jitter) with an exposure time of 180\,\si{\second} each, totalling 24 minutes when combined.
 
 \begin{figure}
     \centering
-    % Using new column type Y
-    %\begin{tabularx}{0.7\textwidth}{|*6{>{\Centering\arraybackslash}X}|}    % 3 Y columns (equaly spaced) 1 extra column
 
-      \begin{tabularx}{0.75\textwidth}{|*6{Y|}|}    % 3 Y columns (equaly spaced) 1 extra column
-      A & B & A-B& & & \\
-        % \includegraphics[width=0.4\textwidth]{figures/reduction/nod_image_sample.pdf} &
-        \multicolumn{3}{|c|}{\includegraphics[width=0.4\textwidth]{figures/reduction/Nods_AB_A-B.png}} &
-        \multicolumn{3}{|c|}{\includegraphics[width=0.37\textwidth]{figures/reduction/nod_slice_example.pdf}}\\
-    \end{tabularx}
+    \begin{tabular}{cc}    % 3 Y columns (equaly spaced) 1 extra column
+       \includegraphics[width=0.4\textwidth]{figures/reduction/Nods_AB_A-B_labelled.png} & \includegraphics[width=0.42\textwidth]{figures/reduction/nod_slice_example.pdf} \\
+    \end{tabular}
     \caption{Illustration of the nodding technique.
-Left: Sample slice of successive images at nod positions A and B, and their difference A-B for detector \#1.
-Right: A vertical slice along the slit at column 512 (middle of detector).
-The background level observed in A and B is effectively removed by the subtraction.}
+        Left: Sample slice of successive images at nod positions A and B, and their difference A minus B for detector \#1.
+        Right: A vertical slice along the slit at column 512 (middle of detector).
+        The background level observed in A and B is effectively removed by the subtraction.}
     \label{fig:nodimages}
 \end{figure}
-\todo{fix \cref{fig:nodimages}}
-
-
 
 \subsection{\thar{} lamp calibration}
 \label{subsec:th-ar}
