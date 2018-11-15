@@ -6,22 +6,24 @@ After the decision to use the {DRACS} pipeline large artefacts in the {DRACS}-ex
 An investigation into the cause of these artefacts was undertaken to identify their source and attempt to remove them from the spectra.
 The eight individual nod spectra were displayed side-by-side which revealed that occasionally the spectra from one of the nods deviated significantly from the others.
 Eventually it was identified that the artefacts were only in the \emph{optimally} reduced spectra, and that they were not present in the \emph{rectangular} extracted nods.
-An example is shown in \cref{fig:artefact_example7} in which sharp spikes in the middle panel (rectangular extraction) correspond to deviations observed in the top panel (optimal extraction).
-The bottom panel shows the difference in the combined average spectra from the optimal and rectangular extractions.
-In this case the deviation in the combined spectra are almost 1\%, but higher (up to $\sim2$\%) has been observed.
+An example is shown in \cref{fig:artefact_example_hd162020} in which sharp spikes in the middle panel (rectangular extraction) correspond to deviations observed in the top panel (optimal extraction).
+The bottom panel shows the difference in the combined average spectra from the optimal extraction and the corrected mixed spectrum resulting from the method given in this section to remove the artefacts.
+In this case the deviation in the combined spectra are at 2\%.
 Further visual examples of artefacts, selected to show a variation in appearance, are given in \cref{appendix:artefacts} along with a table identifying the observations and nod spectra the artefacts were observed in.
+
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD30501-2b_chip_2}
-    \caption{Example of {DRACS} artefacts in the optimally extracted spectra second detector of the second observation of {HD\,30501}.
+    \includegraphics[width=0.7\linewidth]{figures/reduction/bp_plots/extraction_comparision_HD162020-1_chip_2.pdf}
+    \caption{Example of {DRACS} artefacts in the optimally extracted spectra second detector of the first observation of {HD\,162020}.
         top: The 8 normalized nod spectra obtained using \emph{optimal} extraction, vertically offset from each other.
         middle: The 8 normalized nod spectra obtained using \emph{rectangular} extraction, vertically offset from each other.
-        bottom: Difference between the combined average spectra from the top and middle panels.
+        bottom: Difference between the combined average spectra from the top and improved result from the mixed method developed here.
         The middle panel creates the small spikes, while the large deviations are due to the artefacts in the optimal reduction.
-        There are four bad pixel spikes that cause artefacts in the optimal extraction.
-        These are located in the second nod (orange) around pixel 950, the sixth nod (brown) around pixel 20 and two spikes in the seventh nod (pink) around pixels 400 and 550.}
-    \label{fig:artefact_example7}
+        There are three bad pixel spikes that cause artefacts in this optimal extraction.
+        These are located in the seventh nod (pink) around pixel 850, and two in the eight nod (grey) around pixel 100 and 620.
+        Several other spikes do not cause any artefacts in the optimal reduction.}
+    \label{fig:artefact_example_hd162020}
 \end{figure}
 
 %\textbf{
@@ -41,7 +43,7 @@ Further visual examples of artefacts, selected to show a variation in appearance
 
 It is clear that the artefacts in the optimal extraction occur when there is a corresponding ``bad-pixel'' spike\footnote{Their exact origin is unknown but are likely uncorrected bad-pixels or a cosmic ray.
 Here they will be referred to as bad-pixels.} in the rectangular extraction.
-However this is not always the case with many spikes observed (e.g. third nod around pixel 150 in \cref{fig:artefact_example7}) but automatically removed in the optimal extraction.
+However this is not always the case with many spikes observed (e.g. first nod around pixel 580 in \cref{fig:artefact_example_hd162020}) that are automatically removed in the optimal extraction.
 The occurrence of artefacts in the observations did not appear to have a pattern with nod position or detector with 14\% (79/544 spectra) of the nod spectra having an optimal exaction that seemed to misbehave.
 The artefacts in the optimal extraction are also largely extended, significantly affecting more of the spectrum that the individual spikes (up to 100s of pixels).
 Artefacts were observed arising from both large and small spikes alike while other large and small spikes are removed.
