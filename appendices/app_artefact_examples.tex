@@ -15,81 +15,85 @@ With 8 nods per observation, and 4 {CRIRES} detectors for the 17 observations th
 \Cref{tab:nod_replacement} identifies the 79 individual nods (14.5\%) that were found to contain artefacts while \cref{tab:nod_artefact_tally} provides a tally of the frequency of artefacts occurring within each nod position of the nod cycle.
 Only 16/68 (23.5\%) detector-observations have all nods without any artefacts while no observation is completely free of artefacts across all 4 detectors.
 
-Counting the number of artefacts that occur per detector and nod position reveals that there are around 1.3-1.5$\times$ more artefacts that occur on the second detector than other three detectors individually, and that there is a more artefacts occurring in the seventh and eight nods with $\sim40$\% of the artefacts in the last 1/4 of observation.
-For the second detector this may be a increased due to a physical defect such as the large scratch seen in \cref{fig:masterflats_colour}, or possibly just due to the relatively featureless spectrum on the second detector being easier to detect artefacts in. With artefacts occurring later in the nod cycle suggest that they maybe related to the operation of the instrumentation, for which the probability is built up over the repeated nod cycle observations, however this is just speculation. 
+Tallying the number of artefacts that occur per detector and nod position reveals three main features. The first is that there are around 1.3-1.5$\times$ more artefacts that occur on the second detector compared to the other three detectors individually.
+This maybe due to a physical defect with this detector, such as the large scratch seen in \cref{fig:masterflats_colour}, or it is possibly due to the relatively featureless spectrum on the second detector.
+Either making it easier to visually detect artefacts in the spectra, or easier for artefacts to be created by the pipeline.
+The second is that there are a more artefacts in the seventh and eight nods with $\sim40$\% of the artefacts in the last 2/8 of observations (see \cref{tab:nod_artefact_tally}).
+With artefacts occurring later in the nod cycle suggest that they maybe related to the operation of the instrumentation, for which the probability is built up over the repeated nod cycle observations, however this is just speculation.
 
-It is unclear if nod position A and B occur on the same side of the detector 
-There is a higher number of artefacts occurring in the last two nod, indicating that there may be something to do with the length of the observation. \todo{Is this significant??}.
-There is also a larger number of artefacts occurring on the second detector.
-This maybe coincidence as it is easier to identify the artefacts with a low number of spectral lines from the target, or possibly something physical to do with detector 2.
-This is beyond the scope of this work, \todo{is detector two significant as well?}
 
-One other thing that is notices difference in number of artefacts for HD\,30501 between the first observation of HD\,30501, observed four months earlier the other three, which were observed within a week (see \cref{tab:observations}). The three observation observed later all have higher number of artefacts 2--3$\times$ the artefacts in first observation. 
+There are does not seem to be a connection between the nod position as both position A and B have half of the artefacts.
+There is a higher number of artefacts occurring in the last two nods, suggesting that there may be some correlation to the length of the observation.
+The growth in artefacts over time is not linear with a rapid increase starting around the sixth nod.
 
-In this appendix we also provide more example images of the artefacts observed from the optimal reduction of the {DRACS} pipeline.
-We have selected one observation and detector for each observed target to show a variety of the artefacts observed.
+The third thing that is noticed is difference in the number of artefacts seen in the first observation of HD\,30501 compared to the other three.
+This was observed four months before the others, which were observed within the same week.
+The later three observation all have larger number of artefacts 2--3$\times$ compared to the first observation.
 
-In each image the top panel contains the 8 nod spectra extracted using the optimal method, including variance weighting.
-The middle panel contains the rectangular extraction (sum of the aperture), including the bad pixels.
+The ideas presented here are only observations and speculation on the causes.
+Tests for statistical significance of the differences observed has not been performed an is beyond the scope of this work.
+
+
+\Crefrange{fig:artefact_example1}{fig:artefact_example6} show more examples of observed spectra in which spikes and artefacts are observed. Including \cref{fig:artefact_example7}, one example is given for each target, selected to show a variety of the artefacts observed.
+
+In each image the top panel contains the 8 nod spectra extracted using the optimal method, which includes variance weighting. The middle panel contains the rectangular extraction only (no variance weighting), The bottom panel shows the difference between the average combined spectra from the top and middle panels.
 
 It is clear that the large extracted artefacts occur due to single spikes observed in the rectangular extraction.
-What is unclear is why it only occurs some of the time.
+What is unclear is the other factors that affect their cause.
+For example in \cref{fig:artefact_example2} several spikes are seen but no artefacts are created.
 
-\todo{summarise}{summary of examples: they show  almost random big and large spikes but not all.}
-
-
-
- \begin{figure}
-     \centering
-     \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD4747-1_chip_2}
-     \caption{Artefact example for the second detector of {HD\,4747}.  The top panel contains the eight normalized nod spectra obtained using optimal extraction.
-The middle panel shows nod spectra using only rectangular extraction.
-The bottom panel shows the difference between a combined spectrum using optimal nods only and a combined spectrum in which the identified nods are replaced with their rectangular counterparts as per \cref{subsubsec:reductionartefacts}.
-A vertical offset is included between each spectra for clarity.
-The nod spectra are in observation order from top to bottom.
-In this example there are artefacts in the \nth{5} (purple) and eighth (grey) nod spectra around 700 and 500 pixels respectively.}
-     \label{fig:artefact_example1}
- \end{figure}
- \begin{figure}
-     \centering
-     \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD162020-2_chip_1}
-     \caption{Same as \cref{fig:artefact_example1} but for the first detector of the second observation of {HD\,162020}.
-In this example there are several large spikes observed in the rectangular extraction but they do not appear to effect the optimally extracted nods. {\red{} reduce scale of delta flux (to large atm)}.}
-     \label{fig:artefact_example2}
- \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD4747-1_chip_2}
+    \caption{Artefact example for the second detector of {HD\,4747}.
+    The top panel contains the eight normalized nod spectra obtained using optimal extraction.
+    The middle panel shows nod spectra using only rectangular extraction.
+    The bottom panel shows the difference between a combined spectrum using optimal nods only and a combined spectrum in which the identified nods are replaced with their rectangular counterparts as per \cref{subsubsec:reductionartefacts}.
+    A vertical offset is included between each spectra for clarity.
+    The nod spectra are in observation order from top to bottom.
+    In this example there are artefacts in the \nth{5} (purple) and eighth (grey) nod spectra around 700 and 500 pixels respectively.}
+    \label{fig:artefact_example1}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD162020-2_chip_1}
+    \caption{Same as \cref{fig:artefact_example1} but for the first detector of the second observation of {HD\,162020}.
+    In this example there are several large spikes observed in the rectangular extraction but they do not appear to affect the optimally extracted nods (there are no artefacts). {\red{} reduce scale of delta flux (to large atm)}.}
+    \label{fig:artefact_example2}
+\end{figure}
 \todo{change scale on delta flux of {HD\,162020}-2 chip 1 (it is too large atm)}
- \begin{figure}
-     \centering
-     \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD167665-1b_chip_3}
-     \caption{Same as \cref{fig:artefact_example1} but for the third detector of the second observation of {HD\,167665}.
-In this example a small spike in the first spectrum (blue) around pixel 450 causes a extended dip in the optimally extracted nod.}
-     \label{fig:artefact_example3}
- \end{figure}
- \begin{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD167665-1b_chip_3}
+    \caption{Same as \cref{fig:artefact_example1} but for the third detector of the second observation of {HD\,167665}.
+        In this example a small spike in the first spectrum (blue) around pixel 450 causes a extended dip in the optimally extracted nod.}
+    \label{fig:artefact_example3}
+\end{figure}
+\begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD202206-2_chip_1}
     \caption{Same as \cref{fig:artefact_example1} but for the \nth{1} detector of the second observation of {HD\,202206}.
-In this example there are several large spike but only one produces an artefact.
-This is on the \nth{5} nod (purple) around pixel 800.}
+        In this example there are several large spike but only one produces an artefact.
+        This is on the \nth{5} nod (purple) around pixel 800.}
     \label{fig:artefact_example4}
 \end{figure}
- \begin{figure}
-     \centering
-     \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD168443-1_chip_4}
-     \caption{Same as \cref{fig:artefact_example1} but for the fourth detector of the first observation of {HD\,168443}.
-In this example a barely visible spike on the  \nth{7} nod (pink) causes a deviation in the optimal nod around pixel 610.
-There is also a second small spike on the eighth nod (grey) around pixel 850, between two spectral lines.}
-     \label{fig:artefact_example5}
- \end{figure}
-  \begin{figure}
-     \centering
-     \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD211847-2_chip_2}
-     \caption{Same as \cref{fig:artefact_example1} but for the second detector of the second observation of {HD\,211847}.
-In this example two large spikes around 800 and 1000 in the \nth{7} nod (pink) create large deviations in the optimally reduced spectra.
-A spike in the first nod (blue) around pixel 700 also causes a bump.
-There is also some extra noise in the first nod around pixel 350.}
-     \label{fig:artefact_example6}
- \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD168443-1_chip_4}
+    \caption{Same as \cref{fig:artefact_example1} but for the fourth detector of the first observation of {HD\,168443}.
+    In this example a barely visible spike on the  \nth{7} nod (pink) causes a deviation in the optimal nod around pixel 610.
+    There is also a second small spike on the eighth nod (grey) around pixel 850, between two spectral lines.}
+    \label{fig:artefact_example5}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD211847-2_chip_2}
+    \caption{Same as \cref{fig:artefact_example1} but for the second detector of the second observation of {HD\,211847}.
+    In this example two large spikes around 800 and 1000 in the \nth{7} nod (pink) create large deviations in the optimally reduced spectra.
+    A spike in the first nod (blue) around pixel 700 also causes a bump.
+    There is also some extra noise in the first nod around pixel 350.}
+    \label{fig:artefact_example6}
+\end{figure}
 %\begin{figure}
 %    \centering
 %    \includegraphics[width=0.7\linewidth]{figures/appendix/bp_plots/extraction_comparision_HD30501-2b_chip_2}
