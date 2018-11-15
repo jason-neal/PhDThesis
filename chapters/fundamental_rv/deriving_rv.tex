@@ -25,13 +25,6 @@ From RV measurements alone all of these parameters except for $i$ and $\Omega$ c
 $\Omega$ is irrelevant for determining the orbital mass, but inclination $i$ is very important as it effects the projection of the velocity towards the observer.
 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.55\linewidth]{figures/fundamental_rv/eclipes_orbit2.pdf}
-    \caption{Elements of an elliptical orbit about the common centre of mass \(\textrm{F}_1\). {\(\nu\)} is the angle to the position of the orbiting body from the periapse (closest point to barycentre). The auxiliary circle has a radius equal to the semi-major axis of the ellipse. Adapted from~\citep{bozza_methods_2016}.}
-    \label{fig:eclipesorbit}
-\end{figure}
-
 With a two body system with masses \Mone{} and \Mtwo{}, under the force of gravity, their orbits are elliptical orbit about their barycentre mass, as seen in \cref{fig:eclipesorbit}.
 In polar coordinates the ellipse of an orbit about the centre of mass (located at the focus $\textrm{F}_1$) is described by:
 \begin{equation}
@@ -50,6 +43,12 @@ which can be numerically determined from the mean anomaly \(M(t)\):
 \end{equation}
 The mean anomaly is the angle for the average orbital motion of the body at a time after periastron passage \(t-T_0\).
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.55\linewidth]{figures/fundamental_rv/eclipes_orbit2.pdf}
+    \caption{Elements of an elliptical orbit about the common centre of mass \(\textrm{F}_1\). {\(\nu\)} is the angle to the position of the orbiting body from the periapse (closest point to barycentre). The auxiliary circle has a radius equal to the semi-major axis of the ellipse. Adapted from~\citep{bozza_methods_2016}.}
+    \label{fig:eclipesorbit}
+\end{figure}
 
 From Kepler's second law\footnote{Orbit sweeps out equal areas in equal times} \(\frac{1}{2} r^{2} d\nu/dt\) = constant, while in one full period P, the total area of the ellipse \(\pi a^{2}{(\oneminusetwo)}^{1/2} \) will be covered, leading to:
 \begin{equation}

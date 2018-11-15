@@ -5,7 +5,7 @@
 
 The work of this thesis relies on the use of \nir{} spectra obtained by the {CRIRES} instrument. Specifically 17 observations around 2.11-2.16\um{} which are detailed in \cref{tab:observations}.
 This chapter contains an overview of the steps undertaken to extract astronomical spectra, focusing on the {CRIRES} instrument specifically.
-A comparison between two different reduction pipelines for {CRIRES} is performed with the chosen pipeline used. 
+A comparison between two different reduction pipelines for {CRIRES} is performed with the chosen pipeline used.
 Details of the issues encountered with the reduction output are presented.
 This chapter also includes the post reduction steps performed, specifically wavelength calibration and telluric correction.
 The reduced spectra produced in this chapter will be analysed in \cref{cha:direct_recovery} and \cref{cha:model_comparison}.
@@ -13,7 +13,7 @@ The reduced spectra produced in this chapter will be analysed in \cref{cha:direc
 
 \subsection{\nir{} reduction concepts}
 \label{subsec:nirreduction}
-In reducing \nir{} spectra, or any spectra in general a number of calibration steps that are performed to achieve the best possible e output such as removing signals arising from the detector. The main calibration steps required for \nIR{} spectra are given below with examples from {CRIRES}. More information about the different effects with regards to CRIREs can be found in the CRIRES user manual and reduction cook.
+In reducing \nir{} spectra, or any spectra in general a number of calibration steps that are performed to achieve the best possible e output such as removing signals arising from the detector. The main calibration steps required for \nir{} spectra are given below with examples from {CRIRES}. More information about the different effects with regards to CRIRES can be found in the CRIRES user manual and reduction cook.
 %\begin{figure}[h]
 %\centering
 %%\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
@@ -41,7 +41,7 @@ The colour has been inverted so that black is the recorded measurement.}
 The dark current is a form of instrumental noise, in which the detector measures photons while not being illuminated.
 It is the detection of thermal electrons moving inside the detector, creating spurious photon counts.
 Calibration and removal of the dark current is performed by taking exposures in which the detector is not illuminated.
-The detectors in the {CRIRES} instrument are cryogenically cooled to a temperature of \(\sim 27\)\K{} (within 0.1\K{}) to significantly reduce the dark current, and to maintain consistency.
+The detectors in the {CRIRES} instrument are cryogenically cooled to a temperature of \(\sim27\)\K{} (within 0.1\K{}) to significantly reduce the dark current, and to maintain consistency.
 The electrical components of the {CRIRES} detectors create thermal energy while operational which impacts the dark current.
 A strong ``glow'' is observed in the bottom corners of the {CRIRES} detector in \cref{fig:darkcurrent_colour} due to nearby amplifiers.
 As per the {CRIRES} calibration plan, ``dark frames'' need to be taken for each exposure time used.
@@ -77,11 +77,11 @@ To correct for pixel-to-pixel variations in photon sensitivity across the detect
 Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected.
 The flat-field frames are corrected for dark current by subtraction of the master dark frame with the appropriate exposure time.
 
-The {CRIRES} detector suffers from nonlinearities in sensitivity across the detector.
+The {CRIRES} detector suffers from non-linearities in sensitivity across the detector.
 This can be seen in the flat-field image on the left of \cref{fig:masterflats_colour} where there is an intensity gradient from dark to light across the detector.
-A set of coefficients for each pixel is provided by {ESO}\footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the nonlinearity of the detectors.
+A set of coefficients for each pixel is provided by {ESO}\footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the non-linearity of the detectors.
 This also corrects for a slight difference in sensitivity between the pixels from the odd and even columns in the {CRIRES} detectors, commonly called the ``odd-even effect''.
-The frame on the right of \cref{fig:masterflats_colour} has been corrected for the nonlinearities.
+The frame on the right of \cref{fig:masterflats_colour} has been corrected for the non-linearities.
 
 The flat-field can also reveal defects in the detector e.g.\ dead pixels, dust and scratches; a large scratch is clearly visible in \cref{fig:masterflats_colour}.
 
