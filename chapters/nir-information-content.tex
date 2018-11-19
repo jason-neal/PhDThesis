@@ -55,7 +55,7 @@ A majority of this derivation follows~\citet{bouchy_fundamental_2001} with extra
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/information-content/precision_plot.pdf}
-    \caption{Arbitrary spectral line with a shift \(\delta \lambda\), inspired by~\citet{connes_absolute_1985}.  \(\Lambda\) is the wavelength range considered.}
+    \caption[Demonstration of a shifted arbitrary spectral line.]{Arbitrary spectral line with a shift \(\delta \lambda\), inspired by~\citet{connes_absolute_1985}.  \(\Lambda\) is the wavelength range considered.}
     \label{fig:precisionderivation}
 \end{figure}
 \todo{add \(\delta A\) to plots}
@@ -352,7 +352,7 @@ Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Ar
 
 \begin{table*}[h]
     \centering
-    \caption{{CARMENES} library target selection spanning the {M-dwarf} spectral range.}
+    \caption[Selection of targets from the {CARMENES} library.]{Selection of targets from the {CARMENES} library spanning the {M-dwarf} spectral range.}
     \begin{tabular}{l l l r c c c c}%
         \toprule
         Karmn & Name & SpT &  \({\snr{}}_{\textrm{NIR}}\)  & Temp (K) &\logg{} & \feh{} & v\(\sin{i}\) (\kmps{})\\
@@ -395,7 +395,7 @@ There is also only a relatively small variation in quality factor due to the spe
 \begin{figure}
 \includegraphics[width=0.99\linewidth]{figures/information-content/metalicity_effect.pdf}\\
 \includegraphics[width=0.99\linewidth]{figures/information-content/logg_effect.pdf}
-\caption{Quality factor changes across spectral type and bands for variations in \feh{} and \logg{}.
+\caption[Quality factor verse \feh{} and \logg{} for different spectral types and wavelength bands.]{Quality factor changes across spectral type and bands for variations in \feh{} and \logg{}.
 Broadening values are R=100\,000 and \Vsini{} = 1.0\kmps{}.
 Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed \logg{}=4.5.
 Bottom: Quality factor variation of \logg{} between 4 and 5.5 with fixed \feh{}=0.0.
@@ -528,14 +528,13 @@ Can I do something with this??}
 
 The \emph{gradient} function from \emph{numpy} implements central differences for the interior points, accurate to second order, and first order accurate one-sided (forward or backward) differences at the boundaries, computed using the same compact difference procedure.
 
-\missingfigure{uncomment this one}
 \begin{figure}
     \centering
-   \includegraphics[width=0.8\linewidth]{figures/information-content/spectral_gradients}\\
-    \caption{Visualization of the numerical gradient of some spectral lines.
-Top: The two spectral regions of a stellar spectrum the left hand slide contains short lines near the normalized continuum while on the right a single deep absorption line is shown.
-Bottom: The numerical gradients for the spectra shown in the top panels; the original {FFD} method is displayed with \emph{blue squares} while \emph{numpy} gradient is shown with \emph{green stars}.
-The \emph{orange circles} are the {FFD} version shifted to the mid-points between pixels for illustrative purposes.}
+    \includegraphics[width=0.8\linewidth]{figures/information-content/spectral_gradients}\\
+    \caption[Comparing of numerical gradient alogithms.]{Visualization of the numerical gradient of some spectral lines.
+        Top: The two spectral regions of a stellar spectrum the left hand slide contains short lines near the normalized continuum while on the right a single deep absorption line is shown.
+        Bottom: The numerical gradients for the spectra shown in the top panels; the original {FFD} method is displayed with \emph{blue squares} while \emph{numpy} gradient is shown with \emph{green stars}.
+        The \emph{orange circles} are the {FFD} version shifted to the mid-points between pixels for illustrative purposes.}
     \label{fig:gradients}
 \end{figure}
 
@@ -753,7 +752,7 @@ As we demonstrated in \cref{sec:numerical_gradient,subsubsec:masking_order} thes
     \includegraphics[width=0.48\linewidth]{figures/information-content/Rvprec_vsini1.pdf} &  % Figueria plot
     \includegraphics[width=0.47\linewidth]{figures/information-content/precision_fourpanel.png}\\ % eniric plot
     \end{tabular}
-    \caption{Left: Figure 1 from~\citet{figueira_radial_2016}, Right: The same style figure with values updated from this work, computed with \emph{eniric}.
+    \caption[Comparision of RV precision results to~\citet{figueira_radial_2016}.]{Left: Figure 1 from~\citet{figueira_radial_2016}, Right: The same style figure with values updated from this work, computed with \emph{eniric}.
 The main difference is the area of shaded region due to the problem with Condition~\#2 (which is the upper edge).}
     \label{fig:my_label}
 \end{figure}

@@ -18,7 +18,7 @@ In reducing \nir{} spectra, or any spectra in general a number of calibration st
 %\centering
 %%\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
 %\includegraphics[width=0.9\textwidth]{figures/reduction/master_darks_1.pdf}
-%\caption{Master dark frames for exposure times of 3 and 180 seconds.
+%\caption[]{Master dark frames for exposure times of 3 and 180 seconds.
 %Each master is created by averaging 3 images in which the detector received no incident light.
 %Both frames are on the same scale and show dark current grows with exposure time.
 %The colour has been inverted so that black is the recorded measurement.}
@@ -29,7 +29,7 @@ In reducing \nir{} spectra, or any spectra in general a number of calibration st
     %\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
     \includegraphics[width=0.45\textwidth]{figures/reduction/MasterDarkFlat_1.png}
     \includegraphics[width=0.45\textwidth]{figures/reduction/MasterDarkSpec_1.png}
-    \caption{Master dark frames for exposure times of 3 and 180 seconds.
+    \caption[Example dark frames for different exposure times.]{Master dark frames for exposure times of 3 and 180 seconds.
 Each master is created by averaging 3 images in which the detector received no incident light.
 Both frames are on the same scale and show dark current grows with exposure time.
 The colour has been inverted so that black is the recorded measurement.}
@@ -52,7 +52,7 @@ For the {CRIRES} detectors the dark current per pixel is around 0.2--0.4\,(\(e^{
 %\begin{figure}[h]
 %    \centering
 %    \includegraphics[width=0.9\textwidth]{figures/reduction/master_flats_1.pdf}
-%    \caption{A flat-field image for detector \#1 before (left) and after (right) the non-linearity corrections are performed.
+%    \caption[]{A flat-field image for detector \#1 before (left) and after (right) the non-linearity corrections are performed.
 %    A perfect detector would have all pixels in the flat-field equal to 1.
 %    \bf{\red{} Remove flat and flatR titles.}}
 %    \label{fig:masterflats}
@@ -65,7 +65,7 @@ For the {CRIRES} detectors the dark current per pixel is around 0.2--0.4\,(\(e^{
         \includegraphics[width=0.45\textwidth]{figures/reduction/Flat_2.png} %
         \includegraphics[width=0.45\textwidth]{figures/reduction/FlatR_2.png} %\\
     %\end{tabular}
-    \caption{A flat-field image for detector \#2 before (left) and after (right) the non-linearity corrections are performed.}
+    \caption[Example of flat-field correction.]{A flat-field image for detector \#2 before (left) and after (right) the non-linearity corrections are performed.}
     \label{fig:masterflats_colour}
 \end{figure}
 
@@ -109,7 +109,7 @@ As an example, the {CRIRES} observations analysed for the work performed in \cre
     \begin{tabular}{cc}    % 3 Y columns (equaly spaced) 1 extra column
        \includegraphics[width=0.4\textwidth]{figures/reduction/Nods_AB_A-B_labelled.png} & \includegraphics[width=0.42\textwidth]{figures/reduction/nod_slice_example.pdf} \\
     \end{tabular}
-    \caption{Illustration of the nodding technique.
+    \caption[Illustration of the nodding technique.]{Illustration of the nodding technique.
         Left: Sample slice of successive images at nod positions A and B, and their difference A minus B for detector \#1.
         Right: A vertical slice along the slit at column 512 (middle of detector).
         The background level observed in A and B is effectively removed by the subtraction.}
@@ -132,7 +132,7 @@ This information is included here for completeness, as the \thar{} were not used
 
 %\begin{figure}
 %\includegraphics[width=\hsize]{./figures/reduction/lamp_plots_cbar_each.pdf}
-%\caption{A \thar{} calibration lamp frame for each detector, corrected from the dark current.}
+%\caption[]{A \thar{} calibration lamp frame for each detector, corrected from the dark current.}
 %  \label{fig:caliblamps}
 %\end{figure}
 
@@ -142,7 +142,7 @@ This information is included here for completeness, as the \thar{} were not used
          \includegraphics[width=.45\hsize]{./figures/reduction/Thar_3.png} & \includegraphics[width=.45\hsize]{./figures/reduction/Thar_4.png} \\
     \end{tabular}
 
-    \caption{Example \thar{} calibration lamp frames for each detector.
+    \caption[Example \thar{} calibration lamp frames for each detector.]{Example \thar{} calibration lamp frames for each detector.
         These are the raw frames in which dark current correction has not been performed (i.e the dark current is still visible on the bottom corners).}
     \label{fig:caliblamps}
 \end{figure}
@@ -187,7 +187,7 @@ An example from~\citet[][(B.3)]{ulmer-moll_telluric_2018} of the reduced target 
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/reduction/ulmermol2018_tell_corr_CRIRES_48}
-    \caption{Example of telluric corrected spectrum of {HR\,7329-B} using {TAPAS}.
+    \caption[Example of telluric corrected spectrum of {HR\,7329-B} using {TAPAS}.]{Example of telluric corrected spectrum of {HR\,7329-B} using {TAPAS}.
 Credit~\citet[][]{ulmer-moll_telluric_2018}.
 The yellow shaded region is the region of stellar lines that was avoided while applying the correction methods.}
     \label{fig:ulmermol2018tellcorrcrires48}
