@@ -101,8 +101,10 @@ The two companions of {HD\,202206} (B and c) were found to have masses of \(\rm 
 These three companions with recently refined masses (along with {HD\,30501}) create a good set of benchmarks to compare any results from the techniques developed here, and show that the masses of these targets do span the BD to low mass star range.
 All target companions except {HD\,162020} (P=8.4 days) are in (very) long period orbits (P=0.7--38 years) with masses (or \Mtwosini{}) greater than 10~\Mjup{}.
 
-\input{./tables/direct_recovery/stellar_params}
-\input{./tables/direct_recovery/orbital_params}
+\begin{landscape}
+    \input{./tables/direct_recovery/stellar_params}
+    \input{./tables/direct_recovery/orbital_params}
+\end{landscape}
 
 \subsection{The Data}
 
@@ -131,7 +133,9 @@ The other more likely reason is that these observations were preformed in servic
 
 \textbf{Is there a reason for the two different filters?}
 
-\input{./tables/direct_recovery/observation_table}
+\begin{landscape}
+    \input{./tables/direct_recovery/observation_table}
+\end{landscape}
 
 \textbf{The filters...using the {Ks} and the {Hx5e-2} filters, Why use the different filters???}
 
@@ -285,7 +289,7 @@ Of course once there is a separation there will be complex interactions between 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\hsize]{figures/direct-recovery/differential.pdf}\\
-    \caption{Top: A reduced {CRIRES} observation of {HD\,30501} (blue) for detector 1 between 2\,112--2\,124\nm{} along with the {TAPAS} telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction.
+    \caption[Example of the spectral differential.]{Top: A reduced {CRIRES} observation of {HD\,30501} (blue) for detector 1 between 2\,112--2\,124\nm{} along with the {TAPAS} telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction.
         Middle: The telluric corrected spectra.
         Bottom: ({blue}) Differential spectra for {HD\,30501} between observations 1 and 3. ({orange} dashed) Simulated ``perfect'' differential using {PHOENIX-ACES} spectra with parameters \(\teff{}=2\,500\)\K{}, \logg{}=5.0, and \feh{}=0.0, with the same \(\Delta {RV}\) as the observations.
         The shaded regions indicate where the telluric {green} and host star {blue} spectra are \(> 4\%\) deep.}
@@ -370,7 +374,7 @@ As the companion spectra are already faint and in combination with a host star a
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/direct-recovery/rv_diff_final.pdf}
-    \caption{Simulated relative amplitude of differential spectra at different companion \(\Delta RV\) separations revealing the diminished amplitude at very small orbital separations.
+    \caption[Simulated relative amplitude of differntial spectrum.]{Simulated relative amplitude of differential spectra at different companion \(\Delta RV\) separations revealing the diminished amplitude at very small orbital separations.
     The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a {PHOENIX-ACES} spectrum with \(\teff{}=2500\)\K{}, \logg{}=5.0, \feh{}=0.0 in the wavelength region 2\,110--2\,123\nm{}.
     The maximum difference is normalized by the median amplitude between \(\pm7\)--10\kmps{}, representing a complete line separation.
     The orange (dashed) and green (dot-dashed) lines represent the relative amplitude of a spectrum differential for a spectrum containing a single Gaussian or Lorentzian absorption line respectively, each with a unitary amplitude and a \(\rm {\fwhm} = \lambda / R\).

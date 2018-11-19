@@ -4,14 +4,14 @@
 % Manually create table instead of load from file using \DTLsetseparator.
 %\clearpage{}
 \begin{longtable}{crrr}
-    \caption{RV precisions calculated for the {SPIRou} {ETC}.
+    \caption[RV precisions calculated for the {SPIRou} {ETC}.]{RV precisions calculated for the {SPIRou} {ETC}.
         The same {PHOENIX-ACES} parameter combinations as \cref{tab:rv_aces_btsettl} but with the {SNR=100} relative to the centre of each band individually.}\\
     \hline\hline
     Simulation & \(\sigma_{RV}\)(Cond.\,1) & \(\sigma_{RV}\)(Cond.\,2) & \(\sigma_{RV}\)(Cond.\,3)\\
     ($\teff$-Band-$v.\sin{i}$-R) & [m/s] & [m/s] & [m/s] \\
     \hline
     \endfirsthead
-    \caption{continued.}\\
+    \caption[]{continued.}\\
     \hline\hline
     Simulation  & \(\sigma_{RV}\)(Cond.\,1) & \(\sigma_{RV}\)(Cond.\,2) & \(\sigma_{RV}\)(Cond.\,3) \\
     \hline
@@ -165,30 +165,3 @@
     2600-K-10.0-100k &    9.9 &   30.7 &   10.5 \\
     \label{tab:spirou_precisions}
 \end{longtable}
-
-
-
-%%\longtab[2]{
-%\begin{longtable}{cccc}
-%    2
-%    \caption{Correction to results of the simulations described in Table\,A.1 of~\citet{figueira_radiasl_016}.}\label{TableData}
-%    \\
-%    \hline\hline
-%    Simulation & \(\sigma_{RV}\)(Cond.\,1) & \(\sigma_{RV}\)(Cond.\,2) & \(\sigma_{RV}\)(Cond.\,3) \\
-%    (SpTp - Band - $v.\sin{i}$ - R) & [m/s]& [m/s] & [m/s]\\
-%    \hline
-%    \endfirsthead
-%    \caption{continued.}\\
-%    \hline\hline
-%    Simulation & \(\sigma_{RV}\)(Cond.\,1) & \(\sigma_{RV}\)(Cond.\,2) & \(\sigma_{RV}\)(Cond.\,3) \\
-%    \hline
-%    \endhead
-%    \hline
-%    \endfoot
-%    \ldots{}&\ldots{}.&\ldots{}&precision\_results\_2017\_ref\_band-J\_snr-100.0.dat\\
-%    %\DTLforeach*{precisions}{\sim=id, \condone=prec1, \condtwo=prec2, \condthree=prec3}{%  \DTLiffirstrow{}{\\}  if first row don't add a new line at start.
-%    %\DTLiffirstrow{}{\\}\sim & \condone & \condtwo & \condthree
-%    %}
-%
-%\end{longtable}
-%%}
