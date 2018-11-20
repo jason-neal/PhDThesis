@@ -48,8 +48,8 @@ In this section the transformation of the synthetic {PHOENIX-ACES} spectra into 
 These computed models are then used to fit to the observed spectra.
 
 Firstly, this assumes that the synthetic spectra are loaded and converted to consistent units.
-The loading is easily performed using Starfish's \textbf{GridTools}\todo{link from paper}, which can load the library spectra with a list of stellar parameters [\Teff{}, \logg{}, \feh{}, $[alpha/ce{H}]$].
-The {PHOENIX-ACES} spectra are then converted from spectral energy distribution {} to photon flux {} by multiplying by the wavelength (multipliable constants ignored).
+The loading is easily performed using Starfish's \href{https://iancze.github.io/Starfish/current/grid_tools.html}{GridTools}, which can load the library spectra with a list of stellar parameters [\Teff{}, \logg{}, \feh{}, \alphafe{}].
+The {PHOENIX-ACES} spectra are then converted from spectral energy distribution  \textbf{add unit} to photon flux \textbf{add unit} by multiplying by the wavelength (multipliable constants ignored).
 The spectra are also convolved to the matching resolution of the observations, in this case R=50\,000.
 Due to the properties of convolution this is performed first and not required to be performed after the model spectra are created.
 It would be computationally expensive, to perform convolution on every model combination \(C_i\).
@@ -65,7 +65,7 @@ Due to the distributive property of convolution it is efficient to apply it once
 
 \subsubsection{Single component model}
 \label{subsubsec:single-model}
-The single model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \(\teff{}\), logg, \feh{}, [\(\alpha\)/\ce{Fe}]) and is Doppler shifted by a {RV} value \({rv}_1\).
+The single model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \Teff{}, \logg{}, \feh{}, \alphafe{}) \alphafe{} and is Doppler shifted by a {RV} value \({rv}_1\).
 \begin{equation}
 \rm C^{1}_{i}(\lambda) = J(\lambda_0(1-\frac{{rv}_1}{c}))
 \end{equation}
@@ -99,11 +99,11 @@ In the case of a {BD} companion around an FGK star investigated here, the contin
 We combine the models in this way to represent the correct absolute flux ratio of the components.
 The median flux ratio between the two components is calculated for the wavelength range used here as an indication of the flux ratio level.
 
-The binary model should provide meaningful information about the companion parameters (e.g.\ \(\teff{}\)) and an estimate of the flux ratio of the system.
+The binary model should provide meaningful information about the companion parameters (e.g.\ \Teff{}) and an estimate of the flux ratio of the system.
 These can be combined with the~\citet{baraffe_evolutionary_2003} models to constrain the mass of the companion.
 However, we need to be careful with this model as the inclusion of extra spectral components and associated parameters could also provide a better fit to observations which do not have a companion, by fitting components of the noise.\\
 
-{\red{} The full list of grid parameters for the binary model are \(\teffsub{1}\),  \(\logg{}_1\), \feh{}\(_1\), [\(\alpha\)/\ce{Fe}]\(_1\), \({rv}_1\), \(\teffsub{2}\), \(\logg{}_2\), \feh{}\(_2\), [\(\alpha\)/\ce{Fe}]\(_2\), \({rv}_2\) where the subscripts 1 and 2 indicate the host and companion models respectively.}
+{\red{} The full list of grid parameters for the binary model are \(\teffsub{1}\),  \(\logg{}_1\), \feh{}\(_1\), \alphafe{}\(_1\), \({rv}_1\), \(\teffsub{2}\), \(\logg{}_2\), \feh{}\(_2\), \alphafe{}\(_2\), \({rv}_2\) where the subscripts 1 and 2 indicate the host and companion models respectively.}
 
 
 
@@ -150,8 +150,8 @@ If the full set of {PHOENIX-ACES} library spectra (66456) is explored with a bin
 Half of these are not unique as the host and companion components are swapped.
 This is the worst case scenario and we implement a number of assumptions to vastly reduce the parameter-space enabling faster computation.
 
-Our first assumption is to restrict ourselves to models with an Alpha element abundance ([\(\alpha\)/\ce{Fe}]) of zero.
-This is likely a very good approximation as all our targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where [\(\alpha\)/\ce{Fe}] values are close to zero (i.e., solar)~\citet[e.g.]{adibekyan_chemical_2012}.
+Our first assumption is to restrict ourselves to models with an Alpha element abundance (\alphafe{}) of zero.
+This is likely a very good approximation as all our targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where \alphafe{} values are close to zero (i.e., solar)~\citet[e.g.]{adibekyan_chemical_2012}.
 Our second is to assume that we can significantly reduce the search space with literature values for the host star.
 We fix the metallicity of both components to the closest grid to the literature value (usually \feh{}=0.00).
 We also fix the \logg{} of the host star to its literature values given in \cref{tab:star_params}.
@@ -474,7 +474,7 @@ This wavelength range, with a narrow wavelength range \(\sim50\)\nm{} set by the
 This wavelength range is likely not the best choice for the proposed study. \todo{finish this line} may contribute to the poor results from the companion recovery technique.
 
 For instance~\citet{passegger_fundamental_2016} used four different spectral regions for the precise parameter determination of M-dwarfs.
-Specific lines from the different wavelength regions are affected differently by the model parameters: \(\teff{}\), \logg{}, and \feh{}; and are used to break degeneracies in the {PHOENIX-ACES} parameter space.
+Specific lines from the different wavelength regions are affected differently by the model parameters: \Teff{}, \logg{}, and \feh{}; and are used to break degeneracies in the {PHOENIX-ACES} parameter space.
 
 Changing the wavelength coverage to regions with lines sensitive to stellar parameters for both stars and BDs, as well as using a larger wavelength range that will be achieved by {CRIRES+}, may help to improve the recovery results of the companion recovery technique presented here.
 We note that if the wavelength range is increased by taking separate observations at different wavelengths, not covered by a single exposure, then changes in the {RV} of both components between the different wavelength observations may need to be accounted for.

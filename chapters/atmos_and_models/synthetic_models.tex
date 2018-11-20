@@ -38,7 +38,7 @@ Both sets of synthetic models do not handle the affects of radiation from a neig
 
 The {PHOENIX-ACES} models~\citep{husser_new_2013} are a descendant fo the \emph{COND} models.
 They include condensation in equilibrium with the gas phase while ignoring dust opacity and any mixing or settling which is important for cooler atmospheres.
-As such the {PHOENIX-ACES} models are restricted to \txteff{}>2300\K{} as the treatment of dust/clouds is not handled.
+As such the {PHOENIX-ACES} models are restricted to \Teff{}>2300\K{} as the treatment of dust/clouds is not handled.
 It uses the most recent version (16) of the {PHOENIX} code and is suitable for the spectra of cool stars.
 THE {PHOENIX-ACES} models uses the Astrophysical Chemical Equilibrium Solver (ACES, Barman 2012) new in version 16 of {PHOENIX} to perform state-of-the-art treatment of the chemical equilibrium.
 It also adds parametrisations for the mass and mixing-length, and uses the solar abundances of~\citet{asplund_chemical_2009}.
@@ -64,12 +64,12 @@ This slightly impacts the use of these models while attempting \textchisquared{}
 The bottom panel shows the flux difference between models separated in temperatures of 100\K{} (one grid step).
 The difference between 5000 and 5100\K{} (green) is offset from the other model differences.
 This is potentially caused by the change in treatment of the model atmospheres at 5000\K{}.
-For instance~\citet{husser_new_2013} mention that the reference wavelength defining the mean optical depth grid, is fixed to $\lambda_{\tau}=1\,200$\nm{} for \txteff{}>5000\K{} and $\lambda_{\tau}=500$\nm{} for hotter stars in the {PHOENIX-ACES} modelling.
+For instance~\citet{husser_new_2013} mention that the reference wavelength defining the mean optical depth grid, is fixed to $\lambda_{\tau}=1\,200$\nm{} for \Teff{}>5000\K{} and $\lambda_{\tau}=500$\nm{} for hotter stars in the {PHOENIX-ACES} modelling.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/atmos_and_models/phoenix_differece_at_5000K}
-    \caption[Difference in successive {PHOENIX-ACES} spectra around 5000\K.]{Top: Incremental {PHOENIX-ACES} model spectra between 4800--5300\K{} with \logg=4.5 and \feh=0.0 fixed.
+    \caption[Difference in successive {PHOENIX-ACES} spectra around 5000\K.]{Top: Incremental {PHOENIX-ACES} model spectra between 4800--5300\K{} with \logg{}=4.5 and \feh{}=0.0 fixed.
     Bottom: Difference in flux between successive models separated by 100\K{}.
     Apart from near absorption lines there a discontinuity in the flux of the {PHOENIX-ACES} modes between 5000 and 5100\K{}.}
     \label{fig:phoenixdiffereceat5000k}
@@ -104,7 +104,7 @@ A simulator is also available to generate {BT-Settl} spectra or other {PHOENIX} 
 
 The spectral model libraries were downloaded using the above links and accessed using the useful ``grid tools'' interface provided in the \emph{Starfish}\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}.
 The ``grid tools'' enables the fast, efficient, and simple loading of stellar spectra for use in the simulation performed in this work.
-For instance a spectra from a given modelled can be loaded simply using the four values of identifying parameter values [\Teff{}, \logg{}, \feh{}, \alphafe{}]\footnote{\feh{} and \alphafe{} are abundances of \ce{Fe} and \(\alpha\) elements relative to those in the Sun. The definition of the scale is \([X/H] = \log_{10}{\left(\frac{n_{\ce{X}}}{n_{\ce{H}}}\right)}_{*} - \log_{10}{\left(\frac{n_{\ce{X}}}{n_{\ce{H}}}\right)}_{\odot}\), where $n_{\ce{X}}$ is the number of atoms of element \ce{X} and $n_{\ce{H}}$ is the number of atoms of Hydrogen.}.
+For instance a spectra from a given modelled can be loaded simply using the four values of identifying parameter values [\Teff{}, \logg{}, \feh{}, \alphafe{}]\footnote{\feh{} and \alphafe{} are abundances of \ce{Fe} and \(\alpha\) elements relative to those in the Sun. The definition of the scale is \([X/H] = \log_{10}{\left(\frac{n_{\ce{X}}}{n_{\ce{H}}}\right)}_{\star} - \log_{10}{\left(\frac{n_{\ce{X}}}{n_{\ce{H}}}\right)}_{\odot}\), where $n_{\ce{X}}$ is the number of atoms of element \ce{X} and $n_{\ce{H}}$ is the number of atoms of Hydrogen.}.
 
 
 \subsection{Comparing models}
@@ -143,7 +143,7 @@ Spectral decadencies in the {BT-Settl} models are noted by ~\citet{rajpurohit_ef
 A further example of this is shown given in \cref{fig:visualinspection-hd2118471} in which the fitted model, dominated by a single {PHOENIX-ACES} model, is compared to the observed {CRIRES} spectra.
 This caused issues with the fitting procedure in \cref{cha:model_comparison}.
 \Cref{fig:crires-pop-mismatch} is a further example of the spectral differences at the \nir{} wavelengths specifically used in this work, in a spectra from (in reduced form) the CRIRES-POP library~\citep{lebzelter_crirespop_2012,nicholls_crirespop_2017}.
-It shows differences between the CRIRES-POP \emph{K}-band spectra of {10\,Leo} and the {PHOENIX-ACES} spectrum with corresponding parameters (\txteff=4800, \logg=3.00, \feh{}=0.0).
+It shows differences between the CRIRES-POP \emph{K}-band spectra of {10\,Leo} and the {PHOENIX-ACES} spectrum with corresponding parameters (\txteff=4800, \logg{}=3.00, \feh{}=0.0).
 
 
 \begin{figure}
