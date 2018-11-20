@@ -48,7 +48,7 @@ For instance the equation of state solver ACES strongly affects the stellar stru
 Unfortunately there are several changes introduced with {PHOENIX-ACES} making it difficult to distinguish and quantify the different effects.
 
 The full parameter grid space of the pre-computed {PHOENIX-ACES} spectra is given in \cref{tab:phoenix} although this full range is not utilized in this work.
-This work uses models below >7000\K{} with no $\alpha$ variation.
+This work uses models below >7000\K{} with no \(\alpha\) variation\footnote{$\alpha$ elements are created during nuclear fusion by the successive addition of helium nuclei (alpha particles), thus have atomic numbers with an integer multiple of 4.}.
 The spectral sampling of the grid is are $R \approx 50\,000$ for 300--2500\nm, covering the wavelengths used here.
 
 \input{./tables/atmos_and_models/phoenixparameters}
@@ -104,7 +104,7 @@ A simulator is also available to generate {BT-Settl} spectra or other {PHOENIX} 
 
 The spectral model libraries were downloaded using the above links and accessed using the useful ``grid tools'' interface provided in the \emph{Starfish}\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}.
 The ``grid tools'' enables the fast, efficient, and simple loading of stellar spectra for use in the simulation performed in this work.
-For instance a spectra from a given modelled can be loaded simply using the four values of identifying parameter values [\txteff, \logg, \feh, $\alpha$].
+For instance a spectra from a given modelled can be loaded simply using the four values of identifying parameter values [\Teff{}, \logg{}, \feh{}, \alphafe{}]\footnote{\feh{} and \alphafe{} are abundances of \ce{Fe} and \(\alpha\) elements relative to those in the Sun. The definition of the scale is \([X/H] = \log_{10}{\left(\frac{n_{\ce{X}}}{n_{\ce{H}}}\right)}_{*} - \log_{10}{\left(\frac{n_{\ce{X}}}{n_{\ce{H}}}\right)}_{\odot}\), where $n_{\ce{X}}$ is the number of atoms of element \ce{X} and $n_{\ce{H}}$ is the number of atoms of Hydrogen.}.
 
 
 \subsection{Comparing models}
