@@ -48,7 +48,7 @@ In this section the transformation of the synthetic {PHOENIX-ACES} spectra into 
 These computed models are then used to fit to the observed spectra.
 
 Firstly, this assumes that the synthetic spectra are loaded and converted to consistent units.
-The loading is easily performed using Starfish's \textbf{GridTools}\todo{link from paper}, which can load the library spectra with a list of stellar parameters [\Teff{}, \logg{}, \feh{}, $[alpha/ce{He}]$].
+The loading is easily performed using Starfish's \textbf{GridTools}\todo{link from paper}, which can load the library spectra with a list of stellar parameters [\Teff{}, \logg{}, \feh{}, $[alpha/ce{H}]$].
 The {PHOENIX-ACES} spectra are then converted from spectral energy distribution {} to photon flux {} by multiplying by the wavelength (multipliable constants ignored).
 The spectra are also convolved to the matching resolution of the observations, in this case R=50\,000.
 Due to the properties of convolution this is performed first and not required to be performed after the model spectra are created.
