@@ -58,7 +58,7 @@ These synthetic spectra are used individually for the single component model and
 The results of these models are interpolated to the wavelength grid of the observed spectra and the \textchisquared{} calculated by comparing the model and observation at each point.
 
 
-{\red{} We multiply the synthetic spectra by the wavelength to convert it into photon counts, ignoring multiplicative constants, as done in~\citet{figueira_radial_2016}\footnote{Synthetic models provide the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)).}.
+{\red{} The synthetic spectra are multiplied by the wavelength to convert it into photon counts, ignoring multiplicative constants, as done in~\citet{figueira_radial_2016}\footnote{Synthetic models provide the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)).}.
 The spectra were convolved with a Gaussian kernel to match the resolution of the observations (\(\rm R=50\,000\)).
 Due to the distributive property of convolution it is efficient to apply it once to each spectra first, before the spectral pairs are combined.}
 
@@ -73,15 +73,15 @@ where \(\lambda\) is the shifted wavelength, \(\lambda_0\), the model rest wavel
 The model's flux is then continuum normalized to unity to match the observed spectra, and interpolated to the wavelength grid of the observation.
 
 This single component model analysis is similar to the~\citet{passegger_fundamental_2016} \textchisquared{} fitting.
-We apply the same re-normalization (see \cref{subsec:renorm}) to account for slight differences in the continuum level and possible linear trends between the normalized observation and model.
-We do not, however, apply any dynamical masking to sensitive lines to make the the \textchisquared{} minima more distinct or linearly interpolate the stellar parameters between the grid models to obtain high precision stellar parameters.
+A similar re-normalization (see \cref{subsec:renorm}) as ~\citet{passegger_fundamental_2016} is used to account for slight differences in the continuum level and possible linear trends between the normalized observation and model.
+However, no dynamical masking was applied to sensitive lines to make the \textchisquared{} minima more distinct or linearly interpolate the stellar parameters between the grid models to obtain high precision stellar parameters.
 This is because we are not trying to derive precise stellar parameters but to detect the spectra of the companions.
-We instead include radial velocity components to the \textchisquared{} fitting, which is not included in~\citet{passegger_fundamental_2016}.
+Instead radial velocity components are included in the \textchisquared{} fitting, which is not included in~\citet{passegger_fundamental_2016}.
 
 
 \subsubsection{Binary model}
 \label{subsubsec:binary-model}
-In the binary situation we consider the superposition of two synthetic spectral components, one each for the host and companion respectively.
+The model spectrum in the binary situation is considered to be the superposition of two synthetic spectral components, one each for the host and companion respectively.
 Both spectra are Doppler shifted by \({rv}_1\) which represents the {RV} motion of the host star, while the companion spectra is also Doppler shifted by a second {RV}, \({rv}_2\), representing the {RV} offset between the host and companion.
 This choice is arbitrary, but in this way the mean motion of the system relative to Earth is captured only in \({rv}_1\).
 The two spectra are scaled by their squared radius (see \cref{subsection-radius}) then added together, thus fixing the relative amplitude of the two components.
@@ -92,7 +92,7 @@ Given two spectral components \(J_{1}\)and \(J_{2}\)with radii \(R_1, R_2\) this
 \end{align}
 
 
-The combined spectra is continuum normalized by dividing by an exponential fitted to the continuum of the combined spectrum, as we assume we are in the Rayleigh-Jeans regime.
+The combined spectra is continuum normalized by dividing by an exponential fitted to the continuum of the combined spectrum, as the Rayleigh-Jeans regime is assumed.
 This assumption here is wavelength dependent and other appropriate continuum normalization techniques are also valid.
 In the case of a {BD} companion around an FGK star investigated here, the continuum is dominated by the contribution from the host star as it contributes the majority of the spectrum with flux ratios around 2\,110--2\,160\nm{} below \(\sim\)1\%.
 
