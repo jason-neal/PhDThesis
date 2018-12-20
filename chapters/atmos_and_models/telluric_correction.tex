@@ -3,15 +3,15 @@
 \section{Telluric correction}
 \label{sec:telluric_correction}
 
-Typically atmospheric absorption correction has been performed by observing a standard star, a very hot (O or A-type), fast rotating star.
-These stars have minimal spectral features, so reveal the atmospheric absorption when observed.
-These standard stars need to be observed close in the sky and right before or after the science observation.
-To have similar atmospheric absorption to the science target.
-The science target can be corrected for the telluric line by division by the telluric standard star~\citep[e.g.][]{vacca_method_2003}.
+Typically the absorption of the Earth's atmosphere (telluric lines) is corrected with the standard star method~\citep[e.g.][]{vacca_method_2003}. This method observed a ``standard star´´, a very hot (O or A-type), fast rotating star.
+These stars have minimal spectral features themselves so reveal the spectrum of the telluric lines. 
+The telluric lines present in a spectrum of the science target can be corrected/removed by dividing it by the spectrum of the standard star.
+
+The observation of the standard star needs to be observed close in the sky and time to the science observation to have a similar atmospheric absorption to the science target.
 For high-resolution spectroscopy this technique is not sufficient to correct telluric with residuals greater than 2\% remaining.
 
 Recently synthetic modelling of telluric absorption has gained popularity with several works focusing on correcting telluric absorption with synthetic models~\citep[e.g.][]{bailey_correcting_2007, cotton_atmospheric_2014, seifahrt_synthesising_2010} and achieving better correction than the standard star method.
-Several different software available which usually build upon the standard line-by-line radiative transfer model code {LBLRTM}~\citep{clough_linebyline_1995}.
+There are several different software packages available which usually build upon the standard line-by-line radiative transfer model code {LBLRTM}~\citep{clough_linebyline_1995}.
 Some examples are {TelFit}~\citep{gullikson_correcting_2014}, and ESO's {Molecfit}~\citep{smette_molecfit_2015} which both model and fit a synthetic absorption spectra to observations, where as {TAPAS}~\citep{bertaux_tapas_2014} just creates synthetic models based on atmospheric data for an observation (without fitting).
 The synthetic models at high resolution are very sensitive to atmospheric constituents, especially water vapour, and observing conditions such as the airmass.
 
@@ -30,11 +30,12 @@ There are differences between the models of around 2\% level, with the largest d
         Bottom: Difference between the corrected spectra from the different methods.}
     \label{fig:telluricmodelcomparision}
 \end{figure}
+\todo{Fix title of plot Telluric correction by \textbf{different} models}
 
 Since sufficient telluric correction can be achieved through synthetic modelling, the observational requirement is halved as the standard star is not required, allowing more observing time for science.
 This is the case with the {CRIRES} observations analysed in this work.
-This work utilizes the synthetic spectra produced from {TAPAS} models are used correction the telluric lines in {CRIRES} spectra.
-These are detailed further below.
+This work utilizes the synthetic telluric spectra produced from {TAPAS} to used correct the telluric lines in {CRIRES} spectra.
+This is detailed further below.
 
 \subsection{{TAPAS} web service}
 \label{subsubsec:TAPAS}
@@ -55,7 +56,7 @@ The mid-observation time for each observation was used to request a synthetic sp
 The telluric models were retrieved without barycentric correction to keep the telluric lines at a radial velocity of zero with respect to the instrument.
 For each observation one model was requested with all available atmospheric species present, convolved to a resolution of \(\rm R=50\,000\), and a further two models without the instrumental profile convolution applied.
 For these two extra models, one contained only the transmission spectra of \ce{H2O} while the other contained contributions from the all other constituents except \ce{H2O}.
-This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS} models~\citet{bertaux_tapas_2014} (see \cref{subsec:telluric_correction_application}).
+This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS} models~\citep{bertaux_tapas_2014} (see \cref{subsec:telluric_correction_application}).
 An example of the telluric spectrum for the \ce{H2O} and the non-\ce{H2O} species is given in \cref{fig:telluriccomponents}. To obtained a combined model of all species these two can be multiplied together.
 
 \begin{figure}
@@ -68,7 +69,7 @@ An example of the telluric spectrum for the \ce{H2O} and the non-\ce{H2O} specie
 
 \subsection{Issues with {TAPAS}}
 There are a number of issues encountered when using the {TAPAS} web service, mainly due to interaction with the website.
-Often their service were down for weeks at a time without any warning or notification.
+Often their service was down for weeks at a time without any warning or notification.
 With this, time was wasted filling out and submitting a requests via the the web form without a response, or a returned spectra.
 There was also a variable level of success between different web browsers.
 A number of bug reports were submitted to the owners of the webpage without any acknowledgement.
@@ -81,8 +82,8 @@ A script\footnote{Available at \href{https://github.com/jason-neal/equanimous-oc
 The script scanned the {CRIRES} header for information such as the mid-time of observations, target coordinates, slit width etc.\ and populated the {XML} request form provided by {TAPAS}.
 The script output is copied and pasted into the web browser for submission.
 
-Trial and error was needed to understand all the {XML} form entries, such as the molecules requested and the atmospheric model to use ({ARLETTY}) and achieve a valid {TAPAS} request.
-The real issue was with the {TAPAS} {{ID}} number.
+Trial and error was needed to understand all the {XML} form entries, such as the molecules requested and the atmospheric model to use ({ARLETTY}) to achieve a valid {TAPAS} request.
+The main issue was with the {TAPAS} {{ID}} number.
 Each {TAPAS} request has an {ID} number (which is provided with the email response).
 This {ID} number needs to be correctly set in the {XML} form before submission.
 This number is incremented by 1 with each submission but its initial value is unknown unless you made the very last request.
@@ -98,11 +99,11 @@ It is tedious to remember to offset your input time by one hour to obtain the co
 When submitting the {XML} script the time that is returned is the time requested.
 Attempts were made to bring this issue to the attention of the {TAPAS} team in 2016 but as of August 2018 this issue is still present.
 
-These issues need to be considered when requesting {TAPAS} spectra, adding unnecessary difficultly to the relatively simple process.
+These issues need to be considered when requesting {TAPAS} spectra, adding unnecessary difficulty to the relatively simple process.
 
 
 \subsection{Telluric masking}
-The telluric spectra from {TAPAS} can not only be used for correcting individual spectra but are also easily used to create a wavelength mask telluric lines.For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use {TAPAS} spectra to mask out atmospheric lines deeper than 2\% for computing the photon noise limited radial velocity precision.
+The telluric spectra from {TAPAS} can not only be used for correcting individual spectra but are also easily used to create a wavelength mask telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use {TAPAS} spectra to mask out atmospheric lines deeper than 2\% for computing the photon noise limited radial velocity precision.
 A telluric wavelength mask is similarly used in \cref{cha:nir_content} when extending the analysis of~\citet{figueira_radial_2016}.
 The telluric model used for this is an average of 52 {TAPAS} spectra (one per week in 2014), simulated at La Silla Observatory at an airmass of 1.2 (\(z = 33.5^{o}\)).
 This is to incorporate long-term variations of absorption over the year.
