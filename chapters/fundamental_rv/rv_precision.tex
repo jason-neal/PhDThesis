@@ -10,13 +10,13 @@ where $\Delta\lambda$ is the wavelength shift of wavelength $\lambda$ with a vel
 The \emph{speed of light} is the constant $c$.
 To measure the RV the relative positions of the stellar lines need to be measured over time.
 Typically this is done via the cross-correlation ({CCF}) of the observed spectrum with a template mask (e.g. a binary mask~\citep{baranne_elodie_1996} or weighted mask~\citep{pepe_coralie_2002}) suitable for the spectral type of the observed star.
-The {CCF} stacks together the spectral lines crating and ``average'' line, reducing the random noise on the individual $N$ spectral lines by a factor of $\sqrt{N}$.
+The {CCF} stacks together the spectral lines creating an ``average'' line, reducing the random noise on the individual $N$ spectral lines by a factor of $\sqrt{N}$.
 The {CCF} collapses the RV from all the lines into one number with higher precision than individual lines.
 
 
 \section{RV precision}
 \label{section:rv_precision}
-To achieve a high-level RV precision, two sources of noise must be controlled: statistical error form the RV measurement and systematic errors induced by the spectrograph.
+To achieve a high-level RV precision, two sources of noise must be controlled: statistical error from the RV measurement and systematic errors induced by the spectrograph.
 This requires a stabilized spectrograph, precisely calibrated in wavelength, and the combination of thousands of lines~\citep[e.g.][]{pepe_instrumentation_2014}.
 The fundamental source of noise is photon noise, which follows a {Poisson} distribution.
 That is, an observable with an average value of $N$ has a standard deviation $\sqrt{N}$.
@@ -25,7 +25,7 @@ A very general formula for the RV precision achievable of a given  spectrum, in 
 \begin{equation}
 \sigma \propto \frac{1}{\sqrt{F} \sqrt{\delta \lambda} R^{1.5}}.
 \end{equation}
-$\sqrt{F}$ represents the signal-to-noise ratio (\snr{}) of the spectrum in the poison-dominated noise regime, while $\Delta \lambda$ is the bandwidth of the observed spectrum. This assumes that the spectrum contains a homogeneous distribution of uniform lines, per unit wavelength.
+$\sqrt{F}$ represents the signal-to-noise ratio (\snr{}) of the spectrum in the Poisson-dominated noise regime, while $\Delta \lambda$ is the bandwidth of the observed spectrum. This assumes that the spectrum contains a homogeneous distribution of uniform lines, per unit wavelength.
 The precision depends more steeply on the spectral resolution with $R^{-1.5}$ occurring due  to the bandwidth and the number of lines visible on  a fixed detector size decreases with increased resolution.
 In high resolution RVs this tends to $R^-{1}$ indicating the higher precision at the expense of wavelength coverage is desired~\citet{hatzes_spectrograph_1992}.
 As a star rotates its lines become broadened by an area preserving rotation kernel (see \cref{subsec:rotational_convolution}).
@@ -44,9 +44,9 @@ with the RV precision calculated over all pixels as
 \begin{equation}
     \delta v_{RMS} = \frac{c}{\sqrt{\Sigma_i W(i)}}.
 \end{equation}
-where $\lambda$ the wavelength and $\sigma_D$ the detector noise.
+where $\lambda$ is the wavelength and $\sigma_D$ the detector noise.
 
-In all these formulations there are some key properties to achieve high RV precision: a high stellar flux $F$ to achieve a high \snr{}, observed at high resolution to have sharp spectral line.
+In all these formulations there are some key properties to achieve high RV precision: a high stellar flux $F$ to achieve a high \snr{}, observed at high resolution to have sharp spectral lines.
 The deeper (high C) and narrower (small \fwhm{}) a spectral line\footnote{With steeper gradients $\partial A_0(i)/\partial\lambda$.}, the better defined the position of the line will be, allowing for a higher precision measurement of the RV.
 The flux $F$ or \snr{} of an observation increases with the number of photons collected which depends on the stellar brightness as well as distance\footnote{Basically the stars apparent magnitude}, coupled with the telescope size and with the exposure time.
 This limits the highest precision RV measurements to relatively nearby stars.

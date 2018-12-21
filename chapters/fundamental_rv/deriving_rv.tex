@@ -5,12 +5,12 @@
 When two bodies are in orbit (two stars or a star and a planet) they orbit about their common centre of mass.
 Their 3-dimensional motion can be derived with a combination of Newton's universal law of gravitation, and Kepler's laws.
 The full derivation is quite long and can be commonly found in several celestial mechanics texts~\citep[e.g.][]{moulton_introduction_1914, perryman_exoplanet_2011, fitzpatrick_introduction_2012}.
-The notes given here mainly follow~\citep{bozza_methods_2016}.
+The notes given here mainly follow~\citet{bozza_methods_2016}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.6\linewidth]{figures/fundamental_rv/orbit_diagram2.pdf}
-    \caption[The basic elements of the Keplerian orbit.]{The basic elements of the Keplerian orbit. Adapted from~\citep{bozza_methods_2016}.}
+    \caption[The basic elements of the Keplerian orbit.]{The basic elements of the Keplerian orbit. Adapted from~\citet{bozza_methods_2016}.}
     \label{fig:orbitdiagram}
 \end{figure}
 
@@ -22,10 +22,9 @@ The \textit{ascending node} is the point on the plane at which the body crosses 
 To fully parametrize a Keplerian orbit requires seven parameters.
 These are: $a$ the semi-major axis of the elliptical orbit, $e$ the orbital eccentricity, $P$ orbital period, $T_0$ the \emph{time of periastron passage}, $i$ orbital inclination relative to the line of sight, $\omega$ the \emph{argument of periastron}, and $\Omega$.
 From RV measurements alone all of these parameters except for $i$ and $\Omega$ can be determined.
-$\Omega$ is irrelevant for determining the orbital mass, but inclination $i$ is very important as it effects the projection of the velocity towards the observer.
+$\Omega$ is irrelevant for determining the orbital mass, but inclination $i$ is very important as it affects the projection of the velocity towards the observer.
 
-
-With a two body system with masses \Mone{} and \Mtwo{}, under the force of gravity, their orbits are elliptical orbit about their barycentre mass, as seen in \cref{fig:eclipesorbit}.
+With a two body system with masses \Mone{} and \Mtwo{}, under the force of gravity, their orbits are elliptical orbits about their barycentre mass, as seen in \cref{fig:eclipesorbit}.
 In polar coordinates the ellipse of an orbit about the centre of mass (located at the focus $\textrm{F}_1$) is described by:
 \begin{equation}
     r = \frac{a(\oneminusetwo)}{1 + e \cos{\nu(t)}},
@@ -46,7 +45,7 @@ The mean anomaly is the angle for the average orbital motion of the body at a ti
 \begin{figure}
     \centering
     \includegraphics[width=0.55\linewidth]{figures/fundamental_rv/eclipes_orbit2.pdf}
-    \caption[Elements of an elliptical orbit.]{Elements of an elliptical orbit about the common centre of mass \(\textrm{F}_1\). {\(\nu\)} is the angle to the position of the orbiting body from the periapse (closest point to barycentre). The auxiliary circle has a radius equal to the semi-major axis of the ellipse. Adapted from~\citep{bozza_methods_2016}.}
+    \caption[Elements of an elliptical orbit.]{Elements of an elliptical orbit about the common centre of mass \(\textrm{F}_1\). {\(\nu\)} is the angle to the position of the orbiting body from the periapse (closest point to barycentre). The auxiliary circle has a radius equal to the semi-major axis of the ellipse. Adapted from~\citet{bozza_methods_2016}.}
     \label{fig:eclipesorbit}
 \end{figure}
 
@@ -87,19 +86,19 @@ replacing $a_{1}$ with $\kone$ from \cref{eqn:rv_equation} results in the \emph{
 \end{equation}
 This function can be determined directly from the measurable parameters $P$, $e$ and \Kone{}.
 It also depends on the stellar mass \Mone{}, which needs to be measured by some other means to determine the planet mass.
-Also from this function that the true mass of the planet \Mtwo{} is not obtained but only the projected mass \Mtwosini{}.
+Also from this function it can be seen that the true mass of the planet \Mtwo{} is not obtained but only the projected mass \Mtwosini{}.
 
-For a planetary companion the approximation $\mtwo \ll \mone$ can be made and for circular orbit the radial velocity semi-amplitude can be re-written as:
+For a planetary companion the approximation $\mtwo \ll \mone$ can be made and for circular orbits ($e=0$) the radial velocity semi-amplitude can be re-written as:
 \begin{equation}
     \kone = \frac{28.4}{\sqrt{\oneminusetwo}} \frac{\mtwosini}{\mjup} {\left(\frac{\mone}{\modot}\right)}^{-2/3} {\left(\frac{P}{1 \si{yr}}\right)}^{-1/3}  [\mps] \label{eqn:k_relation}
 \end{equation}
 
-This can be used to calculate the RV amplitude create by different mass planets in various circular orbits as given in \cref{tab:rv_amplitudes}. The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}, which is the level of precision required to detect an Earth mass planet in an 1 year orbit round a Sun-like star.
+This can be used to calculate the RV amplitude created by different mass planets in various circular orbits as given in \cref{tab:rv_amplitudes}. The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}, which is the level of precision required to detect an Earth mass planet in a one year orbit round a Sun-like star.
 
 \input{./tables/fundamental_rv/rv_semi_amplitudes}
 
-If there is more than one companion/planet then there will be a gravitational influence between each other and their orbits become non-Keplerian, i.e.\ a N-body problem~\citep[e.g.][]{chenciner_three_2007}.
-Assuming that the gravitational influence between companions is negligible the RV signal observed in the host star can be treated as just a sum of tugs from each companion.
+If there is more than one companion/planet then there will be a gravitational influence between each other and their orbits become non-Keplerian, i.e.\ an N-body problem~\citep[e.g.][]{chenciner_three_2007}.
+Assuming that the gravitational influence between companions is negligible, the RV signal observed in the host star can be treated as just a sum of tugs from each companion.
 For the two instances in this work where the target star has two companions, the companions will be treated separately, as if they were alone.
 
 
@@ -119,8 +118,8 @@ The orbits of the host and companion are directly related through the mass ratio
 q = \frac{\mtwo}{\mone} = \frac{\kone}{\ktwo} = \frac{RV_{1}}{RV_{2}} = \frac{r_2}{r_1} \label{eqn:q_ratio_K2}.
 \end{equation}
 
-Typically in exoplanet detections the companion (planet) is two faint to measure the planetary velocity. However in double lined spectroscopic binary the spectrum of both stars can be identified in the blended spectra and the RV of both star and companion can be measured and monitored over the orbit. With both velocities the mass ratio of the binary can be found. The individual masses however is still not determinable due to the inclination $\sin{i}$ of the orbit.
+Typically in exoplanet detections the companion (planet) is too faint to measure the planetary velocity. However in double lined spectroscopic binary the spectrum of both stars can be identified in the blended spectra and the RV of both star and companion can be measured and monitored over the orbit. With both velocities the mass ratio of the binary can be found. The individual masses however are still not determinable due to the inclination $\sin{i}$ of the orbit.
 
-In \cref{cha:direct_recovery} the detection of the faint spectra is of known companions is attempted, in order to determine the velocity change of the companion and hence the mass ratio. To help with the analysis and simulations the known orbital parameters (see \cref{tab:orbitparams,tab:star_params}) are used along with the companion mass (\Mtwo{} or \Mtwosini{}) to predict or estimate the RV of the companion using \cref{eqn:q_ratio_K2,eqn:rv2_equation}.
-Note, that for the targets in which only the minimum mass (\Mtwosini) is known and used in the mass ratio, this will result in the maximum {RV} semi amplitude for the companions orbit.
+In \cref{cha:direct_recovery} the detection of the faint spectra of known companions is attempted, in order to determine the velocity change of the companion and hence the mass ratio. To help with the analysis and simulations the known orbital parameters (see \cref{tab:orbitparams,tab:star_params}) are used along with the companion mass (\Mtwo{} or \Mtwosini{}) to predict or estimate the RV of the companion using \cref{eqn:q_ratio_K2,eqn:rv2_equation}.
+Note, that for the targets in which only the minimum mass (\Mtwosini) is known and used in the mass ratio, this will result in the maximum {RV} semi amplitude for the companion.
 The estimated \Ktwo{} for each companion is provided in \cref{tab:estimated_rv} while the {RV} for both components at the time of each observation is provided in \cref{tab:observations}.
