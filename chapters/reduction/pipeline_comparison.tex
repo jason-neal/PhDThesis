@@ -12,7 +12,7 @@ The second is an in-house pipeline previously used in~\citet{figueira_radial_201
 
 \subsection{{ESO} {CRIRES} pipeline}
 \label{subsec:eso-crires}
-The {ESO} {CRIRES} pipeline was used to reduce {CRIRES} nodding spectra following direction from the {CRIRES} pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the {CRIRES} reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-{ESO}-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-{ESO}-14200-4032\_v91.pdf}}
+The {ESO} {CRIRES} pipeline was used to reduce {CRIRES} nodding spectra following direction from the {CRIRES} pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the {CRIRES} reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-{ESO}-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-{ESO}-14200-4032\_v91.pdf}}.
 
 The GASGANO\footnote{\href{https://www.eso.org/sci/software/gasgano.html}{https://www.eso.org/sci/software/gasgano.html}} graphical user interface (GUI) was used to interact with the pipeline with guidance from the {GASGANO} manual\footnote{\href{https://www.eso.org/sci/software/gasgano/VLT-PRO-{ESO}-19000-1932-V4.pdf}{https://www.eso.org/sci/software/gasgano/VLT-PRO-{ESO}-19000-1932-V4.pdf}}.
 This pipeline provides a number of \emph{recipes} which perform the required extraction steps.
@@ -23,18 +23,16 @@ For a novice of spectral extraction this pipeline and the available documentatio
 However, to reduce many spectra it soon became a long tedious process.
 
 Constant revision of the documentation was necessary to ensure all the correct image and calibration files were added to each recipe.
-The {ESO} pipeline makes all the recipe parameters easily accessible to modify via a window of the recipe interface.
-This is great for adjusting the parameters and for identifying which parameters are relevant to each recipe.
-When trying to experiment with the recipe parameters to achieve high quality spectra extraction it was repetitive to change the same parameters for each observation.
-It was also difficult to keep track of all the changes while assessing their effect on the final output.
-The recipe parameter defaults get restored for each observation, making it difficult to reduce all of the observations in a consistent manner.
+The {ESO} pipeline makes all the recipe parameters easily accessible to modify via a window of the recipe interface, but the recipe parameter defaults get restored for each observation, making it difficult to reduce all of the observations in a consistent manner.
+Having the parameters adjustment on the recipe interface is great for adjusting the parameters and for identifying which parameters are relevant to each recipe.
+Unfortunately, when trying to experiment with the recipe parameters to achieve a high quality spectral extraction it was repetitive to change the same parameters for each observation, and it was also difficult to keep track of all the changes while assessing their effect on the final output.
 
 The parameters for the wavelength calibration were the most tedious.
-To try and improve the wavelength calibration, the {y-positions} of the 6 \thar{} fibres were manually found from the images for each detector and every observation and entered as input parameters for the calibration recipe.
+To try and improve the wavelength calibration, the {y-positions} of the 6 \thar{} fibres were manually found from the images for each detector and every observation and then entered as input parameters for the calibration recipe.
 This helped the wavelength calibration recipe to correctly identify/fit more of the \thar{} spectra in most cases, but this took time.
 Because of this, it was chosen to use the other pipeline and these calibration were not used.
 
-{ESO} has a new reduction ``workflow'' called {ESO} Reflex\citep{freudling_automated_2013}\footnote{\href{https://www.eso.org/sci/software/esoreflex/}{https://www.eso.org/sci/software/esoreflex/}}.
+{ESO} has a new reduction ``workflow'' called {ESO} Reflex~\citep{freudling_automated_2013}\footnote{\href{https://www.eso.org/sci/software/esoreflex/}{https://www.eso.org/sci/software/esoreflex/}}.
 This enables automated reduction with the ability to chain together the extraction recipes in the specific order desired, repeat steps to optimize the reduction, and automatically handle the data organization (no need to manually select the files for each recipe).
 This would likely have enabled a quicker and more consistent reduction of the spectra.
 Unfortunately, it is not available for the {CRIRES} pipeline.
@@ -53,13 +51,13 @@ Finally, the normalized nod-cycle spectra are averaged together to give a single
 The {DRACS} pipeline was originally developed to work with \emph{H}-band spectra.
 Because of this, some of the parameters were adjusted in an attempt to achieve a better reduction on the \emph{K}-band spectra analysed here.
 The parameters adjusted were the tracing and normalization polynomial functions and their specific order on the detector.
-Also, there was initially no reduction parameters present for detector \#3 (as this had been not used with in previous works using this pipeline).
+Also, there was initially no reduction parameters present for detector \#3 as detector \#3 was not reduced in previous works using this pipeline.
 Therefore, the pipeline was extended to be able to reduce detector \#3 of CRIRES, by adjusting the pipeline code and finding suitable parameters for detector \#3.
 
 When using the {DRACS} pipeline on a new target, the tedious part is initially creating the lists of files identifying which files are the dark, flat, and the science frames\footnote{The {GASGANO} {GUI} was helpful to identify the distinction of each fits file for a beginner.}.
 After these lists are created, the reduction pipeline can be run and re-run easily, making the effort worth it.
 
-The first time through is interactive with a number of manual checks decisions to be made (e.g.\ confirming the order tracing position, and fit is good).
+The first time through is interactive with a number of manual checks and decisions to be made (e.g.\ confirming the order tracing position, and fit is good).
 {DRACS} remembers choices in a database, allowing for a reduced level of user interaction a second or third time through the pipeline.
 This was useful to experiment with and iterate the reduction parameters of the pipeline.
 When changing the parameters which affect the order tracing, the database with the order tracing results needed to be deleted so that it would not influence the new fits.
@@ -75,7 +73,7 @@ Searching through this documentation was difficult, but required, to understand 
 
 The second drawback is that {DRACS} does not perform wavelength calibration, which is included with the {ESO} pipeline.
 This means an external wavelength calibration was the only option (see \cref{subsec:wavecalib}).
-The last drawback is the discovery of artefacts present in the nod spectra, which are discuss in detail in \cref{subsubsec:reductionartefacts}.
+The last drawback is the discovery of artefacts present in the nod spectra, which are discussed in detail in \cref{subsubsec:reductionartefacts}.
 
 \subsection{Pipeline comparison and selection}
 \label{subsec:pipeline-selection}
@@ -98,7 +96,7 @@ The blue lines are the extracted spectra from the {ESO} pipeline, the orange das
 
 One of the important things checked was the line depths of each spectra to ensure that the pipelines were consistent.
 The {ESO} pipeline has noticeable issues, with many large spikes still present in the spectra, likely caused by bad pixels or cosmic rays that are not correctly removed.
-There also appears to be problem with edges of the {ESO} reduced spectra, with very large spikes at either end.
+There also appears to be problems with the edges of the {ESO} reduced spectra, with very large spikes at either end.
 
 At this stage the {DRACS} pipeline was chosen, as it was considered that the {DRACS} pipeline produced better extracted spectra than the {ESO} pipeline.
 This decision was based on the quality of the reduced spectra, as well as the relative ease of use of the pipeline (being semi-automated once set up).

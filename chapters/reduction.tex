@@ -13,7 +13,7 @@ The reduced spectra produced in this chapter will be analysed in \cref{cha:direc
 
 \subsection{\nir{} reduction concepts}
 \label{subsec:nirreduction}
-In reducing \nir{} spectra, or any spectra in general a number of calibration steps that are performed to achieve the best possible e output such as removing signals arising from the detector. The main calibration steps required for \nir{} spectra are given below with examples from {CRIRES}. More information about the different effects with regards to CRIRES can be found in the CRIRES user manual and reduction cook.
+In reducing \nir{} spectra, or any spectra in general a number of calibration steps that are performed to achieve the best possible e output such as removing signals arising from the detector. The main calibration steps required for \nir{} spectra are given below with examples from {CRIRES}. More information about the different effects with regards to CRIRES can be found in the CRIRES user manual and reduction cookbook.
 %\begin{figure}[h]
 %\centering
 %%\includegraphics[width=0.4\textwidth]{figures/reduction/Master_Darks.png}
@@ -83,12 +83,12 @@ A set of coefficients for each pixel is provided by {ESO}\footnote{Available at 
 This also corrects for a slight difference in sensitivity between the pixels from the odd and even columns in the {CRIRES} detectors, commonly called the ``odd-even effect''.
 The frame on the right of \cref{fig:masterflats_colour} has been corrected for the non-linearities.
 
-The flat-field can also reveal defects in the detector e.g.\ dead pixels, dust and scratches; a large scratch is clearly visible in \cref{fig:masterflats_colour}.
+The flat-field can also reveal defects in the detector e.g.\ dead pixels, dust and scratches: a large scratch is clearly visible in \cref{fig:masterflats_colour}.
 
 \subsubsection{Nodding and Jitter}
 \label{subsec:nod-jitter}
 The technique of \emph{nodding} is used to remove sky emission, detector dark current, and glow.
-First, an observation is divide into multiple separate exposures.
+First, an observation is divided into multiple separate exposures.
 Between each exposure the telescope is moved to change the vertical position of the target in the slit.
 The light from the star travels through a slightly different optical path and is recorded on a different part of the detector.
 The frames from the two nod positions (A, B) are then subtracted (A - B) to remove the background measurement from each spectra.
