@@ -600,19 +600,20 @@ Here, \(T(i)\) is the telluric transmission spectrum, while \(\tau\) is the tran
 For instance to mask out telluric lines deeper than 2\%,  \(\tau\) would be set at 0.98.
 
 \begin{itemize}
+    \setlength\itemsep{-0.2em} % Remove spacing on list.
     \item Condition~\#1:
     The first mask, \(M_1\), is the simplest case in which all pixel weights are treated equally.
-No telluric line masking is considered.
+    No telluric line masking is considered.
 
     \item Condition~\#2:
     In the second mask, \(M_2\), the telluric line transmission, \(T(i)\) is used to create a boolean mask of 0's and 1's.
-When applying this mask to the pixel weights, the pixels effected by telluric lines have 0 weight, removing their contribution to the {\red{} \(RV_{\rms}\)}.
-Accounting for seasonal variation in Earth's barycentric motion can be easily incorporated into this mask, widening the regions masked out.
+    When applying this mask to the pixel weights, the pixels effected by telluric lines have 0 weight, removing their contribution to the {\red{} \(RV_{\rms}\)}.
+    Accounting for seasonal variation in Earth's barycentric motion can be easily incorporated into this mask, widening the regions masked out.
 
     \item Condition~\#3:
     The third mask, \(M_3\), assumes the application of perfect telluric correction consistent with Condition~\#3.
-The pixel weights are modified by dividing the flux variance by the square of the transmission spectrum \reference{cite the equation when I refer to it}.
-As the flux variance is the denominator of \cref{eqn:optimal_weight}, this is equivalent to multiplication of the weights by a mask of the form \(M_3\).
+    The pixel weights are modified by dividing the flux variance by the square of the transmission spectrum\reference{cite the equation when I refer to it}.
+    As the flux variance is the denominator of \cref{eqn:optimal_weight}, this is equivalent to multiplication of the weights by a mask of the form \(M_3\).
 \end{itemize}
 
 Having the three masks defined in this way makes the implementation of the {RV} precision simpler.
@@ -697,17 +698,19 @@ This value is then used to scale the spectrum such that the \snr{} at the refere
 
 This automated procedure enabled {\red{}\textbf{4}} different features.
 \begin{itemize}
-\item The ability to analysis other spectral models, not just corresponding to {M0}, {M3}, {M6}, {M9} spectral types.
+    \setlength\itemsep{-0.3em} % Remove spacing on list.
+    \item The ability to analysis other spectral models, not just corresponding to {M0}, {M3}, {M6}, {M9} spectral types.
     - Scaling to a \snr{} per pixel level other than 100.
-\item A \snr{} per pixel other than 100 can be selected.
+    \item A \snr{} per pixel other than 100 can be selected.
     - Allowing for other sampling levels (if desired)
-\item Not restricted to a model with 3 samples per resolution element.
-\item Different reference bands available.
+    \item Not restricted to a model with 3 samples per resolution element.
+    \item Different reference bands available.
     Results are not limited to being referenced from the \textit{J}-band.
-For instance the {RV} precision can now be calculated for a given \snr{} at the centre of the \textit{K}-band.
-This was one the features requested for the Exposure Time Calculators precision values.
-For {NIRPS} we provided precision values relative to each individual band, while for {SPIRou} they were relative to the {J}- and {H}-bands.
+    For instance the {RV} precision can now be calculated for a given \snr{} at the centre of the \textit{K}-band.
+    This was one the features requested for the Exposure Time Calculators precision values.
+    For {NIRPS} we provided precision values relative to each individual band, while for {SPIRou} they were relative to the {J}- and {H}-bands.
 \end{itemize}
+
 The default values for the \snr{} scaling a still 100 at the centre of the \textit{J}-band, but there is now options to easily change these values.
 
 The centre of each band was visually checked to ensure that there were no spectral lines at the reference locations> If a line was present at the reference point its depth variability across spectral types would affect the \snr{} scaling levels at a greater than the normal change in continuum amplitude/shape.\todo{is this needed}
