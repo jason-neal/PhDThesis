@@ -26,7 +26,7 @@ A common method for wavelength calibration that does not rely on \thar{} lamps o
 This is made possible by the use of high resolution spectra, in which the telluric lines are well resolved, as well as accurate spectral information of the atmosphere.
 
 Likewise, in this work the wavelength calibration is performed using the telluric absorption lines present in each observation as the wavelength reference.
-Instead of directly using the {HITRAN} database~\citep{rothman_hitran2012_2013} for the telluric line positions~\citet[such as in][]{brogi_signature_2012,brogi_carbon_2014,dekok_detection_2013}, the {TAPAS} atmospheric transmission models are use (see \cref{sec:telluric_correction}).
+Instead of directly using the {HITRAN} database~\citep{rothman_hitran2012_2013} for the telluric line positions, such as~\citet[][]{brogi_signature_2012, brogi_carbon_2014, dekok_detection_2013}, use the {TAPAS} atmospheric transmission models (see \cref{sec:telluric_correction}).
 The {TAPAS} models use the {HITRAN} database but also includes atmospheric profiles and physical meteorological measurements to model the telluric absorption strength.
 
 To calibrate the wavelength the telluric lines in the model need to be associated to the corresponding telluric lines in the observed spectrum.
@@ -57,10 +57,10 @@ The fits were inspected to ensure that they reasonably matched the line position
 There was difficulty in identifying the shallow lines with depths below 1--2\%, but these were needed in some spectra to obtain a suitable fit.
 If there were blended lines that did not appear to fit correctly they were not considered in the calibration step.
 
-After fitting \(I_{obs}(x)\) to the observed spectrum and \(T(\lambda)\) to the telluric model the wavelength solution was obtained by fitting a second order polynomial to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\}\) from the telluric components of the observed spectra and telluric model respectively.
+After fitting \(I_{obs}(x)\) to the observed spectrum and \(T(\lambda)\) to the telluric model, the wavelength solution was obtained by fitting a second order polynomial to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\}\) from the telluric components of the observed spectra and telluric model respectively.
 A second order polynomial has been shown to be sufficient for higher precision {RV} studies~\citep[e.g.][]{bean_groundbased_2010, figueira_radial_2010}.
 This polynomial is then used to map the whole spectrum from pixels into wavelength.
-Higher \(3^{\textrm{rd}}\) and \(4^{\textrm{th}}\) order polynomials that are also used in the literature~\citet[e.g.][]{seifahrt_synthesising_2010, ulmer-moll_telluric_2018} were attempted but had limited success here due to the limited number and uneven spacing of telluric lines in the narrow wavelength range analysed, especially on the second detector.
+Higher \(3^{\textrm{rd}}\) and \(4^{\textrm{th}}\) order polynomials that are also used in the literature~\citep[e.g.][]{seifahrt_synthesising_2010, ulmer-moll_telluric_2018} were attempted but had limited success here due to the limited number and uneven spacing of telluric lines in the narrow wavelength range analysed, especially on the second detector.
 There were often large deviations due to the uneven spread of telluric lines, especially at the extremities.
 Higher order terms for wavelength calibration are usually used in regions with a higher density of telluric lines and/or a longer wavelength span~\citep{piskorz_evidence_2016, seifahrt_synthesising_2010, ulmer-moll_telluric_2018}.
 
@@ -89,17 +89,17 @@ Unfortunately the wavelength calibration quality varies in an inverse way, being
 It is noted that there are many variations on this wavelength calibration technique including those integrated within programs such as \emph{TelFit}~\citet{gullikson_correcting_2014}, and {ESO}'s \emph{Molecfit}~\citet{smette_molecfit_2015}, that perform telluric correction and re-calibrate the wavelength axis themselves at the same time.
 It is recommended to attempt using those first before independently creating wavelength calibration software.
 
-One improvement could have been to include a concurrent fitting of a stellar spectral model, adjusted for {RV}, along with the telluric model, could help to improve the wavelength calibration performed here.
+One improvement could have been to include a concurrent fitting of a stellar spectral model, adjusted for {RV}, along with the telluric model, which could help to improve the wavelength calibration performed here.
 \citet{piskorz_evidence_2016} performed wavelength calibration using only a telluric line model at other \nir{} wavelengths (\emph{L}-band between 3.0--3.4\um{}) successfully.
 However, around 2\um{} they needed to include a fitted stellar model to obtain good wavelength calibration due to the weaker telluric lines in this region.
 This is the same wavelength region of the data analysed here.
 Having experience of performing wavelength calibration at other wavelengths may have revealed the difficulties of calibration from the telluric lines at 2\um{} sooner.
 
-A brief attempt of wavelength calibration using the iterative calibration method outlined in~\cite{brogi_rotation_2016}.
+A brief attempt of wavelength calibration using the iterative calibration method outlined in~\cite{brogi_rotation_2016} was made.
 This involved generating a set of quadratic wavelength solutions for the observed spectrum and cross-correlating each one against the telluric model.
 The solutions for the next iteration are obtained by refining the parameters from the wavelength solution with the highest correlation.
 The method worked well for~\citet{brogi_rotation_2016} as they included templates for both the star and telluric lines and they were observing in a wavelength domain in which there is a large number of strong and uniform stellar \ce{CO} lines across the detector.
-The brief experiments with this method were not successful as they did not include a stellar model or mask, which lead incorrect fitting solutions.
+The brief experiments with this method were not successful as they did not include a stellar model or mask, which lead to incorrect fitting solutions.
 Without adding any stellar masking the telluric lines would strongly correlate to the stellar lines present, especially where there were blended lines.
 This lead to visibly incorrect wavelength solutions and this method was abandoned.
 If a stellar mask was used it may have been possible to achieve more sensible results, although still challenging to the low density of telluric lines at this wavelength range.
@@ -108,7 +108,7 @@ At one point it was considered to attempt a global fit of the wavelength calibra
 This would create a consistent fit to the dispersion across all 4 detectors at once.
 This would require extra fitting parameters to define the size of the 3 gaps between the detectors and any vertical offsets.
 This fit may even need to be performed on the two-dimensional images, before the 1-D extraction.
-This may have allowed for the telluric lines from neighbouring detectors to help fit the calibration on detectors were there are very few telluric lines (e.g.\ detector \#2).
+This may have allowed for the telluric lines from neighbouring detectors to help fit the calibration on detectors where there are very few telluric lines (e.g.\ detector \#2).
 The fitted instrument parameters such as the detector gaps may even be constrained so that they are physically consistent across all observations.
 However, this idea was not explored further or implemented due to time constraints. An example of the wavelength calibration using all four detectors is provided in \cref{appendix:wavelength_fitting}.
 In the future it may be possible or necessary to combine all of the methods above, including the \thar{} calibration lines, telluric models, stellar templates, and multiple detectors fitted at once to achieve precise wavelength calibration.
@@ -133,7 +133,7 @@ The depth of the telluric lines were re-scaled to match the airmass of the obser
 This scaling adjusted the depth of most absorption lines to better match the observations, but does not correctly scale the deeper \ce{H2O} lines, for which there were still differences.
 
 The scaled telluric model is interpolated to the wavelengths of the observed spectrum and then used to correct the observed spectra through division, leaving behind a telluric corrected spectra.
-Telluric spectra used for correction can be observed along side the non-corrected spectra in \cref{fig:spectraexamples} as the black dashed lines.
+Telluric spectra used for correction can be observed alongside the non-corrected spectra in \cref{fig:spectraexamples} as the black dashed lines.
 
 \subsubsection{Separate \ce{H2O} scaling.}
 A technique suggested by~\citet{bertaux_tapas_2014} was attempted to address the poor \ce{H2O} airmass scaling.
@@ -148,7 +148,7 @@ The telluric correction of the deep \ce{H2O} lines could be improved with this t
 Since the smaller \ce{H2O} lines covered more of the spectrum in this region than the larger lines, the separate \ce{H2O} scaling was not continued.
 One possible solution for this would be to perform a piece-wise telluric correction, performing this step only for the deeper \ce{H2O} lines.
 This technique could also benefit from a larger wavelength span that would enable blended lines to be ignored while having sufficient deep \ce{H2O} lines to fit the scaling factor correctly.
-This small experiment shows that a simple scaling is not enough to correct for the absorption of \ce{H20} in an effective way, for this case.
+This small experiment shows that a simple scaling is not enough to correct for the absorption of \ce{H2O} in an effective way, for this case.
 Another better solution would be using proper atmospheric fitting tools that fits the telluric model to the observations, such as {Molecfit}, in which the atmospheric composition can be changed to match the observed telluric line strengths.
 
 
@@ -174,7 +174,7 @@ After the telluric correction is performed, the spectra are corrected for Earth'
 The orbital and rotational motion of the Earth imparts a daily and seasonal radial velocity measurement offset onto observations.
 To accurately compare the radial velocity (or spectral shift) between two measurements, they need to be translated into a common rest frame.
 The rest frame of choice is the barycentre of the Solar System.
-Equations to relate the observed spectral shift to the RV shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in~\citep{lindegren_fundamental_2003}.
+Equations to relate the observed spectral shift to the RV shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in~\citet{lindegren_fundamental_2003}.
 
 In this work the barycentric velocity correction is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
 This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion as well as Earth's rotation.

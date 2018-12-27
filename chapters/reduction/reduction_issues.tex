@@ -46,8 +46,8 @@ Here they will be referred to as bad-pixels.} in the rectangular extraction.
 However this is not always the case with many spikes observed (e.g. first nod around pixel 580 in \cref{fig:artefact_example_hd162020}) that are automatically removed in the optimal extraction.
 The occurrence of artefacts in the observations did not appear to have a pattern with nod position or detector with 14\% (79/544 spectra) of the nod spectra having an optimal exaction that seemed to misbehave.
 The artefacts in the optimal extraction are also largely extended, significantly affecting more of the spectrum that the individual spikes (up to 100s of pixels).
-Artefacts were observed arising from both large and small spikes alike while other large and small spikes are removed.
-This possibly suggests that their size is of less importance, that some other unknown factor (possibly location).
+Artefacts were observed arising from both large and small spikes alike while other large and small spikes are removed correctly.
+This possibly suggests that their size is of less important than some other unknown factor (possibly location).
 
 As mentioned in \cref{subsec:extraction} the \emph{optimal} extraction includes variance weighting across the spatial direction.
 It appears that the presence of the bad pixel spikes heavily affects the variance weighting procedure during the \emph{optimal} extraction.
@@ -96,6 +96,6 @@ One hypothesis for these artefacts is detector glow, the heating of the detector
 The artefacts in the \emph{K}-band spectra were not observed in previous works in the \emph{H}-band using this pipeline~\citep[e.g.][]{figueira_radial_2010}, and as such may have a wavelength dependent effect, like detector glow.
 However, it seems plausible that a glow related effect would be spatial distributed like the glow shown in \cref{fig:darkcurrent_colour}, but the location of the artefacts do not seem to have a discernible pattern.
 It could also be that there were artefacts in intermediate steps of the previous works that were missed due to the semi-automated pipeline, with the resultant combined spectrum being only slightly affected at the level of >1\% it could easily be missed (e.g. \cref{fig:reduction-comparison}).
-Anther possibility is that the artefacts are bad pixels not removed correctly.
+Another possibility is that the artefacts are bad pixels not removed correctly.
 Regardless, in the end they do not have a significant impact on the results found in this work, though it is expected that mixing the optimal and rectangular extracted spectra will have a slight negative impact on the noise or \snr{} of the combined spectrum.
 Much time and effort was invested attempting to extract the spectra, without artefacts, to have the best chance at obtaining high quality scientific results of the faint features sought after in this work.
