@@ -15,7 +15,7 @@ Initially created for studying the ejecta of Novae it was \emph{Extended} to low
 The {PHOENIX} modelling code has evolved over time incorporating new physical models to better explain the atmospheres.
 The \emph{NextGen} models~\citep{hauschildt_nextgen_1999} treated the stellar atmosphere as a gas in chemical equilibrium, but the resulting spectra for very low mass stars was poor due to no treatment of dust in the stellar atmospheres.
 
-The~\citep{allard_limiting_2001} \emph{COND} and \emph{DUSTY} models both investigate the extreme limits of clouds in the atmospheres of cool stars.
+The~\citet{allard_limiting_2001} \emph{COND} and \emph{DUSTY} models both investigate the extreme limits of clouds in the atmospheres of cool stars.
 They include condensation physics (Gibbs free energy, gas partial pressures etc.) into the chemical equilibrium model, as well as the optical interaction of light with the dust/condensates (dust opacities and scattering).
 The \emph{DUSTY} models simulate `inefficient/no settling' where condensation/dust forms and stays in the atmosphere and it affects the spectrum through the dust opacities.
 At the other extreme the \emph{COND} models ignore the dust opacities and simulate `efficient settling', in which all the condensates and dust clouds fall below the spectrum forming region.
@@ -25,7 +25,7 @@ The \emph{DUSTY}/\emph{COND} models are similar above 2600\K{} but below this te
 These are only a few of the physical considerations implemented in the synthetic models.
 The other notable changes in the name convention for the synthetic spectra are due to use of specific line lists.
 The models beginning with {AMES} use the {NASA-AMES} \ce{H2O} and \ce{TiO} line lists, while the {BT} models use the~\citet{barber_highaccuracy_2006} \ce{H2O} line list.
-Between models improved solar abundance measurements are also implemented~\citep[][]{asplund_chemical_2009}.
+Between models the use of improved solar abundance measurements is also included~\citep[][]{asplund_chemical_2009}.
 
 In this work synthetic spectral from the {PHOENIX-ACES} and to a lesser extent the {BT-Settl} stellar models are used.
 These are further evolutions of the \emph{DUSTY}/\emph{COND} models and are detailed below.
@@ -70,7 +70,7 @@ For instance~\citet{husser_new_2013} mention that the reference wavelength defin
     \includegraphics[width=0.7\linewidth]{figures/atmos_and_models/phoenix_differece_at_5000K}
     \caption[Difference in successive {PHOENIX-ACES} spectra around 5000\K.]{Top: Incremental {PHOENIX-ACES} model spectra between 4800--5300\K{} with \logg{}=4.5 and \feh{}=0.0 fixed.
     Bottom: Difference in flux between successive models separated by 100\K{}.
-    Apart from near absorption lines there a discontinuity in the flux of the {PHOENIX-ACES} models between 5000 and 5100\K{}.}
+    Apart from near absorption lines there is a discontinuity in the flux of the {PHOENIX-ACES} models between 5000 and 5100\K{}.}
     \label{fig:phoenixdiffereceat5000k}
 \end{figure}
 
@@ -80,7 +80,6 @@ For instance~\citet{husser_new_2013} mention that the reference wavelength defin
 The {BT-Settl} models~\citep{allard_models_2012,allard_atmospheres_2012,rajpurohit_effective_2013,baraffe_new_2015}, are an evolution of both the \emph{DUSTY} and \emph{COND} models.
 They are better suited for the entire range of {BD} temperatures down to 400\K{}, through hydrodynamical modelling of the mixing and settling of dust/clouds in the atmosphere of cool dwarfs~\citep{freytag_role_2010}.
 The {BT-Settl} models now also include 3-D radiation transfer~\citep{seelmann_3d_2010}.
-
 
 The {BT-Settl} are generally more difficult to work with due to their file format (in comparison to {PHOENIX-ACES}).
 The most recent {BT-Settl} spectral library designated {CIFIST2011\_2015}\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} includes newer~\citet{caffau_solar_2011} solar abundances and is combined with evolutionary modelling.
@@ -96,7 +95,7 @@ Above this temperature there are some difference observed in the line strengths 
 
 \subsection{Model access}
 \label{subsec:model_access}
-The pre-computed synthetic spectral libraries for the {PHOENIX-ACES} models \cref{tab:phoenix} are easily obtainable from \href{http://phoenix.astro.physik.uni-goettingen.de/}{http://phoenix.astro.physik.uni-goettingen.de/} while pre-computed models for the {BT-Settl} and other {PHOENIX} spectra can be found  at \href{https://phoenix.ens-lyon.fr/Grids/}{https://phoenix.ens-lyon.fr/Grids/}.
+The pre-computed synthetic spectral libraries for the {PHOENIX-ACES} models (\cref{tab:phoenix}) are easily obtainable from \href{http://phoenix.astro.physik.uni-goettingen.de/}{http://phoenix.astro.physik.uni-goettingen.de/} while pre-computed models for the {BT-Settl} (\cref{tab:btsettl_params}) and other {PHOENIX} spectra can be found at \href{https://phoenix.ens-lyon.fr/Grids/}{https://phoenix.ens-lyon.fr/Grids/}.
 A simulator is also available to generate {BT-Settl} spectra or other {PHOENIX} spectra from {Allard France} at \href{phoenix.ens-lyon.fr}{phoenix.ens-lyon.fr}, for specific parameters or abundances.
 
 The spectral model libraries were downloaded using the above links and accessed using the ``grid tools'' interface provided in the \emph{Starfish}\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}.
@@ -126,7 +125,7 @@ Here a comparison between the {PHOENIX-ACES} and {BT-Settl} spectra is briefly g
 \Cref{fig:phoenixlargescalecomparision} shows the model spectral flux in the \nir{} range of 0.9--3\um{} for three different stellar temperatures: 5500, 4000, and 2300\K{}.
 At this large scale the spectra look fairly similar.
 
-On closer inspection though, the spectra are slightly different with the {PHOENIX-ACES} spectra having deeper absorption lines compared to the {BT-Settl} models, however they do appear to have most of the same absorption lines.
+On closer inspection though, the spectra are slightly different with the {PHOENIX-ACES} spectra having deeper absorption lines compared to the {BT-Settl} models; however they do appear to have most of the same absorption lines.
 This can be seen in \cref{fig:artucus1-2micron} which contains the {PHOENIX-ACES} and {BT-Settl} at two different regions in the \nir, 1013\nm{} and 2110\nm{}.
 Temperature of both models is 4300\K{} while the \logg{} is 1.5 for {PHOENIX-ACES} and 2.5 for {BT-Settl} (closest available) and the models are convolved to R=100,000.
 This is in an attempt to match the parameters to the observations of {Arcturus} at R=100\,000 shown blue.
@@ -134,10 +133,9 @@ Cross-correlation and a Doppler shift has been used to align the model spectra t
 There is a striking difference between the models and observations with several lines present in the models that are not seen in the real observation, while a few lines observed that are not seen in the models.
 When the observed absorption lines do align with the models there is a difference in the depth of the lines.
 These differences are shown at two different wavelengths and reveal that there is still room for improvement in the synthetic models to match observed spectra in the \nir{} and at high resolution.
-Spectral decadencies in the {BT-Settl} models are noted by ~\citet{rajpurohit_effective_2013}.
+Spectral decadencies in the {BT-Settl} models are noted by~\citet{rajpurohit_effective_2013}.
 
-
-A further example of this is shown given in \cref{fig:visualinspection-hd2118471} in which the fitted model, dominated by a single {PHOENIX-ACES} model, is compared to the observed {CRIRES} spectra.
+A further example of this is shown in \cref{fig:visualinspection-hd2118471} in which the fitted model, dominated by a single {PHOENIX-ACES} model, is compared to the observed {CRIRES} spectra.
 This caused issues with the fitting procedure in \cref{cha:model_comparison}.
 \Cref{fig:crires-pop-mismatch} is a further example of the spectral differences at the \nir{} wavelengths specifically used in this work, in a spectra from (in reduced form) the CRIRES-POP library~\citep{lebzelter_crirespop_2012,nicholls_crirespop_2017}.
 It shows differences between the CRIRES-POP \emph{K}-band spectra of {10\,Leo} and the {PHOENIX-ACES} spectrum with corresponding parameters (\txteff=4800, \logg{}=3.00, \feh{}=0.0).
