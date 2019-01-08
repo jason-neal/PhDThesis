@@ -12,15 +12,15 @@ The spectrum recorded across the four detectors is created from a single dispers
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{./figures/appendix/multi_detector_fit}
-    \caption[Multi-detector fit and difference to individual fits.]{ Fit of each individual detector along with a combined quadratic fit with fixed detector gaps.}
+    \includegraphics[width=0.75\linewidth]{./figures/appendix/combined_wav_fit}
+    \caption[Multi-detector fit and difference to individual fits.]{Pixel-wavelength calibration points for each detector are given by the different markers. The quadratic fit of each individual detector is given with the same corresponding colour. A combined quadratic fit, using fixed detector gaps is shown in black.}
     \label{fig:multidectorfit}
 \end{figure}
 
 
 \begin{figure}
-    \includegraphics[width=0.75\linewidth]{./figures/appendix/multidector_fit_diff}
-    \caption[Multi-detector difference of combined fit to the individual fits.]{Multi-detector difference of each individual fit from the combined detector fit.}
+    \includegraphics[width=0.75\linewidth]{./figures/appendix/difference_combined_wav_fit}
+    \caption[Difference of multi-detector combined fit to the individual calibration mappings.]{Wavelength difference of individual quadratic fits to the quadratic fit combined all four detectors and fixed gaps.}
     \label{fig:multidectorfitdiff}
 \end{figure}
 
@@ -39,12 +39,7 @@ gap_1 + gap_2 + gap_3,      & 3072=<pxl<4096
 The pixel widths of these gaps can be fixed to known values (e.g.\ 282, 278, and 275 pixels~\citep{brogi_rotation_2016}) or allowed to vary and included in the fitting process.
 
 
-\subsection{Comparing the variable gaps}
-
-\missingfigure{Corner plot fixed gaps}
-
-\missingfigure{Corner plot variable gaps}
-
+\subsection{Comparing variable gaps}
 
 \begin{figure}
     \centering
@@ -56,29 +51,28 @@ The pixel widths of these gaps can be fixed to known values (e.g.\ 282, 278, and
 
 This example does not include the height on the detectors the spectrum falls or any skewness of the spectrum to pixel rows or any miss-alignment between the detectors. All which could have some affect on a global wavelength calibration.
 
-\cref{tab:example_calibration_parametres} shows the parameters obtained as well as a fit statistic for quadratic and cubic fitting. \textbf{BIC shows that}
+\cref{tab:example_calibration_parametres} shows the fit parameters obtained as well as some fit statistics for quadratic and cubic fitting, comparing the full combined fit with fixed or variable gaps. 
 
-\todo{remove vertical lines}
-\todo{fill in table}
-\begin{table}
-    \small
-    \caption[Example of multi-detector fitting parameters.]{Example of multi-detector fitting parameters obtained for HD\,30501 observation 2 under different scenarios.}
-    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
-    	\toprule
-    	  &    \multicolumn{8}{c|}{Individual Detectors}    &    \multicolumn{4}{c|}{Combined}    \\
-    	  & \multicolumn{2}{c|}{\#1} & \multicolumn{2}{c|}{\#2} & \multicolumn{2}{c|}{\#3} & \multicolumn{2}{c|}{\#4} & \multicolumn{2}{c|}{Fixed Gaps} & \multicolumn{2}{c|}{Variable Gaps} \\ \midrule
-    	a3 (u)    &  -   &    1e-4    &  -   &    &  -   &    &  -   &    &  -   &    &  -   &    blah    \\
-    	a2 (q)    &      &    &    &    &    &    &    &    &    &    &    &    blah    \\
-    	a1 (m)   &      &    &    &    &    &    &    &    &    &    &    &    blah    \\
-    	a0 (b)    & 2111 &    2111    & 2111 &    2111    & 2111 &    2111    & 2111 &    2111    & 2111 &    2111    & 2111 & blah \\
-        \(gap_{1}\) &      &    &    &    &    &    &    &    &   1367  & 1367   &   & x\\
-        \(gap_{2}\) &      &    &    &    &    &    &    &    &  2700   &  2700  &   & x\\
-        \(gap_{3}\) &      &    &    &    &    &    &    &    &   3900 &   3900 &    & x\\
-    	\textchisquared{} &    &    &    &    &    &    &    &    &    &    &    &    blah    \\
-    	BIC        & -234      &    -234    & -234 &    -234    & -234 &    -234    &    &    -234    & -234 &    -234    & -234 &    blah  \\
-        \bottomrule
-    \end{tabular}\label{tab:example_calibration_parametres}
-\end{table}
+\cref{fig:quadcornerplots} also show the distribution of the fit parameters for the quadratic fit with fixed (left) and variable gaps (right) obtained using the \textit{emcee} python package\footnote\href{http://dfm.io/emcee/current/}{http://dfm.io/emcee/current/}}, which performs a Markov chain Monte Carlo simulation.
+The cloud of points reveal the correlations between different parameters.
+For instance the narrow diagonals indicate a strong correlation between the parameters given on the axis.
+There are strong correlations between the quadratic parameters, {q, m, b} with $m$ being negatively correlated to all other parameters.
+It also shows strong positive correlations between the variable detector gaps.
+
+They plot on the left with fix detector gaps, is almost identical to the top 3 rows of the figure on the right.
 
 
-\missingfigure{Residuals between individual fitting and the variable gap fits}
+\input{./tables/appendices/wavelength_mapping_table}
+
+\begin{figure}
+    \centering
+    \begin{tabular}{c c}
+    \includegraphics[width=0.7\linewidth]{figures/appendix/fixed_quad_corner} & \includegraphics[width=0.7\linewidth]{figures/appendix/variable_quad_corner} \\
+    \end{tabular}
+    \caption{}
+    \label{fig:quadcornerplots}
+\end{figure}
+
+This is just a simple representation of the idea, it has not been used in this thesis for wavelength calibration
+
+\todo{reread and fix up still}

@@ -1,0 +1,495 @@
+
+Polyfit results
+
+wl_map params 1	 [-1.84965459e-07  1.16296273e-02  2.11186280e+03]
+wl_map params 2	 [-6.59464210e-08  1.12895222e-02  2.11222556e+03]
+wl_map params 3	 [-1.86831440e-07  1.17652898e-02  2.11173112e+03]
+Wl map params 4	 [-4.32137993e-08  1.05311997e-02  2.11437359e+03]
+
+
+
+
+Emcee fit, variable gaps, weighted residual
+[[Fit Statistics]]
+# fitting method   = emcee
+# function evals   = 1000000
+# data points      = 75
+# variables        = 6
+chi-square         = 4.55878065
+reduced chi-square = 0.06606928
+Akaike info crit   = -198.032470
+Bayesian info crit = -184.127541
+[[Variables]]
+q:    -1.6546e-07 +/- 6.3525e-09 (3.84%) (init = -1.654536e-07)
+m:     0.01162149 +/- 3.7581e-05 (0.32%) (init = 0.01162141)
+b:     2111.85990 +/- 0.02074181 (0.00%) (init = 2111.86)
+Gap1:  291.735977 +/- 3.50251796 (1.20%) (init = 291.7222)
+Gap2:  570.509957 +/- 5.37483885 (0.94%) (init = 570.5236)
+Gap3:  844.183187 +/- 7.08848257 (0.84%) (init = 844.2001)
+[[Correlations]] (unreported correlations are < 0.100)
+C(Gap2, Gap3) =  0.906
+C(m, b)       = -0.875
+C(q, m)       = -0.872
+C(m, Gap2)    = -0.788
+C(Gap1, Gap2) =  0.786
+C(m, Gap1)    = -0.773
+C(q, b)       =  0.733
+C(Gap1, Gap3) =  0.646
+C(b, Gap2)    =  0.638
+C(b, Gap1)    =  0.567
+C(q, Gap1)    =  0.558
+C(m, Gap3)    = -0.540
+C(b, Gap3)    =  0.456
+C(q, Gap2)    =  0.413
+Wall time: 14min 25s
+
+
+Emcee fit fixed gaps
+[[Fit Statistics]]
+# fitting method   = emcee
+# function evals   = 1000000
+# data points      = 75
+# variables        = 3
+chi-square         = 11.2463847
+reduced chi-square = 0.15619979
+Akaike info crit   = -136.308104
+Bayesian info crit = -129.355640
+[[Variables]]
+q:    -1.7706e-07 +/- 3.3158e-09 (1.87%) (init = -1.770486e-07)
+m:     0.01169926 +/- 1.6263e-05 (0.14%) (init = 0.01169914)
+b:     2111.82862 +/- 0.01481625 (0.00%) (init = 2111.829)
+Gap1:  283 (fixed)
+Gap2:  561 (fixed)
+Gap3:  836 (fixed)
+[[Correlations]] (unreported correlations are < 0.100)
+C(q, m) = -0.976
+C(m, b) = -0.803
+C(q, b) =  0.685
+Wall time: 9min 25s
+
+
+
+# variable cubic fit
+
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 41
+# data points      = 75
+# variables        = 7
+chi-square         = 4.16050020
+reduced chi-square = 0.06118383
+Akaike info crit   = -202.888960
+Bayesian info crit = -186.666544
+[[Variables]]
+u:    -2.4953e-12 +/- 9.8071e-13 (39.30%) (init = 1e-07)
+q:    -1.4718e-07 +/- 7.3484e-09 (4.99%) (init = 1e-07)
+m:     0.01159443 +/- 1.4079e-05 (0.12%) (init = 0.01)
+b:     2111.86858 +/- 0.00613703 (0.00%) (init = 2110)
+Gap1:  291.246514 +/- 0.89021046 (0.31%) (init = 283)
+Gap2:  567.915086 +/- 1.67431005 (0.29%) (init = 561)
+Gap3:  841.259802 +/- 2.10316963 (0.25%) (init = 836)
+[[Correlations]] (unreported correlations are < 0.100)
+C(u, q)       = -0.977
+C(Gap2, Gap3) =  0.935
+C(m, b)       = -0.893
+C(q, m)       = -0.858
+C(u, m)       =  0.752
+C(Gap1, Gap2) =  0.739
+C(q, b)       =  0.663
+C(Gap1, Gap3) =  0.645
+C(u, Gap2)    =  0.612
+C(u, Gap3)    =  0.550
+C(u, b)       = -0.544
+C(q, Gap2)    = -0.527
+C(q, Gap3)    = -0.524
+C(b, Gap1)    =  0.353
+C(m, Gap1)    = -0.341
+C(u, Gap1)    =  0.211
+C(m, Gap3)    =  0.116
+
+
+cubic fixed 
+
+[[Fit Statistics]]
+# fitting method   = emcee
+# function evals   = 1000000
+# data points      = 75
+# variables        = 4
+chi-square         = 10.7227120
+reduced chi-square = 0.15102411
+Akaike info crit   = -137.884300
+Bayesian info crit = -128.614348
+[[Variables]]
+u:    -1.9927e-12 +/- 2.7590e-12 (138.45%) (init = -1.997838e-12)
+q:    -1.6166e-07 +/- 2.1571e-08 (13.34%) (init = -1.616313e-07)
+m:     0.01166750 +/- 4.6883e-05 (0.40%) (init = 0.0116673)
+b:     2111.84074 +/- 0.02218025 (0.00%) (init = 2111.841)
+Gap1:  283 (fixed)
+Gap2:  561 (fixed)
+Gap3:  836 (fixed)
+[[Correlations]] (unreported correlations are < 0.100)
+C(u, q) = -0.988
+C(q, m) = -0.979
+C(u, m) =  0.938
+C(m, b) = -0.884
+C(q, b) =  0.806
+C(u, b) = -0.746
+Wall time: 11min 19s
+
+
+
+Individual detectors variable
+
+
+Dectector 1 variable
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 22
+# data points      = 25
+# variables        = 6
+chi-square         = 0.33414087
+reduced chi-square = 0.01758636
+Akaike info crit   = -95.8767111
+Bayesian info crit = -88.5634561
+[[Variables]]
+q:    -1.8493e-07 (init = 1e-07)
+m:     0.01162959 (init = 0.01)
+b:     2111.86281 (init = 2110)
+Gap1:  283.000000 (init = 283)
+Gap2:  561.000000 (init = 561)
+Gap3:  836.000000 (init = 836)
+
+Dectector 2 variable
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 89
+# data points      = 6
+# variables        = 6
+chi-square         = 0.02761189
+reduced chi-square = 0.02761189
+Akaike info crit   = -20.2876102
+Bayesian info crit = -21.5370534
+[[Variables]]
+q:    -6.6089e-08 (init = 1e-07)
+m:     0.01136402 (init = 0.01)
+b:     2105.88494 (init = 2110)
+Gap1:  841.740088 (init = 283)
+Gap2:  561.000000 (init = 561)
+Gap3:  836.000000 (init = 836)
+
+Dectector 3 variable
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 67
+# data points      = 21
+# variables        = 6
+chi-square         = 0.45246218
+reduced chi-square = 0.03016415
+Akaike info crit   = -68.5890441
+Bayesian info crit = -62.3219095
+[[Variables]]
+q:    -1.8686e-07 (init = 1e-07)
+m:     0.01214459 (init = 0.01)
+b:     2099.60217 (init = 2110)
+Gap1:  283.000000 (init = 283)
+Gap2:  1574.52740 (init = 561)
+Gap3:  836.000000 (init = 836)
+
+Dectector 4 variable
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 77
+# data points      = 23
+# variables        = 6
+chi-square         = 2.22979581
+reduced chi-square = 0.13116446
+Akaike info crit   = -41.6724366
+Bayesian info crit = -34.8594713
+[[Variables]]
+q:    -4.3244e-08 (init = 1e-07)
+m:     0.00997283 (init = 0.01)
+b:     2180.59293 (init = 2110)
+Gap1:  283.000000 (init = 283)
+Gap2:  561.000000 (init = 561)
+Gap3: -5624.12643 (init = 836)
+
+
+
+fixed
+
+
+Dectector 1 fixed
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 13
+# data points      = 25
+# variables        = 3
+chi-square         = 0.33414087
+reduced chi-square = 0.01518822
+Akaike info crit   = -101.876711
+Bayesian info crit = -98.2200836
+[[Variables]]
+q:    -1.8493e-07 +/- 1.8569e-08 (10.04%) (init = 1e-07)
+m:     0.01162959 +/- 2.0874e-05 (0.18%) (init = 0.01)
+b:     2111.86281 +/- 0.00495323 (0.00%) (init = 2110)
+Gap1:  283 (fixed)
+Gap2:  561 (fixed)
+Gap3:  836 (fixed)
+[[Correlations]] (unreported correlations are < 0.100)
+C(q, m) = -0.977
+C(m, b) = -0.923
+C(q, b) =  0.840
+
+Dectector 2  fixed
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 17
+# data points      = 6
+# variables        = 3
+chi-square         = 0.02761186
+reduced chi-square = 0.00920395
+Akaike info crit   = -26.2876158
+Bayesian info crit = -26.9123374
+[[Variables]]
+q:    -6.5873e-08 +/- 5.5727e-08 (84.60%) (init = 1e-07)
+m:     0.01128939 +/- 1.9946e-04 (1.77%) (init = 0.01)
+b:     2112.21450 +/- 0.16891020 (0.01%) (init = 2110)
+Gap1:  283 (fixed)
+Gap2:  561 (fixed)
+Gap3:  836 (fixed)
+[[Correlations]] (unreported correlations are < 0.100)
+C(q, m) = -1.000
+C(m, b) = -1.000
+C(q, b) =  0.999
+
+Dectector 3  fixed
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 13
+# data points      = 21
+# variables        = 3
+chi-square         = 0.45246218
+reduced chi-square = 0.02513679
+Akaike info crit   = -74.5890443
+Bayesian info crit = -71.4554770
+[[Variables]]
+q:    -1.8682e-07 +/- 2.5507e-08 (13.65%) (init = 1e-07)
+m:     0.01176560 +/- 1.5924e-04 (1.35%) (init = 0.01)
+b:     2111.71946 +/- 0.24671873 (0.01%) (init = 2110)
+Gap1:  283 (fixed)
+Gap2:  561 (fixed)
+Gap3:  836 (fixed)
+[[Correlations]] (unreported correlations are < 0.100)
+C(q, m) = -0.999
+C(m, b) = -0.999
+C(q, b) =  0.997
+
+Dectector 4  fixed
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 16
+# data points      = 23
+# variables        = 3
+chi-square         = 2.22979648
+reduced chi-square = 0.11148982
+Akaike info crit   = -47.6724297
+Bayesian info crit = -44.2659470
+[[Variables]]
+q:    -4.3085e-08 +/- 4.7240e-08 (109.64%) (init = 1e-07)
+m:     0.01053015 +/- 4.1533e-04 (3.94%) (init = 0.01)
+b:     2114.36554 +/- 0.90974204 (0.04%) (init = 2110)
+Gap1:  283 (fixed)
+Gap2:  561 (fixed)
+Gap3:  836 (fixed)
+[[Correlations]] (unreported correlations are < 0.100)
+C(q, m) = -1.000
+C(m, b) = -1.000
+C(q, b) =  0.998
+
+
+
+
+
+
+cubic variable individual
+
+
+
+Dectector 1 variable
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 29
+# data points      = 25
+# variables        = 7
+chi-square         = 0.27016920
+reduced chi-square = 0.01500940
+Akaike info crit   = -99.1895665
+Bayesian info crit = -90.6574358
+[[Variables]]
+u:    -1.2606e-10 (init = 1e-07)
+q:     2.0180e-08 (init = 1e-07)
+m:     0.01153531 (init = 0.01)
+b:     2111.87387 (init = 2110)
+Gap1:  283.000000 (init = 283)
+Gap2:  561.000000 (init = 561)
+Gap3:  836.000000 (init = 836)
+
+------------------------------------
+
+Dectector 3 variable
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 121
+# data points      = 21
+# variables        = 7
+chi-square         = 0.42665056
+reduced chi-square = 0.03047504
+Akaike info crit   = -67.8225606
+Bayesian info crit = -60.5109035
+[[Variables]]
+u:    -1.1952e-10 (init = 1e-07)
+q:     1.2373e-06 (init = 1e-07)
+m:     0.00642674 (init = 0.01)
+b:     2109.61553 (init = 2110)
+Gap1:  283.000000 (init = 283)
+Gap2:  1359.65191 (init = 561)
+Gap3:  836.000000 (init = 836)
+
+Dectector 4 variable
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 143
+# data points      = 23
+# variables        = 7
+chi-square         = 1.62049448
+reduced chi-square = 0.10128091
+Akaike info crit   = -47.0135462
+Bayesian info crit = -39.0650867
+[[Variables]]
+u:     4.5466e-10 (init = 1e-07)
+q:    -4.8969e-06 (init = 1e-07)
+m:     0.02765941 (init = 0.01)
+b:     2103.22231 (init = 2110)
+Gap1:  283.000000 (init = 283)
+Gap2:  561.000000 (init = 561)
+Gap3: -31.2108020 (init = 836)
+
+
+
+
+
+
+
+
+
+
+
+
+
+cubi fixed individual
+
+
+Dectector 1 fixed
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 20
+# data points      = 25
+# variables        = 4
+chi-square         = 0.27016931
+reduced chi-square = 0.01286521
+Akaike info crit   = -105.189557
+Bayesian info crit = -100.314054
+[[Variables]]
+u:    -1.2535e-10 +/- 5.5962e-11 (44.65%) (init = 1e-07)
+q:     1.9000e-08 +/- 9.2586e-08 (487.29%) (init = 1e-07)
+m:     0.01153586 +/- 4.5995e-05 (0.40%) (init = 0.01)
+b:     2111.87381 +/- 0.00670293 (0.00%) (init = 2110)
+Gap1:  283 (fixed)
+Gap2:  561 (fixed)
+Gap3:  836 (fixed)
+[[Correlations]] (unreported correlations are < 0.100)
+C(u, q) = -0.983
+C(q, m) = -0.968
+C(m, b) = -0.928
+C(u, m) =  0.909
+C(q, b) =  0.826
+C(u, b) = -0.733
+
+Dectector 2  fixed
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 18
+# data points      = 6
+# variables        = 4
+chi-square         = 0.02747326
+reduced chi-square = 0.01373663
+Akaike info crit   = -24.3178085
+Bayesian info crit = -25.1507706
+[[Variables]]
+u:     3.1598e-11 +/- 2.5065e-10 (793.25%) (init = 1e-07)
+q:    -2.4426e-07 +/- 1.4173e-06 (580.25%) (init = 1e-07)
+m:     0.01161855 +/- 0.00262455 (22.59%) (init = 0.01)
+b:     2112.01717 +/- 1.58068228 (0.07%) (init = 2110)
+Gap1:  283 (fixed)
+Gap2:  561 (fixed)
+Gap3:  836 (fixed)
+[[Correlations]] (unreported correlations are < 0.100)
+C(m, b) = -0.999
+C(q, m) = -0.999
+C(u, q) = -0.999
+C(q, b) =  0.997
+C(u, m) =  0.996
+C(u, b) = -0.991
+
+Dectector 3  fixed
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 35
+# data points      = 21
+# variables        = 4
+chi-square         = 0.42665055
+reduced chi-square = 0.02509709
+Akaike info crit   = -73.8225606
+Bayesian info crit = -69.6444709
+[[Variables]]
+u:    -1.1955e-10 +/- 1.1784e-10 (98.57%) (init = 1e-07)
+q:     9.5121e-07 +/- 1.1220e-06 (117.96%) (init = 1e-07)
+m:     0.00817342 +/- 0.00354445 (43.37%) (init = 0.01)
+b:     2115.47755 +/- 3.71272732 (0.18%) (init = 2110)
+Gap1:  283 (fixed)
+Gap2:  561 (fixed)
+Gap3:  836 (fixed)
+[[Correlations]] (unreported correlations are < 0.100)
+C(m, b) = -1.000
+C(q, m) = -1.000
+C(u, q) = -1.000
+C(q, b) =  0.999
+C(u, m) =  0.999
+C(u, b) = -0.998
+
+Dectector 4 fixed
+[[Fit Statistics]]
+# fitting method   = leastsq
+# function evals   = 16
+# data points      = 23
+# variables        = 4
+chi-square         = 1.62049450
+reduced chi-square = 0.08528918
+Akaike info crit   = -53.0135460
+Bayesian info crit = -48.4715691
+[[Variables]]
+u:     4.5455e-10 +/- 1.7004e-10 (37.41%) (init = 1e-07)
+q:    -6.0784e-06 +/- 2.2580e-06 (37.15%) (init = 1e-07)
+m:     0.03717249 +/- 0.00997247 (26.83%) (init = 0.01)
+b:     2075.26535 +/- 14.6472532 (0.71%) (init = 2110)
+Gap1:  283 (fixed)
+Gap2:  561 (fixed)
+Gap3:  836 (fixed)
+[[Correlations]] (unreported correlations are < 0.100)
+C(m, b) = -1.000
+C(q, m) = -1.000
+C(u, q) = -1.000
+C(q, b) =  0.999
+C(u, m) =  0.999
+C(u, b) = -0.999
+
