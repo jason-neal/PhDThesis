@@ -322,7 +322,7 @@ instead of only
 
 
 By default edge effects are avoided by providing an input spectra sufficiently wider than the desired output spectrum to prevent edge effects on the portion of the spectrum desired.
-Since two convolutions are preformed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both addition of rotation and instrumental broadening by \Vsini{} and R.
+Since two convolutions are performed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both addition of rotation and instrumental broadening by \Vsini{} and R.
 
 %-----------------------------------
 %    SUBSECTION 2
@@ -436,7 +436,7 @@ Functional test and unit tests.
 There was a major performance bottleneck in the convolution stage, which increased the performance around 250\,X itself.
 The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range).
 Turning the result into a \emph{numpy} array, performing the sum for that pixel and appending it to a list.
-The performance issue was a python implementation detail to do with applying a comprehension list to a \emph{numpy} array, then slicing the \emph{numpy} array with the ends of the list, then converting it back into a \emph{numpy} array, all of which is preformed on a very large spectrum array.
+The performance issue was a python implementation detail to do with applying a comprehension list to a \emph{numpy} array, then slicing the \emph{numpy} array with the ends of the list, then converting it back into a \emph{numpy} array, all of which is performed on a very large spectrum array.
 Creating a \emph{numpy} boolean mask instead of the comprehension list, and applying the boolean mask to the array is much faster.
 Remaining entirely in the compiled \emph{numpy} code and not converting between lists and \emph{numpy} arrays (with involve type checking overhead).
 This slow operation was done for every pixel/wavelength in the spectrum twice, once for each convolution.
@@ -582,7 +582,7 @@ Another change made to the software is in the application of the masking functio
 As suggested in~\citet{connes_absolute_1985} and~\citet{bouchy_fundamental_2001} a custom masking function can be applied to the individual pixel weights in \cref{eqn:optimal_weight}, such as:
 
 \[W'(i) = W(i)M(i),\label{eqn:mask_function}\] where \(M(i)\) is the masking function and \(W'(i)\) are the modified pixel weights.
-This masking function can be used in particular for the removal of telluric lines, setting those weights to zero and is in essence what is done when wavelength selection is preformed; assigning zero weight to all pixels outside the desired wavelength range.
+This masking function can be used in particular for the removal of telluric lines, setting those weights to zero and is in essence what is done when wavelength selection is performed; assigning zero weight to all pixels outside the desired wavelength range.
 
 This masking function can be used to easily apply the three conditions presented in~\citet{figueira_radial_2016}.
 First the 3 masking functions will be defined, then followed by the quantification of how they differ from the previous implementation.
@@ -622,7 +622,7 @@ With this, \todo{Check this if it is previous}{as mentioned previously} there wa
 
 \subsubsection{Masking order}
 \label{subsubsec:masking_order}
-The order in which the masking is preformed is also important.
+The order in which the masking is performed is also important.
 Masking should be applied only after calculation of the pixel weights.
 As the pixel weights depend on neighbouring points (through the calculation of the gradients), prematurely removing pixels will affect the precision results.
 
