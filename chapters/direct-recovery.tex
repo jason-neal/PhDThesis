@@ -130,10 +130,9 @@ Each observation was then: wavelength calibrated using a synthetic telluric spec
 
 \subsection{Calculation of expected RV}
 \todo{I am not sure if this is the best location for this section.}
-{\red{}
-    
+
 Before the differential subtraction method is presented, calculations are performed to estimate the RV of both components in each observations and the likely separation between the companions between observations.
-The time of each observation is used as input into \cref{eqn:rv_equation} along combined with the orbital parameters from \cref{tab:orbitparams} to calculate the expected RV of the host star. These values calculated are provided in \cref{tab:observations} as (\({RV}_{1}\).
+The time of each observation is used as input into \cref{eqn:rv_equation} along combined with the orbital parameters from \cref{tab:orbitparams} to calculate the expected RV of the host star. These values calculated are provided in \cref{tab:observations} as \({RV}_{1}\).
 For the companion, the mass (\Mtwo or \Mtwosini{}) is used alongside the stellar mass from \cref{tab:star_params} to calculate the RV of the companion (see \cref{subsec:binary_mass_ratio}).
 This is given as \({RV}_{2}\) in \cref{tab:observations}.
 The RV difference in between the host and companion for each observation is also computed and provided as \({rv}_{2} = {RV}_{2}-{RV}_{1}\) although this will not be used until \cref{cha:model_comparison}.
@@ -142,7 +141,7 @@ For these observations the maximum estimated RV separation between the two compa
 This table also contains the estimated semi-major RV amplitude for the companion \(K_2\) (from \cref{eqn:q_ratio_K2}) and the phase coverage of the observations.
 The phase coverage is the maximum fraction of the orbit covered between the observations for each target.
 For {HD\,4747} the \(\Delta RV\) and phase coverage values are missing due to the single observation.
-}
+
 
 \input{tables/direct_recovery/estimated_rv}
 %\input{tables/old/flux_calculations} % This is the old table.
@@ -154,7 +153,7 @@ The full orbital solution for the components along with the times of observation
 \label{sec:direct-subtraction}
 Here the direct subtraction method used is presented. 
 The basic premise is to take two high resolution spectra of a binary system at separate phases, transform them to the rest frame of the star and take the difference to remove the spectrum of the host star, leaving behind a residual comprised of difference of two companion spectra with different Doppler shifts.
-Similar techniques originally developed to separating binary stars ~\citep{ferluga_separating_1997} and has been used for a M-dwarf with a low-mass companion \citep[e.g.][]{kostogryz_spectral_2013}.
+Similar techniques originally developed to separating binary stars~\citep{ferluga_separating_1997} and has been used for a M-dwarf with a low-mass companion~\citep[e.g.][]{kostogryz_spectral_2013}.
 
 Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately the spectra of the observed targets are assumed to be composed of two spectral components:
 a bright host star blended with the spectrum of a faint companion.
@@ -220,7 +219,7 @@ There should be checks for consistency between \(v_{1a}\), \(v_{1b}\) and how we
 Example simulations?
 \missingfigure{simulated example of combined binary spectra, and the subtraction, with a clear companion visible }
 
-\textbf{This method is very similar to \citet{kostogryz_spectral_2013}, which obtain two observations from the extrema of the RV curve of a M-dwarf with a low-mass companion.
+\textbf{This method is very similar to~\citet{kostogryz_spectral_2013}, which obtain two observations from the extrema of the RV curve of a M-dwarf with a low-mass companion.
 They also perform a number of simulations regarding observing {CRIRES} spectra with different brown dwarfs.
 Figure out the flux ratio limit they get too???}\todo{check result}
 
@@ -248,7 +247,7 @@ We applied the spectral differential procedure outlined above on the wavelength-
 The barycentric corrected spectra were first Doppler shifted to the rest frame velocity of the system by applying a shift of \(-\gamma\).
 The differential subtraction method was then applied by shifting each spectra by $-{RV}_{1}$ so that the host lines were at rest and then subtracting one spectrum from the other as described above.
 
-Although this is attempted on all targets only the most favourable case , {HD\,30501}, is shown in \cref{fig:spectral_example}. It is favourable because it is the second largest companion in the sample at 90~\Mjup{} but also has the second largest {RV} separation between observations.
+Although this is attempted on all targets only the most favourable case, {HD\,30501}, is shown in \cref{fig:spectral_example}. It is favourable because it is the second largest companion in the sample at 90~\Mjup{} but also has the second largest {RV} separation between observations.
 The top panel shows the reduced CRIRES spectrum of {HD 30501} from detector 1 without telluric correction. The telluric model is also shown in the top panel. The middle panel shows the CRIRES spectra corrected with the telluric model. 
 The differential spectra recovered for {HD\,30501} is shown at the bottom panel of \cref{fig:spectral_example}.
 The shaded regions indicate where the telluric {green} and host star {blue} spectra are \(> 4\%\) deep.

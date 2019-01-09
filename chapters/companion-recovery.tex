@@ -14,9 +14,9 @@ The recoverable from the models will be the temperature of synthetic spectra fit
 
 \subsection{The \texorpdfstring{\textchisquared}\ method}
 \label{subsec:chi2}
+
 The well known \textchisquared{} technique measures the weighted sum of the squared deviation between the observation (\({O}_{i}\)) and the computed models (\(C_{i}\)), with the minimum \textchisquared{} value representing the best-fit parameters:
 \[\chisquared = {\sum}_i \frac{{(O_{i} - C_{i})}^2}{{\sigma}_{i}},\] where \({\sigma}_{i}\) is the error on each measurement.
-
 
 The inverse survival function of the \textchisquared{} distribution is used to determine the confidence levels on the minimum \textchisquared{} parameters.
 The inverse survival function returns a \(\Delta\chisquared\) value from the minimum \textchisquared{} value for a given $\sigma$ level and degree of freedom\footnote{In \emph{Python} with the \emph{scipy} package this is a single line \texttt{scipy.stats.chi2{(dof)}.isf{(1-p)}}, where \(p = 0.68\) for 1-\(\sigma\), and dof is the degree of freedom.}.
@@ -24,8 +24,7 @@ For example, the \(\Delta \chisquared\) for a single degree of freedom required 
 This method assumes that the measured flux is observed with a \snr{} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
 
 For a given observation, the \(\chisquared_{red}\) is computed by \(\chisquared_{red} = \chisquared / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or 4 in the examples explored below}, and is performed after the summation over the detectors.
-
-
+s
 For each observation $O$, the \(\sigma\) is estimated using the \(\beta\sigma\) method~\citep{czesla_posteriori_2018}, using the MAD (median absolute deviation about the median) robust estimator. This method estimates the spectral noise using numerical derivatives of the spectra.
 We followed the procedure outlined in~\citet{czesla_posteriori_2018} to analyse the results from successive parameter combinations to settle on an order of approximation (derivative level) of 5, and a jump parameter (pixels skipped to avoid correlations) of 2. The same \(\sigma\) is applied to all points in the spectrum so that \({\sigma}_{i} = \sigma\).
 The \(\beta\sigma\) method provided \(\sigma\) estimates for the target spectra which correspond inversely to signal-to-noise ratios between 100--400, which are similar to the values given in \cref{tab:observations} calculated only from the continuum of detector 2.
@@ -94,7 +93,7 @@ Given two spectral components \(\textrm{J}_{1}\) and \(\textrm{J}_{2}\) with rad
 
 The combined spectra is continuum normalized by dividing by an exponential fitted to the continuum of the combined spectrum, as the Rayleigh-Jeans regime is assumed.
 This assumption here is wavelength dependent and other appropriate continuum normalization techniques are also valid.
-In the case of a {BD} companion around an FGK star investigated here, the continuum is dominated by the contribution from the host star as it contributes the majority of the spectrum with flux ratios around 2110--2165\nm{} below \(\sim\)1\%.
+In the case of a {BD} companion around an {FGK} star investigated here, the continuum is dominated by the contribution from the host star as it contributes the majority of the spectrum with flux ratios around 2110--2165\nm{} below \(\sim\)1\%.
 
 We combine the models in this way to represent the correct absolute flux ratio of the components.
 The median flux ratio between the two components is calculated for the wavelength range used here as an indication of the flux ratio level.

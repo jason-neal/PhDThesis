@@ -36,7 +36,7 @@ Assuming a spectral line is comprised of Gaussian-shaped absorption lines it, th
     \sigma\sim\frac{\sqrt{\fwhm{}}}{C \cdot \snr}
 \end{equation}
 where \fwhm{} is the full width at half maximum of the line, $C$ is the line contrast (depth relative to continuum) and \snr{} the signal-to-noise of the continuum.
-An alternate derivation comes from \citet{bouchy_fundamental_2001} in which the optimal weight for each pixel is calculated for a spectrum $A_0$ via:
+An alternate derivation comes from~\citet{bouchy_fundamental_2001} in which the optimal weight for each pixel is calculated for a spectrum $A_0$ via:
 \begin{equation}
     W(i) = \frac{\lambda^{2}(i) {(\partial A_0(i)/\partial\lambda)}^{2}}{A_0(i) + \sigma_D} \label{eqn:pixel_weigth}
 \end{equation}
@@ -53,4 +53,4 @@ This limits the highest precision RV measurements to relatively nearby stars.
 Cross-dispersed echelle spectrographs mounted on the largest telescopes are capable of delivering the high-resolution, high \snr{} and high bandwidth requirements necessary to achieve high precision RV measurements.
 
 These formula have recently been used to assess the theoretical RV precision of synthetic spectra for the development of instrument designs of new \nir{} spectrographs~\citep[e.g.][]{figueira_radial_2016} as well as compare precision of real and synthetic spectra~\citep[e.g.][]{artigau_optical_2018}.
-The RV precision will be analysed further in \cref{cha:nir_content} with a detailed derivation of the \citet{bouchy_fundamental_2001} method given and implemented to analyse the precision of \nir{} spectra.
+The RV precision will be analysed further in \cref{cha:nir_content} with a detailed derivation of the~\citet{bouchy_fundamental_2001} method given and implemented to analyse the precision of \nir{} spectra.
