@@ -13,20 +13,22 @@
 \chapter{Separating the spectra of faint companions} % Main chapter title
 \label{cha:direct_recovery}
 
-There many different techniques to disentangle the spectra of binary objects.
-In this chapter we focus on applying a direct subtraction method to near-infrared (\nir{}) spectra of {FGK} stars with Brown Dwarf (BD) companions.
-The data used was obtained with the {CRIRES} instrument in 2012 with the purpose to apply this technique specifically.
-A level of trust was placed in the quality of the observations, which was misplaced.
-We will begin this chapter with the motivation for these specific targets and detail the observations obtained.
-We will then present the direct subtraction technique and explore in detail how the observations are insufficient to apply this method, and explore this technique at low RV separations by comparison to simulated results.
+Spectral observations of binary systems contain the spectra of both bodies, in proportion to their flux ratio, and Doppler shifted relative to each other due to their orbital motion. There many different techniques to disentangle the spectra of binary objects.
+This chapter focuses on applying a direct subtraction method to near-infrared (\nir{}) spectra of {FGK} stars which have Brown Dwarf (BD) companions, with the goal to isolate the spectrum of the companions.
+The data used was obtained with the {CRIRES} instrument in 2012\footnote{Before this thesis began} observed with the purpose to apply the differential technique specifically.
+A level of trust was placed in the quality of the observations, which was unfortunately misplaced.
+This chapter begins with the motivation for these specific targets and details the observations obtained.
+The direct subtraction technique will be presented and its application to the observations will explored. The limits of the differential technique at low RV separations is given by simulation with synthetic spectra.
 
+
+\section{Spectral Disentangling techniques}
+\todo{}
 
 Spectral observations of binary systems contain the spectra of both bodies, in proportion to their flux ratio, and Doppler shifted relative to each other due to their orbital motion.
 One technique to recover the spectra of the companion is secondary reconstruction through a differential spectrum~\citep{ferluga_separating_1997}.
 Spectra from different phases are shifted to the rest frame of the host star and subtracted to mutually cancel out the spectrum of the host star allowing the faint companion spectra to become visible.
 Advances in high-resolution and near-infrared (\nir{}) capabilities should enable this technique to be applied to BDs and planet companions, in which smaller {RV} shifts can be resolved and the contrast ratio of the smaller companion is improved.
 
-\section{Spectral Disentangling techniques}
 
 Binary stars through brown dwarfs...
 to planets.
@@ -60,45 +62,24 @@ See~\citet{kostogryz_spectral_2013} for lots of useful references regarding diff
 They use \textchisquared fitting of the observed spectra against the {SPecMatch} library of observed spectra to find a spectra to best remove the primary star lines,
 accounting for dilution and rotational broadening.
 They also find that a secondary spectrum with a $\Delta RV$ relative to the host would blend and remain undetectable.
-When searching for the secondary they median normalize the spectra into 100K spectra since the difference between stars  <100K different is almost indiscernible in the secondary. The residuals are renormalized and then a \textchisquared fit is again preformed to identify any secondary spectra.
-For a low temperature companion (3500K) at a 1\% flux ratio to a 5000--6000\K{} primary star their recovery technique achieves 80\% injection-recovery.}
+When searching for the secondary they median normalize the spectra into 100K spectra since the difference between stars  <100K different is almost indiscernible in the secondary. The residuals are renormalized and then a \textchisquared fit is again performed to identify any secondary spectra.
+For a low temperature companion (3500K) at a 1\% flux ratio to a 5000--6000\K{} primary star their recovery technique achieves 80\% injection-recovery, in the optical.}
 
 
-
-\section{Motivation}
-
-Motivation section
-
-\textbf{Why this technique and not others.}
-- separation of components
-- direct imaging (cant separate)
-
-
-Find direct imaging limitations ---
-
-
-
-\textbf{These observations were first taken in an atmospheric window of the \emph{K}-band in order to reduce the absorption introduced by the atmosphere~\citep{barnes_hd_2008}.
-}
 \section{Motivation and target selection}
 \label{sec:target_motivation}
-The work of~\citet{sahlmann_search_2011} identified several candidate brown dwarf companions of FGK stars with \(\rm M_2 \sin{i}\) values > 10~\Mjup{}.
+
+The work of~\citet{sahlmann_search_2011} used the astrometry technique to identify several candidate brown dwarf companions of FGK stars with \(\rm M_2 \sin{i}\) values > 10~\Mjup{}.
 Seven candidates from~\citet{sahlmann_search_2011}, which were visible in Period 89 (2012), were selected for further observation in order to identify their stellar nature.
-That is, to refine the mass of the companions to distinguish if their companion is a large giant planet (M$\apprle13$\Mjup), a Brown dwarf (13$\apprle $M$\apprle80$\Mjup), or a low-mass star (M$\apprge80$\Mjup).
+That is, to refine the mass of the companions to distinguish if their companion is: a large giant planet (M$\apprle13$\Mjup), a Brown dwarf (13$\apprle $M$\apprle80$\Mjup), or a low-mass star (M$\apprge80$\Mjup).
 
-The spectral differential approach was chosen with the goal to constrain the companion masses while minimizing the observational time required to observe.
-It was deemed that it should be possible to obtain a detection of a companion at 1\% contrast ratio with an exposure time of around 20 minutes.
-Two observations at ``clearly separate RVs'' were requested to constrain each target.
-Observations were preformed without telluric standard star observations to avoid the wasted observing time, choosing to instead rely on synthetic model correction (see \cref{sec:telluric_correction}).
-The \textit{K}-band was chosen to achieve a high contrast relative to the host star, detected in the extreme V-K colour indexes (>7.8).
+The list target host stars that were observed are presented in \cref{tab:star_params} along with their stellar parameters, while \cref{tab:orbitparams} details the orbital parameters of each system from the literature.
 
-The list target host stars are presented in \cref{tab:star_params} along with their stellar parameters, while the companion orbital parameters are provided in \cref{tab:orbitparams}.
-
-We note that the orbital parameters of some targets have been refined in the literature since the observations took place.
+It is noted that the orbital parameters of some targets have been refined in the literature since the observations took place.
 For example three candidates have had their masses refined in recent works.
 The companion to {HD\,211847} was determined to be a low mass star with \(\rm M_2=155~\)\Mjup{}~\citep{moutou_eccentricity_2017}, while the companion to {HD\,4747} was found to have a mass of \(\rm M_2=60~\)\Mjup{}~\citep{crepp_trends_2016}.
 The two companions of {HD\,202206} (B and c) were found to have masses of \(\rm M_B =93.6\)~\Mjup{} and \(\rm M_c = 17.9\)~\Mjup{}, respectively, classifying {HD\,202206}c as a ``circumbinary brown dwarf''~\citep{benedict_hd_2017}.
-These three companions with recently refined masses (along with {HD\,30501}) create a good set of benchmarks to compare any results from the techniques developed here, and show that the masses of these targets do span the BD to low mass star range.
+These three companions with recently refined masses, along with {HD\,30501}, create a good set of benchmarks to compare any results from the techniques used here, and show that the masses of these targets do span the BD to low-mass star range.
 All target companions except {HD\,162020} (P=8.4 days) are in (very) long period orbits (P=0.7--38 years) with masses (or \Mtwosini{}) greater than 10~\Mjup{}.
 
 \begin{landscape}
@@ -106,11 +87,19 @@ All target companions except {HD\,162020} (P=8.4 days) are in (very) long period
     \input{./tables/direct_recovery/orbital_params}
 \end{landscape}
 
+
+The spectral differential approach was chosen with the goal to constrain the companion masses while minimizing the observational time required to observe.
+It was determined that it should be possible to obtain a detection of a companion with a 1\% contrast ratio with an exposure time of around 20 minutes.
+Two observations at ``clearly separate RVs'' were requested to constrain each target.
+Observations were performed without telluric standard star observations to avoid the extra observing time overhead, choosing to instead rely on synthetic model correction (see \cref{sec:telluric_correction}).
+The \textit{K}-band was chosen to achieve a high contrast relative to the host star, detected in the extreme V-K colour indexes (>7.8), while the specific atmospheric window (2110-2070\nm{}) was chosen in order to reduce the absorption introduced by the atmosphere~\citep{barnes_hd_2008}.
+
+
 \subsection{The Data}
 
 \subsection{CRIRES data}
 \label{subsec:CRIRES}
-Observations were performed with the {CRIRES} instrument~\citep{kaeufl_crires_2004} configured to observe a narrow wavelength domain of the \emph{K}-band between 2\,120--2\,160\nm{}.
+Observations were performed with the {CRIRES} instrument~\citep{kaeufl_crires_2004} configured to observe a narrow wavelength domain of the \emph{K}-band between 2120--2165\nm{}.
 The slit width of \(0.4^{\prime\prime}\) resulted in an instrumental resolving power of \(\R=50\,000\)\footnote{The rule of thumb resolution for {CRIRES} is \(100\,000\times \frac{0.2^{\prime\prime}}{\textrm{slit width}}\) with the slit width in arcseconds}.
 No adaptive optics were used to ensure that the entrance slit was entirely covered by each target.
 This is to prevent strong slit illumination variations that could change the shape of spectral lines.
@@ -121,55 +110,55 @@ The list of observations obtained with {CRIRES} are provided in \cref{tab:observ
 
 There is a slight inconsistency with the some of the observations, taken in service mode.
 For instance {HD\,202206} has two observations taken with the {Ks} filter, while one is taken with the {J} filter.
-There is also the last observation of {HD\,30501} taken with a different filter that the others.
-The phase two observing proposal documents were unable to obtained to access determine if these odd filters were requested like this or if it was an observational mistake.
+There is also the last observation of {HD\,30501} taken with a different filter compared to the others.
+The documents for the phase two observing proposal were unable to be obtained to determine if these `odd' filters were requested or if this was an observational mistake.
 
-There is also an inconsistency with the ordering of the observations again with the target {HD\,202206}.
+There is also an inconsistency with the naming or ordering of the observations again with the target {HD\,202206}.
 The observation that was performed first in time is labelled with the observation name of {HD\,202206-3} in the fits header file, while the second and third observations are labelled -1 and -2 respectively.
 
 There could be two possible reasons for the single observation of {HD\,4747}.
-One is that only one observation was requested due to the very long orbital period of the target, although this would not fulfil the science goal.
-The other more likely reason is that these observations were preformed in service mode as a filler program and in the end there was no time to observe a second observation of {HD\,4747}.
-
-\textbf{Is there a reason for the two different filters?}
+The first reason could be that only one observation was requested due to the very long orbital period of the target, although this would not have fulfilled the science goal.
+The second and more likely reason is that these observations were performed in service mode, as a filler program, and there was no time to observe a second observation of {HD\,4747}.
 
 \begin{landscape}
     \input{./tables/direct_recovery/observation_table}
 \end{landscape}
 
-\textbf{The filters...using the {Ks} and the {Hx5e-2} filters, Why use the different filters???}
-
-All observations were reduced using the {DRACS} pipeline with the artefact corrections applied (see \cref{subsec:pipeline-selection}).
-Each observation was wavelength calibrated and corrected for telluric lines then corrected for the barycentric RV following  \cref{subsec:wavecalib,subsec:telluric_correction_application,subsec:barycentriccorrection}.
+All observations were reduced using the {DRACS} pipeline with the artefact corrections method applied (see \cref{subsec:pipeline-selection}).
+Each observation was then: wavelength calibrated using a synthetic telluric spectrum, corrected for telluric sorption, and then corrected for the barycentric RV following  \cref{subsec:wavecalib,subsec:telluric_correction_application,subsec:barycentriccorrection}.
 
 
-\subsection{Calculations using observed times}
+\subsection{Calculation of expected RV}
 \todo{I am not sure if this is the best location for this section.}
 {\red{}
-Before the differential subtraction method is presented, calculations can be preformed to estimate the RV of both components in each observations and the likely separation between the companions between observations.
-The time of each observation is combined with the orbital parameters from \cref{tab:orbitparams} to calculate the RV of the host star (\({RV}_{1}\) in \cref{tab:observations}) using \textbf{EQUATION XX}.
-For the companion, the mass (\Mtwo or \Mtwosini{}) is used alongside the stellar mass from \cref{tab:star_params} to calculate the RV of the companion using \todo{~equations for companion rv with the masses still included, include 180 degree angle phase change also}{\textbf{cref{}}}.
+    
+Before the differential subtraction method is presented, calculations are performed to estimate the RV of both components in each observations and the likely separation between the companions between observations.
+The time of each observation is used as input into \cref{eqn:rv_equation} along combined with the orbital parameters from \cref{tab:orbitparams} to calculate the expected RV of the host star. These values calculated are provided in \cref{tab:observations} as (\({RV}_{1}\).
+For the companion, the mass (\Mtwo or \Mtwosini{}) is used alongside the stellar mass from \cref{tab:star_params} to calculate the RV of the companion (see \cref{subsec:binary_mass_ratio}).
 This is given as \({RV}_{2}\) in \cref{tab:observations}.
-The estimated difference in RV between the host and companion for each observation is also computed as \({rv}_{2} = {RV}_{2}-{RV}_{1}\) although it will not be used until \cref{cha:model_comparison}.
+The RV difference in between the host and companion for each observation is also computed and provided as \({rv}_{2} = {RV}_{2}-{RV}_{1}\) although this will not be used until \cref{cha:model_comparison}.
 
-For these observations the maximum estimated RV separation between the two companion spectra in  \(\Delta RV\) is calculated following \cref{eqn:companion_difference} and provided in \cref{tab:estimated_rv}.
-This table also contains the estimated semi-major RV amplitude for the companion \(K_2\) and the phase coverage from the observations.
-The phase coverage is the fraction of the orbit covered between the observations for each target.
+For these observations the maximum estimated RV separation between the two companion spectra in \(\Delta RV\) is calculated following \cref{eqn:companion_difference} below and provided in \cref{tab:estimated_rv}.
+This table also contains the estimated semi-major RV amplitude for the companion \(K_2\) (from \cref{eqn:q_ratio_K2}) and the phase coverage of the observations.
+The phase coverage is the maximum fraction of the orbit covered between the observations for each target.
 For {HD\,4747} the \(\Delta RV\) and phase coverage values are missing due to the single observation.
 }
 
 \input{tables/direct_recovery/estimated_rv}
 %\input{tables/old/flux_calculations} % This is the old table.
 
-The full orbital solution for the components along with the times of observations are provided later in \cref{sec:orbtial_diagrams}.
+The full orbital solution for the components along with the times of observations are displayed later in \cref{sec:orbtial_diagrams}.
 
 
 \section{Direct Subtraction Method}
 \label{sec:direct-subtraction}
-Here the direct subtraction method used is presented, which is similar to previous works~\citep{ferluga_separating_1997, kostogryz_spectral_2013}.
+Here the direct subtraction method used is presented. 
+The basic premise is to take two high resolution spectra of a binary system at separate phases, transform them to the rest frame of the star and take the difference to remove the spectrum of the host star, leaving behind a residual comprised of difference of two companion spectra with different Doppler shifts.
+Similar techniques originally developed to separating binary stars ~\citep{ferluga_separating_1997} and has been used for a M-dwarf with a low-mass companion \citep[e.g.][]{kostogryz_spectral_2013}.
+
 Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately the spectra of the observed targets are assumed to be composed of two spectral components:
 a bright host star blended with the spectrum of a faint companion.
-The spectrum received from the host-companion pair is given by the superposition of two spectral components (\(J_{1}\), \(J_{2}\)):
+The spectrum received from the host-companion pair is given by the superposition of two spectral components (\(\textrm{J}_{1}\), \(\textrm{J}_{2}\)):
 \begin{equation}
 \textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2}),
 \end{equation}
@@ -180,9 +169,9 @@ This can be shifted into the rest frame of the host star by applying the shift \
 \textrm{I}(\lambda + v_{1}) = \textrm{J}_{1}(\lambda) + \textrm{J}_{2}(\lambda - v_{2} + v_{1}).
 \end{equation}
 
-To analyse \(J_2\), the spectral component of interest, the component from the host needs to be carefully removed.
+To analyse \(\textrm{J}_2\), the spectral component of interest, the component from the host needs to be carefully removed.
 If two observations of the same target are observed, denoted with subscripts \(a\) and \(b\), there will be relative motion between the components due to the orbit.
-Assuming that the stellar spectra do not change over time (\(J_{1a} = J_{2a}\)) and each spectrum can be individually Doppler shifted to the rest frame of the host star \(J_1{\lambda}\), then the spectrum of the host star (\(\textrm{J}_{1}\)) can be removed though subtraction of the two observations.
+Assuming that the stellar spectra do not change over time\footnote{\citep{kostogryz_spectral_2013} find the stellar activity residual is smaller than the companion differential flux.} (\(\textrm{J}_{1a} = \textrm{J}_{2a}\)) and each spectrum can be individually Doppler shifted to the rest frame of the host star \(\textrm{J}_{1}(\lambda)\), then the spectrum of the host star can be removed though subtraction of the two observations.
 Mutually cancelling the host component leaves two components of the companion subtracted from each other, with a relative Doppler shift between them.
 \begin{align}
 S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
@@ -208,8 +197,7 @@ $J(\lambda) = 1- D \cdot\exp^{{-\pi {(\lambda - \lambda_0)}^2} / {{W}^{2}}}$:
 \end{equation}
 where $\lambda_0$, $D$, and $W$ are the central wavelength, depth and equivalent width of the Gaussian line, and $k=\Delta {RV}_2 $ is the shift between the two companion spectra.
 
-
-From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the {RV} amplitudes of the host and companion are related through the mass ratio, \(q\), while having an opposite sign\footnote{The opposite sign arises from a \(180^\circ\) difference in the angle of periapsis, \(\omega\), for the companion.}:
+From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the {RV} amplitudes of the host and companion (ignoring the system velocity $gamma$) are related through the mass ratio, \(q\), while having an opposite sign\footnote{The opposite sign arises from a \(180^\circ\) difference in the angle of periapsis, \(\omega\), for the companion.} (see \cref{subsec:binary_mass_ratio}): \todo{check it is in this chapter}
 \begin{align}
 v_{2} &= -q * v_{1} \label{eqn:q_relation}
 \end{align}
@@ -221,7 +209,7 @@ We can simplify \cref{eqn:companion_difference} by expressing it in terms of the
 &= (1 + q)(v_{1a} - v_{1b}). \label{eqn:companion_difference_simplified}
 \end{align}
 
-If the \(\Delta {RV}_2\) between the companion spectra is able to be derived from the s-profile~\citep[see][]{ferluga_separating_1997} then the mass ratio of the system, \(q\), can be determined, thereby constraining the mass of the companion.
+If the \(\Delta {RV}_2\) between the companion spectra is able to be constrained or derived from the s-profile~\citep[see][]{ferluga_separating_1997} then the mass ratio of the system, \(q\), can be determined, thereby constraining the mass of the companion.
 
 The values \(v_{1a}\) and \(v_{1b}\) are radial velocity of the host components.
 The host's RV are calculated using the \cref{eqn:rv_equation} with the orbital parameters from the literature and provided in \cref{tab:orbitparams}.
@@ -229,30 +217,37 @@ These are used to shift each spectrum into the rest frame of the host star to mu
 These components can also be determined directly from the spectrum by cross-correlating the observed spectrum with a stellar template of the host and gave results in reasonable agreement.
 There should be checks for consistency between \(v_{1a}\), \(v_{1b}\) and how well the host component is removed in the s-profile.
 
-\textbf{If v1a and v1b are incorrect what will happen to q?}
-
-{\red{} put elsewhere: \cref{eqn:q_relation} was used to calculate the expected companion {RV} for each observation in \cref{tab:observations}.}
-
 Example simulations?
 \missingfigure{simulated example of combined binary spectra, and the subtraction, with a clear companion visible }
 
-\textbf{\citet{kostogryz_spectral_2013} use a very similar method, choosing two observations from the extrema.
-They also preform a number of simulations regarding observing {CRIRES} spectra with different brown dwarfs.
-Figure out the flux ratio limit they get too???}
+\textbf{This method is very similar to \citet{kostogryz_spectral_2013}, which obtain two observations from the extrema of the RV curve of a M-dwarf with a low-mass companion.
+They also perform a number of simulations regarding observing {CRIRES} spectra with different brown dwarfs.
+Figure out the flux ratio limit they get too???}\todo{check result}
+
+It is necessary to have a consistent instrumental setup~\citep{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g.\ slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted.
+In these observations, the second observation of {HD\,202206} and fourth of {HD\,30501} were taken with different filters compared to the other observations.
+Therefore, these two observations could not be used for this differential analysis.
+As noted in~\citet{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
+
 
 \subsection{Results of spectral differential analysis}
 \label{subsec:differential_results}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\hsize]{figures/direct-recovery/differential.pdf}\\
+    \caption[Example of the spectral differential technique.]{Top: A reduced {CRIRES} observation of {HD\,30501} (blue) for detector 1 between 2112--2124\nm{} along with the {TAPAS} telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction.
+    Middle: The telluric corrected spectra.
+    Bottom: ({blue}) Differential spectra for {HD\,30501} between observations 1 and 3. ({orange} dashed) Simulated ``perfect'' differential using {PHOENIX-ACES} spectra with parameters \(\teff{}=2500\)\K{}, \logg{}=5.0, and \feh{}=0.0, with the same \(\Delta {RV}\) as the observations.
+    The shaded regions indicate where the telluric {green} and host star {blue} spectra are \(> 4\%\) deep.}
+    \label{fig:spectral_example}
+\end{figure}
+
+
 We applied the spectral differential procedure outlined above on the wavelength-calibrated and telluric-corrected {CRIRES} observations.
-The spectra were first Doppler shifted to the rest frame velocity of the system by applying a shift of \(-\gamma\).
-The differential subtraction method was then applied by shifting each spectra so that the host lines were at rest and then subtracting one from the other as described above.
+The barycentric corrected spectra were first Doppler shifted to the rest frame velocity of the system by applying a shift of \(-\gamma\).
+The differential subtraction method was then applied by shifting each spectra by $-{RV}_{1}$ so that the host lines were at rest and then subtracting one spectrum from the other as described above.
 
-It is necessary to have a consistent instrumental setup~\citep{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g.\ slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted.
-In our case, the second observation of {HD\,202206} and fourth of {HD\,30501} were taken with different filters compared to the other observations.
-Therefore, these two observations could not be used for this differential analysis.
-As noted in~\citet{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
-
-We performed the differential analysis for all targets but only show our most favourable case here, {HD\,30501}, because it is the second largest companion in our sample at 90~\Mjup{} and also has the second largest {RV} separation between observations.
 Although this is attempted on all targets only the most favourable case , {HD\,30501}, is shown in \cref{fig:spectral_example}. It is favourable because it is the second largest companion in the sample at 90~\Mjup{} but also has the second largest {RV} separation between observations.
 The top panel shows the reduced CRIRES spectrum of {HD 30501} from detector 1 without telluric correction. The telluric model is also shown in the top panel. The middle panel shows the CRIRES spectra corrected with the telluric model. 
 The differential spectra recovered for {HD\,30501} is shown at the bottom panel of \cref{fig:spectral_example}.
@@ -288,17 +283,6 @@ As the companion spectra are already faint (with a flux ratio at the percent lev
 When the \(\Delta {RV}\) of the companion is smaller than the {\fwhm} of a line there is a mutual subtraction of the companion spectra, diminishing the detected amplitude of the differential signal, and removing the ability to detect the companions using this method.
 Observations need to be spaced further apart in time/phase to achieve a larger \(\Delta {RV}\) separation and increase the amplitude of the differential.
 Of course once there is a separation there will be complex interactions between neighbouring lines that need to be accounted for.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\hsize]{figures/direct-recovery/differential.pdf}\\
-    \caption[Example of the spectral differential technique.]{Top: A reduced {CRIRES} observation of {HD\,30501} (blue) for detector 1 between 2\,112--2\,124\nm{} along with the {TAPAS} telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction.
-        Middle: The telluric corrected spectra.
-        Bottom: ({blue}) Differential spectra for {HD\,30501} between observations 1 and 3. ({orange} dashed) Simulated ``perfect'' differential using {PHOENIX-ACES} spectra with parameters \(\teff{}=2\,500\)\K{}, \logg{}=5.0, and \feh{}=0.0, with the same \(\Delta {RV}\) as the observations.
-        The shaded regions indicate where the telluric {green} and host star {blue} spectra are \(> 4\%\) deep.}
-    \label{fig:spectral_example}
-\end{figure}
-
 
 \citet{ferluga_separating_1997} provide a spectral reconstruction method to recover the companion spectrum from the s-profile, however this was not appropriate as there was insufficient separation.
 
