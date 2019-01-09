@@ -3,12 +3,13 @@
 \section{Exoplanet detection methods}
 \label{sec:detection_methods}
 There are several detection methods used to build up the picture of the current understanding of exoplanet candidates.
-The methods are often complementary, in that they are sensitive to different parameter spaces and are able to contribute different exoplanet properties.
+The different detection methods are often complementary, in that they are sensitive to different parameter spaces and are able to contribute different exoplanet properties, or detect different classes of exoplanet.
 The simplest example is that planetary mass and radius are obtained from the radial velocity and transit methods separately.
+Also the transit and radial velocity methods are both sensitive to large planets close to the star however, the direct imaging technique cannot see planets too close to the star, as the planets image is contaminated by the stellar image and speckles.
+
 The exoplanet detection rates for different methods since 1995 are shown in \cref{fig:detection_year_method}.
 The detection rates among different methods are not uniform, with the transit method having the majority of detections due to the use of the Kepler space telescope~\citep{borucki_finding_2008}.
 The radial velocity method has a fairly consistent detection rate, while direct imaging and other methods have only made a small contribution to the total number of detections so far.
-
 Details about the various main detection methods are provided in the following sections.
 
 \begin{figure}
@@ -21,15 +22,15 @@ Details about the various main detection methods are provided in the following s
 \subsection{Radial Velocimetry}
 \label{subsec:radial_velocimetry}
 This technique measures the radial velocity\footnote{Velocity projected along line of sight.} (RV) of the star by analysing the relative Doppler shift of its spectral lines due to the gravitational interaction with a companion.
-As the star and companion orbit around their common centre of mass (barycentre) the spectrum of the star periodically oscillates due to the change in relative motion to the observer as depicted in \cref{fig:rvdiagram-mayor} (left).
+As the star and companion orbit around their common centre of mass (barycentre) the spectrum of the star periodically oscillates, with the orbital period of the planet, due to the change in relative motion to the observer as depicted in \cref{fig:rvdiagram-mayor} (left).
 
 \begin{figure}
     \centering
     \includegraphics[height=5cm]{./figures/introduction/RV_Diagram}
     \includegraphics[height=5cm]{./figures/introduction/PhaseFolded_51Pegb_Mayor_et_al_1995}
     \caption[The RV method.]{Left: Diagram of {RV} method.
-        Right: {RV} variation for the detection of {51 Pegasi}.
-        Credit:~\citet{mayor_jupitermass_1995}}.
+    Right: {RV} variation for the detection of {51 Pegasi}.
+    Credit:~\citet{mayor_jupitermass_1995}}.
     \label{fig:rvdiagram-mayor}
 \end{figure}
 
@@ -62,19 +63,20 @@ Also since $K \propto P^{-1/3}$ the amplitude is greater for short period close 
 
 The RV method kick-started the exoplanet discipline by detecting the first exoplanet around a solar-type star {51 Pegasi}~\citep{mayor_jupitermass_1995}.
 The RV curve for {51 Pegasi} is shown on the right side of \cref{fig:rvdiagram-mayor}.
-The first discoveries were surprising as Jupiter mass planets in short period orbits\footnote{\Mpsini=0.47\,\Mjup{} orbiting at 0.05\AU{} for {51 Pegasi}} were unlike anything in our Solar System.
+The first discoveries were surprising as Jupiter mass planets in short period orbits\footnote{\Mpsini=0.47\,\Mjup{} orbiting at 0.05\AU{} for {51 Pegasi}} were unlike anything in our Solar System and not predicted by standard plant formation theories.
 Several exoplanet discoveries followed in quick succession~\citep[e.g.][]{butler_planet_1996, marcy_planetary_1996} with many confirming the existence of the type of planets now referred to as ``hot-Jupiters''~\citep{butler_three_1997, charbonneau_detection_2000}.
 
 The radial velocity amplitudes of the first exoplanets detected were around 60\mps{} while
-the radial velocity signal of the Earth in a one year orbit around a solar-type star however is 8.9\cmps{}~\citep{figueira_radial_2010}.
-Specially constructed spectrographs, such as HARPS~\citep{mayor_setting_2003} along with improved reduction techniques~\citep{lovis_new_2007} pushed this mass detection limit down to the \mps{} level.
+the radial velocity signal of the Earth in a one year orbit around a solar-type star however is 8.9\cmps{}~\citep[e.g.][]{figueira_radial_2010}.
+Dedicated spectrographs, such as HARPS~\citep{mayor_setting_2003} along with improved reduction techniques~\citep{lovis_new_2007} pushed this mass detection limit down to the \mps{} level.
 ESPRESSO~\citep{pepe_espresso_2014, megevand_espresso_2014} is the next generation high precision optical spectrograph aiming to push the detection limits to 10\cmps, to detect an Earth twin.
 The gradual decrease in measured mass of exoplanets over time is shown in \cref{fig:exoplaneteuyearmass}.
 The different symbols indicate the detection method, not necessarily the method used to measure the exoplanet mass.
 
 Most {RV} detection has been performed using optical spectrographs.
 However, as the amplitude of {RV} signal is inversely proportional to the mass of the star (RV $\propto \Mstar^{-2/3}$), there are dedicated surveys focusing on smaller mass M-dwarf stars~\citep[e.g.][]{reiners_carmenes_2018}.
-M-dwarfs are inherently cooler and thus emit a majority of their stellar output in the near-infrared. New dedicated high-resolution \nir{} spectrographs have and are being designed and implemented to meet this demand e.g. {CARMENES}, {NIRPS}, {SPIRou}, {CRIRES+}.
+M-dwarfs are inherently cooler and thus emit a majority of their stellar output in the near-infrared.
+New dedicated high-resolution \nir{} spectrographs have and are being designed and implemented to meet this demand e.g.\ {CARMENES}, {NIRPS}, {SPIRou}, {CRIRES+}.
 
 
 \subsection{Transit methods}
@@ -85,7 +87,7 @@ The geometric probability, $P$, that a exoplanet transits is estimated by
 \begin{equation}
 P \approx \frac{\Rstar}{a (1-{e}^{2})},
 \end{equation}
-where \(e\) is the eccentricity of the orbit, $\Rstar$ is the star radii and \(a\) is the semi-major axis of the orbit (star-planet distance)~\citep{barnes_effects_2007}.
+where \(e\) is the eccentricity of the orbit, $\Rstar$ is the star radii and \(a\) is the semi-major axis of the orbit (star-planet distance)~\citep[e.g.][]{barnes_effects_2007}.
 The probability of transit increases with the size of the star but decreases with distance to the star.
 
 The drop in stellar brightness during the transit allows the measurement of the planet/star radius ratio:
@@ -129,13 +131,13 @@ In a misaligned case a spot would only be observed in one transit.
     \includegraphics[height=5cm]{./figures/introduction/SDO_2012_Venus_Transit.jpg}
     \includegraphics[height=5cm]{figures/introduction/sanchisojedafig1-crop.pdf}
     \caption[Transit of Venus and successive transit corssings.]{Left: Image from the 2012 transit of Venus obtained from the Solar Dynamics Observatory satellite.
-        Venus is the dark circle in the top left of the Sun.
-        Limb darkening is observed as the change in colour/brightness from white to red near the edge.
-        Several sunspots are also observed on the surface of the Sun.
-        Credit: NASA/SDO, HMIR.
-        Right: Simulation of 4 successive transits crossing a star spot with the orbit aligned with the stellar rotation.
-        The stellar rotation is 1/10 the orbital period.
-        Adpated from~\citet[][Figure~1]{sanchis-ojeda_starspots_2013}.}
+    Venus is the dark circle in the top left of the Sun.
+    Limb darkening is observed as the change in colour/brightness from white to red near the edge.
+    Several sunspots are also observed on the surface of the Sun.
+    Credit: {NASA}/{SDO}, {HMIR}.
+    Right: Simulation of 4 successive transits crossing a star spot with the orbit aligned with the stellar rotation.
+    The stellar rotation is 1/10 the orbital period.
+    Adapted from~\citet[][Figure~1]{sanchis-ojeda_starspots_2013}.}
     \label{fig:transit_venus_transit_alignment}
 \end{figure}
 
