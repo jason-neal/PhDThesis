@@ -12,14 +12,16 @@ The spectrum recorded across the four detectors is created from a single dispers
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{./figures/appendix/combined_wav_fit}
-    \caption[Multi-detector fit and difference to individual fits.]{Pixel-wavelength calibration points for each detector are given by the different markers. The quadratic fit of each individual detector is given with the same corresponding colour. A combined quadratic fit, using fixed detector gaps is shown in black.}
+    \includegraphics[width=0.7\linewidth]{./figures/appendix/combined_wav_fit}
+    \caption[Multi-detector fit and difference to individual fits.]{Pixel-wavelength calibration points for each detector are given by the different markers.
+    The quadratic fit of each individual detector is given with the same corresponding colour.
+    A combined quadratic fit, using fixed detector gaps is shown in black.}
     \label{fig:multidectorfit}
 \end{figure}
 
-
 \begin{figure}
-    \includegraphics[width=0.75\linewidth]{./figures/appendix/difference_combined_wav_fit}
+    \centering
+    \includegraphics[width=0.7\linewidth]{./figures/appendix/difference_combined_wav_fit}
     \caption[Difference of multi-detector combined fit to the individual calibration mappings.]{Wavelength difference of individual quadratic fits to the quadratic fit combined all four detectors and fixed gaps.}
     \label{fig:multidectorfitdiff}
 \end{figure}
@@ -39,21 +41,21 @@ gap_1 + gap_2 + gap_3,      & 3072=<pxl<4096
 The pixel widths of these gaps can be fixed to known values (e.g.\ 282, 278, and 275 pixels~\citep{brogi_rotation_2016}) or allowed to vary and included in the fitting process.
 
 
-\subsection{Comparing variable gaps}
+\section{Comparing variable gaps}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\linewidth]{./figures/appendix/multidetecot_param_fit}
-    \caption[Multi-detector parameter correlations.]{Corner plot of emcee combined fitting.
-    The elliptical point clouds indicate there are correlations between parameters.}
-    \label{fig:multidetecotparamfit}
-\end{figure}
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.7\linewidth]{./figures/appendix/multidetecot_param_fit}
+%    \caption[Multi-detector parameter correlations.]{Corner plot of emcee combined fitting.
+%    The elliptical point clouds indicate there are correlations between parameters.}
+%    \label{fig:multidetecotparamfit}
+%\end{figure}
 
 This example does not include the height on the detectors the spectrum falls or any skewness of the spectrum to pixel rows or any miss-alignment between the detectors. All which could have some affect on a global wavelength calibration.
 
 \cref{tab:example_calibration_parameters} shows the fit parameters obtained as well as some fit statistics for quadratic and cubic fitting, comparing the full combined fit with fixed or variable gaps. 
 
-\cref{fig:quadcornerplots} also show the distribution of the fit parameters for the quadratic fit with fixed (left) and variable gaps (right) obtained using the \textit{emcee} python package\footnote\href{http://dfm.io/emcee/current/}{http://dfm.io/emcee/current/}}, which performs a Markov chain Monte Carlo simulation.
+\cref{fig:quadcornerplots} also show the distribution of the fit parameters for the quadratic fit with fixed (left) and variable gaps (right) obtained using the \textit{emcee} python package\footnote{\href{http://dfm.io/emcee/current/}{http://dfm.io/emcee/current/}}, which performs a Markov chain Monte Carlo simulation.
 The cloud of points reveal the correlations between different parameters.
 For instance the narrow diagonals indicate a strong correlation between the parameters given on the axis.
 There are strong correlations between the quadratic parameters, {q, m, b} with $m$ being negatively correlated to all other parameters.
@@ -67,9 +69,12 @@ They plot on the left with fix detector gaps, is almost identical to the top 3 r
 \begin{figure}
     \centering
     \begin{tabular}{c c}
-    \includegraphics[width=0.7\linewidth]{figures/appendix/fixed_quad_corner} & \includegraphics[width=0.7\linewidth]{figures/appendix/variable_quad_corner} \\
+    \includegraphics[width=0.4\linewidth]{figures/appendix/fixed_quad_corner} & \includegraphics[width=0.45\linewidth]{figures/appendix/variable_quad_corner} \\
     \end{tabular}
-    \caption{}
+    \caption[Multi-detector calibration parameter correlations.]{Corner plots of combined fitting of four detectors.
+    The elliptical point clouds indicate there are correlations between parameters.
+    (left) Combined fit with fixed detector gaps.
+    (right) Combined fit with variable detector gaps.}
     \label{fig:quadcornerplots}
 \end{figure}
 
