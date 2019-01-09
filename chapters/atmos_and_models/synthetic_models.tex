@@ -9,7 +9,7 @@ There is an ever evolving effort to improve these stellar models and synthetic s
 In this work extensive use of the {PHOENIX-ACES} models is made with some experimentation with the {BT-Settl} models.
 A collection of several theoretical stellar spectral libraries can be found at the Spanish Virtual Observatory \href{http://svo2.cab.inta-csic.es/theory/newov/index.php}{Theoretical Spectra Web Server}.
 
-The~\citet{kurucz_model_1979} models are popular synthetic models for stars ranging between G-O type with effective temperatures between 5\,500--50\,000\K{}.
+The~\citet{kurucz_model_1979} models are popular synthetic models for stars ranging between G-O type with effective temperatures between 5500--50\,000\K{}.
 For cooler stars, M-dwarfs and even Brown Dwarfs the stellar models are based on the {PHOENIX} code~\citep[e.g.][]{hauschildt_parallel_1997}.
 Initially created for studying the ejecta of Novae it was \emph{Extended} to low mass stars and Brown Dwarfs~\citep{allard_model_1995}.
 The {PHOENIX} modelling code has evolved over time incorporating new physical models to better explain the atmospheres.
@@ -53,7 +53,7 @@ The spectral sampling of the grid are $R \approx 50\,000$ for 300--2500\nm, cove
 \input{./tables/atmos_and_models/phoenixparameters}
 
 The lower temperature limits of this library limits the stellar mass to the high mass BDs.
-For example a \(\teff{}=2\,300\)\K{} corresponds to a {BD} with \(\textrm{M}\sim84\)\Mjup{} at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models, (see \cref{sec:evolutionary_models}).
+For example a \(\teff{}=2300\)\K{} corresponds to a {BD} with \(\textrm{M}\sim84\)\Mjup{} at 5\Gyr{} from the~\citet{baraffe_evolutionary_2003} evolutionary models, (see \cref{sec:evolutionary_models}).
 
 
 While using the {PHOENIX-ACES} models a discontinuity in the stellar flux is observed between 5000\K{} and 5100\K{}.
@@ -63,7 +63,7 @@ This slightly impacts the use of these models while attempting \textchisquared{}
 The bottom panel shows the flux difference between models separated in temperatures of 100\K{} (one grid step).
 The difference between 5000 and 5100\K{} (green) is offset from the other model differences.
 This is potentially caused by the change in treatment of the model atmospheres at 5000\K{}.
-For instance~\citet{husser_new_2013} mention that the reference wavelength defining the mean optical depth grid, is fixed to $\lambda_{\tau}=1\,200$\nm{} for \Teff{}>5000\K{} and $\lambda_{\tau}=500$\nm{} for hotter stars in the {PHOENIX-ACES} modelling.
+For instance~\citet{husser_new_2013} mention that the reference wavelength defining the mean optical depth grid, is fixed to $\lambda_{\tau}=1200$\nm{} for \Teff{}>5000\K{} and $\lambda_{\tau}=500$\nm{} for hotter stars in the {PHOENIX-ACES} modelling.
 
 \begin{figure}
     \centering

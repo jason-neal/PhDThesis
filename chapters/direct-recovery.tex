@@ -253,16 +253,19 @@ Therefore, these two observations could not be used for this differential analys
 As noted in~\citet{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
 
 We performed the differential analysis for all targets but only show our most favourable case here, {HD\,30501}, because it is the second largest companion in our sample at 90~\Mjup{} and also has the second largest {RV} separation between observations.
+Although this is attempted on all targets only the most favourable case , {HD\,30501}, is shown in \cref{fig:spectral_example}. It is favourable because it is the second largest companion in the sample at 90~\Mjup{} but also has the second largest {RV} separation between observations.
+The top panel shows the reduced CRIRES spectrum of {HD 30501} from detector 1 without telluric correction. The telluric model is also shown in the top panel. The middle panel shows the CRIRES spectra corrected with the telluric model. 
 The differential spectra recovered for {HD\,30501} is shown at the bottom panel of \cref{fig:spectral_example}.
-The presence of deep (\(>4\%\)) stellar and telluric lines in the original spectrum is shaded by the blue and green regions respectively.
-This indicates that the features of the differential spectrum near these shaded regions are likely due to imperfect telluric correction and host mutual cancellation.
+The shaded regions indicate where the telluric {green} and host star {blue} spectra are \(> 4\%\) deep.
+This indicates that the features of the differential spectrum near these shaded regions are likely due to imperfect telluric correction and host cancellation.
 
-The mutual cancellation of the stellar host works well for the \(\sim40\%\) deep line near 2\,117\nm{}, being completely removed, but it does not do so well for the smaller \(\sim10\%\) deep line around 2\,121.5\nm{}.
-The residual for the large \(\sim40\%\) deep telluric line near 2\,118.5\nm{} is quite prominent.
-There is also a wider residual due to three neighbouring lines \(\sim10\%\) deep around 2\,120\nm{} which cause features in the differential spectrum.
-One possible explanation is that the continuum normalization near 2\,120\nm{} was influenced by this grouping of lines.
+The mutual cancellation of the stellar host seems to work well for the \(\sim40\%\) deep line near 2117\nm{}, with the line being completely removed, but it does not do so well for the smaller \(\sim10\%\) deep line around 2121.5\nm{}.
+The residual for the large \(\sim40\%\) deep telluric line near 2118.5\nm{} is quite prominent.
+Around 2120\nm{} there is wide negative residual around three neighbouring telluric lines, \(\sim10\%\) deep.
+One possible explanation for this is that the continuum normalization near 2120\nm{} was influenced by this grouping of lines.
 
-To understand the observed differential signal we simulated a differential spectrum of {HD\,30501} using a synthetic {PHOENIX-ACES} spectra with parameters \(\teff{}=2\,500\)\K{}, \logg{}=5.0, and \feh{}=0.0, with a {RV} offset estimated from the observation times.
+
+To understand the observed differential signal we simulated a differential spectrum of {HD\,30501} using a synthetic {PHOENIX-ACES} spectra with parameters \(\teff{}=2500\)\K{}, \logg{}=5.0, and \feh{}=0.0, with a {RV} offset estimated from the observation times.
 These parameters represent an estimated companion \Teff{} with the metallicity and \logg{} similar to the host (closest grid model).
 The model spectra were convolved to \(\R=50\,000\), continuum normalized and scaled by the estimated flux ratio of the companion.
 We do not include any synthetic host or telluric spectra and as such simulate the differential result of a ``perfect'' host cancellation with no telluric contamination present.
@@ -346,8 +349,8 @@ This was however only discovered after attempting to apply the technique.
 
 \subsection{Relative differential amplitude}
 To investigate the differential subtraction under tiny \(\Delta RV\), the change in differential amplitude against variation in {RV} was explored.
-Simulations were performed creating a differential spectra for a range of \(\Delta {RV}\)s between \(\pm10\)\kmps{} using the same {PHOENIX-ACES} spectra for the companion of {HD\,30501} (\(\teff{}=2\,500\)\K{}, \logg{}=5.0, \feh{}=0.0) convolved to \(\R=50\,000\).
-These simulations were focus on the wavelength range 2\,110--2\,123\nm{}, corresponding to detector \#1 of the {CRIRES} observations.
+Simulations were performed creating a differential spectra for a range of \(\Delta {RV}\)s between \(\pm10\)\kmps{} using the same {PHOENIX-ACES} spectra for the companion of {HD\,30501} (\(\teff{}=2500\)\K{}, \logg{}=5.0, \feh{}=0.0) convolved to \(\R=50\,000\).
+These simulations were focus on the wavelength range 2110--2123\nm{}, corresponding to detector \#1 of the {CRIRES} observations.
 The differential spectra was created for each by taking the synthetic spectrum for the companion, Doppler shifting a copy of the spectrum and subtracting it from the original.
 At each {RV} step the maximum absolute differential amplitude (peak to peak) of the simulated differential spectrum observed was recorded.
 Again these simulations are performed assuming perfect telluric correction and removal of the host star by only considering the spectrum of the companion alone.
@@ -375,7 +378,7 @@ As the companion spectra are already faint and in combination with a host star a
     \centering
     \includegraphics[width=0.8\textwidth]{figures/direct-recovery/rv_diff_final.pdf}
     \caption[Simulated relative amplitude of differntial spectrum.]{Simulated relative amplitude of differential spectra at different companion \(\Delta RV\) separations revealing the diminished amplitude at very small orbital separations.
-    The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a {PHOENIX-ACES} spectrum with \(\teff{}=2500\)\K{}, \logg{}=5.0, \feh{}=0.0 in the wavelength region 2\,110--2\,123\nm{}.
+    The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a {PHOENIX-ACES} spectrum with \(\teff{}=2500\)\K{}, \logg{}=5.0, \feh{}=0.0 in the wavelength region 2110--2123\nm{}.
     The maximum difference is normalized by the median amplitude between \(\pm7\)--10\kmps{}, representing a complete line separation.
     The orange (dashed) and green (dot-dashed) lines represent the relative amplitude of a spectrum differential for a spectrum containing a single Gaussian or Lorentzian absorption line respectively, each with a unitary amplitude and a \(\rm {\fwhm} = \lambda / R\).
     The solid vertical lines indicate the estimated companion \(\Delta {RV}\) in these observations while the dashed vertical lines indicate the {RV} corresponding to the {\fwhm} at this wavelength and resolution.}
@@ -436,7 +439,7 @@ The candidate selected as the best target to investigate was {HD\,219828} which 
 Based on the spectra of a cool brown dwarfs in the \mir{}, and the detector configuration available at the time, the best option for the observations was the low resolution mode covering the wavelength region 8--13\um{}.
 This wavelength region would have encompassed the \ce{NH4} signature at 10.5\um{} and the edge of a \ce{CH4} band at 7.7\um{}, both large features in the BD \mir{} spectrum.
 
-After performing flux ratio calculations between the host and companion using the~\citet{baraffe_evolutionary_2003} models (see \cref{subsec:compaion_flux_ratio}) and considering the performance of the {VISIR} instrument and the exposure time calculator it was determined that observations with {VISIR} to achieve a \snr{} of 100 were infeasible, requiring 1\,000's of hours of observing time to achieve the necessary signal-to-noise level to separate the companion from a blended spectra.
+After performing flux ratio calculations between the host and companion using the~\citet{baraffe_evolutionary_2003} models (see \cref{subsec:compaion_flux_ratio}) and considering the performance of the {VISIR} instrument and the exposure time calculator it was determined that observations with {VISIR} to achieve a \snr{} of 100 were infeasible, requiring 1000's of hours of observing time to achieve the necessary signal-to-noise level to separate the companion from a blended spectra.
 For a different target, {HD\,189733} it was calculated that with an exposure time 2 hours the \snr{} of the host and companion would be 85 and 4 respectively, using the low resolution spectroscopy mode.
 As such the direct separation approach was not explored further in the \mir{}.
 
