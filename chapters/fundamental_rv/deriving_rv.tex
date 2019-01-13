@@ -20,8 +20,8 @@ There is a \textit{reference plane}, tangential to the celestial sphere, that cu
 The \textit{ascending node} is the point on the plane at which the body crosses the reference plane moving away from the observer, and is defined relative to the vernal reference point, \Aries, with the \textit{longitude of the ascending node}, $\Omega$, setting the orientation.
 
 To fully parametrize a Keplerian orbit requires seven parameters.
-These are: $a$ the semi-major axis of the elliptical orbit, $e$ the orbital eccentricity, $P$ orbital period, $T_0$ the \emph{time of periastron passage}, $i$ orbital inclination relative to the line of sight, $\omega$ the \emph{argument of periastron}, and $\Omega$.
-From RV measurements alone all of these parameters except for $i$ and $\Omega$ can be determined.
+These are: $a$ the semi-major axis of the elliptical orbit, $e$ the orbital eccentricity, $P$ orbital period, $T_0$ the \emph{time of periastron passage}, $i$ orbital inclination relative to the line of sight, \(\omega\) the \emph{argument of periastron}, and $\Omega$.
+From {RV} measurements alone all of these parameters except for $i$ and $\Omega$ can be determined.
 $\Omega$ is irrelevant for determining the orbital mass, but inclination $i$ is very important as it affects the projection of the velocity towards the observer.
 
 With a two body system with masses \Mone{} and \Mtwo{}, under the force of gravity, their orbits are elliptical orbits about their barycentre mass, as seen in \cref{fig:eclipesorbit}.
@@ -59,8 +59,8 @@ The component of $r$ along the line of sight (from \cref{fig:orbitdiagram}) is:
 \begin{equation}
     r_z =  r_1 \sin{(\nu_1(t) + \omega)}\sin{i} + \gamma \label{eqn:r_z}
 \end{equation}
-where $\gamma$ is the mean velocity of the barycentre, and the subscripts `1' and `2' refer to the star and planet (or companion star), respectively.
-Differentiating \cref{eqn:r_z} and substituting in \cref{eqn:kepler_area} leaves the common RV equation:
+where \(\gamma\) is the mean velocity of the barycentre, and the subscripts `1' and `2' refer to the star and planet (or companion star), respectively.
+Differentiating \cref{eqn:r_z} and substituting in \cref{eqn:kepler_area} leaves the common {RV} equation:
 \begin{align}
     {RV} = \dot{r}_z &= \frac{2 \pi a_1 \sin{i}}{P{(\oneminusetwo)}^{1/2}} [\cos{(\nu(t) + \omega)} + e\cos{\omega}] + \gamma  \label{eqn:rv_equation} \\
      &= \kone [\cos{(\nu(t) + \omega)} + e\cos{\omega}] + \gamma,
@@ -93,23 +93,23 @@ For a planetary companion the approximation $\mtwo \ll \mone$ can be made and fo
     \kone = \frac{28.4}{\sqrt{\oneminusetwo}} \frac{\mtwosini}{\mjup} {\left(\frac{\mone}{\modot}\right)}^{-2/3} {\left(\frac{P}{1 \si{yr}}\right)}^{-1/3}  [\mps] \label{eqn:k_relation}
 \end{equation}
 
-This can be used to calculate the RV amplitude created by different mass planets in various circular orbits as given in \cref{tab:rv_amplitudes}. The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}, which is the level of precision required to detect an Earth mass planet in a one year orbit round a Sun-like star.
+This can be used to calculate the {RV} amplitude created by different mass planets in various circular orbits as given in \cref{tab:rv_amplitudes}. The recently commissioned ESPRESSO optical spectrograph is designed with the goal of achieving 10\cmps{}, which is the level of precision required to detect an Earth mass planet in a one year orbit round a Sun-like star.
 
 \input{./tables/fundamental_rv/rv_semi_amplitudes}
 
 If there is more than one companion/planet then there will be a gravitational influence between each other and their orbits become non-Keplerian, i.e.\ an N-body problem~\citep[e.g.][]{chenciner_three_2007}.
-Assuming that the gravitational influence between companions is negligible, the RV signal observed in the host star can be treated as just a sum of tugs from each companion.
+Assuming that the gravitational influence between companions is negligible, the {RV} signal observed in the host star can be treated as just a sum of tugs from each companion.
 For the two instances in this work where the target star has two companions, the companions will be treated separately, as if they were alone.
 
 
 \subsection{Binary mass ratio}
 \label{subsec:binary_mass_ratio}
-In the above equation RV of the companion has not yet been addressed.
-\cref{eqn:rv_equation} above is the RV of the star in an elliptical orbit around the centre of mass between it and its companion. Similarly the elliptical orbit of the planet around the centre of mass is given by:
+In the above equation {RV} of the companion has not yet been addressed.
+\cref{eqn:rv_equation} above is the {RV} of the star in an elliptical orbit around the centre of mass between it and its companion. Similarly the elliptical orbit of the planet around the centre of mass is given by:
 \begin{equation}
     {RV_{2}} = \ktwo [\cos{(\nu(t) + \omega_{2})} + e\cos{(\omega_{2})}] + \gamma, \label{eqn:rv2_equation}
 \end{equation}
-where \(\omega_{2} = \omega + 180^\circ\) due to the phase difference between the two components, resulting in the relative velocity (ignoring $\gamma$) of the companion being opposite the star and:
+where \(\omega_{2} = \omega + 180^\circ\) due to the phase difference between the two components, resulting in the relative velocity (ignoring \(\gamma\)) of the companion being opposite the star and:
 \begin{equation}
     \ktwo  = {\left(  \frac{2 \pi G}{P{(\oneminusetwo)}^{3/2}} \right)}^{1/3} \frac{\mone \sin{i}}{{(\mone + \mtwo)}^{2/3}} = \frac{2 \pi a_2 \sin{i}}{P{(\oneminusetwo)}^{1/2}} \label{eqn:ktwo}
 \end{equation}
@@ -119,8 +119,8 @@ The orbits of the host and companion are directly related through the mass ratio
 q = \frac{\mtwo}{\mone} = \frac{\kone}{\ktwo} = \frac{RV_{1}}{RV_{2}} = \frac{r_2}{r_1} \label{eqn:q_ratio_K2}.
 \end{equation}
 
-Typically in exoplanet detections the companion (planet) is too faint to measure the planetary velocity. However in double lined spectroscopic binary the spectrum of both stars can be identified in the blended spectra and the RV of both star and companion can be measured and monitored over the orbit. With both velocities the mass ratio of the binary can be found. The individual masses however are still not determinable due to the inclination $\sin{i}$ of the orbit.
+Typically in exoplanet detections the companion (planet) is too faint to measure the planetary velocity. However in double lined spectroscopic binary the spectrum of both stars can be identified in the blended spectra and the {RV} of both star and companion can be measured and monitored over the orbit. With both velocities the mass ratio of the binary can be found. The individual masses however are still not determinable due to the inclination $\sin{i}$ of the orbit.
 
-In \cref{cha:direct_recovery} the detection of the faint spectra of known companions is attempted, in order to determine the velocity change of the companion and hence the mass ratio. To help with the analysis and simulations the known orbital parameters (see \cref{tab:orbitparams,tab:star_params}) are used along with the companion mass (\Mtwo{} or \Mtwosini{}) to predict or estimate the RV of the companion using \cref{eqn:q_ratio_K2,eqn:rv2_equation}.
+In \cref{cha:direct_recovery} the detection of the faint spectra of known companions is attempted, in order to determine the velocity change of the companion and hence the mass ratio. To help with the analysis and simulations the known orbital parameters (see \cref{tab:orbitparams,tab:star_params}) are used along with the companion mass (\Mtwo{} or \Mtwosini{}) to predict or estimate the {RV} of the companion using \cref{eqn:q_ratio_K2,eqn:rv2_equation}.
 Note, that for the targets in which only the minimum mass (\Mtwosini) is known and used in the mass ratio, this will result in the maximum {RV} semi amplitude for the companion.
 The estimated \Ktwo{} for each companion is provided in \cref{tab:estimated_rv} while the {RV} for both components at the time of each observation is provided in \cref{tab:observations}.

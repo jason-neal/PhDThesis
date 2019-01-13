@@ -28,7 +28,7 @@ As the star and companion orbit around their common centre of mass (barycentre) 
     \centering
     \includegraphics[height=5cm]{./figures/introduction/RV_Diagram}
     \includegraphics[height=5cm]{./figures/introduction/PhaseFolded_51Pegb_Mayor_et_al_1995}
-    \caption[The RV method.]{Left: Diagram of {RV} method.
+    \caption[The {RV} method.]{Left: Diagram of {RV} method.
     Right: {RV} variation for the detection of {51 Pegasi}.
     Credit:~\citet{mayor_jupitermass_1995}}.
     \label{fig:rvdiagram-mayor}
@@ -39,7 +39,7 @@ The radial velocity variation, directed along the line of sight, is given by:
 \label{eqn:rv_equation_intro}
 {RV} = \gamma + K [\cos{(\nu(t, P, T_0, e) + \omega)} + e\cos{(\omega)}]
 \end{equation}
-where $\gamma$ is constant barycentre velocity of the system relative to the Sun\footnote{Earth's barycentre motion is well known and removed.}, \(K\) is the velocity semi-amplitude, \(e\) the eccentricity, and \(\omega\) is the argument of periastron.
+where \(\gamma\) is constant barycentre velocity of the system relative to the Sun\footnote{Earth's barycentre motion is well known and removed.}, \(K\) is the velocity semi-amplitude, \(e\) the eccentricity, and \(\omega\) is the argument of periastron.
 The true anomaly \(\nu\), is a function of time \(t\), orbital period \(P\), and the time of periastron passage \(T_0\), and eccentricity.
 
 The velocity amplitude $K$ of a star of mass $\Mstar$ due to a companion with mass $\Mp$ with orbital period $P$, eccentricity $e$, and inclination\footnote{Relative to a plane that is tangential to the celestial sphere, $i=90$ is edge on.} $i$ is~\citep[e.g.][]{cumming_lick_1999}:
@@ -61,8 +61,8 @@ Also since $K \propto P^{-1/3}$ the amplitude is greater for short period close 
     \label{fig:exoplaneteuyearmass}
 \end{figure}
 
-The RV method kick-started the exoplanet discipline by detecting the first exoplanet around a solar-type star {51 Pegasi}~\citep{mayor_jupitermass_1995}.
-The RV curve for {51 Pegasi} is shown on the right side of \cref{fig:rvdiagram-mayor}.
+The {RV} method kick-started the exoplanet discipline by detecting the first exoplanet around a solar-type star {51 Pegasi}~\citep{mayor_jupitermass_1995}.
+The {RV} curve for {51 Pegasi} is shown on the right side of \cref{fig:rvdiagram-mayor}.
 The first discoveries were surprising as Jupiter mass planets in short period orbits\footnote{\Mpsini=0.47\,\Mjup{} orbiting at 0.05\AU{} for {51 Pegasi}} were unlike anything in our Solar System and not predicted by standard plant formation theories.
 Several exoplanet discoveries followed in quick succession~\citep[e.g.][]{butler_planet_1996, marcy_planetary_1996} with many confirming the existence of the type of planets now referred to as ``hot-Jupiters''~\citep{butler_three_1997, charbonneau_detection_2000}.
 
@@ -104,6 +104,9 @@ There are several other astrophysical phenomena which can mimic transiting exopl
 For example a transiting low-mass or white-dwarf star, grazing binary stars, or a transit in a multi-star system~\citep[see e.g.][]{cameron_extrasolar_2012, santerne_contribution_2013}.
 Follow-up {RV} observations~\citep[e.g.][]{santerne_radial_2011} are usually required to confirm the planets existence.
 Statistical validation techniques are also possible, such as the PASTIS software~\citep{diaz_pastis_2014}, when follow-up can not be performed.
+These techniques assess the likelihood of the planet being a true planet against the different false positive scenarios, validating or confirming the planet if the likelihood is high enough.
+
+The transit method has the highest false positive rate among the detection methods presented here.
 With {RV} follow-up,~\citet{santerne_sophie_2012} found a false positive rate as high as 35\% for short period giant planets, while~\citet{santerne_sophie_2016} found a 54.6\% false positive rate of 129 giant planets with periods less than 400 days.
 These sub-sample false positive rates are however higher than the global false positive rate of 9.4\%~\citep{fressin_false_2013}/11.3\%~\citep{santerne_contribution_2013} found for Kepler.
 Some of the currently known exoplanet systems with the smallest radii and lightest mass have been detected through transit and later confirmed with high-precision {RV} follow-up~\citep[e.g.][]{queloz_corot7_2009, pepe_earthsized_2013, lopez-morales_kepler21b_2016, ment_second_2018}.
@@ -114,7 +117,7 @@ This is important to measure the correct radii of exoplanets as the extra light 
 The transit of a single planet can not directly determine the planetary mass.
 However, in multiple planet systems, the masses and sometimes the presence of other planets in the system can be determined from perturbations in the transit time and duration~\citep[e.g.][]{holman_use_2005, holman_kepler9_2010}.
 A large number of systems have been detected that show transit timing variations (TTV) and transit duration variations (TDV)~\citep[e.g.][]{holczer_transit_2016} due to the gravitational interaction between planets.
-The statistical validity of multi-transiting planets is also higher than single planets as the probability of multiple false positives is lower than having multiple planets in the system~\citep{lissauer_almost_2012}, making them easier to validate.
+The statistical validity of multi-transiting planets is more straightforward than single planets as the probability of having multiple false positives, being the product of the individual probabilities, is lower than having multiple planets in the system~\citep{lissauer_almost_2012}, making multiple planet systems easier to validate.
 
 The presence of star spots on the surface of a star can be observed during transit.
 A star spot is a dark region on the stellar surface due to magnetic fields, which decreases the luminosity slightly.
@@ -142,13 +145,17 @@ In a misaligned case a spot would only be observed in one transit.
 \end{figure}
 
 
-The vast majority of transit detections have come from Kepler~\citep{borucki_characteristics_2011}, which focused on a small patch of sky (0.25\%) for four years continuously.
+The vast majority of transit detections have come from Kepler~\citep{borucki_characteristics_2011}, which focused on a small patch of sky (0.25\%) for four years continuously. Kepler's impressive sensitivity compared to previous surveys, allowed it to detect planets down to around 2\Rearth.
 However, {CoRoT}~\citep{barge_transiting_2008} and ground-based surveys, such as WASP~\citep{pollacco_wasp_2006}, OGLE~\citep{udalski_optical_2002}, TreS~\citep{alonso_tres1_2004} have also had successful transit detections.
 
 Following in Kepler's footsteps the next generation transit hunter {TESS}~\citep{ricker_transiting_2015} has already announced discoveries of new transiting planets only months after launch~\citep{vanderspek_tess_2018, gandolfi_tess_2018, huang_tess_2018}.
 It will eventually cover more than 90\% of the sky with an impressive planetary yield expected of $\sim10\,000$ exoplanets, with around 3500 the size of Neptune or smaller~\citep{barclay_revised_2018, huang_expected_2018}.
 However, the observation coverage is not uniform, with the majority of the ecliptic plane receiving only one month of observations, limiting the detection sensitivity to short period transiting planets.
-The ecliptic poles will receive almost one year continuous observation.
+On the other hand, the ecliptic poles will receive almost one year continuous observation.
+
+{PLATO} \citep{rauer_the_2014} is another transit survey mission planned for launch in 2026. In contrast to Kepler it will focus on brighter nearby, stars, with the goal to detect and accurately determine the planetary parameters of Earth-like planets in the habitable zone.
+
+A smaller transiting mission, {CHEOPS} \citep{broeg_cheops_2013}, is also scheduled for launch at the end of 2019. Unlike the transiting surveys mentioned above, {CHEOPS} will perform dedicated transit follow-up of bright stars with known planets, such as those found with {RV} surveys. It will providing high precision transit photometry, if the geometry allows, to obtain precise planetary radii.
 
 
 \subsection{Direct Imaging}
@@ -171,6 +178,8 @@ Extremely young giants observed in the infrared are favoured as they have higher
 
 High-contrast adaptive optics instruments, such as SPHERE@VLT~\citep{beuzit_sphere_2008} and GPI~\citep{macintosh_gemini_2008}, are being used with several different techniques to observe targets closer to the star and with smaller contrasts, usually involving blocking or cancelling out the light from the star while retaining the signal of the planet~\citep[e.g.][]{marois_direct_2005, mawet_annular_2005, schmid_zimpol_2005, sirbu_prospects_2017, sirbu_techniques_2017, wang_observing_2017}.
 Ground based direct imaging requires adaptive optics to reduce the turbulence induced by the atmosphere, increasing the angular resolution down to the telescope diffraction limit.
+
+On top of hardware based solution to the stellar contamination, cleaver observing strategies and cancelling algorithms. Angular differential imaging (ADI) is one such technique. It....s ...\todo{finish ADI}.
 
 The direct imaging technique is also used to observe circumstellar and protoplanetary disks, and has even captured images of planets during formation~\citep[e.g.][]{sallum_accreting_2015}.
 Combining direct images from different photometric bands can allow for the creation of low-resolution exoplanet spectra~\citep[e.g.][]{kuzuhara_direct_2013, zurlo_new_2015}.
@@ -248,6 +257,8 @@ The precise stellar proper motions from the GAIA mission are being used to predi
     \label{fig:microlensing_example}
 \end{figure}
 
+\todo{} Microlensing technique allows for the detection of Neptune analogs of Neptune in the most efficient way, showing that these are abundant in the Galaxy \todo{(see Pedros thesis for references)}.
+
 
 \subsection{Pulsar timing}
 \label{subsec:pulsar_timing}
@@ -255,3 +266,5 @@ Pulsars are rapidly rotating neutron stars or white dwarfs formed after the deat
 The timing variations of the millisecond pulsar\footnote{Rotating at 9\,650 revolutions per minute} {PSR1257+12} led to the first extrasolar planet detection~\citep{wolszczan_planetary_1992}.
 There are two models of planet formation around pulsars: either they formed before the supernova explosion and survived, or they formed after, from the remnants of the supernova~\citep{starovoit_existence_2017}.
 There is still a rarity of less than 10 pulsars with known orbiting planets.
+
+\todo{Mention also that the rarity of these planets is associated with the technique: it requires the usage of very precise instrumentation on high cadence to measure the arrival of the pulsar waves. As a telling example, the first pulsar was detected with arecibo, that due to its limited pointing (only with the secondary) can only observe with enough time coverage a limited number of stars on the sky.}
