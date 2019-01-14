@@ -145,7 +145,8 @@ In a misaligned case a spot would only be observed in one transit.
 \end{figure}
 
 
-The vast majority of transit detections have come from Kepler~\citep{borucki_characteristics_2011}, which focused on a small patch of sky (0.25\%) for four years continuously. Kepler's impressive sensitivity compared to previous surveys, allowed it to detect planets down to around 2\Rearth.
+The vast majority of transit detections have come from Kepler~\citep{borucki_characteristics_2011}, which focused on a small patch of sky (0.25\%) for four years continuously.
+Kepler's impressive sensitivity compared to previous surveys, allowed it to detect planets down to around 2\Rearth.
 However, {CoRoT}~\citep{barge_transiting_2008} and ground-based surveys, such as WASP~\citep{pollacco_wasp_2006}, OGLE~\citep{udalski_optical_2002}, TreS~\citep{alonso_tres1_2004} have also had successful transit detections.
 
 Following in Kepler's footsteps the next generation transit hunter {TESS}~\citep{ricker_transiting_2015} has already announced discoveries of new transiting planets only months after launch~\citep{vanderspek_tess_2018, gandolfi_tess_2018, huang_tess_2018}.
@@ -153,9 +154,12 @@ It will eventually cover more than 90\% of the sky with an impressive planetary 
 However, the observation coverage is not uniform, with the majority of the ecliptic plane receiving only one month of observations, limiting the detection sensitivity to short period transiting planets.
 On the other hand, the ecliptic poles will receive almost one year continuous observation.
 
-{PLATO} \citep{rauer_the_2014} is another transit survey mission planned for launch in 2026. In contrast to Kepler it will focus on brighter nearby, stars, with the goal to detect and accurately determine the planetary parameters of Earth-like planets in the habitable zone.
+{PLATO} \citep{rauer_the_2014} is another transit survey mission planned for launch in 2026.
+In contrast to Kepler it will focus on brighter nearby, stars, with the goal to detect and accurately determine the planetary parameters of Earth-like planets in the habitable zone.
 
-A smaller transiting mission, {CHEOPS} \citep{broeg_cheops_2013}, is also scheduled for launch at the end of 2019. Unlike the transiting surveys mentioned above, {CHEOPS} will perform dedicated transit follow-up of bright stars with known planets, such as those found with {RV} surveys. It will providing high precision transit photometry, if the geometry allows, to obtain precise planetary radii.
+A smaller transiting mission, {CHEOPS} \citep{broeg_cheops_2013}, is also scheduled for launch at the end of 2019.
+Unlike the transiting surveys mentioned above, {CHEOPS} will perform dedicated transit follow-up of bright stars with known planets, such as those found with {RV} surveys.
+It will providing high precision transit photometry, if the geometry allows, to obtain precise planetary radii.
 
 
 \subsection{Direct Imaging}
@@ -179,7 +183,11 @@ Extremely young giants observed in the infrared are favoured as they have higher
 High-contrast adaptive optics instruments, such as SPHERE@VLT~\citep{beuzit_sphere_2008} and GPI~\citep{macintosh_gemini_2008}, are being used with several different techniques to observe targets closer to the star and with smaller contrasts, usually involving blocking or cancelling out the light from the star while retaining the signal of the planet~\citep[e.g.][]{marois_direct_2005, mawet_annular_2005, schmid_zimpol_2005, sirbu_prospects_2017, sirbu_techniques_2017, wang_observing_2017}.
 Ground based direct imaging requires adaptive optics to reduce the turbulence induced by the atmosphere, increasing the angular resolution down to the telescope diffraction limit.
 
-On top of hardware based solution to the stellar contamination, cleaver observing strategies and cancelling algorithms. Angular differential imaging (ADI) is one such technique. It....s ...\todo{finish ADI}.
+On top of hardware based solution to the stellar contamination, cleaver observing strategies and cancelling algorithms.
+Angular differential imaging (ADI) \citep[eg.][]{marois_direct_2005} is one such technique.
+ADI, disables the field de-rotator component in the telescope so that the viewing field rotates relative to the plane of the detector during the night.
+Several images taken at different angles are rotated to a reference position and stacked.
+The stacking of images from different angles cancels out the pseudo-static speckle caused by the telescope and optics while increasing the contrast of any faint object in the stars vicinity, i.e. a planetary companion.
 
 The direct imaging technique is also used to observe circumstellar and protoplanetary disks, and has even captured images of planets during formation~\citep[e.g.][]{sallum_accreting_2015}.
 Combining direct images from different photometric bands can allow for the creation of low-resolution exoplanet spectra~\citep[e.g.][]{kuzuhara_direct_2013, zurlo_new_2015}.
