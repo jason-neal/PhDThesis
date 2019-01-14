@@ -40,6 +40,8 @@ Spectral Disentangling techniques
 TODCOR - 2-d from binary analysis~\citep{zucker_study_1994}
 \citep{mazeh_detecting_1997}
 
+
+\citep{LOCKWOOD 2014}
 2-D-cross-correlation?~\citet{piskorz_evidence_2016} seems to have promising technique
 
 
@@ -47,7 +49,6 @@ TODCOR - 2-d from binary analysis~\citep{zucker_study_1994}
 See~\citet{kostogryz_spectral_2013} for lots of useful references regarding differential works~\citet{simon_disentangling_1994}}
 
 \citet{rodler_weighing_2012} uses differential of a series of phases to construct a stellar mask for the host to subtract from all measurements.
-
 
 
 {\red{}~\citet{kolbl_detection_2015} Use HIRES spectra at 364--799\nm{} (R=60\,000) to determine statistically determine the presence of a faint secondary companion spectra (if any).
@@ -197,7 +198,7 @@ v_{2} &= -q * v_{1} \label{eqn:q_relation}
 \todo{this ignores \(\gamma\)}
 We can simplify \cref{eqn:companion_difference} by expressing it in terms of the mass ratio and host {RV} only:
 \begin{align}
-\Delta RV_2 &= q v_{1a} - q v_{1b} + v_{1a} - v_{1b} \nonumber \\
+\Delta {RV}_{2} &= q v_{1a} - q v_{1b} + v_{1a} - v_{1b} \nonumber \\
 &= (1 + q)(v_{1a} - v_{1b}). \label{eqn:companion_difference_simplified}
 \end{align}
 
@@ -381,13 +382,23 @@ At the time (2012) it was impossible to ask for observation time over several se
 
 This study demonstrates the importance of proposals for projects that need to be extended over several semesters or years.
 In the {ESO} context, this corresponds to ``Monitoring proposals''~\citep[e.g.][pg.~18]{eso_eso_2017}.
-Observations of the targets explored here, with long orbital periods in particular, would benefit from new abilities for multi-period proposals and newer scheduling systems which allow for tighter scheduling constraints, such as a companion {RV} separation.
+Observations of the targets explored here, with long orbital periods in particular, would benefit from the new abilities for multi-period proposals and scheduling systems which allow for tighter scheduling constraints, such as a companion {RV} separation.
 
-For future observations in the context of the differential subtraction technique it is suggested that the best possible orbital solution of the host and companion be used to estimate the companions' {RV} curve during the observing period, with the companion \Mtwosini{} providing an {RV} upper-limit.
+For future observations in the context of the differential subtraction technique it is suggested that the best possible orbital solution of the host and companion be used to estimate the companions' {RV} curve during the observing period, with the companion \Mtwosini{} providing an {RV} upper-limit. Radial velocity constraints are also valid for other studies such as the detection of reflected light from exoplanets~\cite[e.g.]{martins_evidence_2015}.
 Knowing the instrumental wavelength and resolution, an observing constraint can be set to avoid taking observations when the companion spectra are insufficiently separated, or the \(\Delta {RV}_2\) < {\fwhm}.
 This constraint can be set using the absolute and relative \emph{time-link} constraints available in {ESO}'s {Phase 2 Proposal Preparation} (P2PP) tool.
 Additionally, analysing the known orbital solution beforehand to determine {RV} constraints will also help identify the best time to observe, if observations from separate periods will be required or, if an optimally separated companion differential is even feasible.
 Again the P2PP documentation for this observational proposal could not be obtained to check if these observations had used any of these features, which were available at the time, and set any constraints.
+
+\section{Contrast to other works}
+
+In this section brief contrast to other works is given. As stated previously the differential technique is not new being first formulated for binary star separation in \citet{ferluga_separating_1997}. This work tried to extend this to lower contrast ratios, to a hosts with smaller companions.
+
+For lack of high-resolution CRIRES data \citet{kostogryz_spectral_2013} explore simulations of the differential approach to a {BD} companion of a M-dwarf star, in which the contrast ratio is around 1/50 between 1/200 and were observed at the RV extrema.
+Their favourable wavelength choice to achieve a good contrast ratio is K-band, as done in work, however they chose the \ce{CO} line region ($\sim2310$\nm{}) where there is several narrow spectral lines.
+One thing explored in \citet{kostogryz_spectral_2013} that is not considered here is the effect of rotational broadening on the mass determination, finding that it should be possible to determine the mass of a slowly rotating companion, but a fast rotating companion is more difficult.
+
+The limitations with regards to the {RV} separation between spectral components has also been observed in other works. Similarly to the companion-companion RV separation focused on here, \citet{kolbl_detection_2015} find a limitation of $\sim 10$\kmps{} {RV} separation required between the host and the companion. This is because if lines of the host and companion are blended, it is likely the companion spectra will be fitted, or incorporated into the hosts spectra, making it difficult to accurately detect the companions lines a similar {RV}. The {RV} difference between the host an companion is given in the last column of \cref{tab:observations} as \({rv}_{2}\). It can be seen {HD~4747}, {HD~202206}, and {HD~218447} do not exceed this 10\kmps{} separation with the obtained observations.
 
 
 \section{Direct recovery in the \mir{}}
@@ -405,13 +416,10 @@ After performing flux ratio calculations between the host and companion using th
 For a different target, {HD\,189733} it was calculated that with an exposure time 2 hours the \snr{} of the host and companion would be 85 and 4 respectively, using the low resolution spectroscopy mode.
 As such the direct separation approach was not explored further in the \mir{}.
 
-\textbf{This method is very similar to~\citet{kostogryz_spectral_2013} except that they focus on M-dwarfs host stars with the observations taken at the extrema, in which the companion lines are well separated.\todo{They get a result???}
-}
+
 \section{Summary}
-This Chapter presented the observations that were gathered having in mind the application of a differential subtraction method~\citep[e.g.][]{ferluga_separating_1997, kostogryz_spectral_2013} to recover the spectra of the faint {BD} companions.
+This chapter presented the observations that were gathered having in mind the application of a differential subtraction method to recover the spectra of the faint {BD} companions.
 Due to the poorly separated observation times relative to the long orbital periods, the differential subtraction method presented in \cref{sec:direct-subtraction} was revealed to be inappropriate for these observations as the {RV} separation of the companion spectra between observations is significantly smaller than the width of individual spectral lines.
 The small separation of the companion causes the lines of the companion to also mutually cancel, severely reducing the residual signal to well below the available noise level.
-The requirement of well separated {RV}s for the companion spectra was clearly stated in the original proposal but was not satisfied by the observations.
-{\red{} The very large orbital periods of some of the targets would not produce a sufficient {RV} signal during one semester.
-This was a possible oversight during the proposal stage.} The largest estimated companion \(\Delta {RV}\) separation between the observations of each target is provided in the \nth{7} column of \cref{tab:estimated_rv}.
-\todo{move}{Radial velocity constraints are also valid for other studies such as the detection of reflected light from exoplanets~\cite[e.g.]{martins_evidence_2015}.}
+The requirement of well separated {RV}s for the companion spectra was clearly stated in the original proposal but was not satisfied by the observations, however the very large orbital periods of some of the targets would not produce a sufficient {RV} signal during one semester was possibly and oversight during the proposal stage.
+In the following chapter a different technique will be explored in the attempt to extract details of the companion from these observations which were insufficient to apply the differential.
