@@ -46,7 +46,7 @@ Therefore, wavelength calibration using single Gaussian fits to each line is suf
 
 The observed spectra contain two different spectral components: stellar and telluric lines, which are multiplied together: The observed spectra are therefore fitted with a multiplication of two Gaussian-sum models.
 \begin{align}
-I_{obs}(x) &= {I}_{tell}(x) \times {I}_{star}(x) \nonumber \\
+I_{obs}(x) &= {I}_{tell}(x) \times {I}_{star}(x) \nonumber\\
 I_{obs}(x) &= {\Big(1 - {\Sigma}_{j}\ G(x, A_{j}, {\mu}_{j}, {\sigma}_{j})\Big)}_{tell} \times {\Big(1 - {\Sigma}_{k} G(x, A_{k}, {\mu}_{k}, {\sigma}_{k})\Big)}_{star}, \label{eqn:obs}
 \end{align}
 where \(x\) is the pixel coordinates of the extracted spectra.
@@ -76,7 +76,7 @@ Higher order terms for wavelength calibration are usually used in regions with a
 \end{figure}
 
 An example of the wavelength fitting is given in \cref{fig:wl_calibration}.
-The top panel shows the (slightly) quadratic fit (blue dashed) to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\}\)(black) while  the bottom panel shows the newly calibrated observation alongside the telluric spectrum.
+The top panel shows the (slightly) quadratic fit (blue dashed) to the centroid values \(\{\mu_{j}(x), \mu_{i}(\lambda)\}\)(black) while the bottom panel shows the newly calibrated observation alongside the telluric spectrum.
 The black crosses indicate the lines used for calibration.
 To two decimal places the equation of the fit $\lambda = -1.85e^{-7} x^2 + 1.16e^{-2} x + 2111.86$.
 
@@ -110,7 +110,8 @@ This would require extra fitting parameters to define the size of the 3 gaps bet
 This fit may even need to be performed on the two-dimensional images, before the 1-D extraction.
 This may have allowed for the telluric lines from neighbouring detectors to help fit the calibration on detectors where there are very few telluric lines (e.g.\ detector \#2).
 The fitted instrument parameters such as the detector gaps may even be constrained so that they are physically consistent across all observations.
-However, this idea was not explored further or implemented due to time constraints. An example of the wavelength calibration using all four detectors is provided in \cref{appendix:wavelength_fitting}.
+However, this idea was not explored further or implemented due to time constraints.
+An example of the wavelength calibration using all four detectors is provided in \cref{appendix:wavelength_fitting}.
 In the future it may be possible or necessary to combine all of the methods above, including the \thar{} calibration lines, telluric models, stellar templates, and multiple detectors fitted at once to achieve precise wavelength calibration.
 
 \begin{figure}
@@ -123,6 +124,11 @@ In the future it may be possible or necessary to combine all of the methods abov
 
 In hindsight using the wavelength solution from the {ESO} pipeline may have been a good starting point, rather than the pixel positions, for calibration of the {DRACS} reduced spectra.
 This may have made the line identification simpler.
+
+In simulations of a differential technique similar to what is presented in \cref{cha:direct_recovery}, \citet{kostogryz_spectral_2013} simulate the affect of wavelength calibration errors on differential result.
+They found that calibration error >0.1 pixels will produce signals greater than the photon noise level in spectra with a \snr{} of around 500.
+They show that this upper limit only just the level achieved by \citep{brogi_signature_2012} calibrated using the telluric lines from the observation.
+This shows how important the wavelength calibration is to detect the spectra of the companion.
 
 
 \subsection{Telluric correction}
@@ -168,13 +174,13 @@ This significantly restricts the wavelength span utilized for that purpose to ar
 The masked regions created by this last mask are shown in \cref{fig:visualinspection-hd2118471}.
 
 
-\subsection{Barycentric RV correction}
+\subsection{Barycentric {RV} correction}
 \label{subsec:barycentriccorrection}
 After the telluric correction is performed, the spectra are corrected for Earth's barycentric motion.
 The orbital and rotational motion of the Earth imparts a daily and seasonal radial velocity measurement offset onto observations.
 To accurately compare the radial velocity (or spectral shift) between two measurements, they need to be translated into a common rest frame.
 The rest frame of choice is the barycentre of the Solar System.
-Equations to relate the observed spectral shift to the RV shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in~\citet{lindegren_fundamental_2003}.
+Equations to relate the observed spectral shift to the {RV} shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in~\citet{lindegren_fundamental_2003}.
 
 In this work the barycentric velocity correction is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
 This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion as well as Earth's rotation.
@@ -182,4 +188,4 @@ This computation requires the date and time of the observation, the location of 
 The observed spectra are Doppler shifted by the negative value of the barycentric velocity calculated, placing all spectra as if they were observed from the barycentre of the Solar System.
 
 The maximum barycentric velocity of the Earth is around 30\kmps{}.
-It is common to see spectral regions $\pm30$\kmps{} either side of telluric lines with an absorption depth >2\% avoided in analysis (such as RV determination), as these will be affected by the telluric lines at some point in the year.
+It is common to see spectral regions $\pm30$\kmps{} either side of telluric lines with an absorption depth >2\% avoided in analysis (such as {RV} determination), as these will be affected by the telluric lines at some point in the year.

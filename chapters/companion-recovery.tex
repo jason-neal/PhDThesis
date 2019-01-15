@@ -3,13 +3,18 @@
 \chapter{Synthetic companion recovery}  % Main chapter title
 \label{cha:model_comparison}
 
-Following on from \cref{cha:direct_recovery}, in which the differential subtraction technique was unsuccessful due to the insufficient separation observations, a second method was attempted to detect the presence of the faint companions. In this chapter \textchisquared fitting is used to fit the observed spectra with a two component binary model comprised of synthetic spectra. The preparation of the models is presented as well as and overview of the method. A simulation with an M-dwarf companion is presented first then the observations are attempted. Injection-recovery simulations are performed to understand the results obtained.
+Following on from \cref{cha:direct_recovery}, in which the differential subtraction technique was unsuccessful due to the insufficient separation observations, a second method was attempted to detect the presence of the faint companions.
+ this chapter \textchisquared{} fitting is used to fit the observed spectra with a two component binary model comprised of synthetic spectra.
+ The preparation of the models is presented as well as and overview of the method.
+A simulation with an M-dwarf companion is presented first then the observations are attempted.
+Injection-recovery simulations are performed to understand the results obtained.
 A discussion of the results and a comparison to other similar techniques is presented at the end.
 
 
 \section{Binary \texorpdfstring{\textchisquared}\ spectral recovery}
 \label{subsec:companion_recovery}
-The approach developed here is to fit the observed CRIRES spectra with model comprised of a combination of two synthetic spectra, one for the host star and one for the companion. This will be done using \textchisquared{} methods which have been extensively used in the literature~\citep[e.g.][]{astudillo-defru_harps_2015, passegger_fundamental_2016, zechmeister_spectrum_2018, nemravova_xtauri_2016, kolbl_detection_2015}.
+The approach developed here is to fit the observed CRIRES spectra with model comprised of a combination of two synthetic spectra, one for the host star and one for the companion.
+This will be done using \textchisquared{} methods which have been extensively used in the literature~\citep[e.g.][]{astudillo-defru_harps_2015, passegger_fundamental_2016, zechmeister_spectrum_2018, nemravova_xtauri_2016, kolbl_detection_2015}.
 The recoverable from the models will be the temperature of synthetic spectra fitted to the companion which will provide some indication of the companions spectral type, but will not produce a direct mass constraint that was the original aim of this work.
 
 \subsection{The \texorpdfstring{\textchisquared}\ method}
@@ -25,11 +30,13 @@ This method assumes that the measured flux is observed with a \snr{} sufficientl
 
 For a given observation, the \(\chisquared_{red}\) is computed by \(\chisquared_{red} = \chisquared / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or 4 in the examples explored below}, and is performed after the summation over the detectors.
 s
-For each observation $O$, the \(\sigma\) is estimated using the \(\beta\sigma\) method~\citep{czesla_posteriori_2018}, using the MAD (median absolute deviation about the median) robust estimator. This method estimates the spectral noise using numerical derivatives of the spectra.
-We followed the procedure outlined in~\citet{czesla_posteriori_2018} to analyse the results from successive parameter combinations to settle on an order of approximation (derivative level) of 5, and a jump parameter (pixels skipped to avoid correlations) of 2. The same \(\sigma\) is applied to all points in the spectrum so that \({\sigma}_{i} = \sigma\).
+For each observation $O$, the \(\sigma\) is estimated using the \(\beta\sigma\) method~\citep{czesla_posteriori_2018}, using the MAD (median absolute deviation about the median) robust estimator.
+This method estimates the spectral noise using numerical derivatives of the spectra.
+We followed the procedure outlined in~\citet{czesla_posteriori_2018} to analyse the results from successive parameter combinations to settle on an order of approximation (derivative level) of 5, and a jump parameter (pixels skipped to avoid correlations) of 2.
+The same \(\sigma\) is applied to all points in the spectrum so that \({\sigma}_{i} = \sigma\).
 The \(\beta\sigma\) method provided \(\sigma\) estimates for the target spectra which correspond inversely to signal-to-noise ratios between 100--400, which are similar to the values given in \cref{tab:observations} calculated only from the continuum of detector 2.
 
-The computed models $C_(i)$ are described in \cref{models} and result in a multidimensional grid  of \textchisquared{} values for each combination of model parameters, namely the spectral temperature, host {RV}, and companion {RV} for each: detector, observation, and target.
+The computed models $C_(i)$ are described in \cref{models} and result in a multidimensional grid of \textchisquared{} values for each combination of model parameters, namely the spectral temperature, host {RV}, and companion {RV} for each: detector, observation, and target.
 
 The global minimum of the multidimensional \textchisquared-space is used to represent the best fitting model combination to the observed spectra.
 The multidimensional \textchisquared{} grid is summed across multiple detectors to also determine a global minimum \textchisquared{} for the whole observation \(\chisquared_{obs} = \Sigma^{N}_{n=1} \chisquared_n\), where \(N\) is the number of detectors used.
@@ -278,7 +285,8 @@ Again the top left panel of \cref{fig:HD211847_result_contours} shows the recove
 The single component model finds a temperature of 5900\K{} for the host with a \({rv}_1\) of 7\kmps{}.
 This is 200\K{} and 0.4\kmps{} different above the expected parameters.
 The binary model finds a host temperature of 5800\K{}, which is the second closest model to the literature value, >100\K{} different.
-The host {RV} value recovered with the binary model is 7.6\kmps{}, which is 1\kmps{} higher than expected.  For the single component model there is a barely noticeable secondary minima near this 7.6\kmps{} {RV} value recovered by the binary model.
+The host {RV} value recovered with the binary model is 7.6\kmps{}, which is 1\kmps{} higher than expected.
+For the single component model there is a barely noticeable secondary minima near this 7.6\kmps{} {RV} value recovered by the binary model.
 Again these {RV} differences are smaller than the {\fwhm} of the lines.
 The 3-\(\sigma\) contour is small, just visible on the right hand side of the star in the bottom left panel, and hidden behind the markers in the other panels.
 
@@ -287,7 +295,8 @@ For the companion in the binary model, on the right side of \cref{fig:HD211847_r
 If we extend the grid of companion temperature towards higher temperatures the best fit location continues to increase in temperature, continually hitting the upper limit until it is close to the host temperature, >2000\K{} above the expected companion temperature.
 When the companion temperature becomes this high it also affects the recovered parameters for the host star to offset the features of the brighter companion.
 
-The \(\chisquared_{red}\) values for the single and binary models are 21 and 19 respectively, far from 1, indicating that both models are a poor fit to the observations. {\red{} The $\Delta {BIC} = 3812 >10$ indicating that binary model is still preferred.} We plot the binary model for the best fit solution alongside the observed spectra in \cref{fig:visualinspection-hd2118471}.
+The \(\chisquared_{red}\) values for the single and binary models are 21 and 19 respectively, far from 1, indicating that both models are a poor fit to the observations.
+{\red{} The $\Delta {BIC} = 3812 >10$ indicating that binary model is still preferred.} We plot the binary model for the best fit solution alongside the observed spectra in \cref{fig:visualinspection-hd2118471}.
 We see that there is a large spectral mismatch between the synthetic models and the observation.
 Extra wavelength masking was applied to many of the largest mismatched synthetic lines to remove their influence.
 The grey areas mark regions which have been masked out, either from the centres of deep telluric lines (the thin masks matching spectral gaps), or the more prominent mismatched lines in the synthetic spectrum excluded from the \textchisquared{} analysis.
@@ -308,7 +317,7 @@ In brief, we conclude that the companion spectra cannot be correctly detected in
 \begin{figure*}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/companion_recovery/HD211847_result_pcolors}
-    \caption[\textchisquared{} contour for  an observation {HD 211847}.]{\textchisquared{} result grid for observation 2 of {HD 211847}, similar to \cref{fig:Mdwarf_contours,fig:HD211847_simulated_contours}.
+    \caption[\textchisquared{} contour for an observation {HD 211847}.]{\textchisquared{} result grid for observation 2 of {HD 211847}, similar to \cref{fig:Mdwarf_contours,fig:HD211847_simulated_contours}.
     The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)).
     Both left hand panels show the distribution of host temperature and host {RV}.\@ The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
     The red circles indicate the literature values or calculated parameters for the target while the yellow star indicates the minimum \textchisquared{} solution.
@@ -424,12 +433,12 @@ The flux ratio between the cut-off and the host star are also provided for, bein
 \citet{hoeijmakers_search_2015}
 {Context.
 The spectral signature of an exoplanet can be separated from the spectrum of its host star using high-resolution spectroscopy.
-During these observations, the radial component of the planet's orbital velocity changes, resulting in a significant Doppler shift that allows its spectral features to be extracted. \\
+During these observations, the radial component of the planet's orbital velocity changes, resulting in a significant Doppler shift that allows its spectral features to be extracted.\\
      Aims: In this work, we aim to detect\ce{TiO} in the optical transmission spectrum of HD 209458b.
-Gaseous\ce{TiO} has been suggested as the cause of the thermal inversion layer invoked to explain the dayside spectrum of this planet. \\
+Gaseous\ce{TiO} has been suggested as the cause of the thermal inversion layer invoked to explain the dayside spectrum of this planet.\\
      Methods: We used archival data from the 8.2 m Subaru telescope taken with the High Dispersion Spectrograph of a transit of HD 209458b in 2002.
 We created model transmission spectra that include absorption by\ce{TiO}, and cross-correlated them with the residual spectral data after removal of the dominating stellar absorption features.
-We subsequently co-added the correlation signal in time, taking the change in Doppler shift due to the orbit of the planet into account. \\
+We subsequently co-added the correlation signal in time, taking the change in Doppler shift due to the orbit of the planet into account.\\
      Results: We detect no significant cross-correlation signal due to\ce{TiO}, though artificial injection of our template spectra into the data indicates a sensitivity down to a volume-mixing ratio of \textasciitilde{}10\textsuperscript{-10}.
 However, cross-correlating the template spectra with a {HARPS} spectrum of Barnard's star yields only a weak wavelength-dependent correlation, even though Barnard's star is an M4V dwarf that exhibits clear \ce{TiO} absorption.
 We infer that the\ce{TiO} line list poorly matches the real positions of\ce{TiO} lines at spectral resolutions of \textasciitilde{}100 000.
@@ -470,7 +479,8 @@ Whether the flux ratio of \(7e^{-6}\) for this target and the interaction of dif
 \subsubsection{Wavelength range}
 The wavelength choice for the spectra analysed here, observed with the intention to apply the spectral differential technique, was selected due to the location of the \emph{K}-band telluric absorption window.
 This wavelength range, with a narrow wavelength range \(\sim50\)\nm{} set by the {CRIRES} instrument.
-This wavelength range is likely not the best choice for the proposed study. \todo{finish this line} may contribute to the poor results from the companion recovery technique.
+This wavelength range is likely not the best choice for the proposed study.
+\todo{finish this line} may contribute to the poor results from the companion recovery technique.
 
 For instance~\citet{passegger_fundamental_2016} used four different spectral regions for the precise parameter determination of M-dwarfs.
 Specific lines from the different wavelength regions are affected differently by the model parameters: \Teff{}, \logg{}, and \feh{}; and are used to break degeneracies in the {PHOENIX-ACES} parameter space.
@@ -483,7 +493,8 @@ We note that if the wavelength range is increased by taking separate observation
 \subsection{Comparison to other methods}
 kolbl 2014, passenger 2016, 2018
 
-Contrast our result to other works.  More phases, longer integration time, higher {\snr{}}.
+Contrast our result to other works.
+More phases, longer integration time, higher {\snr{}}.
 
 
 

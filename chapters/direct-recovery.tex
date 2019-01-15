@@ -41,7 +41,7 @@ TODCOR - 2-d from binary analysis~\citep{zucker_study_1994}
 \citep{mazeh_detecting_1997}
 
 
-\citep{LOCKWOOD 2014}
+cite {LOCKWOOD 2014}
 2-D-cross-correlation?~\citet{piskorz_evidence_2016} seems to have promising technique
 
 
@@ -52,12 +52,12 @@ See~\citet{kostogryz_spectral_2013} for lots of useful references regarding diff
 
 
 {\red{}~\citet{kolbl_detection_2015} Use HIRES spectra at 364--799\nm{} (R=60\,000) to determine statistically determine the presence of a faint secondary companion spectra (if any).
-They use \textchisquared fitting of the observed spectra against the {SPecMatch} library of observed spectra to find a spectra to best remove the primary star lines,
+They use \textchisquared{} fitting of the observed spectra against the {SPecMatch} library of observed spectra to find a spectra to best remove the primary star lines,
 accounting for dilution and rotational broadening.
-They also find that a secondary spectrum with a \(\Delta RV\) relative to the host would blend and remain undetectable.
-When searching for the secondary they median normalize the spectra into 100K spectra since the difference between stars  <100K different is almost indiscernible in the secondary.
+They also find that a secondary spectrum with a \(\Delta {RV}\) relative to the host would blend and remain undetectable.
+When searching for the secondary they median normalize the spectra into 100\K{} spectra since the difference between stars  <100\K{} different is almost indiscernible in the secondary.
 The residuals are renormalized and then a \textchisquared{} fit is again performed to identify any secondary spectra.
-For a low temperature companion (3500K) at a 1\% flux ratio to a 5000--6000\K{} primary star their recovery technique achieves 80\% injection-recovery, in the optical.}
+For a low temperature companion (3500\K{}) at a 1\% flux ratio to a 5000--6000\K{} primary star their recovery technique achieves 80\% injection-recovery, in the optical.}
 
 
 \section{Motivation and target selection}
@@ -121,20 +121,20 @@ All observations were reduced using the {DRACS} pipeline with the artefact corre
 Each observation was then: wavelength calibrated using a synthetic telluric spectrum, corrected for telluric absorption, and then corrected for the barycentric {RV} following  \cref{subsec:wavecalib,subsec:telluric_correction_application,subsec:barycentriccorrection}.
 
 
-\subsection{Calculation of expected RV}
+\subsection{Calculation of expected {RV}}
 \todo{I am not sure if this is the best location for this section.}
 
 Before the differential subtraction method is presented, calculations are performed to estimate the {RV} of both components in each observations and the likely separation between the companions between observations.
 The time of each observation is used as input into \cref{eqn:rv_equation} along combined with the orbital parameters from \cref{tab:orbitparams} to calculate the expected {RV} of the host star.
 These values calculated are provided in \cref{tab:observations} as \({RV}_{1}\).
-For the companion, the mass (\Mtwo or \Mtwosini{}) is used alongside the stellar mass from \cref{tab:star_params} to calculate the {RV} of the companion (see \cref{subsec:binary_mass_ratio}).
+For the companion, the mass (\Mtwo{} or \Mtwosini{}) is used alongside the stellar mass from \cref{tab:star_params} to calculate the {RV} of the companion (see \cref{subsec:binary_mass_ratio}).
 This is given as \({RV}_{2}\) in \cref{tab:observations}.
 The {RV} difference in between the host and companion for each observation is also computed and provided as \({rv}_{2} = {RV}_{2}-{RV}_{1}\) although this will not be used until \cref{cha:model_comparison}.
 
-For these observations the maximum estimated {RV} separation between the two companion spectra in \(\Delta RV\) is calculated following \cref{eqn:companion_difference} below and provided in \cref{tab:estimated_rv}.
+For these observations the maximum estimated {RV} separation between the two companion spectra in \(\Delta {RV}\) is calculated following \cref{eqn:companion_difference} below and provided in \cref{tab:estimated_rv}.
 This table also contains the estimated semi-major {RV} amplitude for the companion \(K_2\) (from \cref{eqn:q_ratio_K2}) and the phase coverage of the observations.
 The phase coverage is the maximum fraction of the orbit covered between the observations for each target.
-For {HD\,4747} the \(\Delta RV\) and phase coverage values are missing due to the single observation.
+For {HD\,4747} the \(\Delta {RV}\) and phase coverage values are missing due to the single observation.
 
 
 \input{tables/direct_recovery/estimated_rv}
@@ -199,7 +199,7 @@ v_{2} &= -q * v_{1} \label{eqn:q_relation}
 We can simplify \cref{eqn:companion_difference} by expressing it in terms of the mass ratio and host {RV} only:
 \begin{align}
 \Delta {RV}_{2} &= q v_{1a} - q v_{1b} + v_{1a} - v_{1b} \nonumber \\
-&= (1 + q)(v_{1a} - v_{1b}). \label{eqn:companion_difference_simplified}
+&= (1 + q)(v_{1a} - v_{1b}).\label{eqn:companion_difference_simplified}
 \end{align}
 
 If the \(\Delta {RV}_2\) between the companion spectra is able to be constrained or derived from the s-profile~\citep[see][]{ferluga_separating_1997} then the mass ratio of the system, \(q\), can be determined, thereby constraining the mass of the companion.
@@ -280,7 +280,7 @@ Once there is a separation there will be complex interactions between neighbouri
 
 \subsection{Relative differential amplitude}
 \label{relative_differential_amplitue}
-Further investigation was performed into the differential subtraction under small \(\Delta RV\).
+Further investigation was performed into the differential subtraction under small \(\Delta {RV}\).
 This is done by exploring the amplitude of the differential against a variation in {RV}.
 Simulations were performed creating a differential spectra for a range of \(\Delta {RV}\)s between \(\pm10\)\kmps{} using the same {PHOENIX-ACES} spectra for the companion of {HD\,30501} (\Teff{}=2500\K{}, \logg{}=5.0, \feh{}=0.0) convolved to \(\R=50\,000\).
 These simulations were focus on the wavelength range 2110--2123\nm{}, corresponding to detector \#1 of the {CRIRES} observations.
@@ -296,9 +296,9 @@ The spectral profile shape of the differential for the Gaussian line was also ch
 \cref{fig:diff_amp} shows that with a \(\Delta {RV}\) of zero between companion spectra the spectral lines of the companion completely cancel each other out, resulting in zero amplitude.
 As the {RV} separation increases in either direction, the individual lines stop completely cancelling begin as they begin to separate.
 A maximum differential amplitude is achieved when the individual lines are fully separated.
-The shape/width of the differential spectral lobes ~\citet[e.g.][eqn.~A.1]{ferluga_separating_1997} was not considered, but this could also have been measured.
+The shape/width of the differential spectral lobes~\citet[e.g.][eqn.~A.1]{ferluga_separating_1997} was not considered, but this could also have been measured.
 
-At simulated separations beyond 10km/s the neighbouring spectral lines begin to strongly interfere, leading to a variable (quasi-sinusoidal) relative amplitude, although this is not shown here.
+At simulated separations beyond 10\kmps{} the neighbouring spectral lines begin to strongly interfere, leading to a variable (quasi-sinusoidal) relative amplitude, although this is not shown here.
 The shape of the relative amplitude becomes complicated due to the line interaction and because the \(\Delta {RV}\) for all observations fall well short of this region it was not investigated further.
 It is suspected that the interaction of neighbouring lines is one possible cause for the difference in the relative differential amplitude between the single theoretical line profiles and synthetic spectrum between 2 and 6\kmps{}.
 
@@ -310,7 +310,7 @@ As the companion spectra are already faint and in combination with a host star a
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/direct-recovery/rv_diff_final.pdf}
-    \caption[Simulated relative amplitude of differntial spectrum.]{Simulated relative amplitude of differential spectra at different companion \(\Delta RV\) separations revealing the diminished amplitude at very small orbital separations.
+    \caption[Simulated relative amplitude of differntial spectrum.]{Simulated relative amplitude of differential spectra at different companion \(\Delta {RV}\) separations revealing the diminished amplitude at very small orbital separations.
     The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a {PHOENIX-ACES} spectrum with \Teff{}=2500\K{}, \logg{}=5.0, \feh{}=0.0 in the wavelength region 2110--2123\nm{}.
     The maximum difference is normalized by the median amplitude between \(\pm7\)--10\kmps{}, representing a complete line separation.
     The orange (dashed) and green (dot-dashed) lines represent the relative amplitude of a spectrum differential for a spectrum containing a single Gaussian or Lorentzian absorption line respectively, each with a unitary amplitude and a \(\rm {\fwhm} = \lambda / R\).
@@ -384,7 +384,8 @@ This study demonstrates the importance of proposals for projects that need to be
 In the {ESO} context, this corresponds to ``Monitoring proposals''~\citep[e.g.][pg.~18]{eso_eso_2017}.
 Observations of the targets explored here, with long orbital periods in particular, would benefit from the new abilities for multi-period proposals and scheduling systems which allow for tighter scheduling constraints, such as a companion {RV} separation.
 
-For future observations in the context of the differential subtraction technique it is suggested that the best possible orbital solution of the host and companion be used to estimate the companions' {RV} curve during the observing period, with the companion \Mtwosini{} providing an {RV} upper-limit. Radial velocity constraints are also valid for other studies such as the detection of reflected light from exoplanets~\cite[e.g.]{martins_evidence_2015}.
+For future observations in the context of the differential subtraction technique it is suggested that the best possible orbital solution of the host and companion be used to estimate the companions' {RV} curve during the observing period, with the companion \Mtwosini{} providing an {RV} upper-limit.
+Radial velocity constraints are also valid for other studies such as the detection of reflected light from exoplanets~\cite[e.g.]{martins_evidence_2015}.
 Knowing the instrumental wavelength and resolution, an observing constraint can be set to avoid taking observations when the companion spectra are insufficiently separated, or the \(\Delta {RV}_2\) < {\fwhm}.
 This constraint can be set using the absolute and relative \emph{time-link} constraints available in {ESO}'s {Phase 2 Proposal Preparation} (P2PP) tool.
 Additionally, analysing the known orbital solution beforehand to determine {RV} constraints will also help identify the best time to observe, if observations from separate periods will be required or, if an optimally separated companion differential is even feasible.
@@ -392,13 +393,19 @@ Again the P2PP documentation for this observational proposal could not be obtain
 
 \section{Contrast to other works}
 
-In this section brief contrast to other works is given. As stated previously the differential technique is not new being first formulated for binary star separation in \citet{ferluga_separating_1997}. This work tried to extend this to lower contrast ratios, to a hosts with smaller companions.
+In this section brief contrast to other works is given.
+As stated previously the differential technique is not new being first formulated for binary star separation in~\citet{ferluga_separating_1997}.
+This work tried to extend this to lower contrast ratios, to a hosts with smaller companions.
 
-For lack of high-resolution CRIRES data \citet{kostogryz_spectral_2013} explore simulations of the differential approach to a {BD} companion of a M-dwarf star, in which the contrast ratio is around 1/50 between 1/200 and were observed at the RV extrema.
+For lack of high-resolution CRIRES data~\citet{kostogryz_spectral_2013} explore simulations of the differential approach to a {BD} companion of a M-dwarf star, in which the contrast ratio is around 1/50 between 1/200 and were observed at the {RV} extrema.
 Their favourable wavelength choice to achieve a good contrast ratio is K-band, as done in work, however they chose the \ce{CO} line region ($\sim2310$\nm{}) where there is several narrow spectral lines.
-One thing explored in \citet{kostogryz_spectral_2013} that is not considered here is the effect of rotational broadening on the mass determination, finding that it should be possible to determine the mass of a slowly rotating companion, but a fast rotating companion is more difficult.
+One thing explored in~\citet{kostogryz_spectral_2013} that is not considered here is the effect of rotational broadening on the mass determination, finding that it should be possible to determine the mass of a slowly rotating companion, but a fast rotating companion is more difficult.
 
-The limitations with regards to the {RV} separation between spectral components has also been observed in other works. Similarly to the companion-companion RV separation focused on here, \citet{kolbl_detection_2015} find a limitation of $\sim 10$\kmps{} {RV} separation required between the host and the companion. This is because if lines of the host and companion are blended, it is likely the companion spectra will be fitted, or incorporated into the hosts spectra, making it difficult to accurately detect the companions lines a similar {RV}. The {RV} difference between the host an companion is given in the last column of \cref{tab:observations} as \({rv}_{2}\). It can be seen {HD~4747}, {HD~202206}, and {HD~218447} do not exceed this 10\kmps{} separation with the obtained observations.
+The limitations with regards to the {RV} separation between spectral components has also been observed in other works.
+Similarly to the companion-companion {RV} separation focused on here,~\citet{kolbl_detection_2015} find a limitation of $\sim 10$\kmps{} {RV} separation required between the host and the companion.
+This is because if lines of the host and companion are blended, it is likely the companion spectra will be fitted, or incorporated into the hosts spectra, making it difficult to accurately detect the companions lines a similar {RV}.
+The {RV} difference between the host an companion is given in the last column of \cref{tab:observations} as \({rv}_{2}\).
+It can be seen {HD~4747}, {HD~202206}, and {HD~218447} do not exceed this 10\kmps{} separation with the obtained observations.
 
 
 \section{Direct recovery in the \mir{}}

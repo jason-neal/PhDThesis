@@ -11,7 +11,6 @@ The bottom panel shows the difference in the combined average spectra from the o
 In this case the deviation in the combined spectra are at 2\%.
 Further visual examples of artefacts, selected to show a variation in appearance, are given in \cref{appendix:artefacts} along with a table identifying the observations and nod spectra the artefacts were observed in.
 
-
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/reduction/bp_plots/extraction_comparision_HD162020-1_chip_2.pdf}
@@ -43,7 +42,7 @@ Further visual examples of artefacts, selected to show a variation in appearance
 
 It is clear that the artefacts in the optimal extraction occur when there is a corresponding ``bad-pixel'' spike\footnote{Their exact origin is unknown but are likely uncorrected bad-pixels or a cosmic ray.
 Here they will be referred to as bad-pixels.} in the rectangular extraction.
-However this is not always the case with many spikes observed (e.g. first nod around pixel 580 in \cref{fig:artefact_example_hd162020}) that are automatically removed in the optimal extraction.
+However this is not always the case with many spikes observed (e.g.\ first nod around pixel 580 in \cref{fig:artefact_example_hd162020}) that are automatically removed in the optimal extraction.
 The occurrence of artefacts in the observations did not appear to have a pattern with nod position or detector with 14\% (79/544 spectra) of the nod spectra having an optimal exaction that seemed to misbehave.
 The artefacts in the optimal extraction are also largely extended, significantly affecting more of the spectrum that the individual spikes (up to 100s of pixels).
 Artefacts were observed arising from both large and small spikes alike while other large and small spikes are removed correctly.
@@ -53,7 +52,7 @@ As mentioned in \cref{subsec:extraction} the \emph{optimal} extraction includes 
 It appears that the presence of the bad pixel spikes heavily affects the variance weighting procedure during the \emph{optimal} extraction.
 
 Numerous parameters in the {DRACS} pipeline were experimented with in the attempt to remove the observed artefacts with limited success.
-For instance, no complete removal of the artefacts was found by adjusting the \(\sigma\) rejection limits (between \(1-5 \sigma\)) or  increasing the tracing width parameter in {IRAF}s DOSLIT\footnote{Documentation for DOSLIT can be found here \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}} recipe, although they did slightly affect the shape of the artefacts.
+For instance, no complete removal of the artefacts was found by adjusting the \(\sigma\) rejection limits (between \(1-5 \sigma\)) or increasing the tracing width parameter in {IRAF}s DOSLIT\footnote{Documentation for DOSLIT can be found here \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}} recipe, although they did slightly affect the shape of the artefacts.
 \cref{fig:resizednods} shows the extraction of HD\,202206 with one parameter changed in the reduction pipeline.
 The only difference between the left and right panels the automated aperture resizing\footnote{Using \href{apresize}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?apresize.hlp}} was enabled by setting the ``resize'' parameter to \emph{yes} in the right hand panel.
 This manages to remove an ugly artefact in the sixth nod (brown), but not the artefact in the seventh nod (pink).
@@ -95,7 +94,7 @@ In hindsight the {DRACS} pipleline had several unexpected challenges due to thes
 One hypothesis for these artefacts is detector glow, the heating of the detector by the nearby amplifiers in the chip (see \cref{subsubsec:darkcurrent}.
 The artefacts in the \emph{K}-band spectra were not observed in previous works in the \emph{H}-band using this pipeline~\citep[e.g.][]{figueira_radial_2010}, and as such may have a wavelength dependent effect, like detector glow.
 However, it seems plausible that a glow related effect would be spatial distributed like the glow shown in \cref{fig:darkcurrent_colour}, but the location of the artefacts do not seem to have a discernible pattern.
-It could also be that there were artefacts in intermediate steps of the previous works that were missed due to the semi-automated pipeline, with the resultant combined spectrum being only slightly affected at the level of >1\% it could easily be missed (e.g. \cref{fig:reduction-comparison}).
+It could also be that there were artefacts in intermediate steps of the previous works that were missed due to the semi-automated pipeline, with the resultant combined spectrum being only slightly affected at the level of >1\% it could easily be missed (e.g.\ \cref{fig:reduction-comparison}).
 Another possibility is that the artefacts are bad pixels not removed correctly.
 Regardless, in the end they do not have a significant impact on the results found in this work, though it is expected that mixing the optimal and rectangular extracted spectra will have a slight negative impact on the noise or \snr{} of the combined spectrum.
 Much time and effort was invested attempting to extract the spectra, without artefacts, to have the best chance at obtaining high quality scientific results of the faint features sought after in this work.

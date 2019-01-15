@@ -14,8 +14,8 @@ One science objective common to all four instruments is the detection of small m
 The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to influence some design choices of {SPIRou}, {NIRPS}.
 For instance {NIRPS} opted not to cover the \emph{K}-band, favouring a higher spectral resolution and simplicity, but preserved the possibility for adding a K-band spectrograph in a separate cyrostat in the future.
 
-The purpose of the work presented in this chapter is to extend the work of~\citet{figueira_radial_2016}, computing the theoretical RV precision of stellar spectra over a wider range of situations.
-An investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of RV precision of the recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed.
+The purpose of the work presented in this chapter is to extend the work of~\citet{figueira_radial_2016}, computing the theoretical {RV} precision of stellar spectra over a wider range of situations.
+An investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of {RV} precision of the recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed.
 This is to test how the {RV} precision of synthetic models compares to reality.
 The aim is to compare the fundamental precision of observed \nir{} spectra to the synthetic models.
 
@@ -23,7 +23,8 @@ The aim is to compare the fundamental precision of observed \nir{} spectra to th
 \section{Overview}
 \todo{remove duplication}
 The pursuit of detecting exoplanets, especially ``habitable'' and ``Earth-like'' planets, requires state-of-the-art instrumentation with high precision.
-One of the key detection methods, the Radial Velocity ({RV}) method, measures the wobble induced on the Star by the planet as they orbit their common barycentre \reference{rv method}.  {\red{} add Some stuff about mass and period from Pedros paper}  \todo{put in introduction??}
+One of the key detection methods, the Radial Velocity ({RV}) method, measures the wobble induced on the Star by the planet as they orbit their common barycentre \reference{rv method}.
+{\red{} add Some stuff about mass and period from Pedros paper}  \todo{put in introduction??}
 
 \todo{derivation of rv?}
 
@@ -41,7 +42,9 @@ This has previously helped to aid the direction of instrument design by identify
 
 
 \textbf{THIS is from spie 2018 conference.}
-{red{} \citep{quirrenbach_carmenes_2018} With this strategy it has been possible to achieve 1--2 m/s precision in the visible and 5--10 m/s precision in the {near-IR}; further improvements are expected from ongoing work on temperature control, calibration procedures and data reduction. Comparing the RV precision achieved in different wavelength bands, we find a ``sweet spot'' between 0.7 and 0.8\um, where deep \ce{TiO} bands provide rich RV information in mid-M dwarfs. This is in contrast to our pre-survey models, which predicted comparatively better performance in the near-IR around 1\um, and explains in part why our near-IR RVs do not reach the same precision level as those taken with the visible spectrograph.}
+{red{}~\citep{quirrenbach_carmenes_2018} With this strategy it has been possible to achieve 1--2\mps{} precision in the visible and 5--10\mps{} precision in the {near-IR}; further improvements are expected from ongoing work on temperature control, calibration procedures and data reduction.
+Comparing the {RV} precision achieved in different wavelength bands, we find a ``sweet spot'' between 0.7 and 0.8\um{}, where deep \ce{TiO} bands provide rich {RV} information in mid-M dwarfs.
+This is in contrast to our pre-survey models, which predicted comparatively better performance in the near-IR around 1\um{}, and explains in part why our \nir{} {RV}s do not reach the same precision level as those taken with the visible spectrograph.}
 
 
 
@@ -55,7 +58,8 @@ A majority of this derivation follows~\citet{bouchy_fundamental_2001} with extra
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/information-content/precision_plot.pdf}
-    \caption[Demonstration of a shifted arbitrary spectral line.]{Arbitrary spectral line with a shift \(\delta \lambda\), inspired by~\citet{connes_absolute_1985}.  \(\Lambda\) is the wavelength range considered.}
+    \caption[Demonstration of a shifted arbitrary spectral line.]{Arbitrary spectral line with a shift \(\delta \lambda\), inspired by~\citet{connes_absolute_1985}.
+    \(\Lambda\) is the wavelength range considered.}
     \label{fig:precisionderivation}
 \end{figure}
 \todo{add \(\delta A\) to plots}
@@ -99,9 +103,11 @@ W(i) = \frac{1}{{\left(\frac{\delta V_{\rms}(i)}{c}\right)}^{2}}, \label{eqn:wei
 \end{equation}
 where \(X_{\rms}\) is the dispersion on the quantity \(X\).
 
-The individual dispersion of the velocity measurement \(\delta V_{\rms}(i)\) is the dispersion that would result from several measurements of the reference spectrum all with the same Doppler shift (e.g.\ zero). \Cref{eqn:delta_v_i} thus becomes:
+The individual dispersion of the velocity measurement \(\delta V_{\rms}(i)\) is the dispersion that would result from several measurements of the reference spectrum all with the same Doppler shift (e.g.\ zero).
+\Cref{eqn:delta_v_i} thus becomes:
 \begin{equation}
-    \frac{\delta V_{\rms}(i)}{c} = \frac{{[A(i) - A_0(i)]}_{\rms} }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))}. \label{eqn:delta_v_i_rms}
+    \frac{\delta V_{\rms}(i)}{c} = \frac{{[A(i) - A_0(i)]}_{\rms} }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))}.
+    \label{eqn:delta_v_i_rms}
 \end{equation}
 The noise of the spectrum A is the quadratic sum of the photon noise \(\sqrt{A}\) and the detector noise \(\sigma_D\).
 The spectrum \(A_0\) is considered noise free.
@@ -148,11 +154,11 @@ With the optimal weights set, the weighed average velocity change measured from 
 \end{eqnarray}\unfinished{Finish this equation (9 of bouchy 2001)}
 \unfinished{Try the symbolic package from PC}
 
-The important quantity for {RV} measurements is not just the velocity values themselves but also the dispersion on the measured velocity, the RV precision, \(\delta V_{\rms}\), from the spectrum.
+The important quantity for {RV} measurements is not just the velocity values themselves but also the dispersion on the measured velocity, the {RV} precision, \(\delta V_{\rms}\), from the spectrum.
 This allows one to assess the planetary detectability limitations attainable in the spectra.
 From rearranging \cref{eqn:weights} the dispersion is given by:
 \begin{equation}
-    \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\sqrt{\sum{\,W(i)}}} = \frac{1}{Q \sqrt{\sum{\,A_0(i)}}}. \label{eqn:dv_rms}
+    \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\sqrt{\sum{\,W(i)}}} = \frac{1}{Q \sqrt{\sum{\,A_0(i)}}}.\label{eqn:dv_rms}
 \end{equation}
 With this the velocity precision is inversely proportional to the sum of the optimal pixel weights.
 
@@ -166,7 +172,8 @@ The radial velocity precision or uncertainty can be rearranged in terms of the s
     \delta V_{\rms} = \frac{c}{Q \sqrt{\sum {\,A_0(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}} \approx \frac{c}{Q \cdot \snr{}},  \label{eqn:snr_relation}
 \end{equation}
 where \(\sum A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo-electrons \({N}_{{e}^{-}}\) counted in the spectral range considered.\todo{explain snr}{where the \({\snr{}}=\sqrt{N_{{e}^{-}}}\) for large N}
-where the \({\snr{}}=\sqrt{N_{{e}^{-}}}\)for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different \snr{}.?}
+where the \({\snr{}}=\sqrt{N_{{e}^{-}}}\)for large N.
+\unfinished{It is convenient to use this version when comparing observed spectra with different \snr{}.?}
 
 
 This quality factor, Q, is flux independent and is purely a function of the spectral profile within the spectral range considered.
@@ -187,7 +194,7 @@ across the wavelength range \(\Lambda\) in \si{\photons\per\second\per\centi\met
 
 and \(\alpha\) the overall efficiency (including atmosphere, telescope, spectrograph and detector).
 
-This can be used to determine the {RV} precision for a given instrument, and be useful in exposure time calculators for planning observations for RV surveys and exoplanet detection.
+This can be used to determine the {RV} precision for a given instrument, and be useful in exposure time calculators for planning observations for {RV} surveys and exoplanet detection.
 
 In the case of several \(\delta V\) measurements computed for \(k\) spectral slices (or spectral orders) then the error on the average \(\overline{\delta V}\) is given by the error on a weighted average:
 \begin{equation}
@@ -197,19 +204,20 @@ In the case of several \(\delta V\) measurements computed for \(k\) spectral sli
 This work follows~\cite{figueira_radial_2016} by exclusively considering a high signal-to-noise regime in which \({A(i) + \sigma_{D}^{2}} \sim {A(i)}\) can be approximated.
 
 
-\footnote{pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\sum{{\lambda}^{2} {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\sum{\, A_0(i)}}\) as derived by~\cite{connes_absolute_1985}. }
+\footnote{pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\sum{{\lambda}^{2} {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\sum{\, A_0(i)}}\) as derived by~\cite{connes_absolute_1985}.}
 
 
 This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation~\citep[e.g.][]{connes_absolute_1985,bouchy_fundamental_2001} and can influence the design (and/or use) of spectrographs
  (e.g.\ SPIROU~\citep{artigau_spirou_2014,figueira_radial_2016})
-\unfinished{Does spectrograph pipelines such as HARPS use these equations to measure estimate/precision?}
+\unfinished{Does spectrograph pipelines such as {HARPS} use these equations to measure estimate/precision?}
 
 
 Considering that \(\sum{A_0(i)} = N_{{e}^{-}}\)is the total number of photoelectrons counted over the whole spectral range then the uncertainty in the velocity change is finally given by:
 \begin{equation}
 \delta V_{\rms} = \frac{c}{Q \sqrt{N_{{e}^{-}}}} \approx \frac{c}{Q (\snr{})}, \label{eqn:rv_SNR}
 \end{equation}
-where the \(\snr{}=\sqrt{N_{{e}^{-}}}\)for large N. \unfinished{It is convenient to use this version when comparing observed spectra with different \snr{}.?}
+where the \(\snr{}=\sqrt{N_{{e}^{-}}}\)for large N.
+\unfinished{It is convenient to use this version when comparing observed spectra with different \snr{}.?}
 
 
 In the unrealistic case where all the pixel weights are identical $W(i)=w$, then we can also see that the precision with decreases as $1/\sqrt{N}$ due to an increase in the number of pixels, or a increase in spectral range.
@@ -217,13 +225,13 @@ In the unrealistic case where all the pixel weights are identical $W(i)=w$, then
  \delta V_{\rms} = \frac{c}{\sum{W(i)}} \approx \frac{c}{\sqrt{N w}}=  \frac{c}{\sqrt{N}\sqrt{w}}, \label{eqn:sqrtN}
  \end{equation}
 
-A separate general formula for RV precision is given by~\citet{hatzes_spectrograph_1992} in terms of general spectral parameters.
+A separate general formula for {RV} precision is given by~\citet{hatzes_spectrograph_1992} in terms of general spectral parameters.
 \begin{equation}
 \sigma = \frac{1}{\sqrt{F} \sqrt{\Lambda} {R}^{1.5}}
 \end{equation}
 
-Here the $\sqrt{F}$ represents the \snr{} of the spectrum in the possion-noise dominated regime.
-The $\Lambda$ comes from assuming a homogenous distribution of line, with the same line properties, per unit length.
+Here the $\sqrt{F}$ represents the \snr{} of the spectrum in the {Poisson}-noise dominated regime.
+The $\Lambda$ comes from assuming a homogeneous distribution of line, with the same line properties, per unit length.
 
 
 
@@ -274,7 +282,8 @@ Following the rotational convolution the spectra are convolved with Gaussian ins
 
 The Gaussian convolution kernel is of the form
 \begin{equation}
-IP(\Delta\lambda) = \frac{1}{\sigma \sqrt{2\pi}} \exp^{-\frac{{\Delta\lambda}^{2}}{2 {\sigma}^{2}}}    \label{eqn:IP_profile}
+IP(\Delta\lambda) = \frac{1}{\sigma \sqrt{2\pi}} \exp^{-\frac{{\Delta\lambda}^{2}}{2 {\sigma}^{2}}}
+\label{eqn:IP_profile}
 \end{equation}
 with $\sigma = \frac{\fwhm}{2\sqrt{2 \ln(2)}}$, and $\Delta \lambda$ again the difference from the line centre (normally this would be written as $(x-\mu)$ where $\mu$ is the Gaussian centre).
 
@@ -289,7 +298,8 @@ The integration of a circular fibre is given by
 \textrm{IP}_{\textrm{fibre}(\Delta\lambda)} = \cos(B\cdot\Delta\lambda) ,  \hspace{2em} [-\frac{\pi}{2 B}, \frac{\pi}{2 B}]
 \end{equation}
 where {$B = \frac{\fwhm_{0}}{\fwhm}$ } is scaled to give the same area,
-following the description from~\citet{artigau_optical_2018}.  They also mention that the result using this $\textrm{IP}_{\textrm{fibre}}$ are all consistent with just using a Gaussian kernel.
+following the description from~\citet{artigau_optical_2018}.
+They also mention that the result using this $\textrm{IP}_{\textrm{fibre}}$ are all consistent with just using a Gaussian kernel.
 
 \subsection{Numerical Convolution}
 \label{subsec:numerical_convolution}
@@ -303,7 +313,8 @@ What this means is that convolution result for pixel $i+1$ does not depend on th
 Therefore, parallel processing was implemented to improve the performance of the convolution, roughly dividing the convolution time by the number of processors used.
 
 The python package \emph{PyAstronomy} also contains functions that perform rotational and instrumental broadening.
-Those functions however require that the spectrum have uniformly spaced $x$-coordinate spacing which is not a requirement for the implementation of \emph{eniric} used here. \emph{PyAstronomy}, while implemented a ``slow'' full version of the rotational convolution, with a wavelength dependent kernel, they also provide ``fast'' convolution kernels that are fixed, taking the central wavelength value.
+Those functions however require that the spectrum have uniformly spaced $x$-coordinate spacing which is not a requirement for the implementation of \emph{eniric} used here.
+\emph{PyAstronomy}, while implemented a ``slow'' full version of the rotational convolution, with a wavelength dependent kernel, they also provide ``fast'' convolution kernels that are fixed, taking the central wavelength value.
 These are significantly faster but are only valid for very short wavelength regions, in which the kernels do not significantly change.
 They are not suitable for use in this work due to the large wavelength span of spectroscopic bands and the wavelength dependant spacing of the spectra.
 A comparison of the performance between \emph{PyAstronomy} convolution and the convolutions implemented in \emph{eniric} and used here are given in a \emph{Jupyter} notebook in the repository of ``eniric'', basically they fall in between the ``fast'' and ``slow'' implementation of \emph{PyAstronomy}.
@@ -334,18 +345,21 @@ Preparation of {CARMENES} spectra.
 \missingfigure{Example of {CARMENES} spectra before and after correction}
 
 \subsection{Bands}
-The bands analysed avoid the strong water absorption in the \nir{} that can be seen the {CARMENES} spectra in Figure~\reference{Add figure here}\todo{Add figure here}. These are the Z, Y, J, H, K- bands found in \cref{tab:infrared_bands}.
+The bands analysed avoid the strong water absorption in the \nir{} that can be seen the {CARMENES} spectra in Figure~\reference{Add figure here}\todo{Add figure here}.
+These are the Z, Y, J, H, K- bands found in \cref{tab:infrared_bands}.
 
 
 \subsection{Comparing models to {CARMENES}.}
-Already somewhat done in Reiners. (use all spectra).
+Already somewhat done in Reiners.
+(use all spectra).
 They measured the precision obtained in the spectra.
 
 Band by band like~\citet{figueira_radial_2016}?
 Certain\% steps like Bouchy or Artigau
 
 
-Can do Barnard's star in {CARMENES}. \todo{finish this} compared to models in Artigau.
+Can do Barnard's star in {CARMENES}.
+\todo{finish this} compared to models in Artigau.
 
 \DTLsetseparator{,}
 \DTLloadrawdb{targets}{data/carmenes_selection.csv}%
@@ -407,7 +421,7 @@ Note a higher quality factor corresponds to an increased {RV} precision.}
 \clearpage
 
 \section{Updating {RV} precision software}
-To undertake the calculation of RV precisions
+To undertake the calculation of {RV} precisions
 A large section of this work involved optimizing the original code used in~\citet{figueira_radial_2016}.
 Care needs to be taken to optimize the code.
 The original code used in~\citet{figueira_radial_2016} was slow, taking around 2 hours per simulation, this led to multiple weeks of processing time to compute the precision's for the original paper.
@@ -421,7 +435,8 @@ This work resulted in a submission of a publication\footnote{Available at \href{
 \subsection{Automated testing}
 To insure that any changes made to the code did not change the underling results.
 This involved writing automatic tests for the software.
-This practice is crucial in computer science ins commercial software development but seldom done in research but is becoming more popular. \reference{works of software testing in research.}
+This practice is crucial in computer science ins commercial software development but seldom done in research but is becoming more popular.
+\reference{works of software testing in research.}
 Some work focused on testing ideology from computer science.
 Although not perfect implementation I began by adding automated tests to the code to check individual parts of it.
 Before making changes I created automated tests that would confirm the functionality of pieces of the code.
@@ -441,7 +456,8 @@ Creating a \emph{numpy} boolean mask instead of the comprehension list, and appl
 Remaining entirely in the compiled \emph{numpy} code and not converting between lists and \emph{numpy} arrays (with involve type checking overhead).
 This slow operation was done for every pixel/wavelength in the spectrum twice, once for each convolution.
 
-caching convolution result to prevent recomputing the same values. \emph{Joblib}.  Also embarrassingly parallel so added multiprocessing support.
+caching convolution result to prevent recomputing the same values with \emph{Joblib}.
+Also embarrassingly parallel so added multiprocessing support.
 
 The convolution is still the slowest part.
 There are other methods that work on uniform spectra, which have not been tried to see how they affect the performance or {RV} precision results.
@@ -449,14 +465,16 @@ There are other methods that work on uniform spectra, which have not been tried 
 
 
 \subsection{Model extension}
-The solution is to iterate over each pixel but create a mask array and use \emph{numpy} indexing to select the required pixel span. (this remains in \emph{numpy})
+The solution is to iterate over each pixel but create a mask array and use \emph{numpy} indexing to select the required pixel span.
+(this remains in \emph{numpy})
 These operations all remain in \emph{numpy} so do not waste time converting between lists and \emph{numpy} arrays, in which Python need to constantly check and convert the type of each item.
 
 This shows a lesson in the usefulness of test driven development, or testing of code in science.
 
 
 An normalization step was originally done after the convolution, to normalize out the effect of the convolution on a spectrum of 1s, due to the changing wavelength grids sampling.
-This was brought inside the main convolution by dividing the pixel by the convolution of a spectrum of ones at the same time. (again in \emph{numpy} so it is quick)
+This was brought inside the main convolution by dividing the pixel by the convolution of a spectrum of ones at the same time.
+ (again in \emph{numpy} so it is quick)
 
 Parallelization as embarrassingly parallel, the result of each pixel is independent of result of neighbours.
 
@@ -628,7 +646,8 @@ As the pixel weights depend on neighbouring points (through the calculation of t
 
 The original implementation of Condition~\#2 did just this, splitting the spectra into small sections in between the masked off telluric lines.
 The {\red{}\(RV_{\rms}\)} is calculated for each section and then the results are combined as the error on the weighted average in \cref{eqn:weighted_average_error}.
-Analytically this identical to masking the pixel weights with \(M_2\) but not in practice when numerically implemented. \todo{Should I show the working of analytical working out of this in an appendix, or here?}
+Analytically this identical to masking the pixel weights with \(M_2\) but not in practice when numerically implemented.
+\todo{Should I show the working of analytical working out of this in an appendix, or here?}
 
 When the spectrum is split into small sections the number of edges increases and the number of pixels affected by any edge effects increases.
 Using the {FFD} method to compute the gradient the last pixel is removed/lost.
@@ -647,11 +666,13 @@ It shows that the difference from changing order of masking is 1--2 orders of ma
 
 The code has been adjusted to consistently apply the masking after the pixel weights are calculated.
 This retains the most pixels, with the more accurate pixel weights.
-It has also been changed to just apply \(M_2\) rather than splitting and performing the weighted error calculation.\todo{did I check this was equivalent} This simplifies the implementation in calculating the {RV} precision.
+It has also been changed to just apply \(M_2\) rather than splitting and performing the weighted error calculation.
+\todo{did I check this was equivalent} This simplifies the implementation in calculating the {RV} precision.
 
 \input{tables/mask_ordering}
 
-{\red{} For Condition~\#2 in which there was an error there is no meaningful relation between the new and old values. \todo{put this line elsewhere.}}
+{\red{} For Condition~\#2 in which there was an error there is no meaningful relation between the new and old values.
+\todo{put this line elsewhere.}}
 
 
 \subsection{Atmospheric masking bug}
@@ -674,7 +695,8 @@ A test like this would have caught this bug.
 
 This bug means that all the {RV} precision values for Condition~\#2 published in~\citet{figueira_radial_2016} incorrect.
 As the applied masking was unevenly applied~\citet{figueira_radial_2016} the new values {RV} precision values do not all change in the same proportion or direction.
-Some specific wavelengths and resolutions are essentially unchanged while other results change by over 20\mps{}.  Even though there is an error with condition~\#2 they do not change the overall conclusions of the paper.
+Some specific wavelengths and resolutions are essentially unchanged while other results change by over 20\mps{}.
+Even though there is an error with condition~\#2 they do not change the overall conclusions of the paper.
 These are \todo{add conclusions not affected}
 
 \subsection{\snr{} scaling}
@@ -718,7 +740,7 @@ The centre of each band was visually checked to ensure that there were no spectr
 As shown in \cref{eqn:snr_relation} the {RV} precision is inversely proportional to the \snr{} level.
 To access the {RV} precision of any of the values in Table at a different \snr{} level you can apply the following
 \begin{equation}
-\rm RV_{\snr{}2} = RV_{\snr{}1} * \frac{\snr{}1}{\snr{}2}.
+\rm {RV}_{\snr{}2} = {RV}_{\snr{}1} * \frac{\snr{}1}{\snr{}2}.
 \end{equation}
 
 \todo{\snr{} plot/diagram}
@@ -732,10 +754,10 @@ Notes on the telluric correction issue affect on Condition~2.
 
 In May 2018 we were requested to provide precision calculations for the {NIRPS} {ETC}.\@ This extended the spectral range from {M0}, {M3}, {M6}, {M9} at 3900, 3500, 2800, 2600\K{} respectively, but to all temperatures between 2500 and 4000\K{} inclusively.
 This provides a finer resolution coverage over the M spectral type, allowed by the {PHOENIX-ACES} library.
-Instrumental resolutions of 75,000 and 100\,000 were requested to match the {NIRPS} instrument.
-The \logg{} and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, 0.0 and 3 respectively.
+Instrumental resolutions of 75\,000 and 100\,000 were requested to match the {NIRPS} instrument.
+The \logg{} and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, \textbf{0.0} and 3.0 respectively.\todo{}
 Precisions were provided for \snr{} of 100 relative to the \emph{J}-, \emph{H}-bands as well as to each band individually.
-Artigua 2018. (private communication 2018)\todo{Check how to cite priv communication properly}  suggested the truly relevant value is the \snr{} in \emph{H}-band for {NIRPS} radial velocities.
+Artigua 2018 (private communication 2018).\todo{Check how to cite priv communication properly}  suggested the truly relevant value is the \snr{} in \emph{H}-band for {NIRPS} radial velocities.
 
 The results can be manually generated using ``eniric'' with the following incantation (after installation and configuration of {PHOENIX} library spectra.)
 \textbf{A table of the precisions created for the {NIRPS} ETC are provided as an online table to our publication} {Neal et al.
@@ -755,11 +777,12 @@ As we demonstrated in \cref{sec:numerical_gradient,subsubsec:masking_order} thes
     \includegraphics[width=0.48\linewidth]{figures/information-content/Rvprec_vsini1.pdf} &  % Figueria plot
     \includegraphics[width=0.47\linewidth]{figures/information-content/precision_fourpanel.png}\\ % eniric plot
     \end{tabular}
-    \caption[Comparision of RV precision results to~\citet{figueira_radial_2016}.]{Left: Figure 1 from~\citet{figueira_radial_2016}, Right: The same style figure with values updated from this work, computed with \emph{eniric}.
+    \caption[Comparision of {RV} precision results to~\citet{figueira_radial_2016}.]{Left: Figure 1 from~\citet{figueira_radial_2016}.
+        Right: The same style figure with values updated from this work, computed with \emph{eniric}.
 The main difference is the area of shaded region due to the problem with Condition~\#2 (which is the upper edge).}
     \label{fig:my_label}
 \end{figure}
-\todo{Change to 55 m/s upper limit?}
+\todo{Change to 55\mps{} upper limit?}
 
 \section{ metalicity / \logg{} extension}
 
@@ -775,6 +798,6 @@ The main difference is the area of shaded region due to the problem with Conditi
 
 
 This work is work in progress.
-So far only 1 of 8 planned {CARMENES} spectra have been telluric corrected to calculate the RV precision.
+So far only 1 of 8 planned {CARMENES} spectra have been telluric corrected to calculate the {RV} precision.
 
-{I can calculate the rv precision from models though.}
+{I can calculate the {RV} precision from models though.}

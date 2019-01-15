@@ -3,8 +3,9 @@
 \section{Telluric correction}
 \label{sec:telluric_correction}
 
-Typically the absorption of the Earth's atmosphere (telluric lines) is corrected with the standard star method~\citep[e.g.][]{vacca_method_2003}. This method observed a ``standard star'', a very hot (O or A-type), fast rotating star.
-These stars have minimal spectral features themselves so reveal the spectrum of the telluric lines. 
+Typically the absorption of the Earth's atmosphere (telluric lines) is corrected with the standard star method~\citep[e.g.][]{vacca_method_2003}.
+This method observed a ``standard star'', a very hot (O or A-type), fast rotating star.
+These stars have minimal spectral features themselves so reveal the spectrum of the telluric lines.
 The telluric lines present in a spectrum of the science target can be corrected/removed by dividing it by the spectrum of the standard star.
 
 The observation of the standard star needs to be observed close in the sky and time to the science observation to have a similar atmospheric absorption to the science target.
@@ -45,7 +46,8 @@ Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of t
 
 The {ARLETTY} atmospheric profiles have a 6~hour resolution, so there may be a slight difference between the actual profile at the time of observation.
 
-There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra. {TAPAS} produces the telluric spectrum and sends a link to the results via email.
+There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra.
+{TAPAS} produces the telluric spectrum and sends a link to the results via email.
 
 
 \subsection{Requests for this work}
@@ -57,12 +59,15 @@ The telluric models were retrieved without barycentric correction to keep the te
 For each observation one model was requested with all available atmospheric species present, convolved to a resolution of \(\rm R=50\,000\), and a further two models without the instrumental profile convolution applied.
 For these two extra models, one contained only the transmission spectra of \ce{H2O} while the other contained contributions from the all other constituents except \ce{H2O}.
 This was to explore a known issue with the depth of \ce{H2O} absorption lines in the {TAPAS} models~\citep{bertaux_tapas_2014} (see \cref{subsec:telluric_correction_application}).
-An example of the telluric spectrum for the \ce{H2O} and the non-\ce{H2O} species is given in \cref{fig:telluriccomponents}. To obtained a combined model of all species these two can be multiplied together.
+An example of the telluric spectrum for the \ce{H2O} and the non-\ce{H2O} species is given in \cref{fig:telluriccomponents}.
+To obtained a combined model of all species these two can be multiplied together.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{figures/atmos_and_models/telluric_components}
-    \caption[Telluric spectra for the \ce{H2O} and non-\ce{H2O} species.]{Telluric absorption spectrum for \ce{H2O} and the non-\ce{H2O} species available from {TAPAS}. In the wavelength range 2110--2170\nm{} and both at a resolution of 50\,000. A vertical offset of 0.1 has been added to the non-\ce{H2O} spectrum.}
+    \caption[Telluric spectra for the \ce{H2O} and non-\ce{H2O} species.]{Telluric absorption spectrum for \ce{H2O} and the non-\ce{H2O} species available from {TAPAS}.
+        In the wavelength range 2110--2170\nm{} and both at a resolution of 50\,000.
+        A vertical offset of 0.1 has been added to the non-\ce{H2O} spectrum.}
     \label{fig:telluriccomponents}
 \end{figure}
 
@@ -103,7 +108,8 @@ These issues need to be considered when requesting {TAPAS} spectra, adding unnec
 
 
 \subsection{Telluric masking}
-The telluric spectra from {TAPAS} can not only be used for correcting individual spectra but are also easily used to create a wavelength mask telluric lines. For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use {TAPAS} spectra to mask out atmospheric lines deeper than 2\% for computing the photon noise limited radial velocity precision.
+The telluric spectra from {TAPAS} can not only be used for correcting individual spectra but are also easily used to create a wavelength mask telluric lines.
+For instance~\citet{figueira_radial_2016} and~\citet{artigau_optical_2018} use {TAPAS} spectra to mask out atmospheric lines deeper than 2\% for computing the photon noise limited radial velocity precision.
 A telluric wavelength mask is similarly used in \cref{cha:nir_content} when extending the analysis of~\citet{figueira_radial_2016}.
 The telluric model used for this is an average of 52 {TAPAS} spectra (one per week in 2014), simulated at La Silla Observatory at an airmass of 1.2 (\(z = 33.5^{o}\)).
 This is to incorporate long-term variations of absorption over the year.
