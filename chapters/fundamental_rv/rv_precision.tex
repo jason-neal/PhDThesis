@@ -1,7 +1,9 @@
 %!TEX root = ../../thesis.tex
 
 \section{Measuring the {RV}}
-The motion of the star towards and away from the Earth shifts the lines of its spectra through he Doppler Effect.
+\label{sec:measuring_rv}
+\todo{I think at this point you can backtrack a bit and say that you "want to discuss how to measure RVs" fron spectra.}
+The motion of the star towards and away from the Earth shifts the lines of its spectra through the Doppler Effect.
 In the non-relativistic limit this can be written as:
 \begin{equation}
 \frac{\Delta\lambda}{\lambda} = \frac{v}{c},
@@ -16,7 +18,7 @@ The {CCF} collapses the {RV} from all the lines into one number with higher prec
 
 \section{{RV} precision}
 \label{section:rv_precision}
-To achieve a high-level {RV} precision, two sources of noise must be controlled: statistical error from the {RV} measurement and systematic errors induced by the spectrograph.
+To achieve a high-level {RV} precision, two types of noise must be controlled: statistical error from the {RV} measurement and systematic errors induced by the spectrograph.
 This requires a stabilized spectrograph, precisely calibrated in wavelength, and the combination of thousands of lines~\citep[e.g.][]{pepe_instrumentation_2014}.
 The fundamental source of noise is photon noise, which follows a {Poisson} distribution.
 That is, an observable with an average value of $N$ has a standard deviation $\sqrt{N}$.
@@ -50,7 +52,7 @@ where $\lambda$ is the wavelength and $\sigma_D$ the detector noise.
 In all these formulations there are some key properties to achieve high {RV} precision: a high stellar flux $F$ to achieve a high \snr{}, observed at high resolution to have sharp spectral lines.
 The deeper (high C) and narrower (small \fwhm{}) a spectral line\footnote{With steeper gradients $\partial A_0(i)/\partial\lambda$.}, the better defined the position of the line will be, allowing for a higher precision measurement of the {RV}.
 The flux $F$ or \snr{} of an observation increases with the number of photons collected which depends on the stellar brightness as well as distance\footnote{Basically the stars apparent magnitude}, coupled with the telescope size and with the exposure time.
-This limits the highest precision {RV} measurements to relatively nearby stars.
+In practise, this limits the highest precision {RV} measurements to relatively nearby stars.
 Cross-dispersed echelle spectrographs mounted on the largest telescopes are capable of delivering the high-resolution, high \snr{} and high bandwidth requirements necessary to achieve high precision {RV} measurements.
 
 These formula have recently been used to assess the theoretical {RV} precision of synthetic spectra for the development of instrument designs of new \nir{} spectrographs~\citep[e.g.][]{figueira_radial_2016} as well as compare precision of real and synthetic spectra~\citep[e.g.][]{artigau_optical_2018}.
