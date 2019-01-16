@@ -3,46 +3,49 @@
 \chapter{Synthetic companion recovery}  % Main chapter title
 \label{cha:model_comparison}
 
-Following on from \cref{cha:direct_recovery}, in which the differential subtraction technique was unsuccessful due to the insufficient separation observations, a second method was attempted to detect the presence of the faint companions.
- this chapter \textchisquared{} fitting is used to fit the observed spectra with a two component binary model comprised of synthetic spectra.
- The preparation of the models is presented as well as and overview of the method.
-A simulation with an M-dwarf companion is presented first then the observations are attempted.
-Injection-recovery simulations are performed to understand the results obtained.
-A discussion of the results and a comparison to other similar techniques is presented at the end.
+Following on from \cref{cha:direct_recovery}, in which the differential subtraction technique was unsuccessful due to the insufficient separation of the observations, a second method is attempted to detect the presence of the faint {BD} companions in the blended spectrum.
+In this chapter a \textchisquared{} fitting approach is used to fit the observed spectra with a binary model comprised of two synthetic spectral components.
+An overview of the method is presented followed by the preparation of the models.
+A simulation with a larger M-dwarf companion to a G2V star is presented first, followed by a simulation and observations of {HD~211847}.
+Injection-recovery simulations are performed to understand the limitations of this method and the results obtained.
+A discussion of the results and a comparison to other similar techniques is given at the end.
 
 
-\section{Binary \texorpdfstring{\textchisquared}\ spectral recovery}
+\section{Binary \texorpdfstring{\textchisquared}\ \ spectral recovery}
 \label{subsec:companion_recovery}
-The approach developed here is to fit the observed CRIRES spectra with model comprised of a combination of two synthetic spectra, one for the host star and one for the companion.
-This will be done using \textchisquared{} methods which have been extensively used in the literature~\citep[e.g.][]{astudillo-defru_harps_2015, passegger_fundamental_2016, zechmeister_spectrum_2018, nemravova_xtauri_2016, kolbl_detection_2015}.
-The recoverable from the models will be the temperature of synthetic spectra fitted to the companion which will provide some indication of the companions spectral type, but will not produce a direct mass constraint that was the original aim of this work.
+The approach developed here is to fit the observed CRIRES spectra, consisting of a FGK star with a {BD} companion, with model comprised of a combination of two synthetic spectra, one for each component.
+This will be done using the \textchisquared{} approach which has been extensively used in the literature~\citep[e.g.][to list a few]{astudillo-defru_harps_2015, passegger_fundamental_2016, zechmeister_spectrum_2018, nemravova_xtauri_2016, kolbl_detection_2015}.
+The recoverable information from the fitting will be the parameters of synthetic spectra fitted to the companion which will provide some indication of the companions temperature and spectral type, but it will not produce a direct mass constraint that was the original aim of the observations.
 
-\subsection{The \texorpdfstring{\textchisquared}\ method}
+\subsection{The \texorpdfstring{\textchisquared}\ \ method}
 \label{subsec:chi2}
 
-The well known \textchisquared{} technique measures the weighted sum of the squared deviation between the observation (\({O}_{i}\)) and the computed models (\(C_{i}\)), with the minimum \textchisquared{} value representing the best-fit parameters:
-\[\chisquared = {\sum}_i \frac{{(O_{i} - C_{i})}^2}{{\sigma}_{i}},\] where \({\sigma}_{i}\) is the error on each measurement.
+The well known \textchisquared{} technique measures the weighted sum (for all data points \(i\)) of the squared deviation between the observation (\({O}\)) and the computed models (\({C}\)), with the minimum \textchisquared{} value representing the best-fit parameters:
+\[\chisquared = {\sum}_i \frac{{(O_{i} - {C}_{i})}^2}{{\sigma}_{i}},\] where \({\sigma}_{i}\) is the error on each measurement.
 
-The inverse survival function of the \textchisquared{} distribution is used to determine the confidence levels on the minimum \textchisquared{} parameters.
-The inverse survival function returns a \(\Delta\chisquared\) value from the minimum \textchisquared{} value for a given $\sigma$ level and degree of freedom\footnote{In \emph{Python} with the \emph{scipy} package this is a single line \texttt{scipy.stats.chi2{(dof)}.isf{(1-p)}}, where \(p = 0.68\) for 1-\(\sigma\), and dof is the degree of freedom.}.
-For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}.
+The inverse survival function of the \textchisquared{} distribution is used to determine the confidence levels of the resulting parameters from the minimum \textchisquared{}.
+The inverse survival function returns a \(\Delta\chisquared\) value from the minimum \textchisquared{} value for a given $\sigma$ level and degree of freedom.
+This can be achieved in \emph{Python} with the \emph{scipy} package as the single line of code \texttt{scipy.stats.chi2{(dof)}.isf{(1-p)}}, where \textit{dof} is the degree of freedom and \(p\) the probability; for example \(p = 0.68\) for 1-\(\sigma\).
+For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) confidence levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}.
 This method assumes that the measured flux is observed with a \snr{} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
 
-For a given observation, the \(\chisquared_{red}\) is computed by \(\chisquared_{red} = \chisquared / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or 4 in the examples explored below}, and is performed after the summation over the detectors.
-s
-For each observation $O$, the \(\sigma\) is estimated using the \(\beta\sigma\) method~\citep{czesla_posteriori_2018}, using the MAD (median absolute deviation about the median) robust estimator.
-This method estimates the spectral noise using numerical derivatives of the spectra.
-We followed the procedure outlined in~\citet{czesla_posteriori_2018} to analyse the results from successive parameter combinations to settle on an order of approximation (derivative level) of 5, and a jump parameter (pixels skipped to avoid correlations) of 2.
-The same \(\sigma\) is applied to all points in the spectrum so that \({\sigma}_{i} = \sigma\).
-The \(\beta\sigma\) method provided \(\sigma\) estimates for the target spectra which correspond inversely to signal-to-noise ratios between 100--400, which are similar to the values given in \cref{tab:observations} calculated only from the continuum of detector 2.
+For a given observation, the \(\chisquared_{red}\) is computed as \(\chisquared_{red} = \chisquared / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or \(m=4\) in the examples explored below}.
+In the cases explored below the \(\chisquared_{red}\) is only calculated after after the summation across the detectors is performed.
 
-The computed models $C_(i)$ are described in \cref{models} and result in a multidimensional grid of \textchisquared{} values for each combination of model parameters, namely the spectral temperature, host {RV}, and companion {RV} for each: detector, observation, and target.
+For each observation $O$, the \(\sigma\) is estimated using the \(\beta\sigma\) method~\citep{czesla_posteriori_2018}, using the {MAD} (median absolute deviation about the median) robust estimator.
+The \(\beta\sigma\) method estimates the spectral noise of the spectra using a series of numerical derivatives\footnote{Applying a Taylor expansion to the spectra.}.
+We followed the procedure outlined in~\citet{czesla_posteriori_2018} to analyse the results from successive parameter combinations to settle on an order of approximation (derivative level) of \(N=5\), and a jump parameter (pixels skipped to avoid correlations) of \(j=2\).
+The same \(\sigma\) value determined is applied to all points in the spectrum so that \({\sigma}_{i} = \sigma\).
+The \(\beta\sigma\) method provides \(\sigma\) estimates for the target spectra which correspond inversely to \snr{} values between 100--400. These \snr{} values are similar to the values given in \cref{tab:observations} which were calculated only using the standard deviation of the continuum of detector \#2.
+
+The computed models $C_{i}$ are described in \cref{models} and result in a multidimensional grid of \textchisquared{} values for each combination of model parameters, namely the spectral parameters  (e.g. \Teff{}), and the {RV} of the host and companion {RV} for each: detector, observation, and target.
 
 The global minimum of the multidimensional \textchisquared-space is used to represent the best fitting model combination to the observed spectra.
 The multidimensional \textchisquared{} grid is summed across multiple detectors to also determine a global minimum \textchisquared{} for the whole observation \(\chisquared_{obs} = \Sigma^{N}_{n=1} \chisquared_n\), where \(N\) is the number of detectors used.
 However, the separate observations are not combined as the {RV} parameters of the host and companion will vary between each observation\footnote{Since the current observations are insufficiently separated, it may be possible to combine the separate observations; but in general this would not be the case}.
-For that a model that incorporates the phase information will be needed but is beyond the scope here due to the limited number of observations (1--4).
-A promising method to incorporate the phase information and detection planetary spectra is given by~\citep{lockwood_nearir_2014,piskorz_evidence_2016}.
+To incorporate the separate observations a model that incorporates the phase information will be required and is beyond the scope of this work due to the limited number of observations (1--4).
+A promising method to incorporate the phase information for the detection of exoplanetary spectra is given by~\citet{lockwood_nearir_2014,piskorz_evidence_2016}.
+They detect evidence of an exoplanet spectrum with an contrast of order \({10}^{-4}\) using \nir{} (\textit{L}- and \textit{K}-band) spectra with a \snr{}\(\approx2000\) observed at six epochs over the whole orbit.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,76 +54,69 @@ A promising method to incorporate the phase information and detection planetary 
 \subsection{Computed model spectra}
 \label{models}
 In this section the transformation of the synthetic {PHOENIX-ACES} spectra into the computed models (\(C_i\)) is explained.
-These computed models are then used to fit to the observed spectra.
+These computed models will then be fit to the observed spectra.
 
 Firstly, this assumes that the synthetic spectra are loaded and converted to consistent units.
-The loading is easily performed using Starfish's \href{https://iancze.github.io/Starfish/current/grid_tools.html}{GridTools}, which can load the library spectra with a list of stellar parameters [\Teff{}, \logg{}, \feh{}, \alphafe{}].
-The {PHOENIX-ACES} spectra are then converted from spectral energy distribution  \textbf{add unit} to photon flux \textbf{add unit} by multiplying by the wavelength (multipliable constants ignored).
-The spectra are also convolved to the matching resolution of the observations, in this case R=50\,000.
-Due to the properties of convolution this is performed first and not required to be performed after the model spectra are created.
-It would be computationally expensive, to perform convolution on every model combination \(C_i\).
+The loading is easily performed using Starfish's \href{https://iancze.github.io/Starfish/current/grid_tools.html}{GridTools}~\citep{czekala_constructing_2015}, which can load the library spectra with a list of stellar parameters [\Teff{}, \logg{}, \feh{}, \alphafe{}].
+The {PHOENIX-ACES} spectra are converted from the units of the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)) (at the stellar surface) into photon flux (\(\rm photon\,s^{-1}\,cm^{2}\)) by dividing by the photon energy\footnote{Photon energy \(E=\frac{hc}{\lambda}\), where \(h\), \(c\) and, \(\lambda\) are Plank's constant, the speed of light, and wavelength, respectively.}. This can be simply achieved by multiplying the spectrum by the wavelength (multiplicative constants ignored), as done in~\citet{figueira_radial_2016}.
+The spectra are also convolved with a Gaussian kernel to the instrumental resolution of the observations, in this case R=50\,000.
+Due to the distributive property\footnote{\(I(\lambda) \ast (f(\lambda) + g(\lambda)) = I(\lambda) \ast f(\lambda) + I(\lambda) \ast g(\lambda) \)} of convolution the instrumental broadening is performed on each individual library spectrum first. This it to avoid performing convolution for each combination of model parameters in the binary model after the spectra have been combined. 
+It would be more computationally expensive, to perform the convolution on every model combination \(C_i\).
 
-These synthetic spectra are used individually for the single component model and combined together into a binary model.
-The results of these models are interpolated to the wavelength grid of the observed spectra and the \textchisquared{} calculated by comparing the model and observation at each point.
-
-
-{\red{} The synthetic spectra are multiplied by the wavelength to convert it into photon counts, ignoring multiplicative constants, as done in~\citet{figueira_radial_2016}\footnote{Synthetic models provide the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)).}.
-The spectra were convolved with a Gaussian kernel to match the resolution of the observations (\(\rm R=50\,000\)).
-Due to the distributive property of convolution it is efficient to apply it once to each spectra first, before the spectral pairs are combined.}
-
+These synthetic spectra are used individually for the single component model (\cref{subsubsec:single-model}) and also combined together into a binary model (\cref{subsubsec:binary-model}).
+The results of these models are then interpolated to the wavelength grid of the observed spectra and the \textchisquared{} calculated by comparing the model and observation at each wavelength point, \(i\).
 
 \subsubsection{Single component model}
 \label{subsubsec:single-model}
-The single model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \Teff{}, \logg{}, \feh{}, \alphafe{}) \alphafe{} and is Doppler shifted by a {RV} value \({rv}_1\).
+The single component model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \Teff{}, \logg{}, \feh{}, \alphafe{}) \alphafe{} that can be Doppler shifted by a {RV} value \({rv}_{1}\).
 \begin{equation}
-\rm C^{1}_{i}(\lambda) = J(\lambda_0(1-\frac{{rv}_1}{c}))
+C^{1}_{i}(\lambda) = \J{}(\lambda_{0}(1-\frac{\rvone}{c}))
 \end{equation}
-where \(\lambda\) is the shifted wavelength, \(\lambda_0\), the model rest wavelength and, \(c\), the speed of light in a vacuum.
-The model's flux is then continuum normalized to unity to match the observed spectra, and interpolated to the wavelength grid of the observation.
+where \(\lambda\) is the shifted wavelength, \(\lambda_{0}\), the model rest wavelength and, \(c\), the speed of light in a vacuum.
+The model's flux in the wavelength region of the observations is continuum normalized to unity to match the observed spectra, and then interpolated to the wavelength grid of the observation.
 
-This single component model analysis is similar to the~\citet{passegger_fundamental_2016} \textchisquared{} fitting.
-A similar re-normalization (see \cref{subsec:renorm}) as~\citet{passegger_fundamental_2016} is used to account for slight differences in the continuum level and possible linear trends between the normalized observation and model.
-However, no dynamical masking was applied to sensitive lines to make the \textchisquared{} minima more distinct or linearly interpolate the stellar parameters between the grid models to obtain high precision stellar parameters.
-This is because we are not trying to derive precise stellar parameters but to detect the spectra of the companions.
-Instead radial velocity components are included in the \textchisquared{} fitting, which is not included in~\citet{passegger_fundamental_2016}.
+This single component model analysis is similar to the~\citet{passegger_fundamental_2016} \textchisquared{} fitting, using PHOENIX-ACES spectra to fit and determine the parameters of M-dwarf spectra.
+A similar re-normalization (see \cref{subsec:renorm}) as~\citet{passegger_fundamental_2016} is used to account for slight differences in the continuum level and possible linear trends between the normalized observation and models.
+However, unlike \citet{passegger_fundamental_2016}, no dynamical masking was applied to sensitive lines to make the \textchisquared{} minima more distinct nor a linear interpolation of the stellar parameters between the grid models to obtain higher precision stellar parameters.
+This was because, at this stage, only the presence of the secondary is trying to be detected, not determine precise stellar parameters.
+These processes and others could however be included in the future to improve the detectability and precision of the best-fit model.
+Instead, a radial velocity component is included in the \textchisquared{} fitting, which is not included in~\citet{passegger_fundamental_2016}.
 
 
 \subsubsection{Binary model}
 \label{subsubsec:binary-model}
-The model spectrum in the binary situation is considered to be the superposition of two synthetic spectral components, one each for the host and companion respectively.
-Both spectra are Doppler shifted by \({rv}_1\) which represents the {RV} motion of the host star, while the companion spectra is also Doppler shifted by a second {RV}, \({rv}_2\), representing the {RV} offset between the host and companion.
-This choice is arbitrary, but in this way the mean motion of the system relative to Earth is captured only in \({rv}_1\).
-The two spectra are scaled by their squared radius (see \cref{subsection-radius}) then added together, thus fixing the relative amplitude of the two components.
-Given two spectral components \(\textrm{J}_{1}\) and \(\textrm{J}_{2}\) with radii \(R_1, R_2\) this equates to
+In the binary model case the model is considered to be the superposition of two synthetic spectral components, one each for the host and companion respectively.
+Both components are Doppler shifted by \Rvone{} which represents the {RV} motion of the host star, while the companion spectra is also Doppler shifted by a second {RV}, \Rvtwo{}, representing the {RV} offset between of spectrum the host and companion.
+This choice is arbitrary\footnote{Having \Rvtwo{} as the companion {RV}  offset from the rest wavelength is also a valid choice.}, but in this way the mean motion of the system relative to Earth is captured only in \Rvone{}.
+The two spectra are scaled by their radius squared (see \cref{subsection-radius}) then added together, thus setting the relative amplitude of the two spectral components.
+Given two spectral components \Jone{} and \Jtwo{} with radii \Rone{}, \Rtwo{} this equates to
 \begin{align}
-\rm C^{2}_{i}(\lambda) = &  \textrm{J}_{1}(\lambda_{0}(1 - \frac{rv_{1}}{c}))\times R_{1}^2 +\nonumber \\
-& \textrm{J}_{2}(\lambda_{0}(1-\frac{rv_{1}}{c})(1-\frac{rv_{2}}{c}))\times R_{2}^2
+C^{2}_{i}(\lambda) = & \jone{}(\lambda_{0}(1 - \frac{\rvone{}}{c}))\times {\rone}^{2} +\nonumber \\
+                     & \jtwo{}(\lambda_{0}(1 - \frac{\rvone{}}{c})(1 - \frac{\rvtwo{}}{c}))\times {\rtwo{}}^{2}
 \end{align}
 
+The combined binary model is continuum normalized by dividing it by an exponential fitted to the continuum of the combined spectrum. Here at 2100\nm{} it assumed that the Rayleigh-Jeans regime is appropriate.
+This assumption is wavelength dependent and other continuum normalization techniques are may also be valid.
+In the case of a {BD} companion around an {FGK} star investigated here, the continuum is dominated by the contribution from the host star; contributing the majority of the spectrum with flux ratios below \(\sim\)1\%, in the wavelength range 2110--2165\nm{}. 
 
-The combined spectra is continuum normalized by dividing by an exponential fitted to the continuum of the combined spectrum, as the Rayleigh-Jeans regime is assumed.
-This assumption here is wavelength dependent and other appropriate continuum normalization techniques are also valid.
-In the case of a {BD} companion around an {FGK} star investigated here, the continuum is dominated by the contribution from the host star as it contributes the majority of the spectrum with flux ratios around 2110--2165\nm{} below \(\sim\)1\%.
+Models are combined in this way to represent the correct absolute flux ratio of the spectral components.
+A further method could allow a variable flux ratio to be included as an extra parameter and be fitted as well.
+However, it would add an extra dimension to the \textchisquared{} grid and potentially add more degeneracy between models of the companion.
+The median flux ratio between the two components is calculated for the wavelength range used here as an indication of the flux ratio level. This given as \({F}_{2}/{F}_{1}\) in \cref{tab:example_params}
 
-We combine the models in this way to represent the correct absolute flux ratio of the components.
-The median flux ratio between the two components is calculated for the wavelength range used here as an indication of the flux ratio level.
-
-The binary model should provide meaningful information about the companion parameters (e.g.\ \Teff{}) and an estimate of the flux ratio of the system.
+This binary model should provide meaningful information about the likely companion parameters (e.g.\ \Teff{}) and a possible estimate of the flux ratio of the system.
 These can be combined with the~\citet{baraffe_evolutionary_2003} models to constrain the mass of the companion.
-However, we need to be careful with this model as the inclusion of extra spectral components and associated parameters could also provide a better fit to observations which do not have a companion, by fitting components of the noise.\\
+However, care is needed with the binary model as the inclusion of extra spectral components and associated parameters could also provide a ``better'' fit to observations which have faint or even no companions, by fitting components of the noise.
 
-{\red{} The full list of grid parameters for the binary model are \(\teffsub{1}\),  \(\logg{}_1\), \feh{}\(_1\), \alphafe{}\(_1\), \({rv}_1\), \(\teffsub{2}\), \(\logg{}_2\), \feh{}\(_2\), \alphafe{}\(_2\), \({rv}_2\) where the subscripts 1 and 2 indicate the host and companion models respectively.}
+The full list of grid parameters for the binary model are \(\teffsub{1}\), \(\logg{}_{1}\), \feh{}\(_{1}\), \alphafe{}\(_{1}\), \Rvone{}, \(\teffsub{2}\), \(\logg{}_{2}\), \feh{}\(_{2}\), \alphafe{}\(_{2}\), \Rvtwo{} where the subscripts 1 and 2 indicate the host and companion models respectively.
 
-
-
-
-
+\todo{Down to here}
 
 \subsubsection{Effective radius}
 \label{subsection-radius}
 
 To combine the two synthetic spectra with the correct observed flux ratio we need to integrate the emitted flux over the effective surface area of each emitting body respectively.
-Ignoring the common multiplicative constants that will disappear with normalization, we scale the two synthetic spectra individually by the square of their respective radii, \(R_1\) and \(R_2\).
+Ignoring the common multiplicative constants that will disappear with normalization, we scale the two synthetic spectra individually by the square of their respective radii, \(R_{1}\) and \(R_{2}\).
 
 In this work we use the effective radius (PHXREFF keyword) of each component from the {PHOENIX} model headers.
 This is the radius used in modelling the stellar atmospheres.
@@ -140,7 +136,7 @@ Slight trends in the continuum level between the observed spectra and computed m
 F^{obs}_{re-norm} = F^{obs} \cdot \frac{\textrm{continuum fit}_{model}}{\textrm{continuum fit}_{observations}}.
 \end{equation}
 The polynomial continuum fits to the normalized observations and models are used to re-normalize the observed spectrum to the continuum of the models.
-For detectors 1--3 a polynomial of first degree was used, while for detector 4 a quadratic is needed to fit the edge of a strong Hydrogen line (Brackett-\(\gamma\)) at 2166\nm{}, which lies just off of detector 4.
+For detectors \#1--3 a polynomial of first degree was used, while for detector \#4 a second order polynomial was needed to fit the edge of a strong Hydrogen line (Brackett-\(\gamma\)) at 2166\nm{}, which lies just off of the edge of detector \#4.
 This broad line is only observed in the synthetic spectra and not in the reduced observations.
 It is assumed that this was normalized out during the reduction process.
 
@@ -170,13 +166,13 @@ For example we show the companion temperature grid spanning \(-600\) to \(+400\)
 The large numbers stated above also do not include the {RV} grid for each component.
 The {RV} grid is user defined and the number of spectra /models to consider increases when the {RV} grid step size is decreased (finer {RV} resolution).
 We can reduce the {RV} grid space significantly by tailoring it to the target being examined.
-For each target, we use the estimated {RV} values from the observation time and orbital parameters, given in \cref{tab:observations} as a centre starting point for the \({rv}_1\) and \({rv}_2\) values and increment the {RV} within a few {\fwhm} around those values, or out to the targets \(\rm K_1\) and estimated \(\rm K_2\) values.
+For each target, we use the estimated {RV} values from the observation time and orbital parameters, given in \cref{tab:observations} as a centre starting point for the \({rv}_{1}\) and \({rv}_{2}\) values and increment the {RV} within a few {\fwhm} around those values, or out to the targets \(\rm K_{1}\) and estimated \(\rm K_{2}\) values.
 
 An iterative process could be implemented to refine the {RV} grids, starting at a larger grid with lower {RV} resolution then performing a higher resolution grid about the minimum \textchisquared{} {RV} values.
 This was only done manually but could have been automated.
 One could expect that a good starting {RV} grid step be governed by the spectral resolution, e.g.\ comparable to the {\fwhm} velocity.
 
-For the companions targets with fully resolved orbits the known {RV} of the host star, \({rv}_1\) could also have been fixed.
+For the companions targets with fully resolved orbits the known {RV} of the host star, \({rv}_{1}\) could also have been fixed.
 We however left this free to see if the known value would be recovered by the fitting.
 
 
@@ -238,7 +234,7 @@ The top-left panel shows the recovered host parameters when the single model is 
 The top-right and both bottom panels are the parameters recovered when using the binary model.
 Both left-hand panels display the parameters for the host component to easily compare between models.
 With both models the host temperature \(\teffsub{1}\) is correctly recovered.
-The host {RV}, \({rv}_1\), is 0.1\kmps{} (two grid spaces) different from the simulated value for the single component model and is correctly recovered with the binary model.
+The host {RV}, \({rv}_{1}\), is 0.1\kmps{} (two grid spaces) different from the simulated value for the single component model and is correctly recovered with the binary model.
 
 The minimum \textchisquared{} location for the companion temperature is 200\K{} below the simulated value, and the {RV} of the companion recovered is 0.2\kmps{} below the input value.
 The input values for the companion are just outside of the 3-\(\sigma\) contours shown.
@@ -249,9 +245,9 @@ In this simulation the single component model recovers a host with the correct {
 Again, adding the companion with the binary model recovers the correct host temperature.
 The companion temperature recovered is 100\K{} lower than the input temperature and the {RV} is different by 2\kmps{} which is around one third the {\fwhm}.
 
-In this case with a companion {RV} offset, \({rv}_2\), near 0\kmps{} the host and companion lines are blended.
+In this case with a companion {RV} offset, \({rv}_{2}\), near 0\kmps{} the host and companion lines are blended.
 The same spectral lines from both components are trying to match to the same features of the spectra, making it more difficult to recover the companion parameters.
-In the bottom right panel there appears to be multiple minima for different \({rv}_2\) and \(\teffsub{2}\) combinations, which we assume is partially due to the small \({rv}_2\).
+In the bottom right panel there appears to be multiple minima for different \({rv}_{2}\) and \(\teffsub{2}\) combinations, which we assume is partially due to the small \({rv}_{2}\).
 
 In both simulations the reduced \(\chisquared_{red}\) for the binary model is closer to 1.
 This is not surprising as the binary model contains extra parameters.
@@ -282,7 +278,7 @@ The orbital solution was used to refine the {RV} search space of both components
 The span {RV} for the companion was extended until a value inside the {RV} bounds was found.
 
 Again the top left panel of \cref{fig:HD211847_result_contours} shows the recovery with a single component model with the other three for the binary model.
-The single component model finds a temperature of 5900\K{} for the host with a \({rv}_1\) of 7\kmps{}.
+The single component model finds a temperature of 5900\K{} for the host with a \({rv}_{1}\) of 7\kmps{}.
 This is 200\K{} and 0.4\kmps{} different above the expected parameters.
 The binary model finds a host temperature of 5800\K{}, which is the second closest model to the literature value, >100\K{} different.
 The host {RV} value recovered with the binary model is 7.6\kmps{}, which is 1\kmps{} higher than expected.
@@ -300,16 +296,16 @@ The \(\chisquared_{red}\) values for the single and binary models are 21 and 19 
 We see that there is a large spectral mismatch between the synthetic models and the observation.
 Extra wavelength masking was applied to many of the largest mismatched synthetic lines to remove their influence.
 The grey areas mark regions which have been masked out, either from the centres of deep telluric lines (the thin masks matching spectral gaps), or the more prominent mismatched lines in the synthetic spectrum excluded from the \textchisquared{} analysis.
-One clear example of a mismatched line is a synthetic line at 2132.5\nm{} that is clearly not observed in detector 2 (top right).
+One clear example of a mismatched line is a synthetic line at 2132.5\nm{} that is clearly not observed in detector \#2 (top right).
 Even with the majority of the mismatched lines removed the detection of the companion was still unsuccessful.
 
-For detectors 1 and 2 it appears that the synthetic spectra contain many more deeper lines than observed.
-For detector 3 the red half of the detector was masked out as there appears to be an offset between the observed lines.
+For detectors \#1 and 2 it appears that the synthetic spectra contain many more deeper lines than observed.
+For detector \#3 the red half of the detector was masked out as there appears to be an offset between the observed lines.
 With 3--4 lines that appear to be consistently offset from the observation it could be a wavelength calibration issue, although the telluric lines appear to be sufficiently corrected in this region, attesting for the quality of the wavelength calibration, and making it incompatible with the offset.
-For detector 4 the observed lines do not agree at all with the models.
-With many observed lines not in the model and only one line with some agreement in wavelength, detector 4 is masked out completely and not used in the \textchisquared{} fit.
+For detector \#4 the observed lines do not agree at all with the models.
+With many observed lines not in the model and only one line with some agreement in wavelength, detector \#4 is masked out completely and not used in the \textchisquared{} fit.
 Individual inspection of the \textchisquared{} results for each detector also revealed that there was a large discrepancy between the \nth{4} detector and the other three, with a different {RV} value for the host star and a \textchisquared{} values an order of magnitude higher.
-The edge of a deep Hydrogen line (Brackett-\(\gamma\)) off the edge of the detector 4 is also clearly seen in the continuum of the model >2162\nm{}.
+The edge of a deep Hydrogen line (Brackett-\(\gamma\)) off the edge of the detector \#4 is also clearly seen in the continuum of the model >2162\nm{}.
 
 We applied this same method to the remaining targets, with similar results.
 In brief, we conclude that the companion spectra cannot be correctly detected in our data using this method.
@@ -321,7 +317,7 @@ In brief, we conclude that the companion spectra cannot be correctly detected in
     The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)).
     Both left hand panels show the distribution of host temperature and host {RV}.\@ The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
     The red circles indicate the literature values or calculated parameters for the target while the yellow star indicates the minimum \textchisquared{} solution.
-    The error bar on the \(\teffsub{1}\) is from the literature while the error bars on \({rv}_1\) and \({rv}_2\) are calculated by propagating the orbital parameter uncertainties though the radial velocity equation.
+    The error bar on the \(\teffsub{1}\) is from the literature while the error bars on \({rv}_{1}\) and \({rv}_{2}\) are calculated by propagating the orbital parameter uncertainties though the radial velocity equation.
     The white line shows a 3-\(\sigma\) confidence level about the minimum \textchisquared{} solution grid point, not always visible here due to the large \textchisquared{} values.}
     \label{fig:HD211847_result_contours}
 \end{figure*}
@@ -355,14 +351,14 @@ We take the observed spectra and inject onto them a synthetic companion, at the 
 The injected companion {RV} is set to 100\kmps{} so that the companion lines are well separated from the lines of the host.
 This separation chosen is slightly larger than what we have with our observations, \({rv}_{2}\) given in \cref{tab:observations}.
 
-We restrict the search space by fixing the host parameters \(\teffsub{1}\) and \(\logg{}_1\) to those recovered fitting the non-injected spectra by a single component model.
+We restrict the search space by fixing the host parameters \(\teffsub{1}\) and \(\logg{}_{1}\) to those recovered fitting the non-injected spectra by a single component model.
 The wavelength masking is used to reduce the level of mismatch between synthetic and observed spectra.
 
-We apply the recovery method developed above on the injected spectrum, leaving only the companion \(\teffsub{2}\) and \({rv}_2\) parameters free, to recover the injected companion.
+We apply the recovery method developed above on the injected spectrum, leaving only the companion \(\teffsub{2}\) and \({rv}_{2}\) parameters free, to recover the injected companion.
 We repeated this for injected companions with temperatures below 5000\K{}.
 
 We also perform the injection-recovery with synthetic host spectra, representing each target.
-The wavelength range of the synthetic spectra used for this is three sections interpolated to 1024 values in the wavelength span of detectors 1, 2, and 3.
+The wavelength range of the synthetic spectra used for this is three sections interpolated to 1024 values in the wavelength span of detectors \#1, 2, and 3.
 For each section, Gaussian noise is added at the level measured in the corresponding detector in the observation of the target being represented.
 
 In \cref{fig:injectrecoveryhd30501} we show the results of the injection-recovery on {HD 30501}.
@@ -406,7 +402,7 @@ The black vertical line indicates the 2300\K{} temperature limit of the {PHOENIX
     \includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation}
     \includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation_with_delta}
     \caption[Shape of simulated \textchisquared{} with different injected companion temperatures.]{Top: Companion temperature verses \textchisquared{} for simulations with different injected companion temperatures.
-    Other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5200\)\K{}, \(\logg_1=4.5\), \(\logg{}_2=5.0\), and both \feh{}=0.0.
+    Other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5200\)\K{}, \(\logg_{1}=4.5\), \(\logg{}_{2}=5.0\), and both \feh{}=0.0.
     A fixed Gaussian noise corresponding to a \snr{} of 300 was used.
     Bottom: A close up view of \textchisquared{} < 15.
     The three horizontal grey lines indicate the 1-, 2-, 3-$\sigma$ with 2 degrees of freedom.
