@@ -38,7 +38,7 @@ We followed the procedure outlined in~\citet{czesla_posteriori_2018} to analyse 
 The same \(\sigma\) value determined is applied to all points in the spectrum so that \({\sigma}_{i} = \sigma\).
 The \(\beta\sigma\) method provides \(\sigma\) estimates for the target spectra which correspond inversely to \snr{} values between 100--400. These \snr{} values are similar to the values given in \cref{tab:observations} which were calculated only using the standard deviation of the continuum of detector \#2.
 
-The computed models $C_{i}$ are described in \cref{models} and result in a multidimensional grid of \textchisquared{} values for each combination of model parameters, namely the spectral parameters  (e.g. \Teff{}), and the {RV} of the host and companion {RV} for each: detector, observation, and target.
+The computed models $C$ are described in \cref{models} and result in a multidimensional grid of \textchisquared{} values for each combination of model parameters, namely the spectral parameters  (e.g. \Teff{}), and the {RV} of the host and companion {RV} for each: detector, observation, and target.
 
 The global minimum of the multidimensional \textchisquared-space is used to represent the best fitting model combination to the observed spectra.
 The multidimensional \textchisquared{} grid is summed across multiple detectors to also determine a global minimum \textchisquared{} for the whole observation \(\chisquared_{obs} = \Sigma^{N}_{n=1} \chisquared_n\), where \(N\) is the number of detectors used.
@@ -53,7 +53,7 @@ They detect evidence of an exoplanet spectrum with an contrast of order \({10}^{
 
 \subsection{Computed model spectra}
 \label{models}
-In this section the transformation of the synthetic {PHOENIX-ACES} spectra into the computed models (\(C_i\)) is explained.
+In this section the transformation of the synthetic {PHOENIX-ACES} spectra into the computed models (\(C\)) is explained.
 These computed models will then be fit to the observed spectra.
 
 Firstly, this assumes that the synthetic spectra are loaded and converted to consistent units.
@@ -61,7 +61,7 @@ The loading is easily performed using Starfish's \href{https://iancze.github.io/
 The {PHOENIX-ACES} spectra are converted from the units of the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)) (at the stellar surface) into photon flux (\(\rm photon\,s^{-1}\,cm^{2}\)) by dividing by the photon energy\footnote{Photon energy \(E=\frac{hc}{\lambda}\), where \(h\), \(c\) and, \(\lambda\) are Plank's constant, the speed of light, and wavelength, respectively.}. This can be simply achieved by multiplying the spectrum by the wavelength (multiplicative constants ignored), as done in~\citet{figueira_radial_2016}.
 The spectra are also convolved with a Gaussian kernel to the instrumental resolution of the observations, in this case R=50\,000.
 Due to the distributive property\footnote{\(I(\lambda) \ast (f(\lambda) + g(\lambda)) = I(\lambda) \ast f(\lambda) + I(\lambda) \ast g(\lambda) \)} of convolution the instrumental broadening is performed on each individual library spectrum first. This it to avoid performing convolution for each combination of model parameters in the binary model after the spectra have been combined. 
-It would be more computationally expensive, to perform the convolution on every model combination \(C_i\).
+It would be more computationally expensive, to perform the convolution on every model combination, \(C\).
 
 These synthetic spectra are used individually for the single component model (\cref{subsubsec:single-model}) and also combined together into a binary model (\cref{subsubsec:binary-model}).
 The results of these models are then interpolated to the wavelength grid of the observed spectra and the \textchisquared{} calculated by comparing the model and observation at each wavelength point, \(i\).
@@ -115,18 +115,22 @@ The full list of grid parameters for the binary model are \(\teffsub{1}\), \(\lo
 \subsubsection{Effective radius}
 \label{subsection-radius}
 
-To combine the two synthetic spectra with the correct observed flux ratio we need to integrate the emitted flux over the effective surface area of each emitting body respectively.
-Ignoring the common multiplicative constants that will disappear with normalization, we scale the two synthetic spectra individually by the square of their respective radii, \(R_{1}\) and \(R_{2}\).
+The PHOENIX-ACES spectra are calculated at the stellar surface. 
 
-In this work we use the effective radius (PHXREFF keyword) of each component from the {PHOENIX} model headers.
-This is the radius used in modelling the stellar atmospheres.
-We use this radii as it is directly tied to each model spectrum, and already available.
-The ratio of the radii from the two synthetic spectra in the binary models are provided in \cref{tab:example_params}.
+To combine the two synthetic spectra with the correct absolute flux ratio the stellar size needs to be accounted for.
+The emitted flux needs to be integrated over the effective surface area of each emitting body respectively.
+Ignoring the common multiplicative constants that will not affect the ratio between spectra and disappear with normalization the two synthetic spectra of the binary model are individually scaled by the square of their respective radii, \(R_{1}\) and \(R_{2}\).
 
-We are aware that using these radii has its limitations since as stated previously: there is a degeneracy in {BD} mass, age, and luminosity of the companion, and in particular a combination of radius-mass and radius-age relationships~\citep{sorahana_radii_2013}.
-Using the {PHOENIX-ACES} model effective radius does not allow for any independent age constraints to be incorporated, or allow for any variability in the radii to account for uncertainties.
+In this work the radius used to scale the spectra is the effective radius of each component from the {PHOENIX} model header; the {PHXREFF} keyword.
+This radius is utilized in the modelling of the {PHOENIX-ACES} stellar atmospheres.
+This is used as it is directly tied to each model spectrum, and already calculated and available.
+In this way it does not incorporate an extra assumption or model relating the library model parameters to a stellar radius.
+The ratio of the radii from the two synthetic spectra in the binary model examples presented are provided in \cref{tab:example_params} as \(\rone/\rtwo\).
 
-The targets analysed here do not have transits, but if the radius ratio can be independently determined from the photometric transit method~\citep{deeg_photometric_1998} then this could be used to constrain the radius ratio used when combing the binary model spectra instead.
+Using the radii in this way for the companions has its limitations because as stated previously: there is a degeneracy in {BD} mass, age, and luminosity of the companion, and in particular a combination of radius-mass and radius-age relationships~\citep{sorahana_radii_2013}.
+Using the {PHOENIX-ACES} model effective radii does not allow for any independent age constraints to be incorporated into the stellar radius, or allow for any variability in the radii to account for uncertainties.
+
+The targets analysed here do not transit, but in cases that did transit the radius ratio can be independently determined from the photometric transit method~\citep{deeg_photometric_1998}. This independent radius ratio could be used as constraint when combing the binary model spectra.
 
 
 \subsection{Re-normalization}
@@ -136,11 +140,11 @@ Slight trends in the continuum level between the observed spectra and computed m
 F^{obs}_{re-norm} = F^{obs} \cdot \frac{\textrm{continuum fit}_{model}}{\textrm{continuum fit}_{observations}}.
 \end{equation}
 The polynomial continuum fits to the normalized observations and models are used to re-normalize the observed spectrum to the continuum of the models.
-For detectors \#1--3 a polynomial of first degree was used, while for detector \#4 a second order polynomial was needed to fit the edge of a strong Hydrogen line (Brackett-\(\gamma\)) at 2166\nm{}, which lies just off of the edge of detector \#4.
-This broad line is only observed in the synthetic spectra and not in the reduced observations.
-It is assumed that this was normalized out during the reduction process.
+For detectors \#1--3 a polynomial of first degree was used, while for detector \#4 a polynomial of second degree was needed to fit the edge of a strong Hydrogen line (Brackett-\(\gamma\)) at 2166\nm{}, which lies just off of the edge of detector \#4.
+This broad line is only observed in the synthetic spectra but not in the reduced observations.
+It is assumed that the edge of this line was normalized out during the reduction process.
 
-For each model we further allow the continuum level to be varied by \(\pm 0.05\) as a free parameter taking the model with the smallest \textchisquared{} value.
+For each model we further allow the continuum level to be slightly varied by \(\pm 0.05\) as a free parameter taking the model that fits with the smallest \textchisquared{} value as the choice for this combination of binary parameters.
 
 
 \subsection{Reducing parameters}
