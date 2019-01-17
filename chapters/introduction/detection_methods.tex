@@ -79,7 +79,7 @@ M-dwarfs are inherently cooler and thus emit a majority of their stellar output 
 New dedicated high-resolution \nir{} spectrographs have and are being designed and implemented to meet this demand e.g.\ {CARMENES}, {NIRPS}, {SPIRou}, {CRIRES+}.
 
 
-\subsection{Transit methods}
+\subsection{Transit method}
 \label{subsec:transit}
 The transit method detects the presence of an exoplanet by observing the periodic dimming of the star due to the passage of the exoplanet between the star and observer, partially blocking the star.
 Geometry requires the orbit of the exoplanet to be aligned edge-on to the line of sight (low inclinations) for a transit to occur.
@@ -109,16 +109,18 @@ These techniques assess the likelihood of the planet being a true planet against
 The transit method has the highest false positive rate among the detection methods presented here.
 With {RV} follow-up,~\citet{santerne_sophie_2012} found a false positive rate as high as 35\% for short period giant planets, while~\citet{santerne_sophie_2016} found a 54.6\% false positive rate of 129 giant planets with periods less than 400 days.
 These sub-sample false positive rates are however higher than the global false positive rate of 9.4\%~\citep{fressin_false_2013}/11.3\%~\citep{santerne_contribution_2013} found for Kepler.
-Some of the currently known exoplanet systems with the smallest radii and lightest mass have been detected through transit and later confirmed with high-precision {RV} follow-up~\citep[e.g.][]{queloz_corot7_2009, pepe_earthsized_2013, lopez-morales_kepler21b_2016, ment_second_2018}.
+\todo
+Some of the currently known exoplanet systems with the smallest radii and lightest mass have been detected through transit and later confirmed with high-precision {RV} follow-up~\citep[e.g.][]{queloz_corot7_2009, pepe_earthsized_2013, lopez-morales_kepler21b_2016, ment_second_2018}.}{move}
 
-The identification of unresolved multiple stars, such as a binary or an unrelated background star, can be achieved through high-resolution spectroscopy in which the spectral lines of individual stars can be separated~\citep{kolbl_detection_2015}.
-This is important to measure the correct radii of exoplanets as the extra light contribution from an unresolved secondary star will reduce the transit depth, mimicking a smaller transiting planet.
+\todo{The identification of unresolved multiple stars, such as a binary or an unrelated background star, can be achieved through high-resolution spectroscopy in which the spectral lines of individual stars can be separated~\citep{kolbl_detection_2015}.
+This is important to measure the correct radii of exoplanets as the extra light contribution from an unresolved secondary star will reduce the transit depth, mimicking a smaller transiting planet.}{All this is true, but I feel it is a bit incomplete. And here you are talking no longer about false positives but more about precise characterization. Not sure thus if this paragraph brings the right info in the right place. (but you can rephrase)}
 
-The transit of a single planet can not directly determine the planetary mass.
+Due to the mass-radius degenercy the transit of a single planet can not directly determine the planetary mass.
 However, in multiple planet systems, the masses and sometimes the presence of other planets in the system can be determined from perturbations in the transit time and duration~\citep[e.g.][]{holman_use_2005, holman_kepler9_2010}.
 A large number of systems have been detected that show transit timing variations (TTV) and transit duration variations (TDV)~\citep[e.g.][]{holczer_transit_2016} due to the gravitational interaction between planets.
 The statistical validity of multi-transiting planets is more straightforward than single planets as the probability of having multiple false positives, being the product of the individual probabilities, is lower than having multiple planets in the system~\citep{lissauer_almost_2012}, making multiple planet systems easier to validate.
 
+\todo{
 The presence of star spots on the surface of a star can be observed during transit.
 A star spot is a dark region on the stellar surface due to magnetic fields, which decreases the luminosity slightly.
 Examples of spots can be seen in the middle of the Sun from an image of the 2012 transit of Venus in \cref{fig:transit_venus_transit_alignment} (left).
@@ -127,7 +129,7 @@ Unlike for other stars, sunspots are spatially resolved.
 If an exoplanet passes in front of a spot, the luminosity decrease from the spot is temporarily hidden and a small bump occurs in the transit shape.
 The presence of spots in successive transits (see \cref{fig:transit_venus_transit_alignment} (right)) can indicate the alignment of the stellar rotation to the planet orbital plane~\citep{sanchis-ojeda_starspots_2013}.
 In this simulation an orbit aligned with the stellar rotation and the transit crosses the spot in four successive orbits.
-In a misaligned case a spot would only be observed in one transit.
+In a misaligned case a spot would only be observed in one transit.}{This is all correct. But, you missed the major aspect, also in the context of the previous discussion: spots (and other active regions) can influence the precision of the planet radius as measures through transits.}
 
 \begin{figure}
     \centering
@@ -209,7 +211,7 @@ This shows that the astrometric signal is proportional to the companion/star mas
 The amplitude also decreases inversely with distance, as the angles become smaller.
 This is unlike the {RV} and transit methods for which the amplitude is not affected by distance.
 Astrometry is complementary to the {RV} method as it measures the orbital motion perpendicularly to the line of sight, allowing the three-dimensional orbit to be determined.
-
+\todo{be sure to separate "distance" from star to planet from "distance" from us to the system.}
 A modelled astrometric signal is shown in \cref{fig:astrometry_perryman}, for a star at a distance of 50\pc, with a proper motion of 50\masperyr{}, and orbited by a planet of $\Mp = 15$\,\Mjup{}, $e = 0.2$, and $a = 0.6$\AU~\citep{perryman_extrasolar_2000}.
 The straight dashed line shows the path of the system's barycentric motion viewed from the Solar System barycentre.
 The dotted line shows the effect of parallax (the Earth's orbital motion around the Sun, with a period of 1 year).
@@ -271,7 +273,9 @@ The precise stellar proper motions from the GAIA mission are being used to predi
 \subsection{Pulsar timing}
 \label{subsec:pulsar_timing}
 Pulsars are rapidly rotating neutron stars or white dwarfs formed after the death of a giant star, that radiate an intense electromagnetic beam.
-The timing variations of the millisecond pulsar\footnote{Rotating at 9\,650 revolutions per minute} {PSR1257+12} led to the first extrasolar planet detection~\citep{wolszczan_planetary_1992}.
+The timing variations of the millisecond pulsar\footnote{Rotating at 9\,650 revolutions per minute} {PSR1257+12} led to the first extrasolar \todo{planet}{I would rather say "detection of the first planetary mass object orbiting another star."
+    
+    About the formation: I remember the idea was that the star was a binary, and after explositon the compact object accreted the companion forming a disk. This disk formed the planets. And this also explains why this is a millisecon pulsar (angular momentum transfer).} detection~\citep{wolszczan_planetary_1992}.
 There are two models of planet formation around pulsars: either they formed before the supernova explosion and survived, or they formed after, from the remnants of the supernova~\citep{starovoit_existence_2017}.
 There is still a rarity of less than 10 pulsars with known orbiting planets.
 

@@ -27,10 +27,11 @@ A very general formula for the {RV} precision achievable of a given spectrum, in
 \begin{equation}
 \sigma \propto \frac{1}{\sqrt{F} \sqrt{\delta \lambda} R^{1.5}}.
 \end{equation}
+\todo{Derived for non-resolved spectra -- ????}
 $\sqrt{F}$ represents the signal-to-noise ratio (\snr{}) of the spectrum in the {Poisson}-dominated noise regime, while $\Delta \lambda$ is the bandwidth of the observed spectrum.
 This assumes that the spectrum contains a homogeneous distribution of uniform lines, per unit wavelength.
 The precision depends more steeply on the spectral resolution with $R^{-1.5}$ occurring due to the bandwidth and the number of lines visible on a fixed detector size decreases with increased resolution.
-In high resolution {RV}s this tends to $R^-{1}$ indicating the higher precision at the expense of wavelength coverage is desired~\citet{hatzes_spectrograph_1992}.
+\todo{In high resolution {RV}s this tends to $R^-{1}$ indicating the higher precision at the expense of wavelength coverage is desired}{pedro seems to think it is at odds with previous sentence}~\citet{hatzes_spectrograph_1992}.
 As a star rotates its lines become broadened by an area preserving rotation kernel (see \cref{subsec:rotational_convolution}).
 In a similar way to the resolution the {RV} precision is dependant on rotational velocity of the star (\Vsini) to the power 1.5.
 
@@ -57,3 +58,5 @@ Cross-dispersed echelle spectrographs mounted on the largest telescopes are capa
 
 These formula have recently been used to assess the theoretical {RV} precision of synthetic spectra for the development of instrument designs of new \nir{} spectrographs~\citep[e.g.][]{figueira_radial_2016} as well as compare precision of real and synthetic spectra~\citep[e.g.][]{artigau_optical_2018}.
 The {RV} precision will be analysed further in \cref{cha:nir_content} with a detailed derivation of the~\citet{bouchy_fundamental_2001} method given and implemented to analyse the precision of \nir{} spectra.
+
+\todo{I would expand a bit on how it is important for the derivation of meaningful values for precision for future spectrographs, informing technical choices such as the wavelength range. }
