@@ -135,17 +135,19 @@ It is assumed that the edge of this line was normalized out during the reduction
 
 For each model we further allow the continuum level to be slightly varied by \(\pm 0.05\) as a free parameter taking the model that fits with the smallest \textchisquared{} value as the choice for this combination of binary parameters.
 
-
-\subsection{Reducing parameters}
+\todo{down to here}
+\subsection{Reducing dimensionality}
 \label{subsec:reduce-params}
-The high dimensionality of the binary model makes it computationally challenging and difficult to analyse the \textchisquared{} space.
-For reference, the multiplicative parameter space is squared when increasing from one spectral component in the single model to a binary model, and therefore becomes computationally expensive.
+The high dimensionality of the binary model makes it computationally challenging and difficult to analyse the \textchisquared{} space. This section discusses the choices made to reduce the dimensionality and the parameter space, to reduce computation time.
+For reference, the parameter space of the models is multiplicative.
+That is, each new dimension or parameter added multiplies the number of possible model combinations.
+When increasing from the single model to the binary model, the number of parameters doubles, but the number of possible models is squared, assuming each spectral component can explore the full parameter space. The binary model is therefore more computationally expensive.
 In general the number of possible parameter combinations for \(c\) spectral components each with a grid of \(m\) models increases to \(c^m\).
 If the full set of {PHOENIX-ACES} library spectra (66456) is explored with a binary fit then this naively balloons to over 4.4 billion possible combinations.
-Half of these are not unique as the host and companion components are swapped.
-This is the worst case scenario and we implement a number of assumptions to vastly reduce the parameter-space enabling faster computation.
-
-Our first assumption is to restrict ourselves to models with an Alpha element abundance (\alphafe{}) of zero.
+This is the worst case scenario as half of these combinations are not unique as the host and companion components will be swapped.
+A number of assumptions are implemented to vastly reduce the parameter-space enabling faster computation.
+\todo{up to here}
+The first assumption is to restrict ourselves to models with an Alpha element abundance (\alphafe{}) of zero.
 This is likely a very good approximation as all our targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where \alphafe{} values are close to zero (i.e., solar)~\citet[e.g.]{adibekyan_chemical_2012}.
 Our second is to assume that we can significantly reduce the search space with literature values for the host star.
 We fix the metallicity of both components to the closest grid to the literature value (usually \feh{}=0.00).
