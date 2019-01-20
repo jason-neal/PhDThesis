@@ -2,7 +2,7 @@
 
 \todo{Example with a large mass companion? and/or \snr{}.}
 
-\section{Results}
+\section{Simulation and results}
 \label{sec:chi2_results}
 
 \input{tables/companion_recovery/recoveredparameters}
@@ -12,7 +12,8 @@
     \includegraphics[width=0.7\linewidth]{figures/companion_recovery/Mdwarf_pcolors}
     \caption[\textchisquared{} contour for companion recovery of a simulated Sun - M-dwarf binary.]{\textchisquared{} results for companion recovery of a simulated binary observation of a Sun-like star (\(\teffsub{1}=5800\)\K{}) with an M-dwarf companion (\(\teffsub{2}=4000\)\K{}).
         The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)).
-        Both left hand panels show the distribution of host temperature and host {RV}.\@ The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
+        Both left hand panels show the distribution of host temperature and host {RV}.
+        The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
         The red circle and yellow star indicate the location of the simulation input and recovered parameters respectively.
         The white line shows a 3-\(\sigma\) confidence level about the minimum \textchisquared{} solution grid point.
         Each box is centred on the parameter values and shows the grid resolution.}
@@ -22,17 +23,11 @@
 \begin{figure*}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/companion_recovery/HD211847_example_pcolors}
-    \caption[\textchisquared{} contour for companion recovery of a simulated observation of {HD 211847}.]{Similar to \cref{fig:Mdwarf_contours}, \textchisquared{} results for companion recovery of a simulated binary observation similar to {HD 211847}, (\(\teffsub{1} = 5800\)\K{}, \(\teffsub{2}=3200\)\K{}).
-        The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)).
-        Both left hand panels show the distribution of host temperature and host {RV}.
-        The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
-        The red circle and yellow star indicate the location of the simulation input and recovered parameters respectively.
-        The white line shows a 3-\(\sigma\) confidence level about the minimum \textchisquared{} solution grid point.
-        Each box is centred on the parameter values and shows the grid resolution.}
+    \caption[\textchisquared{} contour for companion recovery of a simulated observation of {HD 211847}.]{ \textchisquared{} results for companion recovery of a simulated binary observation similar to {HD 211847}, (\(\teffsub{1} = 5800\)\K{}, \(\teffsub{2} = 3200\)\K{}), similar to \cref{fig:Mdwarf_contours}.}
     \label{fig:HD211847_simulated_contours}
 \end{figure*}
-Here we show the results from applying the companion recovery model to simulated observations and to an observation.
 
+In this section some results from applying the models for companion recovery model to simulated observations and to the observation with the best estimated contrast are presented.
 
 \subsection{Simulated binaries}
 \label{subsec:simulated_binaries}
@@ -130,12 +125,9 @@ In brief, we conclude that the companion spectra cannot be correctly detected in
 \begin{figure*}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/companion_recovery/HD211847_result_pcolors}
-    \caption[\textchisquared{} contour for an observation {HD 211847}.]{\textchisquared{} result grid for observation 2 of {HD 211847}, similar to \cref{fig:Mdwarf_contours,fig:HD211847_simulated_contours}.
-        The top right plot shows the application of a single component model (\(C^1\)) while the other three are using a binary model (\(C^2\)).
-        Both left hand panels show the distribution of host temperature and host {RV}.\@ The top right panel shows the distribution for host and companion temperature, and the bottom right the companion temperature and radial velocity.
-        The red circles indicate the literature values or calculated parameters for the target while the yellow star indicates the minimum \textchisquared{} solution.
-        The error bar on the \(\teffsub{1}\) is from the literature while the error bars on \({rv}_{1}\) and \({rv}_{2}\) are calculated by propagating the orbital parameter uncertainties though the radial velocity equation.
-        The white line shows a 3-\(\sigma\) confidence level about the minimum \textchisquared{} solution grid point, not always visible here due to the large \textchisquared{} values.}
+    \caption[\textchisquared{} contour for an observation {HD 211847}.]{\textchisquared{} result grid for the second observation of {HD 211847}, similar to \cref{fig:Mdwarf_contours,fig:HD211847_simulated_contours}.
+        The white line shows a 3-\(\sigma\) confidence level about the minimum \textchisquared{} solution grid point, not always visible here due to the large \textchisquared{} values.
+        The error bar on \(\teffsub{1}\) is from the literature while the error bars on \Rvone{} and \Rvtwo{} are calculated by propagating the orbital parameter uncertainties though the radial velocity equation (\cref{eqn:rv_equation_intro}).}
     \label{fig:HD211847_result_contours}
 \end{figure*}
 
