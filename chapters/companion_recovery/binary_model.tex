@@ -19,8 +19,8 @@ This can be achieved in \emph{Python} with the \emph{scipy} package as the singl
 For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) confidence levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}.
 This method assumes that the measured flux is observed with a \snr{} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
 
-For a given observation, the \(\chisquared_{red}\) is computed as \(\chisquared_{red} = \chisquared / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or \(m=4\) in the examples explored below}.
-In the cases explored below the \(\chisquared_{red}\) is only calculated after after the summation across the detectors is performed.
+For a given observation, the \textchisquaredreduced{} is computed as \(\chisquaredreduced{} = \chisquared / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or \(m=4\) in the examples explored below}.
+In the cases explored below the \textchisquaredreduced{} is only calculated after after the summation across the detectors is performed.
 
 For each observation $O$, the \(\sigma\) is estimated using the \(\beta\sigma\) method~\citep{czesla_posteriori_2018}, using the {MAD} (median absolute deviation about the median) robust estimator.
 The \(\beta\sigma\) method estimates the spectral noise of the spectra using a series of numerical derivatives\footnote{Applying a Taylor expansion to the spectra.}.
@@ -153,9 +153,9 @@ The second assumption is that the search space can be significantly reduced by u
 The metallicity of both model components are fixed to the closest grid to the literature value of the hos star, usually \feh{}=0.00.
 The \logg{} of the host star is also fixed to the closest grid literature value.
 The uncertainties on the literature measurements for \logg{} (\(\sim\)0.1) and metallicity (\(\sim\)0.05) are both smaller than the grid steps of 0.5 for these parameters.
-For the \logg{} of the companion is obtained from the~\citet{baraffe_evolutionary_2003,baraffe_new_2015} evolutionary models for the given companions mass \(\mtwo/\mtwosini\) and hosts age.
+For the \logg{} of the companion is obtained from the~\citet{baraffe_evolutionary_2003,baraffe_new_2015} evolutionary models for the given companions mass (\Mtwo{} or\Mtwosini{}) and hosts age.
 
-A starting point for \teffsub{2}, the estimated companion temperature from the Baraffe evolutionary models is used, given the companion mass and stellar age. The temperature grid is extended about this value in each in each direction, within the temperature limits of the synthetic model limits.
+A starting point for \(\teffsub{2}\), the estimated companion temperature from the Baraffe evolutionary models is used, given the companion mass and stellar age. The temperature grid is extended about this value in each in each direction, within the temperature limits of the synthetic model limits.
 For example the companion temperature grid spans \(-600\) to \(+400\)\K{} in \cref{fig:Mdwarf_contours} and \(\pm400\)\K{} in \cref{fig:HD211847_simulated_contours,fig:HD211847_result_contours} about the estimated companion temperature.
 
 The large number of possible combinations stated above also do not include the {RV} grid for each component, which is user defined and can have a variable resolution, and amplitude.
@@ -164,7 +164,7 @@ The {RV} grid space can be reduced significantly by tailoring it to the target b
 For each target and observation, the estimated {RV} values from \cref{tab:observations} are used as a centre starting point for the \Rvone{} and \Rvtwo{} values and then incremented within a few {\fwhm} around those values, or out to the targets \Kone{} or \Ktwo{} values. 
 
 An iterative process could potentially have be implemented to refine the {RV} grids, starting with a larger grid with lower {RV} resolution and then performing a higher resolution grid about the minimum \textchisquared{} {RV} values.
-This was attempted manually during testing but it could be easily automated in the future, at the cost of recalculating the \textchisqured{} at different {RV} resolutions.
+This was attempted manually during testing but it could be easily automated in the future, at the cost of recalculating the \textchisquared{} at different {RV} resolutions.
 One could expect that a good starting {RV} grid step be governed by the spectral resolution, e.g.\ comparable to the {\fwhm} velocity.
 
 Also for the companions targets with a fully resolved orbit the known {RV} of the host star, \Rvone{} could also be held fixed, however this was not performed in this work.

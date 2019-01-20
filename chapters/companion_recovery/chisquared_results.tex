@@ -51,7 +51,7 @@ The top-left panel shows the recovered host parameters when the single model is 
 The top-right and both bottom panels are the parameters recovered when using the binary model.
 Both left-hand panels display the parameters for the host component to easily compare between models.
 With both models the host temperature \(\teffsub{1}\) is correctly recovered.
-The host {RV}, \({rv}_{1}\), is 0.1\kmps{} (two grid spaces) different from the simulated value for the single component model and is correctly recovered with the binary model.
+The host {RV}, \Rvone{}, is 0.1\kmps{} (two grid spaces) different from the simulated value for the single component model and is correctly recovered with the binary model.
 
 The minimum \textchisquared{} location for the companion temperature is 200\K{} below the simulated value, and the {RV} of the companion recovered is 0.2\kmps{} below the input value.
 The input values for the companion are just outside of the 3-\(\sigma\) contours shown.
@@ -62,11 +62,11 @@ In this simulation the single component model recovers a host with the correct {
 Again, adding the companion with the binary model recovers the correct host temperature.
 The companion temperature recovered is 100\K{} lower than the input temperature and the {RV} is different by 2\kmps{} which is around one third the {\fwhm}.
 
-In this case with a companion {RV} offset, \({rv}_{2}\), near 0\kmps{} the host and companion lines are blended.
+In this case with a companion {RV} offset, \Rvtwo{}, near 0\kmps{} the host and companion lines are blended.
 The same spectral lines from both components are trying to match to the same features of the spectra, making it more difficult to recover the companion parameters.
-In the bottom right panel there appears to be multiple minima for different \({rv}_{2}\) and \(\teffsub{2}\) combinations, which we assume is partially due to the small \({rv}_{2}\).
+In the bottom right panel there appears to be multiple minima for different \Rvtwo{} and \(\teffsub{2}\) combinations, which we assume is partially due to the small \Rvtwo{}.
 
-In both simulations the reduced \(\chisquared_{red}\) for the binary model is closer to 1.
+In both simulations the reduced \textchisquaredreduced{} for the binary model is closer to 1.
 This is not surprising as the binary model contains extra parameters.
 As mentioned above, we need to be careful, as the extra components from the binary may just happen to fit components of the noise when a binary is not present, or in our case has a low flux ratio.
 {\red{} the significance between the two models is analysed using the ``Bayesian Information Criterion'' ({BIC})~\citep{schwarz_estimating_1978}; }
@@ -95,7 +95,7 @@ The orbital solution was used to refine the {RV} search space of both components
 The span {RV} for the companion was extended until a value inside the {RV} bounds was found.
 
 Again the top left panel of \cref{fig:HD211847_result_contours} shows the recovery with a single component model with the other three for the binary model.
-The single component model finds a temperature of 5900\K{} for the host with a \({rv}_{1}\) of 7\kmps{}.
+The single component model finds a temperature of 5900\K{} for the host with a \Rvone{} of 7\kmps{}.
 This is 200\K{} and 0.4\kmps{} different above the expected parameters.
 The binary model finds a host temperature of 5800\K{}, which is the second closest model to the literature value, >100\K{} different.
 The host {RV} value recovered with the binary model is 7.6\kmps{}, which is 1\kmps{} higher than expected.
@@ -108,7 +108,7 @@ For the companion in the binary model, on the right side of \cref{fig:HD211847_r
 If we extend the grid of companion temperature towards higher temperatures the best fit location continues to increase in temperature, continually hitting the upper limit until it is close to the host temperature, >2000\K{} above the expected companion temperature.
 When the companion temperature becomes this high it also affects the recovered parameters for the host star to offset the features of the brighter companion.
 
-The \(\chisquared_{red}\) values for the single and binary models are 21 and 19 respectively, far from 1, indicating that both models are a poor fit to the observations.
+The \textchisquaredreduced{} values for the single and binary models are 21 and 19 respectively, far from 1, indicating that both models are a poor fit to the observations.
 {\red{} The $\Delta {BIC} = 3812 >10$ indicating that binary model is still preferred.} We plot the binary model for the best fit solution alongside the observed spectra in \cref{fig:visualinspection-hd2118471}.
 We see that there is a large spectral mismatch between the synthetic models and the observation.
 Extra wavelength masking was applied to many of the largest mismatched synthetic lines to remove their influence.
