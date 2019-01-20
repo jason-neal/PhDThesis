@@ -58,7 +58,7 @@ The results of these models are then interpolated to the wavelength grid of the 
 
 \subsubsection{Single component model}
 \label{subsubsec:single-model}
-The single component model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \Teff{}, \logg{}, \feh{}, \alphafe{}) \alphafe{} that can be Doppler shifted by a {RV} value \({rv}_{1}\).
+The single component model \(C^{1}_{i}\) comprises of a single synthetic spectrum, \(J\), (with model parameters \Teff{}, \logg{}, \feh{}, \alphafe{}) \alphafe{} that can be Doppler shifted by a {RV} value \Rvone{}.
 \begin{equation}
 C^{1}_{i}(\lambda) = \J{}(\lambda_{0}(1-\frac{\rvone}{c}))
 \end{equation}
@@ -77,7 +77,7 @@ Instead, a radial velocity component is included in the \textchisquared{} fittin
 \label{subsubsec:binary-model}
 In the binary model case the model is considered to be the superposition of two synthetic spectral components, one each for the host and companion respectively.
 Both components are Doppler shifted by \Rvone{} which represents the {RV} motion of the host star, while the companion spectra is also Doppler shifted by a second {RV}, \Rvtwo{}, representing the {RV} offset between of spectrum the host and companion.
-This choice is arbitrary\footnote{Having \Rvtwo{} as the companion {RV}  offset from the rest wavelength is also a valid choice.}, but in this way the mean motion of the system relative to Earth is captured only in \Rvone{}.
+This choice is arbitrary\footnote{Having \Rvtwo{} as the companion {RV} offset from the rest wavelength is also a valid choice.}, but in this way the mean motion of the system relative to Earth is captured only in \Rvone{}.
 The two spectra are scaled by their radius squared (see \cref{subsection-radius}) then added together, thus setting the relative amplitude of the two spectral components.
 Given two spectral components \Jone{} and \Jtwo{} with radii \Rone{}, \Rtwo{} this equates to
 \begin{align}
@@ -135,37 +135,36 @@ It is assumed that the edge of this line was normalized out during the reduction
 
 For each model we further allow the continuum level to be slightly varied by \(\pm 0.05\) as a free parameter taking the model that fits with the smallest \textchisquared{} value as the choice for this combination of binary parameters.
 
-\todo{down to here}
+
 \subsection{Reducing dimensionality}
 \label{subsec:reduce-params}
-The high dimensionality of the binary model makes it computationally challenging and difficult to analyse the \textchisquared{} space. This section discusses the choices made to reduce the dimensionality and the parameter space, to reduce computation time.
+The high dimensionality of the binary model makes it computationally challenging and difficult to analyse the \textchisquared{} space. This section discusses the choices made to reduce the dimensionality and the parameter space, to reduce the computation time.
 For reference, the parameter space of the models is multiplicative.
 That is, each new dimension or parameter added multiplies the number of possible model combinations.
-When increasing from the single model to the binary model, the number of parameters doubles, but the number of possible models is squared, assuming each spectral component can explore the full parameter space. The binary model is therefore more computationally expensive.
-In general the number of possible parameter combinations for \(c\) spectral components each with a grid of \(m\) models increases to \(c^m\).
+When increasing from the single model to the binary model, the number of parameters doubles, but the number of possible models is actually squared, assuming that each spectral component can explore the full parameter space. The binary model is therefore more computationally expensive.
+In general the number of possible parameter combinations for \(k\) spectral components each with a grid of \(l\) models increases to \({k}^{l}\).
 If the full set of {PHOENIX-ACES} library spectra (66456) is explored with a binary fit then this naively balloons to over 4.4 billion possible combinations.
 This is the worst case scenario as half of these combinations are not unique as the host and companion components will be swapped.
 A number of assumptions are implemented to vastly reduce the parameter-space enabling faster computation.
-\todo{up to here}
-The first assumption is to restrict ourselves to models with an Alpha element abundance (\alphafe{}) of zero.
-This is likely a very good approximation as all our targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where \alphafe{} values are close to zero (i.e., solar)~\citet[e.g.]{adibekyan_chemical_2012}.
-Our second is to assume that we can significantly reduce the search space with literature values for the host star.
-We fix the metallicity of both components to the closest grid to the literature value (usually \feh{}=0.00).
-We also fix the \logg{} of the host star to its literature values given in \cref{tab:star_params}.
+
+The first assumption is to restrict the Alpha element abundance (\alphafe{}) of the models to zero.
+This is likely a very good approximation as all our targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where \alphafe{} values are close to zero, i.e., solar~\citet[e.g.][]{adibekyan_chemical_2012}.
+The second assumption is that the search space can be significantly reduced by using literature values of the host star given in \cref{tab:star_params}.
+The metallicity of both model components are fixed to the closest grid to the literature value of the hos star, usually \feh{}=0.00.
+The \logg{} of the host star is also fixed to the closest grid literature value.
 The uncertainties on the literature measurements for \logg{} (\(\sim\)0.1) and metallicity (\(\sim\)0.05) are both smaller than the grid steps of 0.5 for these parameters.
-The \logg{} of the companion is obtained from the~\citet{baraffe_evolutionary_2003,baraffe_new_2015} evolutionary models for the given companions \(\mtwo/\mtwosini\) and hosts age.
+For the \logg{} of the companion is obtained from the~\citet{baraffe_evolutionary_2003,baraffe_new_2015} evolutionary models for the given companions mass \(\mtwo/\mtwosini\) and hosts age.
 
-We use the estimated companion temperatures from the Baraffe evolutionary models given the companion (minimum) mass and stellar age as a starting point for the companion spectra grid computation and extend the grid in each direction, within the model limits.
-For example we show the companion temperature grid spanning \(-600\) to \(+400\)\K{} in \cref{fig:Mdwarf_contours} and \(\pm400\)\K{} in \cref{fig:HD211847_simulated_contours,fig:HD211847_result_contours}.
+A starting point for \teffsub{2}, the estimated companion temperature from the Baraffe evolutionary models is used, given the companion mass and stellar age. The temperature grid is extended about this value in each in each direction, within the temperature limits of the synthetic model limits.
+For example the companion temperature grid spans \(-600\) to \(+400\)\K{} in \cref{fig:Mdwarf_contours} and \(\pm400\)\K{} in \cref{fig:HD211847_simulated_contours,fig:HD211847_result_contours} about the estimated companion temperature.
 
-The large numbers stated above also do not include the {RV} grid for each component.
-The {RV} grid is user defined and the number of spectra /models to consider increases when the {RV} grid step size is decreased (finer {RV} resolution).
-We can reduce the {RV} grid space significantly by tailoring it to the target being examined.
-For each target, we use the estimated {RV} values from the observation time and orbital parameters, given in \cref{tab:observations} as a centre starting point for the \({rv}_{1}\) and \({rv}_{2}\) values and increment the {RV} within a few {\fwhm} around those values, or out to the targets \(\rm K_{1}\) and estimated \(\rm K_{2}\) values.
+The large number of possible combinations stated above also do not include the {RV} grid for each component, which is user defined and can have a variable resolution, and amplitude.
+For example for a fixed {RV} range a decrease in the grid step size (a finer {RV} resolution) the number of models to consider increases.
+The {RV} grid space can be reduced significantly by tailoring it to the target being examined.
+For each target and observation, the estimated {RV} values from \cref{tab:observations} are used as a centre starting point for the \Rvone{} and \Rvtwo{} values and then incremented within a few {\fwhm} around those values, or out to the targets \Kone{} or \Ktwo{} values. 
 
-An iterative process could be implemented to refine the {RV} grids, starting at a larger grid with lower {RV} resolution then performing a higher resolution grid about the minimum \textchisquared{} {RV} values.
-This was only done manually but could have been automated.
+An iterative process could potentially have be implemented to refine the {RV} grids, starting with a larger grid with lower {RV} resolution and then performing a higher resolution grid about the minimum \textchisquared{} {RV} values.
+This was attempted manually during testing but it could be easily automated in the future, at the cost of recalculating the \textchisqured{} at different {RV} resolutions.
 One could expect that a good starting {RV} grid step be governed by the spectral resolution, e.g.\ comparable to the {\fwhm} velocity.
 
-For the companions targets with fully resolved orbits the known {RV} of the host star, \({rv}_{1}\) could also have been fixed.
-We however left this free to see if the known value would be recovered by the fitting.
+Also for the companions targets with a fully resolved orbit the known {RV} of the host star, \Rvone{} could also be held fixed, however this was not performed in this work.
