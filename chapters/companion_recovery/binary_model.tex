@@ -139,7 +139,7 @@ For detectors \#1--3 a polynomial of first degree was used, while for detector \
 This broad line is only observed in the synthetic spectra but not in the reduced observations.
 It is assumed that the edge of this line was normalized out during the reduction process.
 
-For each model \todo{we} further allow the continuum level to be slightly varied by \(\pm 0.05\) as a free parameter taking the model that fits with the smallest \textchisquared{} value as the choice for this combination of binary parameters.
+For each model the continuum level is further allowed to be slightly varied by \(\pm 0.05\) as a free parameter taking the model that fits with the smallest \textchisquared{} value as the choice for this combination of binary parameters.
 
 
 \subsection{Reducing dimensionality}
@@ -156,7 +156,7 @@ This is the worst case scenario as half of these combinations are not unique as 
 A number of assumptions are implemented to vastly reduce the parameter-space enabling faster computation.
 
 The first assumption is to restrict the Alpha element abundance (\alphafe{}) of the models to zero.
-This is likely a very good approximation as all \todo{our} targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where \alphafe{} values are close to zero, i.e., solar~\citet[e.g.][]{adibekyan_chemical_2012}.
+This is likely a very good approximation as all the targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where \alphafe{} values are close to zero, i.e., solar~\citet[e.g.][]{adibekyan_chemical_2012}.
 The second assumption is that the search space can be significantly reduced by using literature values of the host star given in \cref{tab:star_params}.
 The metallicity of both model components are fixed to the closest grid to the literature value of the hos star, usually \feh{}=0.00.
 The \logg{} of the host star is also fixed to the closest grid literature value.
