@@ -68,7 +68,7 @@ C^{1}_{i}(\lambda) = \J{}(\lambda_{0}(1-\frac{\rvone}{c}))
 where \(\lambda\) is the shifted wavelength, \(\lambda_{0}\), the model rest wavelength and, \(c\), the speed of light in a vacuum.
 The model's flux in the wavelength region of the observations is continuum normalized to unity to match the observed spectra, and then interpolated to the wavelength grid of the observation.
 
-This single component model analysis is similar to the~\citet{passegger_fundamental_2016} \textchisquared{} fitting, using PHOENIX-ACES spectra to fit and determine the parameters of M-dwarf spectra.
+This single component model analysis is similar to the~\citet{passegger_fundamental_2016} \textchisquared{} fitting, using {PHOENIX-ACES} spectra to fit and determine the parameters of M-dwarf spectra.
 A similar re-normalization (see \cref{subsec:renorm}) as~\citet{passegger_fundamental_2016} is used to account for slight differences in the continuum level and possible linear trends between the normalized observation and models.
 However, unlike \citet{passegger_fundamental_2016}, no dynamical masking was applied to sensitive lines to make the \textchisquared{} minima more distinct nor a linear interpolation of the stellar parameters between the grid models to obtain higher precision stellar parameters.
 This was because, at this stage, only the presence of the secondary is trying to be detected, not determine precise stellar parameters.
@@ -97,22 +97,22 @@ Models are combined in this way to represent the correct absolute flux ratio of 
 A further method could allow a variable flux ratio to be included as an extra parameter and be fitted as well.
 However, it would add an extra dimension to the \textchisquared{} grid and potentially add more degeneracy between models of the companion.
 The median flux ratio between the two components is calculated for the wavelength range used here as an indication of the flux ratio level.
-This given as \({F}_{2}/{F}_{1}\) in \cref{tab:example_params}
+This given as \FtwoFone{} in \cref{tab:example_params}
 
 This binary model should provide meaningful information about the likely companion parameters (e.g.\ \Teff{}) and a possible estimate of the flux ratio of the system.
 These can be combined with the~\citet{baraffe_evolutionary_2003} models to constrain the mass of the companion.
 However, care is needed with the binary model as the inclusion of extra spectral components and associated parameters could also provide a ``better'' fit to observations which have faint or even no companions, by fitting components of the noise.
 
-The full list of grid parameters for the binary model are \(\teffsub{1}\), \(\logg{}_{1}\), \feh{}\(_{1}\), \alphafe{}\(_{1}\), \Rvone{}, \(\teffsub{2}\), \(\logg{}_{2}\), \feh{}\(_{2}\), \alphafe{}\(_{2}\), \Rvtwo{} where the subscripts 1 and 2 indicate the host and companion models respectively.
+The full list of grid parameters for the binary model are \(\teffsub{1}\), \logg{}\(_{1}\), \feh{}\(_{1}\), \alphafe{}\(_{1}\), \Rvone{}, \(\teffsub{2}\), \logg{}\(_{2}\), \feh{}\(_{2}\), \alphafe{}\(_{2}\), \Rvtwo{} where the subscripts 1 and 2 indicate the host and companion models respectively.
 
 
 \subsubsection{Effective radius}
 \label{subsection-radius}
 
-The PHOENIX-ACES spectra are calculated at the stellar surface.
+The {PHOENIX-ACES} spectra are calculated at the stellar surface.
 To combine the two synthetic spectra with the correct absolute flux ratio the stellar size needs to be accounted for.
 The emitted flux needs to be integrated over the effective surface area of each emitting body respectively.
-Ignoring the common multiplicative constants that will not affect the ratio between spectra and disappear with normalization the two synthetic spectra of the binary model are individually scaled by the square of their respective radii, \(R_{1}\) and \(R_{2}\).
+Ignoring the common multiplicative constants that will not affect the ratio between spectra and disappear with normalization the two synthetic spectra of the binary model are individually scaled by the square of their respective radii, \(R_{1}\) and \(R_{2}\) \Rone{}.
 
 In this work the radius used to scale the spectra is the effective radius of each component from the {PHOENIX} model header; the {PHXREFF} keyword.
 This radius is utilized in the modelling of the {PHOENIX-ACES} stellar atmospheres.
