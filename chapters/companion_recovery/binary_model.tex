@@ -1,4 +1,4 @@
-%!TEX root = ../thesis.tex
+%!TEX root = ../../thesis.tex
 
 
 \section{Binary \texorpdfstring{\textchisquared}\ \ spectral recovery}
@@ -19,14 +19,15 @@ This can be achieved in \emph{Python} with the \emph{scipy} package as the singl
 For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) confidence levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}.
 This method assumes that the measured flux is observed with a \snr{} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
 
-For a given observation, the \textchisquaredreduced{} is computed as \(\chisquaredreduced{} = \chisquared / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or \(m=4\) in the examples explored below}.
+For a given observation, the \textchisquaredreduced{} is computed as \(\chisquaredreduced{} = \chisquared{} / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or \(m=4\) in the examples explored below}.
 In the cases explored below the \textchisquaredreduced{} is only calculated after after the summation across the detectors is performed.
 
 For each observation $O$, the \(\sigma\) is estimated using the \(\beta\sigma\) method~\citep{czesla_posteriori_2018}, using the {MAD} (median absolute deviation about the median) robust estimator.
 The \(\beta\sigma\) method estimates the spectral noise of the spectra using a series of numerical derivatives\footnote{Applying a Taylor expansion to the spectra.}.
 We followed the procedure outlined in~\citet{czesla_posteriori_2018} to analyse the results from successive parameter combinations to settle on an order of approximation (derivative level) of \(N=5\), and a jump parameter (pixels skipped to avoid correlations) of \(j=2\).
 The same \(\sigma\) value determined is applied to all points in the spectrum so that \({\sigma}_{i} = \sigma\).
-The \(\beta\sigma\) method provides \(\sigma\) estimates for the target spectra which correspond inversely to \snr{} values between 100--400. These \snr{} values are similar to the values given in \cref{tab:observations} which were calculated only using the standard deviation of the continuum of detector \#2.
+The \(\beta\sigma\) method provides \(\sigma\) estimates for the target spectra which correspond inversely to \snr{} values between 100--400.
+These \snr{} values are similar to the values given in \cref{tab:observations} which were calculated only using the standard deviation of the continuum of detector \#2.
 
 The computed models $C$ are described in \cref{models} and result in a multidimensional grid of \textchisquared{} values for each combination of model parameters, namely the spectral parameters  (e.g. \Teff{}), and the {RV} of the host and companion {RV} for each: detector, observation, and target.
 
@@ -48,9 +49,11 @@ These computed models will then be fit to the observed spectra.
 
 Firstly, this assumes that the synthetic spectra are loaded and converted to consistent units.
 The loading is easily performed using Starfish's \href{https://iancze.github.io/Starfish/current/grid_tools.html}{GridTools}~\citep{czekala_constructing_2015}, which can load the library spectra with a list of stellar parameters [\Teff{}, \logg{}, \feh{}, \alphafe{}].
-The {PHOENIX-ACES} spectra are converted from the units of the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)) (at the stellar surface) into photon flux (\(\rm photon\,s^{-1}\,cm^{2}\)) by dividing by the photon energy\footnote{Photon energy \(E=\frac{hc}{\lambda}\), where \(h\), \(c\) and, \(\lambda\) are Plank's constant, the speed of light, and wavelength, respectively.}. This can be simply achieved by multiplying the spectrum by the wavelength (multiplicative constants ignored), as done in~\citet{figueira_radial_2016}.
+The {PHOENIX-ACES} spectra are converted from the units of the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)) (at the stellar surface) into photon flux (\(\rm photon\,s^{-1}\,cm^{2}\)) by dividing by the photon energy\footnote{Photon energy \(E=\frac{hc}{\lambda}\), where \(h\), \(c\) and, \(\lambda\) are Plank's constant, the speed of light, and wavelength, respectively.}.
+This can be simply achieved by multiplying the spectrum by the wavelength (multiplicative constants ignored), as done in~\citet{figueira_radial_2016}.
 The spectra are also convolved with a Gaussian kernel to the instrumental resolution of the observations, in this case R=50\,000.
-Due to the distributive property\footnote{\(I(\lambda) \ast (f(\lambda) + g(\lambda)) = I(\lambda) \ast f(\lambda) + I(\lambda) \ast g(\lambda) \)} of convolution the instrumental broadening is performed on each individual library spectrum first. This it to avoid performing convolution for each combination of model parameters in the binary model after the spectra have been combined. 
+Due to the distributive property\footnote{\(I(\lambda) \ast (f(\lambda) + g(\lambda)) = I(\lambda) \ast f(\lambda) + I(\lambda) \ast g(\lambda) \)} of convolution the instrumental broadening is performed on each individual library spectrum first.
+This it to avoid performing convolution for each combination of model parameters in the binary model after the spectra have been combined.
 It would be more computationally expensive, to perform the convolution on every model combination, \(C\).
 
 These synthetic spectra are used individually for the single component model (\cref{subsubsec:single-model}) and also combined together into a binary model (\cref{subsubsec:binary-model}).
@@ -85,14 +88,16 @@ C^{2}_{i}(\lambda) = & \jone{}(\lambda_{0}(1 - \frac{\rvone{}}{c}))\times {\rone
 & \jtwo{}(\lambda_{0}(1 - \frac{\rvone{}}{c})(1 - \frac{\rvtwo{}}{c}))\times {\rtwo{}}^{2}
 \end{align}
 
-The combined binary model is continuum normalized by dividing it by an exponential fitted to the continuum of the combined spectrum. Here at 2100\nm{} it assumed that the Rayleigh-Jeans regime is appropriate.
+The combined binary model is continuum normalized by dividing it by an exponential fitted to the continuum of the combined spectrum.
+Here at 2100\nm{} it assumed that the Rayleigh-Jeans regime is appropriate.
 This assumption is wavelength dependent and other continuum normalization techniques are may also be valid.
-In the case of a {BD} companion around an {FGK} star investigated here, the continuum is dominated by the contribution from the host star; contributing the majority of the spectrum with flux ratios below \(\sim\)1\%, in the wavelength range 2110--2165\nm{}. 
+In the case of a {BD} companion around an {FGK} star investigated here, the continuum is dominated by the contribution from the host star; contributing the majority of the spectrum with flux ratios below \(\sim\)1\%, in the wavelength range 2110--2165\nm{}.
 
 Models are combined in this way to represent the correct absolute flux ratio of the spectral components.
 A further method could allow a variable flux ratio to be included as an extra parameter and be fitted as well.
 However, it would add an extra dimension to the \textchisquared{} grid and potentially add more degeneracy between models of the companion.
-The median flux ratio between the two components is calculated for the wavelength range used here as an indication of the flux ratio level. This given as \({F}_{2}/{F}_{1}\) in \cref{tab:example_params}
+The median flux ratio between the two components is calculated for the wavelength range used here as an indication of the flux ratio level.
+This given as \({F}_{2}/{F}_{1}\) in \cref{tab:example_params}
 
 This binary model should provide meaningful information about the likely companion parameters (e.g.\ \Teff{}) and a possible estimate of the flux ratio of the system.
 These can be combined with the~\citet{baraffe_evolutionary_2003} models to constrain the mass of the companion.
@@ -118,7 +123,8 @@ The ratio of the radii from the two synthetic spectra in the binary model exampl
 Using the radii in this way for the companions has its limitations because as stated previously: there is a degeneracy in {BD} mass, age, and luminosity of the companion, and in particular a combination of radius-mass and radius-age relationships~\citep{sorahana_radii_2013}.
 Using the {PHOENIX-ACES} model effective radii does not allow for any independent age constraints to be incorporated into the stellar radius, or allow for any variability in the radii to account for uncertainties.
 
-The targets analysed here do not transit, but in cases that did transit the radius ratio can be independently determined from the photometric transit method~\citep{deeg_photometric_1998}. This independent radius ratio could be used as constraint when combing the binary model spectra.
+The targets analysed here do not transit, but in cases that did transit the radius ratio can be independently determined from the photometric transit method~\citep{deeg_photometric_1998}.
+This independent radius ratio could be used as constraint when combing the binary model spectra.
 
 \todo{Radii of different parameters}
 
@@ -133,35 +139,38 @@ For detectors \#1--3 a polynomial of first degree was used, while for detector \
 This broad line is only observed in the synthetic spectra but not in the reduced observations.
 It is assumed that the edge of this line was normalized out during the reduction process.
 
-For each model we further allow the continuum level to be slightly varied by \(\pm 0.05\) as a free parameter taking the model that fits with the smallest \textchisquared{} value as the choice for this combination of binary parameters.
+For each model \todo{we} further allow the continuum level to be slightly varied by \(\pm 0.05\) as a free parameter taking the model that fits with the smallest \textchisquared{} value as the choice for this combination of binary parameters.
 
 
 \subsection{Reducing dimensionality}
 \label{subsec:reduce-params}
-The high dimensionality of the binary model makes it computationally challenging and difficult to analyse the \textchisquared{} space. This section discusses the choices made to reduce the dimensionality and the parameter space, to reduce the computation time.
+The high dimensionality of the binary model makes it computationally challenging and difficult to analyse the \textchisquared{} space.
+This section discusses the choices made to reduce the dimensionality and the parameter space, to reduce the computation time.
 For reference, the parameter space of the models is multiplicative.
 That is, each new dimension or parameter added multiplies the number of possible model combinations.
-When increasing from the single model to the binary model, the number of parameters doubles, but the number of possible models is actually squared, assuming that each spectral component can explore the full parameter space. The binary model is therefore more computationally expensive.
+When increasing from the single model to the binary model, the number of parameters doubles, but the number of possible models is actually squared, assuming that each spectral component can explore the full parameter space.
+The binary model is therefore more computationally expensive.
 In general the number of possible parameter combinations for \(k\) spectral components each with a grid of \(l\) models increases to \({k}^{l}\).
 If the full set of {PHOENIX-ACES} library spectra (66456) is explored with a binary fit then this naively balloons to over 4.4 billion possible combinations.
 This is the worst case scenario as half of these combinations are not unique as the host and companion components will be swapped.
 A number of assumptions are implemented to vastly reduce the parameter-space enabling faster computation.
 
 The first assumption is to restrict the Alpha element abundance (\alphafe{}) of the models to zero.
-This is likely a very good approximation as all our targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where \alphafe{} values are close to zero, i.e., solar~\citet[e.g.][]{adibekyan_chemical_2012}.
+This is likely a very good approximation as all \todo{our} targets have solar metallicity and are thus very likely to belong to the thin disk of the Galaxy, where \alphafe{} values are close to zero, i.e., solar~\citet[e.g.][]{adibekyan_chemical_2012}.
 The second assumption is that the search space can be significantly reduced by using literature values of the host star given in \cref{tab:star_params}.
 The metallicity of both model components are fixed to the closest grid to the literature value of the hos star, usually \feh{}=0.00.
 The \logg{} of the host star is also fixed to the closest grid literature value.
 The uncertainties on the literature measurements for \logg{} (\(\sim\)0.1) and metallicity (\(\sim\)0.05) are both smaller than the grid steps of 0.5 for these parameters.
 For the \logg{} of the companion is obtained from the~\citet{baraffe_evolutionary_2003,baraffe_new_2015} evolutionary models for the given companions mass (\Mtwo{} or\Mtwosini{}) and hosts age.
 
-A starting point for \(\teffsub{2}\), the estimated companion temperature from the Baraffe evolutionary models is used, given the companion mass and stellar age. The temperature grid is extended about this value in each in each direction, within the temperature limits of the synthetic model limits.
+A starting point for \(\teffsub{2}\), the estimated companion temperature from the Baraffe evolutionary models is used, given the companion mass and stellar age.
+The temperature grid is extended about this value in each in each direction, within the temperature limits of the synthetic model limits.
 For example the companion temperature grid spans \(-600\) to \(+400\)\K{} in \cref{fig:Mdwarf_contours} and \(\pm400\)\K{} in \cref{fig:HD211847_simulated_contours,fig:HD211847_result_contours} about the estimated companion temperature.
 
 The large number of possible combinations stated above also do not include the {RV} grid for each component, which is user defined and can have a variable resolution, and amplitude.
 For example for a fixed {RV} range a decrease in the grid step size (a finer {RV} resolution) the number of models to consider increases.
 The {RV} grid space can be reduced significantly by tailoring it to the target being examined.
-For each target and observation, the estimated {RV} values from \cref{tab:observations} are used as a centre starting point for the \Rvone{} and \Rvtwo{} values and then incremented within a few {\fwhm} around those values, or out to the targets \Kone{} or \Ktwo{} values. 
+For each target and observation, the estimated {RV} values from \cref{tab:observations} are used as a centre starting point for the \Rvone{} and \Rvtwo{} values and then incremented within a few {\fwhm} around those values, or out to the targets \Kone{} or \Ktwo{} values.
 
 An iterative process could potentially have be implemented to refine the {RV} grids, starting with a larger grid with lower {RV} resolution and then performing a higher resolution grid about the minimum \textchisquared{} {RV} values.
 This was attempted manually during testing but it could be easily automated in the future, at the cost of recalculating the \textchisquared{} at different {RV} resolutions.

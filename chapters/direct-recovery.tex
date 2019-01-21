@@ -122,7 +122,7 @@ Each observation was then: wavelength calibrated using a synthetic telluric spec
 
 
 \subsection{Calculation of expected {RV}}
-\todo{I am not sure if this is the best location for this section.}
+\todo{I am not sure if this is the best location for this section. Or it should come after the technique.}
 
 Before the differential subtraction method is presented, calculations are performed to estimate the {RV} of both components in each observations and the likely separation between the companions between observations.
 The time of each observation is used as input into \cref{eqn:rv_equation} along combined with the orbital parameters from \cref{tab:orbitparams} to calculate the expected {RV} of the host star.
@@ -190,13 +190,12 @@ $J(\lambda) = 1- D \cdot\exp^{{-\pi {(\lambda - \lambda_0)}^2} / {{W}^{2}}}$:
 \end{equation}
 where $\lambda_0$, $D$, and $W$ are the central wavelength, depth and equivalent width of the Gaussian line, and $k=\Delta {RV}_2 $ is the shift between the two companion spectra.
 
-From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the {RV} amplitudes of the host and companion (ignoring the system velocity $gamma$) are related through the mass ratio, \(q\), while having an opposite sign\footnote{The opposite sign arises from a \(180^\circ\) difference in the angle of periapsis, \(\omega\), for the companion.} (see \cref{subsec:binary_mass_ratio}): \todo{check it is in this chapter}
+From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the {RV} amplitudes of the host and companion (ignoring the system velocity $gamma$) are related through the mass ratio, \(q\), while having an opposite sign\footnote{The opposite sign arises from a \(180^\circ\) difference in the angle of periapsis, \(\omega\), for the companion.} (see \cref{subsec:binary_mass_ratio}):
 \begin{align}
 v_{2} &= -q * v_{1} \label{eqn:q_relation}
 \end{align}
-\todo{put in advanced concepts chapter???}
-\todo{this ignores \(\gamma\)}
-We can simplify \cref{eqn:companion_difference} by expressing it in terms of the mass ratio and host {RV} only:
+
+\cref{eqn:companion_difference} can be simplified by expressing it in terms of the mass ratio and host {RV} only:
 \begin{align}
 \Delta {RV}_{2} &= q v_{1a} - q v_{1b} + v_{1a} - v_{1b} \nonumber \\
 &= (1 + q)(v_{1a} - v_{1b}).\label{eqn:companion_difference_simplified}
@@ -404,7 +403,7 @@ One thing explored in~\citet{kostogryz_spectral_2013} that is not considered her
 The limitations with regards to the {RV} separation between spectral components has also been observed in other works.
 Similarly to the companion-companion {RV} separation focused on here,~\citet{kolbl_detection_2015} find a limitation of $\sim 10$\kmps{} {RV} separation required between the host and the companion.
 This is because if lines of the host and companion are blended, it is likely the companion spectra will be fitted, or incorporated into the hosts spectra, making it difficult to accurately detect the companions lines a similar {RV}.
-The {RV} difference between the host an companion is given in the last column of \cref{tab:observations} as \({rv}_{2}\).
+The {RV} difference between the host an companion is given in the last column of \cref{tab:observations} as \Rvtwo{}.
 It can be seen {HD~4747}, {HD~202206}, and {HD~218447} do not exceed this 10\kmps{} separation with the obtained observations.
 
 
