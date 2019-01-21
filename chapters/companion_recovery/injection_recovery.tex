@@ -2,42 +2,51 @@
 
 \subsection{Companion injection-recovery}
 \label{subsec:injection-recovery}
-To determine the detection limits for this method we employ an injection-recovery approach.
-We take the observed spectra and inject onto them a synthetic companion, at the absolute flux ratio to which it would have been added to a synthetic host with the same parameters.
-The injected companion {RV} is set to 100\kmps{} so that the companion lines are well separated from the lines of the host.
-This separation chosen is slightly larger than what we have with our observations, \Rvtwo{} given in \cref{tab:observations}.
+To determine the detection limits for this method a injection-recovery approach was used to simulate spectra with a range of companions.
+This is done by using the observed spectra and injecting onto them a synthetic companion, at the absolute flux ratio to which it would have been added to a synthetic host with the same parameters.
+The {RV} of injected companion is set to 100\kmps{} so that the companion lines are well separated from the lines of the host.
+This separation chosen is slightly larger than the largest host-companion separation ({HD~162020}) in the observed targets, given in \cref{tab:observations} \Rvtwo{}.
 
-We restrict the search space by fixing the host parameters \(\teffsub{1}\) and \(\logg{}_{1}\) to those recovered fitting the non-injected spectra by a single component model.
-The wavelength masking is used to reduce the level of mismatch between synthetic and observed spectra.
+The search space for the injection-recovery is restricted by fixing the host parameters \(\teffsub{1}\) and \(\logg{}_{1}\) to those recovered fitting the non-injected spectra by a single component model.
+This leaves only the companion \(\teffsub{2}\) and \Rvtwo{} parameters free, to recover the injected companion.
+The wavelength masking is used to reduce the level of mismatch between synthetic and the observed spectra.
+The spectra were injected with companions between 2500--5000\K{} and the companion recovery attempted on each.
 
-We apply the recovery method developed above on the injected spectrum, leaving only the companion \(\teffsub{2}\) and \Rvtwo{} parameters free, to recover the injected companion.
-We repeated this for injected companions with temperatures below 5000\K{}.
-
-We also perform the injection-recovery with synthetic host spectra, representing each target.
-The wavelength range of the synthetic spectra used for this is three sections interpolated to 1024 values in the wavelength span of detectors \#1, 2, and 3.
+The injection recovery also performed on a synthetic host spectra representing each target as a comparison.
+For the synthetic host injection-recovery the wavelength range of the synthetic spectra used is three sections interpolated to 1024 values in the wavelength span of detectors \#1, \#2, and \#3.
 For each section, Gaussian noise is added at the level measured in the corresponding detector in the observation of the target being represented.
 
-In \cref{fig:injectrecoveryhd30501} we show the results of the injection-recovery on {HD 30501}.
-The blue dots represent the recovered companion temperature when injected into real observations, while the orange triangles represent injection into a synthetic host.
-Error bars of \(\pm100\)\K{} are included to indicate the grid size, and do not come from the recovery itself.
-The black dashed diagonal is the temperature 1:1 relation, where a correctly recovered companion should lie.
+In \cref{fig:injectrecoveryhd30501} the results of the injection-recovery on {HD 30501} are show the injected companion temperature verses the companion temperature recovered.
+The blue dots represent the injection into the real observations, while the orange triangles represent injection into the synthetic host.
+Error bars of \(\pm100\)\K{} are included to indicate the temperature grid size only, and do not come from the recovery itself.
+The black dashed diagonal is the temperature 1:1 relation, where a correctly recovered companion should reside.
 
 The grey shaded region indicates the \(\pm 1000\)\K{} temperature range explored for the injection-recovery of the companion.
-This shows how the bounds of the grid are recovered at low temperatures.
+This shows how the bounds of the grid can be recovered at low companion temperatures and that the recovered temperature deviates from the injected companion temperature around 3800\k{}.
 
 For {HD 30501} the injection onto synthetic and observed spectra produce similar results.
 At temperatures above 3800\K{}, in both the real and synthetic spectra, the injected companion is recovered within 100\K{}.
 For injected companion temperatures below 3800\K{} the temperature recovered is systematically higher than the injected value.
 This indicates that the companion is not correctly recovered and is affected by the added noise.
-We determine this temperature to be the upper temperature limit for the recovery.
-For the other stars we could not conclude on the upper limit due to spectral mismatch issues.
-In these cases we use the results from the synthetic injection to derive a temperature recovery cut-off for each target, each simulated with the closest host star spectrum.
+The temperature of deviation is deemed to be the upper temperature limit for the recovery by this method.
+For the other stars upper limit from the injected observations could not be reliably determined, mainly due to spectral mismatch issues.
+In these cases the results from the synthetic injection are used to derive a temperature recovery cut-off for each target, each simulated with the closest synthetic spectrum to the host star.
 
-In \cref{fig:injection_shape} we show the minimum \textchisquared{} for each companion temperature in the recovery grid.
-We do this for 7 different injected companion temperatures between 2500 and 4500\K{}.
+Using the temperature cut-off values, an upper mass limit is derived for the companions around our stars using the~\citet{baraffe_new_2015} evolutionary models, finding the closest point matching the spectral temperature cut-off and \(\logg{}=5.0\).
+These values are given in \cref{tab:mass_limits} and are between 560--618~\Mjup{}.
+The flux ratio between the cut-off companion spectra and the host star are also calculated, being between 5--15\% in this wavelength span.
+
+\input{tables/companion_recovery/uppermasslimits}
+
+
+\subsubsection{\textchisquared{} shapes}
+To try and understand this recovered companions further investigation into the \textchisquared{} space was performed of the {HD30501} synthetic simulation.
+
+In \cref{fig:injection_shape} the minimum \textchisquared{} contours achieved for each companion temperature in the grid, regardless of \Rvtwo{}.
+This is done for seven different injected companion temperatures between 2500 and 4500\K{}.
 For the higher temperature companions, the \textchisquared{} is parabolic in shape, recovering the correct temperature, as expected.
 At lower temperatures there is a strong asymmetry in the \textchisquared{} with it flattening out on the lower temperature side.
-The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above the minimum \textchisquared{} are not shown in the bottom panel of \cref{fig:injection_shape} which is a close-up around the minimum \textchisquared{} as are indistinguishable in the top panel due to the \textchisquared{} y-scale.
+The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above the minimum \textchisquared{} are not shown in the bottom panel of \cref{fig:injection_shape} which is a close-up around the minimum \textchisquared{} as they are indistinguishable in the top panel due to the extreme \textchisquared{} y-scale.
 The black vertical line indicates the 2300\K{} temperature limit of the {PHOENIX-ACES} models.
 
 \begin{figure}
@@ -55,23 +64,16 @@ The black vertical line indicates the 2300\K{} temperature limit of the {PHOENIX
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation}
+    %\includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation}
     \includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation_with_delta}
     \caption[Shape of simulated \textchisquared{} with different injected companion temperatures.]{Top: Companion temperature verses \textchisquared{} for simulations with different injected companion temperatures.
-        Other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5200\)\K{}, \(\logg_{1}=4.5\), \(\logg{}_{2}=5.0\), and both \feh{}=0.0.
+        The other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5200\)\K{}, \(\logg_{1}=4.5\), \(\logg{}_{2}=5.0\), and both \feh{}=0.0.
         A fixed Gaussian noise corresponding to a \snr{} of 300 was used.
-        Bottom: A close up view of \textchisquared{} < 15.
+        Bottom: A close up view of \textchisquared{} below 15.
         The three horizontal grey lines indicate the 1-, 2-, 3-$\sigma$ with 2 degrees of freedom.
         The vertical dotted lines indicate the location of the minimum \textchisquared{} recovered for each companion.
         The black solid vertical in both panels shows the 2300\K{} cut-off of the {PHOENIX-ACES} models}
     \label{fig:injection_shape}
     %\label{fig:chi2shapeinvestigation}
 \end{figure}
-
-\input{tables/companion_recovery/uppermasslimits}
-
-
-Using the temperature cut-off values, we derive an upper mass limit for the companions around our stars using the~\citet{baraffe_new_2015} evolutionary models, finding the closest point matching the spectral temperature cut-off and \(\logg{}=5.0\).
-These values are given in \cref{tab:mass_limits} and are between 560 and 618~\Mjup{}.
-The flux ratio between the cut-off and the host star are also provided for, being between 5 and 15\% in this wavelength span.
 
