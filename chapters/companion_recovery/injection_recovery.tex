@@ -38,18 +38,6 @@ The flux ratio between the cut-off companion spectra and the host star are also 
 
 \input{tables/companion_recovery/uppermasslimits}
 
-
-\subsubsection{\texorpdfstring{\textchisquared}\ shapes}
-\label{subsubsec:chi2_shapes}
-To try and understand this recovered companions further investigation into the \textchisquared{} space was performed of the {HD30501} synthetic simulation.
-
-In \cref{fig:injection_shape} the minimum \textchisquared{} contours achieved for each companion temperature in the grid, regardless of \Rvtwo{}.
-This is done for seven different injected companion temperatures between 2500 and 4500\K{}.
-For the higher temperature companions, the \textchisquared{} is parabolic in shape, recovering the correct temperature, as expected.
-At lower temperatures there is a strong asymmetry in the \textchisquared{} with it flattening out on the lower temperature side.
-The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above the minimum \textchisquared{} are not shown in the bottom panel of \cref{fig:injection_shape} which is a close-up around the minimum \textchisquared{} as they are indistinguishable in the top panel due to the extreme \textchisquared{} y-scale.
-The black vertical line indicates the 2300\K{} temperature limit of the {PHOENIX-ACES} models.
-
 \begin{figure}
     \centering
     \includegraphics[width=0.6\linewidth]{figures/companion_recovery/inject_recovery_hd30501.pdf}
@@ -61,20 +49,3 @@ The black vertical line indicates the 2300\K{} temperature limit of the {PHOENIX
         Gaussian noise added to the synthetic spectra was derived from the observed spectra.}
     \label{fig:injectrecoveryhd30501}
 \end{figure}
-
-
-\begin{figure}
-    \centering
-    %\includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation}
-    \includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation_with_delta}
-    \caption[Shape of simulated \textchisquared{} with different injected companion temperatures.]{Top: Companion temperature verses \textchisquared{} for simulations with different injected companion temperatures.
-        The other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5200\)\K{}, \(\logg_{1}=4.5\), \(\logg{}_{2}=5.0\), and both \feh{}=0.0.
-        A fixed Gaussian noise corresponding to a \snr{} of 300 was used.
-        Bottom: A close up view of \textchisquared{} below 15.
-        The three horizontal grey lines indicate the 1-, 2-, 3-$\sigma$ with 2 degrees of freedom.
-        The vertical dotted lines indicate the location of the minimum \textchisquared{} recovered for each companion.
-        The black solid vertical in both panels shows the 2300\K{} cut-off of the {PHOENIX-ACES} models}
-    \label{fig:injection_shape}
-    %\label{fig:chi2shapeinvestigation}
-\end{figure}
-

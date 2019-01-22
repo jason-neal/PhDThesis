@@ -98,8 +98,34 @@ Of the four stars in the system they were unable to detect the spectral componen
     \label{tab:line_contributions}
 \end{table}
 
+
+\begin{figure}
+    \centering
+    %\includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation}
+    \includegraphics[width=0.7\linewidth]{figures/companion_recovery/chi2_shape_investigation_with_delta}
+    \caption[Shape of simulated \textchisquared{} with different injected companion temperatures.]{Top: Companion temperature verses \textchisquared{} for simulations with different injected companion temperatures.
+        The other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5200\)\K{}, \(\logg_{1}=4.5\), \(\logg{}_{2}=5.0\), and both \feh{}=0.0.
+        A fixed Gaussian noise corresponding to a \snr{} of 300 was used.
+        Bottom: A close up view of \textchisquared{} below 15.
+        The three horizontal grey lines indicate the 1-, 2-, 3-$\sigma$ with 2 degrees of freedom.
+        The vertical dotted lines indicate the location of the minimum \textchisquared{} recovered for each companion.
+        The black solid vertical in both panels shows the 2300\K{} cut-off of the {PHOENIX-ACES} models}
+    \label{fig:injection_shape}
+    %\label{fig:chi2shapeinvestigation}
+\end{figure}
+
+\todo{}
 \subsubsection{\(\chi^2\) asymmetry} 
 \label{subsubsec:chi2_assymetry}
+
+To try and understand this recovered companions further investigation into the \textchisquared{} space was performed of the {HD30501} synthetic simulation.
+The minimum \textchisquared{} contours achieved for each companion temperature in the grid, regardless of \Rvtwo{} are shown in \cref{fig:injection_shape}.
+This is done for seven different injected companion temperatures, \(\teffsub{2}\), between 2500 and 4500\K{}.
+For the higher temperature companions, the \textchisquared{} is parabolic in shape, recovering the correct temperature, as expected.
+At lower temperatures there is a strong asymmetry in the \textchisquared{} with it flattening out on the lower temperature side.
+The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above the minimum \textchisquared{} are not shown in the bottom panel of \cref{fig:injection_shape} which is a close-up around the minimum \textchisquared{} as they are indistinguishable in the top panel due to the extreme \textchisquared{} y-scale.
+The black vertical line indicates the 2300\K{} temperature limit of the {PHOENIX-ACES} models.
+
 In \cref{fig:injection_shape} we showed that the shape of the recovered \textchisquared{} becomes asymmetric when dealing with companion temperatures below around 3800\K{}.
 A visual inspection of the spectra reveals the likely cause.
 In \cref{fig:comp_spectra} we show the corresponding spectra between 2111--2165\nm{}.
