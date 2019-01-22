@@ -63,40 +63,9 @@ For our other targets with {BD} companions at and below the {PHOENIX-ACES} tempe
 With the \snr{} increasing with \(\sqrt{N}\) this would require the observational time for each target to be increased by a factor of \(\sim\)~10--64.
 
 Our non-detection of binary companions with low flux ratios is consistent with other works.
-For example~\citet{nemravova_xtauri_2016} performed extensive spectral analysis of a quadruple-star system \object{$\xi$ Tauri} using 227 spectra in 3 different wavelength bands.
-Of the four stars in the system they were unable to detect the spectral component of the one which had a luminosity ratio below 1\%.
-
-\begin{table}
-    \small
-    \caption{Contribution of synthetic lines within 2110--2160\nm{} of synthetic {PHOENIX-ACES} spectra to a binary model.
-        \FtwoFone{} is the continuum flux ratio between a spectrum with the given \Teff{} and \logg{} and a Sun-like spectrum with \Teff{}=5800, \logg{} = 4.5 (right most column).
-        \emph{No. lines} is the number of spectral lines deeper than 5\% from the continuum of the individual spectra while \emph{avg. depth} is the mean depth of those lines.
-        \emph{Cont. depth} is the average contribution, or depth, of these lines in the combined spectrum of a binary with a Sun-like spectrum.
-        The \snr{} is signal-to-noise level required to have Gaussian noise \(\sigma\) =1/\snr{} equal to the \emph{cont. depth} level in the binary model.
-        All synthetic spectra used here have \feh{}=0.0}
-    \begin{tabular}{*7c}
-        \toprule
-        \Teff{} (K)  & \multicolumn{2}{c}{2300} & \multicolumn{2}{c}{3200} & 5800 (\Fone{})\\
-        \logg{} & 5.0 & 4.5  & 5.0 & 4.5 & 4.5 \\
-        \midrule
-        \FtwoFone{} & 0.006 & 0.019 & 0.029  & 0.091 & 1.000 \\  
-        % {>2\%}  & no. lines & 470 &  463 & 414  & 444 & 111 \\
-        % & avg. depth & 0.20 & 0.23 & 0.10  & 0.12 & 0.04 \\
-        % & cont. depth \tablefootmark{a} & 0.0012 &  0.0043 & 0.0028 &  0.0100 &  0.0333\tablefootmark{b} \\ 
-        % \midrule
-        no. lines & 464 & 463 & 365  & 413 & 31 \\
-        avg. depth & 0.2  & 0.23 & 0.11 & 0.12 & 0.10 \\
-        cont. depth \tablefootmark{a} & 0.0012 & 0.0043 & 0.0031 & 0.0100 &  0.0833\tablefootmark{b} \\
-        \snr{}  & 833 & 232 & 323  & 100 & 12 \\
-        %  \snr{}\(\rm _N\)  & 39 & 11 & 17  & 5 & 2 \\
-        \bottomrule
-    \end{tabular}
-    \tablefoot{
-        \tablefoottext{a}{avg. depth \(\times~\ftwo{} / (\fone{} + \ftwo{})\), where \Fone{} is the component in the far right column.}
-        \tablefoottext{b}{avg. depth \(\times~\fone{} / (\fone{} + \ftwo{})\), where \Ftwo{} is for the companion with \Teff{}=3200, \logg{}=4.5.}
-    }
-    \label{tab:line_contributions}
-\end{table}
+For example~\citet{nemravova_xtauri_2016} performed extensive spectral analysis of a quadruple-star system \object{$\xi$ Tauri} using 227 spectra in 3 different wavelength bands with \(R=10\,000--48\,000\).
+Of the four stars in the system they were unable to detect the spectral component of the star which had a luminosity ratio below 1\%.
+\input{tables/companion_recovery/linedepths}
 
 
 \begin{figure}
@@ -148,10 +117,10 @@ Care needs to be taken if trying to detect a companion near this temperature.
 
 \begin{figure}
     \centering
-    %\includegraphics[width=\hsize]{images/final/companion_spectra.pdf}
+    \includegraphics[width=\hsize]{./figures/companion_recovery/companion_spectra.pdf}
     \caption{{PHOENIX-ACES} spectra for temperatures between 2500 and 5000\K{}, corresponding to to the same lines in \cref{fig:injection_shape}.
 The flux units are the native units of the {PHOENIX-ACES} spectrum, (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)), and have not been scaled by the stellar radii.
-All spectra have a \(\rm \logg{}=5.0\) and \(\rm \feh{}=0.0\).
+All spectra have a \logg{}=5.0 and \feh{}=0.0.
 The vertical dotted lines indicate the edges of the CRIRES detectors.}
     \label{fig:comp_spectra}
 \end{figure}
