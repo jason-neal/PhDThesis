@@ -2,69 +2,69 @@
 
 \section{Discussion}
 \label{sec:chisquared_discussion}
-
-
-
-
-\section{Discussion}
-\label{sec:discussion}
-The spectral differential and the synthetic recovery methods attempted here were both unsuccessful in a detection of the {BD} companion spectra.
-The upper mass limits of \(600^{+20}_{-40}\) we set for these companions is very high, roughly six times higher then the {BD} mass limit \(\sim 80-90\)\Mjup{}.
-We discuss potential reasons and solutions for these poor results below, list the lessons learned in this exploratory study, and provide some guidance for any future attempts with these methods.
-
+The spectral differential and the synthetic recovery methods attempted both in this chapter and \cref{cha:direct_recovery} were both unsuccessful in an actual detection of the {BD} companions focused in this work.
+The injection-recovery simulations at a \snr{} of 300 give a companion upper mass limit around \(600^{+20}_{-40}\), above which this method detects a simulated secondary spectra. This is very high, roughly six times higher then the {BD} mass limit \(\sim 80-90\)\Mjup{}.
+Some potential reasons and solutions for these poor results are given below, that hopefully can provide some guidance for any future attempts with these methods.
 
 \subsection{Synthetic recovery limitations}
 \label{subsec:limitations}
-In this section we discuss some of the limitations from this synthetic recovery method and some options to overcome some of these.
 
 \subsubsection{Mismatch in synthetic models}
 \label{subsubsec:mismatch}
-We believe the mismatch between the observation and synthetic spectra is the main cause of the unsuccessful companion detection, impacting the recovery in two ways.
-The mismatch causes the \textchisquared{} values to be large in general, but also causes the companion temperature to be pushed to higher temperatures.
+It is believed that spectral mismatch between the observation and synthetic spectra is the main cause of the unsuccessful companion detection, impacting the recovery in two ways.
+The mismatch causes the \textchisquared{} values to be large in general, but this also causes the companion temperature to be pushed to higher temperatures in the application to the real observations.
 
-In our examples the \logg{} and metallicity of the synthetic models are held fixed, leaving only temperature to vary.
-The temperature impacts the synthetic spectral models in two main ways: the flux level of the continuum; and the number and strength of the absorption lines.
-In the binary model the contributions from the individual components is scaled by the flux ratio.If the temperature of the companion increases then the flux and radius of the companion increases.
-Its contribution of the companion to the binary model increases and the flux ratio \FoneFtwo{} decreases.
-This effectively makes the lines of the spectrum of the host component relatively smaller in the normalized binary model spectrum.
-Due to the initial mismatch of synthetic spectral lines, a decrease in relative strength of the host lines decreases the \textchisquared{} value, and is a better "match" to the observation.
-This causes the recovered temperature of the companion to be higher than expected, >2000\K{} higher if allowed by the exploration grid.
+In the examples shown the \logg{} and metallicity of the synthetic models are held fixed, leaving only temperature to vary.
+The temperature impacts the synthetic spectral models in two main ways: the flux level of the continuum, and the number and strength of the absorption lines.
+In the binary model the contributions of the individual components is scaled by the flux ratio. If the temperature of the companion increases then the flux and radius of the companion increases and the flux ratio \FoneFtwo{} decreases.
+This effectively makes the lines in the host component relatively smaller in the normalized binary model spectrum.
+Due to the large initial mismatch of synthetic spectral lines of the host, a decrease in the relative strength of the host lines reduces the \textchisquared{} value.
+This causes the recovered temperature of the companion to be higher than expected, >2000\K{} higher if allowed by the size of the exploration grid.
 The \textchisquared{} approach is dominated by reducing the mismatch in the spectrum of the host rather than detecting the spectra of the companion.
-This spectral mismatch is not observed in the simulations in \cref{subsec:simulated_binaries} since they are created using the synthetic spectra themselves, and hence they do recover the correct host spectra.
+This spectral mismatch is not observed in the simulations in \cref{subsec:simulated_binaries} because they are created using the synthetic spectra themselves, and hence they do not have this same problem with the companion temperature.
 
+\todo{Find the wavelengths of some missing lines in the Mismatch, what elements do they belong to}
+
+Although the newer generations synthetic spectral models are improving and match the overall spectral energy distribution reasonably well there are still regions in the \emph{H}- and \emph{K}-band where there is room for improvement~\citet{rajpurohit_spectral_2016}.
+These can come in several forms, such as molecular line lists, abundance measurements, or further modelling.
+As one example in particular, \citet{rajpurohit_spectral_2016} previously inferred that the \ce{TiO} line list poorly matches the real positions of \ce{TiO} lines at spectral resolutions of \(\sim100\,000\).
+The spectral mismatch in the region studied here is still too large for spectral recovery of companion brown dwarfs.
+In the \nir{} there is a compounding problem: the model input physics of sub-stellar temperatures and chemistry combined with the general difficulty of the \nir{}.
 
 \subsubsection{Line contribution of faint companions}
 \label{subsubsec:line_contributions}
-We calculate the line depths of the synthetic companion spectra to determine the \snr{} levels required to detect the lines of the binary companions.
 One thing easy to overlook when attempting to detect the binary companion at low flux ratios is the actual contribution of the spectral lines of the companion.
-The flux ratio of the continuum for our most promising target is \FtwoFone{}\(\sim\)3\% with the other targets having an expected flux ratio around 1\%, and some well below.
-The spectral lines of the individual components which are the features we are trying to detect with the binary model, have depths on average around 10--20\% of their respective continua,  at-least between 2110--2160\nm{}.
-In effect, the companion line features have a depth \(\ll 1\%\) relative to the continuum of the combined spectra.
+Here the line depths in the synthetic companion spectra are calculated to determine the \snr{} levels required to detect the lines of the binary companions.
 
-In \cref{tab:line_contributions} we calculate some properties of the spectral lines in the {PHOENIX-ACES} library between 2110--2160\nm{}.
-We count the number of spectral lines (\emph{no. lines}) deeper than 5\%, and take the average depth (\emph{avg. depth}) of these lines.
-The contribution \emph{cont. depth} of the companion lines to a combined spectrum accounts for the flux ratio between the two components.
-Here we use a Sun-like host with \(\teffsub{1}\)=5800\K{}.
+The flux ratio of the continuum for the most promising target analysed here is \FtwoFone{}\(\sim\)3\% with the other targets having an expected flux ratio below 1\%.
+The spectral lines of the individual components, which are the features that allow the identification and recovery of the components, have depths on average around 10--20\% of their respective continua; at-least between 2110--2160\nm{}.
+In effect, the companion line features have a depth \(\ll 1\%\) relative to the continuum of the combined spectrum.
+
+In \cref{tab:line_contributions} some properties of the spectral lines in the {PHOENIX-ACES} library between 2110--2160\nm{} are calculated.
+The number of spectral lines (\emph{no. lines}) deeper than 5\% are counted and the the average depth (\emph{avg. depth}) of these lines is calculated.
+The contribution depth \emph{cont. depth} of the companion lines to a combined spectrum is calculated to account for the flux ratio between the two spectral components.
+Here a Sun-like host with \(\teffsub{1}\)=5800\K{} is used for the comparison.
 This simplified combination neglects the continuum shapes of both spectral components and uses the average flux ratios for this wavelength range.
 The {PHOENIX-ACES} spectra in the temperature range of 2500--5000\K{} shown in \cref{fig:comp_spectra} can be used to get a visual indication of the line density and depth measured here.
 
-There are more lines >5\% deep for the lower temperature spectra, with 360--460 lines in this wavelength range, to be compared with the 31 deep absorption lines found in a Sun-like spectrum.
+For the lower temperature spectra there are more lines >5\% deep, with 360--460 lines in this wavelength range, compared with only 31 deep absorption lines found in a Sun-like spectrum in this range.
 The average line depth of these lines is also larger than the Sun-like spectrum, around twice as deep.
-However, when combined, the contribution of the companion lines is 1--2 orders of magnitude smaller than the hosts lines due to the low continuum flux ratios.
+However, when accounting for the flux ratio, the contribution of the companion lines is 1--2 orders of magnitude smaller than the lines of the host.
 
 For example, with the synthetic model for the companion of {HD~211847}, the average contributions of lines >5\% become only 0.3\% deep in a binary with the Sun-like spectrum.
-For a companion with a temperature of 2300\K{} (the lower {PHOENIX-ACES} temperature limit) the deepest lines contribute lines around 0.1\%.
+For a companion with a temperature of 2300\K{} (the lower {PHOENIX-ACES} temperature limit) the deepest lines contribute lines only around 0.1\%.
 
 %{\bl We use the contributed line depth values to calculate the \snr{} level required to have Gaussian noise of the same height and the observed \snr{} required to achieve equivalent contribution from all N lines of the spectrum, \(\rm \textrm{SNR}_N = \textrm{SNR} /\sqrt{N}\).
 %This is for the synthetic spectra which have many more lines than the observed spectra in this wavelength range.}
 
 The \snr{} of the observed spectra is between 100--300, which is below the \snr{} of 323 needed for the detection of the low-mass star companion of {HD~211847} with temperature of 3200\K{} and \logg{} 5.0.
-For our other targets with {BD} companions at and below the {PHOENIX-ACES} temperature range, we would need observed \snr{} >800 to detect the individual spectral lines of the companion.
+For the other targets with {BD} companions at and below the {PHOENIX-ACES} temperature range, a \snr{} >800  would be required to detect the individual spectral lines of the companion.
 With the \snr{} increasing with \(\sqrt{N}\) this would require the observational time for each target to be increased by a factor of \(\sim\)~10--64.
 
 Our non-detection of binary companions with low flux ratios is consistent with other works.
 For example~\citet{nemravova_xtauri_2016} performed extensive spectral analysis of a quadruple-star system \object{$\xi$ Tauri} using 227 spectra in 3 different wavelength bands with \(R=10\,000--48\,000\).
 Of the four stars in the system they were unable to detect the spectral component of the star which had a luminosity ratio below 1\%.
+
 \input{tables/companion_recovery/linedepths}
 
 
@@ -95,9 +95,9 @@ At lower temperatures there is a strong asymmetry in the \textchisquared{} with 
 The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above the minimum \textchisquared{} are not shown in the bottom panel of \cref{fig:injection_shape} which is a close-up around the minimum \textchisquared{} as they are indistinguishable in the top panel due to the extreme \textchisquared{} y-scale.
 The black vertical line indicates the 2300\K{} temperature limit of the {PHOENIX-ACES} models.
 
-In \cref{fig:injection_shape} we showed that the shape of the recovered \textchisquared{} becomes asymmetric when dealing with companion temperatures below around 3800\K{}.
+In \cref{fig:injection_shape} \textrm{we} showed that the shape of the recovered \textchisquared{} becomes asymmetric when dealing with companion temperatures below around 3800\K{}.
 A visual inspection of the spectra reveals the likely cause.
-In \cref{fig:comp_spectra} we show the corresponding spectra between 2111--2165\nm{}.
+In \cref{fig:comp_spectra} \textrm{we} show the corresponding spectra between 2111--2165\nm{}.
 As the temperature decreases the strongest lines become less prominent, disappearing progressively among the other many small lines that appear at lower temperatures.
 Hence there are no strong companion lines to easily distinguish one temperature from another.
 In the flatter part of the \textchisquared{} curves several low temperature companions are equally well fitted to the simulation/observation.
@@ -127,48 +127,50 @@ The vertical dotted lines indicate the edges of the CRIRES detectors.}
 
 \subsubsection{Component {RV} separation}
 \label{subsubsec:rv_seperation}
-Another factor which could contribute to an unsuccessful detection is the {RV} separation between the host and companion, \Rvtwo{}.
-Estimates for our observations are given in the last column of \cref{tab:observations}.
-If \Rvtwo{} is small compared to the line width, then all the same lines of both components will be blended.
+Another factor which could contribute to an unsuccessful detection is the {RV} separation between the host and companion, is \Rvtwo{}.
+Estimates for the observations are given in the last column of \cref{tab:observations}.
+If \Rvtwo{} is small compared to the line width, then all the same lines of both components will be blended. For example, \citep{kolbl_detection_2015} have difficultly separating blended spectra which have a component {RV} separation below 10\kmps{}.
 This is indeed the case for {HD~4747}, {HD~211847}, and {HD~202206} with expected \(|\rvtwo{}| < 2\)\kmps{}.
 This may have contributed to the lack of recovery with both components of the binary model trying to fit to the same features.
 This may even cause some correlation between the parameters of the two components.
 The {RV} separation of the two components changes with orbital phase.
-Having multiple spectra of the same target distributed in phase may allow the {RV} of the spectral components to be better recovered~\citep [e.g. ][]{czekala_disentangling_2017, sablowski_spectral_2016}.
+Having multiple spectra of the same target distributed in phase may allow the {RV} of the spectral components to be better recovered~\citep [e.g.][]{czekala_disentangling_2017, sablowski_spectral_2016, piskorz_evidence_2016}.
 
 
 \subsubsection {Wavelength range}
 \label{subsubsec:wavelenght_range_limitation}
-The wavelength choice for the spectra analysed here, observed with the intention to apply the spectral differential technique, was selected due to the location of the K-band telluric absorption window.
+The wavelength choice for the spectra analysed here, observed with the intention to apply the spectral differential technique, was selected due to the location of the \emph{K}-band telluric absorption window.
 This wavelength range, with a narrow wavelength range \(\sim50\)\nm{} set by the CRIRES instrument.
-This wavelength range is likely not the best choice for the proposed study.
+This wavelength range is not the best choice for the techniques applied here.
 
-Changing the wavelength coverage to regions with lines sensitive to stellar parameters for both stars and {BD}s, as well as using a larger wavelength range that will be achieved by CRIRES+, may help to improve the recovery results of the companion recovery technique presented here.
-We note that if the wavelength range is increased by taking separate observations at different wavelengths, not covered by a single exposure, then changes in the {RV} of both components between the different wavelength observations may need to be accounted for.
+For instance~\citet{passegger_fundamental_2016} used four different spectral regions for the precise parameter determination of M-dwarfs using \textchisquared{} methods.
+Specific lines in the different wavelength regions are affected differently by the model parameters: \Teff{}, \logg{}, and \feh{}; and are used to break degeneracies in the {PHOENIX-ACES} parameter space.
+
+Changing the wavelength coverage to regions with lines sensitive to stellar parameters for both stars and {BD}s, as well as using a larger wavelength range that will be achieved by {CRIRES+}, may help to improve the recovery results of the companion recovery technique presented here.
+
+Several works \citet[e.g.][]{brogi_carbon_2014, brogi_rotation_2016, piskorz_evidence_2016} have had successful molecule and companion detections in the wavelength range around 2300\nm{} due to strong \ce{CO} lines. This wavelength region has already been shown to be promising for simulations of the differential technique in~\citet{kostogryz_spectral_2013}.
+This is clearly one wavelength region in particular to focus attention in the future.
 
 
 \subsubsection{The {BT-Settl} models}
 \label{subsubsec:bt-settl}
-We note that the {PHOENIX-ACES} models are not the only spectral libraries available with the other notable library considered for this work is the {BT-Settl} models, ~\citep{allard_model_2010,allard_btsettl_2013,baraffe_new_2015}.
-The included modelling of dust and cloud formation, as well as hydro-dynamical modelling atmospheric mixing/settling for atmospheres with \Teff{} below \(\sim2600\)\K{}, make the {BT-Settl} models valid across the regime from stars to {BD}s as cool as 400\K{}.
-As the {BT-Settl} models are suitable to model the atmospheres of the brown dwarfs they would be useful for the companion recovery technique developed here.
-However, as shown in \cref{subsection:results-hd211847, subsection:injection-recovery}, we were unable to successfully recover the 155\Mjup{} (\Teff{}\(\sim3200\)\K{}) low mass star companion of {HD~211847} and derived a temperature upper limit for our methodology of around 3800\K{}.
-These are both well above the 2300\K{} cutoff of the {PHOENIX-ACES} models and for the onset of dust- and cloud-formation phenomena, at 2600\K{}.
+The {PHOENIX-ACES} models were not the only spectral libraries available with the other notable library considered for this work being the {BT-Settl} models~\citep{allard_model_2010,allard_btsettl_2013,baraffe_new_2015} (see \cref{subsec:btsettl}).
 
-\cref{fig:hd211847-models} shows again the minimum \textchisquared{} solution for detector 1 of the second {HD~211847} observation, this time including the {BT-Settl} solution with the same parameters.
-Although the {PHOENIX-ACES} and {BT-Settl} models differ slightly they both have a large spectral mismatch to the observations.
-As such, we did not use the {BT-Settl} models for the simulation and results above as we did not see any special advantage in using them.
+As the {BT-Settl} models are suitable to model the atmospheres of the brown dwarfs they would have been useful for the companion recovery technique developed here.
+However, as shown in \cref{subsection:results-hd211847, subsection:injection-recovery}, a successful recovery of the 155\Mjup{} (\Teff{}\(\sim3200\)\K{}) low mass star companion of {HD~211847} was not possible. Limiting the temperature and derived a temperature upper limit for \textrm{our} methodology of around 3800\K{}.
+These are both well above the 2300\K{} cut-off of the {PHOENIX-ACES} models and for the onset of dust- and cloud-formation phenomena, at 2600\K{}.
 
-The ease of access to find, download, and use {PHOENIX-ACES} spectral library, available in the fits file format, compared to older {BT-Settl} libraries is another reason for the current favoured use of the {PHOENIX-ACES} library.
+As shown in \cref{subsec:phoenix_comparision} the {PHOENIX-ACES} and {BT-Settl} spectra are fairly similar.
+\cref{fig:hd211847-models} shows again the minimum \textchisquared{} solution for detector \#1 of the second {HD~211847} observation, this time including the {BT-Settl} solution with the same parameters.
+Although the {PHOENIX-ACES} and {BT-Settl} models differ slightly they both have large spectral discrepancies to the observations.
+As such the {BT-Settl} models were not used in the \textchisqaured{} simulations and results as there did not seem to be any special advantage in using them.
+If promising results had been obtained with the {PHONEIX-ACES}, or a substantial difference between the synthetic spectral models more focus on the {BT-Settl} models would have occurred. 
 
-Although the newer generations synthetic spectral models are improving and match the overall spectral energy distribution reasonably well there are still regions in the \emph{H}- and \emph{K}-band where there is room for improvement~\citet{rajpurohit_spectral_2016}.
-The spectral mismatch in the region studied here is still too large for spectral recovery of companion brown dwarfs.
-In the \nir{} we have compounding problem: the model input physics of sub-stellar temperatures and chemistry combined with the general difficulty of the \nir{}.
 
 \begin{figure}
     \centering
     %\includegraphics[width=\hsize]{images/final/HD211847_ACES_BTSettl.pdf}
-    \caption{Detector 1 spectrum for {HD~211847} (blue) alongside the {PHOENIX-ACES} (orange dash-dot) and {BT-Settl} (green dashed) synthetic spectra for the host star only, with parameters \Teff{}=5700\K{}, \logg{}=4.5 and \feh{}=0.0.
+    \caption{Detector \#1 spectrum for {HD~211847} (blue) alongside the {PHOENIX-ACES} (orange dash-dot) and {BT-Settl} (green dashed) synthetic spectra for the host star only, with parameters \Teff{}=5700\K{}, \logg{}=4.5 and \feh{}=0.0.
         Both synthetic models have been normalized and convolved to \(\rm R=50\,000\).
         There is a 0.05 off-set between each spectrum}
     \label{fig:hd211847-models}
@@ -176,26 +178,27 @@ In the \nir{} we have compounding problem: the model input physics of sub-stella
 
 
 \subsubsection{Impact of \logg{}}
-\label{subsubsec:logg}
-Logg, a measure of surface gravity, is related to evolutionary state and the size of the star with smaller \logg{} values usually indicating larger radii stars.
-This parameter has a large impact on the radius and flux ratio of the binary models.
-In the {PHOENIX-ACES} models a decrease in \logg{} from 5.0 to 4.5 increases the models effective radius by \(\sim\)1.75 in the temperature range investigated here.
-This change in radius alone roughly triples (\(1.75^2\)) the absolute flux of the synthetic spectrum, neglecting any changes to the shape of the actual spectrum.
-Therefore, there are large jumps in the model flux ratios if the \logg{} is allowed to vary, with lower \logg{} values for the companion being favoured as the increased flux ratio decreases the mismatch of the host component to the observations.
+\label{subsubsec:logg} 
+The surface gravity of a star, measured as \logg{}, is related to evolutionary state and the size of the star.
+Smaller \logg{} values usually indicate bigger stars with larger radii.
+This parameter has a large impact on the radius and thus flux ratio of the binary models.
+In experimenting with the \logg{} value of the {PHOENIX-ACES} models a decrease in \logg{} from 5.0 to 4.5 increases the models effective radius by \(\sim\)1.75 in the temperature range investigated here.
+This change in radius alone roughly triples the absolute flux of the synthetic spectrum (\(1.75^2\)), neglecting any changes to the shape of the actual spectrum.
+Therefore, there are large jumps in the model flux ratios, and the \textchisquared{} solutions if the \logg{} is allowed to vary. Like with higher companion temperatures, a lower \logg{} value for the companion is favoured as the increased flux ratio reduces the spectral mismatch of the host component to the observations.
 This large impact of \logg{} on the spectral library absolute flux is one reason for keeping the \logg{} of each component fixed in the \textchisquared{} results presented in \cref{sec:results}.
 
 \subsubsection{Interpolation}
 \label{subsubsec:interpolation}
-It is common to interpolate between the synthetic spectral grids to fit and derive parameters in between the grid points~\citep[e.g.][]{nemravova_xtauri_2016, passegger_fundamental_2016}.
-Instead of interpolation~\cite{czekala_constructing_2015} use a spectral emulator to use Principal Component Analysis to create eigenspectra for the synthetic library and Gaussian processes to derive a probability distribution function of possible interpolation spectra to account for uncertainties in the interpolation required for high signal-to-noise spectra.
+One procedure not incorporate into this \textchisquared{} procedure is spectral interpolation in between spectral grid points.
+It is common to interpolate between the synthetic spectral grids to fit and derive parameters in between the grid points such as performed in ~\citet{nemravova_xtauri_2016} and \citet{passegger_fundamental_2016}.
+At a more advanced stage, instead of interpolation,~\cite{czekala_constructing_2015} use a spectral emulator and use Principal Component Analysis to create eigenspectra for the synthetic library and Gaussian processes to derive a probability distribution function of possible interpolation spectra to account for uncertainties in the interpolation required for high signal-to-noise spectra.
 
-However, we did not incorporate any interpolation into the companion recovery at this stage.
-This could be something to be added in the future to refine the recovered parameters, and to help the transition between the grid \logg{} values.
+Interpolation could be something to be added to this work in the future to refine the recovered parameters, and to help the transition between the grid \logg{} values.
 Codes are readily available to perform spectral interpolation which could be utilized for this, two of them are \emph{pyterpol}\footnote{https://github.com/chrysante87/pyterpol}~\citet{nemravova_xtauri_2016} and \emph{Starfish}\footnote{https://github.com/iancze/Starfish}~\cite{czekala_constructing_2015}.
 
 
 \subsection{Other techniques}
-We note that there are many other disentangling techniques to separate mixed spectra of binary systems,~\citep[e.g.][]{hadrava_disentangling_2009}.
+There are many other disentangling techniques to separate mixed spectra of binary systems,~\citep[e.g.][]{hadrava_disentangling_2009}.
 These require more than two observations, with  \(n+1\) observations used to set up a system of linear equations to solve for \(n\) spectral components~\citep[e.g.][]{simon_disentangling_1994,czekala_disentangling_2017, sablowski_spectral_2016}.
 These methods are ideal for many well spaced observations.
 For example the ideal situation for the {SVD} method of~\citet{sablowski_spectral_2016} is homogeneous samples of at least half the period, to identify the moving spectral components.
