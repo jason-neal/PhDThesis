@@ -20,7 +20,7 @@ As such we employed an alternative method, that we termed the spectral recovery,
 
 For the spectral recovery the host-companion {RV} separation should also ideally be greater then the {\fwhm} to avoid blended lines.
 The spectral mismatch between models and reality in the \nir{}negatively affects the performance of the synthetic recovery technique on the observed spectra.
-With all these effects we are unsuccessful in the detection of the \nir{}spectra of BD companions, with the mass upper-limits set at 600~\Mjup{} from the synthetic recovery technique.
+With all these effects we are unsuccessful in the detection of the \nir{}spectra of {BD} companions, with the mass upper-limits set at 600~\Mjup{} from the synthetic recovery technique.
 
 This work highlights many of the difficulties when dealing with the spectral recovery of \nir{}spectra.
 The obstacles to overcome are the data reduction of \nir{}CMOS detectors, that are not yet at the level of visible CCDs, along with a precise telluric correction and wavelength calibration (two interrelated aspects, as thoroughly discussed).
@@ -31,7 +31,7 @@ Other than the improvement of the spectral models, the observing community can i
 Our work shows that observing in the areas of lower telluric absorption, as is frequently done, is not a guarantee of success due to the scarcity of deep lines in cold objects.
 Moreover, due to the mismatch between models and observations, the ability to obtain a first spectra before settling on a wavelength range, or changing settings on the fly, is extremely useful for the success of these campaigns.
 
-We hope that this work can act as a guide for the planning of future observations of targets with faint BD and planetary companions with the upcoming generation of high resolution spectrographs in the near- and mid-infrared such as {CRIRES+} and JWST observations.
+We hope that this work can act as a guide for the planning of future observations of targets with faint {BD} and planetary companions with the upcoming generation of high resolution spectrographs in the near- and mid-infrared such as {CRIRES+} and JWST observations.
 
 
 \todo{NIR analysis work}{Finish off this}
@@ -50,4 +50,59 @@ Similar to theory?
 A way to combine the information for the \logg{} and \feh{} observed in section 6.X.X...
 
 
-Machine Learning RV precision of PHOENIX-ACES models.
+Machine Learning RV precision of {PHOENIX-ACES} models.
+
+
+
+
+
+
+
+\subsection{Future implementation}
+\todo{reduce this for the conclusions}
+\label{subsec:future}
+\subsubsection{High resolution instrumentation}
+\label{subsubsec:highres}
+The future of high resolution near- and mid- IR spectrographs is looking bright, with many new ground- and space-based instruments currently being developed.
+Notable examples include CARMENES (550--1710\nm{},  R=82\,000) which is now operational~\citep{quirrenbach_carmenes_2014}, while SPIRou (980--2350\nm{},  R=73\,500)~\cite{artigau_spirou_2014} and NIRPS (970--1810\nm{}, R=100\,000)~\cite{bouchy_nearinfrared_2017} are still being assembled and installed.
+The eagerly awaited {JWST} \textbf{cite} will also be launched soon\footnote{Recently pushed to around May 2020} providing observations in both the \nir{} (600--5300\nm{}, R=2700) and mid-IR (4900--28\,800\nm{}, R$\sim$1550--3250) regions without contamination from \textrm{our} atmosphere.
+
+The upgrade of CRIRES to CRIRES+~\citep{dorn_crires_2016} will increase the wavelength coverage of a single shot capture by at least a factor of 3--5.
+This larger wavelength span would be extremely beneficial for the \textchisquared{} performance of the spectral recovery method, increasing the number of useful lines and spectral features to be fitted with the models.
+
+On the modelling side, there are continual improvements in atmospheric modelling and their associated synthetic spectral libraries: as seen with the evolution of the {BT-Settl} models~\cite{allard_btsettl_2013}.
+With additional physics and improved line lists and solar abundances~\citep [e.g.][]{asplund_chemical_2009,caffau_solar_2011}, the synthetic libraries are reaching a better agreement with \nir{} observations.
+An improved agreement between the \nir{} observations and synthetic spectra will be crucial to improve the performance of the spectral recovery technique presented here.
+
+Although not successful with the CRIRES data used here, the instrumental stage is set to attempt these techniques presented here using the next-generation of high resolution spectrographs.
+The lessons learned in this analysis need to be taken into account in order to achieve the best chance of a successful detection.
+
+
+\section{Conclusions from paper}
+\label{sec:conclusionsfrom paper}
+This work aimed at pushing down the detection limit of faint companions, using high resolution near-infrared spectra.
+Two different methods were explored with many limitations uncovered.
+
+The objective of the observations acquired in this program was to a apply the differential technique.
+For the differential technique the observations need to be sufficiently separated, such that the {RV} of the companion is greater than the {FWHM} to avoid spectral cancellation of the companion.
+Unfortunately, due to operational reasons, this condition was not met.
+As such \textrm{we} employed an alternative method, that \textrm{we} termed the spectral recovery; this method is in principle fully equivalent, but ended up revealing different difficulties.
+
+For the spectral recovery the host-companion {RV} separation should also ideally be greater then the {FWHM} to avoid blended lines.
+The spectral mismatch between models and reality in the \nir{} negatively affects the performance of the synthetic recovery technique on the observed spectra.
+With all these effects \textrm{we} are unsuccessful in the detection of the \nir{} spectra of {BD} companions,  with the mass upper-limits set at 600\Mjup{} from the synthetic recovery technique.
+
+This work highlights many of the difficulties when dealing with the spectral recovery of \nir{} spectra.
+The obstacles to overcome are the data reduction of \nir{} CMOS detectors, that are not yet at the level of visible CCDs, along with a precise telluric correction and wavelength calibration (two interrelated aspects, as thoroughly discussed).
+Another important aspect is the mismatch between \nir{} high-resolution spectra and the observed spectra.
+In spite of the continuous effort of the modelling community, \textrm{our} work, along with several cited contemporary ones, shows that this mismatch is still one of the main factors preventing us from perform spectral recovery in the \nir{}.
+This work highlights that this is a compound problem for Brown Dwarfs, for which the spectral models are worse informed due to lack of observations at high-resolution.
+
+Other than the improvement of the spectral models, the observing community can increase their odds of success by paying attention to the scheduling of observations and the wavelength domains to explore.
+Our work shows that observing in the areas of lower telluric absorption, as is frequently done, is not a guarantee of success due to the scarcity of deep lines in cold objects.
+Moreover, due to the mismatch between models and observations, the ability to obtain a first spectra before settling on a wavelength range, or changing settings on the fly, is extremely useful for the success of these campaigns.
+
+We hope that this work can act as a guide for the planning of future observations of targets with faint {BD} and planetary companions with the upcoming generation of high resolution spectrographs in the near- and mid- infrared such as CRIRES+ and {JWST} observations.
+
+
+

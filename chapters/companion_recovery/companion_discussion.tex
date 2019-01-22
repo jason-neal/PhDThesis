@@ -194,49 +194,6 @@ This could be something to be added in the future to refine the recovered parame
 Codes are readily available to perform spectral interpolation which could be utilized for this, two of them are \emph{pyterpol}\footnote{https://github.com/chrysante87/pyterpol}~\citet{nemravova_xtauri_2016} and \emph{Starfish}\footnote{https://github.com/iancze/Starfish}~\cite{czekala_constructing_2015}.
 
 
-\subsection{Future implementation}
-\label{subsec:future}
-\subsubsection{High resolution instrumentation}
-\label{subsubsec:highres}
-The future of high resolution near- and mid- IR spectrographs is looking bright, with many new ground- and space-based instruments currently being developed.
-Notable examples include CARMENES (550--1710\nm{},  R=82\,000) which is now operational~\citep{quirrenbach_carmenes_2014}, while SPIRou (980--2350\nm{},  R=73\,500)~\cite{artigau_spirou_2014} and NIRPS (970--1810\nm{}, R=100\,000)~\cite{bouchy_nearinfrared_2017} are still being assembled and installed.
-The eagerly awaited {JWST} \textbf{cite} will also be launched soon\footnote{Recently pushed to around May 2020} providing observations in both the \nir{} (600--5300\nm{}, R=2700) and mid-IR (4900--28\,800\nm{}, R$\sim$1550--3250) regions without contamination from our atmosphere.
-
-The upgrade of CRIRES to CRIRES+~\citep{dorn_crires_2016} will increase the wavelength coverage of a single shot capture by at least a factor of 3--5.
-This larger wavelength span would be extremely beneficial for the \textchisquared{} performance of the spectral recovery method, increasing the number of useful lines and spectral features to be fitted with the models.
-
-On the modelling side, there are continual improvements in atmospheric modelling and their associated synthetic spectral libraries: as seen with the evolution of the {BT-Settl} models~\cite{allard_btsettl_2013}.
-With additional physics and improved line lists and solar abundances~\citep [e.g.][]{asplund_chemical_2009,caffau_solar_2011}, the synthetic libraries are reaching a better agreement with \nir{} observations.
-An improved agreement between the \nir{} observations and synthetic spectra will be crucial to improve the performance of the spectral recovery technique presented here.
-
-Although not successful with the CRIRES data used here, the instrumental stage is set to attempt these techniques presented here using the next-generation of high resolution spectrographs.
-The lessons learned in this analysis need to be taken into account in order to achieve the best chance of a successful detection.
-
-\subsubsection{Differential scheduling challenges}
-\label{subsubsec:differential scedualing}
-This work has revealed that more care needs to be taken in planning the observations for the spectral differential analysis of faint companions in the future.
-Paying attention in particular to the {FWHM} of the lines in the region (governed by resolution and wavelength); the estimated companion \(\Delta RV\); the previous observations from different observing periods; and keeping consistent detector settings.
-
-The original goal for the observations was to obtain two different and ``clearly separated radial-velocities'' for the secondary companion.
-However, the program was assigned a low-priority (C, in {ESO} grading) and, possibly due to operational reasons, the original time requirements necessary to secure well separated {RV}s for the companion spectra could not be met.
-This meant that all observations were insufficiently separated to extract a differential spectra for the companion.
-
-The long orbital periods of these targets is also a contributing factor to the insufficient separations.
-Most of the targets observed here have orbital periods much longer than an observing semester (183 days).
-An optimal pair of observations (achieved at the extrema) would need to have been obtained from separate observing periods (between 2 months and 19 years apart).
-In some cases, even observations taken at the beginning and end of the semester would not be sufficient to achieve companion separation (depending on the phase).
-Requiring separate observing periods to even achieve the minimum \(\Delta \rm RV\) larger than the line {FWHM}.
-At the time it was impossible to ask for time over several semesters in a regular proposal.
-
-Our study demonstrates the importance of proposals for projects that need to be extended over several semesters or years.
-In the {ESO} context, this corresponds to ``Monitoring proposals''~\citep[e.g.][pg. 18]{eso_eso_2017}.
-Observations of the targets explored here, with long orbital periods in particular, would benefit from the ability for multi-period proposals and newer scheduling systems which allow for tighter scheduling constraints, such as a companion {RV} separation.
-
-For future observations we suggest that the known orbital solution of the companion be used to estimate the companions' {RV} curve during the observing period, with the companion \(M_2\sin{i}\) providing an {RV} upper-limit.
-Knowing the instrumental wavelength and resolution, a constraint can then be set to avoid taking observations when the companion spectra are insufficiently separated, or \(\Delta RV\) < {FWHM}.
-This constraint can be set using the absolute and relative \emph{time-link} constraints available in {ESO}'s Phase 2 Proposal Preparation (P2PP) tool.
-Additionally, analysing the known orbital solution before-hand, to determine {RV} constraints will also help identify the best time to observe, if observations from separate periods will be required or, if an optimally separated companion differential is even feasible.
-
 \subsection{Other techniques}
 We note that there are many other disentangling techniques to separate mixed spectra of binary systems,~\citep[e.g.][]{hadrava_disentangling_2009}.
 These require more than two observations, with  \(n+1\) observations used to set up a system of linear equations to solve for \(n\) spectral components~\citep[e.g.][]{simon_disentangling_1994,czekala_disentangling_2017, sablowski_spectral_2016}.
@@ -245,101 +202,11 @@ For example the ideal situation for the {SVD} method of~\citet{sablowski_spectra
 The few and insufficiently separated observations we analyse here are not suitable to apply any of these advanced techniques and are beyond what we have attempted here.
 
 
-\section{Conclusions}
-\label{sec:conclusions}
-This work aimed at pushing down the detection limit of faint companions, using high resolution near-infrared spectra.
-Two different methods were explored with many limitations uncovered.
-
-The objective of the observations acquired in this program was to a apply the differential technique.
-For the differential technique the observations need to be sufficiently separated, such that the {RV} of the companion is greater than the {FWHM} to avoid spectral cancellation of the companion.
-Unfortunately, due to operational reasons, this condition was not met.
-As such we employed an alternative method, that we termed the spectral recovery; this method is in principle fully equivalent, but ended up revealing different difficulties.
-
-For the spectral recovery the host-companion {RV} separation should also ideally be greater then the {FWHM} to avoid blended lines.
-The spectral mismatch between models and reality in the \nir{} negatively affects the performance of the synthetic recovery technique on the observed spectra.
-With all these effects we are unsuccessful in the detection of the \nir{} spectra of {BD} companions,  with the mass upper-limits set at \(\rm 600~M_{Jup}\) from the synthetic recovery technique.
-
-This work highlights many of the difficulties when dealing with the spectral recovery of \nir{} spectra.
-The obstacles to overcome are the data reduction of \nir{} CMOS detectors, that are not yet at the level of visible CCDs, along with a precise telluric correction and wavelength calibration (two interrelated aspects, as thoroughly discussed).
-Another important aspect is the mismatch between \nir{} high-resolution spectra and the observed spectra.
-In spite of the continuous effort of the modelling community, our work, along with several cited contemporary ones, shows that this mismatch is still one of the main factors preventing us from perform spectral recovery in the \nir{}.
-This work highlights that this is a compound problem for Brown Dwarfs, for which the spectral models are worse informed due to lack of observations at high-resolution.
-
-Other than the improvement of the spectral models, the observing community can increase their odds of success by paying attention to the scheduling of observations and the wavelength domains to explore.
-Our work shows that observing in the areas of lower telluric absorption, as is frequently done, is not a guarantee of success due to the scarcity of deep lines in cold objects.
-Moreover, due to the mismatch between models and observations, the ability to obtain a first spectra before settling on a wavelength range, or changing settings on the fly, is extremely useful for the success of these campaigns.
-
-We hope that this work can act as a guide for the planning of future observations of targets with faint {BD} and planetary companions with the upcoming generation of high resolution spectrographs in the near- and mid- infrared such as CRIRES+ and {JWST} observations.
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-\citet{hoeijmakers_search_2015}
-{Context.
-    The spectral signature of an exoplanet can be separated from the spectrum of its host star using high-resolution spectroscopy.
-    During these observations, the radial component of the planet's orbital velocity changes, resulting in a significant Doppler shift that allows its spectral features to be extracted.\\
-    Aims: In this work, we aim to detect\ce{TiO} in the optical transmission spectrum of {HD~209458}b.
-    Gaseous\ce{TiO} has been suggested as the cause of the thermal inversion layer invoked to explain the dayside spectrum of this planet.\\
-    Methods: We used archival data from the 8.2 m Subaru telescope taken with the High Dispersion Spectrograph of a transit of {HD~209458}b in 2002.
-    We created model transmission spectra that include absorption by\ce{TiO}, and cross-correlated them with the residual spectral data after removal of the dominating stellar absorption features.
-    We subsequently co-added the correlation signal in time, taking the change in Doppler shift due to the orbit of the planet into account.\\
-    Results: We detect no significant cross-correlation signal due to\ce{TiO}, though artificial injection of our template spectra into the data indicates a sensitivity down to a volume-mixing ratio of \textasciitilde{}10\textsuperscript{-10}.
-    However, cross-correlating the template spectra with a {HARPS} spectrum of Barnard's star yields only a weak wavelength-dependent correlation, even though Barnard's star is an M4V dwarf that exhibits clear \ce{TiO} absorption.
-    We infer that the\ce{TiO} line list poorly matches the real positions of\ce{TiO} lines at spectral resolutions of \textasciitilde{}100 000.
-    Similar line lists are also used in the {PHOENIX} and Kurucz stellar atmosphere suites and we show that their synthetic M-dwarf spectra also correlate poorly with the {HARPS} spectra of Barnard's star and five other M dwarfs.
-    We conclude that the lack of an accurate\ce{TiO} line list is currently critically hampering this high-resolution retrieval technique.},
-
-
-
-
-\subsection{Junk from paper about BT-settl}
-
-The {PHOENIX-ACES} models also provide dimensions of effective radius of the star, in the header.
-This is required for the method presented here as we need to scale the spectra by their respective surface area when combining together.
-
-
-The effective radius of the modelled star are provided in the fits header and required for the calculation of the flux ratio.
-
-
-As we do not recover suitable results for HD\,211847 which is supposed to have a temperature around 3400\K{} we suspect that it is not possible for lower temperature either so don't try to extend to the {BT-Settl} models.
-
-
-\textbf{
-    {PHOENIX-ACES} defines grid as \Teff{}, \logg{} and Mass which can then be used to determine Radii.
-    See~\citep{husser_new_2013} section 2.3.1 Mass.}
-
-
-
-
-\subsection{Note about a target - discussion of results}
-Another example is {HD~162020}, which has the lowest orbital period (8.4 days) of our targets.
-It should have been possible to obtain an optimal pair of observations in one semester, but the second observation was taken immediately following the first.
-This means that the \(\rm \delta {RV} = 0.363\kmps{}\)between the two observations, is comparable to the \(\Delta {RV}\)that occurs during each individual observation.
-With tighter scheduling restrictions this target could have been observed with the optimal {RV} separation at the extrema of \(\Delta {RV}=2 K_{2}\).
-Whether the flux ratio of \(7e^{-6}\) for this target and the interaction of different spectral lines would have made it possible to recover companion mass is a separate issue.
-
-
-\subsubsection{Wavelength range}
-The wavelength choice for the spectra analysed here, observed with the intention to apply the spectral differential technique, was selected due to the location of the \emph{K}-band telluric absorption window.
-This wavelength range, with a narrow wavelength range \(\sim50\)\nm{} set by the {CRIRES} instrument.
-This wavelength range is likely not the best choice for the proposed study.
-\todo{finish this line} may contribute to the poor results from the companion recovery technique.
-
-For instance~\citet{passegger_fundamental_2016} used four different spectral regions for the precise parameter determination of M-dwarfs.
-Specific lines from the different wavelength regions are affected differently by the model parameters: \Teff{}, \logg{}, and \feh{}; and are used to break degeneracies in the {PHOENIX-ACES} parameter space.
-
-Changing the wavelength coverage to regions with lines sensitive to stellar parameters for both stars and {BD}s, as well as using a larger wavelength range that will be achieved by {CRIRES+}, may help to improve the recovery results of the companion recovery technique presented here.
-We note that if the wavelength range is increased by taking separate observations at different wavelengths, not covered by a single exposure, then changes in the {RV} of both components between the different wavelength observations may need to be accounted for.
 
 
 
