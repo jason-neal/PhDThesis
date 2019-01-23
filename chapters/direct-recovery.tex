@@ -20,89 +20,11 @@ The limits of the differential technique at low {RV} separations is given by sim
 
 \input{./chapters/direct_recovery/expected_RV}
 
+\input{./chapters/direct_recovery/differential_subtraction}
 
 
 
 
-
-
-\section{Direct Subtraction Method}
-\label{sec:direct-subtraction}
-Here the direct subtraction method used is presented.
-The basic premise is to take two high resolution spectra of a binary system at separate phases, transform them to the rest frame of the star and take the difference to remove the spectrum of the host star, leaving behind a residual comprised of difference of two companion spectra with different Doppler shifts.
-Similar techniques originally developed to separating binary stars~\citep{ferluga_separating_1997} and has been used for a M-dwarf with a low-mass companion~\citep[e.g.][]{kostogryz_spectral_2013}.
-
-Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately the spectra of the observed targets are assumed to be composed of two spectral components:
-a bright host star blended with the spectrum of a faint companion.
-The spectrum received from the host-companion pair is given by the superposition of two spectral components (\(\textrm{J}_{1}\), \(\textrm{J}_{2}\)):
-\begin{equation}
-\textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2}),
-\end{equation}
-where the subscripts 1 and 2 indicate the spectrum of the host and companion respectively, \(\lambda\) represents the wavelength of the spectra and \(\lambda-v\) represents the Doppler shift \(\lambda(1-v/c)\) by a velocity \(v\).
-
-This can be shifted into the rest frame of the host star by applying the shift \(v_1\):
-\begin{equation}
-\textrm{I}(\lambda + v_{1}) = \textrm{J}_{1}(\lambda) + \textrm{J}_{2}(\lambda - v_{2} + v_{1}).
-\end{equation}
-
-To analyse \(\textrm{J}_2\), the spectral component of interest, the component from the host needs to be carefully removed.
-If two observations of the same target are observed, denoted with subscripts \(a\) and \(b\), there will be relative motion between the components due to the orbit.
-Assuming that the stellar spectra do not change over time\footnote{\citep{kostogryz_spectral_2013} find the stellar activity residual is smaller than the companion differential flux.} (\(\textrm{J}_{1a} = \textrm{J}_{2a}\)) and each spectrum can be individually Doppler shifted to the rest frame of the host star \(\textrm{J}_{1}(\lambda)\), then the spectrum of the host star can be removed though subtraction of the two observations.
-Mutually cancelling the host component leaves two components of the companion subtracted from each other, with a relative Doppler shift between them.
-\begin{align}
-S(\lambda) &= \textrm{I}_{a}(\lambda + v_{1a}) - \textrm{I}_{b}(\lambda + v_{1b}) \nonumber \\
-&= (\textrm{J}_{1a} + \textrm{J}_{2a}(\lambda - v_{2a} + v_{1a})) - (\textrm{J}_{2b} +\textrm{J}_{2b}(\lambda - v_{2b} + v_{1b})) \nonumber \\
-&= \textrm{J}_{2a}(\lambda - v_{2a} + v_{1a}) - \textrm{J}_{2b}(\lambda - v_{2b} + v_{1b}) \nonumber \\
-% &= \textrm{J}_{2}(\lambda - v_{2a}) - \textrm{J}_{2}(\lambda - v_{2b} - v_{1a} + v_{1b}) \nonumber \\
-S(\lambda + v_{2a}-v_{1a}) &= \textrm{J}_{2a}(\lambda) - \textrm{J}_{2b}(\lambda - v_{2b} - v_{1a} + v_{1b} + v_{2a})\\
-S(\lambda') &= \textrm{J}_{2a}(\lambda) - \textrm{J}_{2b}(\lambda - \Delta {RV}_2) \label{eqn:sprofile}
-\end{align}
-where,
-\begin{equation}
-\Delta {RV}_2 = v_{1a} - v_{1b} - v_{2a} + v_{2b} \label{eqn:companion_difference}
-\end{equation}
-is the {RV} difference between the two companion spectral components when the host components are mutually subtracted,
-and \(\lambda' = \lambda + v_{2a}-v_{1a}\).
-
-The resulting differential spectra \(S({\lambda'})\), dubbed \emph{s-profile} by~\citet{ferluga_separating_1997}, is composed of just the companion spectra, shifted and subtracted from itself.
-
-\citet{ferluga_separating_1997} provide an analytical form for the \emph{s-profile} given a single Gaussian line of the form
-$J(\lambda) = 1- D \cdot\exp^{{-\pi {(\lambda - \lambda_0)}^2} / {{W}^{2}}}$:
-\begin{equation}
-    S(\lambda) = 2 D\cdot\exp^{{-\pi {D}^{2} [{(\lambda - \lambda_0)}^{2} +{(k/2)}^{2}]}/{{W}^{2}}} \cdot \sinh{\frac{\pi {D}^{2}(\lambda-\lambda_0)k}{{W}^{2}}},\label{eqn:sprofile_gaussain}
-\end{equation}
-where $\lambda_0$, \(D\), and \(W\) are the central wavelength, depth and equivalent width of the Gaussian line, and $k=\Delta {RV}_2 $ is the shift between the two companion spectra.
-
-From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the {RV} amplitudes of the host and companion (ignoring the system velocity $gamma$) are related through the mass ratio, \(q\), while having an opposite sign\footnote{The opposite sign arises from a \(180^\circ\) difference in the angle of periapsis, \(\omega\), for the companion.} (see \cref{subsec:binary_mass_ratio}):
-\begin{align}
-v_{2} &= -q * v_{1} \label{eqn:q_relation}
-\end{align}
-
-\cref{eqn:companion_difference} can be simplified by expressing it in terms of the mass ratio and host {RV} only:
-\begin{align}
-\Delta {RV}_{2} &= q v_{1a} - q v_{1b} + v_{1a} - v_{1b} \nonumber \\
-&= (1 + q)(v_{1a} - v_{1b}).\label{eqn:companion_difference_simplified}
-\end{align}
-
-If the \(\Delta {RV}_2\) between the companion spectra is able to be constrained or derived from the s-profile~\citep[see][]{ferluga_separating_1997} then the mass ratio of the system, \(q\), can be determined, thereby constraining the mass of the companion.
-
-The values \(v_{1a}\) and \(v_{1b}\) are radial velocity of the host components.
-The host's {RV} are calculated using the \cref{eqn:rv_equation} with the orbital parameters from the literature and provided in \cref{tab:orbitparams}.
-These are used to shift each spectrum into the rest frame of the host star to mutually cancel the host's spectrum.
-These components can also be determined directly from the spectrum by cross-correlating the observed spectrum with a stellar template of the host and gave results in reasonable agreement.
-There should be checks for consistency between \(v_{1a}\), \(v_{1b}\) and how well the host component is removed in the s-profile.
-
-Example simulations?
-\missingfigure{simulated example of combined binary spectra, and the subtraction, with a clear companion visible }
-
-\textbf{This method is very similar to~\citet{kostogryz_spectral_2013}, which obtain two observations from the extrema of the {RV} curve of a M-dwarf with a low-mass companion.
-They also perform a number of simulations regarding observing {CRIRES} spectra with different brown dwarfs.
-Figure out the flux ratio limit they get too???}\todo{check result}
-
-It is necessary to have a consistent instrumental setup~\citep{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g.\ slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted.
-For these observations, the second observation of {HD\,202206} and fourth of {HD\,30501} were taken with different filters compared to the other observations.
-Therefore, these two observations could not be used for this differential analysis.
-As noted in~\citet{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
 
 
 \section{Results of spectral differential analysis}
