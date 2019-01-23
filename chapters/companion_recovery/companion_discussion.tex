@@ -102,11 +102,11 @@ As the temperature decreases the strongest lines become less prominent, disappea
 Hence there are no strong companion lines to easily distinguish one temperature from another.
 In the flatter part of the \textchisquared{} curves several low temperature companions are equally well fitted to the simulation/observation.
 
-\cref{fig:injection-recovery,fig:injection_shape} show different recovered temperatures but both agree above 3800\K{}.
+\cref{figinjectrecoveryhd30501,fig:injection_shape} show different recovered temperatures but both agree above 3800\K{}.
 A higher companion temperature is recovered between 2800 and 3800\K{}, where as in \cref{fig:injection_shape} a lower temperature is recovered.
 This is probably due to a combination of the noise added, and the asymmetries of the \textchisquared{} lines.
-\cref{fig:injection-recovery} uses the noise level from the observed spectrum while \cref{fig:injection_shape} has a \snr{} of 300.
-This large asymmetry can also explain the jump observed in the synthetic recovery temperature around 2700\K{} in \cref{fig:injection-recovery}.
+\cref{fig:injectrecoveryhd30501} uses the noise level from the observed spectrum while \cref{fig:injection_shape} has a \snr{} of 300.
+This large asymmetry can also explain the jump observed in the synthetic recovery temperature around 2700\K{} in \cref{fig:injectrecoveryhd30501}.
 
 The asymmetry also causes an asymmetry in the \textchisquared{} error bars which can be seen in the bottom panel of \cref{fig:injection_shape}.
 For instance the recovered value and 1-\(\sigma\) error bars on the 3000\K{} injected companion is \(2800 ^{+20}_{-100}\), with an asymmetric error bar skewed towards lower temperatures.
@@ -149,7 +149,7 @@ Specific lines in the different wavelength regions are affected differently by t
 
 Changing the wavelength coverage to regions with lines sensitive to stellar parameters for both stars and {BD}s, as well as using a larger wavelength range that will be achieved by {CRIRES+}, may help to improve the recovery results of the companion recovery technique presented here.
 
-Several works \citet[e.g.][]{brogi_carbon_2014, brogi_rotation_2016, piskorz_evidence_2016} have had successful molecule and companion detections in the wavelength range around 2300\nm{} due to strong \ce{CO} lines.
+Several works \citep[e.g.][]{brogi_carbon_2014, brogi_rotation_2016, piskorz_evidence_2016} have had successful molecule and companion detections in the wavelength range around 2300\nm{} due to strong \ce{CO} lines.
 This wavelength region has already been shown to be promising for simulations of the differential technique in~\citet{kostogryz_spectral_2013}.
 This is clearly one wavelength region in particular to focus attention in the future.
 
@@ -159,7 +159,7 @@ This is clearly one wavelength region in particular to focus attention in the fu
 The {PHOENIX-ACES} models were not the only spectral libraries available with the other notable library considered for this work being the {BT-Settl} models~\citep{allard_model_2010,allard_btsettl_2013,baraffe_new_2015} (see \cref{subsec:btsettl}).
 
 As the {BT-Settl} models are suitable to model the atmospheres of the brown dwarfs they would have been useful for the companion recovery technique developed here.
-However, as shown in \cref{subsection:results-hd211847, subsection:injection-recovery}, a successful recovery of the 155\Mjup{} (\Teff{}\(\sim\)3200\K{}) low mass star companion of {HD~211847} was not possible.
+However, as shown in \cref{subsec:results-hd211847, subsec:injection-recovery}, a successful recovery of the 155\Mjup{} (\Teff{}\(\sim\)3200\K{}) low mass star companion of {HD~211847} was not possible.
 Limiting the temperature and derived a temperature upper limit for \textrm{our} methodology of around 3800\K{}.
 These are both well above the 2300\K{} cut-off of the {PHOENIX-ACES} models and for the onset of dust- and cloud-formation phenomena, at 2600\K{}.
 
@@ -172,7 +172,7 @@ If promising results had been obtained with the {PHONEIX-ACES}, or a substantial
 
 \begin{figure}
     \centering
-    %\includegraphics[width=\hsize]{images/final/HD211847_ACES_BTSettl.pdf}
+    \includegraphics[width=\hsize]{figures/companion_recovery/HD211847_ACES_BTSettl.pdf}
     \caption{Detector \#1 spectrum for {HD~211847} (blue) alongside the {PHOENIX-ACES} (orange dash-dot) and {BT-Settl} (green dashed) synthetic spectra for the host star only, with parameters \Teff{}=5700\K{}, \Logg{}=4.5 and \feh{}=0.0.
         Both synthetic models have been normalized and convolved to \(\rm R=50\,000\).
         There is a 0.05 off-set between each spectrum}
@@ -202,7 +202,7 @@ Codes are readily available to perform spectral interpolation which could be uti
 
 
 \subsection{Contrast to other works}
-
+\label{subsec:chi2_contrast}
 In this work the techniques attempted were unsuccessful in detecting the companions.
 Here some relevant comparisons are made to recent positive detections in the literature.
 
@@ -223,7 +223,7 @@ The work performed here aimed at flux ratios starting around below this limit, e
 
 One promising technique with a success in detecting faint companion emission spectra is presented by \citet{lockwood_nearir_2014}.
 Applying the {TODCOR} correlation to several spectra at different epochs and combining the observations while accounting for the orbits using a maximum likely-hood framework.
-They confirm the water emission signature in {\(\tau\) Bootis} and find a \(1\sigma\) upper limit high resolution (\(R=24\,000\)) spectroscopic flux ratio of \(10^{-4}\) at 3.3\um{}.
+They confirm the water emission signature in {\(\tau\) Bo\"{o}tis} and find a \(1\sigma\) upper limit high resolution (\(R=24\,000\)) spectroscopic flux ratio of \(10^{-4}\) at 3.3\um{}.
 
 \citep{piskorz_evidence_2016} used this same technique to achieve a detection of a non-transiting hot gas giant {HD~88133}b, with a flux ratio near \(10^{-5}\).
 This is achieved with spectra from nine epochs, six in the\emph{L}-band and three epochs in the \emph{K}-band with the Keck {NIRPSEC} instrument (R= 25\,000--30\,000).
