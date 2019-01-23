@@ -12,10 +12,10 @@ This can help in detecting the presence of ``habitable Earth-like'' planets arou
 The field of exoplanet detection in the \nir{} is expanding with several new high-resolution \nir{} spectrographs becoming available in the near future (see \cref{subsec:new_generation}).
 One science objective common to all four instruments is the detection of small mass planets around {M-dwarf} stars utilizing the radial velocity technique.
 The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to influence some design choices of {SPIRou}, {NIRPS}.
-For instance {NIRPS} opted not to cover the \emph{K}-band, favouring a higher spectral resolution and simplicity, but preserved the possibility for adding a K-band spectrograph in a separate cyrostat in the future.
+For instance {NIRPS} opted not to cover the \emph{K}-band, favouring a higher spectral resolution and simplicity, but preserved the possibility for adding a \emph{K}-band spectrograph in a separate cyrostat in the future.
 
 The purpose of the work presented in this chapter is to extend the work of~\citet{figueira_radial_2016}, computing the theoretical {RV} precision of stellar spectra over a wider range of situations.
-An investigation into the effect of \logg{} and \feh{} on precision is performed and a comparison of {RV} precision of the recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed.
+An investigation into the effect of \Logg{} and \feh{} on precision is performed and a comparison of {RV} precision of the recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed.
 This is to test how the {RV} precision of synthetic models compares to reality.
 The aim is to compare the fundamental precision of observed \nir{} spectra to the synthetic models.
 
@@ -36,15 +36,15 @@ This work continues the assessment of {RV} precision levels possible in the \nir
 
 
 \citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an {M-dwarf}, and found that state-of-the-art atmosphere models over-predict the \emph{Y}- and \emph{J}-band {RV} content by more than a factor of \(\sim2\), while under-predicting the \emph{H} and \emph{K}-band content by half.
-{\red{} in this work we find similar?}
+{\red{} in this work \todo{we} find similar?}
 
 This has previously helped to aid the direction of instrument design by identifying the wavelength regions with the best {RV} precision~\citep{figueira_radial_2016} but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed {\snr{}}.
 
 
 \textbf{THIS is from spie 2018 conference.}
 {red{}~\citep{quirrenbach_carmenes_2018} With this strategy it has been possible to achieve 1--2\mps{} precision in the visible and 5--10\mps{} precision in the {near-IR}; further improvements are expected from ongoing work on temperature control, calibration procedures and data reduction.
-Comparing the {RV} precision achieved in different wavelength bands, we find a ``sweet spot'' between 0.7 and 0.8\um{}, where deep \ce{TiO} bands provide rich {RV} information in mid-M dwarfs.
-This is in contrast to our pre-survey models, which predicted comparatively better performance in the near-IR around 1\um{}, and explains in part why our \nir{} {RV}s do not reach the same precision level as those taken with the visible spectrograph.}
+Comparing the {RV} precision achieved in different wavelength bands, \todo{we} find a ``sweet spot'' between 0.7 and 0.8\um{}, where deep \ce{TiO} bands provide rich {RV} information in mid-M dwarfs.
+This is in contrast to \todo{our} pre-survey models, which predicted comparatively better performance in the near-IR around 1\um{}, and explains in part why \todo{our} \nir{} {RV}s do not reach the same precision level as those taken with the visible spectrograph.}
 
 
 
@@ -52,7 +52,7 @@ This is in contrast to our pre-survey models, which predicted comparatively bett
 \subsection{Fundamental photon noise limitation}
 \label{subsec:fundamental_precision}
 A technique to calculate the theoretical radial velocity precision of a spectrum using the full spectral information in an optimal way was presented by~\citet{connes_absolute_1985}.
-Here we provide the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016}.
+Here \todo{we} provide the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016}.
 A majority of this derivation follows~\citet{bouchy_fundamental_2001} with extra explanations and notes added.
 
 \begin{figure}
@@ -177,7 +177,7 @@ where the \({\snr{}}=\sqrt{N_{{e}^{-}}}\)for large N.
 
 
 This quality factor, Q, is flux independent and is purely a function of the spectral profile within the spectral range considered.
-It is a measure of the line richness i.e., quantity and depth.
+It is a measure of the line richness i.e.\ quantity and depth.
 For example a spectrum with many sharp lines will have a high Q.
 This quality factor is valid for the pure photon noise case only in which \(\sigma_{D} =0\) and \({[A(i)]}_{\rms} = A_0\).
 The instrumental resolution of the spectrograph also effects the spectral quality as it induces line broadening.
@@ -220,7 +220,7 @@ where the \(\snr{}=\sqrt{N_{{e}^{-}}}\)for large N.
 \unfinished{It is convenient to use this version when comparing observed spectra with different \snr{}.?}
 
 
-In the unrealistic case where all the pixel weights are identical $W(i)=w$, then we can also see that the precision with decreases as $1/\sqrt{N}$ due to an increase in the number of pixels, or a increase in spectral range.
+In the unrealistic case where all the pixel weights are identical $W(i)=w$, then \todo{we} can also see that the precision with decreases as $1/\sqrt{N}$ due to an increase in the number of pixels, or a increase in spectral range.
  \begin{equation}
  \delta V_{\rms} = \frac{c}{\sum{W(i)}} \approx \frac{c}{\sqrt{N w}}=  \frac{c}{\sqrt{N}\sqrt{w}}, \label{eqn:sqrtN}
  \end{equation}
@@ -369,7 +369,7 @@ Can do Barnard's star in {CARMENES}.
     \caption[Selection of targets from the {CARMENES} library.]{Selection of targets from the {CARMENES} library spanning the {M-dwarf} spectral range.}
     \begin{tabular}{l l l r c c c c}%
         \toprule
-        Karmn & Name & SpT &  \({\snr{}}_{\textrm{NIR}}\)  & Temp (K)  & \logg{} & \feh{} & v\(\sin{i}\) (\kmps{})\\
+        Karmn & Name & SpT &  \({\snr{}}_{\textrm{NIR}}\)  & Temp (K)  & \Logg{} & \feh{} & v\(\sin{i}\) (\kmps{})\\
         \midrule
         \DTLforeach*{targets}{\id=Karmn,\name=Name,\sptype=SpT,\SNR=NIR-SNR,\TEFF=Teff, \LOGG=logg,\metal=FeH, \rot=ROT-Vsini}{
             \DTLiffirstrow{}{\\}\id{} & \name{}  & \sptype{} & \SNR{} & \TEFF{} & \LOGG{} & \metal{} & \rot{}
@@ -383,25 +383,25 @@ Can do Barnard's star in {CARMENES}.
 \input{tables/carmenes_selection.tex}
 %\input{tables/carmenes_selection_transpose.tex}
 
-\section{Metallicity \logg{} effects}
-We explore the effect of metallicity and \logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1--1 and \logg{} of 4.0--5.5.
+\section{Metallicity \Logg{} effects}
+We explore the effect of metallicity and \Logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1--1 and \Logg{} of 4.0--5.5.
 In \cref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and $\vsini=1.0$\kmps{} across the {M-dwarf} spectral types and the \nir{} bands is shown.
 We observed multiple different effects present.
 
 
 The \emph{Z}-band has a large separation in spectral quality due to spectral type, this is because the continuum the \emph{Z}-band is severely eroded in the spectra of late M's as they cool.
-Each spectral type also behaves very differently to a change in \feh{} and \logg{}.
+Each spectral type also behaves very differently to a change in \feh{} and \Logg{}.
 For {M0} and {M3} there is an increase with \feh{} below solar metallicity, above solar metallicity the slopes of the lines dramatically increase, especially for {M3}.
 For {M6} and {M9} there is a step slope with \feh{} below solar metallicity, which flattens off at solar metallicity, and even decreases for the {M9} spectra above solar metallicity.
-As \logg{} increases in the \emph{Z}-band there is a decrease in quality.
+As \Logg{} increases in the \emph{Z}-band there is a decrease in quality.
 There is a consistently large separation between early and late M's that.
-The quality for {M6} is very shallow, while for {M9} the quality is nearly flat for \logg{}=4.0 and 4.5 but then decreases sharply at higher \logg{}.
+The quality for {M6} is very shallow, while for {M9} the quality is nearly flat for \Logg{}=4.0 and 4.5 but then decreases sharply at higher \Logg{}.
 
 \emph{Y}-band -\\
 
 \emph{J}-band - \\
 
-For the H and \emph{K}-band there is fairly consistent linear trend for all spectral types, with the quality factor increasing with an increase in \feh{} and decreasing with an increase in \logg{}.
+For the H and \emph{K}-band there is fairly consistent linear trend for all spectral types, with the quality factor increasing with an increase in \feh{} and decreasing with an increase in \Logg{}.
 There is also only a relatively small variation in quality factor due to the spectral type.
 
 
@@ -409,10 +409,10 @@ There is also only a relatively small variation in quality factor due to the spe
 \begin{figure}
 \includegraphics[width=0.99\linewidth]{figures/information-content/metalicity_effect.pdf}\\
 \includegraphics[width=0.99\linewidth]{figures/information-content/logg_effect.pdf}
-\caption[Quality factor verse \feh{} and \logg{} for different spectral types and wavelength bands.]{Quality factor changes across spectral type and bands for variations in \feh{} and \logg{}.
+\caption[Quality factor verse \feh{} and \Logg{} for different spectral types and wavelength bands.]{Quality factor changes across spectral type and bands for variations in \feh{} and \Logg{}.
 Broadening values are R=100\,000 and \Vsini{} = 1.0\kmps{}.
-Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed \logg{}=4.5.
-Bottom: Quality factor variation of \logg{} between 4 and 5.5 with fixed \feh{}=0.0.
+Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed \Logg{}=4.5.
+Bottom: Quality factor variation of \Logg{} between 4 and 5.5 with fixed \feh{}=0.0.
 Note a higher quality factor corresponds to an increased {RV} precision.}
 \label{fig:deviations}
 \end{figure}
@@ -426,7 +426,7 @@ A large section of this work involved optimizing the original code used in~\cite
 Care needs to be taken to optimize the code.
 The original code used in~\citet{figueira_radial_2016} was slow, taking around 2 hours per simulation, this led to multiple weeks of processing time to compute the precision's for the original paper.
 
-In this section we document the changes made to the code in the course of attempting to improving it.
+In this section \todo{we} document the changes made to the code in the course of attempting to improving it.
 Features that change the derived {RV} precision are specifically documented in detail, with relative precision changes provided.
 
 This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}} (JOSS) {Neal and Figueria 2018 (in prep.)} with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}.
@@ -492,7 +492,7 @@ Often forgotten in
 One of the key insights from \cref{eqn:optimal_weight,eqn:dv_rms} is that the radial velocity error is inversely proportional gradient of the spectra, In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
 In original code used in~\citet{figueira_radial_2016} the gradient or slope is approximated using the forward finite difference method.
 The \emph{numpy} package provides a function to calculate the gradient using a more advanced methods that compute a more precise gradient.
-In this section we explore the affect of improving the precision of the numerical gradient on the final {RV} precision.
+In this section \todo{we} explore the affect of improving the precision of the numerical gradient on the final {RV} precision.
 
 The simplest way to calculate the derivative using finite difference methods~\citep{quarteroni_numerical_2000}.
 These arising from the Newton's definition of the derivative for a continuous function \(f(x)\) which should be familiar from introductory calculus:
@@ -506,7 +506,7 @@ called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite diffe
 The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}({h}^{2})\)~\citep{quarteroni_numerical_2000}.
 As the wavelength spacing between samples/pixels (h) is small the {CFD} will a more precise value for the gradient at each pixel.
 
-In our case \(h\) is the difference in wavelength between the two pixels considered.
+In \todo{our} case \(h\) is the difference in wavelength between the two pixels considered.
 In the {FFD} case the gradient at pixel \(i\) becomes:
 \begin{equation}
 \frac{\partial A_0(i)}{\partial\lambda(i)} = \frac{A_0(i+1) - A_0(i)}{\lambda(i+1)-\lambda(i)}, \hspace{2em} 1 \leq i \leq n-1.
@@ -559,7 +559,7 @@ The \emph{gradient} function from \emph{numpy} implements central differences fo
 
 \input{tables/numerical_gradient.tex}
 
-In \cref{fig:gradients} we visualize the gradients of two small spectral regions computed with the original {FFD}, and the higher precision version incorporated in numpy's gradient function.
+In \cref{fig:gradients} \todo{we} visualize the gradients of two small spectral regions computed with the original {FFD}, and the higher precision version incorporated in numpy's gradient function.
 The top panels contain the spectrum in the small regions shown, indicating a large spectral line and three small lines near the continuum respectively.
 The derivative of the spectra is shown in the bottom panel with the {FFD} method shown with \emph{blue squares} and the \emph{numpy} gradient shown in \emph{green stars}.
 The \emph{orange circles} are the same as {FFD} but shifted horizontally to the midpoints between pixels.
@@ -574,7 +574,7 @@ In the bottom panels of \cref{fig:gradients}, the points of highest gradient are
 This is the case for all spectral lines and as the optimal pixel weights are proportional to the gradient squared the {FFD} method will apply slightly higher pixel weights to these values, two points per line in the spectrum.
 The {FFD} will therefore produce a slightly smaller \(\delta V_{\rms}\) error compared to the more precise gradient function.
 
-In \cref{tab:numerical_gradients} we calculate the  \(\delta V_{\rms}\) using both gradient methods to determine their relative effect on the {RV} precision.
+In \cref{tab:numerical_gradients} \todo{we} calculate the  \(\delta V_{\rms}\) using both gradient methods to determine their relative effect on the {RV} precision.
 
 We took a {PHOENIX-ACES} spectrum with \Teff{}=3900\K{}, corresponding to {{M0}} spectral type.
 The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1.
@@ -702,7 +702,7 @@ These are \todo{add conclusions not affected}
 \subsection{\snr{} scaling}
 \label{subsec:snr_scaling}
 To analyse the relative precision of different spectra they need to normalized to a common reference point.
-In this section we detail how this was originally done and how this was changed to be adaptable to any library spectra and any reference band.
+In this section \todo{we} detail how this was originally done and how this was changed to be adaptable to any library spectra and any reference band.
 
 In the original code this was selected to be a \snr{} per pixel of 100 at the centre of the \textit{J}-band at 1.25\si{\micro\meter}.
 The normalization values for each band, \Vsini{} and resolution combination were hard-coded into the analysis.
@@ -730,7 +730,7 @@ This automated procedure enabled {\red{}\textbf{4}} different features.
     Results are not limited to being referenced from the \textit{J}-band.
     For instance the {RV} precision can now be calculated for a given \snr{} at the centre of the \textit{K}-band.
     This was one the features requested for the Exposure Time Calculators precision values.
-    For {NIRPS} we provided precision values relative to each individual band, while for {SPIRou} they were relative to the {J}- and {H}-bands.
+    For {NIRPS} \todo{we} provided precision values relative to each individual band, while for {SPIRou} they were relative to the {J}- and {H}-bands.
 \end{itemize}
 
 The default values for the \snr{} scaling a still 100 at the centre of the \textit{J}-band, but there is now options to easily change these values.
@@ -747,25 +747,25 @@ To access the {RV} precision of any of the values in Table at a different \snr{}
 \section{{SPIRou} and {NIRPS} {ETC}}\label{sec:spirou_nirps_etc}
 Having this tool to calculate {RV} precisions efficiently lead to contributions to the Exposure Time Calculators (ETC) for both the {SPIRou} and {NIRPS} spectrographs.
 
-In September 2017 we were requested to provide precision calculations for the {SPIRou} ETC\footnote{\url{http://www.cfht.hawaii.edu/Instruments/SPIRou/SPIRou_etc.php}}.
+In September 2017 \todo{we} were requested to provide precision calculations for the {SPIRou} ETC\footnote{\url{http://www.cfht.hawaii.edu/Instruments/SPIRou/SPIRou_etc.php}}.
 These were the same table as~\citet{figueira_radial_2016} but with a each band referenced to 100~{\snr{}} in its own band.
 The modification to use the centre of any band was made to fulfil this request.
 Notes on the telluric correction issue affect on Condition~2.
 
-In May 2018 we were requested to provide precision calculations for the {NIRPS} {ETC}.\@ This extended the spectral range from {M0}, {M3}, {M6}, {M9} at 3900, 3500, 2800, 2600\K{} respectively, but to all temperatures between 2500 and 4000\K{} inclusively.
+In May 2018 \todo{we} were requested to provide precision calculations for the {NIRPS} {ETC}.\@ This extended the spectral range from {M0}, {M3}, {M6}, {M9} at 3900, 3500, 2800, 2600\K{} respectively, but to all temperatures between 2500 and 4000\K{} inclusively.
 This provides a finer resolution coverage over the M spectral type, allowed by the {PHOENIX-ACES} library.
 Instrumental resolutions of 75\,000 and 100\,000 were requested to match the {NIRPS} instrument.
-The \logg{} and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, \textbf{0.0} and 3.0 respectively.\todo{}
+The \Logg{} and metallicity, sampling rate remained at the~\citet{figueira_radial_2016} levels of 4.5, \textbf{0.0} and 3.0 respectively.\todo{}
 Precisions were provided for \snr{} of 100 relative to the \emph{J}-, \emph{H}-bands as well as to each band individually.
 Artigua 2018 (private communication 2018).\todo{Check how to cite priv communication properly}  suggested the truly relevant value is the \snr{} in \emph{H}-band for {NIRPS} radial velocities.
 
 The results can be manually generated using ``eniric'' with the following incantation (after installation and configuration of {PHOENIX} library spectra.)
-\textbf{A table of the precisions created for the {NIRPS} ETC are provided as an online table to our publication} {Neal et al.
+\textbf{A table of the precisions created for the {NIRPS} ETC are provided as an online table to \todo{our} publication} {Neal et al.
 2018b (in prep.)}\footnote{Review at \href{https://github.com/openjournals/joss-reviews/issues/1053}{https://github.com/openjournals/joss-reviews/issues/1053}} \todo{Fix up when accepted}.
 
 
 These values were both calculated and provided using the {FFD} gradient and with the incorrect masking order for Condition~\#2, splitting before calculating the pixel weights.
-As we demonstrated in \cref{sec:numerical_gradient,subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
+As \todo{we} demonstrated in \cref{sec:numerical_gradient,subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
 
 
 \section{ Updated Figueira 2016 results}
@@ -784,7 +784,7 @@ The main difference is the area of shaded region due to the problem with Conditi
 \end{figure}
 \todo{Change to 55\mps{} upper limit?}
 
-\section{ metalicity / \logg{} extension}
+\section{ metalicity / \Logg{} extension}
 
 
 

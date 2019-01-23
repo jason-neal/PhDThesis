@@ -29,7 +29,8 @@ In this section some results from applying the models for companion recovery mod
 
 \subsection{Simulated binaries}
 \label{subsec:simulated_binaries}
-To test the companion recovery method simulations of binary observations using {PHOENIX-ACES} spectra were performed. These are performed in the wavelength range between 2112--2152\nm{}, covering the first three detectors of CRIRES only, due to spectral mismatch observed later in the observed spectra.
+To test the companion recovery method simulations of binary observations using {PHOENIX-ACES} spectra were performed.
+These are performed in the wavelength range between 2112--2152\nm{}, covering the first three detectors of CRIRES only, due to spectral mismatch observed later in the observed spectra.
 White noise was added to the simulated spectra a standard deviation \(\sigma = 1/{\snr{}}\), for a given signal-to-noise (\snr{}) level.
 The \textchisquared{} grid-search recovery technique detailed above is applied and the resulting parameters compared to the inputs.
 
@@ -61,11 +62,13 @@ The companion temperature recovered is 100\K{} lower than the input temperature 
 
 In this case with a companion {RV} offset, \Rvtwo{}, near 0\kmps{} the host and companion lines are blended.
 The same spectral lines from both components are trying to match the same features of the spectra, making it more difficult to recover the companion parameters.
-In the bottom right panel there appears to be multiple minima for different \Rvtwo{} and \(\teffsub{2}\) combinations, with a complex 3-\(\sigma\) confidence contour. This is assumed to be partially due to the small \Rvtwo{}.
+In the bottom right panel there appears to be multiple minima for different \Rvtwo{} and \(\teffsub{2}\) combinations, with a complex 3-\(\sigma\) confidence contour.
+This is assumed to be partially due to the small \Rvtwo{}.
 
 From the result summary in \cref{tab:example_params}, both simulations have a \textchisquaredreduced{} for the binary model closer to 1 than the single model.
 This is not surprising as the binary model contains extra parameters.
-As mentioned above, care is needed, as the extra components from the binary may just happen to fit components of the noise when a binary is not present, or at a extreme low contrast ratio as in this case. To further analyse the significance between the two models the ``Bayesian Information Criterion'' ({BIC})~\citep{schwarz_estimating_1978} is used:
+As mentioned above, care is needed, as the extra components from the binary may just happen to fit components of the noise when a binary is not present, or at a extreme low contrast ratio as in this case.
+To further analyse the significance between the two models the ``Bayesian Information Criterion'' ({BIC})~\citep{schwarz_estimating_1978} is used:
 \begin{equation}
 {BIC} = n\ln{(m)} - 2\ln{(\hat{L})}.
 \end{equation}
@@ -81,7 +84,7 @@ In both simulations the change in {BIC} between models, \(\Delta {BIC} >10\), so
 \label{subsec:results-hd211847}
 {HD 211847} is the best candidate of the current targets for companion detection with the \textchisquared{} binary model as it has a 155\Mjup{} low-mass star companion~\citet{moutou_eccentricity_2017}.
 Even though it has been determined not a {BD} in the literature it has the highest estimated flux ratio out of the current sample, of 0.03 based on the~\citet{baraffe_new_2015} evolution models and the known companion mass (see \cref{tab:estimated_flux_ratios}).
-\citet{moutou_eccentricity_2017} used Angular Differential Imaging {ADI} with {SPHERE@VLT} to observe an angular separation of the two bodies of 219.6\mas{} corresponding to a projected separation of 11.3\AU. For comparison the {CRIRES} slit with on the sky is 400\mas.
+\citet{moutou_eccentricity_2017} used Angular Differential Imaging {ADI} with {SPHERE@VLT} to observe an angular separation of the two bodies of 219.6\mas{} corresponding to a projected separation of 11.3\AU{}. For comparison the {CRIRES} slit with on the sky is 400\mas.
 However, it was not determined if the orientation of the orbit was considered during the observation, to align the slit along the orbit.
 The result of applying \textchisquared{} fitting to the second observation of {HD 211847} is given in \cref{tab:example_params} and visualized in \cref{fig:HD211847_result_contours}.
 
@@ -107,20 +110,21 @@ The 3-\(\sigma\) contour in these plots is small due to the large gradient of th
 
 For the companion in the binary model, on the right side of \cref{fig:HD211847_result_contours} shows a problem.
 The minimum \textchisquared{} for the companion temperature is at the upper limit of the grid shown.
-If the grid extend is extended the companion temperature towards higher temperatures the best fit location continues to increase in the recovered temperature, continually hitting the upper limit until it is close to the host temperature, more than 2000\K{} above the expected companion temperature. 
+If the grid extend is extended the companion temperature towards higher temperatures the best fit location continues to increase in the recovered temperature, continually hitting the upper limit until it is close to the host temperature, more than 2000\K{} above the expected companion temperature.
 When the companion temperature becomes this high it also affects the recovered parameters for the host star to offset the features of the brighter companion.
 Also the companion {RV} is >12\kmps{} different than the expected value, around two line \fwhm{}s away.
 Obviously this is not correct and the actual companion is not being detected.
 
 The \textchisquaredreduced{} values for the single and binary models are 21 and 19 respectively, far from the value of 1, indicating that both models are a poor fit to the observations.
-The \(\Delta {BIC} = 3812 >10\) indicating that the binary model is preferred, i.e. the difference is \textit{significant}.
+The \(\Delta {BIC} = 3812 >10\) indicating that the binary model is preferred, i.e.\ the difference is \textit{significant}.
 
 The spectrum of the best fit solution binary model is shown against the observed spectra in \cref{fig:visualinspection-hd2118471}.
 It is observed that there is a large spectral mismatch between the synthetic models and the observed spectra.
 Extra wavelength masking was applied to many of the largest mismatched synthetic lines to remove their influence on the \textchisquared{}.
 The grey areas mark regions which have been masked out, either from the centres of deep telluric lines (the thin masks matching spectral gaps), or the more prominent mismatched lines in the synthetic spectrum excluded from the \textchisquared{} analysis.
 One clear example of a mismatched line is a synthetic line at 2132.5\nm{} that is clearly not observed in detector \#2 (top right).
-Even with the majority of the mismatched lines removed the detection of the companion was still unsuccessful. The shown results for the observed spectra include the wavelength masking.
+Even with the majority of the mismatched lines removed the detection of the companion was still unsuccessful.
+The shown results for the observed spectra include the wavelength masking.
 
 For detectors \#1 and \#2 it appears that the synthetic spectra contain many more deeper lines than observed.
 For detector \#3 the red half of the detector was masked out as there appears to be an {RV} offset between the observed lines and synthetic spectra.
