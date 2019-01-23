@@ -7,11 +7,8 @@ The injection-recovery simulations at a \snr{} of 300 give a companion upper mas
 This is very high, roughly six times higher then the {BD} mass limit \(\sim\)80--90\Mjup{}.
 Some potential reasons and solutions for these poor results are given below, that hopefully can provide some guidance for any future attempts with these methods.
 
-\subsection{Synthetic recovery limitations}
-\label{subsec:limitations}
-
-\subsubsection{Mismatch in synthetic models}
-\label{subsubsec:mismatch}
+\subsection{Mismatch in synthetic models}
+\label{subsec:mismatch}
 It is believed that spectral mismatch between the observation and synthetic spectra is the main cause of the unsuccessful companion detection, impacting the recovery in two ways.
 The mismatch causes the \textchisquared{} values to be large in general, but this also causes the companion temperature to be pushed to higher temperatures in the application to the real observations.
 
@@ -34,8 +31,8 @@ As one example in particular, \citet{rajpurohit_spectral_2016} previously inferr
 The spectral mismatch in the region studied here is still too large for spectral recovery of companion brown dwarfs.
 In the \nir{} there is a compounding problem: the model input physics of sub-stellar temperatures and chemistry combined with the general difficulty of the \nir{}.
 
-\subsubsection{Line contribution of faint companions}
-\label{subsubsec:line_contributions}
+\subsection{Line contribution of faint companions}
+\label{subsec:line_contributions}
 One thing easy to overlook when attempting to detect the binary companion at low flux ratios is the actual contribution of the spectral lines of the companion.
 Here the line depths in the synthetic companion spectra are calculated to determine the \snr{} levels required to detect the lines of the binary companions.
 
@@ -87,8 +84,8 @@ Of the four stars in the system they were unable to detect the spectral componen
 \end{figure}
 
 \todo{}
-\subsubsection{\(\chi^2\) asymmetry} 
-\label{subsubsec:chi2_assymetry}
+\subsection{\(\chi^2\) asymmetry} 
+\label{subsec:chi2_assymetry}
 
 To try and understand this recovered companions further investigation into the \textchisquared{} space was performed of the {HD30501} synthetic simulation.
 The minimum \textchisquared{} contours achieved for each companion temperature in the grid, regardless of \Rvtwo{} are shown in \cref{fig:injection_shape}.
@@ -128,8 +125,8 @@ The vertical dotted lines indicate the edges of the CRIRES detectors.}
     \label{fig:comp_spectra}
 \end{figure}
 
-\subsubsection{Component {RV} separation}
-\label{subsubsec:rv_seperation}
+\subsection{Component {RV} separation}
+\label{subsec:rv_seperation}
 Another factor which could contribute to an unsuccessful detection is the {RV} separation between the host and companion, is \Rvtwo{}.
 Estimates for the observations are given in the last column of \cref{tab:observations}.
 If \Rvtwo{} is small compared to the line width, then all the same lines of both components will be blended.
@@ -141,8 +138,8 @@ The {RV} separation of the two components changes with orbital phase.
 Having multiple spectra of the same target distributed in phase may allow the {RV} of the spectral components to be better recovered~\citep [e.g.][]{czekala_disentangling_2017, sablowski_spectral_2016, piskorz_evidence_2016}.
 
 
-\subsubsection {Wavelength range}
-\label{subsubsec:wavelenght_range_limitation}
+\subsection {Wavelength range}
+\label{subsec:wavelenght_range_limitation}
 The wavelength choice for the spectra analysed here, observed with the intention to apply the spectral differential technique, was selected due to the location of the \emph{K}-band telluric absorption window.
 This wavelength range, with a narrow wavelength range \(\sim\)50\nm{} set by the CRIRES instrument.
 This wavelength range is not the best choice for the techniques applied here.
@@ -157,8 +154,8 @@ This wavelength region has already been shown to be promising for simulations of
 This is clearly one wavelength region in particular to focus attention in the future.
 
 
-\subsubsection{The {BT-Settl} models}
-\label{subsubsec:bt-settl}
+\subsection{The {BT-Settl} models}
+\label{subsec:bt-settl}
 The {PHOENIX-ACES} models were not the only spectral libraries available with the other notable library considered for this work being the {BT-Settl} models~\citep{allard_model_2010,allard_btsettl_2013,baraffe_new_2015} (see \cref{subsec:btsettl}).
 
 As the {BT-Settl} models are suitable to model the atmospheres of the brown dwarfs they would have been useful for the companion recovery technique developed here.
@@ -183,8 +180,8 @@ If promising results had been obtained with the {PHONEIX-ACES}, or a substantial
 \end{figure}
 
 
-\subsubsection{Impact of \Logg{}}
-\label{subsubsec:logg} 
+\subsection{Impact of \Logg{}}
+\label{subsec:logg} 
 The surface gravity of a star, measured as \Logg{}, is related to evolutionary state and the size of the star.
 Smaller \Logg{} values usually indicate bigger stars with larger radii.
 This parameter has a large impact on the radius and thus flux ratio of the binary models.
@@ -192,10 +189,10 @@ In experimenting with the \Logg{} value of the {PHOENIX-ACES} models a decrease 
 This change in radius alone roughly triples the absolute flux of the synthetic spectrum (\(1.75^2\)), neglecting any changes to the shape of the actual spectrum.
 Therefore, there are large jumps in the model flux ratios, and the \textchisquared{} solutions if the \Logg{} is allowed to vary.
 Like with higher companion temperatures, a lower \Logg{} value for the companion is favoured as the increased flux ratio reduces the spectral mismatch of the host component to the observations.
-This large impact of \Logg{} on the spectral library absolute flux is one reason for keeping the \Logg{} of each component fixed in the \textchisquared{} results presented in \cref{sec:results}.
+This large impact of \Logg{} on the spectral library absolute flux is one reason for keeping the \Logg{} of each component fixed in the \textchisquared{} results presented in \cref{sec:chi2_results}.
 
-\subsubsection{Interpolation}
-\label{subsubsec:interpolation}
+\subsection{Interpolation}
+\label{subsec:interpolation}
 One procedure not incorporate into this \textchisquared{} procedure is spectral interpolation in between spectral grid points.
 It is common to interpolate between the synthetic spectral grids to fit and derive parameters in between the grid points such as performed in~\citet{nemravova_xtauri_2016} and \citet{passegger_fundamental_2016}.
 At a more advanced stage, instead of interpolation,~\cite{czekala_constructing_2015} use a spectral emulator and use Principal Component Analysis to create eigenspectra for the synthetic library and Gaussian processes to derive a probability distribution function of possible interpolation spectra to account for uncertainties in the interpolation required for high signal-to-noise spectra.
@@ -204,7 +201,7 @@ Interpolation could be something to be added to this work in the future to refin
 Codes are readily available to perform spectral interpolation which could be utilized for this, two of them are \emph{pyterpol}\footnote{https://github.com/chrysante87/pyterpol}~\citet{nemravova_xtauri_2016} and \emph{Starfish}\footnote{https://github.com/iancze/Starfish}~\cite{czekala_constructing_2015}.
 
 
-\subsection{Contrast other detections}
+\subsection{Contrast to other works}
 
 In this work the techniques attempted were unsuccessful in detecting the companions.
 Here some relevant comparisons are made to recent positive detections in the literature.
