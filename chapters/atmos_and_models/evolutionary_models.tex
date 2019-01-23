@@ -8,7 +8,7 @@ Brown Dwarfs do not have enough mass to achieve stable hydrogen fusion and slowl
 
 This work uses stellar evolutionary models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015} to estimate the properties of the giant planets, brown dwarfs and low-mass stars given the mass and age.
 The models range in mass between 0.0005--1.4\Msun{} and ages 0.001--10.0\Gyr{} of which span temperatures $sim100$--6000\K{}.
-Stellar or {BD} properties such as \Teff{}, \logg{},radius, and absolute magnitudes in different photometric bands can be determined from the tables given by the evolution models.
+Stellar or {BD} properties such as \Teff{}, \Logg{},radius, and absolute magnitudes in different photometric bands can be determined from the tables given by the evolution models.
 
 \subsection{Estimating Companion-host Flux ratio}
 \label{subsec:compaion_flux_ratio}
@@ -34,7 +34,7 @@ For the companions in which only the minimum mass (\Mtwosini{}) is known then th
 
 \input{./tables/atmos_and_models/estimated_fluxratios} % \label{tab:estimated_flux_ratios}
 
-The magnitudes provided by {SIMBAD} are given in apparent magnitude, $m$, while the magnitudes in the evolutionary models are absolute magnitudes $M$.
+The magnitudes provided by {SIMBAD} are given in apparent magnitude, \(m\), while the magnitudes in the evolutionary models are absolute magnitudes \(M\).
 That is, the apparent magnitude that the star would have if it was observed at a distance of 10 parsecs (32.6 light-years).
 The apparent magnitudes of the hosts are converted to absolute magnitudes using \(M = m - \mu\) where \(\mu\) is the distance modulus:
 \begin{equation}
@@ -53,7 +53,7 @@ From the flux ratio the noise ratio between the host and companion can also be c
 A simple tool\footnote{Available at \href{https://github.com/jason-neal/baraffe_tables}{https://github.com/jason-neal/baraffe\_tables}} was created to calculate/estimate the host-companion flux ratio using the~\citet{baraffe_evolutionary_2003, baraffe_new_2015} evolution tables.
 Given the name of the target star, the mass of a companion and the stellar/system age the tool determines the flux ratios in the available spectral bands.
 The tool uses the targets name and the \href{https://zenodo.org/record/1160627}{\emph{astroquery} package} to obtain the stellar properties from {SIMBAD}, specifically the flux magnitudes and parallax.
-It then interpolates the Baraffe tables to the desired companion mass and age, calculating and returning values for all parameters of the companion given in the tables (e.g.\ \Teff{}, \logg{}, \(R/R_{\odot}\)).
+It then interpolates the Baraffe tables to the desired companion mass and age, calculating and returning values for all parameters of the companion given in the tables (e.g.\ \Teff{}, \Logg{}, \(R/R_{\odot}\)).
 The stellar magnitudes are converted to absolute values using \cref{eqn:distance_modulus} and the flux ratios computed using \cref{eqn:mag_flux_ratios}.
 
 An extension of this tool is that can be used to perform the reverse calculation also.

@@ -20,7 +20,7 @@ The limits of the differential technique at low {RV} separations is given by sim
 Spectral observations of binary systems contain the spectra of both bodies, in proportion to their flux ratio, and Doppler shifted relative to each other due to their orbital motion.
 One technique to recover the spectra of the companion is secondary reconstruction through a differential spectrum~\citep{ferluga_separating_1997}.
 Spectra from different phases are shifted to the rest frame of the host star and subtracted to mutually cancel out the spectrum of the host star allowing the faint companion spectra to become visible.
-Advances in high-resolution and near-infrared (\nir{}) capabilities should enable this technique to be applied to BDs and planet companions, in which smaller {RV} shifts can be resolved and the contrast ratio of the smaller companion is improved.
+Advances in high-resolution and near-infrared (\nir{}) capabilities should enable this technique to be applied to {BD}s and planet companions, in which smaller {RV} shifts can be resolved and the contrast ratio of the smaller companion is improved.
 
 
 There are many other disentangling techniques to separate mixed spectra of binary systems,~\citep[e.g.][]{hadrava_disentangling_2009}.
@@ -80,25 +80,25 @@ For a low temperature companion (3500\K{}) at a 1\% flux ratio to a 5000--6000\K
 \section{Motivation and target selection}
 \label{sec:target_motivation}
 
-The work of~\citet{sahlmann_search_2011} used the astrometry technique to identify several candidate brown dwarf companions of {FGK} stars with \(\rm M_2 \sin{i}\) values > 10~\Mjup{}.
+The work of~\citet{sahlmann_search_2011} used the astrometry technique to identify several candidate brown dwarf companions of {FGK} stars with \Mtwosini{} values > 10~\Mjup{}.
 Seven candidates from~\citet{sahlmann_search_2011}, which were visible in {Period 89} (2012), were selected for further observation in order to identify their stellar nature.
-That is, to refine the mass of the companions to distinguish if their companion is: a large giant planet (M$\apprle13$\Mjup), a Brown dwarf (13$\apprle $M$\apprle80$\Mjup), or a low-mass star (M$\apprge80$\Mjup).
+That is, to refine the mass of the companions to distinguish if their companion is: a large giant planet (\(M \apprle 13\)\Mjup{}), a Brown dwarf (\(13 \apprle M \apprle 80\)\Mjup{}), or a low-mass star (\(M \apprge 80\)\Mjup).
 
 The list target host stars that were observed are presented in \cref{tab:star_params} along with their stellar parameters, while \cref{tab:orbitparams} details the orbital parameters of each system from the literature.
 
 It is noted that the orbital parameters of some targets have been refined in the literature since the observations took place.
 For example three candidates have had their masses refined in recent works.
-The companion to {HD\,211847} was determined to be a low mass star with \(\rm M_2=155~\)\Mjup{}~\citep{moutou_eccentricity_2017}, while the companion to {HD\,4747} was found to have a mass of \(\rm M_2=60~\)\Mjup{}~\citep{crepp_trends_2016}.
-The two companions of {HD\,202206} (B and c) were found to have masses of \(\rm M_B =93.6\)~\Mjup{} and \(\rm M_c = 17.9\)~\Mjup{}, respectively, classifying {HD\,202206}c as a ``circumbinary brown dwarf''~\citep{benedict_hd_2017}.
+The companion to {HD\,211847} was determined to be a low mass star with \(\mtwo=155\)\Mjup{}~\citep{moutou_eccentricity_2017}, while the companion to {HD\,4747} was found to have a mass of \(\mtwo=60\)\Mjup{}~\citep{crepp_trends_2016}.
+The two companions of {HD\,202206} (B and c) were found to have masses of \({M}_{B}=93.6\)\Mjup{} and \({M}_{c}=17.9\)\Mjup{}, respectively, classifying {HD\,202206}c as a ``circumbinary brown dwarf''~\citep{benedict_hd_2017}.
 These three companions with recently refined masses, along with {HD\,30501}, create a good set of benchmarks to compare any results from the techniques used here, and show that the masses of these targets do span the {BD} to low-mass star range.
-All target companions except {HD\,162020} (P=8.4 days) are in (very) long period orbits (P=0.7--38 years) with masses (or \Mtwosini{}) greater than 10~\Mjup{}.
+All target companions except {HD\,162020} (P=8.4~days) are in (very) long period orbits (P=0.7--38~years) with masses (or \Mtwosini{}) greater than 10\Mjup{}.
 
 \begin{landscape}
     \input{./tables/direct_recovery/stellar_params}
     \input{./tables/direct_recovery/orbital_params}
 \end{landscape}
 
-The spectral differential approach was chosen with the goal to constrain the companion masses while minimizing the observational time required to observe.
+The spectral differential approach was chosen with the goal to constrain the companion masses while minimizing the observational time required to observe, only requiring two observations in theory.
 It was determined that it should be possible to obtain a detection of a companion with a 1\% contrast ratio with an exposure time of around 20 minutes.
 Two observations at ``clearly separate {RV}s'' were requested to constrain each target.
 Observations were performed without telluric standard star observations to avoid the extra observing time overhead, choosing to instead rely on synthetic model correction (see \cref{sec:telluric_correction}).
@@ -205,7 +205,7 @@ $J(\lambda) = 1- D \cdot\exp^{{-\pi {(\lambda - \lambda_0)}^2} / {{W}^{2}}}$:
 \begin{equation}
     S(\lambda) = 2 D\cdot\exp^{{-\pi {D}^{2} [{(\lambda - \lambda_0)}^{2} +{(k/2)}^{2}]}/{{W}^{2}}} \cdot \sinh{\frac{\pi {D}^{2}(\lambda-\lambda_0)k}{{W}^{2}}},\label{eqn:sprofile_gaussain}
 \end{equation}
-where $\lambda_0$, $D$, and $W$ are the central wavelength, depth and equivalent width of the Gaussian line, and $k=\Delta {RV}_2 $ is the shift between the two companion spectra.
+where $\lambda_0$, \(D\), and \(W\) are the central wavelength, depth and equivalent width of the Gaussian line, and $k=\Delta {RV}_2 $ is the shift between the two companion spectra.
 
 From binary dynamics~\citep[e.g.][]{murray_keplerian_2010} the {RV} amplitudes of the host and companion (ignoring the system velocity $gamma$) are related through the mass ratio, \(q\), while having an opposite sign\footnote{The opposite sign arises from a \(180^\circ\) difference in the angle of periapsis, \(\omega\), for the companion.} (see \cref{subsec:binary_mass_ratio}):
 \begin{align}
@@ -248,7 +248,7 @@ As noted in~\citet{hadrava_disentangling_2009}, any spectral differences in the 
     \caption[Example of the spectral differential technique.]{Top: A reduced {CRIRES} observation of {HD\,30501} (blue) for detector 1 between 2112--2124\nm{} along with the {TAPAS} telluric absorption model ({orange} dashed) used for the wavelength calibration and telluric correction.
     Middle: The telluric corrected spectra.
     Bottom: ({blue}) Differential spectra for {HD\,30501} between observations 1 and 3.
-    ({orange} dashed) Simulated ``perfect'' differential using {PHOENIX-ACES} spectra with parameters \Teff{}=2500\K{}, \logg{}=5.0, and \feh{}=0.0, with the same \(\Delta {RV}\) as the observations.
+    ({orange} dashed) Simulated ``perfect'' differential using {PHOENIX-ACES} spectra with parameters \Teff{}=2500\K{}, \Logg{}=5.0, and \feh{}=0.0, with the same \(\Delta {RV}\) as the observations.
     The shaded regions indicate where the telluric {green} and host star {blue} spectra are \(> 4\%\) deep.}
     \label{fig:spectral_example}
 \end{figure}
@@ -273,8 +273,8 @@ The residual for the large \(\sim40\%\) deep telluric line near 2118.5\nm{} is s
 Around 2120\nm{} there is wide negative residual around three neighbouring telluric lines, \(\sim10\%\) deep.
 One possible explanation for this is that the continuum normalization near 2120\nm{} was influenced by this grouping of lines.
 
-To understand the observed differential signal simulations were performed of a differential spectrum of {HD\,30501} using a synthetic {PHOENIX-ACES} spectra with parameters \Teff{}=2500\K{}, \logg{}=5.0, and \feh{}=0.0, with the {RV} offset estimated from the observation times.
-These parameters represent an estimated companion \Teff{} with the metallicity and \logg{} similar to the host (closest grid model).
+To understand the observed differential signal simulations were performed of a differential spectrum of {HD\,30501} using a synthetic {PHOENIX-ACES} spectra with parameters \Teff{}=2500\K{}, \Logg{}=5.0, and \feh{}=0.0, with the {RV} offset estimated from the observation times.
+These parameters represent an estimated companion \Teff{} with the metallicity and \Logg{} similar to the host (closest grid model).
 The model spectra were convolved to \(\R=50\,000\), continuum normalized and scaled by the estimated flux ratio of the companion.
 In this simulation a synthetic host or telluric spectra is not included and as such simulates the differential result of a ``perfect'' host cancellation with no telluric contamination present.
 This is the ideal-case scenario, and it is stressed that it is impossible to simulate the effect of improper telluric correction in a meaningful way.
@@ -295,10 +295,10 @@ Once there is a separation there will be complex interactions between neighbouri
 
 
 \subsection{Relative differential amplitude}
-\label{relative_differential_amplitue}
+\label{subsec:relative_differential_amplitue}
 Further investigation was performed into the differential subtraction under small \(\Delta {RV}\).
 This is done by exploring the amplitude of the differential against a variation in {RV}.
-Simulations were performed creating a differential spectra for a range of \(\Delta {RV}\)s between \(\pm10\)\kmps{} using the same {PHOENIX-ACES} spectra for the companion of {HD\,30501} (\Teff{}=2500\K{}, \logg{}=5.0, \feh{}=0.0) convolved to \(\R=50\,000\).
+Simulations were performed creating a differential spectra for a range of \(\Delta {RV}\)s between \(\pm10\)\kmps{} using the same {PHOENIX-ACES} spectra for the companion of {HD\,30501} (\Teff{}=2500\K{}, \Logg{}=5.0, \feh{}=0.0) convolved to \(\R=50\,000\).
 These simulations were focus on the wavelength range 2110--2123\nm{}, corresponding to detector \#1 of the {CRIRES} observations.
 The differential spectra was created for each by taking the synthetic spectrum for the companion, Doppler shifting a copy of the spectrum and subtracting it from the original.
 At each {RV} step the maximum absolute differential amplitude (peak to peak) of the simulated differential spectrum observed was recorded.
@@ -327,7 +327,7 @@ As the companion spectra are already faint and in combination with a host star a
     \centering
     \includegraphics[width=0.8\textwidth]{figures/direct-recovery/rv_diff_final.pdf}
     \caption[Simulated relative amplitude of differntial spectrum.]{Simulated relative amplitude of differential spectra at different companion \(\Delta {RV}\) separations revealing the diminished amplitude at very small orbital separations.
-    The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a {PHOENIX-ACES} spectrum with \Teff{}=2500\K{}, \logg{}=5.0, \feh{}=0.0 in the wavelength region 2110--2123\nm{}.
+    The solid blue line shows the maximum relative amplitude of the differential signal (from a shifted copy of itself) of a {PHOENIX-ACES} spectrum with \Teff{}=2500\K{}, \Logg{}=5.0, \feh{}=0.0 in the wavelength region 2110--2123\nm{}.
     The maximum difference is normalized by the median amplitude between \(\pm7\)--10\kmps{}, representing a complete line separation.
     The orange (dashed) and green (dot-dashed) lines represent the relative amplitude of a spectrum differential for a spectrum containing a single Gaussian or Lorentzian absorption line respectively, each with a unitary amplitude and a \(\rm {\fwhm} = \lambda / R\).
     The solid vertical lines indicate the estimated companion \(\Delta {RV}\) in these observations while the dashed vertical lines indicate the {RV} corresponding to the {\fwhm} at this wavelength and resolution.}
