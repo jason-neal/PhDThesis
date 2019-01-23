@@ -23,15 +23,31 @@ Spectra from different phases are shifted to the rest frame of the host star and
 Advances in high-resolution and near-infrared (\nir{}) capabilities should enable this technique to be applied to BDs and planet companions, in which smaller {RV} shifts can be resolved and the contrast ratio of the smaller companion is improved.
 
 
+There are many other disentangling techniques to separate mixed spectra of binary systems,~\citep[e.g.][]{hadrava_disentangling_2009}.
+These require more than two observations, with  \(n+1\) observations used to set up a system of linear equations to solve for \(n\) spectral components~\citep[e.g.][]{simon_disentangling_1994,czekala_disentangling_2017, sablowski_spectral_2016}.
+These methods are ideal for many well spaced observations.
+For example the ideal situation for the {SVD} method of~\citet{sablowski_spectral_2016} is homogeneous samples of at least half the period, to identify the moving spectral components.
+The few and insufficiently separated observations that were analysed in this work are not suitable to apply these advanced techniques.
+
+
 Binary stars through brown dwarfs...
 to planets.
 
 
+\subsection{Other techniques}
+There are many other disentangling techniques to separate mixed spectra of binary systems,~\citep[e.g.][]{hadrava_disentangling_2009}.
+These require more than two observations, with  \(n+1\) observations used to set up a system of linear equations to solve for \(n\) spectral components~\citep[e.g.][]{simon_disentangling_1994,czekala_disentangling_2017, sablowski_spectral_2016}.
+These methods are ideal for many well spaced observations.
+For example the ideal situation for the {SVD} method of~\citet{sablowski_spectral_2016} is homogeneous samples of at least half the period, to identify the moving spectral components.
+The few and insufficiently separated observations that were analysed in this work are not suitable to apply these advanced techniques.
+
+\todo{add extra techniques}
+
+
+A fairly common technique for matching and separating spectra is to apply cross-correlation against a library of known spectra. TODCOR~\citep{zucker_study_1994} is a commonly used algorithm for cross-correlation of two spectral components and revealing the faint secondary~\citep[e.g.][]{mazeh_detecting_1997} simulated to be able to detect secondaries with flux ratios down to \(\sim1/1000\) provided a sufficient \snr{}\citep{mazeh_todocr_1994}.
+
 Mention the other technique here first.
 Then move to the one we tried...
-
-
-
 
 Spectral Disentangling techniques
 - PSOAP
