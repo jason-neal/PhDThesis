@@ -3,7 +3,8 @@
 \section{Discussion}
 \label{sec:chisquared_discussion}
 The spectral differential and the synthetic recovery methods attempted both in this chapter and \cref{cha:direct_recovery} were both unsuccessful in an actual detection of the {BD} companions focused in this work.
-The injection-recovery simulations at a \snr{} of 300 give a companion upper mass limit around \(600^{+20}_{-40}\), above which this method detects a simulated secondary spectra. This is very high, roughly six times higher then the {BD} mass limit \(\sim 80-90\)\Mjup{}.
+The injection-recovery simulations at a \snr{} of 300 give a companion upper mass limit around \(600^{+20}_{-40}\), above which this method detects a simulated secondary spectra.
+This is very high, roughly six times higher then the {BD} mass limit \(\sim80--90\)\Mjup{}.
 Some potential reasons and solutions for these poor results are given below, that hopefully can provide some guidance for any future attempts with these methods.
 
 \subsection{Synthetic recovery limitations}
@@ -14,9 +15,10 @@ Some potential reasons and solutions for these poor results are given below, tha
 It is believed that spectral mismatch between the observation and synthetic spectra is the main cause of the unsuccessful companion detection, impacting the recovery in two ways.
 The mismatch causes the \textchisquared{} values to be large in general, but this also causes the companion temperature to be pushed to higher temperatures in the application to the real observations.
 
-In the examples shown the \logg{} and metallicity of the synthetic models are held fixed, leaving only temperature to vary.
+In the examples shown the \Logg{} and metallicity of the synthetic models are held fixed, leaving only temperature to vary.
 The temperature impacts the synthetic spectral models in two main ways: the flux level of the continuum, and the number and strength of the absorption lines.
-In the binary model the contributions of the individual components is scaled by the flux ratio. If the temperature of the companion increases then the flux and radius of the companion increases and the flux ratio \FoneFtwo{} decreases.
+In the binary model the contributions of the individual components is scaled by the flux ratio.
+If the temperature of the companion increases then the flux and radius of the companion increases and the flux ratio \FoneFtwo{} decreases.
 This effectively makes the lines in the host component relatively smaller in the normalized binary model spectrum.
 Due to the large initial mismatch of synthetic spectral lines of the host, a decrease in the relative strength of the host lines reduces the \textchisquared{} value.
 This causes the recovered temperature of the companion to be higher than expected, >2000\K{} higher if allowed by the size of the exploration grid.
@@ -28,6 +30,7 @@ This spectral mismatch is not observed in the simulations in \cref{subsec:simula
 Although the newer generations synthetic spectral models are improving and match the overall spectral energy distribution reasonably well there are still regions in the \emph{H}- and \emph{K}-band where there is room for improvement~\citet{rajpurohit_spectral_2016}.
 These can come in several forms, such as molecular line lists, abundance measurements, or further modelling.
 As one example in particular, \citet{rajpurohit_spectral_2016} previously inferred that the \ce{TiO} line list poorly matches the real positions of \ce{TiO} lines at spectral resolutions of \(\sim100\,000\).
+\citet{passegger_carmenes_2018} has also noted inconsistencies in the line depth of synthetic spectra.
 The spectral mismatch in the region studied here is still too large for spectral recovery of companion brown dwarfs.
 In the \nir{} there is a compounding problem: the model input physics of sub-stellar temperatures and chemistry combined with the general difficulty of the \nir{}.
 
@@ -41,9 +44,9 @@ The spectral lines of the individual components, which are the features that all
 In effect, the companion line features have a depth \(\ll 1\%\) relative to the continuum of the combined spectrum.
 
 In \cref{tab:line_contributions} some properties of the spectral lines in the {PHOENIX-ACES} library between 2110--2160\nm{} are calculated.
-The number of spectral lines (\emph{no. lines}) deeper than 5\% are counted and the the average depth (\emph{avg. depth}) of these lines is calculated.
-The contribution depth \emph{cont. depth} of the companion lines to a combined spectrum is calculated to account for the flux ratio between the two spectral components.
-Here a Sun-like host with \(\teffsub{1}\)=5800\K{} is used for the comparison.
+The number of spectral lines (\emph{no.~lines}) deeper than 5\% are counted and the the average depth (\emph{avg.~depth}) of these lines is calculated.
+The contribution depth \emph{cont.~depth} of the companion lines to a combined spectrum is calculated to account for the flux ratio between the two spectral components.
+Here a Sun-like host with \(\teffsub{1}=5800\)\K{} is used for the comparison.
 This simplified combination neglects the continuum shapes of both spectral components and uses the average flux ratios for this wavelength range.
 The {PHOENIX-ACES} spectra in the temperature range of 2500--5000\K{} shown in \cref{fig:comp_spectra} can be used to get a visual indication of the line density and depth measured here.
 
@@ -57,7 +60,7 @@ For a companion with a temperature of 2300\K{} (the lower {PHOENIX-ACES} tempera
 %{\bl We use the contributed line depth values to calculate the \snr{} level required to have Gaussian noise of the same height and the observed \snr{} required to achieve equivalent contribution from all N lines of the spectrum, \(\rm \textrm{SNR}_N = \textrm{SNR} /\sqrt{N}\).
 %This is for the synthetic spectra which have many more lines than the observed spectra in this wavelength range.}
 
-The \snr{} of the observed spectra is between 100--300, which is below the \snr{} of 323 needed for the detection of the low-mass star companion of {HD~211847} with temperature of 3200\K{} and \logg{} 5.0.
+The \snr{} of the observed spectra is between 100--300, which is below the \snr{} of 323 needed for the detection of the low-mass star companion of {HD~211847} with temperature of 3200\K{} and \Logg{} 5.0.
 For the other targets with {BD} companions at and below the {PHOENIX-ACES} temperature range, a \snr{} >800  would be required to detect the individual spectral lines of the companion.
 With the \snr{} increasing with \(\sqrt{N}\) this would require the observational time for each target to be increased by a factor of \(\sim\)~10--64.
 
@@ -76,7 +79,7 @@ Of the four stars in the system they were unable to detect the spectral componen
         The other fixed parameters for these fully synthetic simulations was \(\teffsub{1}=5200\)\K{}, \(\logg_{1}=4.5\), \(\logg{}_{2}=5.0\), and both \feh{}=0.0.
         A fixed Gaussian noise corresponding to a \snr{} of 300 was used.
         Bottom: A close up view of \textchisquared{} below 15.
-        The three horizontal grey lines indicate the 1-, 2-, 3-$\sigma$ with 2 degrees of freedom.
+        The three horizontal grey lines indicate the 1-, 2-, 3-$\sigma$ with two degrees of freedom.
         The vertical dotted lines indicate the location of the minimum \textchisquared{} recovered for each companion.
         The black solid vertical in both panels shows the 2300\K{} cut-off of the {PHOENIX-ACES} models}
     \label{fig:injection_shape}
@@ -92,7 +95,7 @@ The minimum \textchisquared{} contours achieved for each companion temperature i
 This is done for seven different injected companion temperatures, \(\teffsub{2}\), between 2500 and 4500\K{}.
 For the higher temperature companions, the \textchisquared{} is parabolic in shape, recovering the correct temperature, as expected.
 At lower temperatures there is a strong asymmetry in the \textchisquared{} with it flattening out on the lower temperature side.
-The 1-, 2-, 3-\(\sigma\) values (with 2 degrees of freedom) of 2, 6 and 11 above the minimum \textchisquared{} are not shown in the bottom panel of \cref{fig:injection_shape} which is a close-up around the minimum \textchisquared{} as they are indistinguishable in the top panel due to the extreme \textchisquared{} y-scale.
+The 1-, 2-, 3-\(\sigma\) values (with two degrees of freedom) of 2, 6 and 11 above the minimum \textchisquared{} are not shown in the bottom panel of \cref{fig:injection_shape} which is a close-up around the minimum \textchisquared{} as they are indistinguishable in the top panel due to the extreme \textchisquared{} y-scale.
 The black vertical line indicates the 2300\K{} temperature limit of the {PHOENIX-ACES} models.
 
 In \cref{fig:injection_shape} \textrm{we} showed that the shape of the recovered \textchisquared{} becomes asymmetric when dealing with companion temperatures below around 3800\K{}.
@@ -112,7 +115,7 @@ The asymmetry also causes an asymmetry in the \textchisquared{} error bars which
 For instance the recovered value and 1-\(\sigma\) error bars on the 3000\K{} injected companion is \(2800 ^{+20}_{-100}\), with an asymmetric error bar skewed towards lower temperatures.
 
 The bump observed at 5100\K{} in the \textchisquared{} curves is due to a discontinuity in the {PHOENIX-ACES} modelling.
-The "reference wavelength defining the mean optical depth grid" is changed at 5000\K{}~\citep[][Sect. 2.3]{husser_new_2013}.
+The "reference wavelength defining the mean optical depth grid" is changed at 5000\K{}~\citep[][Section~2.3]{husser_new_2013}.
 Care needs to be taken if trying to detect a companion near this temperature.
 
 \begin{figure}
@@ -120,7 +123,7 @@ Care needs to be taken if trying to detect a companion near this temperature.
     \includegraphics[width=\hsize]{./figures/companion_recovery/companion_spectra.pdf}
     \caption{{PHOENIX-ACES} spectra for temperatures between 2500 and 5000\K{}, corresponding to to the same lines in \cref{fig:injection_shape}.
 The flux units are the native units of the {PHOENIX-ACES} spectrum, (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)), and have not been scaled by the stellar radii.
-All spectra have a \logg{}=5.0 and \feh{}=0.0.
+All spectra have a \Logg{}=5.0 and \feh{}=0.0.
 The vertical dotted lines indicate the edges of the CRIRES detectors.}
     \label{fig:comp_spectra}
 \end{figure}
@@ -129,7 +132,8 @@ The vertical dotted lines indicate the edges of the CRIRES detectors.}
 \label{subsubsec:rv_seperation}
 Another factor which could contribute to an unsuccessful detection is the {RV} separation between the host and companion, is \Rvtwo{}.
 Estimates for the observations are given in the last column of \cref{tab:observations}.
-If \Rvtwo{} is small compared to the line width, then all the same lines of both components will be blended. For example, \citep{kolbl_detection_2015} have difficultly separating blended spectra which have a component {RV} separation below 10\kmps{}.
+If \Rvtwo{} is small compared to the line width, then all the same lines of both components will be blended.
+For example, \citep{kolbl_detection_2015} have difficultly separating blended spectra which have a component {RV} separation below 10\kmps{}.
 This is indeed the case for {HD~4747}, {HD~211847}, and {HD~202206} with expected \(|\rvtwo{}| < 2\)\kmps{}.
 This may have contributed to the lack of recovery with both components of the binary model trying to fit to the same features.
 This may even cause some correlation between the parameters of the two components.
@@ -144,11 +148,12 @@ This wavelength range, with a narrow wavelength range \(\sim50\)\nm{} set by the
 This wavelength range is not the best choice for the techniques applied here.
 
 For instance~\citet{passegger_fundamental_2016} used four different spectral regions for the precise parameter determination of M-dwarfs using \textchisquared{} methods.
-Specific lines in the different wavelength regions are affected differently by the model parameters: \Teff{}, \logg{}, and \feh{}; and are used to break degeneracies in the {PHOENIX-ACES} parameter space.
+Specific lines in the different wavelength regions are affected differently by the model parameters: \Teff{}, \Logg{}, and \feh{}; and are used to break degeneracies in the {PHOENIX-ACES} parameter space.
 
 Changing the wavelength coverage to regions with lines sensitive to stellar parameters for both stars and {BD}s, as well as using a larger wavelength range that will be achieved by {CRIRES+}, may help to improve the recovery results of the companion recovery technique presented here.
 
-Several works \citet[e.g.][]{brogi_carbon_2014, brogi_rotation_2016, piskorz_evidence_2016} have had successful molecule and companion detections in the wavelength range around 2300\nm{} due to strong \ce{CO} lines. This wavelength region has already been shown to be promising for simulations of the differential technique in~\citet{kostogryz_spectral_2013}.
+Several works \citet[e.g.][]{brogi_carbon_2014, brogi_rotation_2016, piskorz_evidence_2016} have had successful molecule and companion detections in the wavelength range around 2300\nm{} due to strong \ce{CO} lines.
+This wavelength region has already been shown to be promising for simulations of the differential technique in~\citet{kostogryz_spectral_2013}.
 This is clearly one wavelength region in particular to focus attention in the future.
 
 
@@ -157,35 +162,37 @@ This is clearly one wavelength region in particular to focus attention in the fu
 The {PHOENIX-ACES} models were not the only spectral libraries available with the other notable library considered for this work being the {BT-Settl} models~\citep{allard_model_2010,allard_btsettl_2013,baraffe_new_2015} (see \cref{subsec:btsettl}).
 
 As the {BT-Settl} models are suitable to model the atmospheres of the brown dwarfs they would have been useful for the companion recovery technique developed here.
-However, as shown in \cref{subsection:results-hd211847, subsection:injection-recovery}, a successful recovery of the 155\Mjup{} (\Teff{}\(\sim3200\)\K{}) low mass star companion of {HD~211847} was not possible. Limiting the temperature and derived a temperature upper limit for \textrm{our} methodology of around 3800\K{}.
+However, as shown in \cref{subsection:results-hd211847, subsection:injection-recovery}, a successful recovery of the 155\Mjup{} (\Teff{}\(\sim3200\)\K{}) low mass star companion of {HD~211847} was not possible.
+Limiting the temperature and derived a temperature upper limit for \textrm{our} methodology of around 3800\K{}.
 These are both well above the 2300\K{} cut-off of the {PHOENIX-ACES} models and for the onset of dust- and cloud-formation phenomena, at 2600\K{}.
 
 As shown in \cref{subsec:phoenix_comparision} the {PHOENIX-ACES} and {BT-Settl} spectra are fairly similar.
 \cref{fig:hd211847-models} shows again the minimum \textchisquared{} solution for detector \#1 of the second {HD~211847} observation, this time including the {BT-Settl} solution with the same parameters.
 Although the {PHOENIX-ACES} and {BT-Settl} models differ slightly they both have large spectral discrepancies to the observations.
-As such the {BT-Settl} models were not used in the \textchisqaured{} simulations and results as there did not seem to be any special advantage in using them.
-If promising results had been obtained with the {PHONEIX-ACES}, or a substantial difference between the synthetic spectral models more focus on the {BT-Settl} models would have occurred. 
+As such the {BT-Settl} models were not used in the \textchisquared{} simulations and results as there did not seem to be any special advantage in using them.
+If promising results had been obtained with the {PHONEIX-ACES}, or a substantial difference between the synthetic spectral models more focus on the {BT-Settl} models would have occurred.
 
 
 \begin{figure}
     \centering
     %\includegraphics[width=\hsize]{images/final/HD211847_ACES_BTSettl.pdf}
-    \caption{Detector \#1 spectrum for {HD~211847} (blue) alongside the {PHOENIX-ACES} (orange dash-dot) and {BT-Settl} (green dashed) synthetic spectra for the host star only, with parameters \Teff{}=5700\K{}, \logg{}=4.5 and \feh{}=0.0.
+    \caption{Detector \#1 spectrum for {HD~211847} (blue) alongside the {PHOENIX-ACES} (orange dash-dot) and {BT-Settl} (green dashed) synthetic spectra for the host star only, with parameters \Teff{}=5700\K{}, \Logg{}=4.5 and \feh{}=0.0.
         Both synthetic models have been normalized and convolved to \(\rm R=50\,000\).
         There is a 0.05 off-set between each spectrum}
     \label{fig:hd211847-models}
 \end{figure}
 
 
-\subsubsection{Impact of \logg{}}
+\subsubsection{Impact of \Logg{}}
 \label{subsubsec:logg} 
-The surface gravity of a star, measured as \logg{}, is related to evolutionary state and the size of the star.
-Smaller \logg{} values usually indicate bigger stars with larger radii.
+The surface gravity of a star, measured as \Logg{}, is related to evolutionary state and the size of the star.
+Smaller \Logg{} values usually indicate bigger stars with larger radii.
 This parameter has a large impact on the radius and thus flux ratio of the binary models.
-In experimenting with the \logg{} value of the {PHOENIX-ACES} models a decrease in \logg{} from 5.0 to 4.5 increases the models effective radius by \(\sim\)1.75 in the temperature range investigated here.
+In experimenting with the \Logg{} value of the {PHOENIX-ACES} models a decrease in \Logg{} from 5.0 to 4.5 increases the models effective radius by \(\sim\)1.75 in the temperature range investigated here.
 This change in radius alone roughly triples the absolute flux of the synthetic spectrum (\(1.75^2\)), neglecting any changes to the shape of the actual spectrum.
-Therefore, there are large jumps in the model flux ratios, and the \textchisquared{} solutions if the \logg{} is allowed to vary. Like with higher companion temperatures, a lower \logg{} value for the companion is favoured as the increased flux ratio reduces the spectral mismatch of the host component to the observations.
-This large impact of \logg{} on the spectral library absolute flux is one reason for keeping the \logg{} of each component fixed in the \textchisquared{} results presented in \cref{sec:results}.
+Therefore, there are large jumps in the model flux ratios, and the \textchisquared{} solutions if the \Logg{} is allowed to vary.
+Like with higher companion temperatures, a lower \Logg{} value for the companion is favoured as the increased flux ratio reduces the spectral mismatch of the host component to the observations.
+This large impact of \Logg{} on the spectral library absolute flux is one reason for keeping the \Logg{} of each component fixed in the \textchisquared{} results presented in \cref{sec:results}.
 
 \subsubsection{Interpolation}
 \label{subsubsec:interpolation}
@@ -193,7 +200,7 @@ One procedure not incorporate into this \textchisquared{} procedure is spectral 
 It is common to interpolate between the synthetic spectral grids to fit and derive parameters in between the grid points such as performed in ~\citet{nemravova_xtauri_2016} and \citet{passegger_fundamental_2016}.
 At a more advanced stage, instead of interpolation,~\cite{czekala_constructing_2015} use a spectral emulator and use Principal Component Analysis to create eigenspectra for the synthetic library and Gaussian processes to derive a probability distribution function of possible interpolation spectra to account for uncertainties in the interpolation required for high signal-to-noise spectra.
 
-Interpolation could be something to be added to this work in the future to refine the recovered parameters, and to help the transition between the grid \logg{} values.
+Interpolation could be something to be added to this work in the future to refine the recovered parameters, and to help the transition between the grid \Logg{} values.
 Codes are readily available to perform spectral interpolation which could be utilized for this, two of them are \emph{pyterpol}\footnote{https://github.com/chrysante87/pyterpol}~\citet{nemravova_xtauri_2016} and \emph{Starfish}\footnote{https://github.com/iancze/Starfish}~\cite{czekala_constructing_2015}.
 
 
