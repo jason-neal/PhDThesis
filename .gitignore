@@ -1,7 +1,7 @@
 #sync
 .sync
 **/.idea/*
-
+drafts/old/*
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
