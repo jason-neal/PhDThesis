@@ -149,7 +149,7 @@ Specific lines in the different wavelength regions are affected differently by t
 
 Changing the wavelength coverage to regions with lines sensitive to stellar parameters for both stars and {BD}s, as well as using a larger wavelength range that will be achieved by {CRIRES+}, may help to improve the recovery results of the companion recovery technique presented here.
 
-Several works \citep[e.g.][]{brogi_carbon_2014, brogi_rotation_2016, piskorz_evidence_2016} have had successful molecule and companion detections in the wavelength range around 2300\nm{} due to strong \ce{CO} lines.
+Several works~\citep[e.g.][]{brogi_carbon_2014, brogi_rotation_2016, piskorz_evidence_2016} have had successful molecule and companion detections in the wavelength range around 2300\nm{} due to strong \ce{CO} lines.
 This wavelength region has already been shown to be promising for simulations of the differential technique in~\citet{kostogryz_spectral_2013}.
 This is clearly one wavelength region in particular to focus attention in the future.
 
@@ -194,7 +194,7 @@ This large impact of \Logg{} on the spectral library absolute flux is one reason
 \subsection{Interpolation}
 \label{subsec:interpolation}
 One procedure not incorporate into this \textchisquared{} procedure is spectral interpolation in between spectral grid points.
-It is common to interpolate between the synthetic spectral grids to fit and derive parameters in between the grid points such as performed in~\citet{nemravova_xtauri_2016} and \citet{passegger_fundamental_2016}.
+It is common to interpolate between the synthetic spectral grids to fit and derive parameters in between the grid points such as performed in~\citet{nemravova_xtauri_2016} and~\citet{passegger_fundamental_2016}.
 At a more advanced stage, instead of interpolation,~\cite{czekala_constructing_2015} use a spectral emulator and use Principal Component Analysis to create eigenspectra for the synthetic library and Gaussian processes to derive a probability distribution function of possible interpolation spectra to account for uncertainties in the interpolation required for high signal-to-noise spectra.
 
 Interpolation could be something to be added to this work in the future to refine the recovered parameters, and to help the transition between the grid \Logg{} values.
@@ -206,22 +206,20 @@ Codes are readily available to perform spectral interpolation which could be uti
 In this work the techniques attempted were unsuccessful in detecting the companions.
 Here some relevant comparisons are made to recent positive detections in the literature.
 
-\citet{passegger_fundamental_2016} apply \textchisquared{} fitting of M-dwarf spectra in the \nir{} to {PHOENIX-ACES} models, incorporating inter-grid interpolation to determine M-dwarf parameters.
+\citet{passegger_fundamental_2016} apply \textchisquared{} fitting of {M-dwarf} spectra in the \nir{} to {PHOENIX-ACES} models, incorporating inter-grid interpolation to determine {M-dwarf} parameters.
 Reaching a level inherent uncertainties on the parameters of \({\sigma}_{\teff}= 35\)\K{}, \({sigma}_{\logg{}} = 0.14\), and \({\sigma}_{\feh{}}= 0.11\), on four stars.
 \citet{passegger_carmenes_2018} further extend this method to the 300 stars of the {CARMENES} library with optical and \nir{} spectra, achieving uncertainties of \({\sigma}_{\teff{}}=51\)\K{}, \({\sigma}_{\logg{}}=0.07\) and \({\sigma}_{\feh{}}\)=0.16.
 The temperatures recovered are in line with the literature values while their metallicity determination has a larger spread when compared to the literature.
 These uncertainties are much smaller than the library grid spacing due to the fine-grid search achieved by interpolation.
-\citet{rajpurohit_exploring_2018} perform similar parameter determination, using the recent {BT-Settl} models instead, exploring more lower temperature M-dwarfs than \citet{passegger_carmenes_2018}, at which point dust clouds begin to form.
-The results of \citet{rajpurohit_exploring_2018} are in agreement with \citep{gaidos_dwarf_2014} but they find a disagreement to the \citet{passegger_carmenes_2018} parameters, particularly \Teff{}, with up to a 200--300\K{} difference between the {PHOENIX-ACES} and {BT-Settl} results.
+\citet{rajpurohit_exploring_2018} perform similar parameter determination, using the recent {BT-Settl} models instead, exploring more lower temperature M-dwarfs than~\citet{passegger_carmenes_2018}, at which point dust clouds begin to form.
+The results of~\citet{rajpurohit_exploring_2018} are in agreement with~\citep{gaidos_dwarf_2014} but they find a disagreement to the~\citet{passegger_carmenes_2018} parameters, particularly \Teff{}, with up to a 200--300\K{} difference between the {PHOENIX-ACES} and {BT-Settl} results.
 Differences are also observed between the \Logg{} and \feh{} recovered by the two works.
 Both these works, use a much larger wavelength range (\(\sim\)500--1700\nm{}) than utilized here.
-
 
 In trying to detect secondary stellar spectra in optical spectra at \(R=60\,000\), \citep{kolbl_detection_2015} are able to detect secondary spectra down to a 1\% flux ratio, by matching to a library of real spectra.
 The work performed here aimed at flux ratios starting around below this limit, even after taking advantage of the increased flux ratio in the \nir{}.
 
-
-One promising technique with a success in detecting faint companion emission spectra is presented by \citet{lockwood_nearir_2014}.
+One promising technique with a success in detecting faint companion emission spectra is presented by~\citet{lockwood_nearir_2014}.
 Applying the {TODCOR} correlation to several spectra at different epochs and combining the observations while accounting for the orbits using a maximum likely-hood framework.
 They confirm the water emission signature in {\(\tau\) Bo\"{o}tis} and find a \(1\sigma\) upper limit high resolution (\(R=24\,000\)) spectroscopic flux ratio of \(10^{-4}\) at 3.3\um{}.
 
@@ -230,7 +228,7 @@ This is achieved with spectra from nine epochs, six in the\emph{L}-band and thre
 Each epoch has a combined exposure time of 60--180 minutes reaching a \snr{} between 1600--3000 allowing for the planetary emission spectra to be recovered around a flux ratio of \(10^{-5}\).
 
 These successful works clearly reveal the difficultly faced with the spectra analysed in this current work.
-Particularly, the \snr{} in \citep{piskorz_evidence_2016} is an order of magnitude higher and the wavelength coverage is significantly larger, due to the cross-dispersion of {NIRPSEC}.
+Particularly, the \snr{} in~\citep{piskorz_evidence_2016} is an order of magnitude higher and the wavelength coverage is significantly larger, due to the cross-dispersion of {NIRPSEC}.
 Also the multi-epoch approach allows for the {RV} of the two components to be monitored and some orbital parameters determined.
 The narrow wavelength coverage CRIRES spectra analysed here, at \snr{}=100--300 are insufficient.
 The poorly separated epochs, were also a problem as addressed in \cref{subsec:differential_results}.
