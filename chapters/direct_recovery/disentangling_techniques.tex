@@ -5,32 +5,39 @@
 
 Spectral observations of binary systems contain the spectra of both bodies, in proportion to their flux ratio, and Doppler shifted relative to each other due to their orbital motion.
 There are many other disentangling techniques to separate mixed spectra of binary systems,~\citep[e.g.][and references therein]{hadrava_disentangling_2009}.
-These techniques were initially developed to identify and separate the spectra of binary stars, however the techniques and instrumentation have improved so that lower flux ratios from smaller BD and giant planet companions have begin to be detected.
+These techniques were initially developed to identify and separate the spectra of binary stars, however the techniques and instrumentation have improved so that lower flux ratios from smaller BD and giant planet companions have begun to be detected.
 A small variety of these techniques will be briefly presented below before exploring the techniques used in this work in more depth.
 
 Several disentangling techniques work on deriving the spectral components from several spectra at different orbital phases.
-At the minimum \(n+1\) observations can be used to set up a system of linear equations to solve for \(n\) spectral components. This can be solved using singular value decomposition {SVD}~\citep[e.g.][]{simon_disentangling_1994, sablowski_spectral_2016}.
+At the minimum \(n+1\) observations can be used to set up a system of linear equations to solve for \(n\) spectral components.
+This can be solved using singular value decomposition {SVD}~\citep[e.g.][]{simon_disentangling_1994, sablowski_spectral_2016}.
 These work best with many well spaced observations, for example~\citet{sablowski_spectral_2016} state their ideal situation is homogeneous samples over at least half the period, to identify the moving spectral components.
 
 Tomographic techniques~\citep[e.g.][]{bagnuolo_tomographic_1991} and Fourier techniques~\citep{hadrava_orbital_1995} have also been developed for disentangling a series of binary spectra.
 Recently this has even been performed using Gaussian processes which simultaneously fits stellar (or exoplanet) orbits as well as their spectral components~\citet{czekala_disentangling_2017}.
 
 A fairly common technique for deriving precise radial velocities of spectral components in binaries is to apply cross-correlation against a library of known spectra.
-TODCOR (TwO-Dimensional CORrelation)~\citep{zucker_study_1994} is a commonly used algorithm for cross-correlation of two spectral components and revealing the faint secondary. It has been simulated to be able to detect secondaries with flux ratios down to \(\sim\)1/1000 provided a sufficient \snr{}\citep[e.g.][]{mazeh_todcor_1994,mazeh_detecting_1997}.
-TODCOR requires knowledge of the two spectral components, a series of spectral templates are used to correlate against the observation. These can either be other observed stellar spectra of synthetic spectra, with the highest correlating spectral pair indicating the two components.
+TODCOR (TwO-Dimensional CORrelation)~\citep{zucker_study_1994} is a commonly used algorithm for cross-correlation of two spectral components to revealing the RV of both components.
+It has been simulated to be able to detect secondaries with flux ratios down to \(\sim\)1/1000 provided a sufficient \snr{}\citep[e.g.][]{mazeh_todcor_1994,mazeh_detecting_1997}.
+TODCOR requires knowledge of the two spectral components; a series of spectral templates are used to correlate against the observation.
+These can either be other observed or synthetic stellar spectra, with the highest correlating spectral pair indicating the two components.
 
-Recently this has been used to detect the emission spectra of non-transiting giant planets. \citet{lockwood_nearir_2014} and~\citet{piskorz_evidence_2016} apply TODCOR, with exoplanet spectrum templates for the companion, to a several epochs of high resolution and high \snr{} \nir{} spectra. Combining together the individual results in a maximum likelihood framework to obtain the orbital solution of the components.
+Recently this has been used to detect the emission spectra of non-transiting giant planets.
+\citet{lockwood_nearir_2014} and~\citet{piskorz_evidence_2016} apply TODCOR, with specialized exoplanet spectrum templates used for the companion, to a several epochs of high resolution and high \snr{} \nir{} spectra.
+Combining together the individual results in a maximum likelihood framework to obtain the orbital solution of the components.
 
-\textchisquared{} fitting observations to a library of spectra can also been performed.
-\citet{kolbl_detection_2015} perform spectral fitting against the {SpecMatch} library of observed optical spectra, achieving an 80\% injection-recovery rate for a 3500\K{} {M-dwarf} companion to an 5000--6000\K{} host star at a 1\% flux ratio. Unfortunately a thorough high-resolution spectral library in the \nir{} is not currently available, requiring synthetic spectral libraries to used in this work instead.
+\textchisquared{} fitting of observations to a library of spectra can also be performed.
+\citet{kolbl_detection_2015} perform spectral fitting against the {SpecMatch} library of observed optical spectra, achieving an 80\% injection-recovery rate for a 3500\K{} {M-dwarf} companion to an 5000--6000\K{} host star at a 1\% flux ratio.
+Unfortunately a thorough high-resolution spectral library in the \nir{} is not currently available, requiring synthetic spectral libraries to be used in this work instead.
 
 Other methods for spectral separation focus on removing the spectral component of the host star.
 \citet{rodler_weighing_2012} do this by constructing a stellar mask for the host by constructively combining the host spectra from a number of different phases.
 The contribution of the faint companion to the mask, added at different phases, is significantly reduced.
-The stellar mask is then subtracted from each individual observation to remove the hosts spectrum from all measurements, leaving the companion.
+The stellar mask is then subtracted from each individual observation to remove the host's spectrum from all measurements, leaving the companion.
 \citet{gonzalez_separation_2006} present an iterative subtraction method in which the knowledge about spectral components of the host and companion are iteratively improved with successive observations and iterations.
 
 \citet{ferluga_separating_1997} provide an analytical approach via secondary reconstruction through a differential spectrum.
 Spectra from different phases are shifted to the rest frame of the host star and subtracted to mutually cancel out the spectrum of the host star allowing the two copies of the faint companion spectra to become visible.
-\citet{kostogryz_spectral_2013} further simulate this direct subtraction approach. Simulating CRIRES observations of an {M-dwarf} with a low mass (likely BD) companion to recover the mass of the companion by measuring the RV separation between the companion spectra.
-A similar differential substation approach is used in this work, as the limited observations analysed are not suitable to apply the more advanced techniques that require several spectra from multiple phases.
+\citet{kostogryz_spectral_2013} perform simulations of a similar direct subtraction approach.
+They simulate CRIRES observations of an {M-dwarf} with a low mass (likely BD) companion to recover the mass of the companion by measuring the RV separation between the recovered companion spectra.
+A similar differential substation approach to this is used in this work, as the limited observations analysed are not suitable to apply the more advanced techniques that require several spectra from multiple phases.
