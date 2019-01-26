@@ -1,0 +1,326 @@
+%!TEX root = ../../thesis.tex
+
+\section{Updating {RV} precision software}
+To undertake the calculation of {RV} precisions
+A large section of this work involved optimizing the original code used in~\citet{figueira_radial_2016}.
+Care needs to be taken to optimize the code.
+The original code used in~\citet{figueira_radial_2016} was slow, taking around 2 hours per simulation, this led to multiple weeks of processing time to compute the precision's for the original paper.
+
+In this section \todo{we} document the changes made to the code in the course of attempting to improving it.
+Features that change the derived {RV} precision are specifically documented in detail, with relative precision changes provided.
+
+This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}} (JOSS) {Neal and Figueria 2018 (in prep.)} with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}.
+
+
+\subsection{Automated testing}
+To insure that any changes made to the code did not change the underling results.
+This involved writing automatic tests for the software.
+This practice is crucial in computer science ins commercial software development but seldom done in research but is becoming more popular.
+\reference{works of software testing in research.}
+Some work focused on testing ideology from computer science.
+Although not perfect implementation I began by adding automated tests to the code to check individual parts of it.
+Before making changes I created automated tests that would confirm the functionality of pieces of the code.
+I could then make changes to the code, to improve the performance without worrying that the results were different.
+Namely that the same precision were calculated in the end.
+
+Functional test and unit tests.
+
+
+\subsection{Performance}
+\label{subsec:code_performance}
+There was a major performance bottleneck in the convolution stage, which increased the performance around 250\,X itself.
+The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range).
+Turning the result into a \emph{numpy} array, performing the sum for that pixel and appending it to a list.
+The performance issue was a python implementation detail to do with applying a comprehension list to a \emph{numpy} array, then slicing the \emph{numpy} array with the ends of the list, then converting it back into a \emph{numpy} array, all of which is performed on a very large spectrum array.
+Creating a \emph{numpy} boolean mask instead of the comprehension list, and applying the boolean mask to the array is much faster.
+Remaining entirely in the compiled \emph{numpy} code and not converting between lists and \emph{numpy} arrays (with involve type checking overhead).
+This slow operation was done for every pixel/wavelength in the spectrum twice, once for each convolution.
+
+caching convolution result to prevent recomputing the same values with \emph{Joblib}.
+Also embarrassingly parallel so added multiprocessing support.
+
+The convolution is still the slowest part.
+There are other methods that work on uniform spectra, which have not been tried to see how they affect the performance or {RV} precision results.
+\textbf{Insert code samples.}
+
+
+\subsection{Model extension}
+The solution is to iterate over each pixel but create a mask array and use \emph{numpy} indexing to select the required pixel span.
+(this remains in \emph{numpy})
+These operations all remain in \emph{numpy} so do not waste time converting between lists and \emph{numpy} arrays, in which Python need to constantly check and convert the type of each item.
+
+This shows a lesson in the usefulness of test driven development, or testing of code in science.
+
+
+An normalization step was originally done after the convolution, to normalize out the effect of the convolution on a spectrum of 1s, due to the changing wavelength grids sampling.
+This was brought inside the main convolution by dividing the pixel by the convolution of a spectrum of ones at the same time.
+(again in \emph{numpy} so it is quick)
+
+Parallelization as embarrassingly parallel, the result of each pixel is independent of result of neighbours.
+
+This is not a criticism of the work done by the original author (my supervisor).
+It is easier to modify a working system then to create one from scratch.
+
+Computer code is not the important part in scientific exploration., although becoming more important in open source and reproducibility efforts.
+Often forgotten in
+
+\# Handle any {PHOENIX} aces models.
+
+
+\section{Numerical Gradient}
+\label{sec:numerical_gradient}
+One of the key insights from \cref{eqn:optimal_weight,eqn:dv_rms} is that the radial velocity error is inversely proportional gradient of the spectra, In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
+In original code used in~\citet{figueira_radial_2016} the gradient or slope is approximated using the forward finite difference method.
+The \emph{numpy} package provides a function to calculate the gradient using a more advanced methods that compute a more precise gradient.
+In this section \todo{we} explore the affect of improving the precision of the numerical gradient on the final {RV} precision.
+
+The simplest way to calculate the derivative using finite difference methods~\citep{quarteroni_numerical_2000}.
+These arising from the Newton's definition of the derivative for a continuous function \(f(x)\) which should be familiar from introductory calculus:
+\[f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}~.\]
+
+There are three common varieties of the finite difference,
+\begin{equation}
+{FFD} = \frac{f(x+h)-f(x)}{h}, {CFD}=\frac{f(x+\frac{1}{2}h)-f(x-\frac{1}{2}h)}{h}, {BFD}=\frac{f(x)-f(x-h)}{h}\,,
+\end{equation}
+called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite differences respectively.
+The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}({h}^{2})\)~\citep{quarteroni_numerical_2000}.
+As the wavelength spacing between samples/pixels (h) is small the {CFD} will a more precise value for the gradient at each pixel.
+
+In this case \(h\) is the difference in wavelength between the two pixels considered.
+In the {FFD} case the gradient at pixel \(i\) becomes:
+\begin{equation}
+\frac{\partial {A}_{0}(i)}{\partial\lambda(i)} = \frac{{A}_{0}(i+1) - {A}_{0}(i)}{\lambda(i+1)-\lambda(i)}, \hspace{2em} 1 \leq i \leq n-1.
+\label{eqn:ffd_precision}
+\end{equation}
+At each pixel the numerical derivative is evaluated to be the average slope between itself and the following pixel and is an approximation to the derivative.
+This only extends to \(i= n-1\), where \(n\) is the number of points in the spectrum, and the last pixel is dropped from the {RV} calculation.\footnote{This is important in the case of Condition~\#2.}
+
+
+The \emph{gradient}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}}  method provided in \emph{numpy} contains a more advanced numerical methods to calculate the derivative.
+It uses a \textit{compact difference} method~\citep{quarteroni_numerical_2000} which expand the finite differences using a Taylor expansion and then selecting coefficients to minimize the \textit{consistency error}.
+From the \emph{numpy} documentation the consistency error here is \[\eta_i = \partial{f(x_i)}/\partial{x} -  [\alpha f(x_i) + \beta f(x_i +h_d) + \gamma f(x_i - h_s)],\] where \(h_s\) and \(h_d\) are the spacing to the left and right of \(i\) respectively.
+With Taylor expansion this turns into solving a linear system of equations:
+\[\begin{cases}
+\alpha + \beta + \gamma = 0\\
+-\beta {h_d} + \gamma {h_s} = 1\\
+\beta {h_{d}}^{2} + \gamma {h_{s}}^{2} = 0
+\end{cases}
+\]
+which result in the approximation of the gradient of the central values to be
+
+\[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{{h_{s}}^{2}f\left(x_{i} + {h_{d}}\right) + \left({h_{d}}^{2} - {h_{s}}^{2}\right)f\left(x_{i}\right) - {h_{d}}^{2}f\left(x_{i}-{h_{s}}\right)} {{h_{s}}{h_{d}}\left({h_{d}} + {h_{s}}\right)} + \mathcal{O}\left(\frac{h_{d}{h_{s}}^{2} + {h_{s}}{h_{d}}^{2}}{{h_{d}} + {h_{s}}}\right) \label{full_compact_difference}.\]
+
+If the spectrum is evenly spaced ${h_{s}}={h_{d}}$  reduces to the standard second order {CFD} approximation:
+
+\[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{f\left(x_{i+1}\right) - f\left(x_{i-1}\right)}{2h} + \mathcal{O}\left({h}^{2}\right)\]
+
+
+Applying this to the situation presented here, similar to \cref{eqn:ffd_precision}, results in:
+\[\frac{\partial {A}_{0}(i)}{\partial\lambda(i)} = \frac{{\lambda(i-1)}^{2} {A}_{0}(i+1) + ({\lambda(i+1)}^{2}-{\lambda(i-1)}^{2}) {A}_{0}(i) - {\lambda(i+1)}^{2} {A}_{0}(i-1)} {\lambda(i-1)\lambda(i+1)(\lambda(i+1) + \lambda(i-1))}, \hspace{1em} 2 \leq i \leq n-1\]
+
+with an uncertainty of \(\mathcal{O}\left(\frac{\lambda(i+1){\lambda(i-1)}^{2} + \lambda(i-1){\lambda(i+1)}^{2}}{\lambda(i+1) + \lambda(i-1)}\right)\).
+
+
+{\red{} Wavelength spacing \(\delta\lambda\) between pixels is a function of \(\lambda\), Resolution and sampling choices.
+    Can I do something with this??}
+
+The \emph{gradient} function from \emph{numpy} implements central differences for the interior points, accurate to second order, and first order accurate one-sided (forward or backward) differences at the boundaries, computed using the same compact difference procedure.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/information-content/spectral_gradients}\\
+    \caption[Comparing of numerical gradient alogithms.]{Visualization of the numerical gradient of some spectral lines.
+        Top: The two spectral regions of a stellar spectrum the left hand slide contains short lines near the normalized continuum while on the right a single deep absorption line is shown.
+        Bottom: The numerical gradients for the spectra shown in the top panels; the original {FFD} method is displayed with \emph{blue squares} while \emph{numpy} gradient is shown with \emph{green stars}.
+        The \emph{orange circles} are the {FFD} version shifted to the mid-points between pixels for illustrative purposes.}
+    \label{fig:gradients}
+\end{figure}
+
+
+\input{tables/numerical_gradient.tex}
+
+In \cref{fig:gradients} \todo{we} visualize the gradients of two small spectral regions computed with the original {FFD}, and the higher precision version incorporated in numpy's gradient function.
+The top panels contain the spectrum in the small regions shown, indicating a large spectral line and three small lines near the continuum respectively.
+The derivative of the spectra is shown in the bottom panel with the {FFD} method shown with \emph{blue squares} and the \emph{numpy} gradient shown in \emph{green stars}.
+The \emph{orange circles} are the same as {FFD} but shifted horizontally to the midpoints between pixels.
+This is for illustrative purposes and to assess the effect of this offset when calculating the pixel weights.
+
+There a three notable features observed between gradient methods.
+The first, which is expected from the {FFD} formulation is that the {FFD} gradient is offset to the left.
+The second is that when the horizontal offset is adjusted (orange circles) the gradients lie along the same curve.
+Both methods are trying to approximate the real gradient function of the spectrum and is again expected.
+The most important feature observed in this though is that there is a slight over-estimate of the gradient by the {FFD} method at the peaks.
+In the bottom panels of \cref{fig:gradients}, the points of highest gradient are always from the {FFD} method (blue/orange).
+This is the case for all spectral lines and as the optimal pixel weights are proportional to the gradient squared the {FFD} method will apply slightly higher pixel weights to these values, two points per line in the spectrum.
+The {FFD} will therefore produce a slightly smaller \(\delta V_{\rms}\) error compared to the more precise gradient function.
+
+In \cref{tab:numerical_gradients} \todo{we} calculate the  \(\delta V_{\rms}\) using both gradient methods to determine their relative effect on the {RV} precision.
+
+We took a {PHOENIX-ACES} spectrum with \Teff{}=3900\K{}, corresponding to {{M0}} spectral type.
+The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1.
+In this case the {RV} precisions are not comparable between bands and are only to assess the direct effect of the changing the numerical gradient.
+The bands name and the spanned wavelength are given.
+The columns A, B, C are the {RV} precision for the different gradient methods.
+The \(\delta V\) ratios are the relative difference in {RV} when changing from method A (the original {FFD}) to methods B and C.
+In this table column B is the {FFD} method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \cref{fig:gradients} while column C is the more precise gradient from numpy.
+
+We find that changing to use the gradient from \emph{numpy} increases the \(\delta V_{\rms}\) by 2.5--7\%, (decreasing the {RV} precision), due to the over-estimated gradient from the {FFD} method.
+As the pixel weights \cref{eqn:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the {RV} precision, visible in \cref{fig:gradients}.
+This small wavelength shift red-ward does changed the {RV} precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using numpy's gradient method.
+
+Changing the method of numerical derivatives will change all the precision values given in the~\citet{figueira_radial_2016}.
+This is a small impact on on the precision compared to other components of the {RV} precision.
+For instance from \cref{eqn:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\%  could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
+
+The current version of the software is now implemented with the gradient method provided by \emph{numpy} package.
+
+\subsection{Masking Function}
+\label{subsec:masking_function}
+Another change made to the software is in the application of the masking function, and the treatment of telluric lines.
+As suggested in~\citet{connes_absolute_1985} and~\citet{bouchy_fundamental_2001} a custom masking function can be applied to the individual pixel weights in \cref{eqn:optimal_weight}, such as:
+
+\[W'(i) = W(i)M(i),\label{eqn:mask_function}\] where \(M(i)\) is the masking function and \(W'(i)\) are the modified pixel weights.
+This masking function can be used in particular for the removal of telluric lines, setting those weights to zero and is in essence what is done when wavelength selection is performed; assigning zero weight to all pixels outside the desired wavelength range.
+
+This masking function can be used to easily apply the three conditions presented in~\citet{figueira_radial_2016}.
+First the 3 masking functions will be defined, then followed by the quantification of how they differ from the previous implementation.
+The subscripts on the masking functions correspond to the three conditions.
+\begin{align}
+M_1(i) &= 1 \label{eqn:mask1}\\
+M_2(i) &= \begin{cases}
+0, \hspace{1em} T(i) < \tau\\
+1, \hspace{1em} T(i) \ge \tau\\
+\end{cases}\label{eqn:mask2}\\
+M_3(i) &= {T(i)}^{2} \label{eqn:mask3}
+\end{align}
+
+Here, \(T(i)\) is the telluric transmission spectrum, while \(\tau\) is the transmission depth cut-off.
+For instance to mask out telluric lines deeper than 2\%,  \(\tau\) would be set at 0.98.
+
+\begin{itemize}
+    \setlength\itemsep{-0.2em} % Remove spacing on list.
+    \item Condition~\#1:
+    The first mask, \(M_1\), is the simplest case in which all pixel weights are treated equally.
+    No telluric line masking is considered.
+    
+    \item Condition~\#2:
+    In the second mask, \(M_2\), the telluric line transmission, \(T(i)\) is used to create a boolean mask of 0's and 1's.
+    When applying this mask to the pixel weights, the pixels effected by telluric lines have 0 weight, removing their contribution to the {\red{} \(RV_{\rms}\)}.
+    Accounting for seasonal variation in Earth's barycentric motion can be easily incorporated into this mask, widening the regions masked out.
+    
+    \item Condition~\#3:
+    The third mask, \(M_3\), assumes the application of perfect telluric correction consistent with Condition~\#3.
+    The pixel weights are modified by dividing the flux variance by the square of the transmission spectrum\reference{cite the equation when I refer to it}.
+    As the flux variance is the denominator of \cref{eqn:optimal_weight}, this is equivalent to multiplication of the weights by a mask of the form \(M_3\).
+\end{itemize}
+
+Having the three masks defined in this way makes the implementation of the {RV} precision simpler.
+In the original version there were three separate implementations, one for each condition.
+With this, \todo{Check this if it is previous}{as mentioned previously} there was a issue with the implementation of Condition~\#2.
+
+\subsubsection{Masking order}
+\label{subsubsec:masking_order}
+The order in which the masking is performed is also important.
+Masking should be applied only after calculation of the pixel weights.
+As the pixel weights depend on neighbouring points (through the calculation of the gradients), prematurely removing pixels will affect the precision results.
+
+The original implementation of Condition~\#2 did just this, splitting the spectra into small sections in between the masked off telluric lines.
+The {\red{}\(RV_{\rms}\)} is calculated for each section and then the results are combined as the error on the weighted average in \cref{eqn:weighted_average_error}.
+Analytically this identical to masking the pixel weights with \(M_2\) but not in practice when numerically implemented.
+\todo{Should I show the working of analytical working out of this in an appendix, or here?}
+
+When the spectrum is split into small sections the number of edges increases and the number of pixels affected by any edge effects increases.
+Using the {FFD} method to compute the gradient the last pixel is removed/lost.
+A spectrum split in \(m\) sub-spectra will therefore lose \(m\) pixels due to edge effects (instead of only 1 pixel with the full spectrum).
+Even the \emph{numpy} gradient is not immune to the edge effects in the sub-spectra when splitting the spectrum first.
+Even though there is no pixels lost, the first and last pixels of each sub-spectra are computed using forward or backward differences, rather than central differences (as they would be in the full spectrum).
+Hence the gradients and weights of some pixels are slightly changed due to the splitting occurring first.
+
+We quantify the effect of splitting the spectrum before and after calculating the weights in \cref{tab:mask_ordering}.
+The columns label \emph{Split} represents splitting the spectrum before calculating the pixel weights while the \emph{Mask} columns calculate all the pixel weights first and then apply the \(M_2\) mask.
+The difference in {RV} precision between both situations and for both gradient methods are given.
+For the {FFD} gradient the ordering of masking changes decreases the {\red{}\(RV_{\rms}\)} by 0.2--0.7\%, while for the \emph{numpy} gradient it is increase but an order of magnitude smaller between 0.01--0.13\%.
+The {FFD} gradient is causes a larger difference as points that were masked out are now included where as with the \emph{numpy} gradient the end values are always included but their gradients are slightly changed.
+The last column is the difference ratio between the \emph{Mask} column of both gradient method, this is consistent with \cref{tab:numerical_gradients} with the differences from two gradient methods between 2--7\%.
+It shows that the difference from changing order of masking is 1--2 orders of magnitude smaller than changing the gradient method.
+
+The code has been adjusted to consistently apply the masking after the pixel weights are calculated.
+This retains the most pixels, with the more accurate pixel weights.
+It has also been changed to just apply \(M_2\) rather than splitting and performing the weighted error calculation.
+\todo{did I check this was equivalent} This simplifies the implementation in calculating the {RV} precision.
+
+\input{tables/mask_ordering}
+
+{\red{} For Condition~\#2 in which there was an error there is no meaningful relation between the new and old values.
+    \todo{put this line elsewhere.}}
+
+
+\subsection{Atmospheric masking bug}
+\label{subsec:condition_two_bug}
+One thing that was revealed in testing was that there was an error in the application of Condition~\#2.
+When the telluric mask was shifted to account for barycentric motion of the earth, and the condition of 3 consecutive pixels in the telluric spectra being lower than the limit (due to the higher sampling) there was an software bug,
+
+
+A check for this issue was discovered using this unit test.
+\begin{lstlisting}[language=Python, caption=Example unit test to catch masking bug. The assert statement checks that the mask continues to remove all absorption lines deeper than 2\%.]
+def test_telluric_masking(wavelength, transmission):
+"""Check mask still masks out all telluric lines > 0.98 after
+accounting for barycentre motion."""
+mask = telluric_mask(transmission, depth=0.98)  # Create mask
+mask = barycentre_shift(wavelength, mask)       # Extend mask
+assert numpy.all(transmission[mask] >= 0.98)    # Check mask
+\end{lstlisting}
+The assert statements checks that when the mask is applied to the transmission spectrum again all of the values are outside of any deep telluric regions.
+A test like this would have caught this bug.
+
+This bug means that all the {RV} precision values for Condition~\#2 published in~\citet{figueira_radial_2016} incorrect.
+As the applied masking was unevenly applied~\citet{figueira_radial_2016} the new values {RV} precision values do not all change in the same proportion or direction.
+Some specific wavelengths and resolutions are essentially unchanged while other results change by over 20\mps{}.
+Even though there is an error with condition~\#2 they do not change the overall conclusions of the paper.
+These are \todo{add conclusions not affected}
+
+\subsection{\snr{} scaling}
+\label{subsec:snr_scaling}
+To analyse the relative precision of different spectra they need to normalized to a common reference point.
+In this section \todo{we} detail how this was originally done and how this was changed to be adaptable to any library spectra and any reference band.
+
+In the original code this was selected to be a \snr{} per pixel of 100 at the centre of the \textit{J}-band at 1.25\si{\micro\meter}.
+The normalization values for each band, \Vsini{} and resolution combination were hard-coded into the analysis.
+This made it impossible to easily adapt the code to other spectra or parameter combinations.
+
+An automated \snr{} scaling procedure was created to remove the hard-coded values.
+This updated code finds the centre point of the band of reference for the given spectrum.
+Totals the photon count across one resolution element, \(\delta\lambda\), and then takes the square root.
+This is using the definition of the \snr{} as \(\snr{} = \sqrt{N}\) for large N.
+This value is then used to scale the spectrum such that the \snr{} at the reference point is the desired value.
+\begin{equation}
+SF =  \frac{\sqrt{\sum{\delta\lambda} A}} {\snr{}_{desired}}
+\end{equation}
+\textit{SF} where \textit{SF} is the scaling factor, \(\sum_{\delta\lambda} A\) is the sum of the point in one resolution element and \({\snr{}}_{desired}\) is the desired \snr{} level requested.
+
+This automated procedure enabled {\red{}\textbf{4}} different features.
+\begin{itemize}
+    \setlength\itemsep{-0.3em} % Remove spacing on list.
+    \item The ability to analysis other spectral models, not just corresponding to {M0}, {M3}, {M6}, {M9} spectral types.
+    - Scaling to a \snr{} per pixel level other than 100.
+    \item A \snr{} per pixel other than 100 can be selected.
+    - Allowing for other sampling levels (if desired)
+    \item Not restricted to a model with 3 samples per resolution element.
+    \item Different reference bands available.
+    Results are not limited to being referenced from the \textit{J}-band.
+    For instance the {RV} precision can now be calculated for a given \snr{} at the centre of the \textit{K}-band.
+    This was one the features requested for the Exposure Time Calculators precision values.
+    For {NIRPS} \todo{we} provided precision values relative to each individual band, while for {SPIRou} they were relative to the {J}- and {H}-bands.
+\end{itemize}
+
+The default values for the \snr{} scaling a still 100 at the centre of the \textit{J}-band, but there is now options to easily change these values.
+
+The centre of each band was visually checked to ensure that there were no spectral lines at the reference locations> If a line was present at the reference point its depth variability across spectral types would affect the \snr{} scaling levels at a greater than the normal change in continuum amplitude/shape.\todo{is this needed}
+
+As shown in \cref{eqn:snr_relation} the {RV} precision is inversely proportional to the \snr{} level.
+To access the {RV} precision of any of the values in Table at a different \snr{} level you can apply the following
+\begin{equation}
+\rm {RV}_{\snr{}2} = {RV}_{\snr{}1} * \frac{\snr{}1}{\snr{}2}.
+\end{equation}
+
+\todo{\snr{} plot/diagram}
