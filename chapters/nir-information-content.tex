@@ -66,7 +66,7 @@ G(\Delta\lambda) &= \frac{2(1-\epsilon){[1-{(\Delta\lambda /{\Delta\lambda}_{L})
 \end{align}
 where
 \begin{equation}
-c_1 = \frac{2(1-\epsilon)} {\pi (1-\epsilon/3)\vsini},  \hspace{4em} c_2 = \frac{\frac{1}{2}\pi\epsilon} {\pi (1-\epsilon/3)\vsini},
+{c}_{1} = \frac{2(1-\epsilon)} {\pi (1-\epsilon/3)\vsini},  \hspace{4em} {c}_{2} = \frac{\frac{1}{2}\pi\epsilon} {\pi (1-\epsilon/3)\vsini},
 \end{equation}
 are constants which depend on the equatorial rotational velocity \Vsini{}.
 
@@ -113,7 +113,7 @@ They also mention that the result using this $\textrm{IP}_{\textrm{fibre}}$ are 
 In this work the stellar models undergo broadening by convolution with rotation and instrumental profile kernels (\cref{eqn:rotational_profile,eqn:IP_profile}).
 The convolutions are performed by analysing a single pixel at a time, and selecting the neighbouring pixels that fall within the convolution window\footnote{Region in which the convolution kernel will affect this particular pixel} for that pixel.
 The value of the convolution kernel is calculated at the position of each pixel selected, multiplied by the flux of each pixel and then summed to provide the new value at the selected single pixel{$^{\textbf{*}}$}.
- The shape of the convolution kernels and the size of convolution window are wavelength dependant (${\fwhm}=\lambda / R$ and $\Delta\lambda_{L}=\lambda \frac{\vsini}{c}$) and must be calculated separately for each pixel, making the convolution computationally expensive.
+The shape of the convolution kernels and the size of convolution window are wavelength dependant (${\fwhm}=\lambda / R$ and $\Delta\lambda_{L}=\lambda \frac{\vsini}{c}$) and must be calculated separately for each pixel, making the convolution computationally expensive.
 
 However, the computation of the convolution of individual pixels is an ``embarrassingly parallel''\footnote{\href{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}} problem.
 What this means is that convolution result for pixel $i+1$ does not depend on the convolution result obtained for pixel $i$.
@@ -136,20 +136,14 @@ For example for the rotational convolution result of the value for pixel $i$ bec
 \[{A}^{\prime}(\lambda_{i}) =  \frac{\sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})}{\sum G(\Delta\lambda_{i})},\]
 where $\Delta\lambda_{i}$ are the values between in the range $\lambda_{i} (1-\frac{\vsini}{c}) \le\lambda_{i} \le \lambda_{i} (1+ \frac{\vsini}{c})$,
 instead of only
-\[{A}^{\prime}(\lambda_{i}) =  \sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i}).\]
+\[{A}^{\prime}(\lambda_{i}) = \sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i}).\]
 
 
 By default edge effects are avoided by providing an input spectra sufficiently wider than the desired output spectrum to prevent edge effects on the portion of the spectrum desired.
-Since two convolutions are performed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both addition of rotation and instrumental broadening by \Vsini{} and R.
-
-%-----------------------------------
-%    SUBSECTION 2
-%-----------------------------------
-\section{}
-Preparation of {CARMENES} spectra.
+Since two convolutions are performed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both addition of rotation and instrumental broadening by \Vsini{} and \(R\).
 
 
-\missingfigure{Example of {CARMENES} spectra before and after correction}
+
 
 \subsection{Bands}
 The bands analysed avoid the strong water absorption in the \nir{} that can be seen the {CARMENES} spectra in Figure~\reference{Add figure here}\todo{Add figure here}.
@@ -217,7 +211,7 @@ There is also only a relatively small variation in quality factor due to the spe
 \includegraphics[width=0.99\linewidth]{figures/information-content/metalicity_effect.pdf}\\
 \includegraphics[width=0.99\linewidth]{figures/information-content/logg_effect.pdf}
 \caption[Quality factor verse \feh{} and \Logg{} for different spectral types and wavelength bands.]{Quality factor changes across spectral type and bands for variations in \feh{} and \Logg{}.
-Broadening values are R=100\,000 and \Vsini{} = 1.0\kmps{}.
+Broadening values are R=100\,000 and \Vsini{}=1.0\kmps{}.
 Top: Quality factor variation of \feh{} between -1.0 to 1.0 at a fixed \Logg{}=4.5.
 Bottom: Quality factor variation of \Logg{} between 4 and 5.5 with fixed \feh{}=0.0.
 Note a higher quality factor corresponds to an increased {RV} precision.}
@@ -313,13 +307,13 @@ called the forwards ({FFD}), central ({CFD}), and backwards ({BFD}) finite diffe
 The order of uncertainty on the {FFD}/{BFD} is \(\mathcal{O}(h)\) while for the {CFD} it is \(\mathcal{O}({h}^{2})\)~\citep{quarteroni_numerical_2000}.
 As the wavelength spacing between samples/pixels (h) is small the {CFD} will a more precise value for the gradient at each pixel.
 
-In \todo{our} case \(h\) is the difference in wavelength between the two pixels considered.
+In this case \(h\) is the difference in wavelength between the two pixels considered.
 In the {FFD} case the gradient at pixel \(i\) becomes:
 \begin{equation}
 \frac{\partial A_0(i)}{\partial\lambda(i)} = \frac{A_0(i+1) - A_0(i)}{\lambda(i+1)-\lambda(i)}, \hspace{2em} 1 \leq i \leq n-1.
 \label{eqn:ffd_precision}
 \end{equation}
-At each pixel the numerical derivative is evaluated to the average slope between itself and the following pixel and is an approximation to the derivative.
+At each pixel the numerical derivative is evaluated to be the average slope between itself and the following pixel and is an approximation to the derivative.
 This only extends to \(i= n-1\), where \(n\) is the number of points in the spectrum, and the last pixel is dropped from the {RV} calculation.\footnote{This is important in the case of Condition~\#2.}
 
 
@@ -586,7 +580,7 @@ As \todo{we} demonstrated in \cref{sec:numerical_gradient,subsubsec:masking_orde
     \end{tabular}
     \caption[Comparision of {RV} precision results to~\citet{figueira_radial_2016}.]{Left: Figure 1 from~\citet{figueira_radial_2016}.
         Right: The same style figure with values updated from this work, computed with \emph{eniric}.
-The main difference is the area of shaded region due to the problem with Condition~\#2 (which is the upper edge).}
+        The main difference is the area of shaded region due to the problem with Condition~\#2 (which is the upper edge).}
     \label{fig:my_label}
 \end{figure}
 \todo{Change to 55\mps{} upper limit?}
