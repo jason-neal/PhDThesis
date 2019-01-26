@@ -40,114 +40,11 @@ However, comparing RV precision in different wavelength bands~\citet{quirrenbach
 \input{chapters/information_content/photon_noise_precision}
 
 
-\section{Deriving RV for synthetic spectra}
-
-\subsection{Prepare {PHOENIX} aces models}:
-\# see~\citet{figueira_radial_2016}
-
-Convert SED to counts.
-
-
-Scale to 100 \snr{} per resolution element in \emph{J}-band.
-
-Convolutions
-
-\subsection{Rotational convolution}
-\label{subsec:rotational_convolution}
-Stellar rotation has the affect of broadening spectral lines as the different portions of the stellar surface have a variation of radial velocity between \(\pm v \sin i\).
-Rotation is applied to a non-rotating spectrum by convolution with a rotation kernel.
-The stellar rotational kernel used is given by~\citet{gray_observation_2005};
-
-\todo{top view diagram of rotation?}
-
-\begin{align}
-G(\Delta\lambda) &= \frac{2(1-\epsilon){[1-{(\Delta\lambda /{\Delta\lambda}_{L})}^{2}]}^{1/2} +   \frac{1}{2}\pi\epsilon[1-{(\Delta\lambda /{\Delta\lambda}_{L})}^{2}]}{\pi (1-\epsilon/3) \vsini}\\
-      &= c_{1}{[1- {(\Delta\lambda /\Delta\lambda_{L})}^{2}]}^{1/2} + c_{2}[1-{(\Delta\lambda /\Delta\lambda_{L})}^{2}] \label{eqn:rotational_profile}
-\end{align}
-where
-\begin{equation}
-{c}_{1} = \frac{2(1-\epsilon)} {\pi (1-\epsilon/3)\vsini},  \hspace{4em} {c}_{2} = \frac{\frac{1}{2}\pi\epsilon} {\pi (1-\epsilon/3)\vsini},
-\end{equation}
-are constants which depend on the equatorial rotational velocity \Vsini{}.
-
-Here $\Delta\lambda$ is the wavelength position from the non-rotating line centre, $\Delta\lambda_{L}$ is the maximum line shift of the line centre at the edge of the stellar disk at which point the Doppler shift is  \Vsini{}; $\Delta\lambda_{L} = \lambda \frac{\vsini}{c}$.
-
-This kernel arises from integrating the rotational velocity profile across the surface of the stellar disk and as such the rotation kernel is bounded in the range  $[-\Delta\lambda_L, \Delta\lambda_{L}]$ from the line centre.
-This kernel also accounts for limb-darkening on the stellar disk with the linear limb darkening coefficient used in this work fixed at $\epsilon=0.6$ as done in~\citet{figueira_radial_2016}.
-
-Since the synthetic models do not have a consistent wavelength grid, the discretization of applying the convolution kernel onto the changing wavelength grid causes the result of each pixel to be multiplied by a slightly different kernel area.
-Therefore, the result is divided by a convolution of a spectrum of ones with the same wavelength resolution to normalize the convolution.
-
-As the Doppler shift \Vsini{} is transformed into wavelength by multiplication of $\lambda  / c$ there is a wavelength dependence on the rotation kernel shape.
-That is, the rotation kernel at each pixel is unique and requires separate calculation.
-For small wavelength ranges this can be held fixed to improve performance.
-This simplifications is not performed in this work as large wavelength ranges are considered.
-
-
-\subsection{Instrumental Convolution}
-Following the rotational convolution the spectra are convolved with Gaussian instrumental profile ({\textrm{IP}}) with the {\fwhm}  constrained by the spectral resolution R, $\fwhm= \lambda/R$.
-
-The Gaussian convolution kernel is of the form
-\begin{equation}
-IP(\Delta\lambda) = \frac{1}{\sigma \sqrt{2\pi}} \exp^{-\frac{{\Delta\lambda}^{2}}{2 {\sigma}^{2}}}
-\label{eqn:IP_profile}
-\end{equation}
-with $\sigma = \frac{\fwhm}{2\sqrt{2 \ln(2)}}$, and $\Delta \lambda$ again the difference from the line centre (normally this would be written as $(x-\mu)$ where $\mu$ is the Gaussian centre).
-
-This assumes that the instrument profile of a particular instrument is in-fact Gaussian.
-This assumption of a Gaussian instrumental profile is a good starting point for high-resolution spectrographs, and shown to be valid for CRIRES~\citep{seifahrt_synthesising_2010}.
-If the instrument profile of a particular instrument is well characterized, then it could replace the Gaussian profile used here.
-
-For instance~\citet{artigau_optical_2018}  state that the instrumental profile of a (circular) fibre-fed spectrograph such as {HARPS} is mathematically equivalent to a cosine between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$ with a width equivalent to the Gaussian {\fwhm}.
-
-The integration of a circular fibre is given by
-\begin{equation}
-\textrm{IP}_{\textrm{fibre}(\Delta\lambda)} = \cos(B\cdot\Delta\lambda) ,  \hspace{2em} [-\frac{\pi}{2 B}, \frac{\pi}{2 B}]
-\end{equation}
-where {$B = \frac{\fwhm_{0}}{\fwhm}$ } is scaled to give the same area,
-following the description from~\citet{artigau_optical_2018}.
-They also mention that the result using this $\textrm{IP}_{\textrm{fibre}}$ are all consistent with just using a Gaussian kernel.
-
-\subsection{Numerical Convolution}
-\label{subsec:numerical_convolution}
-In this work the stellar models undergo broadening by convolution with rotation and instrumental profile kernels (\cref{eqn:rotational_profile,eqn:IP_profile}).
-The convolutions are performed by analysing a single pixel at a time, and selecting the neighbouring pixels that fall within the convolution window\footnote{Region in which the convolution kernel will affect this particular pixel} for that pixel.
-The value of the convolution kernel is calculated at the position of each pixel selected, multiplied by the flux of each pixel and then summed to provide the new value at the selected single pixel{$^{\textbf{*}}$}.
-The shape of the convolution kernels and the size of convolution window are wavelength dependant (${\fwhm}=\lambda / R$ and $\Delta\lambda_{L}=\lambda \frac{\vsini}{c}$) and must be calculated separately for each pixel, making the convolution computationally expensive.
-
-However, the computation of the convolution of individual pixels is an ``embarrassingly parallel''\footnote{\href{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}} problem.
-What this means is that convolution result for pixel $i+1$ does not depend on the convolution result obtained for pixel $i$.
-Therefore, parallel processing was implemented to improve the performance of the convolution, roughly dividing the convolution time by the number of processors used.
-
-The python package \emph{PyAstronomy} also contains functions that perform rotational and instrumental broadening.
-Those functions however require that the spectrum have uniformly spaced $x$-coordinate spacing which is not a requirement for the implementation of \emph{eniric} used here.
-\emph{PyAstronomy}, while implemented a ``slow'' full version of the rotational convolution, with a wavelength dependent kernel, they also provide ``fast'' convolution kernels that are fixed, taking the central wavelength value.
-These are significantly faster but are only valid for very short wavelength regions, in which the kernels do not significantly change.
-They are not suitable for use in this work due to the large wavelength span of spectroscopic bands and the wavelength dependant spacing of the spectra.
-A comparison of the performance between \emph{PyAstronomy} convolution and the convolutions implemented in \emph{eniric} and used here are given in a \emph{Jupyter} notebook in the repository of ``eniric'', basically they fall in between the ``fast'' and ``slow'' implementation of \emph{PyAstronomy}.
-
-One factor the needs consideration when convolving with an non-uniformly spaced spectrum is effect of the sampling on the convolution.
-For instance the number of point inside the convolution, as well as their location will effect the area of the convolution kernel.
-To normalize the convolution result it is divided by the convolution of a unitary spectrum of ones, with the same spacing.
-\citet{figueira_radial_2016} performed this unitary convolution separately and applied the normalization afterwards.
-In the improved implementation the convolution normalization is performed directly after the convolution kernel multiplication at \(\textbf{*}\).
-
-For example for the rotational convolution result of the value for pixel $i$ becomes
-\[{A}^{\prime}(\lambda_{i}) =  \frac{\sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})}{\sum G(\Delta\lambda_{i})},\]
-where $\Delta\lambda_{i}$ are the values between in the range $\lambda_{i} (1-\frac{\vsini}{c}) \le\lambda_{i} \le \lambda_{i} (1+ \frac{\vsini}{c})$,
-instead of only
-\[{A}^{\prime}(\lambda_{i}) = \sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i}).\]
-
-
-By default edge effects are avoided by providing an input spectra sufficiently wider than the desired output spectrum to prevent edge effects on the portion of the spectrum desired.
-Since two convolutions are performed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both addition of rotation and instrumental broadening by \Vsini{} and \(R\).
+\input{chapters/information_content/synthetic_precision}
 
 
 
 
-\subsection{Bands}
-The bands analysed avoid the strong water absorption in the \nir{} that can be seen the {CARMENES} spectra in Figure~\reference{Add figure here}\todo{Add figure here}.
-These are the Z, Y, J, H, K- bands found in \cref{tab:infrared_bands}.
 
 \section{Metallicity \Logg{} effects}
 We explore the effect of metallicity and \Logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1--1 and \Logg{} of 4.0--5.5.
