@@ -4,56 +4,37 @@
 \chapter{Information content of \nir{} Spectra}
 \label{cha:nir_content}
 
-The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra, specifically the radial velocity precision in the \nir{}.
-This work is not directly related to detecting exoplanet atmospheres themselves but investigates the theoretical and observed {RV} precision of {M-dwarf} spectra in the \nir{}.
-Aiding future detections of the detection of future
-This can help in detecting the presence of ``habitable Earth-like'' planets around {M-dwarfs} which could become prime targets for future exoplanet atmosphere studies.
+The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra, specifically the radial velocity precision of M-dwarf spectra in the \nir{}.
+This work is not directly related to detecting exoplanet atmospheres themselves but will aid in future exoplanet discoveries.
+For instance, the fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to influence some design choices of two \nir{} spectrographs, {SPIRou} and {NIRPS}.
+Understanding the underlying precision of different spectral types can also allow {RV} surveys to adjust the focus the target selection, or optimize the exposure time of different spectral types.
+This can help in detecting the presence of ``habitable Earth-like'' planets around {M-dwarfs} which have become a prime target with the recent \nir{} spectrographs. 
 
-The field of exoplanet detection in the \nir{} is expanding with several new high-resolution \nir{} spectrographs becoming available in the near future (see \cref{subsec:new_generation}).
-One science objective common to all four instruments is the detection of small mass planets around {M-dwarf} stars utilizing the radial velocity technique.
-The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to influence some design choices of {SPIRou}, {NIRPS}.
-For instance {NIRPS} opted not to cover the \emph{K}-band, favouring a higher spectral resolution and simplicity, but preserved the possibility for adding a \emph{K}-band spectrograph in a separate cyrostat in the future.
-
-The purpose of the work presented in this chapter is to extend the work of~\citet{figueira_radial_2016}, computing the theoretical {RV} precision of stellar spectra over a wider range of situations.
-An investigation into the effect of \Logg{} and \feh{} on precision is performed and a comparison of {RV} precision of the recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts will be performed.
+The purpose of the work presented in this chapter is to extend the work of~\citet{figueira_radial_2016}, computing the theoretical {RV} precision of synthetic stellar spectra over a wider range of situations.
+A investigation into the effect of \Logg{} and \feh{} on precision is performed and a preliminary comparison of {RV} precision of the recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts is given.
 This is to test how the {RV} precision of synthetic models compares to reality.
-The aim is to compare the fundamental precision of observed \nir{} spectra to the synthetic models.
-
+Computations of the {RV} precision of synthetic spectral libraries are given, which were provided for exposure time calculators of {NIRPS} and {SPIRou}. 
 
 \section{Overview}
-\todo{remove duplication}
+\label{sec:precision_overview}
 The pursuit of detecting exoplanets, especially ``habitable'' and ``Earth-like'' planets, requires state-of-the-art instrumentation with high precision.
-One of the key detection methods, the Radial Velocity ({RV}) method, measures the wobble induced on the Star by the planet as they orbit their common barycentre \reference{rv method}.
-{\red{} add Some stuff about mass and period from Pedros paper}  \todo{put in introduction??}
+Several new high-resolution \nir{} spectrographs are becoming available now and in the near future, not limited to {CARMENES}, {NIRPS}, {SPIRou} and {CRIRES+} (see \cref{subsec:new_generation}).
+One science objective common to all four instruments is the detection of small mass planets around {M-dwarf} stars utilizing the radial velocity technique.
+As the {RV} amplitude is \(\kone\propto {P}^{-{1/2}}{\mone}^{-2/3}\) (\cref{eqn:k_relation}), the induced {RV} wobble from a similarly sized exoplanet is larger around an M-dwarf star, making the {RV} signal from lower mass exoplanets easier to detect.
+Also the cooler M-dwarfs have habitable zones closer to the star, at shorter orbital periods that again have a stronger {RV} amplitude. Making it easier to detect small mass planets in the habitable zone of {M-Dwarfs}.
 
-\todo{derivation of rv?}
+To calculate and predict the information content attainable from {M-dwarfs} in the \nir{}~\cite{figueira_radial_2016} utilized the {PHOENIX-ACES} library of synthetic spectra.
+This helped to aid the direction of instrument design by identifying the wavelength regions with the best {RV} precision, but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed {\snr{}}.
+However, the synthetic spectra do not quite match reality and a comparison between theoretical and observed is needed.
+\citet{artigau_optical_2018} recently compared optical (HARPS, ESpaDOnS) and \nir{} (CRIRES) archival spectra of the M-dwarf, Barnard's Star, to synthetic spectra. They found that state-of-the-art atmosphere models over-predict the {RV} content \emph{Y}- and \emph{J}-band {RV} by more than a factor of \(\sim\)2, while under-predicting the \emph{H}- and \emph{K}-band content by half. A similar comparison will be made in this work to {CARMENES} spectra.
 
-The number of \nir{} spectrographs focusing on cooler {M-dwarfs} stars is increasing, which have a relatively better chance of detecting Earth-like planets in the habitable zone.
-This work continues the assessment of {RV} precision levels possible in the \nir{} domain, an extension of~\citep{figueira_radial_2016}.
-
-\missingfigure{An example from Figueira et al.
-2016}
-
-
-\citet{artigau_optical_2018} recently compared archival spectra of Barnard's Star, an {M-dwarf}, and found that state-of-the-art atmosphere models over-predict the \emph{Y}- and \emph{J}-band {RV} content by more than a factor of \(\sim\)2, while under-predicting the \emph{H} and \emph{K}-band content by half.
-{\red{} in this work \todo{we} find similar?}
-
-This has previously helped to aid the direction of instrument design by identifying the wavelength regions with the best {RV} precision~\citep{figueira_radial_2016} but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed {\snr{}}.
-
-
-\textbf{THIS is from spie 2018 conference.}
-{red{}~\citep{quirrenbach_carmenes_2018} With this strategy it has been possible to achieve 1--2\mps{} precision in the visible and 5--10\mps{} precision in the {near-IR}; further improvements are expected from ongoing work on temperature control, calibration procedures and data reduction.
-Comparing the {RV} precision achieved in different wavelength bands, \todo{we} find a ``sweet spot'' between 0.7 and 0.8\um{}, where deep \ce{TiO} bands provide rich {RV} information in mid-M dwarfs.
-This is in contrast to \todo{our} pre-survey models, which predicted comparatively better performance in the near-IR around 1\um{}, and explains in part why \todo{our} \nir{} {RV}s do not reach the same precision level as those taken with the visible spectrograph.}
-
-
+Recent results regarding the measured performance of the CARMENES survey~\citep{reiners_carmenes_2018,quirrenbach_carmenes_2018} find that the {RV} in the \nir{} is worse than the pre-survey predictions. Precisions of 1--2\mps{} have been achieved in the optical but only 5--10\mps{} in the \nir{}. However, comparing RV precision in different wavelength bands~\citet{quirrenbach_carmenes_2018} find a ``sweet spot'' around 0.7--0.8\um{} with deep \ce{TiO} bands providing rich {RV} information in mid-M dwarfs.
 
 
 \subsection{Fundamental photon noise limitation}
 \label{subsec:fundamental_precision}
-A technique to calculate the theoretical radial velocity precision of a spectrum using the full spectral information in an optimal way was presented by~\citet{connes_absolute_1985}.
-Here \todo{we} provide the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016}.
-A majority of this derivation follows~\citet{bouchy_fundamental_2001} with extra explanations and notes added.
+A technique to calculate the theoretical radial velocity precision of a spectrum using the full spectral information in an optimal way was first presented by~\citet{connes_absolute_1985}.
+Here the radial velocity precision derivation following~\citet{connes_absolute_1985, bouchy_fundamental_2001, figueira_radial_2016} is provided.
 
 \begin{figure}
     \centering
@@ -64,9 +45,9 @@ A majority of this derivation follows~\citet{bouchy_fundamental_2001} with extra
 \end{figure}
 \todo{add \(\delta A\) to plots}
 
-For demonstration purposes  \cref{fig:precisionderivation} show a portion of an arbitrary spectrum \(A(\lambda)\), for demonstration purposes over a wavelength range \(\Lambda\).
-Here \(A_0(\lambda)\) is the reference spectrum while \(A(\lambda)\) is observed some later time with an apparent wavelength shift observed.
-It shows most of a single Gaussian line as spectral lines contain the most information but the requirement of spectral lines is not a requirement.
+For demonstration purposes \cref{fig:precisionderivation} shows a portion of an arbitrary spectrum \(A(\lambda)\), for demonstration purposes over a wavelength range \(\Lambda\).
+Here \({A}_{0}(\lambda)\) is the reference spectrum while \(A(\lambda)\) is observed some later time with an apparent wavelength shift observed.
+The majority of a single Gaussian line is shown as spectral lines contain the most information but the presence of spectral lines is not a requirement for the derivation.
 
 The Doppler shift of a spectrum is given by:
 \begin{equation}
@@ -77,24 +58,24 @@ where \(c\) is the speed of light in a vacuum, and \(\delta \lambda\) is the shi
 
 \todo{intensity change from connes is vertically in the slice d lambda}
 
-Using basic calculus \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{Although~\citet{connes_absolute_1985} show that the approximation in \cref{eqn:intensitychange} is adequate under all circumstances}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
+Using basic calculus \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{Although~\citet{connes_absolute_1985} show that the approximation in \cref{eqn:intensitychange} is adequate under all circumstances.}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
 \begin{equation}
-\delta A(i) = A(i) - A_0(i) \simeq \pd{A_0(i)}{\lambda(i)} \delta \lambda.
+\delta A(i) = A(i) - {A}_{0}(i) \simeq \pd{{A}_{0}(i)}{\lambda(i)} \delta \lambda = \pd{{A}_{0}(i)}{\lambda(i)} \frac{\delta V(i)}{c}\lambda(i).
 \label{eqn:intensitychange}
 \end{equation}
 
-Rearranging \cref{eqn:intensitychange} for \(\delta \lambda\) and combining it with \cref{eqn:dopplershift}, the Doppler shift of then becomes:
+Rearranging \cref{eqn:intensitychange} for \(\delta \lambda\) and combining it with \cref{eqn:dopplershift}, the Doppler shift then becomes:
 \begin{equation}
-    \frac{\delta V(i)}{c} = \frac{A(i) - A_0(i) }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))} \label{eqn:delta_v_i}
+    \frac{\delta V(i)}{c} = \frac{A(i) - {A}_{0}(i) }{\lambda(i) (\partial {A}_{0}(i)/\partial \lambda(i))} \label{eqn:delta_v_i}
 \end{equation}
 
-This equation shows that the radial velocity measured at pixel, i, through a change in the intensity in the recorded spectrum, \(A(i)-A_0(i)\), and inversely proportional to the slope of the spectrum, \({\partial A_0(i)}/{\partial \lambda(i)}\).
-\Cref{eqn:delta_v_i} provides a separate measurement of the radial velocity shift for every pixel, $i$, in the spectrum.
+This equation shows that the radial velocity measured at pixel {\(i\)}, through a change in the intensity in the recorded spectrum, \(A(i)-{A}_{0}(i)\), and inversely proportional to the slope of the spectrum, \({\partial {A}_{0}(i)}/{\partial \lambda(i)}\).
+\Cref{eqn:delta_v_i} provides a separate measurement of the radial velocity shift for every pixel, \(i\), in the spectrum.
 The sensitivity of the velocity measurement can be improved, and the noise decreased by using the information from the whole spectral range, \(\Lambda\).
 This is achieved by taking the weighted average\footnote{Weighted average on x is \(\bar{x} = \frac{\sum{ x(i)W(i)}}{\sum {W(i)}}\)} over all pixels in the spectral range using an optimal pixel weight \(W(i)\).
 
 \begin{equation}
-\bar{\frac{\delta V}{c}} = \frac{\sum{\frac{\delta V(i)}{c}W(i)}}{\sum {W(i)}}.
+\overline{\frac{\delta V}{c}} = \frac{\sum{\frac{\delta V(i)}{c}W(i)}}{\sum {W(i)}}.
 \end{equation}
 
 Statistically, the optimal weights are proportional to the inverse square of the individual dispersion (variance),
@@ -106,134 +87,110 @@ where \(X_{\rms}\) is the dispersion on the quantity \(X\).
 The individual dispersion of the velocity measurement \(\delta V_{\rms}(i)\) is the dispersion that would result from several measurements of the reference spectrum all with the same Doppler shift (e.g.\ zero).
 \Cref{eqn:delta_v_i} thus becomes:
 \begin{equation}
-    \frac{\delta V_{\rms}(i)}{c} = \frac{{[A(i) - A_0(i)]}_{\rms} }{\lambda(i) (\partial A_0(i)/\partial \lambda(i))}.
+    \frac{\delta V_{\rms}(i)}{c} = \frac{{[A(i) - {A}_{0}(i)]}_{\rms} }{\lambda(i) (\partial {A}_{0}(i)/\partial \lambda(i))}.
     \label{eqn:delta_v_i_rms}
 \end{equation}
-The noise of the spectrum A is the quadratic sum of the photon noise \(\sqrt{A}\) and the detector noise \(\sigma_D\).
-The spectrum \(A_0\) is considered noise free.
+The noise of the spectrum \(A\) is the quadratic sum of the photon noise \(\sqrt{A}\) and the detector noise \({\sigma}_{D}\).
+The spectrum \({A}_{0}\) is considered noise free.
 
 \begin{equation}
-{[{A(i)-A_0(i)}]}_{\rms} = {[{A(i)} - 0]}_{\rms} = \sqrt{{\sqrt{A(i)}}^{2} + {{\sigma}^{2}}_{D}} \label{eqn:noise}
+{[{A(i)-{A}_{0}(i)}]}_{\rms} = {[{A(i)} - 0]}_{\rms} = \sqrt{{\sqrt{A(i)}}^{2} + {{\sigma}^{2}}_{D}} \label{eqn:noise}
 \end{equation}
 
-Considering that the Doppler shift is small and that \(A\) and \(A_0\) have the same intensity level, then \(A = A_0\) can be set.
+Considering that the Doppler shift is small and that \(A\) and \({A}_{0}\) have the same intensity level, then \(A = {A}_{0}\) can be set.
 Using \cref{eqn:delta_v_i,eqn:weights,eqn:noise} the optimum weights then become solely dependent on the reference spectrum.
 
 \begin{equation}
-W(i) = \frac{{\lambda}^{2}(i) {({\partial A_0(i)}/{\partial \lambda(i)})}^{2}}{A(i) + {\sigma}^{2}_{D}} \label{eqn:optimal_weight}
+W(i) = \frac{{\lambda}^{2}(i) {({\partial {A}_{0}(i)}/{\partial \lambda(i)})}^{2}}{A_0(i) + {\sigma}^{2}_{D}} \label{eqn:optimal_weight}
 \end{equation}
 
-This weighting function can be modified to mask out and eliminate unwanted lines in the spectrum.
-For instance in the removal of telluric absorption lines in observed spectra.
-This is achieved to setting the particular pixel weights to zero.
+This weighting function can be modified to mask out and eliminate unwanted lines in the spectrum (see \cref{subsec:masking_function}).
+For instance setting the particular pixel weights to zero to remove any telluric absorption lines in the observed spectra. 
 
 With the optimal weights set, the weighed average velocity change measured from the full spectral range \(\Lambda\), is given by:
 
-\begin{eqnarray}
+\begin{align}
     \frac{\overline{\delta V}}{c} &= \frac{
         \sum{
-            \frac{
-                A(i) - A_0(i)}{
-                \lambda(i) \left({\partial A_0(i)}/{\partial \lambda(i)}\right)} W(i)}}{
-             \sum{{W(i)}}} \\
+            \frac
+            {A(i) - {A}_{0}(i)}{
+                \lambda(i) \left({\partial {A}_{0}(i)}/{\partial \lambda(i)}\right)} W(i)}
+            }
+            {\sum{{W(i)}}} \\
     &= \frac{
         \sum {
-            (\frac
-                {A(i) - A_0(i)}
-                {\lambda(i) (\partial A_0(i)/\partial \lambda(i))}) \frac
-                    {{\lambda}^{2}(i) {({\partial A_0(i)}/{\partial \lambda(i)})}^{2}}
-                    {A_{0}(i) + {\sigma}^{2}_{D}}
-                 }
+            \frac
+                {A(i) - {A}_{0}(i)}
+                {\lambda(i) (\partial {A}_{0}(i)/\partial \lambda(i))}
+                \frac
+                {{\lambda}^{2}(i) {({\partial {A}_{0}(i)}/{\partial \lambda(i)})}^{2}}
+                {A_{0}(i) + {\sigma}^{2}_{D}}
+             }
+            }
+        {\sum{{W(i)}}} \\
+    &= \frac{
+        \sum { 
+            (A(i) - {A}_{0}(i))
+            \frac
+            {\lambda(i) {\partial {A}_{0}(i)}/{\partial \lambda(i)})}
+            {A_{0}(i) + {\sigma}^{2}_{D}}
          }
-    {\frac
-        {{\lambda}^{2}(i) {({\partial A_0(i)}/{\partial \lambda(i)})}^{2}}{A_{0}(i) + {{\sigma}^{2}}_{D}}
-        } \\
-    &= \\
-    &= \frac{\sum{(A(i) - A_0(i)){\left(\frac{W(i)}{A_0 +{\sigma}_{D}^{2}}\right)}^{1/2}}}{\sum{W(i)}}
+        }
+        {\sum{{W(i)}}} \\
+    &= \frac{\sum{(A(i) - {A}_{0}(i)){\left(\frac{W(i)}{{A}_{0}(i) +{\sigma}_{D}^{2}}\right)}^{1/2}}}{\sum{W(i)}}
     \label{eqn:delta_v_eqarray}
-\end{eqnarray}\unfinished{Finish this equation (9 of bouchy 2001)}
-\unfinished{Try the symbolic package from PC}
+\end{align}
 
-The important quantity for {RV} measurements is not just the velocity values themselves but also the dispersion on the measured velocity, the {RV} precision, \(\delta V_{\rms}\), from the spectrum.
+The important quantity for {RV} measurements is not just the velocity values themselves but also the dispersion (or uncertainty) on the measured velocity, the {RV} precision \(\delta V_{\rms}\), from the spectrum.
 This allows one to assess the planetary detectability limitations attainable in the spectra.
 From rearranging \cref{eqn:weights} the dispersion is given by:
 \begin{equation}
-    \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\sqrt{\sum{\,W(i)}}} = \frac{1}{Q \sqrt{\sum{\,A_0(i)}}}.\label{eqn:dv_rms}
+    \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\sqrt{\sum{\,W(i)}}} = \frac{1}{Q \sqrt{\sum{\,{A}_{0}(i)}}}.\label{eqn:dv_rms}
 \end{equation}
-With this the velocity precision is inversely proportional to the sum of the optimal pixel weights.
-
-A spectral quality factor, Q, is defined as for the pure photon noise case in~\cite{connes_absolute_1985, connes_demonstration_1996}, as:
+With \cref{eqn:dv_rms} the velocity precision is inversely proportional to the sum of the optimal pixel weights. Here \(Q\) is a spectral quality factor, defined for the pure photon noise case in~\cite{connes_absolute_1985, connes_demonstration_1996}, as:
 \begin{equation}
-Q = \frac{\sqrt{\sum{\,W(i)}}}{\sqrt{\sum{\,A_0(i)}}}.
+Q \equiv \frac{\sqrt{\sum{\,W(i)}}}{\sqrt{\sum{\,{A}_{0}(i)}}} = \frac{\sqrt{\sum{\,\frac{{\lambda}^{2}(i) {({\partial {A}_{0}(i)}/{\partial \lambda(i)})}^{2}}{A_0(i) + {\sigma}^{2}_{D}}}}}{\sqrt{\sum{\,{A}_{0}(i)}}}.
 \end{equation}
+
+The pure photon noise case is exclusively considered here in a high signal-to-noise regime in which \({A(i) + \sigma_{D}^{2}} \sim {A(i)}\) can be approximated. The quality factor, \(Q\), becomes flux independent and is purely a function of the spectral profile within the spectral range considered\footnote{In the case of pure detector noise case the fluctuations are independent of the spectrum \(A\) and the quality factor is \({Q}_{D} = \frac{\sum{{\lambda}^{2} {(\partial {A}_{0}(i)/\partial \lambda(i))}^{2}}}{\sum{\, {A}_{0}(i)}}\) as derived by~\cite{connes_absolute_1985}.}.\todo{check footnote in connes}
+It is a measure of the line richness i.e.\ that quantity and depth of the lines.
+For example a spectrum with many sharp lines will have a high \(Q\).
+The instrumental resolution of the spectrograph also effects the spectral quality as it induces line broadening.
 
 The radial velocity precision or uncertainty can be rearranged in terms of the spectral quality;
 \begin{equation}
-    \delta V_{\rms} = \frac{c}{Q \sqrt{\sum {\,A_0(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}} \approx \frac{c}{Q \cdot \snr{}},  \label{eqn:snr_relation}
+    \delta V_{\rms} = \frac{c}{Q \sqrt{\sum {\,{A}_{0}(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}} \approx \frac{c}{Q \cdot \snr{}},  \label{eqn:snr_relation}
 \end{equation}
-where \(\sum A_0(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo-electrons \({N}_{{e}^{-}}\) counted in the spectral range considered.\todo{explain snr}{where the \({\snr{}}=\sqrt{N_{{e}^{-}}}\) for large N}
-where the \({\snr{}}=\sqrt{N_{{e}^{-}}}\)for large N.
-\unfinished{It is convenient to use this version when comparing observed spectra with different \snr{}.?}
+where \(\sum {A}_{0}(i) = {N}_{{e}^{-}}\) is considered to be the total number of photo-electrons \({N}_{{e}^{-}}\) counted in the spectral range considered, and \(\snr{}=\sqrt{N_{{e}^{-}}}\) for large \(N_{{e}^{-}}\).
 
-
-This quality factor, Q, is flux independent and is purely a function of the spectral profile within the spectral range considered.
-It is a measure of the line richness i.e.\ quantity and depth.
-For example a spectrum with many sharp lines will have a high Q.
-This quality factor is valid for the pure photon noise case only in which \(\sigma_{D} =0\) and \({[A(i)]}_{\rms} = A_0\).
-The instrumental resolution of the spectrograph also effects the spectral quality as it induces line broadening.
-
-The number of photo-electrons counted \(N_{{e}^{-}}\) depends on the stellar magnitude, detector efficiency and integration time.
+The number of photo-electrons counted \(N_{{e}^{-}}\) in an observed spectrum depends on many factors, such as: the stellar magnitude, detector efficiency and integration time.
 It can be estimated using
 \begin{equation}
-     N_{{e}^{-}} = P_{avg} * S_{tel} * \texp * \alpha* \Lambda,
+     N_{{e}^{-}} = P_{avg} * S_{tel} * \texp * \alpha* \Lambda, \label{eqn:Ne}
 \end{equation}
 where \(P_{avg}\) is the average monochromatic stellar brightness
 across the wavelength range \(\Lambda\) in \si{\photons\per\second\per\centi\metre\squared\per\centi\metre},
 \(S_{tel}\) is the telescope collecting area in \si{\centi\metre\squared},
-\(\texp\) is the integration time in \si{\second},
+\(\texp\) is the integration time in \si{\second}, and \(\alpha\) the is overall system efficiency (including atmosphere, telescope, spectrograph and detector).
 
-and \(\alpha\) the overall efficiency (including atmosphere, telescope, spectrograph and detector).
-
-This can be used to determine the {RV} precision for a given instrument, and be useful in exposure time calculators for planning observations for {RV} surveys and exoplanet detection.
+This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to predict the accuracy or performance limits of new spectrograph instrumentation~\citep[e.g.][]{connes_absolute_1985,butler_attaining_1996,bouchy_fundamental_2001} and has influence the design (and use) of spectrographs, e.g. SPIRou~\citep{artigau_spirou_2014,figueira_radial_2016}).
+However, \citet{figueira_radial_2016} bypass the calculation of \(N_{{e}^{-}}\) in \cref{eqn:Ne} by scaling the synthetic spectral models to a specific \snr{} level instead.
 
 In the case of several \(\delta V\) measurements computed for \(k\) spectral slices (or spectral orders) then the error on the average \(\overline{\delta V}\) is given by the error on a weighted average:
 \begin{equation}
-\overline{\delta {V}_{\rms}} = \frac{1}{\sqrt{\sum_k{{(\frac{1}{\delta V_{\rms}(k)})}^{2}}}}  \label{eqn:weighted_average_error}
+\overline{\delta {V}_{\rms}} = \frac{1}{\sqrt{\sum_k{{(\frac{1}{\delta V_{\rms}(k)})}^{2}}}}.  \label{eqn:weighted_average_error}
 \end{equation}
 
-This work follows~\cite{figueira_radial_2016} by exclusively considering a high signal-to-noise regime in which \({A(i) + \sigma_{D}^{2}} \sim {A(i)}\) can be approximated.
 
-
-\footnote{pure detector noise the fluctuation are independent of the spectrum \(A\) and the quality factor for pure detector noise is \(Q_D = \frac{\sum{{\lambda}^{2} {(\partial A_0(i)/\partial \lambda(i))}^{2}}}{\sum{\, A_0(i)}}\) as derived by~\cite{connes_absolute_1985}.}
-
-
-This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to determine predict the accuracy or performance limits of spectrograph instrumentation~\citep[e.g.][]{connes_absolute_1985,bouchy_fundamental_2001} and can influence the design (and/or use) of spectrographs
- (e.g.\ SPIROU~\citep{artigau_spirou_2014,figueira_radial_2016})
-\unfinished{Does spectrograph pipelines such as {HARPS} use these equations to measure estimate/precision?}
-
-
-Considering that \(\sum{A_0(i)} = N_{{e}^{-}}\)is the total number of photoelectrons counted over the whole spectral range then the uncertainty in the velocity change is finally given by:
+A separate general formula for {RV} precision, discussed in \cref{section:rv_precision}, is given by~\citet{hatzes_spectrograph_1992} in terms of general spectral parameters:
 \begin{equation}
-\delta V_{\rms} = \frac{c}{Q \sqrt{N_{{e}^{-}}}} \approx \frac{c}{Q (\snr{})}, \label{eqn:rv_SNR}
+\delta V_{\rms} = \frac{1}{\sqrt{F} \sqrt{\Lambda} {R}^{1.5}}
 \end{equation}
-where the \(\snr{}=\sqrt{N_{{e}^{-}}}\)for large N.
-\unfinished{It is convenient to use this version when comparing observed spectra with different \snr{}.?}
+where $\sqrt{F}$ represents the \snr{} of the spectrum in the {Poisson}-noise dominated regime, and \(R\) is the spectral resolution.
+The $\Lambda$ comes from assuming a homogeneous distribution of lines, with the same line properties, per unit length.
 
 
-In the unrealistic case where all the pixel weights are identical $W(i)=w$, then \todo{we} can also see that the precision with decreases as $1/\sqrt{N}$ due to an increase in the number of pixels, or a increase in spectral range.
- \begin{equation}
- \delta V_{\rms} = \frac{c}{\sum{W(i)}} \approx \frac{c}{\sqrt{N w}}=  \frac{c}{\sqrt{N}\sqrt{w}}, \label{eqn:sqrtN}
- \end{equation}
-
-A separate general formula for {RV} precision is given by~\citet{hatzes_spectrograph_1992} in terms of general spectral parameters.
-\begin{equation}
-\sigma = \frac{1}{\sqrt{F} \sqrt{\Lambda} {R}^{1.5}}
-\end{equation}
-
-Here the $\sqrt{F}$ represents the \snr{} of the spectrum in the {Poisson}-noise dominated regime.
-The $\Lambda$ comes from assuming a homogeneous distribution of line, with the same line properties, per unit length.
-
-
+\section{Deriving RV for synthetic spectra}
 
 \subsection{Prepare {PHOENIX} aces models}:
 \# see~\citet{figueira_radial_2016}
