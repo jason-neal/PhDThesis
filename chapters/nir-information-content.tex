@@ -149,41 +149,6 @@ Since two convolutions are performed one after the other the original input spec
 The bands analysed avoid the strong water absorption in the \nir{} that can be seen the {CARMENES} spectra in Figure~\reference{Add figure here}\todo{Add figure here}.
 These are the Z, Y, J, H, K- bands found in \cref{tab:infrared_bands}.
 
-
-\subsection{Comparing models to {CARMENES}.}
-Already somewhat done in Reiners.
-(use all spectra).
-They measured the precision obtained in the spectra.
-
-Band by band like~\citet{figueira_radial_2016}?
-Certain\% steps like Bouchy or Artigau
-
-
-Can do Barnard's star in {CARMENES}.
-\todo{finish this} compared to models in Artigau.
-
-\DTLsetseparator{,}
-\DTLloadrawdb{targets}{data/carmenes_selection.csv}%
-
-\begin{table*}[h]
-    \centering
-    \caption[Selection of targets from the {CARMENES} library.]{Selection of targets from the {CARMENES} library spanning the {M-dwarf} spectral range.}
-    \begin{tabular}{l l l r c c c c}%
-        \toprule
-        Karmn & Name & SpT &  \({\snr{}}_{\textrm{NIR}}\)  & Temp (K)  & \Logg{} & \feh{} & v\(\sin{i}\) (\kmps{})\\
-        \midrule
-        \DTLforeach*{targets}{\id=Karmn,\name=Name,\sptype=SpT,\SNR=NIR-SNR,\TEFF=Teff, \LOGG=logg,\metal=FeH, \rot=ROT-Vsini}{
-            \DTLiffirstrow{}{\\}\id{} & \name{}  & \sptype{} & \SNR{} & \TEFF{} & \LOGG{} & \metal{} & \rot{}
-        }
-        \\
-        \bottomrule
-    \end{tabular}
-    \label{tab:targets}
-\end{table*}
-
-\input{tables/carmenes_selection.tex}
-%\input{tables/carmenes_selection_transpose.tex}
-
 \section{Metallicity \Logg{} effects}
 We explore the effect of metallicity and \Logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1--1 and \Logg{} of 4.0--5.5.
 In \cref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and $\vsini=1.0$\kmps{} across the {M-dwarf} spectral types and the \nir{} bands is shown.
