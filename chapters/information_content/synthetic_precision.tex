@@ -1,0 +1,108 @@
+%!TEX root = ../../thesis.tex
+
+\section{Deriving RV for synthetic spectra}
+The work presented here extends the work of~\citep{figueira_radial_2016}.
+To contrast the improvements made here the details of~\citep{figueira_radial_2016} are first presented.
+Now that the general formulation has been provided, 8.13, 8.17.
+Other important factors to consider when deriving RV precision from synthetic spectra.
+
+\subsection{Prepare {PHOENIX-ACES} models}:
+Four {PHOENIX-ACES} spectra were selected, spanning the M-dwarfs regime (M0, M3, M6, M9) with model temperatures 3900, 3500, 2800 and 2600\K{} respectively. The other model parameters were \Logg=4.5, \feh{}=0 and \alphafe=0 representing values typical for M-dwarfs.
+The flux (spectral energy distribution) given by the library spectra (ergs/s/cm2/cm) are converted into photon counts by dividing the flux by the energy of a photon \({E}_{p}=hc/\lambda\)\. Neglecting the multiplicative constants, this corresponds to multiplying the flux values by the respective wavelength.
+In this case the absolute values do not matter, just the spectral shape, as the spectra will be scaled to a given \snr{} level.
+
+\subsection{Convolution}
+The spectra are convolved by a rotation kernel followed by a Guassian instrumental kernel to broaden the spectra lines. 
+The implementation of these kernels are detained here followed by some details on how the  numerical convolution is implemented.
+
+\subsubsection{Rotational convolution*}
+\label{subsec:rotational_convolution}
+Stellar rotation has the affect of broadening spectral lines as the different portions of the stellar surface have a variation of radial velocity between \(\pm v \sin i\).
+Rotation is applied to a non-rotating spectrum by convolution with a rotation kernel.
+The stellar rotational kernel used follows~\citet{gray_observation_2005};
+
+\todo{top view diagram of rotation?}
+
+\begin{align}
+G(\Delta\lambda) &= \frac{2(1-\epsilon){[1-{(\Delta\lambda /{\Delta\lambda}_{L})}^{2}]}^{1/2} +   \frac{1}{2}\pi\epsilon[1-{(\Delta\lambda /{\Delta\lambda}_{L})}^{2}]}{\pi (1-\epsilon/3) \vsini}\\
+&= c_{1}{[1- {(\Delta\lambda /\Delta\lambda_{L})}^{2}]}^{1/2} + c_{2}[1-{(\Delta\lambda /\Delta\lambda_{L})}^{2}] \label{eqn:rotational_profile}
+\end{align}
+where
+\begin{equation}
+{c}_{1} = \frac{2(1-\epsilon)} {\pi (1-\epsilon/3)\vsini},  \hspace{4em} {c}_{2} = \frac{\frac{1}{2}\pi\epsilon} {\pi (1-\epsilon/3)\vsini},
+\end{equation}
+are constants which depend on the equatorial rotational velocity \Vsini{}.
+
+Here $\Delta\lambda$ is the wavelength position from the non-rotating line centre, $\Delta\lambda_{L}$ is the maximum line shift of the line centre at the edge of the stellar disk at which point the Doppler shift is  \Vsini{}; $\Delta\lambda_{L} = \lambda \frac{\vsini}{c}$.
+
+This kernel arises from integrating the rotational velocity profile across the surface of the stellar disk and as such the rotation kernel is bounded in the range  $[-\Delta\lambda_L, \Delta\lambda_{L}]$ from the line centre.
+This kernel also accounts for limb-darkening on the stellar disk with the linear limb darkening coefficient used in this work fixed at $\epsilon=0.6$ as done in~\citet{figueira_radial_2016}.
+
+Since the synthetic models do not have a consistent wavelength grid, the discretization of applying the convolution kernel onto the changing wavelength grid causes the result of each pixel to be multiplied by a slightly different kernel area.
+Therefore, the result is divided by a convolution of a spectrum of ones with the same wavelength resolution to normalize the convolution.
+
+As the Doppler shift \Vsini{} is transformed into wavelength by multiplication of $\lambda  / c$ there is a wavelength dependence on the rotation kernel shape.
+That is, the rotation kernel at each pixel is unique and requires separate calculation.
+For small wavelength ranges this can be held fixed to improve performance.
+This simplifications is not performed in this work as large wavelength ranges are considered.
+
+
+\subsubsection{Instrumental convolution*}
+Following the rotational convolution the spectra are convolved with Gaussian instrumental profile ({\IP{}}) with the {\fwhm}  constrained by the spectral resolution R, $\fwhm= \lambda/R$.
+
+The Gaussian convolution kernel is of the form
+\begin{equation}
+IP(\Delta\lambda) = \frac{1}{\sigma \sqrt{2\pi}} \exp^{-\frac{{\Delta\lambda}^{2}}{2 {\sigma}^{2}}}
+\label{eqn:IP_profile}
+\end{equation}
+with $\sigma = \frac{\fwhm}{2\sqrt{2 \ln(2)}}$, and $\Delta \lambda$ again the difference from the line centre (normally this would be written as $(x-\mu)$ where $\mu$ is the Gaussian centre).
+
+This assumes that the instrument profile of a particular instrument is in-fact Gaussian.
+This assumption of a Gaussian instrumental profile is a good starting point for high-resolution spectrographs, and shown to be valid for CRIRES~\citep{seifahrt_synthesising_2010}.
+If a non-Gaussian instrument profile is particularly well characterized, then it could be used to replace the Gaussian profile used here.
+
+For instance~\citet{artigau_optical_2018} state that the instrumental profile of a (circular) fibre-fed spectrograph such as {HARPS} is mathematically equivalent to a cosine between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$ with a width equivalent to the Gaussian {\fwhm}.
+From this description the integration of a circular fibre is given by
+\begin{equation}
+\IP{}_{\textrm{fibre}(\Delta\lambda)} = \cos(B\cdot\Delta\lambda) ,  \hspace{2em} [-\frac{\pi}{2 B}, \frac{\pi}{2 B}]
+\end{equation}
+where {$B = \frac{\fwhm_{0}}{\fwhm}$ } is scaled to give the same area.
+\citet{artigau_optical_2018} also mention that the RV precision results using this $\IP{}_{\textrm{fibre}}$ are all consistent with just using a Gaussian kernel.
+
+\subsubsection{Numerical Convolution*}
+\label{subsec:numerical_convolution}
+In this work the stellar models undergo broadening by convolution with rotation and instrumental profile kernels (\cref{eqn:rotational_profile,eqn:IP_profile}).
+The convolutions are performed by analysing a single pixel at a time, and selecting the neighbouring pixels that fall within the convolution window\footnote{Region in which the convolution kernel will affect this particular pixel} for that pixel.
+The value of the convolution kernel is calculated at the position of each pixel selected, multiplied by the flux of each pixel and then summed to provide the new value at the selected single pixel{$^{\textbf{*}}$}.
+The shape of the convolution kernels and the size of convolution window are wavelength dependant (${\fwhm}=\lambda / R$ and $\Delta\lambda_{L}=\lambda \frac{\vsini}{c}$) and must be calculated separately for each pixel, making the convolution computationally expensive.
+
+The python package \emph{PyAstronomy} also contains functions that perform rotational and instrumental broadening.
+Those functions however require that the spectrum have uniformly spaced $x$-coordinate spacing which is not a requirement for the implementation of \eniric{} used here.
+
+One factor the needs consideration when convolving with an non-uniformly spaced spectrum is effect of the sampling on the convolution.
+For instance the number of points inside the convolution window, as well as their specific location will effect the area of the convolution kernel.
+To normalize the convolution result, it is divided by the convolution of a unitary spectrum of ones with the same wavelength spacing.
+\citet{figueira_radial_2016} performed this unitary convolution separately and applied the normalization afterwards.
+In the improved implementation the convolution normalization is performed directly after the convolution kernel multiplication at \(\textbf{*}\).
+
+For example for the rotational convolution result of the value for pixel $i$ becomes
+\[{A}^{\prime}(\lambda_{i}) =  \frac{\sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i})}{\sum G(\Delta\lambda_{i})},\]
+where $\Delta\lambda_{i}$ are the values between in the range $\lambda_{i} (1-\frac{\vsini}{c}) \le\lambda_{i} \le \lambda_{i} (1+ \frac{\vsini}{c})$,
+instead of only
+\[{A}^{\prime}(\lambda_{i}) = \sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i}).\]
+
+By default edge effects are avoided by providing an input spectra sufficiently wider than the desired output spectrum to prevent edge effects on the portion of the spectrum desired.
+Since two convolutions are performed one after the other the original input spectrum is selected to be wide enough such that no edge effects will be present after both convolutions.
+
+\subsection{Bands}
+The spectra are split up into the \nir{} wavelength bands to avoid the regions of strong water absorption in the Earth atmosphere in the \nir{}. These \ce{H2O} regions that defined htese bands can be seen in the telluric spectrum in \cref{fig:}\todo{check  molecfit} or in the raw {CARMENES} spectra in \cref{fig:carmenes_raw} Figure~\reference{Add figure here}\todo{Add figure here}.
+
+The bands selected are the \emph{Z}, \emph{Y}, \emph{J}, \emph{H}, \emph{K}-bands with the specific wavelength bounds given in \cref{tab:infrared_bands}. This allows for the spectral precision to be compared between different wavelength bands.
+
+\subsection{\snr{} scaling}
+The purpose of~\citet{figueira_radial_2016} was to compute only the relative precisions between the synthetic models. This was done by normalizing each spectrum, after convolution, to a \snr{} of 100 at the centre of the \emph{J}-band. Specifically this is achieved by summing the three pixels (same as the sampling per resolution element) centred at 1.25\nm{} scaling the result so that this sum becomes \(100^2\). In this way the \(\snr{} =\sqrt{F}\) is 100. The specific scaling values were hard coded into the software, making it difficult to quickly analyse a new spectrum.
+
+\subsection{Precision calculations}
+Finally the computation of the {RV} precision application of \cref{eqn:dv_rms} is applied to the individual convolved spectral bands.
+
+This is done under three separate conditions to assess different telluric line treatments. To avoid repetition these conditions are explained below in \cref{subsec:masking_function}.

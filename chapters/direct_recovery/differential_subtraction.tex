@@ -1,14 +1,11 @@
 %!TEX root = ../../thesis.tex
 
-
 \section{Direct Subtraction Method}
 \label{sec:direct-subtraction}
-Here the direct subtraction method used is presented.
-The basic premise is to take two high resolution spectra of a binary system at separate phases, transform them to the rest frame of the star and take the difference to remove the spectrum of the host star, leaving behind a residual comprised of difference of two companion spectra with different Doppler shifts.
-Similar techniques originally developed to separating binary stars~\citep{ferluga_separating_1997} and has been used for a M-dwarf with a low-mass companion~\citep[e.g.][]{kostogryz_spectral_2013}.
+The basic premise of the direct subtraction method is to take two high resolution spectra of a binary system at separate phases, transform them to the rest frame of the star and take the difference to remove the spectrum of the host star, leaving behind a residual comprised of a difference of two companion spectra with different Doppler shifts.
+Similar techniques were originally developed to separate the spectra of binary stars~\citep[e.g.][]{ferluga_separating_1997} while~\citet{kostogryz_spectral_2013} performed promising simulations of a {M-dwarf} with a low-mass companion, if observed with {CRIRES}.
 
-Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately the spectra of the observed targets are assumed to be composed of two spectral components:
-a bright host star blended with the spectrum of a faint companion.
+Assuming that the instrumental profile and atmospheric absorption are dealt with appropriately, the spectra of the observed targets are assumed to be composed of two spectral components: a bright host star blended with the spectrum of a faint companion.
 The spectrum received from the host-companion pair is given by the superposition of two spectral components (\(\textrm{J}_{1}\), \(\textrm{J}_{2}\)):
 \begin{equation}
 \textrm{I}(\lambda) = \textrm{J}_{1}(\lambda - v_{1}) + \textrm{J}_{2}(\lambda - v_{2}),
@@ -67,14 +64,7 @@ These are used to shift each spectrum into the rest frame of the host star to mu
 These components can also be determined directly from the spectrum by cross-correlating the observed spectrum with a stellar template of the host and gave results in reasonable agreement.
 There should be checks for consistency between \(v_{1a}\), \(v_{1b}\) and how well the host component is removed in the s-profile.
 
-Example simulations?
-\missingfigure{simulated example of combined binary spectra, and the subtraction, with a clear companion visible }
-
-\textbf{This method is very similar to~\citet{kostogryz_spectral_2013}, which obtain two observations from the extrema of the {RV} curve of a M-dwarf with a low-mass companion.
-    They also perform a number of simulations regarding observing {CRIRES} spectra with different brown dwarfs.
-    Figure out the flux ratio limit they get too???}\todo{check result}
-
-It is necessary to have a consistent instrumental setup~\citep{ferluga_separating_1997}, to avoid introducing extra instrumental effects (e.g.\ slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted.
+It is necessary to have a consistent instrumental setup~\citep{ferluga_separating_1997,hadrava_disentangling_2009}, to avoid introducing extra instrumental effects (e.g.\ slit-width and/or filters) into the spectral differentials and to always observe the same wavelength range and maximize the information to be extracted.
 For these observations, the second observation of {HD\,202206} and fourth of {HD\,30501} were taken with different filters compared to the other observations.
 Therefore, these two observations could not be used for this differential analysis.
 As noted in~\citet{hadrava_disentangling_2009}, any spectral differences in the filters would add extra unknown signal/noise making it harder to disentangle the faint spectral differences.
