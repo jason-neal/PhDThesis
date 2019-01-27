@@ -1,7 +1,27 @@
 %!TEX root = ../../thesis.tex
 
+
+\section{ Updated Figueira 2016 results}
+\todo{comparison of plots} figueira eta la plot 1, eniric plot
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.48\linewidth]{figures/information-content/Rvprec_vsini1.pdf} &  % Figueria plot
+        \includegraphics[width=0.47\linewidth]{figures/information-content/precision_fourpanel.png}\\ % eniric plot
+    \end{tabular}
+    \caption[Comparision of {RV} precision results to~\citet{figueira_radial_2016}.]{Comparison of the updated precision values. Each panel shows the precision achieved as a function of spectral band for stars with a rotational velocity of \Vsini=1.0\kmps{} and spectral types M0 (3900\K), M3 (3500\K), M6 (2800\K), and M9 (2600\K). The dashed line represents the theoretical limits imposed by Condition \#1, and the filled area represents the values within the limits set by Conditions \#2 (circles) and \#3 (triangles); blue, green, and red represent the results obtained for resolutions of 60000, 80000, and 100000, respectively. The spectra were normalized to have a \snr{} of 100 per resolution element as measured at the centre of the \emph{J}-band.
+        Left: Figure~1 from~\citet{figueira_radial_2016}.
+        Right: Updated precision values computed using \emph{eniric}.
+        The main difference is the area of shaded region due to the problem identified with Condition~\#2 (which is the upper edge).}
+    \label{fig:figueria_comparision}
+\end{figure}
+\todo{Change to 55\mps{} upper limit?}
+
+
 \section{Metallicity \Logg{} effects}
-We explore the effect of metallicity and \Logg{} on the spectral quality of spectra in the {PHOENIX-ACES} library by extending the quality factor and precisions computation to \feh{} between -1--1 and \Logg{} of 4.0--5.5.
+Here the affect of the metallicity and \Logg{} of the synthetic models in the {PHOENIX-ACES} library on the spectral quality of spectra.
+This is achieved by using \eniric{} to compute the quality factor and RV precision for  \feh{} values between -1--1 and \Logg{} between 4.0--5.5.
 In \cref{fig:deviations} the variation of quality factor with broadening of R=100\,000 and $\vsini=1.0$\kmps{} across the {M-dwarf} spectral types and the \nir{} bands is shown.
 We observed multiple different effects present.
 
@@ -37,7 +57,6 @@ There is also only a relatively small variation in quality factor due to the spe
 
 \clearpage
 
-\\
 
 \section{{SPIRou} and {NIRPS} {ETC}}\label{sec:spirou_nirps_etc}
 Having this tool to calculate {RV} precisions efficiently lead to contributions to the Exposure Time Calculators (ETC) for both the {SPIRou} and {NIRPS} spectrographs.
@@ -63,21 +82,9 @@ These values were both calculated and provided using the {FFD} gradient and with
 As \todo{we} demonstrated in \cref{sec:numerical_gradient,subsubsec:masking_order} these have a {RV} precision \(\sim\)2--7\% better than what would be computed with the current implementation.
 
 
-\section{ Updated Figueira 2016 results}
-\todo{comparison of plots} figueira eta la plot 1, eniric plot
-
-\begin{figure}
-    \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.48\linewidth]{figures/information-content/Rvprec_vsini1.pdf} &  % Figueria plot
-        \includegraphics[width=0.47\linewidth]{figures/information-content/precision_fourpanel.png}\\ % eniric plot
-    \end{tabular}
-    \caption[Comparision of {RV} precision results to~\citet{figueira_radial_2016}.]{Left: Figure 1 from~\citet{figueira_radial_2016}.
-        Right: The same style figure with values updated from this work, computed with \emph{eniric}.
-        The main difference is the area of shaded region due to the problem with Condition~\#2 (which is the upper edge).}
-    \label{fig:my_label}
-\end{figure}
-\todo{Change to 55\mps{} upper limit?}
-
 \section{ metalicity / \Logg{} extension}
 
+
+
+
+The incomplete telluric lines are the one of the largest contributors to the noise budget of extremely precise {RV} spectrographs \citep{halverson__2016}\todo{}, particularly the small mirco-telluric lines~\citep{cunha_impact_2014}. 

@@ -10,14 +10,14 @@ A small variety of these techniques will be briefly presented below before explo
 
 Several disentangling techniques work on deriving the spectral components from several spectra at different orbital phases.
 At the minimum \(n+1\) observations can be used to set up a system of linear equations to solve for \(n\) spectral components.
-This can be solved using singular value decomposition {SVD}~\citep[e.g.][]{simon_disentangling_1994, sablowski_spectral_2016}.
+Works such as \citet[][]{simon_disentangling_1994, sablowski_spectral_2016} use singular value decomposition {SVD} to solve the system for the spectral components.
 These work best with many well spaced observations, for example~\citet{sablowski_spectral_2016} state their ideal situation is homogeneous samples over at least half the period, to identify the moving spectral components.
 
 Tomographic techniques~\citep[e.g.][]{bagnuolo_tomographic_1991} and Fourier techniques~\citep{hadrava_orbital_1995} have also been developed for disentangling a series of binary spectra.
 Recently this has even been performed using Gaussian processes which simultaneously fits stellar (or exoplanet) orbits as well as their spectral components~\citet{czekala_disentangling_2017}.
 
 A fairly common technique for deriving precise radial velocities of spectral components in binaries is to apply cross-correlation against a library of known spectra.
-TODCOR (TwO-Dimensional CORrelation)~\citep{zucker_study_1994} is a commonly used algorithm for cross-correlation of two spectral components to revealing the RV of both components.
+TODCOR (TwO-Dimensional CORrelation)~\citep{zucker_study_1994} is a commonly used algorithm for cross-correlation of two spectral components to revealing the {RV} of both components.
 It has been simulated to be able to detect secondaries with flux ratios down to \(\sim\)1/1000 provided a sufficient \snr{}\citep[e.g.][]{mazeh_todcor_1994,mazeh_detecting_1997}.
 TODCOR requires knowledge of the two spectral components; a series of spectral templates are used to correlate against the observation.
 These can either be other observed or synthetic stellar spectra, with the highest correlating spectral pair indicating the two components.
@@ -39,5 +39,5 @@ The stellar mask is then subtracted from each individual observation to remove t
 \citet{ferluga_separating_1997} provide an analytical approach via secondary reconstruction through a differential spectrum.
 Spectra from different phases are shifted to the rest frame of the host star and subtracted to mutually cancel out the spectrum of the host star allowing the two copies of the faint companion spectra to become visible.
 \citet{kostogryz_spectral_2013} perform simulations of a similar direct subtraction approach.
-They simulate CRIRES observations of an {M-dwarf} with a low mass (likely BD) companion to recover the mass of the companion by measuring the RV separation between the recovered companion spectra.
+They simulate CRIRES observations of an {M-dwarf} with a low mass (likely BD) companion to recover the mass of the companion by measuring the {RV} separation between the recovered companion spectra.
 A similar differential substation approach to this is used in this work, as the limited observations analysed are not suitable to apply the more advanced techniques that require several spectra from multiple phases.
