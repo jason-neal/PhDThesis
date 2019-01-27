@@ -9,9 +9,6 @@ Changes made that affect the derived {RV} precision attained are specifically do
 This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}} (JOSS) {Neal and Figueria 2018 (in prep.)} with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}.
 
 
-{\red{}The original code used in~\citet{figueira_radial_2016} was slow, taking around 2 hours per simulation, this led to multiple weeks of processing time to compute the precision's for the original paper.}\todo{move}
-
-
 \subsection{Automated testing}
 \label{subsec:automated_testing}
 Before the changes to the software are detailed, a note about software testing.
@@ -23,7 +20,7 @@ After inheriting the code-base from \citet{figueira_radial_2016}, software tests
 Version control practises were used to incrementally add small separate changes to the code base at a time, regularly testing in a continuous integration manor.
 This is done by sending the code-base to a repository\footnote{public or private} on Github\footnote{\href{https://bitbucket.org}{Bitbucket} and \href{https://gitlab.com}{GitLab} are other popular options}.
 Automated tools and services then forward the project to testing, code style checking, or other continuous-integration services (e.g.\ \href{https://travis-ci.com}{Travis-CI}) which either run the automated tests, or other checks on each new change.
-The public Travis-CI record of the test for \emph{eniric} can be found at \href{https://travis-ci.org/jason-neal/eniric}{https://travis-ci.org/jason-neal/eniric}.
+The public Travis-CI record of the test for \eniric{} can be found at \href{https://travis-ci.org/jason-neal/eniric}{https://travis-ci.org/jason-neal/eniric}.
 
 This process was valuable in preventing the introduction of errors, but also in identifying and errors in the~\citep{figueira_radial_2016} results which are outlined in \cref{subsec:condition_two_bug}.
 Based on this experience it is a practise that is highly recommend for scientific programming.
@@ -31,50 +28,53 @@ Based on this experience it is a practise that is highly recommend for scientifi
 
 \subsection{Performance}
 \label{subsec:code_performance}
-There was a major performance bottleneck in the convolution stage, which increased the performance around 250\,X itself.
-The algorithm looped though the pixels in the spectrum, selecting out the necessary section around a given pixel with a comprehension list (for loop if inside range).
-Turning the result into a \emph{numpy} array, performing the sum for that pixel and appending it to a list.
-The performance issue was a python implementation detail to do with applying a comprehension list to a \emph{numpy} array, then slicing the \emph{numpy} array with the ends of the list, then converting it back into a \emph{numpy} array, all of which is performed on a very large spectrum array.
-Creating a \emph{numpy} boolean mask instead of the comprehension list, and applying the boolean mask to the array is much faster.
-Remaining entirely in the compiled \emph{numpy} code and not converting between lists and \emph{numpy} arrays (with involve type checking overhead).
-This slow operation was done for every pixel/wavelength in the spectrum twice, once for each convolution.
+The software performance is one aspect that was addressed in the upgrades.
+The original code used in~\citet{figueira_radial_2016} was very slow, taking around two hours per parameter combination.
+This led to multiple weeks worth of processing time required to compute the {RV} precision for the original paper (180 combinations).
+The latest implementation of \eniric{} can compute all 180 combinations in less than two hours.
 
-caching convolution result to prevent recomputing the same values with \emph{Joblib}.
-Also embarrassingly parallel so added multiprocessing support.
+The major performance bottleneck was identified in the convolution stage.
+Stating with a \numpy{} array containing the spectrum the algorithm looped though each pixel in the spectrum, selecting a suitable window around the given pixel with a \emph{comprehension list}\footnote{Example usage can be found \href{https://docs.python.org/3/tutorial/datastructures.html\#list-comprehensions}{here}.}.
+The output is a list\footnote{A list is a native Python data structure.} which was turned back into a \numpy{} array, eventually summed and then appended to a new list.
+This list was once again converted into \numpy{} array.
+The main performance issue is a Python implementation detail to do with a type checking overhead when converting between \numpy{} and native data types.
+These conversions were performed 2--3 times for every pixel in the large spectral arrays of order \({10}^{4}\) pixels.
 
-The convolution is still the slowest part.
-There are other methods that work on uniform spectra, which have not been tried to see how they affect the performance or {RV} precision results.
-\textbf{Insert code samples.}
+Remaining entirely in the fast compiled \numpy{} code and not changing data types a performance gain of around 250\(\times\)\,X was achieved.
+This is done by using boolean masks instead of comprehension lists and pre-allocating a \numpy{} array to store the results a itself.
+
+The convolution computation of individual pixels is an ``embarrassingly parallel''\footnote{\href{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}} problem.
+What this means is that convolution result for pixel $i+1$ does not depend on the convolution result obtained of pixel $i$, each can be computed independently.
+Therefore, parallel processing was also added into the convolution to further improve the performance, roughly dividing the convolution time by the number of processors used.
+
+As the convolution step is the main bottleneck, caching of the convolution results was included using the \href{https://joblib.readthedocs.io}{Joblib} package.
+Caching the convolution function stores the input parameters and the convolution result together.
+If the same input parameters are passed to the convolution function again, it fetches the computed results from memory, rather than recomputing the time intensive convolutions.
+This avoids unnecessary wasted computation time computing the same convolution results, improving the performance of repeated runs of the software.
+
+The \emph{PyAstronomy} package has a ``slow'' version of the rotational convolution, which has a wavelength dependent kernel as done here.
+They also provide ``fast'' convolution kernels that used fixed kernel, taking the central wavelength value.
+These are significantly faster but are only valid for very short wavelength regions, in which the kernels do not significantly change.
+They are not deemed suitable for use in this work due to the large wavelength span of spectroscopic bands and the wavelength dependant spacing of the spectra considered here.
+A comparison of the performance between the \emph{PyAstronomy} convolutions and the convolutions implemented in \eniric{} and used here are provided in a \emph{Jupyter} notebook in the Github repository of ``eniric''\footnote{\href{https://github.com/jason-neal/eniric/blob/master/docs/Notebooks/Convolution_speeds.ipynb}{}}, basically they fall in between the ``fast'' and ``slow'' implementation of \emph{PyAstronomy}.
+
 
 
 \subsection{Model extension}
-The solution is to iterate over each pixel but create a mask array and use \emph{numpy} indexing to select the required pixel span.
-(this remains in \emph{numpy})
-These operations all remain in \emph{numpy} so do not waste time converting between lists and \emph{numpy} arrays, in which Python need to constantly check and convert the type of each item.
+\label{subsec:eniric_model_extesion}
+The original software hard-coded the range of models computed, specifically by identifying the spectra by their spectral types (M0--M9) and the specific \Vsini{} and resolution values.
 
-This shows a lesson in the usefulness of test driven development, or testing of code in science.
+The software was made more suitable to future computations, by allowing any spectrum in the {PHOENIX-ACES} library grid to be analysed, provided the four identifying parameters [\Teff, \Logg, \feh{}, $\aleph$ \alphafe{}]. 
 
-
-An normalization step was originally done after the convolution, to normalize out the effect of the convolution on a spectrum of 1s, due to the changing wavelength grids sampling.
-This was brought inside the main convolution by dividing the pixel by the convolution of a spectrum of ones at the same time.
-(again in \emph{numpy} so it is quick)
-
-Parallelization as embarrassingly parallel, the result of each pixel is independent of result of neighbours.
-
-This is not a criticism of the work done by the original author (my supervisor).
-It is easier to modify a working system then to create one from scratch.
-
-Computer code is not the important part in scientific exploration., although becoming more important in open source and reproducibility efforts.
-Often forgotten in
-
+Later this was also extended to include the {BT-Settl} library spectra.
 \# Handle any {PHOENIX} aces models.
 
 
 \section{Numerical Gradient}
 \label{sec:numerical_gradient}
-One of the key insights from \cref{eqn:optimal_weight,eqn:dv_rms} is that the radial velocity error is inversely proportional gradient of the spectra, In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
-In original code used in~\citet{figueira_radial_2016} the gradient or slope is approximated using the forward finite difference method.
-The \emph{numpy} package provides a function to calculate the gradient using a more advanced methods that compute a more precise gradient.
+One of the key insights from \cref{eqn:optimal_weight,eqn:dv_rms} is that the radial velocity error is inversely proportional gradient of the spectra, In numerically computing the {RV} precision, the result is slightly dependent on the numerical method used to compute the gradient.
+In the original code used in~\citet{figueira_radial_2016} the gradient or slope is approximated using the forward finite difference method.
+The \numpy{} package provides a function to calculate the gradient using a more advanced methods that compute a more precise gradient.
 In this section \todo{we} explore the affect of improving the precision of the numerical gradient on the final {RV} precision.
 
 The simplest way to calculate the derivative using finite difference methods~\citep{quarteroni_numerical_2000}.
@@ -99,9 +99,9 @@ At each pixel the numerical derivative is evaluated to be the average slope betw
 This only extends to \(i= n-1\), where \(n\) is the number of points in the spectrum, and the last pixel is dropped from the {RV} calculation.\footnote{This is important in the case of Condition~\#2.}
 
 
-The \emph{gradient}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}}  method provided in \emph{numpy} contains a more advanced numerical methods to calculate the derivative.
+The \emph{gradient}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}}  method provided in \numpy{} contains a more advanced numerical methods to calculate the derivative.
 It uses a \textit{compact difference} method~\citep{quarteroni_numerical_2000} which expand the finite differences using a Taylor expansion and then selecting coefficients to minimize the \textit{consistency error}.
-From the \emph{numpy} documentation the consistency error here is \[\eta_i = \partial{f(x_i)}/\partial{x} -  [\alpha f(x_i) + \beta f(x_i +h_d) + \gamma f(x_i - h_s)],\] where \(h_s\) and \(h_d\) are the spacing to the left and right of \(i\) respectively.
+From the \numpy{} documentation the consistency error here is \[\eta_i = \partial{f(x_i)}/\partial{x} -  [\alpha f(x_i) + \beta f(x_i +h_d) + \gamma f(x_i - h_s)],\] where \(h_s\) and \(h_d\) are the spacing to the left and right of \(i\) respectively.
 With Taylor expansion this turns into solving a linear system of equations:
 \[\begin{cases}
 \alpha + \beta + \gamma = 0\\
@@ -127,14 +127,14 @@ with an uncertainty of \(\mathcal{O}\left(\frac{\lambda(i+1){\lambda(i-1)}^{2} +
 {\red{} Wavelength spacing \(\delta\lambda\) between pixels is a function of \(\lambda\), Resolution and sampling choices.
     Can I do something with this??}
 
-The \emph{gradient} function from \emph{numpy} implements central differences for the interior points, accurate to second order, and first order accurate one-sided (forward or backward) differences at the boundaries, computed using the same compact difference procedure.
+The \emph{gradient} function from \numpy{} implements central differences for the interior points, accurate to second order, and first order accurate one-sided (forward or backward) differences at the boundaries, computed using the same compact difference procedure.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{figures/information-content/spectral_gradients}\\
     \caption[Comparing of numerical gradient alogithms.]{Visualization of the numerical gradient of some spectral lines.
         Top: The two spectral regions of a stellar spectrum the left hand slide contains short lines near the normalized continuum while on the right a single deep absorption line is shown.
-        Bottom: The numerical gradients for the spectra shown in the top panels; the original {FFD} method is displayed with \emph{blue squares} while \emph{numpy} gradient is shown with \emph{green stars}.
+        Bottom: The numerical gradients for the spectra shown in the top panels; the original {FFD} method is displayed with \emph{blue squares} while \numpy{} gradient is shown with \emph{green stars}.
         The \emph{orange circles} are the {FFD} version shifted to the mid-points between pixels for illustrative purposes.}
     \label{fig:gradients}
 \end{figure}
@@ -142,9 +142,9 @@ The \emph{gradient} function from \emph{numpy} implements central differences fo
 
 \input{tables/numerical_gradient.tex}
 
-In \cref{fig:gradients} \todo{we} visualize the gradients of two small spectral regions computed with the original {FFD}, and the higher precision version incorporated in numpy's gradient function.
+In \cref{fig:gradients} \todo{we} visualize the gradients of two small spectral regions computed with the original {FFD}, and the higher precision version incorporated in \numpy{}'s gradient function.
 The top panels contain the spectrum in the small regions shown, indicating a large spectral line and three small lines near the continuum respectively.
-The derivative of the spectra is shown in the bottom panel with the {FFD} method shown with \emph{blue squares} and the \emph{numpy} gradient shown in \emph{green stars}.
+The derivative of the spectra is shown in the bottom panel with the {FFD} method shown with \emph{blue squares} and the \numpy{} gradient shown in \emph{green stars}.
 The \emph{orange circles} are the same as {FFD} but shifted horizontally to the midpoints between pixels.
 This is for illustrative purposes and to assess the effect of this offset when calculating the pixel weights.
 
@@ -165,17 +165,17 @@ In this case the {RV} precisions are not comparable between bands and are only t
 The bands name and the spanned wavelength are given.
 The columns A, B, C are the {RV} precision for the different gradient methods.
 The \(\delta V\) ratios are the relative difference in {RV} when changing from method A (the original {FFD}) to methods B and C.
-In this table column B is the {FFD} method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \cref{fig:gradients} while column C is the more precise gradient from numpy.
+In this table column B is the {FFD} method but with the wavelength shifted to in between pixels, corresponding to the orange circles in \cref{fig:gradients} while column C is the more precise gradient from \numpy{}.
 
-We find that changing to use the gradient from \emph{numpy} increases the \(\delta V_{\rms}\) by 2.5--7\%, (decreasing the {RV} precision), due to the over-estimated gradient from the {FFD} method.
+We find that changing to use the gradient from \numpy{} increases the \(\delta V_{\rms}\) by 2.5--7\%, (decreasing the {RV} precision), due to the over-estimated gradient from the {FFD} method.
 As the pixel weights \cref{eqn:optimal_weight} are also proportional to \({\lambda}^{2}\) column B was computed to assess the effect of the slight wavelength offset on the {RV} precision, visible in \cref{fig:gradients}.
-This small wavelength shift red-ward does changed the {RV} precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using numpy's gradient method.
+This small wavelength shift red-ward does changed the {RV} precision by 0.1--0.6\% which is an order of magnitude smaller than the relative change when using \numpy{}'s gradient method.
 
 Changing the method of numerical derivatives will change all the precision values given in the~\citet{figueira_radial_2016}.
-This is a small impact on on the precision compared to other components of the {RV} precision.
+This is a small impact on the precision compared to other components of the {RV} precision.
 For instance from \cref{eqn:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\%  could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
 
-The current version of the software is now implemented with the gradient method provided by \emph{numpy} package.
+The current version of the software is now implemented with the gradient method provided by \numpy{} package.
 
 \subsection{Masking Function}
 \label{subsec:masking_function}
@@ -235,15 +235,15 @@ Analytically this identical to masking the pixel weights with \(M_2\) but not in
 When the spectrum is split into small sections the number of edges increases and the number of pixels affected by any edge effects increases.
 Using the {FFD} method to compute the gradient the last pixel is removed/lost.
 A spectrum split in \(m\) sub-spectra will therefore lose \(m\) pixels due to edge effects (instead of only 1 pixel with the full spectrum).
-Even the \emph{numpy} gradient is not immune to the edge effects in the sub-spectra when splitting the spectrum first.
+Even the \numpy{} gradient is not immune to the edge effects in the sub-spectra when splitting the spectrum first.
 Even though there is no pixels lost, the first and last pixels of each sub-spectra are computed using forward or backward differences, rather than central differences (as they would be in the full spectrum).
 Hence the gradients and weights of some pixels are slightly changed due to the splitting occurring first.
 
 We quantify the effect of splitting the spectrum before and after calculating the weights in \cref{tab:mask_ordering}.
 The columns label \emph{Split} represents splitting the spectrum before calculating the pixel weights while the \emph{Mask} columns calculate all the pixel weights first and then apply the \(M_2\) mask.
 The difference in {RV} precision between both situations and for both gradient methods are given.
-For the {FFD} gradient the ordering of masking changes decreases the {\red{}\(RV_{\rms}\)} by 0.2--0.7\%, while for the \emph{numpy} gradient it is increase but an order of magnitude smaller between 0.01--0.13\%.
-The {FFD} gradient is causes a larger difference as points that were masked out are now included where as with the \emph{numpy} gradient the end values are always included but their gradients are slightly changed.
+For the {FFD} gradient the ordering of masking changes decreases the {\red{}\(RV_{\rms}\)} by 0.2--0.7\%, while for the \numpy{} gradient it is increase but an order of magnitude smaller between 0.01--0.13\%.
+The {FFD} gradient is causes a larger difference as points that were masked out are now included where as with the \numpy{} gradient the end values are always included but their gradients are slightly changed.
 The last column is the difference ratio between the \emph{Mask} column of both gradient method, this is consistent with \cref{tab:numerical_gradients} with the differences from two gradient methods between 2--7\%.
 It shows that the difference from changing order of masking is 1--2 orders of magnitude smaller than changing the gradient method.
 
@@ -299,7 +299,7 @@ The centre of each band was visually checked to ensure that there were no spectr
 As shown in \cref{eqn:snr_relation} the {RV} precision is inversely proportional to the \snr{} level.
 To access the {RV} precision of any of the values in Table at a different \snr{} level you can apply the following
 \begin{equation}
-\rm {RV}_{\snr{}2} = {RV}_{\snr{}1} * \frac{\snr{}1}{\snr{}2}.
+{RV}_{{\snr{}}_{2}} = {RV}_{{\snr{}}_{1}} * \frac{{\snr{}}_{1}}{{\snr{}}_{2}}.
 \end{equation}
 
 \todo{\snr{} plot/diagram}
@@ -315,26 +315,25 @@ This meant that the masking applied for Condition \#2 was garbage, and not physi
 Essentially randomly masking portions of the spectra.
 The synthetic spectra did not have telluric contamination present but the proportion and location of the telluric masking applied was incorrect.
 
-A check for this issue was discovered using this unit test, written under the \href{}{pytest} testing framework.
+A check for this issue was discovered using this unit test, written under the \href{https://docs.pytest.org}{pytest} framework.
 Essentially, this takes a given transmission (telluric line) spectrum and creates a telluric mask at a line depth of 2\%.
-It then transforms the mask by the function \emph{barycentre\_broaden()} which performs the \(\pm30\)\kmps}{} barycentre broadening to account for the yearly motion of the Earth, and consecutive pixel check.
-This is the function under test here.
+It then transforms the mask by the function \emph{barycentre\_broaden()}, the function under test here, which performs the \(\pm30\)\kmps{} barycentre broadening to account for the yearly motion of the Earth, and consecutive pixel check.
 The assert statement performs the actual test, checking that if the new broadened mask is applied to the original transmission spectrum, then all values are greater or equal to the masking limit.
 That is the telluric lines are still completely masked out.
 
 This is not the only test required to sufficiently test the ``correctness'' of \emph{barycentre\_broaden()}, but it is a simple unit test\footnote{A unit test only tests  single specific piece of code or functionality at a time.} that would have caught the bug that was present.
-\begin{lstlisting}[language=Python, caption=Example unit test to catch masking bug. The assert statement checks that the mask continues to remove all absorption lines deeper than 2\%.]
+\begin{lstlisting}[language=Python, caption=Example unit test to catch the masking bug.\ The assert statement checks that the mask continues to remove all telluric lines deeper than 2\%.]
 def test_telluric_masking(wavelength, transmission):
-"""Check the mask still masks out all telluric lines > 0.98 after broadening the mask to
-accounting for the barycentre motion."""
-mask = telluric_mask(transmission, depth=0.98)  # Create mask
-mask = barycentre_broaden(wavelength, mask)     # Extend mask
-assert numpy.all(transmission[mask] >= 0.98)    # Check mask
+    """Check the mask still masks out all telluric lines > 0.98 
+    after broadening the mask to
+    accounting for the barycentre motion."""
+    mask = telluric_mask(transmission, depth=0.98)  # Create mask
+    mask = barycentre_broaden(wavelength, mask)     # Extend mask
+    assert numpy.all(transmission[mask] >= 0.98)    # Assert something about mask
 \end{lstlisting}
 
 Due to this bug the published {RV} precision values for Condition~\#2  in~\citet{figueira_radial_2016} are all incorrect.
-As the applied masking was unevenly applied the new correct {RV} precision values do not all change in the same direction or in the same proportion.
-The precision at some specific wavelengths and resolutions are essentially unchanged while other results changed by over 20\mps{}.
-The largest difference is seen in the \todo{check}{H} and K-bands.
-The difference can be seen in the shaded areas of \cref{} comparing the \citet{figueira_radial_2016} results to the updated values, with the upper limit defined by Condition \#2.
+As the masking was unevenly applied the new ``correct'' {RV} precision values do not all change in the same direction or in the same proportion.
+For example largest difference is seen in the \emph{J}- and \emph{K}-bands, with changes over 20\mps{}, whil other wavelength bands are essentially unchanged.
+The differences can be seen in the shaded areas of \cref{fig:figueria_comparision} comparing the \citet{figueira_radial_2016} results to the updated values, with the upper edge defined by Condition \#2.
 Even though there is an error with the values of condition~\#2 they do not change the overall conclusions of the paper.
