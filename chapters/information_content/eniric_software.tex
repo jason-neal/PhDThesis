@@ -1,29 +1,32 @@
 %!TEX root = ../../thesis.tex
 
-\section{Updating {RV} precision software}
-To undertake the calculation of {RV} precisions
-A large section of this work involved optimizing the original code used in~\citet{figueira_radial_2016}.
-Care needs to be taken to optimize the code.
-The original code used in~\citet{figueira_radial_2016} was slow, taking around 2 hours per simulation, this led to multiple weeks of processing time to compute the precision's for the original paper.
-
-In this section \todo{we} document the changes made to the code in the course of attempting to improving it.
-Features that change the derived {RV} precision are specifically documented in detail, with relative precision changes provided.
-
+\section{Eniric: Extended \nir information content}
+\label{sec:eniric}
+Here the software developed to compute the {RV} precisions is presented.
+It is an extension of the code used for the calculations of~\citet{figueira_radial_2016}, hence ``extended'' in the name.
+This section documents the vast improvements (optimizations and extensions) made to the software.
+Changes made that affect the derived {RV} precision attained are specifically documented in detail, with the relative precision changes provided.
 This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}} (JOSS) {Neal and Figueria 2018 (in prep.)} with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}.
 
 
-\subsection{Automated testing}
-To insure that any changes made to the code did not change the underling results.
-This involved writing automatic tests for the software.
-This practice is crucial in computer science ins commercial software development but seldom done in research but is becoming more popular.
-\reference{works of software testing in research.}
-Some work focused on testing ideology from computer science.
-Although not perfect implementation I began by adding automated tests to the code to check individual parts of it.
-Before making changes I created automated tests that would confirm the functionality of pieces of the code.
-I could then make changes to the code, to improve the performance without worrying that the results were different.
-Namely that the same precision were calculated in the end.
+{\red{}The original code used in~\citet{figueira_radial_2016} was slow, taking around 2 hours per simulation, this led to multiple weeks of processing time to compute the precision's for the original paper.}\todo{move}
 
-Functional test and unit tests.
+
+\subsection{Automated testing}
+\label{subsec:automated_testing}
+Before the changes to the software are detailed, a note about software testing.
+Automated software testing is an important practise to insure that the code written is correct, and that new changes to not break the previously written code.
+This practice is crucial in computer science and professional software engineering but seldom encouraged or practised in scientific programming~\cite{storer_bridging_2017}.
+It is however starting to becoming increasingly encouraged as part of the movement towards open and reproducible science.
+
+After inheriting the code-base from \citet{figueira_radial_2016}, software tests were added for a number of purposes: to learn and explore the code-base, to check and test the original functionality, and to identify if any changes implemented break the original functionality.
+Version control practises were used to incrementally add small separate changes to the code base at a time, regularly testing in a continuous integration manor.
+This is done by sending the code-base to a repository\footnote{public or private} on Github\footnote{\href{https://bitbucket.org}{Bitbucket} and \href{https://gitlab.com}{GitLab} are other popular options}.
+Automated tools and services then forward the project to testing, code style checking, or other continuous-integration services (e.g.\ \href{https://travis-ci.com}{Travis-CI}) which either run the automated tests, or other checks on each new change.
+The public Travis-CI record of the test for \emph{eniric} can be found at \href{https://travis-ci.org/jason-neal/eniric}{https://travis-ci.org/jason-neal/eniric}.
+
+This process was valuable in preventing the introduction of errors, but also in identifying and errors in the~\citep{figueira_radial_2016} results which are outlined in \cref{subsec:condition_two_bug}.
+Based on this experience it is a practise that is highly recommend for scientific programming.
 
 
 \subsection{Performance}
@@ -255,30 +258,6 @@ It has also been changed to just apply \(M_2\) rather than splitting and perform
     \todo{put this line elsewhere.}}
 
 
-\subsection{Atmospheric masking bug}
-\label{subsec:condition_two_bug}
-One thing that was revealed in testing was that there was an error in the application of Condition~\#2.
-When the telluric mask was shifted to account for barycentric motion of the earth, and the condition of 3 consecutive pixels in the telluric spectra being lower than the limit (due to the higher sampling) there was an software bug,
-
-
-A check for this issue was discovered using this unit test.
-\begin{lstlisting}[language=Python, caption=Example unit test to catch masking bug. The assert statement checks that the mask continues to remove all absorption lines deeper than 2\%.]
-def test_telluric_masking(wavelength, transmission):
-"""Check mask still masks out all telluric lines > 0.98 after
-accounting for barycentre motion."""
-mask = telluric_mask(transmission, depth=0.98)  # Create mask
-mask = barycentre_shift(wavelength, mask)       # Extend mask
-assert numpy.all(transmission[mask] >= 0.98)    # Check mask
-\end{lstlisting}
-The assert statements checks that when the mask is applied to the transmission spectrum again all of the values are outside of any deep telluric regions.
-A test like this would have caught this bug.
-
-This bug means that all the {RV} precision values for Condition~\#2 published in~\citet{figueira_radial_2016} incorrect.
-As the applied masking was unevenly applied~\citet{figueira_radial_2016} the new values {RV} precision values do not all change in the same proportion or direction.
-Some specific wavelengths and resolutions are essentially unchanged while other results change by over 20\mps{}.
-Even though there is an error with condition~\#2 they do not change the overall conclusions of the paper.
-These are \todo{add conclusions not affected}
-
 \subsection{\snr{} scaling}
 \label{subsec:snr_scaling}
 To analyse the relative precision of different spectra they need to normalized to a common reference point.
@@ -324,3 +303,38 @@ To access the {RV} precision of any of the values in Table at a different \snr{}
 \end{equation}
 
 \todo{\snr{} plot/diagram}
+
+
+
+\subsection{Atmospheric masking bug}
+\label{subsec:condition_two_bug}
+Applying testing practises revealed a error in the application of Condition~\#2 in \citep{figueira_radial_2016}.
+When the telluric line mask was broadened to account for the barycentric motion of the Earth, and the requirement requiring three consecutive pixels (the sampling rate) to exceed the cut-off limit to be considered masked out there was a software bug.
+
+This meant that the masking applied for Condition \#2 was garbage, and not physically meaningful.
+Essentially randomly masking portions of the spectra.
+The synthetic spectra did not have telluric contamination present but the proportion and location of the telluric masking applied was incorrect.
+
+A check for this issue was discovered using this unit test, written under the \href{}{pytest} testing framework.
+Essentially, this takes a given transmission (telluric line) spectrum and creates a telluric mask at a line depth of 2\%.
+It then transforms the mask by the function \emph{barycentre\_broaden()} which performs the \(\pm30\)\kmps}{} barycentre broadening to account for the yearly motion of the Earth, and consecutive pixel check.
+This is the function under test here.
+The assert statement performs the actual test, checking that if the new broadened mask is applied to the original transmission spectrum, then all values are greater or equal to the masking limit.
+That is the telluric lines are still completely masked out.
+
+This is not the only test required to sufficiently test the ``correctness'' of \emph{barycentre\_broaden()}, but it is a simple unit test\footnote{A unit test only tests  single specific piece of code or functionality at a time.} that would have caught the bug that was present.
+\begin{lstlisting}[language=Python, caption=Example unit test to catch masking bug. The assert statement checks that the mask continues to remove all absorption lines deeper than 2\%.]
+def test_telluric_masking(wavelength, transmission):
+"""Check the mask still masks out all telluric lines > 0.98 after broadening the mask to
+accounting for the barycentre motion."""
+mask = telluric_mask(transmission, depth=0.98)  # Create mask
+mask = barycentre_broaden(wavelength, mask)     # Extend mask
+assert numpy.all(transmission[mask] >= 0.98)    # Check mask
+\end{lstlisting}
+
+Due to this bug the published {RV} precision values for Condition~\#2  in~\citet{figueira_radial_2016} are all incorrect.
+As the applied masking was unevenly applied the new correct {RV} precision values do not all change in the same direction or in the same proportion.
+The precision at some specific wavelengths and resolutions are essentially unchanged while other results changed by over 20\mps{}.
+The largest difference is seen in the \todo{check}{H} and K-bands.
+The difference can be seen in the shaded areas of \cref{} comparing the \citet{figueira_radial_2016} results to the updated values, with the upper limit defined by Condition \#2.
+Even though there is an error with the values of condition~\#2 they do not change the overall conclusions of the paper.
