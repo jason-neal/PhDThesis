@@ -1,28 +1,25 @@
 %!TEX root = ../../thesis.tex
-To explain the extensions, first explain the figueira 2016 
-
 
 \section{Deriving RV for synthetic spectra}
 The work presented here extends the work of~\citep{figueira_radial_2016}.
-To contrast the improvements made the details of~\citep{figueira_radial_2016} are first presented.
+To contrast the improvements made here the details of~\citep{figueira_radial_2016} are first presented.
 Now that the general formulation has been provided, 8.13, 8.17.
 Other important factors to consider when deriving RV precision from synthetic spectra.
 
 \subsection{Prepare {PHOENIX-ACES} models}:
-\# see~\citet{figueira_radial_2016}
+Four {PHOENIX-ACES} spectra were selected, spanning the M-dwarfs regime (M0, M3, M6, M9) with model temperatures 3900, 3500, 2800 and 2600\K{} respectively. The other model parameters were \Logg=4.5, \feh{}=0 and \alphafe=0 representing values typical for M-dwarfs.
+The flux (spectral energy distribution) given by the library spectra (ergs/s/cm2/cm) are converted into photon counts by dividing the flux by the energy of a photon \({E}_{p}=hc/\lambda\)\. Neglecting the multiplicative constants, this corresponds to multiplying the flux values by the respective wavelength.
+In this case the absolute values do not matter, just the spectral shape, as the spectra will be scaled to a given \snr{} level.
 
-Convert SED to counts.
+\subsection{Convolution}
+The spectra are convolved by a rotation kernel followed by a Guassian instrumental kernel to broaden the spectra lines. 
+The implementation of these kernels are detained here followed by some details on how the  numerical convolution is implemented.
 
-
-Scale to 100 \snr{} per resolution element in \emph{J}-band.
-
-Convolutions
-
-\subsection{Rotational convolution}
+\subsubsection{Rotational convolution*}
 \label{subsec:rotational_convolution}
 Stellar rotation has the affect of broadening spectral lines as the different portions of the stellar surface have a variation of radial velocity between \(\pm v \sin i\).
 Rotation is applied to a non-rotating spectrum by convolution with a rotation kernel.
-The stellar rotational kernel used is given by~\citet{gray_observation_2005};
+The stellar rotational kernel used follows~\citet{gray_observation_2005};
 
 \todo{top view diagram of rotation?}
 
@@ -50,8 +47,8 @@ For small wavelength ranges this can be held fixed to improve performance.
 This simplifications is not performed in this work as large wavelength ranges are considered.
 
 
-\subsection{Instrumental Convolution}
-Following the rotational convolution the spectra are convolved with Gaussian instrumental profile ({\textrm{IP}}) with the {\fwhm}  constrained by the spectral resolution R, $\fwhm= \lambda/R$.
+\subsubsection{Instrumental convolution*}
+Following the rotational convolution the spectra are convolved with Gaussian instrumental profile ({\IP{}}) with the {\fwhm}  constrained by the spectral resolution R, $\fwhm= \lambda/R$.
 
 The Gaussian convolution kernel is of the form
 \begin{equation}
@@ -67,28 +64,20 @@ If a non-Gaussian instrument profile is particularly well characterized, then it
 For instance~\citet{artigau_optical_2018} state that the instrumental profile of a (circular) fibre-fed spectrograph such as {HARPS} is mathematically equivalent to a cosine between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$ with a width equivalent to the Gaussian {\fwhm}.
 From this description the integration of a circular fibre is given by
 \begin{equation}
-\textrm{IP}_{\textrm{fibre}(\Delta\lambda)} = \cos(B\cdot\Delta\lambda) ,  \hspace{2em} [-\frac{\pi}{2 B}, \frac{\pi}{2 B}]
+\IP{}_{\textrm{fibre}(\Delta\lambda)} = \cos(B\cdot\Delta\lambda) ,  \hspace{2em} [-\frac{\pi}{2 B}, \frac{\pi}{2 B}]
 \end{equation}
 where {$B = \frac{\fwhm_{0}}{\fwhm}$ } is scaled to give the same area.
-\citet{artigau_optical_2018} also mention that the RV precision results using this $\textrm{IP}_{\textrm{fibre}}$ are all consistent with just using a Gaussian kernel.
+\citet{artigau_optical_2018} also mention that the RV precision results using this $\IP{}_{\textrm{fibre}}$ are all consistent with just using a Gaussian kernel.
 
-\subsection{Numerical Convolution}
+\subsubsection{Numerical Convolution*}
 \label{subsec:numerical_convolution}
 In this work the stellar models undergo broadening by convolution with rotation and instrumental profile kernels (\cref{eqn:rotational_profile,eqn:IP_profile}).
 The convolutions are performed by analysing a single pixel at a time, and selecting the neighbouring pixels that fall within the convolution window\footnote{Region in which the convolution kernel will affect this particular pixel} for that pixel.
 The value of the convolution kernel is calculated at the position of each pixel selected, multiplied by the flux of each pixel and then summed to provide the new value at the selected single pixel{$^{\textbf{*}}$}.
 The shape of the convolution kernels and the size of convolution window are wavelength dependant (${\fwhm}=\lambda / R$ and $\Delta\lambda_{L}=\lambda \frac{\vsini}{c}$) and must be calculated separately for each pixel, making the convolution computationally expensive.
 
-However, the computation of the convolution of individual pixels is an ``embarrassingly parallel''\footnote{\href{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}} problem.
-What this means is that convolution result for pixel $i+1$ does not depend on the convolution result obtained for pixel $i$.
-Therefore, parallel processing was implemented to improve the performance of the convolution, roughly dividing the convolution time by the number of processors used.
-
 The python package \emph{PyAstronomy} also contains functions that perform rotational and instrumental broadening.
-Those functions however require that the spectrum have uniformly spaced $x$-coordinate spacing which is not a requirement for the implementation of \emph{eniric} used here.
-\emph{PyAstronomy}, while implemented a ``slow'' full version of the rotational convolution, with a wavelength dependent kernel, they also provide ``fast'' convolution kernels that are fixed, taking the central wavelength value.
-These are significantly faster but are only valid for very short wavelength regions, in which the kernels do not significantly change.
-They are not suitable for use in this work due to the large wavelength span of spectroscopic bands and the wavelength dependant spacing of the spectra.
-A comparison of the performance between \emph{PyAstronomy} convolution and the convolutions implemented in \emph{eniric} and used here are given in a \emph{Jupyter} notebook in the repository of ``eniric'', basically they fall in between the ``fast'' and ``slow'' implementation of \emph{PyAstronomy}.
+Those functions however require that the spectrum have uniformly spaced $x$-coordinate spacing which is not a requirement for the implementation of \eniric{} used here.
 
 One factor the needs consideration when convolving with an non-uniformly spaced spectrum is effect of the sampling on the convolution.
 For instance the number of points inside the convolution window, as well as their specific location will effect the area of the convolution kernel.
@@ -102,13 +91,18 @@ where $\Delta\lambda_{i}$ are the values between in the range $\lambda_{i} (1-\f
 instead of only
 \[{A}^{\prime}(\lambda_{i}) = \sum A(\Delta\lambda_{i}) \cdot G(\Delta\lambda_{i}).\]
 
-
 By default edge effects are avoided by providing an input spectra sufficiently wider than the desired output spectrum to prevent edge effects on the portion of the spectrum desired.
-Since two convolutions are performed one after the other the original input spectrum is selected wider than needed so that no edge effects will be present after both addition of rotation and instrumental broadening by \Vsini{} and \(R\).
-
-
+Since two convolutions are performed one after the other the original input spectrum is selected to be wide enough such that no edge effects will be present after both convolutions.
 
 \subsection{Bands}
-The bands analysed avoid the strong water absorption in the \nir{} that can be seen the {CARMENES} spectra in Figure~\reference{Add figure here}\todo{Add figure here}.
-These are the Z, Y, J, H, K- bands found in \cref{tab:infrared_bands}.
+The spectra are split up into the \nir{} wavelength bands to avoid the regions of strong water absorption in the Earth atmosphere in the \nir{}. These \ce{H2O} regions that defined htese bands can be seen in the telluric spectrum in \cref{fig:}\todo{check  molecfit} or in the raw {CARMENES} spectra in \cref{fig:carmenes_raw} Figure~\reference{Add figure here}\todo{Add figure here}.
 
+The bands selected are the \emph{Z}, \emph{Y}, \emph{J}, \emph{H}, \emph{K}-bands with the specific wavelength bounds given in \cref{tab:infrared_bands}. This allows for the spectral precision to be compared between different wavelength bands.
+
+\subsection{\snr{} scaling}
+The purpose of~\citet{figueira_radial_2016} was to compute only the relative precisions between the synthetic models. This was done by normalizing each spectrum, after convolution, to a \snr{} of 100 at the centre of the \emph{J}-band. Specifically this is achieved by summing the three pixels (same as the sampling per resolution element) centred at 1.25\nm{} scaling the result so that this sum becomes \(100^2\). In this way the \(\snr{} =\sqrt{F}\) is 100. The specific scaling values were hard coded into the software, making it difficult to quickly analyse a new spectrum.
+
+\subsection{Precision calculations}
+Finally the computation of the {RV} precision application of \cref{eqn:dv_rms} is applied to the individual convolved spectral bands.
+
+This is done under three separate conditions to assess different telluric line treatments. To avoid repetition these conditions are explained below in \cref{subsec:masking_function}.
