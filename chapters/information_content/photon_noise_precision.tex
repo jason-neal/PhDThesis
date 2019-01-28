@@ -102,7 +102,7 @@ With the optimal weights set, the weighed average velocity change measured from 
     \sum { 
         (A(i) - {A}_{0}(i))
         \frac
-        {\lambda(i) {\partial {A}_{0}(i)}/{\partial \lambda(i)})}
+        {\lambda(i) {\partial {A}_{0}(i)}/{\partial \lambda(i)}}
         {A_{0}(i) + {\sigma}^{2}_{D}}
     }
 }
@@ -145,7 +145,7 @@ across the wavelength range \(\Lambda\) in \si{\photons\per\second\per\centi\met
 \(S_{tel}\) is the telescope collecting area in \si{\centi\metre\squared},
 \(\texp\) is the integration time in \si{\second}, and \(\alpha\) the is overall system efficiency (including atmosphere, telescope, spectrograph and detector).
 
-This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to predict the accuracy or performance limits of new spectrograph instrumentation~\citep[e.g.][]{connes_absolute_1985,butler_attaining_1996,bouchy_fundamental_2001} and has influence the design (and use) of spectrographs, e.g.\ {SPIRou}~\citep{artigau_spirou_2014,figueira_radial_2016}).
+This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to predict the accuracy or performance limits of new spectrograph instrumentation~\citep[e.g.][]{connes_absolute_1985,butler_attaining_1996,bouchy_fundamental_2001} and has influence the design (and use) of spectrographs, e.g.\ {SPIRou}~\citep{artigau_spirou_2014,figueira_radial_2016}.
 However,~\citet{figueira_radial_2016} bypass the calculation of \(N_{{e}^{-}}\) in \cref{eqn:Ne} by scaling the synthetic spectral models to a specific \snr{} level instead.
 
 In the case of several \(\delta V\) measurements computed for \(k\) spectral slices (or spectral orders) then the error on the average \(\overline{\delta V}\) is given by the error on a weighted average:
