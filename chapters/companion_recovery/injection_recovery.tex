@@ -2,7 +2,7 @@
 
 \subsection{Companion injection-recovery}
 \label{subsec:injection-recovery}
-To determine the detection limits for this method a injection-recovery approach was used to simulate spectra with a range of companions.
+To determine the detection limits for this method an injection-recovery approach was used to simulate spectra with a range of companions.
 This is done by using the observed spectra and injecting onto them a synthetic companion, at the absolute flux ratio to which it would have been added to a synthetic host with the same parameters.
 The {RV} of injected companion is set to 100\kmps{} so that the companion lines are well separated from the lines of the host.
 This separation chosen is slightly larger than the largest host-companion separation ({HD~162020}) in the observed targets, given in \cref{tab:observations} \Rvtwo{}.
@@ -12,11 +12,11 @@ This leaves only the companion \(\teffsub{2}\) and \Rvtwo{} parameters free, to 
 The wavelength masking is used to reduce the level of mismatch between synthetic and the observed spectra.
 The spectra were injected with companions between 2500--5000\K{} and the companion recovery attempted on each.
 
-The injection recovery also performed on a synthetic host spectra representing each target as a comparison.
+The injection recovery was also performed on a synthetic host spectra representing each target as a comparison.
 For the synthetic host injection-recovery the wavelength range of the synthetic spectra used is three sections interpolated to 1024 values in the wavelength span of detectors \#1, \#2, and \#3.
 For each section, Gaussian noise is added at the level measured in the corresponding detector in the observation of the target being represented.
 
-In \cref{fig:injectrecoveryhd30501} the results of the injection-recovery on {HD 30501} are show the injected companion temperature verses the companion temperature recovered.
+In \cref{fig:injectrecoveryhd30501} the results of the injection-recovery on {HD 30501} show the injected companion temperature verses the companion temperature recovered.
 The blue dots represent the injection into the real observations, while the orange triangles represent injection into the synthetic host.
 Error bars of \(\pm100\)\K{} are included to indicate the temperature grid size only, and do not come from the recovery itself.
 The black dashed diagonal is the temperature 1:1 relation, where a correctly recovered companion should reside.
@@ -29,7 +29,7 @@ At temperatures above 3800\K{}, in both the real and synthetic spectra, the inje
 For injected companion temperatures below 3800\K{} the temperature recovered is systematically higher than the injected value.
 This indicates that the companion is not correctly recovered and is affected by the added noise.
 The temperature of deviation is deemed to be the upper temperature limit for the recovery by this method.
-For the other stars upper limit from the injected observations could not be reliably determined, mainly due to spectral mismatch issues.
+For the other stars, an upper limit from the injected observations could not be reliably determined, mainly due to spectral mismatch issues.
 In these cases the results from the synthetic injection are used to derive a temperature recovery cut-off for each target, each simulated with the closest synthetic spectrum to the host star.
 
 Using the temperature cut-off values, an upper mass limit is derived for the companions around our stars using the~\citet{baraffe_new_2015} evolutionary models, finding the closest point matching the spectral temperature cut-off and \(\logg{}=5.0\).
@@ -40,7 +40,7 @@ The flux ratio between the cut-off companion spectra and the host star are also 
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.6\linewidth]{figures/companion_recovery/inject_recovery_hd30501.pdf}
+    \includegraphics[width=0.8\linewidth]{figures/companion_recovery/inject_recovery_hd30501.pdf}
     \caption[Result of simulated injection-recovery of synthetic companions on {HD~30501}.]{Result of simulated injection-recovery of synthetic companions on {HD~30501}.
         The blue dots and orange triangles indicate the recovered companion temperature for the observed and synthetic spectra respectively.
         The \(\pm100\)\K{} error bars are the grid step of the synthetic models.
