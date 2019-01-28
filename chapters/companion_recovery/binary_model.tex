@@ -79,7 +79,8 @@ These processes and others could however be included in the future to improve th
 Instead, a radial velocity component is included in the \textchisquared{} fitting, which is not included in~\citet{passegger_fundamental_2016}.
 
 {\red Rotational broadening of the host was not included in these models as an extra variable fitting  parameter.
-In \citet{passegger_carmenes_2018} rotational broadening is only included at the fine grid search stage, using only a fixed value for each target to determine, determined in a separate work, to reduce the number of parameters. A fine search is not attempted in this work.}
+In \citet{passegger_carmenes_2018} rotational broadening is only included at the fine grid search stage, using only a fixed value for each target to determine, determined in a separate work, to reduce the number of parameters.
+A fine search is not attempted in this work.}
 
 \subsubsection{Binary model}
 \label{subsubsec:binary-model}
@@ -172,7 +173,8 @@ A starting point for \(\teffsub{2}\), the estimated companion temperature from t
 The temperature grid is extended about this value in each direction, within the temperature limits of the synthetic model limits.
 For example the companion temperature grid spans \(-600\) to \(+400\)\K{} in \cref{fig:Mdwarf_contours} and \(\pm400\)\K{} in \cref{fig:HD211847_simulated_contours,fig:HD211847_result_contours} about the estimated companion temperature.
 
-The large number of possible combinations stated above also do not include the {RV} grid for each component, which is user defined and can have a variable resolution, and amplitude. For example, the number of models to compute increases  with a decrease in the grid step size (a finer {RV} resolution) for a fixed {RV} range.
+The large number of possible combinations stated above also do not include the {RV} grid for each component, which is user defined and can have a variable resolution, and amplitude.
+For example, the number of models to compute increases  with a decrease in the grid step size (a finer {RV} resolution) for a fixed {RV} range.
 The {RV} grid space can be reduced significantly by tailoring it to the target being examined.
 For each target and observation, the estimated {RV} values from \cref{tab:observations} are used as a centre starting point for the \Rvone{} and \Rvtwo{} values and then incremented within a few {\fwhm} around those values, or out to the targets \Kone{} or \Ktwo{} values.
 
