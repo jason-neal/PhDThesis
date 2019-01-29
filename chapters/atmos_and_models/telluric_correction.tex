@@ -4,12 +4,11 @@
 \label{sec:telluric_correction}
 
 Typically the absorption of the Earth's atmosphere (telluric lines) is corrected with the standard star method~\citep[e.g.][]{vacca_method_2003}.
-This method observed a ``standard star'', a very hot (O or A-type), fast rotating star.
-These stars have minimal spectral features themselves so reveal the spectrum of the telluric lines.
+This method relies on the observation of a ``standard star'', a very hot (O or A-type), fast rotating star.
+These stars have minimal spectral features themselves so allow the spectrum of the telluric lines to be revealed. The fast rotation is desired as it broadens the few remaining stellar lines, essentially diluting their impact.
 The telluric lines present in a spectrum of the science target can be corrected/removed by dividing it by the spectrum of the standard star.
 
-The observation of the standard star needs to be observed close in the sky and time to the science observation to have a similar atmospheric absorption to the science target.
-For high-resolution spectroscopy this technique is not sufficient to correct telluric with residuals greater than 2\% remaining.
+The standard star needs to be observed close in the sky and in time to the science observation to have a similar atmospheric absorption to the science target. Airmass and molecular composition differences along the different paths to the target and standard will however cause variations in the line strengths~\citep{bailey_correcting_2007}.
 
 Recently synthetic modelling of telluric absorption has gained popularity with several works focusing on correcting telluric absorption with synthetic models~\citep[e.g.][]{bailey_correcting_2007, cotton_atmospheric_2014, seifahrt_synthesising_2010} and achieving better correction than the standard star method.
 There are several different software packages available which usually build upon the standard line-by-line radiative transfer model code {LBLRTM}~\citep{clough_linebyline_1995}.
@@ -17,9 +16,10 @@ Some examples are {TelFit}~\citep{gullikson_correcting_2014}, and ESO's {Molecfi
 The synthetic models at high resolution are very sensitive to atmospheric constituents, especially water vapour, and observing conditions such as the airmass.
 
 Recently~\citet{ulmer-moll_telluric_2018} compared the telluric correction efficiency between {TelFit}, {Molecfit}, {TAPAS}, and the standard star method.
-They found that {Molecfit} and {Telfit} synthetic corrections lead to smaller residuals for lines arising from \ce{H2O}, while the standard star method corrects for \ce{O_2} lines best.
-All methods (synthetic and standard star) result in a scatter inside the telluric lines of 3--7\%.
+They found that {Molecfit} and {Telfit} synthetic corrections lead to smaller residuals for lines arising from \ce{H2O}, while the standard star method corrects for \ce{O2} lines best.
+All methods (synthetic and standard star) resulted in a scatter of 3--7\% inside the telluric lines ~\citep{ulmer-moll_telluric_2018}.
 They also find that an observatory tailored atmospheric profile leads to reduced scatter inside telluric lines and that the correction performed better with lower precipitable water vapour.
+The personal contribution to this work was mainly in the form of reduced CRIRES spectra.
 
 As an example \cref{fig:telluricmodelcomparision} shows the telluric correction using the three different methods, {Molecfit}, {TelFit} and {TAPAS}\footnote{Performed here by Sol\`{e}ne Ulmer-moll.}, of a spectrum extracted for this work, detector \#4 of observation HD\,4747-1  (see \cref{tab:observations}).
 There are differences between the models of around 2\% level, with the largest difference near the deep telluric line around 2163\nm{}.
@@ -44,7 +44,9 @@ This is detailed further below.
 Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of the AtmosPhere for AStronomical data) web service\footnote{\href{http://cds-espri.ipsl.fr/tapas}{http://cds-espri.ipsl.fr/tapas}}~\citep{bertaux_tapas_2014}.
 {TAPAS} uses the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995} along with the 2008 {HITRAN} spectroscopic database~\citep{rothman_hitran_2009} and {ARLETTY} atmospheric profiles derived using meteorological measurements from the ESPRI data centre\footnote{\href{https://cds-espri.ipsl.upmc.fr}{https://cds-espri.ipsl.upmc.fr}} to create telluric line models.
 
-The {ARLETTY} atmospheric profiles have a 6~hour resolution, so there may be a slight difference between the actual profile at the time of observation.
+The {ARLETTY} atmospheric profiles have a 6~hour resolution.
+However, differences to the actual profile at the time of observation are likely to exist as there are seasonal, daily, and even hourly variations in the volume mixing ratio of atmospheric constituents \citep[e.g.][]{ramanathan_daily_1953, thoning_atmospheric_1989, schneising_three_2009}.
+The most prominent being water vapour, which is directly related to the local weather conditions.
 
 There are several parameters that can be submitted to the web service to define the requested telluric spectra, such as: target coordinates, date and time, location, spectral resolution, wavelength range and units choice observations, as well as the atmospheric profile and the choice of several atmospheric constituents to be included in the model spectra.
 {TAPAS} produces the telluric spectrum and sends a link to the results via email.
@@ -91,8 +93,8 @@ Trial and error was needed to understand all the {XML} form entries, such as the
 The main issue was with the {TAPAS} {{ID}} number.
 Each {TAPAS} request has an {ID} number (which is provided with the email response).
 This {ID} number needs to be correctly set in the {XML} form before submission.
-This number is incremented by 1 with each submission but its initial value is unknown unless you made the very last request.
-If a submission is made via the {XML} request with the incorrect {ID} number a response will be returned with the correct {ID} number, but the failed request will be returned.
+This number is incremented by 1 with each submission made to the server; as such, the absolute request ID is unknown to the requester.
+If a submission is made via the {XML} request with the incorrect {ID} number a response will be returned with the currently correct {ID} number, but a failed request will be returned due to the incorrectly submitted ID number.
 This can then be used to increment the {ID} number by 1 and hopefully make a valid request.
 Unfortunately, if another user makes a {TAPAS} request between submissions the {ID} number will again be invalid.
 It is unknown if multiple transmission spectra could have been requested at the same time with the {XML} form.

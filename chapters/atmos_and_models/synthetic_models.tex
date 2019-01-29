@@ -2,11 +2,11 @@
 
 
 \section{Synthetic Stellar models of cool stars}
-Modelling of stellar structure, atmospheres and evolution is used to try and understand the observations, pieced together with several physical, chemical and hydrodynamical models.
-One output from these models is synthetic stellar spectra.
-These spectra can be compared to observed spectra to attempt to classify and understand the stellar populations.
-There is an ever evolving effort to improve these stellar models and synthetic spectra to better match the observations; incorporating more physics, chemical reactions and line lists, and using the latest element abundances.
-In this work extensive use of the {PHOENIX-ACES} models is made with some experimentation with the {BT-Settl} models.
+The understanding of stellar physics is strongly built upon modelling, incorporating stellar structure, atmospheres and evolution, pieced together with several physical, chemical and hydrodynamical models.
+One particular model output of importance for this work are the synthetic stellar spectra.
+These spectra can be compared to observed spectra to attempt to classify and understand the stellar populations, as well as test the models fit to reality.
+There is an ever evolving effort to improve these stellar models and synthetic spectra to better match the observations; incorporating more physics, chemical reactions, line lists, and using the latest element abundances.
+This work extensively uses the {PHOENIX-ACES} synthetic spectra, with a little experimentation with the {BT-Settl} models.
 A collection of several theoretical stellar spectral libraries can be found at the Spanish Virtual Observatory \href{http://svo2.cab.inta-csic.es/theory/newov/index.php}{Theoretical Spectra Web Server}.
 
 The~\citet{kurucz_model_1979} models are popular synthetic models for stars ranging between G-O type with effective temperatures between 5500--50\,000\K{}.
@@ -23,7 +23,7 @@ At the other extreme the \emph{COND} models ignore the dust opacities and simula
 The treatment of clouds and dust is important for the modelling of low mass stars and Brown Dwarfs.
 The \emph{DUSTY}/\emph{COND} models are similar above 2600\K{} but below this temperature they diverge due to the crystallization of silicates in the atmosphere~\citep{allard_limiting_2001}.
 These are only a few of the physical considerations implemented in the synthetic models.
-The other notable changes in the name convention for the synthetic spectra are due to use of specific line lists.
+The other notable changes are due to use of specific line lists used.
 The models beginning with {AMES} use the {NASA-AMES} \ce{H2O} and \ce{TiO} line lists, while the {BT} models use the~\citet{barber_highaccuracy_2006} \ce{H2O} line list.
 Between models the use of improved solar abundance measurements is also included~\citep[][]{asplund_chemical_2009}.
 
@@ -42,7 +42,7 @@ It uses the most recent version (16) of the {PHOENIX} code and is suitable for t
 THE {PHOENIX-ACES} models uses the Astrophysical Chemical Equilibrium Solver (ACES, Barman 2012) new in version 16 of {PHOENIX} to perform state-of-the-art treatment of the chemical equilibrium.
 It also adds parametrisations for the mass and mixing-length, and uses the solar abundances of~\citet{asplund_chemical_2009}.
 
-As noted in~\citep{husser_new_2013} there are significant differences between the spectra from {PHOENIX-ACES} and previous {PHOENIX} model spectra.
+As noted in~\citet{husser_new_2013} there are significant differences between the spectra from {PHOENIX-ACES} and previous {PHOENIX} model spectra.
 For instance the equation of state solver ACES strongly affects the stellar structure and different line and molecular band strengths.
 Unfortunately there are several changes introduced with {PHOENIX-ACES} making it difficult to distinguish and quantify the different effects.
 
@@ -132,10 +132,11 @@ This is in an attempt to match the parameters to the observations of {Arcturus} 
 Cross-correlation and a Doppler shift has been used to align the model spectra to the observations.
 There is a striking difference between the models and observations with several lines present in the models that are not seen in the real observation, while a few lines observed that are not seen in the models.
 When the observed absorption lines do align with the models there is a difference in the depth of the lines.
+These differences are primarily not from the differences between the model parameters actual stellar parameters which are small.
 These differences are shown at two different wavelengths and reveal that there is still room for improvement in the synthetic models to match observed spectra in the \nir{} and at high resolution.
-Spectral decadencies in the {BT-Settl} models are noted by~\citet{rajpurohit_effective_2013}.
+Spectral discrepancies in the {BT-Settl} models are noted by~\citet{rajpurohit_effective_2013}.
 
-A further example of this is shown in \cref{fig:visualinspection-hd2118471} in which the fitted model, dominated by a single {PHOENIX-ACES} model, is compared to the observed {CRIRES} spectra.
+A further example of this is shown in \cref{fig:visualinspection-hd2118471} in which an observed {CRIRES} spectra is fitted with a binary model. The flux ratio is 0.066 so the model is dominated by a single {PHOENIX-ACES} model, and shows several line discrepancies.
 This caused issues with the fitting procedure in \cref{cha:model_comparison}.
 \Cref{fig:crires-pop-mismatch} is a further example of the spectral differences at the \nir{} wavelengths specifically used in this work, in a spectra from (in reduced form) the CRIRES-POP library~\citep{lebzelter_crirespop_2012,nicholls_crirespop_2017}.
 It shows differences between the CRIRES-POP \emph{K}-band spectra of {10\,Leo} and the {PHOENIX-ACES} spectrum with corresponding parameters (\txteff=4800, \Logg{}=3.00, \feh{}=0.0).
@@ -144,7 +145,7 @@ It shows differences between the CRIRES-POP \emph{K}-band spectra of {10\,Leo} a
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{figures/atmos_and_models/CRIRES-POP-mismatch}
-    \caption[Comparision of the spectrum of {10\,Leo} to synthetic {PHOENIX-ACES} spectum.]{CRIRES-POP spectra of {10\,Leo} compared with a {PHOENIX-ACES} model for the wavelength range setting used in \cref{cha:direct_recovery,cha:model_comparison}.}
+    \caption[Comparision of the spectrum of {10\,Leo} to synthetic {PHOENIX-ACES} spectum.]{CRIRES-POP spectra of {10\,Leo} compared with a {PHOENIX-ACES} model for a CRIRES observation between 2112-2165\nm{}.}
     \label{fig:crires-pop-mismatch}
 \end{figure}
 \todo{\cref{fig:crires-pop-mismatch} needs improved style}

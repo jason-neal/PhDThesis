@@ -3,7 +3,7 @@
 \section{Evolutionary models}
 \label{sec:evolutionary_models}
 Modelling of the evolution of a star, from birth thorough its journey on the main sequence until its death as it slowly cools as a dwarf or explodes as a super-novae, is important for understanding how the observable properties  (temperature/photometric colours) change over time.
-The main factor for the fate and evolution rate is a stars mass, with large stars evolving quickly and dying explosive deaths while low mass stars sustain fusion for several orders of magnitudes longer.
+The main factor for the fate and evolution rate is a star's mass, with large stars evolving quickly and dying explosive deaths while low mass stars sustain fusion for several orders of magnitudes longer.
 Brown Dwarfs do not have enough mass to achieve stable hydrogen fusion and slowly cool down over their lifetime.
 
 This work uses stellar evolutionary models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015} to estimate the properties of the giant planets, brown dwarfs and low-mass stars given the mass and age.
@@ -22,12 +22,12 @@ where \(m_{1}\) and \(m_{2}\) are the magnitude of the host and companion respec
 
 The photometric apparent magnitudes for the host stars, \(m_{1}\), in several wavelength bands are easily obtained through online catalogues such as {SIMBAD}~\citep{wenger_simbad_2000} or {2MASS}~\citep{skrutskie_two_2006}.
 However, the magnitudes of the companions, \(m_{2}\), are not readily available as they have not been directly measured.
-The stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015} are used to estimate the magnitude of the companion.
-A given companion mass, and a stellar age will uniquely identify a point in the Baraffe models which corresponds to a specific magnitude for the companion.
+The stellar evolution models of~\citet{baraffe_evolutionary_2003, baraffe_new_2015} are used to estimate the absolute magnitude in different bands of the companion.
+A given companion mass, and a stellar age will uniquely identify a point in the Baraffe models which corresponds to a specific set of magnitudes for the companion.
 The evolution tables are also interpolated to reach companion masses and stellar ages between the models provided.
 
 In \cref{tab:estimated_flux_ratios} the host-companion flux ratio estimates for the targets analysed in this work are presented.
-The {K}-band flux ratios are calculated to match the observed {CRIRES} spectra at 2.1\um{}.
+The {K}-band magnitudes to calculate the \emph{K}-band flux ratios to match the observed {CRIRES} spectra at 2.1\um{}.
 The stellar ages used for the each system are given in \cref{tab:star_params} while the companion masses are given from \cref{tab:orbitparams}.
 The age and companion mass are both used to obtain the absolute magnitude for the companions.
 For the companions in which only the minimum mass (\Mtwosini{}) is known then the flux-ratio given will be the lower limit, or worst case scenario.
@@ -45,7 +45,7 @@ The distance is obtained from the trigonometric parallax  $\pi$ using the formul
 Therefore it is important to remember to convert the parallax to arcseconds first, to avoid embarrassing calculation errors!}.
 In this work the recent high-precision parallax measurements from GAIA~\citep{collaboration_gaia_2018} are used.
 
-From the flux ratio the noise ratio between the host and companion can also be calculated in a similar way using the equation \(N_{2}/N_{1} = \sqrt{2} \times\sqrt{F_{1}/F_{2}}\).
+From the flux ratio the noise ratio between the host and companion can also be calculated in a similar way using the equation \(N_{2}/N_{1} = \sqrt{2} \times\sqrt{F_{1}/F_{2}}\).\todo{explain where 2 comes from: I got this from the observing proposal but I have not been able to find a definitive source for this, to explain it. My assumption is it comes from the mutual subtraction stage...}
 
 
 \subsection{Baraffe tables}
