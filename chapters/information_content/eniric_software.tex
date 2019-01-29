@@ -64,7 +64,7 @@ A comparison of the performance between the \emph{PyAstronomy} convolutions and 
 \label{subsec:eniric_model_extesion}
 The original software hard-coded the range of models computed, specifically by identifying the spectra by their spectral types (M0--M9) and the specific \Vsini{} and resolution values.
 
-The software was made more suitable to future computations, by allowing any spectrum in the {PHOENIX-ACES} library grid to be analysed, provided the four identifying parameters [\Teff, \Logg, \feh{}, $\aleph$ \alphafe{}]. 
+The software was made more suitable to future computations, by allowing any spectrum in the {PHOENIX-ACES} library grid to be analysed, provided the four identifying parameters [\Teff, \Logg, \feh{}, $\aleph$ \alphafe{}].
 
 Later this was also extended to include the {BT-Settl} library spectra.
 \# Handle any {PHOENIX} aces models.
@@ -340,6 +340,6 @@ def test_telluric_masking(wavelength, transmission):
 \end{python}
 Due to this bug the published {RV} precision values for Condition~\#2  in~\citet{figueira_radial_2016} are all incorrect.
 As the masking was unevenly applied the new ``correct'' {RV} precision values do not all change in the same direction or in the same proportion.
-For example largest difference is seen in the \emph{J}- and \emph{K}-bands, with changes over 20\mps{}, whil other wavelength bands are essentially unchanged.
+For example largest difference is seen in the \emph{J}- and \emph{K}-bands, with changes over 20\mps{}, while other wavelength bands are essentially unchanged.
 The differences can be seen in the shaded areas of \cref{fig:figueria_comparision} comparing the \citet{figueira_radial_2016} results to the updated values, with the upper edge defined by Condition \#2.
 Even though there is an error with the values of condition~\#2 they do not change the overall conclusions of the paper.
