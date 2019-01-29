@@ -8,7 +8,8 @@ Each stage in the pipeline performs a specific task, for example creating the ma
 The result of one stage is passed to the next (either automatically or manually).
 Two different pipelines were available to reduce the {CRIRES} observations used in this work.
 The first is the standard {CRIRES} pipeline\footnote{\href{https://www.eso.org/sci/software/pipelines/}{https://www.eso.org/sci/software/pipelines/}}, available from {ESO}.
-The second is an in-house pipeline previously used in~\citet{figueira_radial_2010} called {DRACS} (Data Reduction Algorithm for {CRIRES} Spectra)\change{Pedro it is my understanding that the {ESO} pipeline did not exist/was not publicly available when you created {DRACS}, correct?}.
+The second is an in-house pipeline previously used in~\citet{figueira_radial_2010} called {DRACS} (Data Reduction Algorithm for {CRIRES} Spectra)
+This was created due to a lack of a reduction pipeline for CRIRES at the time.
 In these next sections the experience gained using both pipelines, comparing the extracted spectra and user experience is documented.
 
 
@@ -37,7 +38,7 @@ Because of this, it was chosen to use the other pipeline and these calibration w
 {ESO} has a new reduction ``workflow'' called {ESO} Reflex~\citep{freudling_automated_2013}\footnote{\href{https://www.eso.org/sci/software/esoreflex/}{https://www.eso.org/sci/software/esoreflex/}}.
 This enables automated reduction with the ability to chain together the extraction recipes in the specific order desired, repeat steps to optimize the reduction, and automatically handle the data organization (no need to manually select the files for each recipe).
 This would likely have enabled a quicker and more consistent reduction of the spectra.
-Unfortunately, it is not available for the {CRIRES} pipeline.
+Unfortunately {ESO} Reflex was not, and is still not, available for the {CRIRES} pipeline.
 
 \subsection{{DRACS}}
 \label{subsec:dracs}
@@ -53,7 +54,7 @@ Finally, the normalized nod-cycle spectra are averaged together to give a single
 The {DRACS} pipeline was originally developed to work with \emph{H}-band spectra.
 Because of this, some of the parameters were adjusted in an attempt to achieve a better reduction on the \emph{K}-band spectra analysed here.
 The parameters adjusted were the tracing and normalization polynomial functions and their specific order on the detector.
-Also, there was initially no reduction parameters present for detector \#3 as detector \#3 was not reduced in previous works using this pipeline.
+Also, there was initially no reduction parameters present for the third detector as it was not reduced in previous works using this pipeline.
 Therefore, the pipeline was extended to be able to reduce detector \#3 of CRIRES, by adjusting the pipeline code and finding suitable parameters for detector \#3.
 
 When using the {DRACS} pipeline on a new target, the tedious part is initially creating the lists of files identifying which files are the dark, flat, and the science frames\footnote{The {GASGANO} {GUI} was helpful to identify the distinction of each fits file for a beginner.}.
@@ -65,7 +66,7 @@ This was useful to experiment with and iterate the reduction parameters of the p
 When changing the parameters which affect the order tracing, the database with the order tracing results needed to be deleted so that it would not influence the new fits.
 These parameters were therefore slower to iterate on.
 
-This semi-autonomous nature of the {DRACS} pipeline means that all the spectra can be reduced in a consistent way, relatively quickly, and does not require manual spectra selection for each individual recipe as was done with the {ESO} pipeline.
+This semi-autonomous nature of the {DRACS} pipeline means that all the spectra can be reduced in a simple and consistent way, relatively quickly, and does not require manual spectra selection for each individual recipe as was done with the {ESO} pipeline.
 
 There are a couple of drawbacks with using the {DRACS} pipeline.
 The first is the lack of documentation on how to use it.
@@ -77,14 +78,16 @@ The second drawback is that {DRACS} does not perform wavelength calibration, whi
 This means an external wavelength calibration was the only option (see \cref{subsec:wavecalib}).
 The last drawback is the discovery of artefacts present in the nod spectra, which are discussed in detail in \cref{subsubsec:reductionartefacts}.
 
+In opposition to the official CRIRES pipeline, {DRACS} allows for a simple way to do homogeneous reduction of data. However, this pipeline resorts to the {IRAF} recipes, which in turn have to be fine tuned in detail thorough extensive parametrization to reduce the data correctly.
+
 \subsection{Pipeline comparison and selection}
 \label{subsec:pipeline-selection}
 \begin{figure}
     \begin{tabular}{cc}
-        \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_1} & \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_1}\\
-        \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_2} & \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_2}\\
-        \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_3} & \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_3}\\
-        \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_4} & \includegraphics[width=0.5\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_4}\\
+        \includegraphics[width=0.47\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_1} & \includegraphics[width=0.47\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_1}\\
+        \includegraphics[width=0.47\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_2} & \includegraphics[width=0.47\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_2}\\
+        \includegraphics[width=0.47\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_3} & \includegraphics[width=0.47\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_3}\\
+        \includegraphics[width=0.47\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD30501-1_chip_4} & \includegraphics[width=0.47\linewidth]{figures/reduction/pipeline_compare/pipeline_compare_HD202206-1_chip_4}\\
     \end{tabular}
     \caption[Comparision between {DRACS} and {ESOs} reduction pipeline output.]{Comparison between the {ESO} pipeline and {DRACS} pipeline for two observations, {HD30501-1} and {HD202206-1}.
         The blue lines are the extracted spectra from the {ESO} pipeline, the orange dashed lines are the combined optimal extraction from the {DRACS} pipeline, and the green dash-dotted line is the modified {DRACS} extraction (after removing artefacts addressed in \cref{subsubsec:reductionartefacts}).

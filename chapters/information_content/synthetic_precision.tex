@@ -6,7 +6,7 @@ To contrast the improvements made here the details of~\citep{figueira_radial_201
 Now that the general formulation has been provided, 8.13, 8.17.
 Other important factors to consider when deriving RV precision from synthetic spectra.
 
-\subsection{Prepare {PHOENIX-ACES} models}:
+\subsection{Prepare {PHOENIX-ACES} models}
 Four {PHOENIX-ACES} spectra were selected, spanning the M-dwarfs regime (M0, M3, M6, M9) with model temperatures 3900, 3500, 2800 and 2600\K{} respectively. The other model parameters were \Logg=4.5, \feh{}=0 and \alphafe=0 representing values typical for M-dwarfs.
 The flux (spectral energy distribution) given by the library spectra (ergs/s/cm2/cm) are converted into photon counts by dividing the flux by the energy of a photon \({E}_{p}=hc/\lambda\)\. Neglecting the multiplicative constants, this corresponds to multiplying the flux values by the respective wavelength.
 In this case the absolute values do not matter, just the spectral shape, as the spectra will be scaled to a given \snr{} level.
@@ -95,7 +95,7 @@ By default edge effects are avoided by providing an input spectra sufficiently w
 Since two convolutions are performed one after the other the original input spectrum is selected to be wide enough such that no edge effects will be present after both convolutions.
 
 \subsection{Bands}
-The spectra are split up into the \nir{} wavelength bands to avoid the regions of strong water absorption in the Earth atmosphere in the \nir{}. These \ce{H2O} regions that defined htese bands can be seen in the telluric spectrum in \cref{fig:}\todo{check  molecfit} or in the raw {CARMENES} spectra in \cref{fig:carmenes_raw} Figure~\reference{Add figure here}\todo{Add figure here}.
+The spectra are split up into the \nir{} wavelength bands to avoid the regions of strong water absorption in the Earth atmosphere in the \nir{}. These \ce{H2O} regions that defined these bands can be seen in the telluric spectrum in \cref{fig:croppedmolecfitabsorbtion} or in the raw {CARMENES} spectra in \cref{fig:carmenes_raw} Figure~\reference{Add figure here}\todo{Add figure here}.
 
 The bands selected are the \emph{Z}, \emph{Y}, \emph{J}, \emph{H}, \emph{K}-bands with the specific wavelength bounds given in \cref{tab:infrared_bands}. This allows for the spectral precision to be compared between different wavelength bands.
 

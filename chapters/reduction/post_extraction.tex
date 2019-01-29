@@ -13,7 +13,8 @@ Wavelength calibration is the process of assigning accurate wavelength values to
 For {CRIRES} in the \nir{} this is challenging.
 {CRIRES} uses a Thorium-Argon (\thar) lamp to place 6 emission spectra on the detector using fibres.
 The spectra of the \thar{} emission lines are used to determine the spatial distribution of the wavelength solution across each detector using correlation with a spectral template.
-\thar{} lamps are excellent at optical wavelengths where the numerous (several thousand) spectral lines enable precision of sub\,-\mps{} radial velocity measurements {HARPS} spectrograph.
+\thar{} lamps are excellent at optical wavelengths where the numerous (several thousand) spectral lines enable radial velocity precisions of sub\,-\mps{} when combined together, e.g. in the {HARPS} spectrograph.
+The precision of an individual \thar{} line is of the order of \mps{}.
 
 However, in the \nir{} there is a relatively low density of \thar{} lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ {CRIRES}-POP~\citep{nicholls_crirespop_2017}).
 Above 2.2\um{} there are {O-H} sky lines that can be used for wavelength calibration but according to the {CRIRES} manual for observations below 2.2\um{} they are too dim.
@@ -66,7 +67,7 @@ Higher order terms for wavelength calibration are usually used in regions with a
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/reduction/calibration.pdf}
+    \includegraphics[width=0.85\linewidth]{figures/reduction/calibration.pdf}
     \caption[Example of the wavelength calibration using the synthetic telluric spectra.]{Example of the wavelength calibration using the synthetic telluric spectra.
         Top: The pixel/wavelength mapping and associated wavelength fit.
         The horizontal error bars shown are the Gaussian line width, around 0.04\nm{}.
@@ -95,7 +96,7 @@ However, around 2\um{} they needed to include a fitted stellar model to obtain g
 This is the same wavelength region of the data analysed here.
 Having experience of performing wavelength calibration at other wavelengths may have revealed the difficulties of calibration from the telluric lines at 2\um{} sooner.
 
-A brief attempt of wavelength calibration using the iterative calibration method outlined in~\cite{brogi_rotation_2016} was made.
+A brief attempt of wavelength calibration using the iterative calibration method outlined in~\citet{brogi_rotation_2016} was made.
 This involved generating a set of quadratic wavelength solutions for the observed spectrum and cross-correlating each one against the telluric model.
 The solutions for the next iteration are obtained by refining the parameters from the wavelength solution with the highest correlation.
 The method worked well for~\citet{brogi_rotation_2016} as they included templates for both the star and telluric lines and they were observing in a wavelength domain in which there is a large number of strong and uniform stellar \ce{CO} lines across the detector.
@@ -122,7 +123,7 @@ In the future it may be possible or necessary to combine all of the methods abov
     \label{fig:spectraexamples}
 \end{figure}
 
-In hindsight using the wavelength solution from the {ESO} pipeline may have been a good starting point, rather than the pixel positions, for calibration of the {DRACS} reduced spectra.
+In hindsight using the wavelength solution from the {ESO} pipeline, or the linear solution from the CRIRES manual, may have been good starting points, rather than the pixel positions, for calibration of the {DRACS} reduced spectra.
 This may have made the line identification simpler.
 
 In simulations of a differential technique similar to what is presented in \cref{cha:direct_recovery}, \citet{kostogryz_spectral_2013} simulate the affect of wavelength calibration errors on differential result.
@@ -133,7 +134,7 @@ This shows how important the wavelength calibration is to detect the spectra of 
 
 \subsection{Telluric correction}
 \label{subsec:telluric_correction_application}
-After wavelength calibration telluric correction is performed using the same {TAPAS} atmospheric transmission models.
+Correction of the telluric lines is performed after wavelength correction, using the same {TAPAS} models.
 When inspecting the models and observations there was slight difference in the airmass, $m$, between the synthetic spectra and the airmass in the fits header.
 The depth of the telluric lines were re-scaled to match the airmass of the observations using the relation \(\rm T = T^{\beta}\), where \(\rm T\) is the transmission of the telluric spectrum and \(\beta\) is the airmass ratio between the observation and model $\beta ={m_{observed}/m_{model}}$.
 This scaling adjusted the depth of most absorption lines to better match the observations, but does not correctly scale the deeper \ce{H2O} lines, for which there were still differences.
@@ -183,9 +184,9 @@ The rest frame of choice is the barycentre of the Solar System.
 Equations to relate the observed spectral shift to the {RV} shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in~\citet{lindegren_fundamental_2003}.
 
 In this work the barycentric velocity correction is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
-This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion as well as Earth's rotation.
+This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion as well as Earth's rotation, to the accuracy of \(\sim\)1\mps{}.
 This computation requires the date and time of the observation, the location of the observatory and the celestial coordinates of the target.
 The observed spectra are Doppler shifted by the negative value of the barycentric velocity calculated, placing all spectra as if they were observed from the barycentre of the Solar System.
 
 The maximum barycentric velocity of the Earth is around 30\kmps{}.
-It is common to see spectral regions $\pm30$\kmps{} either side of telluric lines with an absorption depth >2\% avoided in analysis (such as {RV} determination), as these will be affected by the telluric lines at some point in the year.
+Spectral regions within $\pm30$\kmps{} of telluric lines with an absorption depth >2\% are commonly masked out to avoid them in analyses (such as {RV} determination), as these regions will overlap and be affected by the telluric lines at some point during the year.

@@ -14,7 +14,7 @@ The reduced spectra produced in this chapter will be analysed in \cref{cha:direc
 
 \subsection{\nir{} reduction concepts}
 \label{subsec:nirreduction}
-In reducing \nir{} spectra, or any spectra in general a number of calibration steps that are performed to achieve the best possible e output such as removing signals arising from the detector.
+In reducing \nir{} spectra, or any spectrum in general, a number of calibration steps are performed to removed the imprint of the spectrograph and detector's signature on the spectra as much as possible.
 The main calibration steps required for \nir{} spectra are given below with examples from {CRIRES}.
 More information about the different effects with regards to CRIRES can be found in the CRIRES user manual and reduction cookbook.
 %\begin{figure}[h]
@@ -47,7 +47,7 @@ Calibration and removal of the dark current is performed by taking exposures in 
 The detectors in the {CRIRES} instrument are cryogenically cooled to a temperature of \(\sim\)27\K{} (within 0.1\K{}) to significantly reduce the dark current, and to maintain consistency.
 The electrical components of the {CRIRES} detectors create thermal energy while operational which impacts the dark current.
 A strong ``glow'' is observed in the bottom corners of the {CRIRES} detector in \cref{fig:darkcurrent_colour} due to nearby amplifiers.
-As per the {CRIRES} calibration plan, ``dark frames'' need to be taken for each exposure time used.
+As per the {CRIRES} calibration plan, ``dark frames'' need to be taken at the exact same exposure as the science frame. This is necessary because the detectors are non-linear and cannot be appropriately scaled to different times.
 \Cref{fig:darkcurrent_colour} shows the master dark frame created from averaging three dark frames for exposure times of 3 seconds (for the flats) and 180 seconds (for the science), both on the same amplitude scale.
 For the {CRIRES} detectors the dark current per pixel is around 0.2--0.4\,(\(e^{-}\)\si{\per\second}), while the glow at the two corners of the 180 second exposure shown here is \(\sim\)\(9000 / 180\approx50\)\,\(e^{-}\)\si{\per\second}.
 
@@ -73,20 +73,24 @@ For the {CRIRES} detectors the dark current per pixel is around 0.2--0.4\,(\(e^{
 \end{figure}
 
 
+The flat-field for nIR detectors is done in the same step as yoou do the non-linearity correction. Through it you recover the original flux value of the spectra. 
+This is necessary due to the architecture of CMOS, in which pixels are read independently, and each pixel has an amplifier device that introduces a diferential gain.
 \subsubsection{Flat-field}
 \label{subsubsec:flat-field}
-No detector is truly perfect, with all pixels performing equally well.
-To correct for pixel-to-pixel variations in photon sensitivity across the detector and for any distortions in the optical path, a flat-field correction is needed.
+Due to the architecture of CMOS, in which pixels are read independently and each pixel has an independent amplifier with a different gain.
+To correct for pixel-to-pixel variations in gains and photon sensitivity across the detector and for any distortions in the optical path, a flat-field correction is needed.
 Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected.
 The flat-field frames are corrected for dark current by subtraction of the master dark frame with the appropriate exposure time.
 
 The {CRIRES} detector suffers from non-linearities in sensitivity across the detector.
 This can be seen in the flat-field image on the left of \cref{fig:masterflats_colour} where there is an intensity gradient from dark to light across the detector.
 A set of coefficients for each pixel is provided by {ESO}\footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the non-linearity of the detectors.
-This also corrects for a slight difference in sensitivity between the pixels from the odd and even columns in the {CRIRES} detectors, commonly called the ``odd-even effect''.
+This also corrects for a slight difference in sensitivity between the pixels from the odd and even columns in the {CRIRES} detectors, commonly called the ``odd-even effect''. This occurs because the odd and even columns are read separately by different large amplifiers that have a different gains.
 The frame on the right of \cref{fig:masterflats_colour} has been corrected for the non-linearities.
 
 The flat-field can also reveal defects in the detector e.g.\ dead pixels, dust and scratches: a large scratch is clearly visible in \cref{fig:masterflats_colour}.
+The flat-field and non-linearity correction are performed in the same reduction step.
+
 
 \subsubsection{Nodding and Jitter}
 \label{subsec:nod-jitter}
@@ -94,7 +98,7 @@ The technique of \emph{nodding} is used to remove sky emission, detector dark cu
 First, an observation is divided into multiple separate exposures.
 Between each exposure the telescope is moved to change the vertical position of the target in the slit.
 The light from the star travels through a slightly different optical path and is recorded on a different part of the detector.
-The frames from the two nod positions (A, B) are then subtracted (A - B) to remove the background measurement from each spectra.
+The frames from the two nod positions, A and B, are then subtracted (A - B) to remove the background measurement from each spectra.
 
 A visual example of the nodding is shown in \cref{fig:nodimages}.
 On the left are slices of 150 pixel columns from successive nod positions A and B as well as the difference A minus B.
@@ -132,6 +136,7 @@ This can be resolved by first applying a pixel mask (although this was not attem
 At the top and bottom there are also two meteorological fibres that can not be used for wavelength calibration as they pass through a different optical pathway.
 The brightest one at the bottom has strong features that seem to overwhelm or washout many columns in detector \#2--4 (vertical stripes).
 This information is included here for completeness, as the \thar{} were not used in the chosen data reduction method, see \cref{subsec:wavecalib}.
+The very uneven distribution of \thar{} line make their use difficult in many cases, not just this work.
 
 %\begin{figure}
 %\includegraphics[width=\hsize]{./figures/reduction/lamp_plots_cbar_each.pdf}
@@ -156,16 +161,18 @@ This information is included here for completeness, as the \thar{} were not used
 The process of extraction is, in brief, turning the two-dimensional image of the spectrum into a one-dimensional representation.
 This is done by summing the photon counts along the spatial direction, for each column in the dispersion direction in a small window around the spectrum.
 To do this one needs to identify the position of the spectrum across the detector, referred to as {order tracing}.
-In our case there is only one spectral order present but in a cross-dispersed configuration there can and will be many orders.
+For {CRIRES} there is only one spectral order dispersed across the detector, selected using wavelength filters, but for a cross-dispersed configuration there will be several parallel orders to trace.
 A rectangular box, with a specified aperture width, is centred along the traced spectrum.
 
 There are two types of extraction commonly used.
 The \emph{rectangular} extraction performs a simple aperture sum in the spatial direction, counting all photon counts that fall within the aperture.
-An \emph{optimal} extraction~\citep{horne_optimal_1986} also includes variance weighting to reduce the impact of the noise and deviant pixels on the spectral extraction.
-A spatial profile is fitted to the spectra and the pixels weighted such that the those furthest away from the centre have less impact on the sum.
+Basically, summing the rows that contain the spectrum.
+The \emph{optimal} extraction~\citep{horne_optimal_1986} is an improved technique to reduce the affect of noise and deviant pixels on the extracted spectrum.
+Instead of simply summing the rows, the optimal extraction fits a spatial profile to each column of the detector spectrum, perpendicular to the spectral dispersion.
+The spatial profiles are used as weighting functions so that the pixels furtherest from the centre of the spectrum, which have lower signal and are hence noisier, contribute less to the extracted spectrum.
+This achieves a extracted spectrum with a better \snr{} than the rectangular method.
 Optimal extraction can increase the effective exposure time by up to 1.69 times at \(3 \sigma\)~\citep{horne_optimal_1986}.
 Both rectangular and optimal extraction methods are available from both the {ESO} {CRIRES} and {DRACS} pipeline, compared below.
-
 
 \input{./chapters/reduction/pipeline_comparison}
 
@@ -173,11 +180,11 @@ Both rectangular and optimal extraction methods are available from both the {ESO
 \input{./chapters/reduction/reduction_issues}
 
 
-\subsection{Reduction experience:}
+\subsection{Reduction experience}
 \label{subsec:experience}
 The experience gained in reducing {CRIRES} spectra enabled participation in collaboration with other science cases.
 The {DRACS} pipeline was used to extract the spectra of two other targets.
-A target and a very brief aim of each science case is given below.
+The stellar target and a very brief objective of each science case is given below.
 
 \begin{itemize}
     \setlength\itemsep{-0.3em} % Remove spacing on list.
@@ -191,7 +198,7 @@ A target and a very brief aim of each science case is given below.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{figures/reduction/ulmermol2018_tell_corr_CRIRES_48}
+    \includegraphics[width=0.8\linewidth]{figures/reduction/ulmermol2018_tell_corr_CRIRES_48}
     \caption[Example of telluric corrected spectrum of {HR\,7329-B} using {TAPAS}.]{Example of telluric corrected spectrum of {HR\,7329-B} using {TAPAS}.
 Credit~\citet[][]{ulmer-moll_telluric_2018}.
 The yellow shaded region is the region of stellar lines that was avoided while applying the correction methods.}
