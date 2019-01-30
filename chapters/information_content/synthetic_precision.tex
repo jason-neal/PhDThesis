@@ -87,6 +87,14 @@ In the improved implementation of \cref{sec:eniric} the convolution normalizatio
 By default edge effects, in which pixels near the ends are not symmetrically convolved, are avoided on the spectral range desired by providing an input spectra that is sufficiently wider than the desired output spectrum.
 Since two convolutions are performed one after the other the original input spectrum is selected to be wide enough such that no edge effects will be present in final output spectrum after both convolutions.
 
+\subsection{Interpolation}
+\label{subsec:orginal_interpolation}
+To simulate the sampling effect of high-resolution spectrographs interpolation is used to re-sample the spectrum to three pixels per resolution element.
+This corresponds to a spacing between pixel at \(\lambda\) of (\(\lambda / 3R\)).
+For echelle spectrographs, for which \(\Delta\lambda/\lambda\) is constant, the number of pixels per resolution element is also constant.
+A sampling of three is chosen to be above the Nyquist limit of two pixels per resolution element, to not lose any spectral information, and commonly achieved by current spectrographs, e.g.\ a sampling of 3.3 for HARPS~\citep{mayor_setting_2003}.
+This interpolation of the synthetic spectra is performed after the convolution and before the \snr scaling below.
+
 \subsection{\snr{} scaling}
 \label{subsec:orginal_snr_scaling}
 The purpose of~\citet{figueira_radial_2016} was to compute only the relative precisions between the synthetic models.

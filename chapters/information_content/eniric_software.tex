@@ -6,7 +6,7 @@ Here the software developed to compute the {RV} precisions is presented.
 It is an extension of the code used for the calculations of~\citet{figueira_radial_2016}, hence ``extended'' in the name.
 This section documents the vast improvements (optimizations and extensions) made to the software.
 Changes made that affect the derived {RV} precision attained are specifically documented in detail, with the relative precision changes provided.
-This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}.} (JOSS) (Neal and Figueira 2019 \emph{in prep.}) with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}.
+This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}.} (JOSS) (Neal and Figueira 2019 \emph{almost accepted}) with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}.
 
 
 \subsection{Automated testing}
@@ -16,7 +16,7 @@ Automated software testing is an important practise to insure that the code writ
 This practice is crucial in computer science and professional software engineering but seldom encouraged or practised in scientific programming~\cite{storer_bridging_2017}.
 It is however starting to becoming increasingly encouraged as part of the movement towards open and reproducible science.
 
-After inheriting the code-base from \citet{figueira_radial_2016}, software tests were added for a number of purposes: to learn and explore the code-base, to check and test the original functionality, and to identify if any changes implemented break the original functionality.
+After inheriting the code-base from~\citet{figueira_radial_2016}, software tests were added for a number of purposes: to learn and explore the code-base, to check and test the original functionality, and to identify if any changes implemented break the original functionality.
 Version control practises were used to incrementally add small separate changes to the code base at a time, regularly testing in a continuous integration manor.
 This is done by sending the code-base to a repository\footnote{Public or private.} on Github\footnote{\href{https://bitbucket.org}{Bitbucket} and \href{https://gitlab.com}{GitLab} are other popular options.}.
 Automated tools and services then forward the project to testing, code style checking, or other continuous-integration services (e.g.\ \href{https://travis-ci.com}{Travis-CI}) which either run the automated tests, or other checks on each new change.
@@ -69,16 +69,16 @@ This allows for any spectra of current or future interest to be quickly analysed
 The instrumental resolution, \(R\), and rotation velocity \Vsini{} were also extended to any suitable value, not restricted to only three values each.
 The \nir{} wavelength bands are still configured to the same wavelength regions but are able to be extended by the user, either over-writing the current band limits, or defining new bands with custom wavelength limits.
 For example, in \cref{tab:numerical_gradients} bands (and corresponding wavelengths) with labels \({\rm VIS}\), \(\rm {CARM}_{VIS}\), \(\rm {NIR}\) and \(\rm {CARM}_{NIR}\) are shown which represent the visible and \nir{} wavelengths and the corresponding coverage of the {CARMENES} spectrograph in each.
-This allows for increased flexibility in using \eniric{}, for instance tailoring the calculation to a specific instrument with a known or theoretical resolution (see \cref{sec:spirou_nirps_etc}, but opens up essentially an infinite possible combination of spectral parameters (with an infinite compute time).
+This allows for increased flexibility in using \eniric{}, for instance tailoring the calculation to a specific instrument with a known or theoretical resolution (see \cref{sec:spirou_nirps_etc}), but opens up essentially an infinite possible combination of spectral parameters (with an infinite compute time).
 
 A further extension was made to also allow for the use of the {BT-Settl} ({CIFIST2011\_2015}) synthetic spectra.
-Allowing for a comparision of RV precisions between different models.
-Like the PHOENIX-ACES models the BT-Settl spectra undergo a conversion from an energy flux to photon counts.
+Allowing for a comparison of RV precisions between different models.
+Like the {PHOENIX-ACES} models the {BT-Settl} spectra undergo a conversion from an energy flux to photon counts.
 The incorporation of any model from the {PHOENIX-ACES} and {BT-Settl} libraries with only the four model parameters is performed simply using the ``grid tools'' module from the Starfish package\citep{czekala_constructing_2015}.
 to similar treatment to the {PHOENIX-ACES} models, being converted to photon counts.
 
 A command line application is now available with \eniric{}, which will load spectra and calculate RV precision for all combinations of valid input parameters.
-Examples of use are given in \cref{app:nir_prec_amendment}, specifically all parameter combinations from \citep{figueira_radial_2016} can be performed using \cref{lst:commandline_incantation}.
+Examples of use are given in \cref{app:nir_prec_amendment}, specifically all parameter combinations from~\citep{figueira_radial_2016} can be performed using \cref{lst:commandline_incantation}.
 
 
 \section{Numerical Gradient}
@@ -110,7 +110,7 @@ In the {FFD} case the gradient at pixel \(i\) becomes:
 \end{equation}
 At each pixel the numerical derivative is evaluated to be the average slope between itself and the following pixel and is an approximation to the derivative.
 This only extends to \(i= n-1\), where \(n\) is the number of points in the spectrum, and the last pixel is dropped from the {RV} calculation.
-This is important in the case of Condition~\#2 (\cref{eqn:mask2}) from  \citet{figueira_radial_2016}.
+This is important in the case of Condition~\#2 (\cref{eqn:mask2}) from~\citet{figueira_radial_2016}.
 
 
 The \npgradient{}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}.} function contains a more advanced numerical method to calculate the derivative.
@@ -185,7 +185,7 @@ Changing the method of numerical derivatives will change all the precision value
 This is a small impact on the precision compared to other components of the {RV} precision.
 For instance from \cref{eqn:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\% could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
 
-The current version of the software is now implemented with the gradient method provided by \numpy{} package, and as such there is a small difference in {RV} precision values calculated, compared to \citep{figueira_radial_2016}.
+The current version of the software is now implemented with the gradient method provided by \numpy{} package, and as such there is a small difference in {RV} precision values calculated, compared to~\citep{figueira_radial_2016}.
 
 \subsection{Masking Function}
 \label{subsec:masking_function}
@@ -225,7 +225,7 @@ For instance to mask out telluric lines deeper than 2\% the value of \(\tau\) wo
     
     \item Condition~\#3:
     This condition assumes the application of perfect telluric correction in which variance (photon noise contribution) in the denominator of \cref{eqn:optimal_weight} is amplified by the telluric correction.
-    In \citep{figueira_radial_2016} the pixel weighting for this condition becomes:
+    In~\citep{figueira_radial_2016} the pixel weighting for this condition becomes:
     \begin{equation}
     W(i) = \frac{{\lambda}^{2}(i) {({\partial {A}_{0}(i)}/{\partial \lambda(i)})}^{2}}{A_0(i) + {\sigma}^{2}_{D}/{T(i)}^{2}} \label{eqn:optimal_weight_transmission}
     \end{equation}
@@ -247,9 +247,7 @@ That is, the application of weight masking must be applied to the spectrum only 
 In the original implementation of Condition~\#2, the full spectral band was split into small wavelength regions (sub-spectra) in between the telluric lines, following the masking by \(\mathcal{M}_{2}\).
 The \(\delta V_{\rms}\) was calculated using the {FFD} gradient for each small region with the results combined as the error on the weighted average in \cref{eqn:weighted_average_error}.
 Analytically this result is identical to masking out the pixel weights with \({\mathcal{M}}_{2}\) but, in practice, it is not when numerically implemented.
-\todo{Should I show the working of analytical working out of this in an appendix, or here?}
 
-\todo{down to here}
 When the spectrum is split into many small sections the number of edges increases and so does the number of pixels affected by edge effects.
 As shown in \cref{sec:numerical_gradient} the {FFD} method only computes \(n-1\) gradients from \(n\) pixels; the last pixel is removed/lost.
 A spectrum split in \(m\) sub-spectra will therefore lose \(m\) pixels due to edge effects.
@@ -275,63 +273,60 @@ The functionality to perform the weighted error is still present and can be used
 
 \input{tables/mask_ordering}
 
+The ordering of the masking does not affect the results of Condition \#1 or \#3 that were not split into sub-spectra to calculated th RV precisions.
+Although there are differences from the old and new implementation of Condition \#2 (splitting to only masking) the differences observed between~\citet{figueira_radial_2016} and this work are dominated by a bug found, see \cref{subsec:condition_two_bug}.
 
-
-\todo{down to here}
-
-{\red{} For Condition~\#2 in which there was an error there is no meaningful relation between the new and old values.
-    \todo{put this line elsewhere.}}
 
 \subsection{\snr{} scaling}
 \label{subsec:snr_scaling}
-To analyse the relative precision of different spectra they need to normalized to a common reference point.
-\Cref{subsubsec:}
-In this section \todo{we} detail how this was originally done and how this was changed to be adaptable to any library spectra and any reference band.
+For the analysis of relative synthetic spectral precision between different spectra, a common reference point is needed.
+Similarly to~\citet{figueira_radial_2016} in \cref{subsec:orginal_snr_scaling} this is achieved by normalizing the synthetic spectra to a specific \snr{} per resolution element level at a particular wavelength.
+However, unlike~\citet{figueira_radial_2016}, this is not held fixed at \snr{}=100 in the middle of the \emph{J}-band at 1.25\um{}.
 
-In the original code this was selected to be a \snr{} per pixel of 100 at the centre of the \textit{J}-band at 1.25\um{}.
-The normalization values for each band, \Vsini{} and resolution combination were hard-coded into the analysis.
-This made it impossible to easily adapt the code to other spectra or parameter combinations.
+\eniric{} now contains an automated \snr{} scaling procedure (\cref{eqn:snr-scaling-factor}), to remove the need for the hard-coded scaling values, and extends the precision calculations to any other \snr{}, sampling and wavelength specification.
 
-An automated \snr{} scaling procedure was created to remove the hard-coded values.
-This updated code finds the centre point of the band of reference for the given spectrum.
-Totals the photon count across one resolution element, \(\delta\lambda\), and then takes the square root.
-This is using the definition of the \snr{} as \(\snr{} = \sqrt{N}\) for large N.
-This value is then used to scale the spectrum such that the \snr{} at the reference point is the desired value.
+The procedure first identifies the wavelength value \(\lambda\prime\) to perform the scaling at, this can be either a user defined wavelength value, or more commonly the centre of a user selected band is automatically computed from the configured band limits.
+The number of pixels within one resolution element \(\lambda/R\), is defined by the sampling \(\mathrm{s}\), used to interpolate the spectrum \cref{subsec:orginal_interpolation}.
+The photons within within one resolution element, are calculated by summing \(\mathrm{s}\) pixels, (\(N=\sum\limits^{\mathrm{s}}{{A}_{0}}\)), centred on \(\lambda^\prime\).
+The current \snr{} of the resolution element is calculated as \(\snr{} = \sqrt{N}\) assuming a large N.
+A scaling factor, \(SF\), is defined so that when it is multiplied by the spectrum, the \snr{} of the resolution element at \(\lambda^\prime\) becomes the desired value, \({\snr{}}_{\textrm{desired}}\):
 \begin{equation}
-SF =  \frac{\sqrt{\sum{\delta\lambda} A}} {\snr{}_{desired}}
+SF =  \frac{\sqrt{\sum\limits^{\mathrm{s}} A}} {\snr{}_{desired}} \label{eqn:snr-scaling-factor}
 \end{equation}
-\textit{SF} where \textit{SF} is the scaling factor, \(\sum_{\delta\lambda} A\) is the sum of the point in one resolution element and \({\snr{}}_{desired}\) is the desired \snr{} level requested.
 
-This automated procedure enabled {\red{}\textbf{4}} different features, not previously possible:
+Automating the calculation of the scaling factor enabled several new scenarios to analyse the relative precisions, not previously possible. Four are given here:
 \begin{itemize}
     \setlength\itemsep{-0.3em} % Remove spacing on list.
-    \item The ability to analysis other spectral models, not just corresponding to {M0}, {M3}, {M6}, {M9} spectral types.
+    \item The ability to easily analyse new spectral models, not just the four spectra corresponding to {M0}, {M3}, {M6}, {M9} spectral types, which scaling factors had been manually calculated for.
     - Scaling to a \snr{} per pixel level other than 100.
-    \item A \snr{} per pixel other than 100 can be selected.
-    - Allowing for other sampling levels (if desired)
-    \item Not restricted to a model with 3 samples per resolution element.
-    \item Different reference bands available.
+    \item The ability to scale to a \snr{} per pixel value other than 100. 
+        - Allowing for other sampling levels (if desired)
+    \item Allow for correct scaling when a different sampling , \(\mathrm{s}\), is used. Not restricted to \(\mathrm{s}\)=3.
+    \item Allow for the \snr{} scaling to be referenced to a different band or wavelength. Different reference bands available.
     Results are not limited to being referenced from the \textit{J}-band.
-    For instance the {RV} precision can now be calculated for a given \snr{} at the centre of the \textit{K}-band.
-    This was one the features requested for the Exposure Time Calculators precision values.
-    For {NIRPS} \todo{we} provided precision values relative to each individual band, while for {SPIRou} they were relative to the {J}- and {H}-bands.
 \end{itemize}
 
-The default values for the \snr{} scaling a still 100 at the centre of the \textit{J}-band, but there is now options to easily change these values.
+This last point is of note as it allows the relative precisions not to be tied to a single band, allowing the test of different \snr{} values achievable at different wavelengths.
+For instance, all {RV} precisions can now be calculated relative to a given \snr{} at the centre of the \textit{K}-band.
+This was important for computing~\citet{figueira_radial_2016}-like precisions requested for the {NIRPS} and {SPIRou} Exposure Time Calculators {ETC}.
+{NIRPS} specifically requested precision values at a \snr{} relative to the individual bands (The precision of the K-band spectrum relative to \snr{}=100 at the centre of the {K}-band), while {SPIRou} requested precisions relative to the \emph{J}- and \emph{H}-band only. 
+These calculations were not easily possible in the original code version, and this extension has made computations for different \snr{} level and reference points easy to calculate, with minimal configuration.
 
-The centre of each band was visually checked to ensure that there were no spectral lines at the reference locations> If a line was present at the reference point its depth variability across spectral types would affect the \snr{} scaling levels at a greater than the normal change in continuum amplitude/shape.\todo{is this needed}
+The default values set in \eniric{} match the~\citet{figueira_radial_2016} value, a \(\mathrm{s}\)=3 and \snr{}=100 in the \emph{J}-band.
+The centre of each band was visually checked to ensure that default, central band reference locations did not coincide with a spectral line. If the reference point was automatically chosen at the centre of a absorption line, then the counts \(N\) would be lower and the spectrum would be scaled to a higher continuum. This would artificially decrease (improve) the \(\delta V_{\rms}\) recovered.
+At rest, the centres of the \emph{Z}-, \emph{Y}-, \emph{J}-, \emph{H}-, \emph{K}-bands as defined in \cref{tab:infrared_bands} do not coincide with a spectral line, however, if any Doppler shifting is performed to move the spectral lines, then care must be taken to ensure the correct scaling is applied to the continuum.
 
 As shown in \cref{eqn:snr_relation} the {RV} precision is inversely proportional to the \snr{} level.
-To access the {RV} precision of any of the values in Table at a different \snr{} level you can apply the following
+To access the relative {RV} precision of any of the values calculated at a different \snr{} level you can apply the following:
 \begin{equation}
-{RV}_{{\snr{}}_{2}} = {RV}_{{\snr{}}_{1}} * \frac{{\snr{}}_{1}}{{\snr{}}_{2}}.
+{\delta V}_{{\snr{}}_{2}} = {\delta V}_{{\snr{}}_{1}} * \frac{{\snr{}}_{1}}{{\snr{}}_{2}},
 \end{equation}
+where \(\delta {V}_{{\snr{}}_{1}\) is the relative precision calculated at \({\snr{}}_{1}\) and \(\delta {V}_{{\snr{}}_{2}\) is the new precision if instead observed with a \snr{} of \({\snr{}}_{2}\).
 
-\todo{\snr{} plot/diagram}
 
 \subsection{Atmospheric masking bug}
 \label{subsec:condition_two_bug}
-Applying testing practises revealed a error in the application of Condition~\#2 in \citep{figueira_radial_2016}.
+Applying testing practises revealed a error in the application of Condition~\#2 in~\citep{figueira_radial_2016}.
 When the telluric line mask was broadened to account for the barycentric motion of the Earth, and the requirement requiring three consecutive pixels (the sampling rate) to exceed the cut-off limit to be considered masked out there was a software bug.
 
 This meant that the masking applied for Condition \#2 was garbage, and not physically meaningful.
@@ -364,5 +359,5 @@ def test_telluric_masking(wavelength, transmission):
 Due to this bug the published {RV} precision values for Condition~\#2  in~\citet{figueira_radial_2016} are all incorrect.
 As the masking was unevenly applied the new ``correct'' {RV} precision values do not all change in the same direction or in the same proportion.
 For example largest difference is seen in the \emph{J}- and \emph{K}-bands, with changes over 20\mps{}, while other wavelength bands are essentially unchanged.
-The differences can be seen in the shaded areas of \cref{fig:figueria_comparision} comparing the \citet{figueira_radial_2016} results to the updated values, with the upper edge defined by Condition \#2.
+The differences can be seen in the shaded areas of \cref{fig:figueria_comparision} comparing the~\citet{figueira_radial_2016} results to the updated values, with the upper edge defined by Condition \#2.
 Even though there is an error with the values of Condition~\#2 they do not change the overall conclusions of the paper.

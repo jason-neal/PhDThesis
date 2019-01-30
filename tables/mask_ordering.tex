@@ -3,9 +3,10 @@
 \begin{table}
     \centering
     \caption[{RV} precision with different splitting.]{Relative {RV} precision difference for Condition~\#2 due to spectral splitting and order of applying the pixel mask.
-        The ratio are the difference between \textit{Split} and \textit{Masked} implementations with the same gradient calculation.
-        The last column is the ratio between the \textit{Masked} versions using the {FFD} and numpy gradient methods and are consistent with \cref{tab:numerical_gradients}.
-        Results a for an M0 spectral type, with $\vsini=1.0$ and R=100\,000.}
+        The input parameters were for an M0 spectral type spectrum, with $\vsini=1.0$ and R=100\,000.
+        The \(\Delta\)ratios are the percentage difference between \textit{Split} and \textit{Masked} implementations while using the same gradient method.
+        The last column is the ratio between the \textit{Masked} implementations using the {FFD} and \npgradient{} methods and are consistent with \cref{tab:numerical_gradients}.
+        }
     \begin{tabular}{c|ccc|ccc|c}
         \toprule
         & Split & Masked & \(\Delta\)Ratio & Split & Masked & \(\Delta\)Ratio & Masked \\
@@ -20,6 +21,3 @@
         \bottomrule
     \end{tabular}\label{tab:mask_ordering}
 \end{table}
-
-{\rd{} The results from these spectra for Conditions \#1 and \#3 are consistent with~\citet{figueira_radial_2016}.
-     \todo{put this some where}}
