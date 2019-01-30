@@ -18,7 +18,7 @@ where \({\sigma}_{i}\) is the error on each measurement.
 
 The inverse survival function of the \textchisquared{} distribution is used to determine the confidence levels of the resulting parameters from the minimum \textchisquared{}.
 The inverse survival function returns a \(\Delta\chisquared\) value from the minimum \textchisquared{} value for a given $\sigma$ level and degree of freedom.
-This can be achieved in \emph{Python} with the \emph{scipy} package as the single line of code \texttt{scipy.stats.chi2{(dof)}.isf{(1-p)}}, where \textit{dof} is the degree of freedom and \(p\) the probability; for example \(p = 0.68\) for 1-\(\sigma\).
+This can be achieved in \Python{} with the \scipy{} package as the single line of code \pythoninline{scipy.stats.chi2{(dof)}.isf{(1-p)}}, where \textit{dof} is the degree of freedom and \(p\) the probability; for example \(p = 0.68\) for 1-\(\sigma\).
 For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) confidence levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}.
 This method assumes that the measured flux is observed with a \snr{} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
 
