@@ -2,16 +2,19 @@
 
 \begin{table}
     \centering
-    \caption[Effect of numerial gradient.]{The effect of the numerical gradient function on {RV} precision.
+    \caption[Affect of numerial gradient.]{The affect of the numerical gradient function on {RV} precision.
         The band label \(\rm VIS\) and \(\rm NIR\) indicate the full visible and \nir{} bands while  \(\rm CARM_{VIS}\)  and \(\rm CARM_{NIR}\) indicate the two wavelength bands of the {CARMENES} spectrograph.
-        \(\Delta\lambda\) is a wavelength shift applied to move the FFD values between pixels for this comparison only.
+        Column A is the RV precisions calculated using the {FFD} gradient.
+        Column B contains the {FFD} gradient method but applied with a wavelength shift of \(\Delta\lambda/2\) in between pixels for this comparison only.
+        Column C contains the RV precision calculation using the \npgradient{} function.
+        The final two columns give the relative precision change between gradient method A and the other two, as a percentage.
         The {M0} spectra used here had no rotation, or instrument broadening performed and was normalized to a maximum of 1 in each band.
-        The precision values given here are for accessing the relative precision change due to the different gradient methods.}
+        The values given here are for accessing the relative precision change due to the different gradient methods only.}
     \begin{tabular}{ccccccc}
         \toprule
         %% Band & \(\lambda\) range\_min & wl\_max &  dy/dx   & gradient & Q(dy/dx) & Q(grad) & Q(frac) & {RV}(dy/dx) & {RV}\_adj &    {RV}(grad)    &    {RV}(frac\_grad)    & {RV}(frac\_adj)          \\
         Gradient method &  &  A &   B & C & (B-A)/A & (C-A)/A \\
-        &   \(\lambda\) range & FFD & FFD+\(\Delta\lambda\) &  Numpy & \(\Delta\delta V\) ratio& \(\Delta\delta V\) ratio\\
+        &   \(\lambda\) range & FFD & FFD+\(\Delta\lambda/2\) &  Numpy & \(\Delta\delta V\) ratio& \(\Delta\delta V\) ratio\\
 
         Band  & (\si{\micro\meter})  & \multicolumn{3}{c}{\(\delta V_{rms}\) (\mps{})}  & (\%) & (\%) \\
         \midrule

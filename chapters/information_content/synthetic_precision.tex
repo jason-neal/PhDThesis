@@ -67,11 +67,11 @@ where {$B = \frac{\fwhm_{0}}{\fwhm}$ } is scaled to give the same area.
 \subsubsection*{Numerical Convolution}
 \label{subsubsec:numerical_convolution}
 Both convolutions are performed numerically, by iterating over all pixels in the spectrum.
-At each pixel, a window of neighbouring pixels is selected that fall within the convolution window\footnote{Region in which the convolution kernel will affect this particular pixel.}, e.g. \(5\times\)\fwhm{} for that pixel.
+At each pixel, a window of neighbouring pixels is selected that fall within the convolution window\footnote{Region in which the convolution kernel will affect this particular pixel.}, e.g.\ \(5\times\)\fwhm{} for that pixel.
 The convolution kernel is calculated for the window, multiplied by the spectral flux and then summed to produce the new value for the pixel of the iteration.
 The shape of the convolution kernels and the size of convolution window are wavelength dependant (\(\Delta\lambda_{L}=\lambda \frac{\vsini}{c}\) and \({\fwhm}=\frac{\lambda}{R}\)) and must be calculated separately for each pixel, making the convolution computationally expensive.
 
-This convolution method allows for the spectrum to be non-uniformly spaced, unlike other methods that usually require uniform spacing e.g. the implementation in \pyastronomy{}.
+This convolution method allows for the spectrum to be non-uniformly spaced, unlike other methods that usually require uniform spacing e.g.\ the implementation in \pyastronomy{}.
 One factor the needs consideration when convolving with an non-uniformly spaced spectrum is the discretization of the kernel onto the wavelength grid.
 For instance the number of points inside the convolution window, due to the sampling, as well as their specific location inside the kernel will have a slightly affect the kernel area.
 The convolution result is normalized by dividing it by the result of the convolution kernel applied to a unitary spectrum of ones on the same wavelength grid.
@@ -90,7 +90,8 @@ Since two convolutions are performed one after the other the original input spec
 \subsection{\snr{} scaling}
 \label{subsec:orginal_snr_scaling}
 The purpose of~\citet{figueira_radial_2016} was to compute only the relative precisions between the synthetic models.
-This was done by normalizing each spectrum, after convolution, to a \snr{} of 100 at the centre of the \emph{J}-band. Specifically this is achieved by summing the three pixels (same as the sampling per resolution element) centred at 1.25\um{} scaling the result so that this sum becomes \(100^2\).
+This was done by normalizing each spectrum, after convolution, to a \snr{} of 100 at the centre of the \emph{J}-band.
+Specifically this is achieved by summing the three pixels (same as the sampling per resolution element) centred at 1.25\um{} scaling the result so that this sum becomes \(100^2\).
 In this way the \(\snr{} =\sqrt{F}\) is 100, where \(F\) is the sum of the three pixels.
 The specific scaling values for the analysed spectra, \Vsini{}, and resolution combinations were hard coded into the software, making it impossible analyse a new spectrum without modification of the source code.
 

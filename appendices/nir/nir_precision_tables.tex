@@ -12,13 +12,13 @@ The rotation applied are \Vsini{}=1, 5, 10\kmps{} and instrumental profiles with
 
 Columns 2--4 contain the {RV} precision calculated using {PHOENIX-ACES} spectra, as done in~\citet{figueira_radial_2016}.
 These values differ from two effects.
-There is small difference in Conditions 1 and 3 from the change in numerical differentiation implemented (see \cref{sec:numerical_gradient}).
+There is small difference in Conditions~\#1 and \#3 from the change in numerical differentiation implemented (see \cref{sec:numerical_gradient}).
 The values for Condition 2 however, are completely different due to the implementation error in the telluric masking discovered (see \cref{subsec:condition_two_bug}).
 
 In columns 5--7 are the same {RV} precision calculation but using the {BT-Settl} spectral library instead (with same spectral parameters), a recent addition in \emph{eniric}.
 
 These can be created with \eniric{} using the following shell incantation (after installation and configuration):
-\begin{lstlisting}
+\begin{lstlisting}[label={lst:commandline_incantation}]
     phoenix_precision.py -t 3900 3500 2800 2600 \   # Temperature
                          -l 4.5 -m 0.5 \            # Logg and Metalicity
                          -r 60000 80000 100000 \    # Resolutions
