@@ -299,11 +299,11 @@ Automating the calculation of the scaling factor enabled several new scenarios t
     \setlength\itemsep{-0.3em} % Remove spacing on list.
     \item The ability to easily analyse new spectral models, not just the four spectra corresponding to {M0}, {M3}, {M6}, {M9} spectral types, which scaling factors had been manually calculated for.
     - Scaling to a \snr{} per pixel level other than 100.
-    \item The ability to scale to a \snr{} per pixel value other than 100. 
-        - Allowing for other sampling levels (if desired)
-    \item Allow for correct scaling when a different sampling , \(\mathrm{s}\), is used. Not restricted to \(\mathrm{s}\)=3.
-    \item Allow for the \snr{} scaling to be referenced to a different band or wavelength. Different reference bands available.
-    Results are not limited to being referenced from the \textit{J}-band.
+    \item The ability to scale to a \snr{} per pixel value other than 100.
+    \item Allow for the correct scaling when a different sampling, \(\mathrm{s}\), is used.
+    Not just restricted to \(\mathrm{s}\)=3.
+    \item Allow for relative precisions to be referenced to a different band or wavelength.
+    Results are not limited to being referenced relative to the \textit{J}-band.
 \end{itemize}
 
 This last point is of note as it allows the relative precisions not to be tied to a single band, allowing the test of different \snr{} values achievable at different wavelengths.
@@ -321,17 +321,16 @@ To access the relative {RV} precision of any of the values calculated at a diffe
 \begin{equation}
 {\delta V}_{{\snr{}}_{2}} = {\delta V}_{{\snr{}}_{1}} * \frac{{\snr{}}_{1}}{{\snr{}}_{2}},
 \end{equation}
-where \(\delta {V}_{{\snr{}}_{1}\) is the relative precision calculated at \({\snr{}}_{1}\) and \(\delta {V}_{{\snr{}}_{2}\) is the new precision if instead observed with a \snr{} of \({\snr{}}_{2}\).
+where \(\delta {V}_{{\snr{}}_{1}}\) is the relative precision calculated at \({\snr{}}_{1}\) and \({\delta V}_{{\snr{}}_{2}}\) is the new precision if instead observed with a \snr{} of \({\snr{}}_{2}\).
 
 
 \subsection{Atmospheric masking bug}
 \label{subsec:condition_two_bug}
-Applying testing practises revealed a error in the application of Condition~\#2 in~\citep{figueira_radial_2016}.
-When the telluric line mask was broadened to account for the barycentric motion of the Earth, and the requirement requiring three consecutive pixels (the sampling rate) to exceed the cut-off limit to be considered masked out there was a software bug.
-
-This meant that the masking applied for Condition \#2 was garbage, and not physically meaningful.
-Essentially randomly masking portions of the spectra.
-The synthetic spectra did not have telluric contamination present but the proportion and location of the telluric masking applied was incorrect.
+Applying testing practises of \cref{subsec:automated_testing} during the extension of \eniric{} revealed an error in the application of Condition~\#2 in~\citep{figueira_radial_2016}.
+When the telluric line mask was broadened to account for the barycentric motion of the Earth, and a requirement requiring three consecutive pixels (the sampling rate) to exceed the cut-off limit to be considered masked out, there was a software bug.
+This meant that the masking applied for Condition \#2 was incorrect and not physically meaningful.
+It essentially randomly masked portions of the spectra, not physically meaning full to the treatment of the telluic lins.
+The synthetic spectra did not have telluric line contamination themselves, but the proportion and location spectrum supposed to be mask to represent telluric contamination masking applied was incorrect.
 
 A check for this issue was discovered using this unit test (\cref{lst:masking_unit_test}), written under the \href{https://docs.pytest.org}{pytest} framework.
 Essentially, this takes a given transmission (telluric line) spectrum and creates a telluric mask at a line depth of 2\%.
