@@ -6,7 +6,7 @@ Here the software developed to compute the {RV} precisions is presented.
 It is an extension of the code used for the calculations of~\citet{figueira_radial_2016}, hence ``extended'' in the name.
 This section documents the vast improvements (optimizations and extensions) made to the software.
 Changes made that affect the derived {RV} precision attained are specifically documented in detail, with the relative precision changes provided.
-This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}.} (JOSS) (Neal and Figueira 2019 \emph{almost accepted}) with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}.
+This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}.} (JOSS) (Neal and Figueira 2019) with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}. This should be accepted shortly as only minor changes to the paper have been requested by the reviewer.
 
 
 \subsection{Automated testing}
@@ -17,7 +17,7 @@ This practice is crucial in computer science and professional software engineeri
 It is however starting to becoming increasingly encouraged as part of the movement towards open and reproducible science.
 
 After inheriting the code-base from~\citet{figueira_radial_2016}, software tests were added for a number of purposes: to learn and explore the code-base, to check and test the original functionality, and to identify if any changes implemented break the original functionality.
-Version control practises were used to incrementally add small separate changes to the code base at a time, regularly testing in a continuous integration manor.
+Version control practises were used to incrementally add small separate changes to the code base at a time, regularly testing in a continuous integration manner.
 This is done by sending the code-base to a repository\footnote{Public or private.} on Github\footnote{\href{https://bitbucket.org}{Bitbucket} and \href{https://gitlab.com}{GitLab} are other popular options.}.
 Automated tools and services then forward the project to testing, code style checking, or other continuous-integration services (e.g.\ \href{https://travis-ci.com}{Travis-CI}) which either run the automated tests, or other checks on each new change.
 The public Travis-CI record of the test for \eniric{} can be found at \href{https://travis-ci.org/jason-neal/eniric}{https://travis-ci.org/jason-neal/eniric}.
@@ -83,7 +83,7 @@ Examples of use are given in \cref{app:nir_prec_amendment}, specifically all par
 
 \section{Numerical Gradient}
 \label{sec:numerical_gradient}
-One of the key insights from \cref{eqn:optimal_weight,eqn:dv_rms} is that the radial velocity precision is inversely proportional gradient of the spectra.
+One of the key insights from \cref{eqn:optimal_weight,eqn:dv_rms} is that the radial velocity precision is inversely proportional gradient (first order derivative) of the spectra.
 In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
 In the original code used in~\citet{figueira_radial_2016} the gradient is approximated using the forward finite difference {FFD} method.
 In \eniric{} the method for computing the gradient is changed to the \npgradient{} function from the \numpy{} package.
@@ -135,7 +135,6 @@ Applying this to the situation presented here, similar to \cref{eqn:ffd_precisio
 \[\frac{\partial {A}_{0}(i)}{\partial\lambda(i)} = \frac{{\lambda(i-1)}^{2} {A}_{0}(i+1) + ({\lambda(i+1)}^{2}-{\lambda(i-1)}^{2}) {A}_{0}(i) - {\lambda(i+1)}^{2} {A}_{0}(i-1)} {\lambda(i-1)\lambda(i+1)(\lambda(i+1) + \lambda(i-1))}, \hspace{1em} 2 \leq i \leq n-1\]
 
 with an uncertainty of \(\mathcal{O}\left(\frac{\lambda(i+1){\lambda(i-1)}^{2} + \lambda(i-1){\lambda(i+1)}^{2}}{\lambda(i+1) + \lambda(i-1)}\right)\).
-As a slight a aside, due to the spectral re-sampling to three pixels per resolution element, the wavelength spacing \(\delta\lambda\) between pixels is a function of \(\lambda\), resolution and sampling choices.
 
 The \npgradient{} function implements central differences for the interior points, accurate to second order, and first order accurate one-sided (forward or backward) differences at the boundaries, computed using the same compact difference procedure.
 
@@ -178,12 +177,12 @@ The \(\delta V\) ratios are the relative difference in {RV} when changing from m
 
 As the pixel weights \cref{eqn:optimal_weight} are proportional to \({\lambda}^{2}\) column B was computed to assess the affect of the slight wavelength offset on the {RV} precision, visible in \cref{fig:gradients}.
 \cref{tab:numerical_gradients} shows that wavelength offset of \(\Delta\lambda/2\) contributes 0.1--0.6\% to the RV precision values, an order of magnitude smaller than the change from A to C.
-Changing to use the gradient from \numpy{} increases the \(\delta V_{\rms}\) by 2.5--7\%, (decreasing the {RV} precision).
+Changing from the {FFD} method to \npgradient{} to use the gradient from \numpy{} increases the \(\delta V_{\rms}\) by 2.5--7\%, decreasing the {RV} precision.
 After ruling out the wavelength offset with B, it is assumed that this difference mainly to the over-estimated gradient from the {FFD} method, shown in \cref{fig:gradients}
 
 Changing the method of numerical derivatives will change all the precision values given in the~\citet{figueira_radial_2016}.
 This is a small impact on the precision compared to other components of the {RV} precision.
-For instance from \cref{eqn:rv_SNR} a increase in \(\delta V_{\rms}\) of between 2.5--7\% could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
+For instance from \cref{eqn:snr_relation} a increase in \(\delta V_{\rms}\) of between 2.5--7\% could equally be caused by a small decrease in the \snr{} from 100 (the value used in~\citet{figueira_radial_2016}) to between 95--98.
 
 The current version of the software is now implemented with the gradient method provided by \numpy{} package, and as such there is a small difference in {RV} precision values calculated, compared to~\citep{figueira_radial_2016}.
 
@@ -256,10 +255,10 @@ Even the \npgradient{} is not immune to the edge effects in the sub-spectra when
 Although there is no pixels lost, the first and last pixels of each sub-spectra are computed using forward or backward differences, rather than central differences (as they would be in the full spectrum).
 Hence, the gradients obtained and subsequent pixels weights of the sub-spectra edge pixels are slightly altered slightly due to the spectral splitting occurring first.
 
-The effect of masking and splitting the spectrum before and after calculating the pixel weights is quantified in \cref{tab:mask_ordering}.
+The affect of masking and splitting the spectrum before and after calculating the pixel weights is quantified in \cref{tab:mask_ordering}.
 The columns labelled \emph{Split} represents splitting the spectrum before calculating the pixel weights while the columns labelled \emph{Mask} calculate all the pixel weights first and then apply the \({\mathcal{M}}_{2}\) mask.
 The difference in {RV} precision between both situations and for both gradient methods are provided.
-For the {FFD} gradient changing the ordering of splitting/masking from before the weight calculation to after decreases (improves) the {\(\delta V_{\rms}\)} by 0.2--0.7\%, while for \npgradient{} it the \(\delta V_{\rms}\) increases but an order of magnitude smaller than the {FFD} method, only between 0.01--0.13\%.
+For the {FFD} gradient changing the ordering of splitting/masking from before the weight calculation to after decreases (improves) the {\(\delta V_{\rms}\)} by 0.2--0.7\%, while for \npgradient{} the \(\delta V_{\rms}\) is increased but at an order of magnitude smaller than the {FFD} method, only between 0.01--0.13\%.
 In this case the {FFD} method has a larger change observed due to the addition of the \(n-2\) pixels that were originally lost.
 With the \npgradient{} all pixels are always included, the end values just slightly change.
 The last column of \cref{tab:mask_ordering} is the difference ratio between the \emph{Mask} column of both gradient methods.

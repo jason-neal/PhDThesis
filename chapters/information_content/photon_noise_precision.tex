@@ -15,7 +15,7 @@ Here the radial velocity precision derivation following~\citet{connes_absolute_1
 \end{figure}
 \todo{add \(\delta A\) to plots}
 
-For demonstration purposes \cref{fig:precisionderivation} shows a portion of an arbitrary spectrum \(A(\lambda)\), for demonstration purposes over a wavelength range \(\Lambda\).
+For demonstration purposes \cref{fig:precisionderivation} shows a portion of an arbitrary spectrum \(A(\lambda)\), over a wavelength range \(\Lambda\).
 Here \({A}_{0}(\lambda)\) is the reference spectrum while \(A(\lambda)\) is observed some later time with an apparent wavelength shift observed.
 The majority of a single Gaussian line is shown as spectral lines contain the most information but the presence of spectral lines is not a requirement for the derivation.
 
@@ -117,14 +117,14 @@ From rearranging \cref{eqn:weights} the dispersion is given by:
 \begin{equation}
 \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\sqrt{\sum{\,W(i)}}} = \frac{1}{Q \sqrt{\sum{\,{A}_{0}(i)}}}.\label{eqn:dv_rms}
 \end{equation}
-With \cref{eqn:dv_rms} the velocity precision is inversely proportional to the sum of the optimal pixel weights.
-Here \(Q\) is a spectral quality factor, defined for the pure photon noise case in~\cite{connes_absolute_1985, connes_demonstration_1996}, as:
+With \cref{eqn:dv_rms} the velocity precision is inversely proportional to the sum of the optimal pixel weights.\todo{An aspect that is quite important and that I think should be stressed out is that this calculation was made for very small line shifts, i.e. RV variations, and by this one means much smaller than the line width. For larger ones, the principles here break down.}
+Here \(Q\) is a spectral quality factor, defined for the pure photon noise case in~\citet{connes_absolute_1985, connes_demonstration_1996}, as:
 \begin{equation}
 Q \equiv \frac{\sqrt{\sum{\,W(i)}}}{\sqrt{\sum{\,{A}_{0}(i)}}} = \frac{\sqrt{\sum{\,\frac{{\lambda}^{2}(i) {({\partial {A}_{0}(i)}/{\partial \lambda(i)})}^{2}}{A_0(i) + {\sigma}^{2}_{D}}}}}{\sqrt{\sum{\,{A}_{0}(i)}}}. \label{eqn:quality_factor}
 \end{equation}
 
 The pure photon noise case is exclusively considered here in a high signal-to-noise regime in which \({A(i) + \sigma_{D}^{2}} \sim {A(i)}\) can be approximated.
-The quality factor, \(Q\), becomes flux independent and is purely a function of the spectral profile within the spectral range considered\footnote{In the case of pure detector noise case the fluctuations in \(A\) are independent of the spectrum \(A\) and the quality factor is \({Q}_{D} = \frac{\sqrt{\sum{{\lambda}^{2} {(\partial {A}_{0}(i)/\partial \lambda(i))}^{2}}}}{\sum{\, {A}_{0}(i)}}\) as derived by~\cite{connes_absolute_1985}.}.
+The quality factor, \(Q\), becomes flux independent and is purely a function of the spectral profile within the spectral range considered\footnote{In the case of pure detector noise case the fluctuations in \(A\) are independent of the spectrum \(A\) and the quality factor is \({Q}_{D} = \frac{\sqrt{\sum{{\lambda}^{2} {(\partial {A}_{0}(i)/\partial \lambda(i))}^{2}}}}{\sum{\, {A}_{0}(i)}}\) as derived by~\citet{connes_absolute_1985}.}.
 It is a measure of the line richness i.e.\ that quantity and depth of the lines.
 For example a spectrum with many sharp lines will have a high \(Q\).
 The instrumental resolution of the spectrograph also effects the spectral quality as it induces line broadening.
@@ -141,11 +141,11 @@ It can be estimated using
 N_{{e}^{-}} = P_{avg} * S_{tel} * \texp * \alpha* \Lambda, \label{eqn:Ne}
 \end{equation}
 where \(P_{avg}\) is the average monochromatic stellar brightness
-across the wavelength range \(\Lambda\) in \si{\photons\per\second\per\centi\metre\squared\per\centi\metre},
+across the wavelength range \(\Lambda\) in {\si{\photons\per\second\per\centi\metre\squared\per\centi\metre}},\todo{check}
 \(S_{tel}\) is the telescope collecting area in \si{\centi\metre\squared},
 \(\texp\) is the integration time in \si{\second}, and \(\alpha\) the is overall system efficiency (including atmosphere, telescope, spectrograph and detector).
 
-This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to predict the accuracy or performance limits of new spectrograph instrumentation~\citep[e.g.][]{connes_absolute_1985,butler_attaining_1996,bouchy_fundamental_2001} and has influence the design (and use) of spectrographs, e.g.\ {SPIRou}~\citep{artigau_spirou_2014,figueira_radial_2016}.
+This technique has been tested and demonstrated on observations by~\citet{connes_demonstration_1996} and been used to predict the accuracy or performance limits of new spectrograph instrumentation~\citep[e.g.][]{connes_absolute_1985,butler_attaining_1996,bouchy_fundamental_2001} and has informed the design (and use) of spectrographs, e.g.\ {SPIRou}~\citep{artigau_spirou_2014,figueira_radial_2016}.
 However,~\citet{figueira_radial_2016} bypass the calculation of \(N_{{e}^{-}}\) in \cref{eqn:Ne} by scaling the synthetic spectral models to a specific \snr{} level instead.
 
 In the case of several \(\delta V\) measurements computed for \(k\) spectral slices (or spectral orders) then the error on the average \(\overline{\delta V}\) is given by the error on a weighted average:
