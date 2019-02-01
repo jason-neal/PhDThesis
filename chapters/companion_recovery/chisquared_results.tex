@@ -52,7 +52,7 @@ The recovered host {RV}, \Rvone{}, is 0.1\kmps{} (two grid spaces) different fro
 For the companion the minimum \textchisquared{} location for the companion temperature is 200\K{} below the simulated value, and the {RV} of the companion recovered is 0.2\kmps{} below the input value.
 The input values for the companion are just outside of the 3-\(\sigma\) contours shown.
 The flux ratio for the input is 0.08 while the flux ratio recovered is 0.066.
-This begins to show the difficulty of recovering the companion.
+This begins to show the difficulty of recovering the correct companion parameters, specially at the level of \FtwoFone<8\%.
 
 \subsubsection*{{HD~211847} simulation}
 A second simulation is performed with parameters to mimic the observation of the target with highest flux ratio, {HD 211847}, and is shown in \cref{fig:HD211847_simulated_contours}.
@@ -85,8 +85,8 @@ In both simulations the change in {BIC} between models is \(\Delta {BIC} >10\), 
 {HD 211847} is the best candidate of the current targets for companion detection with the \textchisquared{} binary model as it has a 155\Mjup{} low-mass star companion~\citet{moutou_eccentricity_2017}.
 Even though it has been determined not a {BD} in the literature it has the highest estimated flux ratio out of the current sample, of 0.03 based on the~\citet{baraffe_new_2015} evolution models and the known companion mass (see \cref{tab:estimated_flux_ratios}).
 \citet{moutou_eccentricity_2017} used Angular Differential Imaging ({ADI}) with {SPHERE@VLT} to observe an angular separation of the two bodies of 219.6\mas{} corresponding to a projected separation of 11.3\AU{}.
-For comparison the {CRIRES} slit width on the sky is 400\mas.
-However, it was not determined if the orientation of the orbit was considered during the observation, to align the slit along the orbit.
+For comparison the {CRIRES} slit width on the sky is 400\mas{} (0.4\(^{\prime\prime}\)), so for any orientation of the star and companion the spectra will be blended.
+However, it was not determined if the orientation of the orbit was considered during the observation, to specifically align the slit along the orbit.
 The result of applying \textchisquared{} fitting to the second observation of {HD 211847} is given in \cref{tab:example_params} and visualized in \cref{fig:HD211847_result_contours}.
 
 For the fitting of this target the metallicity of both components was fixed to 0.0 and the \Logg{} for the host was fixed at 4.5.
@@ -96,14 +96,14 @@ The orbital solution of the target was used to define the initial {RV} search sp
 Again the top left panel of \cref{fig:HD211847_result_contours} shows the recovery with a single component model with the other three displaying parameter slices of the binary model.
 Here the red circle marks the location of the expected values from the literature while the yellow star indicates the location of the minimum \textchisquared{} recovered parameters.
 The error bar on the host temperature also comes from the literature, while the error on estimated {RV} values, shown in \cref{fig:HD211847_result_contours}, is calculated by applying the general error propagation formula~\citep{ku_notes_1966} to the {RV} equation (\cref{eqn:rv2_equation}) and using the errors on the published orbital parameters.
-For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc., it follows:
-\begin{align}
-f &= f(x, y, z, \ldots)\\
-\delta f &= \sqrt{{\left( \frac{\partial f}{\partial x} \delta x\right)}^2 + {\left(\frac{\partial f}{\partial y} \delta y\right)}^2 + {\left(\frac{\partial f}{\partial z} \delta z\right)}^2 + \ldots}.
-\end{align}
+%For a function, \(f\), with errors on the inputs \(\delta x\), \(\delta y\) etc., it follows:
+%\begin{align}
+%f &= f(x, y, z, \ldots)\\
+%\delta f &= \sqrt{{\left( \frac{\partial f}{\partial x} \delta x\right)}^2 + {\left(\frac{\partial f}{\partial y} \delta y\right)}^2 + {\left(\frac{\partial f}{\partial z} \delta z\right)}^2 + \ldots}.
+%\end{align}
 
 The fitted single component model finds a temperature of 5900\K{} for the host with a \Rvone{} of 7\kmps{}.
-This is 200\K{} and 0.4\kmps{} different above the expected parameters.
+The recovered \(\teffsub{1}\) is \(\sim\)200\K{} higher than the expected value with \Rvone{} 0.4\kmps{}  above the expected parameters.
 The binary model finds a host temperature of 5800\K{}, which is the second closest model to the literature value, <100\K{} different.
 The host {RV} value recovered with the binary model is 7.6\kmps{}, which is 1\kmps{} higher than expected, but again these {RV} differences are smaller than the {\fwhm} of the lines.
 For the single component model there is a barely noticeable evidence of a secondary minima near this 7.6\kmps{} {RV} value which is recovered by the binary model.
@@ -139,6 +139,8 @@ The edge of a deep Hydrogen line (Brackett-\(\gamma\)) off the edge of detector 
 
 The same method was applied to the remaining targets, all with similar results for the companion, having companion spectra well above the expected values.
 In brief, it is concluded that the companion spectra cannot be correctly detected in the observations presented here using this method.
+
+\todo{I think this deserves some extra comments. I would compare the results derived form error propagation to the differences obtained between the measured and the real one (cming fro other methods). I would try to conclude with a lesson on the potential explanations.}
 
 \begin{figure*}
     \centering

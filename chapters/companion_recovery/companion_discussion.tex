@@ -33,6 +33,7 @@ In the \nir{} there is a compounding problem: the model input physics of sub-ste
 
 \subsection{Line contribution of faint companions}
 \label{subsec:line_contributions}
+\todo{Something I think that should be discussed in this section too is how the lines of the BD are not only small in absilute terms but smaller than the stellar counterparts. So the expectaions from the models are not only wrong but objectively too optimistic. }
 One thing easy to overlook when attempting to detect the binary companion at low flux ratios is the actual contribution of the spectral lines of the companion.
 Here the line depths in the synthetic companion spectra are calculated to determine the \snr{} levels required to detect the lines of the binary companions.
 
@@ -164,7 +165,7 @@ As shown in \cref{subsec:phoenix_comparision} the {PHOENIX-ACES} and {BT-Settl} 
 \cref{fig:hd211847-models} shows again the minimum \textchisquared{} solution for detector \#1 of the second {HD~211847} observation, this time including the {BT-Settl} solution with the same parameters.
 Although the {PHOENIX-ACES} and {BT-Settl} models differ slightly they both have large spectral discrepancies to the observations.
 As such the {BT-Settl} models were not used in the \textchisquared{} simulations and results as there did not seem to be any special advantage in using them.
-If promising results had been obtained with the {PHONEIX-ACES}, or had there been a substantial difference between the synthetic spectral models, more focus on the {BT-Settl} models would have occurred.
+If promising results had been obtained with the {PHOENIX-ACES} models, or had there been a substantial difference between the synthetic spectral models, more focus on the {BT-Settl} models would have occurred.
 
 \begin{figure}
     \centering
@@ -176,7 +177,8 @@ If promising results had been obtained with the {PHONEIX-ACES}, or had there bee
 \end{figure}
 
 \subsection{Impact of \Logg{}}
-\label{subsec:logg} 
+\label{subsec:logg}
+\todo{I think it is important to state that while the log g has a large impact on the data, there is no reason to believe that the log g were so badly determinated that they were the reason for the non-detection. The other potential issues seem far more likely.}
 The surface gravity of a star, measured as \Logg{}, is related to evolutionary state and the size of the star.
 Smaller \Logg{} values usually indicate bigger stars with larger radii.
 This parameter has a large impact on the radius and thus flux ratio of the binary models.
@@ -195,7 +197,7 @@ At a more advanced stage, instead of interpolation,~\cite{czekala_constructing_2
 Interpolation could be added to this work in the future to refine the recovered parameters, and to help the transition between the grid \Logg{} values.
 Codes are readily available to perform spectral interpolation which could be utilized for this, two of them are \emph{pyterpol}\footnote{https://github.com/chrysante87/pyterpol}~\citep{nemravova_xtauri_2016} and \emph{Starfish}\footnote{https://github.com/iancze/Starfish}~\citep{czekala_constructing_2015}.
 
-\subsection{Contrast to other works}
+\subsection{Comparisons to other works}
 \label{subsec:chi2_contrast}
 In this work the techniques attempted were unsuccessful in detecting the companions.
 Here some relevant comparisons are made to recent positive detections in the literature.
@@ -213,7 +215,8 @@ Both these works use a much larger wavelength range (\(\sim\)500--1700\nm{}) tha
 
 In trying to detect secondary stellar spectra in optical spectra at \(R=60\,000\), \citep{kolbl_detection_2015} are able to detect secondary spectra down to a 1\% flux ratio, by matching to a library of real spectra.
 The work performed here aimed at flux ratios starting around and below this limit, even after taking advantage of the increased flux ratio in the \nir{}.
-
+\todo{It is important to note that this is where your studies fit. So when trying to perform a model fitting at a \% fit ratio and smaller, you ran into the issues mentioned above.}
+    
 One promising technique with a success in detecting faint companion emission spectra is presented by~\citet{lockwood_nearir_2014}.
 Applying the {TODCOR} correlation to several spectra at different epochs and combining the observations while accounting for the orbits using a maximum likelihood framework, they confirm the water emission signature in {\(\tau\) Bo\"{o}tis} and find a \(1\sigma\) upper limit high resolution (\(R=24\,000\)) spectroscopic flux ratio of \(10^{-4}\) at 3.3\um{}.
 
@@ -226,3 +229,5 @@ Particularly, the \snr{} in~\citet{piskorz_evidence_2016} is an order of magnitu
 Also the multi-epoch approach allows for the {RV} of the two components to be monitored and some orbital parameters determined.
 The narrow wavelength coverage CRIRES spectra analysed here, at \snr{}=100--300 are insufficient.
 The poorly separated epochs, were also a problem as addressed in \cref{subsec:differential_results}.
+
+\todo{Finally, mention the issues with the spectra.}
