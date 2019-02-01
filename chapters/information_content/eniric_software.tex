@@ -150,7 +150,7 @@ The \npgradient{} function implements central differences for the interior point
 \end{figure}
 
 
-\input{tables/numerical_gradient.tex}
+\input{tables/information_content/numerical_gradient.tex}
 
 \cref{fig:gradients} visualizes two small spectral regions with the gradients computed with the original {FFD} and the \npgradient{} methods.
 The top panels contain a small section of a simulated spectrum, comprised of three small blended lines, and a large single line respectively.
@@ -271,7 +271,7 @@ This retains the most pixels, with the most accurate pixel weights (less edge ef
 It has also been changed to only apply the \({\mathcal{M}}_{2}\) and not split the spectrum into small sub-spectra then perform the weighted error calculation of \cref{eqn:weighted_average_error}.
 The functionality to perform the weighted error is still present and can be used to combine the {RV} precision of larger spectral chunks, such as the separate \nir{} bands or the different spectral orders in a cross-dispersed spectrograph.
 
-\input{tables/mask_ordering}
+\input{tables/information_content/mask_ordering}
 
 The ordering of the masking does not affect the results of Condition \#1 or \#3 that were not split into sub-spectra to calculated th RV precisions.
 Although there are differences from the old and new implementation of Condition \#2 (splitting to only masking) the differences observed between~\citet{figueira_radial_2016} and this work are dominated by a bug found, see \cref{subsec:condition_two_bug}.
