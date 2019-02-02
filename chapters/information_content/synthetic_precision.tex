@@ -22,9 +22,8 @@ The details of these kernels and implementation of numerical convolution are giv
 Stellar rotation has the affect of broadening spectral lines as the different portions of the stellar surface have a different radial velocity between \(\pm\)\Vsini{}.
 Rotation is applied to a non-rotating spectrum by convolution with a rotation kernel.
 The stellar rotational kernel used follows~\citet{gray_observation_2005};
-\todo{top view diagram of rotation}
 \begin{align}
-G(\Delta\lambda) &= \frac{2(1-\epsilon){[1-{(\Delta\lambda /{\Delta\lambda}_{L})}^{2}]}^{1/2} +   \frac{1}{2}\pi\epsilon[1-{(\Delta\lambda /{\Delta\lambda}_{L})}^{2}]}{\pi (1-\epsilon/3) \vsini}\\
+G(\Delta\lambda) &= \frac{2(1-\epsilon){[1-{(\Delta\lambda /{\Delta\lambda}_{L})}^{2}]}^{1/2} + \frac{1}{2}\pi\epsilon[1-{(\Delta\lambda /{\Delta\lambda}_{L})}^{2}]}{\pi (1-\epsilon/3) \vsini}\\
 &= c_{1}{[1- {(\Delta\lambda /\Delta\lambda_{L})}^{2}]}^{1/2} + c_{2}[1-{(\Delta\lambda /\Delta\lambda_{L})}^{2}] \label{eqn:rotational_profile}
 \end{align}
 where
@@ -35,8 +34,23 @@ are constants which depend on the equatorial rotational velocity \Vsini{}.
 
 Here $\Delta\lambda$ is the wavelength position from the non-rotating line centre, $\Delta\lambda_{L}$ is the maximum line shift of the line centre at the edge of the stellar disk where the Doppler shift is \Vsini{}; $\Delta\lambda_{L} = \lambda \frac{\vsini}{c}$.
 
-This kernel arises from integrating the rotational velocity profile across the surface of the stellar disk and as such the rotation kernel is bounded in the range $[-\Delta\lambda_L, \Delta\lambda_{L}]$ from the line centre.
+This kernel arises from integrating the rotational velocity profile across the surface of the stellar disk as a series of strips with different Doppler shifts. As such the rotation kernel is bounded in the range $[-\Delta\lambda_L, \Delta\lambda_{L}]$ from the line centre.
+This can be seen in \cref{fig:rotationdiagram_and_profile} with a diagram of the stellar disk on the left, and the profile of the rotational kernel on the right, split into the two components from \cref{eqn:rotational_profile}.
 This kernel also accounts for limb-darkening on the stellar disk with the linear limb darkening coefficient used in this work fixed at $\epsilon=0.6$ as done in~\citet{figueira_radial_2016}.
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.45\linewidth]{figures/information-content/rotation_diagram} & \includegraphics[width=0.45\linewidth]{figures/information-content/rotational_profile}\\
+    \end{tabular}
+    \caption{Left: Apparent disk of the star, thought of as a series of strips parallel to the projected rotation axis, each with the Doppler shift proportional to \(x\).
+        The amount of light at each Doppler shift varies with the length of the strip, from \(-y_1\) to \(+y_1\), where \(y_1 = \sqrt{R^2-x^2}\) for a circular disk.
+        Right: The rotation profile, \cref{eqn:rotational_profile}, is shown by the solid line black line for a limb darkening coefficient \(\epsilon=0.6\) and labelled ``total''.
+        It is the sum of the ```1st term'' and ``2nd term'' curves.
+        These are reproductions of Figures 18.3 and 18.5 from~\citep{gray_observation_2005}.}
+    \label{fig:rotationdiagram_and_profile}
+\end{figure}
+
 
 As the Doppler shift \Vsini{} is transformed into wavelength by multiplication of $\lambda / c$ there is a wavelength dependence on the rotation kernel shape.
 That is, the rotation kernel at each pixel is unique, requiring individual calculations.
