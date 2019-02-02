@@ -4,12 +4,15 @@
 
 
 \subsection{Target selection}
+
+\begin{landscape}
+    \input{tables/information_content/carmenes_selection_updated.tex}
+\end{landscape}
+
 This work in telluric correcting all spectra chosen has been hampered by the difficulty faced in correcting the CARMENES spectra from telluric lines.
 There have been issues achieving a reliable telluric correction with the Molecfit software on the {CARMENES} spectra (private-communication Ulmer-mol (2018)).
 At this stage only one spectrum has been corrected to compare the difference between Molecfit correction and complete telluric masking to see if it is worth investing time in improving the correction.
 
-
-\citep{passegger_carmenes_2018, rajpurohit_exploring_2018}
 
 \subsection{Preparation of CARMENES spectra}
 - preparation of observed spectra
@@ -24,8 +27,6 @@ Preparation of {CARMENES} spectra.
 
 
 This work is work in progress.
-So far only 1 of 8 planned {CARMENES} spectra have been telluric corrected to calculate the {RV} precision.
-
 {I can calculate the {RV} precision from models though.}
 
 
@@ -43,24 +44,25 @@ Certain\% steps like Bouchy or Artigau
 Can do Barnard's star in {CARMENES}.
 \todo{finish this} compared to models in Artigau.
 
-\DTLsetseparator{,}
-\DTLloadrawdb{targets}{data/carmenes_selection.csv}%
+%% Old tables
+%\DTLsetseparator{,}
+%\DTLloadrawdb{targets}{data/carmenes_selection.csv}%
+%
+%\begin{table*}[h]
+%    \centering
+%    \caption[Selection of targets from the {CARMENES} library.]{Selection of targets from the {CARMENES} library spanning the {M-dwarf} spectral range.}
+%    \begin{tabular}{l l l r c c c c}%
+%        \toprule
+%        Karmn & Name & SpT &  \({\snr{}}_{\textrm{NIR}}\)  & Temp (K)  & \Logg{} & \feh{} & v\(\sin{i}\) (\kmps{})\\
+%        \midrule
+%        \DTLforeach*{targets}{\id=Karmn,\name=Name,\sptype=SpT,\SNR=NIR-SNR,\TEFF=Teff, \LOGG=logg,\metal=FeH, \rot=ROT-Vsini}{
+%            \DTLiffirstrow{}{\\}\id{} & \name{}  & \sptype{} & \SNR{} & \TEFF{} & \LOGG{} & \metal{} & \rot{}
+%        }
+%        \\
+%        \bottomrule
+%    \end{tabular}
+%    \label{tab:targets}
+%\end{table*}
 
-\begin{table*}[h]
-    \centering
-    \caption[Selection of targets from the {CARMENES} library.]{Selection of targets from the {CARMENES} library spanning the {M-dwarf} spectral range.}
-    \begin{tabular}{l l l r c c c c}%
-        \toprule
-        Karmn & Name & SpT &  \({\snr{}}_{\textrm{NIR}}\)  & Temp (K)  & \Logg{} & \feh{} & v\(\sin{i}\) (\kmps{})\\
-        \midrule
-        \DTLforeach*{targets}{\id=Karmn,\name=Name,\sptype=SpT,\SNR=NIR-SNR,\TEFF=Teff, \LOGG=logg,\metal=FeH, \rot=ROT-Vsini}{
-            \DTLiffirstrow{}{\\}\id{} & \name{}  & \sptype{} & \SNR{} & \TEFF{} & \LOGG{} & \metal{} & \rot{}
-        }
-        \\
-        \bottomrule
-    \end{tabular}
-    \label{tab:targets}
-\end{table*}
-
-\input{tables/information_content/carmenes_selection.tex}
+%\input{tables/information_content/carmenes_selection.tex}
 %\input{tables/carmenes_selection_transpose.tex}
