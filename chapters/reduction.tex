@@ -47,7 +47,8 @@ Calibration and removal of the dark current is performed by taking exposures in 
 The detectors in the {CRIRES} instrument are cryogenically cooled to a temperature of \(\sim\)27\K{} (within 0.1\K{}) to significantly reduce the dark current, and to maintain consistency.
 The electrical components of the {CRIRES} detectors create thermal energy while operational which impacts the dark current.
 A strong ``glow'' is observed in the bottom corners of the {CRIRES} detector in \cref{fig:darkcurrent_colour} due to nearby amplifiers.
-As per the {CRIRES} calibration plan, ``dark frames'' need to be taken at the exact same exposure as the science frame. This is necessary because the detectors are non-linear and cannot be appropriately scaled to different times.
+As per the {CRIRES} calibration plan, ``dark frames'' need to be taken at the exact same exposure as the science frame.
+This is necessary because the detectors are non-linear and cannot be appropriately scaled to different times.
 \Cref{fig:darkcurrent_colour} shows the master dark frame created from averaging three dark frames for exposure times of 3 seconds (for the flats) and 180 seconds (for the science), both on the same amplitude scale.
 For the {CRIRES} detectors the dark current per pixel is around 0.2--0.4\,(\(e^{-}\)\si{\per\second}), while the glow at the two corners of the 180 second exposure shown here is \(\sim\)\(9000 / 180\approx50\)\,\(e^{-}\)\si{\per\second}.
 
@@ -85,7 +86,8 @@ The flat-field frames are corrected for dark current by subtraction of the maste
 The {CRIRES} detector suffers from non-linearities in sensitivity across the detector.
 This can be seen in the flat-field image on the left of \cref{fig:masterflats_colour} where there is an intensity gradient from dark to light across the detector.
 A set of coefficients for each pixel is provided by {ESO}\footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the non-linearity of the detectors.
-This also corrects for a slight difference in sensitivity between the pixels from the odd and even columns in the {CRIRES} detectors, commonly called the ``odd-even effect''. This occurs because the odd and even columns are read separately by different large amplifiers that have a different gains.
+This also corrects for a slight difference in sensitivity between the pixels from the odd and even columns in the {CRIRES} detectors, commonly called the ``odd-even effect''.
+This occurs because the odd and even columns are read separately by different large amplifiers that have a different gains.
 The frame on the right of \cref{fig:masterflats_colour} has been corrected for the non-linearities.
 
 The flat-field can also reveal defects in the detector e.g.\ dead pixels, dust and scratches: a large scratch is clearly visible in \cref{fig:masterflats_colour}.

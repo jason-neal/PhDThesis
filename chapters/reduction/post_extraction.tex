@@ -13,7 +13,7 @@ Wavelength calibration is the process of assigning accurate wavelength values to
 For {CRIRES} in the \nir{} this is challenging.
 {CRIRES} uses a Thorium-Argon (\thar) lamp to place 6 emission spectra on the detector using fibres.
 The spectra of the \thar{} emission lines are used to determine the spatial distribution of the wavelength solution across each detector using correlation with a spectral template.
-\thar{} lamps are excellent at optical wavelengths where the numerous (several thousand) spectral lines enable radial velocity precisions of sub\,-\mps{} when combined together, e.g. in the {HARPS} spectrograph.
+\thar{} lamps are excellent at optical wavelengths where the numerous (several thousand) spectral lines enable radial velocity precisions of sub\,-\mps{} when combined together, e.g.\ in the {HARPS} spectrograph.
 The precision of an individual \thar{} line is of the order of \mps{}.
 
 However, in the \nir{} there is a relatively low density of \thar{} lines~\citep{kerber_laboratory_2009}, which, in combination with the alignment of the narrow wavelength range of the detector, causes a poor wavelength calibration to be obtained (e.g.\ {CRIRES}-POP~\citep{nicholls_crirespop_2017}).
@@ -184,7 +184,7 @@ The rest frame of choice is the barycentre of the Solar System.
 Equations to relate the observed spectral shift to the {RV} shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in~\citet{lindegren_fundamental_2003}.
 
 In this work the barycentric velocity correction is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
-This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion as well as Earth's rotation, to the accuracy of \(\sim\)1\mps{}.
+This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion as well as Earth's rotation, to the accuracy of \(\sim\)1\mps{}\footnote{For corrections at an accuracy of 1\cmps{} see \citet{wright_barycentric_2014, shubham_shbhuk/barycorrpy_2018}.}.
 This computation requires the date and time of the observation, the location of the observatory and the celestial coordinates of the target.
 The observed spectra are Doppler shifted by the negative value of the barycentric velocity calculated, placing all spectra as if they were observed from the barycentre of the Solar System.
 
