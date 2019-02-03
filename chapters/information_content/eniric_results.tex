@@ -32,7 +32,7 @@ The dashed line represents the theoretical limits imposed by Condition~\#1, and 
 The spectra were normalized to have a \snr{} of 100 per resolution element as measured at the centre of the \emph{J}-band.
 
 The values for Condition~\#1 and \#3 only have small differences which is barely noticeable, while Condition~\#2 has large band dependant changes, shown by the change in the shaded areas.
-For example the that \emph{Z} and \emph{J}-band RV precisions decrease with the new results, while the {K} band gets substantially worse.
+For example the that \emph{Z} and \emph{J}-band {RV} precisions decrease with the new results, while the {K} band gets substantially worse.
 This occurs because the software did not mask many of the regions affected by telluric lines, where as in the new results, a significant portion is masked out due to the overlap of telluric lines, leading to a higher \(\delta V_{\rms}\) value.
 The \emph{H}-band also sees a small increase in \(\delta V_{\rms}\).
 As stated previously the discovery of the bug affecting telluric masking does not change the conclusions of \citet{figueira_radial_2016}.
@@ -58,10 +58,14 @@ This was also visually observed in \cref{subsec:phoenix_comparision}.
     \label{fig:logg_metalicity_deviations}
 \end{figure}
 
-With the ability to explore a wider range of parameters the range of {PHOENIX-ACES} models extended to explore the \Logg{} and metallicity of the {PHOENIX-ACES} models.
+With the ability to explore a wider range of parameters the range of was {PHOENIX-ACES} models extended to explore the affect of \Logg{} and \feh{} of the {PHOENIX-ACES} models on the relative {RV} precision.
+Remember that \Logg{} is a measure of the stellar surface gravity, the gravitational acceleration at the equator expressed in {cgs} units of \si{\centi\metre\per\second\squared} then taking the logarithm base-10.
+The surface gravity \(g \propto \frac{M}{R^{2}}\) so a larger \Logg{} values corresponds to stars with smaller radii.
+While the metallicity, \feh{}, is a measure of the abundance of elements heavier than Hydrogen and Helium.
+It is often measured as the ratio of Iron to Hydrogen relative to the Sun.
+That is a \feh{}=0 has the same metal ratio as the Sun a positive \feh{} has more metals, and a negative \feh{} has less metals.
+The higher abundance of metals creates stronger absorption lines.
 
-logg is ...
-feh is ... metallicity 
 
 \Eniric{} was to compute the spectral quality factor, \(Q\) (\cref{eqn:quality_factor}), and {RV} precision for all {PHOENIX-ACES} models with \Logg{} between 4.0--5.5 and \feh{} between -1--1, inclusive.
 The spectral factor is used for the comparison following, \citet{artigau_optical_2018} in which it was used to compare between models, and observed spectra, independent of the flux levels.
@@ -123,7 +127,7 @@ The higher number of lines in the M8 and {M9} spectra show why the spectral qual
     \label{fig:z_and_j_spectra}
 \end{figure}
 
-This work begins to reveal how the spectral parameters \Logg{} and \feh{} begin to affect the RV precision obtained.
+This work begins to reveal how the spectral parameters \Logg{} and \feh{} begin to affect the {RV} precision obtained.
 It shows that there are some fairly consistent trends at the longer wavelength bands, but in the \emph{Z}-, {H}, \emph{J}-bands the effect clearly also depends on the spectral type.
 This is just the first look into these possible relation and more work into visually identifying the parameter effects to the spectrum due to \feh{} and \Logg{} in relation to the spectral quality shown here.
 
@@ -131,7 +135,7 @@ With the possibility to simply compute the quality and precision of a large rang
 A comparison of spectral quality over all synthetic spectra or just all in the M-dwarf temperature range, may help solidify or extend the trends observed here.
 
 This work has yet to assess the spectral quality when both \feh{} and \Logg{} are changed together.
-{\red{}However, in the context of selecting M-dwarf targets for RV measurements, if the goal is to achieve a high spectral quality then, it follows from \cref{fig:logg_metalicity_deviations} that generally for {M0}-M3 spectral types, and in the H and \emph{K}-band, an observation of a metal-rich (\feh{}>0) M-dwarf with a lower \Logg{} value would have a higher spectral quality.
+{\red{}However, in the context of selecting M-dwarf targets for {RV} measurements, if the goal is to achieve a high spectral quality then, it follows from \cref{fig:logg_metalicity_deviations} that generally for {M0}-M3 spectral types, and in the H and \emph{K}-band, an observation of a metal-rich (\feh{}>0) M-dwarf with a lower \Logg{} value would have a higher spectral quality.
 In practise, the spectral quality is only one component to the precision, and probably the  more important, and observer adjustable,  contribution to spectral precision is the number of photons counted (or the \snr{} achieved).
 For cool {M6} and {M9} spectral types this is important as longer exposure times are needed to achieve a similar \snr{} levels, due to their lower luminosity.}
 \todo{any thoughts on this?}
