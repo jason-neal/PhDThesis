@@ -2,19 +2,46 @@
 
 \section{Application to {CARMENES} spectra}
 
+One of the main reasons for focusing on the extending the work of\citet{figueira_radial_2016} was to analyse the the differences in {RV} precision of synthetic spectra and observed \nir{}.
+This is important for the community to understand the accuracy of synthetic spectra with \citet{artigau_optical_2018} recently finding band-specific discrepancies in theoretical precision between real and synthetic spectra of Barnard's Star.
+In 2018 CARMENES openly released a spectral library containing one spectrum for each target in their 324 M-dwarf {RV} survey \citet{reiners_carmenes_2018}.
+With this they provide details on the empirical \(\delta V_{rms}\) measured during their RV processing with their RV analysis code, {SERVAL} \citep{zechmeister_spectrum_2018}, using all available spectra of each target.
+Spectra from this library will be used to compare the theoretical precision of observed CARMENES spectra to synthetic models.
+This work is still in the preliminary stages but the progress so far will be demonstrated here.
+
 
 \subsection{Target selection}
+To analysis the precision in different spectral types a few specific M-dwarfs were selected.
+The 324 spectra of the {CARMENES} M-dwarf library from \citet{reiners_carmenes_2018} are available at \href{http://carmenes.cab.inta-csic.es/gto/}{http://carmenes.cab.inta-csic.es/gto/}, along with the achieved \snr{} in the visible and \nir{} spectra.
+
+The spectral library was downloaded and divided into spectral type and ordered by the {SNR} achieved in the \nir{}, to selected from the targets with the highest \snr{}.
+To cover the M-dwarf range targets were selected near each of the spectral types M0, M3, M6 and M9.
+For each spectral type (within $\pm0.5$) two stars are selected that have high {SNR} values.
+One of the two selected targets for the M3 type is Barnard's star which has been analysed extensively in~\citet{artigau_optical_2018}, in particular with CRIRES spectra for the \nir{} domain, allowing for direct comparisons between the two works.
+The other criteria was to select targets with a range of \Logg and \feh{} values.
+
+The selected targets from the {CARMENES} library are provided in Table~\ref{tab:targets}, with some spectral parameters.
+There are spectral parameters derive dby fitting
+The spectral parameters (\Teff{}, \Logg{}, \feh{}) for these targets are from \citep{passegger_carmenes_2018, rajpurohit_exploring_2018} who performed spectral fitted of the {CARMENES} spectra with the PHOENIX-ACES and BT-Settl models respectively.
+
+There are gaps in the \citet{passegger_carmenes_2018} values for stars that have the lower \snr{} levels, and neither have parameters for Luyten's Star, for which the parameters are from SIMBAD instead.
+
+\citep{passegger_carmenes_2018} uncertainties = 
+
+BT-Settl uncertancies \Teff{} within 100 \K{} and, \Logg{} and \feh{} within 0.3 dex uncertainty.
 
 \begin{landscape}
     \input{tables/information_content/carmenes_selection_updated.tex}
 \end{landscape}
 
+
+\subsection{Preparation of {CARMENES} spectra}
+\label{subsec:prepatation_on_carmenes}
 This work in telluric correcting all spectra chosen has been hampered by the difficulty faced in correcting the CARMENES spectra from telluric lines.
 There have been issues achieving a reliable telluric correction with the Molecfit software on the {CARMENES} spectra (private-communication Ulmer-mol (2018)).
 At this stage only one spectrum has been corrected to compare the difference between Molecfit correction and complete telluric masking to see if it is worth investing time in improving the correction.
 
 
-\subsection{Preparation of CARMENES spectra}
 - preparation of observed spectra
 
 Preparation of {CARMENES} spectra.
@@ -22,8 +49,29 @@ Preparation of {CARMENES} spectra.
 \missingfigure{Example of {CARMENES} spectra before and after correction}
 
 
+\subsubsection{Spectral preparation Telluric correction}
+\label{subsec:prepatation_on_carmenes}
+The CARMENES spectral library have not been corrected for telluic lines.
+Therefore, this needs to be performed to remove their presence which would affect the theoretical RV precision.
+This is done in colaboration with Sol\'ene Ulmer-moll who used the Molecfit software \citep{smette_molecfit_2015} to correct for the telluric lines in the CARMENES spectra following their experience in \citet{ulmer-moll_telluric_2018}. 
+Telluric correction is performed to assess its improvement on the telluric spectra over straight masking in a real situation, and explore telluric correction on CARMENES spectra.
+ 
+This work in telluric correcting the eight spectra chosen has been hampered by the difficulty faced in properly correcting the CARMENES spectra from telluric lines.
+There have been issues achieving a reliable telluric correction with the Molecfit software on the {CARMENES} spectra (\emph{priv.\ comm.} Ulmer-mol (2018)).
+At this stage only one spectrum has been corrected, Barnard's Star, to investigate if the Molecfit telluric correction is sufficient, and enhances the RV precision results.
+
+Are the spectra first combined into one??? or is this already performed.
+The telluric correction is performed by ....
+
+
+The current implementation of the telluric correction has the spectrum broken into three chunks with the line profile of the lines fitted independently in each chunk.
+Some regions have an improved telluric correction for while other regions the correction worsens.
+
 \subsection{Barnard's star}
 - Barnard's star (Artigau 2018 comparison)
+
+Figure \citep{} shows the uncorrected CARMENES spectrum (xxx) along with the current telluric model (black) the bottom panel shows the corrected CARMENES spectrum after division.
+The main \nir{} \ce{H2O} bands are also excluded outside the lines...
 
 
 This work is work in progress.
@@ -45,6 +93,7 @@ Can do Barnard's star in {CARMENES}.
 \todo{finish this} compared to models in Artigau.
 
 %% Old tables
+
 %\DTLsetseparator{,}
 %\DTLloadrawdb{targets}{data/carmenes_selection.csv}%
 %
