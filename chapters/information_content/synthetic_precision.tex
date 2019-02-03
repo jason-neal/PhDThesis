@@ -1,9 +1,9 @@
 %!TEX root = ../../thesis.tex
 
-\section{Deriving RV for synthetic spectra}
+\section{Deriving {RV} for synthetic spectra}
 The work of this chapter extends the work of~\citep{figueira_radial_2016}.
 To contrast the software improvements made here the details of~\citep{figueira_radial_2016} are first presented.
-The important factors that were considered in preparing and using the synthetic spectra to apply the RV precision formulation of \cref{eqn:dv_rms,eqn:weighted_average_error}.
+The important factors that were considered in preparing and using the synthetic spectra to apply the {RV} precision formulation of \cref{eqn:dv_rms,eqn:weighted_average_error}.
 
 \subsection{Prepare {PHOENIX-ACES} models}
 Four {PHOENIX-ACES} spectra were selected, spanning the M-dwarfs regime (M0, {M3}, {M6}, {M9}) with model temperatures 3900, 3500, 2800 and 2600\K{} respectively.
@@ -34,7 +34,8 @@ are constants which depend on the equatorial rotational velocity \Vsini{}.
 
 Here $\Delta\lambda$ is the wavelength position from the non-rotating line centre, $\Delta\lambda_{L}$ is the maximum line shift of the line centre at the edge of the stellar disk where the Doppler shift is \Vsini{}; $\Delta\lambda_{L} = \lambda \frac{\vsini}{c}$.
 
-This kernel arises from integrating the rotational velocity profile across the surface of the stellar disk as a series of strips with different Doppler shifts. As such the rotation kernel is bounded in the range $[-\Delta\lambda_L, \Delta\lambda_{L}]$ from the line centre.
+This kernel arises from integrating the rotational velocity profile across the surface of the stellar disk as a series of strips with different Doppler shifts.
+As such the rotation kernel is bounded in the range $[-\Delta\lambda_L, \Delta\lambda_{L}]$ from the line centre.
 This can be seen in \cref{fig:rotationdiagram_and_profile} with a diagram of the stellar disk on the left, and the profile of the rotational kernel on the right, split into the two components from \cref{eqn:rotational_profile}.
 This kernel also accounts for limb-darkening on the stellar disk with the linear limb darkening coefficient used in this work fixed at $\epsilon=0.6$ as done in~\citet{figueira_radial_2016}.
 
@@ -76,8 +77,8 @@ From this description the integration of a circular fibre is given by
 \IP{}_{\textrm{fibre}(\Delta\lambda)} = \cos(B\cdot\Delta\lambda),  \hspace{2em} [-\frac{\pi}{2 B}, \frac{\pi}{2 B}],
 \end{equation}
 where {$B = \frac{\fwhm_{0}}{\fwhm}$ } is scaled to give the same area.
-\citet{artigau_optical_2018} also mention that the RV precision results using this $\IP{}_{\textrm{fibre}}$ are all consistent with the results from a Gaussian kernel.
-It only provides a small correction to the Gaussian profile of a standard spectrograph, and only necessary if one is resolution-limited by the slit. % (priv. comm. Pefdro Figueira)
+\citet{artigau_optical_2018} also mention that the {RV} precision results using this $\IP{}_{\textrm{fibre}}$ are all consistent with the results from a Gaussian kernel.
+It only provides a small correction to the Gaussian profile of a standard spectrograph, and only necessary if one is resolution-limited by the slit.% (priv.\ comm. Pedro Figueira)
 
 \subsubsection*{Numerical Convolution}
 \label{subsubsec:numerical_convolution}

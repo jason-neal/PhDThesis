@@ -6,7 +6,8 @@ Here the software developed to compute the {RV} precisions is presented.
 It is an extension of the code used for the calculations of~\citet{figueira_radial_2016}, hence ``extended'' in the name.
 This section documents the vast improvements (optimizations and extensions) made to the software.
 Changes made that affect the derived {RV} precision attained are specifically documented in detail, with the relative precision changes provided.
-This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}.} (JOSS) (Neal and Figueira 2019) with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}. This should be accepted shortly as only minor changes to the paper have been requested by the reviewer.
+This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}.} (JOSS) (Neal and Figueira 2019) with the source code openly available on \href{Github}{https://github.com/jason-neal/eniric}.
+This should be accepted shortly as only minor changes to the paper have been requested by the reviewer.
 
 
 \subsection{Automated testing}
@@ -72,12 +73,12 @@ For example, in \cref{tab:numerical_gradients} bands (and corresponding waveleng
 This allows for increased flexibility in using \eniric{}, for instance tailoring the calculation to a specific instrument with a known or theoretical resolution (see \cref{sec:spirou_nirps_etc}), but opens up essentially an infinite possible combination of spectral parameters (with an infinite compute time).
 
 A further extension was made to also allow for the use of the {BT-Settl} ({CIFIST2011\_2015}) synthetic spectra.
-Allowing for a comparison of RV precisions between different models.
+Allowing for a comparison of {RV} precisions between different models.
 Like the {PHOENIX-ACES} models the {BT-Settl} spectra undergo a conversion from an energy flux to photon counts.
 The incorporation of any model from the {PHOENIX-ACES} and {BT-Settl} libraries with only the four model parameters is performed simply using the ``grid tools'' module from the Starfish package\citep{czekala_constructing_2015}.
 to similar treatment to the {PHOENIX-ACES} models, being converted to photon counts.
 
-A command line application is now available with \eniric{}, which will load spectra and calculate RV precision for all combinations of valid input parameters.
+A command line application is now available with \eniric{}, which will load spectra and calculate {RV} precision for all combinations of valid input parameters.
 Examples of use are given in \cref{appendix:nir_prec_amendment}, specifically all parameter combinations from~\citep{figueira_radial_2016} can be performed using \cref{lst:commandline_incantation}.
 
 
@@ -166,7 +167,7 @@ The points of highest gradient are always from the {FFD} method (blue/orange).
 This is the case for all spectral lines and as the optimal pixel weights are proportional to the gradient squared the {FFD} method will apply slightly higher pixel weights to these values, two points per line in the spectrum.
 Therefore, the {FFD} gradient produces a slightly smaller \(\delta V_{\rms}\) error compared to the more precise gradient function.
 
-The numerical differences between to the gradient methods on the relative RV precisions is given in \cref{tab:numerical_gradients}.
+The numerical differences between to the gradient methods on the relative {RV} precisions is given in \cref{tab:numerical_gradients}.
 The \(\delta V_{\rms}\) is calculated using both gradient methods on a {PHOENIX-ACES} spectrum with \Teff{}=3900\K{}, corresponding to {{M0}} spectral type.
 The full theoretical precision is calculated (no telluric masking applied) with no rotational or instrumental broadening and the maximum of the continuum of each band scaled to 1.
 In this case the {RV} precisions are not comparable between bands and are only to assess the direct effect of the numerical gradient.
@@ -176,7 +177,7 @@ A is the original {FFD} method, B is the {FFD} method offset by \(\Delta\lambda\
 The \(\delta V\) ratios are the relative difference in {RV} when changing from method A (the original {FFD}) to methods B and C.
 
 As the pixel weights \cref{eqn:optimal_weight} are proportional to \({\lambda}^{2}\) column B was computed to assess the affect of the slight wavelength offset on the {RV} precision, visible in \cref{fig:gradients}.
-\cref{tab:numerical_gradients} shows that wavelength offset of \(\Delta\lambda/2\) contributes 0.1--0.6\% to the RV precision values, an order of magnitude smaller than the change from A to C.
+\cref{tab:numerical_gradients} shows that wavelength offset of \(\Delta\lambda/2\) contributes 0.1--0.6\% to the {RV} precision values, an order of magnitude smaller than the change from A to C.
 Changing from the {FFD} method to \npgradient{} to use the gradient from \numpy{} increases the \(\delta V_{\rms}\) by 2.5--7\%, decreasing the {RV} precision.
 After ruling out the wavelength offset with B, it is assumed that this difference mainly to the over-estimated gradient from the {FFD} method, shown in \cref{fig:gradients}
 
@@ -240,7 +241,7 @@ The three mask mentioned here are implemented and used, and there is even the op
 
 \subsubsection{Masking order}
 \label{subsubsec:masking_order}
-The order in which the masking is performed was found to affect the recovered RV precisions.
+The order in which the masking is performed was found to affect the recovered {RV} precisions.
 That is, the application of weight masking must be applied to the spectrum only after the calculation of the pixel weights.
 
 In the original implementation of Condition~\#2, the full spectral band was split into small wavelength regions (sub-spectra) in between the telluric lines, following the masking by \(\mathcal{M}_{2}\).
@@ -272,7 +273,7 @@ The functionality to perform the weighted error is still present and can be used
 
 \input{tables/information_content/mask_ordering}
 
-The ordering of the masking does not affect the results of Condition \#1 or \#3 that were not split into sub-spectra to calculated th RV precisions.
+The ordering of the masking does not affect the results of Condition \#1 or \#3 that were not split into sub-spectra to calculated th {RV} precisions.
 Although there are differences from the old and new implementation of Condition \#2 (splitting to only masking) the differences observed between~\citet{figueira_radial_2016} and this work are dominated by a bug found, see \cref{subsec:condition_two_bug}.
 
 
@@ -293,7 +294,8 @@ A scaling factor, \(SF\), is defined so that when it is multiplied by the spectr
 SF =  \frac{\sqrt{\sum\limits^{\mathrm{s}} A}} {\snr{}_{desired}} \label{eqn:snr-scaling-factor}
 \end{equation}
 
-Automating the calculation of the scaling factor enabled several new scenarios to analyse the relative precisions, not previously possible. Four are given here:
+Automating the calculation of the scaling factor enabled several new scenarios to analyse the relative precisions, not previously possible.
+Four are given here:
 \begin{itemize}
     \setlength\itemsep{-0.3em} % Remove spacing on list.
     \item The ability to easily analyse new spectral models, not just the four spectra corresponding to {M0}, {M3}, {M6}, {M9} spectral types, which scaling factors had been manually calculated for.
@@ -312,7 +314,9 @@ This was important for computing~\citet{figueira_radial_2016}-like precisions re
 These calculations were not easily possible in the original code version, and this extension has made computations for different \snr{} level and reference points easy to calculate, with minimal configuration.
 
 The default values set in \eniric{} match the~\citet{figueira_radial_2016} value, a \(\mathrm{s}\)=3 and \snr{}=100 in the \emph{J}-band.
-The centre of each band was visually checked to ensure that default, central band reference locations did not coincide with a spectral line. If the reference point was automatically chosen at the centre of a absorption line, then the counts \(N\) would be lower and the spectrum would be scaled to a higher continuum. This would artificially decrease (improve) the \(\delta V_{\rms}\) recovered.
+The centre of each band was visually checked to ensure that default, central band reference locations did not coincide with a spectral line.
+If the reference point was automatically chosen at the centre of a absorption line, then the counts \(N\) would be lower and the spectrum would be scaled to a higher continuum.
+This would artificially decrease (improve) the \(\delta V_{\rms}\) recovered.
 At rest, the centres of the \emph{Z}-, \emph{Y}-, \emph{J}-, \emph{H}-, \emph{K}-bands as defined in \cref{tab:infrared_bands} do not coincide with a spectral line, however, if any Doppler shifting is performed to move the spectral lines, then care must be taken to ensure the correct scaling is applied to the continuum.
 
 As shown in \cref{eqn:snr_relation} the {RV} precision is inversely proportional to the \snr{} level.
