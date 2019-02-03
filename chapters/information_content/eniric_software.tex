@@ -78,7 +78,7 @@ The incorporation of any model from the {PHOENIX-ACES} and {BT-Settl} libraries 
 to similar treatment to the {PHOENIX-ACES} models, being converted to photon counts.
 
 A command line application is now available with \eniric{}, which will load spectra and calculate RV precision for all combinations of valid input parameters.
-Examples of use are given in \cref{app:nir_prec_amendment}, specifically all parameter combinations from~\citep{figueira_radial_2016} can be performed using \cref{lst:commandline_incantation}.
+Examples of use are given in \cref{appendix:nir_prec_amendment}, specifically all parameter combinations from~\citep{figueira_radial_2016} can be performed using \cref{lst:commandline_incantation}.
 
 
 \section{Numerical Gradient}
@@ -125,7 +125,7 @@ With Taylor expansion this turns into solving a linear system of equations:
 \]
 which result in the approximation of the gradient of the central values to be
 
-\[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{{h_{s}}^{2}f\left(x_{i} + {h_{d}}\right) + \left({h_{d}}^{2} - {h_{s}}^{2}\right)f\left(x_{i}\right) - {h_{d}}^{2}f\left(x_{i}-{h_{s}}\right)} {{h_{s}}{h_{d}}\left({h_{d}} + {h_{s}}\right)} + \mathcal{O}\left(\frac{h_{d}{h_{s}}^{2} + {h_{s}}{h_{d}}^{2}}{{h_{d}} + {h_{s}}}\right) \label{full_compact_difference}.\]
+\[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{{h_{s}}^{2}f\left(x_{i} + {h_{d}}\right) + \left({h_{d}}^{2} - {h_{s}}^{2}\right)f\left(x_{i}\right) - {h_{d}}^{2}f\left(x_{i}-{h_{s}}\right)} {{h_{s}}{h_{d}}\left({h_{d}} + {h_{s}}\right)} + \mathcal{O}\left(\frac{h_{d}{h_{s}}^{2} + {h_{s}}{h_{d}}^{2}}{{h_{d}} + {h_{s}}}\right) \label{eqn:full_compact_difference}.\]
 
 If the spectrum is evenly spaced ${h_{s}}={h_{d}}$  reduces to the standard second order {CFD} approximation:
 
