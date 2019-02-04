@@ -95,7 +95,7 @@ However, this pipeline resorts to the {IRAF} recipes, which in turn have to be f
         The wavelength information applied to both spectra is from the {ESO} pipeline.}
     \label{fig:reduction-comparison}
 \end{figure}
-
+\todo{Plot of residuals between them in \cref{fig:reduction-comparison}}
 Both reduction methods were applied to the same {CRIRES} spectra to check the quality and consistency of both methods.
 Two examples of the extraction for HD\,30501-1 (left) and HD\,202206-1 (right) from both pipelines are provided in \cref{fig:reduction-comparison}.
 The blue lines are the extracted spectra from the {ESO} pipeline, the orange dashed lines are the optimal extraction from the {DRACS} pipeline, while the green dash-dotted line is the {DRACS} extraction after dealing with artefacts in the optimal extraction addressed in \cref{subsubsec:reductionartefacts}.
@@ -105,7 +105,7 @@ The {ESO} pipeline has noticeable issues, with many large spikes still present i
 There also appears to be problems with the edges of the {ESO} reduced spectra, with very large spikes at either end.
 
 At this stage the {DRACS} pipeline was chosen, as it was considered that the {DRACS} pipeline produced better extracted spectra than the {ESO} pipeline.
-This decision was based on the quality of the reduced spectra, as well as the relative ease of use of the pipeline (being semi-automated once set up).
+This decision was based on the issues in the reduced spectra noted above, as well as the relative ease of use of the pipeline (being semi-automated once set up).
 Another deciding factor was the need to create software to remove the bad pixels observed in the {ESO} reduced spectra.
 However, this was unavoidable as it was eventually required for the {DRACS} reduced spectra (see \cref{subsubsec:reductionartefacts}).
 Though the {ESO} pipeline provided a wavelength solution for the spectra, this did not factor into the decision as it was considered too unreliable due to known issues with {CRIRES} wavelength calibration, necessitating a new wavelength calibration anyway.
