@@ -2,61 +2,62 @@
 
 \section{Measuring the {RV}}
 \label{sec:measuring_rv}
-\todo{I think at this point you can backtrack a bit and say that you (want to discuss how to measure RVs) from spectra.}
-The motion of the star towards and away from the Earth shifts the lines of its spectra through the Doppler Effect.
+So how does one measure the RV from an observed spectrum?
+The relative motion of the star towards and away from the Earth shifts the lines of its spectra through the Doppler Effect.
 In the non-relativistic limit this can be written as:
 \begin{equation}
 \frac{\Delta\lambda}{\lambda} = \frac{v}{c},
 \end{equation}
-where $\Delta\lambda$ is the wavelength shift of wavelength $\lambda$ with a velocity relative to the observe of \(v\).
-The \emph{speed of light} is the constant $c$.
+where $\Delta\lambda$ is the wavelength shift of wavelength $\lambda$ with a velocity relative to the observe of \(v\), and the constant $c$ is the \emph{speed of light}.
 To measure the {RV} the relative positions of the stellar lines need to be measured over time.
 Typically this is done via the cross-correlation ({CCF}) of the observed spectrum with a template mask (e.g.\ a binary mask~\citep{baranne_elodie_1996} or weighted mask~\citep{pepe_coralie_2002}) suitable for the spectral type of the observed star.
-The {CCF} stacks together the spectral lines creating an ``average'' line, reducing the random noise on the individual $N$ spectral lines by a factor of $\sqrt{N}$.
+The {CCF} stacks together the spectral lines creating an ``average'' line, reducing the random noise on the individual $N$ spectral lines by a factor of the order of $\sqrt{N}$.
 The {CCF} collapses the {RV} from all the lines into one number with higher precision than individual lines.
 
 
 \section{{RV} precision}
 \label{sec:rv_precision}
-To achieve a high-level {RV} precision, two types of noise must be controlled: statistical error from the {RV} measurement and systematic errors induced by the spectrograph.
-This requires a stabilized spectrograph, precisely calibrated in wavelength, and the combination of thousands of lines~\citep[e.g.][]{pepe_instrumentation_2014}.
+To achieve a high-level {RV} precision, two types of noise must be controlled: systematic errors induced by the spectrograph and statistical error from the photon noise of the obtained spectrum.
+
+Instrumental errors can occur can through thermal or mechanical changes in the spectrograph. This cause variations in the instrumental profile which affects the line shape and position of lines in the spectrum, introduction fictitious RV shifts.
+This systemic errors can be reduced by using thermally and mechanically stabilized spectrograph, precisely calibrated in wavelength, along with the combination of thousands of lines~\citep[e.g.][]{pepe_instrumentation_2014}.
+
 The fundamental source of noise is photon noise, which follows a {Poisson} distribution.
-That is, an observable with an average value of $N$ has a standard deviation $\sqrt{N}$.
+In the high flux case the number of counted photons $N$ has a standard deviation $\sqrt{N}$.
 
-A very general formula for the {RV} precision achievable of a given spectrum, in terms of general spectral parameters is given by~\citet{hatzes_spectrograph_1992} as:
+A very general formula for the {RV} precision achievable of a given non-resolved spectrum, in terms of general spectral parameters is given by~\citet{hatzes_spectrograph_1992} as:
 \begin{equation}
-\sigma \propto \frac{1}{\sqrt{F} \sqrt{\delta \lambda} R^{1.5}}.
+\sigma \propto \frac{1}{\sqrt{F} \sqrt{\Delta \lambda} R^{1.5}}.
 \end{equation}
-\todo{Derived for non-resolved spectra -- ????}
-$\sqrt{F}$ represents the signal-to-noise ratio (\snr{}) of the spectrum in the {Poisson}-dominated noise regime, while $\Delta \lambda$ is the bandwidth of the observed spectrum.
-This assumes that the spectrum contains a homogeneous distribution of uniform lines, per unit wavelength.
-The precision depends more steeply on the spectral resolution with $R^{-1.5}$ occurring due to the bandwidth and the number of lines visible on a fixed detector size decreases with increased resolution.
-\todo{In high resolution {RV}s this tends to $R^-{1}$ indicating the higher precision at the expense of wavelength coverage is desired}{pedro seems to think it is at odds with previous sentence}~\citet{hatzes_spectrograph_1992}.
+where \(F\) is the average flux level, $\Delta \lambda$ is the wavelength coverage (bandwidth) and \(R\) the resolution.
+$\sqrt{F}$ represents the photon noise error (\snr{}) of the spectrum in the {Poisson}-dominated noise regime.
+While \(\sqrt{\Delta\lambda}\) represents the increase in statistics from including independent measurements of lines.
+That is if \({\sigma}_{RV}\) is measured on one line then after combining \(N\) lines the measured error becomes \(\frac{{\sigma}_{RV}}{N}\).
+This assumes that the spectrum contains a homogeneous distribution of uniform lines, per unit wavelength, and that the only noise present is photon noise.
+The precision depends more steeply on the spectral resolution with $R^{-1.5}$. At a higher resolution the slope of the spectral lines will be steeper as the spectral lines will have a higher contrast and a reduced line width. also narrower. 
+The sharper spectral lines allow smaller pixels shifts on the detector to be measured, improving the RV precision.
+
 As a star rotates its lines become broadened by an area preserving rotation kernel (see \cref{subsec:rotational_convolution}).
-In a similar way to the resolution the {RV} precision is dependant on rotational velocity of the star (\Vsini) to the power 1.5.
+In a similar way to the resolution, R, the {RV} precision is dependant on rotational velocity of the star (\Vsini) to the power 1.5, \(\sigma_{RV} \propto{\vsini}^{1.5}$.
 
-Assuming a spectral line is comprised of Gaussian-shaped absorption lines it, the precision of a line can be shown to be:
-\begin{equation}
-    \sigma\sim\frac{\sqrt{\fwhm{}}}{C \cdot \snr}
-\end{equation}
-where \fwhm{} is the full width at half maximum of the line, $C$ is the line contrast (depth relative to continuum) and \snr{} the signal-to-noise of the continuum.
-An alternate derivation comes from~\citet{bouchy_fundamental_2001} in which the optimal weight for each pixel is calculated for a spectrum $A_0$ via:
-\begin{equation}
-    W(i) = \frac{\lambda^{2}(i) {(\partial A_0(i)/\partial\lambda)}^{2}}{A_0(i) + \sigma_D} \label{eqn:pixel_weigth}
-\end{equation}
-with the {RV} precision calculated over all pixels as
-\begin{equation}
-    \delta v_{RMS} = \frac{c}{\sqrt{\Sigma_i W(i)}}.
-\end{equation}
-where $\lambda$ is the wavelength and $\sigma_D$ the detector noise.
 
-In all these formulations there are some key properties to achieve high {RV} precision: a high stellar flux $F$ to achieve a high \snr{}, observed at high resolution to have sharp spectral lines.
-The deeper (high C) and narrower (small \fwhm{}) a spectral line\footnote{With steeper gradients $\partial A_0(i)/\partial\lambda$.}, the better defined the position of the line will be, allowing for a higher precision measurement of the {RV}.
-The flux $F$ or \snr{} of an observation increases with the number of photons collected which depends on the stellar brightness as well as distance\footnote{Basically the stars apparent magnitude}, coupled with the telescope size and with the exposure time.
-In practise, this limits the highest precision {RV} measurements to relatively nearby stars.
+An alternate derivation comes from~\citet{bouchy_fundamental_2001}, based-off \citet{connes_absolute_1985}, in which an optimal weight, \(W(i)\), for each pixel, \(i\), is calculated for a spectrum $A_0$ via:
+\begin{equation}
+    W(i) = \frac{\lambda^{2}(i) {(\partial A_0(i)/\partial\lambda)}^{2}}{A_0(i) + \sigma_D}. \label{eqn:pixel_weigth}
+\end{equation}
+where $\lambda$ is the wavelength and $\sigma_D$ the detector noise. Here, \(\partial A_0(i)/\partial\lambda\) is the slope of the spectral at each pixel so the edges of sharp spectral lines carry more weight.
+
+The {RV} precision is calculated over all pixels as
+\begin{equation}
+    \delta V_{RMS} = \frac{c}{\sqrt{\sum\limits_i W(i)}}.
+\end{equation}
+where \(c\) is the speed of light.
+
+Both formulations have some key properties to achieve high {RV} precision: a high stellar flux $F$ to achieve a high \snr{}, observed at high resolution to have sharp spectral lines.
+With steeper gradients $\partial A_0(i)/\partial\lambda$., the better defined the position of the line will be, allowing for a higher precision measurement of the {RV}.
+The flux $F$ or \snr{} of an observation increases with the number of photons collected which depends on the stellar brightness as well as distance\footnote{Basically the stars apparent magnitude.}, coupled with the telescope size and with the exposure time.
+In practice, this limits the highest precision {RV} measurements to relatively nearby stars.
 Cross-dispersed echelle spectrographs mounted on the largest telescopes are capable of delivering the high-resolution, high \snr{} and high bandwidth requirements necessary to achieve high precision {RV} measurements.
 
 These formula have recently been used to assess the theoretical {RV} precision of synthetic spectra for the development of instrument designs of new \nir{} spectrographs~\citep[e.g.][]{figueira_radial_2016} as well as compare precision of real and synthetic spectra~\citep[e.g.][]{artigau_optical_2018}.
 The {RV} precision will be analysed further in \cref{cha:nir_content} with a detailed derivation of the~\citet{bouchy_fundamental_2001} method given and implemented to analyse the precision of \nir{} spectra.
-
-\todo{I would expand a bit on how it is important for the derivation of meaningful values for precision for future spectrographs, informing technical choices such as the wavelength range. }

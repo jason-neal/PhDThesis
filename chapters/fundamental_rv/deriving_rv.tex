@@ -17,7 +17,7 @@ The notes given here mainly follow~\citet{bozza_methods_2016}.
 
 \Cref{fig:orbitdiagram} shows the basic elements of the Keplerian orbit.
 There are several parameters required to situate the orbit in space.
-There is a \textit{reference plane}, tangential to the celestial sphere, that cuts the orbital plane with a \textit{line of nodes}.
+When dealing with exoplanetary systems, there is a \textit{reference plane}, usually considered as tangential to the celestial sphere, that cuts the orbital plane with a \textit{line of nodes}.
 The \textit{ascending node} is the point on the plane at which the body crosses the reference plane moving away from the observer, and is defined relative to the vernal reference point, \Aries, with the \textit{longitude of the ascending node}, $\Omega$, setting the orientation.
 
 To fully parametrize a Keplerian orbit requires seven parameters.
@@ -30,7 +30,7 @@ In polar coordinates the ellipse of an orbit about the centre of mass (located a
 \begin{equation}
     r = \frac{a(\oneminusetwo)}{1 + e \cos{\nu(t)}},
 \end{equation}
-where \(a\) is the length of the semi-major axis for the body, \(e\) is the eccentricity, $\nu$ is the \emph{true anomaly} the angle between the current position of the orbiting body and periastron.
+where \(a\) is the length of the semi-major axis for the body, \(e\) is the eccentricity, $\nu$ is the \emph{true anomaly} the angle between the current position of the orbiting body and periastron, as seen from the main focus of the orbital ellipse.
 
 The true anomaly is not only a function time, \(t\), but also the orbital period \(P\), the \emph{time of periastron passage}, \(T_0\), and eccentricity.
 It is geometrically related to the eccentric anomaly:
@@ -63,7 +63,7 @@ The component of \(r\) along the line of sight (from \cref{fig:orbitdiagram}) is
 \begin{equation}
     r_z =  r_1 \sin{(\nu_1(t) + \omega)}\sin{i} + \gamma \label{eqn:r_z}
 \end{equation}
-where \(\gamma\) is the mean velocity of the barycentre, and the subscripts `1' and `2' refer to the star and planet (or companion star), respectively.
+where \(\gamma\) is the mean velocity of the barycentre, and the subscripts `1' refers to the star.
 Differentiating \cref{eqn:r_z} and substituting in \cref{eqn:kepler_area} leaves the common {RV} equation:
 \begin{align}
     {RV} = \dot{r}_z &= \frac{2 \pi a_1 \sin{i}}{P{(\oneminusetwo)}^{1/2}} [\cos{(\nu(t) + \omega)} + e\cos{\omega}] + \gamma  \label{eqn:rv_equation} \\
@@ -71,11 +71,12 @@ Differentiating \cref{eqn:r_z} and substituting in \cref{eqn:kepler_area} leaves
 \end{align}
 where several parameters and constants have been condensed into $\textrm{K}$, referred to as the \emph{semi amplitude}.
 In this case \Kone{} is the semi amplitude for the star.
-
+From the above equation it can be seen that a fit to the {RV} time series allow for the parameters \Kone{}, \(P\), \(T_0\), \(\omega\), \(e\), and \(\gamma\) to be derived.
 
 \subsection{Mass function}
 Once the orbital parameters have been determined then it is possible to determine the mass function of the system.
-From the centre of mass the distance between the two bodies is \(a = a_1 + a_2\) where $a_1$ and $a_2$ are the respective distances to the barycentre, while the value \(\mone a_1 = \mtwo a_2\) can allow these re-arrangements:
+From the centre of mass the distance between the two bodies is \(a = a_1 + a_2\) where $a_1$ and $a_2$ are the respective distances to the barycentre with the subscripts `1' and `2' refer to the star and planet (or companion star), respectively.
+The value \(\mone a_1 = \mtwo a_2\) can allow these re-arrangements:
 \begin{equation}
     a = a_{1} (1 + \frac{a_{2}}{a_{1}}) = a_{1}(1 + \frac{\mone}{\mtwo}) = \frac{a_{1}}{\mtwo} (\mone + \mtwo)
 \end{equation}
@@ -89,8 +90,8 @@ replacing $a_{1}$ with $\kone$ from \cref{eqn:rv_equation} results in the \emph{
     f(M) = \frac{{(\mtwosini)}^{3}}{{(\mone{} + \mtwo{})}^{2}} = \frac{\kone{}^{3} P {(\oneminusetwo)}^{3/2}}{2 \pi G} \label{eqn:mass_function}
 \end{equation}
 This function can be determined directly from the measurable parameters \(P\), \(e\) and \Kone{}.
-It also depends on the stellar mass \Mone{}, which needs to be measured by some other means to determine the planet mass.
-Also from this function it can be seen that the true mass of the planet \Mtwo{} is not obtained but only the projected mass \Mtwosini{}.
+It shows that to determine the planet mass,\Mtwo{}, knowledge of the stellar mass, \Mone{}, must also be known.
+It can be seen from \cref{eqn:mass_function} that the true mass of the planet \Mtwo{} is not obtained but only the projected mass \Mtwosini{}.
 
 For a planetary companion the approximation \(\mtwo{} \ll \mone{}\) can be made and for circular orbits (\(e=0\)) the radial velocity semi-amplitude can be re-written as:
 \begin{equation}
@@ -102,7 +103,7 @@ The recently commissioned ESPRESSO optical spectrograph is designed with the goa
 
 \input{./tables/fundamental_rv/rv_semi_amplitudes}
 
-If there is more than one companion/planet then there will be a gravitational influence between each other and their orbits become non-Keplerian, i.e.\ an N-body problem~\citep[e.g.][]{chenciner_three_2007}.
+If there is more than one companion/planet then there will be a gravitational influence between each other and their orbits become non-Keplerian, i.e.\ an N-body problem~\citep[e.g.][]{chenciner_three_2007, correia_chaotic_2018, gao_numerical_2018, lillo-box_troy_2018, leleu_coorbital_2019}.
 Assuming that the gravitational influence between companions is negligible, the {RV} signal observed in the host star can be treated as just a sum of tugs from each companion.
 For the two instances in this work where the target star has two companions, the companions will be treated separately, as if they were alone.
 
@@ -122,7 +123,7 @@ where \(\omega_{2} = \omega + 180^\circ\) due to the phase difference between th
 
 The orbits of the host and companion are directly related through the mass ratio of the star and companion:
 \begin{equation}
-q = \frac{\mtwo}{\mone} = \frac{\kone}{\ktwo} = \frac{RV_{1}}{RV_{2}} = \frac{r_2}{r_1} \label{eqn:q_ratio_K2}.
+q = \frac{\mtwo}{\mone} = \frac{\kone}{\ktwo} = \frac{RV_{1}}{RV_{2}}  \label{eqn:q_ratio_K2}. %= \frac{r_2}{r_1}??
 \end{equation}
 
 Typically in exoplanet detections the companion (planet) is too faint to measure the planetary velocity.
