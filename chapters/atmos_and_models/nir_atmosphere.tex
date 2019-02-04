@@ -1,9 +1,9 @@
 %!TEX root = ../../thesis.tex
 
-\section{Earth's atmosphere, in the nIR}
-
+\section{Earth's atmosphere, in the \nir{}}
+\label{sec:earths_atmosphere}
 While the Earth's atmosphere is important for life on Earth, it can be a nuisance for ground-based astronomical observations.
-While the atmosphere is mostly transparent in the visible, with only minor transmission and emission features, it is not uniformly transparent in the infrared.
+The atmosphere is mostly transparent in the visible, with only minor transmission and emission features, but it is not uniformly transparent in the infrared.
 
 As light from astronomical sources passes through Earth's atmosphere, the molecular species absorb specific wavelengths (corresponding to molecular rotational and vibrational energy levels) densely populating the \nir{} with absorption lines, commonly referred to as telluric absorption.
 \Cref{fig:croppedmolecfitabsorbtion} contains the model telluric absorption spectrum for the atmosphere from 0.3--30\um{} at $R\sim10\,000$ from~\citet{smette_molecfit_2015}.
@@ -21,8 +21,7 @@ Molecules which are the main contributors to the absorption are labelled.
     \label{fig:croppedmolecfitabsorbtion}
 \end{figure}
 
-The windows of transmission defined the location of photometric bands in the infrared, with the common ones listed in \cref{tab:infrared_bands}~\citep[see e.g.][]{sterken_astronomical_1992, binney_galactic_1998}.
-There are also variations on these bands for specific to different sites.
+The windows of transmission define the location of photometric bands in the infrared, with the common ones listed in \cref{tab:infrared_bands}~\citep[see e.g.][]{sterken_astronomical_1992, binney_galactic_1998}.
 These photometric bands are chosen for high average photometric\footnote{Considering all photons in the band equally, regardless of wavelength (Very low resolution)} throughput, and do not consider the variable spectroscopic content inside the individual bands that becomes evident when observing at high resolution.
 
 \input{./tables/atmos_and_models/infrared_bands}
@@ -33,15 +32,15 @@ Even under ideal conditions the absorption of water vapour defines the IR bands.
 Other molecular species in the atmosphere such as: \ce{CO}, \ce{CO2}, \ce{CH4}, are also important at various wavelengths.
 
 When performing spectroscopy from the ground, the absorption spectrum of Earth's atmosphere contaminates the spectrum of the intended target.
-In high-resolution spectroscopy the stellar and atmospheric lines can be resolved allowing for the identification and separation of the spectra.
+In high-resolution spectroscopy the stellar and atmospheric lines in principle can be resolved allowing for the identification and separation of the spectra.
 The removal or correction for the telluric lines is very important for accurate science, especially for detecting exoplanet atmospheres in which the species trying to be detected also reside in the atmosphere~\citep{snellen_orbital_2010, brogi_carbon_2014, dekok_detection_2013}.
 
 The absorption of atmosphere is highly variable on many different time scales.
-The change in water vapour can occur rapidly over the course of the night while the concentrations of atmospheric constituents vary seasonally and even longer\footnote{For instance the increase in atmospheric \ce{CO2} caused by anthropamorphic climate change has caused a 6\% change to \ce{CO2} line depths since 2000~\citep{smette_molecfit_2015}.}.
+The change in water vapour can occur rapidly over the course of the night while the concentrations of atmospheric constituents vary seasonally and even longer\footnote{For instance the increase in atmospheric \ce{CO2} caused by anthropomorphic climate change has caused a 6\% change to \ce{CO2} line depths since 2000~\citep{smette_molecfit_2015}.}.
 
 On top of this is the observational dependence on the airmass of the target.
 The airmass, defined as \(m = \sec{(\theta)}\) with zenith angle \(\theta\), is the relative path length through the atmosphere compared to the zenith.
 Light from an object at a higher airmass passes through more atmosphere, and is subject higher attenuation due to the atmosphere constituents, following Beer's Law~\citep{beer_bestimmung_1852}, and is contaminated with deeper telluric lines.
 
-Works such as~\citet{snellen_orbital_2010}, fit and remove the telluric variation during a series of continuous observations\footnote{51 spectrum of the same target in 180 minutes for~\citet{snellen_orbital_2010}}, to accurately remove the varying strength telluric lines and detect the absorption lines of exoplanet atmospheres.
+Works such as~\citet{snellen_orbital_2010}, fit and remove the telluric variation during a series of continuous observations\footnote{51 spectra of the same target in 180 minutes for~\citet{snellen_orbital_2010}}, to accurately remove the varying strength telluric lines and detect the absorption lines of exoplanet atmospheres.
 The telluric lines, being Earth based are stationary with respect to the instrument, where as stellar lines change their position due to the relative motion between Earth and the scientific target.
