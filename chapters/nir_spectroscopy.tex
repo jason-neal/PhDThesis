@@ -16,15 +16,15 @@ A summary of several high-resolution \nir{} spectrographs relevant to this thesi
 A spectrograph is a instrument of measuring the electromagnetic flux as a function of wavelength.
 All spectrographs have a few basic components common to all.
 A simple diagram with the basic components is shown in \cref{fig:spectrograph_elements}.
-\todo{The first is the telescope}{Review wording - the telescope is not the first part} which is used to collect light and focus the image of the sky onto its focal plane.
-A slit (or an optical fibre\footnote{Fibres allow for the spectrograph to be situated far from the telescope.}) is placed on the telescopes focal plane to block all but the light from the desired target.
+The left hand side is the telescope which is used to collect light and focus the image of the sky onto its focal plane.
+The spectrograph begins at a slit (or an optical fibre\footnote{Fibres allow for the spectrograph to be situated far from the telescope, in a stabilized environment, and for a better isolation of the light from a specific source of interest.}) placed on the telescopes focal plane used to block all but the light from the desired target.
 The light passing through the slit is diverging so a collimator is used to turn the diverging light into a parallel beam.
 The dispersing element is next and is responsible for dispersing the light into its separate components.
 This can be either a prism, grating or even both.
-Following the dispersive elements are the optics for the camera, used to focus the dispersed (but still fairly collimated) light onto the detector, commonly a two-dimensional array of light sensitive pixels situated at the focal plane.
+The final elements are the optics for the camera, used to focus the dispersed (but still fairly collimated) light onto the detector, commonly a two-dimensional array of light sensitive pixels situated at the focal plane.
 Usually several optical elements, both lenses and mirrors, are used in combination to meet the constraints of the design specifications.
 
-Figure \cref{fig:dispersion_elements} shows the schematic for 3 different dispersion mechanisms: Snells law, a transmission grating and, a reflection grating.
+Figure \cref{fig:dispersion_elements} shows the schematic for three different dispersion mechanisms: Snells law, a transmission grating and, a reflection grating.
 
 \begin{figure}
     \centering
@@ -38,7 +38,7 @@ Figure \cref{fig:dispersion_elements} shows the schematic for 3 different disper
 \end{figure}
 The left hand picture is a depiction of the refraction of light when passing between two materials with a different refraction index, $n_{i}$, and $n_{r}$.
 The angle of incidence $\theta_{i}$ and angle of refraction $\theta_{r}$ relative to the normal (perpendicular) of the surface are related through Snell's law:
-\[n_{i} \sin(\theta_{i}) = n_{r} \sin(\theta_{r}).\]
+\[n_{i} \sin(\theta_{i}) = n_{r}(\lambda) \sin(\theta_{r}).\]
 The index of refraction of a material is wavelength dependant so the angle of refraction will be different for each wavelength, causing dispersion, like a prism.
 
 The two dispersion gratings in \cref{fig:dispersion_elements} are comprised of parallel narrow slits (transmission) or grooves (reflection), very close together.
@@ -51,32 +51,34 @@ Here \(m\) is the order number, \(\lambda\) the wavelength, d the spacing betwee
 This equation has degeneracy as different combinations of \(m \lambda\) will be dispersed at the same angles.
 For instance the value \(m \lambda\) for order \(m=54\) at \(\lambda=2100\)\nm{} is that same as the order \(m=55\) at \(\lambda=2061.8\)\nm{}.
 This degeneracy can be overcome in two ways, either by applying a wavelength filter to specifically select only one order or by adding a cross-disperser.
+
 A \emph{cross-disperser} is a second dispersive element oriented to disperse the orders perpendicular to the grating dispersion direction.
 This allows for multiple orders to recorded simultaneously on a two-dimensional detector, dramatically increasing the wavelength coverage.
-Echelle spectrographs are a special type of spectrograph, with a groove shape and orientation specifically for high reflection angles, and able to observe at a high spectral order (high \(m\)) to achieve a high dispersion and high resolution.
-\todo{I find that this paragraph is a bit too dense, with many different concepts; I would propose to expand a bit more on it, and make it less dense.}
-
+Echelle spectrographs are a special type of spectrograph, with a groove shape and orientation specifically for high reflection angles. They are able to observe at a high spectral order (high \(m\)) to achieve a high dispersion and high resolution. At higher orders the range of wavelengths of a given order that fall within a fixed angle, corresponding to the angular size of detector, decreases.
+s
 Some important concepts for discussing spectrographs are the spectral resolution, resolving power, spectral coverage and spectral sampling.
 The spectral resolution, \(\delta \lambda\), is the smallest difference in wavelength able to be identified.
 It is related to resolving power which is defined as \(R=\frac{\lambda}{\delta\lambda}\).
-The resolving power, R, is colloquially also referred to as the resolution, although not quite the same.\footnote{This document is no different.}.
-The higher the resolution (resolving power), R, the smaller the \(\delta\lambda\) that can be measured on a spectrum, leading to highly sampled spectral lines and more precise measurement.\todo{Please explain that the Resolution corresponds to the {FWHM} of a non-resolved line (see my course) and introduce the concept of {FWHM}, that you use right after.}
+The resolving power, R, is colloquially also referred to as the resolution, although not quite the same.
+The higher the resolution (resolving power), R, the smaller the \(\delta\lambda\) that can be measured on a spectrum, leading to highly sampled spectral lines and more precise measurement.
+The resolution \(\delta\lambda\) corresponds to the full-width-at-half maximum (\fwhm{}) of a non-resolved spectral line. As the name states the \fwhm{} is the width of the line at half of the maximum height.
+
 To be considered high-resolution, spectrographs typically have \(R>20\,000\), but the definition of ``high'' can differ between sub-fields of astronomy.
 The spectral coverage is the range of wavelengths able to be covered by the spectrograph, while the spectral sampling is the number of pixels required to sample the \fwhm{} of the spectral lines.
-This value should be higher than two pixels per resolution element to satisfy Nyquist sampling.\todo{explain Nyquist, minimum information, most instruments are }
+Nyquist sampling states that to avoid a loss of spectral information, the sampling must be performed at a rate at-least twice that of the spectral feature (\(\ge\) two pixels per resolution element).
+Most spectrographs aim to achieve a higher than this Nyquist sampling rate, for example {HARPS} has a sampling rate of 3.2~pixels per resolution element~\citep{pepe_setting_2003}.
 
 \section{The detectors}
 \label{subsec:nir_detectors}
-\todo{The basic principles of spectroscopy are the same for optical and infrared are the same one difference is the design of the detector.}{review}
+Optical and infrared spectrographs both follow the basic principles of spectroscopy however one major difference is in the design of their detectors.
 Nowadays the most common type of detector are focal plane arrays, a two-dimensional array of pixels located at the focal plane of the spectrographs camera.
 The purpose of the detector is to count the number of photons hitting each pixel in the array.
 This is achieved via the photoelectric effect on a crystalline structure, in which incident photons are transformed into electrons which can be recorded electronically.
-The energy necessary to excite an electron from the \emph{valence band} to the \emph{conduction band}, the characteristic band gap, is different for every material.
 Silicon is the best material for the detection of optical light (0.3--1.1\um), while in the near-infrared (1--5\um) two materials are used: {Mercury-Cadmium-Telluride} (\ce{HgCdTe}) and {Indium Antimonide} (\ce{InSb}).
 In the mid-infrared (5--20\um) arsenic doped Silicon is used (\ce{Si}:\ce{As}).
 A summary of values for different material properties is given in \cref{tab:semiconductor_properties}.
 
-Since photon energy is inversely proportional to wavelength\footnote{\(E_{photon} = \frac{h c}{\lambda}\), where \(c\) is the speed of light, \(h\) is Plank's constant and \(\lambda\) wavelength.}, longer wavelengths must have smaller band gaps.
+Since photon energy is inversely proportional to wavelength\footnote{\(E_{photon} = \frac{h c}{\lambda}\), where \(c\) is the speed of light, \(h\) is Plank's constant and \(\lambda\) wavelength.}, longer wavelengths must have smaller band gaps\footnote{Energy  level needed to excite an electron in the pixel material.}.
 However, smaller band gaps are also more susceptible to electrons excited by thermal energy, known as the dark current.
 The dark current is dependant on detector temperature, the pixel size, quality of material and the materials cut-off wavelength \(\lambda_{c}\).
 
@@ -100,14 +102,14 @@ The electrons from each pixel pass into an amplifier to increase the signal, and
 As the charge is shifted between pixels, {CCDs} require high charge transfer efficiency (CTE) to not leave charge behind, which would be assigned to the incorrect pixels.
 {CCDs} have an almost 100\% filling of photosensitive material.
 However the \({\lambda}_{c}\) cut-off of silicon makes them unsuitable for the {IR}.
-More information on {CCDs} can be found in~\citep{howell_handbook_2000}.
+More information on {CCDs} can be found in~\citet{howell_handbook_2000}.
 
 For {IR} the technology of choice is {CMOS} (Complementary Metal Oxide Semiconductor).
 Unlike {CCDs}, each individual pixel contains the electronic circuity to read, amplify and, measure the collected charge.
 Since the charge is read and amplified at each pixel there is no charge transfer between pixels and the readout is non-destructive.
 As a consequence, the same pixel can be read several times, averaging and thus reducing the effective readout noise of each pixel.
 In theory, if one averages \(N\) measurements before an observation (of a freshly reset detector), and \(N\) measurements of the observed charge after the observation, the readout noise can be reduced by a factor of \(\sqrt{(N)}\), referred to as \emph{Fowler Sampling}~\citep{fowler_demonstration_1990}.
-Reading a {CMOS} detector is very versatile as it can be read in multiple ways, with the ability to randomly read any pixel \todo{at any time}{allowing windowing or guiding on the detector}.
+Reading a {CMOS} detector is very versatile as it can be read in multiple ways, with the ability to randomly read any pixel at any time, allowing for windowing\footnote{Reading only a specific area.} or guiding on the detector.
 The filling area of the photosensitive material is reduced in {CMOS} due to the presence of support architecture that is required for the circuitry on the top surface, partially blocking some of the incident light, reducing their efficiency.
 
 As it is impossible to have every individual amplifier perfectly identical, there is a small sensitivity and gain difference between {CMOS} pixels, which are exposed by calibrating with a uniform light source.
@@ -117,7 +119,7 @@ Irrespective if the charge is photo-induced or dark current, the circuitry measu
 This requires careful characterization of the non-linearities in the detector by calibrating its response to a uniform light source for a large range of integration times.
 For {CRIRES} there are a set of non-linearity coefficients that are applied while performing the flat-field corrections (see \cref{subsubsec:flat-field}).
 
-Other benefits of {CMOS} detectors are that they use lower power, and do not need a mechanical shutter (they can be reset electronically).
+Other benefits of {CMOS} detectors are that they use lower power, and do not need a mechanical shutter as they can be reset electronically.
 While {CCDs} have been manufactured almost the same way for the last 40 years, {CMOS} technology is still advancing, partially driven by the consumer electronics market.
 Nowadays, most cellphone and laptop cameras use {CMOS} chips, helping to push investment in this technology.
 After the charge has been digitized into a number, the processes are once again similar for both technologies.
@@ -128,7 +130,7 @@ Spectrographs must be cooled down for their detectors operate effectively as see
 This is achieved by placing spectrographs and their supporting components inside a vacuum chamber, away from all warm (radiating) components and precisely cooled\footnote{Temperature stability in the milli-Kelvin range.} to a low temperature.
 These are often referred to as cryostat's.
 Modern instruments use closed-cycle refrigerators, with for example, helium as the working fluid to achieve very stable low temperatures inside the cyrostat.
-Providing an isolated, and stable environment for the spectrograph allows spectra science to be performed with the highest precision possible, essential for detecting and characterizing exoplanets.
+Providing an isolated, temperature controlled, and stable environment for the spectrograph allows spectra science to be performed with the highest precision possible, essential for detecting and characterizing exoplanets.
 
 Cooling plays two important roles for {IR} astronomy.
 Firstly, the thermal infrared emission from the components of the spectrograph surrounding the detector is reduced, diminishing the local background.
@@ -136,17 +138,16 @@ Secondly, the detectors own thermally-generated background (dark current) is gre
 
 Examples of two cryostat housings surrounding the spectrograph (but shown open) can be seen in \cref{fig:nirps-vs-spirou}.
 
-\todo{I would add a note on how near-IR spectrographs are, by definition, temperature controlled, and that has a very positive impact on the precision of {RV} measured with it.}
-
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/spectroscopy/NIRPS-vs-SPIROU}
     \caption[Side by side comparison of the {NIRPS} and {SPIRou} spectrographs.]{Side by side comparison of the {NIRPS} and {SPIRou} spectrographs.
     {NIRPS} is the smaller spectrograph.
-    The cryostat's are shown in the open position and slide to enclose the instruments.
+    The {cryostat's are} shown in the open position and slide to enclose the instruments.
     Credit \href{http://www.astro.umontreal.ca/nirps/}{http://www.astro.umontreal.ca/nirps/}.}
     \label{fig:nirps-vs-spirou}
 \end{figure}
+\todo{I think there is a difference between the chriostat and the vacuum chamber. What is open here is the vacuum chamber.}
 
 \section{CRIRES}
 \label{sec:CRIRES}
@@ -187,6 +188,8 @@ Their science goals for these instruments involve some or all of the following:
     \item The origin and evolution of stellar magnetic fields (through spectropolarimetry).
 \end{itemize}
 
+These goals are better tackled in the \nir{} as the targets (cool stars and exoplanets) are cooler and emit more of their light at infrared wavelengths.
+
 A few points about some of the \nir{} instruments used in this work are detailed below with a summary also provided in \cref{tab:insturment_summary}.
 These are but a few of the almost two-dozen next-generation instruments extremely precise Doppler velocimeters being designed, built, or commissioned today tabulated in~\citet{wright_third_2017}.
 
@@ -199,8 +202,8 @@ These include adding a cross-disperser to increase the simultaneous wavelength c
 The new upgrade adds the capability for spectropolarimetry using a polarization selective beam-splitter, in which the polarization of light in the spectrum can be analysed.
 The current detector mosaic will be replaced by 3 Hawaii 2RG detectors (\(6144\times 2048\) pixels) at a pixel size of 18\um{}.
 A comparison between the new and old detector size is shown in \cref{fig:criresplus_detecotrs}.
-The new detector mosaic will not only provide a larger area but also have a lower noise, higher quantum efficiency, better cosmetic quality and, a lower dark current
-\footnote{\href{https://www.eso.org/sci/facilities/develop/instruments/crires_up.html}{https://www.eso.org/sci/facilities/develop/instruments/crires\_up.html}}.
+The new detector mosaic will not only provide a larger area but also have a lower noise, higher quantum efficiency, better cosmetic quality and, a lower dark current\footnote{\href{https://www.eso.org/sci/facilities/develop/instruments/crires_up.html}{https://www.eso.org/sci/facilities/develop/instruments/crires\_up.html}}.
+CRIRES+ will operate with resolutions of R=50\,000 and 100\,000 between 1000-5300\nm{} but requires 17 individual observations to cover this whole spectral range.
 The current estimate for the first light of CRIRES+ is late 2019.
 
 \begin{figure}
@@ -214,24 +217,21 @@ The current estimate for the first light of CRIRES+ is late 2019.
 \subsection{CARMENES}
 \label{subsec:carmenes}
 {CARMENES} (Calar Alto high-Resolution search for M dwarfs with Exoearths with Near-infrared an optical \'Echelle Spectrographs) has been operating since 2016, performing a dedicated {RV} survey of \(\sim\)300 late-type main-sequence stars with the goal of detecting low-mass planets in the habitable zone.
-It is mounted on the 3.5\m{} telescope at the Calar Alto Observatory in Spain, the light from the telescope passes through a beam splitter and enters into two separate spectrographs, one in the optical (520--960\nm{}) and the other in the infrared (960--1710\nm{}).
+It is mounted on the 3.5\m{} telescope at the Calar Alto Observatory in Spain, the light from the telescope passes through a beam splitter and enters into two separate spectrographs, one in the optical between 520--960\nm{} with a resolution of R=94\,600 and the other in the infrared between 960--1710\nm{} with R=80\,400.
 A library of single spectra of the {M-dwarf} targets {CARMENES} is monitoring was recently released in~\citet{reiners_carmenes_2018}.
 
 \subsection{NIRPS}
 \label{subsec:nirps}
 {NIRPS} (Near-InfraRed Planet Searcher), on the 3.6\m{} telescope at La Silia, Chile, is a \nir{} extension to the {HARPS} spectrograph, one of the most prominent spectrographs detecting exoplanets via the {RV} method.
+It will operate in the wavelength range 950--1800\nm{} at a resolution between 75\,000 and 100\,000.
 A replacement for the {HARPS} telescope adapter will be used to split the light and send the optical and {IR} wavelengths via fibres simultaneously to {HARPS} and {NIRPS} respectively.
 The adaptor also includes adaptive optics and a new calibration unit.
-
-This will allow for the {RV} monitoring of cooler stars which emit more of their photons in the \todo{infrared but also have less stable optical spectra due to convection; infrared spectra are less affected by the stellar activity.}{be clearer or provide references}
 
 \subsection{SPIRou}
 \label{subsec:spirou}
 {SPIRou} (SPectroplorim\`etre InfraROUge) is another high-resolution \nir{} spectrograph that will be installed at the {CFHT} (Canada-France-Hawaii Telescope) in Hawaii.
-It will provide a spectrum covering from 950--2340\nm{} in a single exposure at a resolution of around \(\sim\)75\,000.
-Like the other spectrographs detailed here it is built to obtain very high radial velocity accuracy, of the order meters/second over several years.
+It will provide a spectrum covering from 950--2340\nm{} in a single exposure at a resolution of around 75\,000.
+Like the other spectrographs detailed here it is built to obtain very high radial velocity accuracy, of the order of meters per second over several years.
 It also includes spectropolarimetry, being able to derive the linear and circularly polarized state of the observed target.
 
 A physical side-by-side comparison of the {NIRPS} and {SPRIou} spectrographs is shown in \cref{fig:nirps-vs-spirou}, with {NIRPS} being the smaller of the two spectrographs.
-
-\todo{I would expand a bit on the differences between the different spectrographs. You can start from the table.}
