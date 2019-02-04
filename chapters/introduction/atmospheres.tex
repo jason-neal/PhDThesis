@@ -8,7 +8,7 @@ The detection of planetary atmosphere is difficult due to the low planet-to-star
 This requires high precision instrumentation to detect.
 For example the planet-to-star flux ratio in the optical is $\approx 10^{-4}$ for a hot Jupiter with a 3 day orbit, in which the main component is reflected star light.
 In the infrared the thermal emission of the planet dominates and the flux ratio rises to $\approx 10^{-3}$.
-These flux ratios requires observations with signal-to-noise ratios of $10^4$ and $10^3$ in the optical and infrared respectively to achieve a planetary signal at the same level as the noise level.\todo{some references to illustrate?}
+These flux ratios requires observations with signal-to-noise ratios of $10^4$ and $10^3$ in the optical and infrared respectively to achieve a planetary signal at the same level as the noise level.
 These detections are only just at the capabilities of the current generation of technology, and with very long observation cost.
 
 Several photometric and high-resolution spectroscopic techniques are showing promising results; these are detailed in the following sections.
@@ -52,7 +52,7 @@ Optical phase curves will mostly show the reflected light from the day side of t
 Thermal emission of the planet will provide stronger modulation of infrared phase curves and can provide insights into the atmospheres thermal
 structure and heat circulation~\citep{goodman_thermodynamics_2009, koll_temperature_2016}.
 
-An example of phase variations in the infrared spectra of {WASP-43b} obtained with the Hubble Space telescope is given in \cref{fig:phasecurve2014_and_temp_map} (left).\todo{there are also works by Antonio Garcia Munoz about these phase shifts.}
+An example of phase variations in the infrared spectra of {WASP-43b} obtained with the Hubble Space telescope is given in \cref{fig:phasecurve2014_and_temp_map} (left).
 The large amplitude of phase variation between the day and night side indicates that the night side is much cooler and there is an inefficient heat circularity from the day to night side.
 A planet with an efficient day/night heat distribution mechanism would quickly equalize and have smaller phase variation.
 One key observable from \cref{fig:phasecurve2014_and_temp_map} is that the peak of the phase variation is offset from the location of the secondary transit.
@@ -92,9 +92,8 @@ When a transiting planet crosses in front of the host star it blocks out light f
 However, a small portion of light passes through the atmosphere of the planet as shown in \cref{fig:transmissionspectroscopy}.
 The light that passes through the exoplanet atmosphere is partially absorbed, and is faintly imprinted with absorption lines.
 
-
 In planetary transits, usually defined by their duration and depth, there are degeneracies of the system properties from the transit shape in a single band, for example systems with differently sized planets and stars can have the same \(\frac{\Rp}{\Rstar}\) ratio.
-Observing transits in multiple bandpasses (i.e.\ by splitting the spectra observed during transits into several bands) has been shown to break the degeneracies between the stellar radius and the orbital inclination as well as determine the stellar limb darkening~\citep{jha_multicolor_2000, knutson_using_2007}.
+Observing transits in multiple band-passes (i.e.\ by splitting the spectra observed during transits into several bands) has been shown to break the degeneracies between the stellar radius and the orbital inclination as well as determine the stellar limb darkening~\citep{jha_multicolor_2000, knutson_using_2007}.
 
 The radius of the transiting exoplanet can also appear to change size when observed at wavelengths where there is strong opacity in the atmosphere~\citep[e.g.][]{burrows_radii_2000, seager_theoretical_2000}.
 Transits in different wavelength bands will have varying depths, dependant on the opacity of the atmosphere to each band.
@@ -126,24 +125,23 @@ Precise high resolution spectrographs that are able to spectrally resolve indivi
 Unfortunately, these are too large and bulky to fly in space, and they would be near impossible to keep in precise alignment during a rocket launch.
 The large collecting area of current and future ground based telescopes make high resolution spectroscopy a great contender for obtained high-resolution observations for detecting and exploring exoplanetary atmospheres.
 Transmission spectroscopy is one beneficiary of high-resolution spectroscopy, although it is not the only technique to utilize high-resolution.
+Typically high-resolution and high \snr{} spectra are cross correlated with modelled stellar and/or planetary templates to recover the faint signal of the companion \citep[e.g.][]{piskorz_evidence_2016}.
 
-Typically high-resolution and high \snr{} spectra are cross correlated with modelled stellar and/or planetary templates to recover the faint signal of the companion.
-This has been most successful in the \nir{} due to the larger planet-to-star flux ratio
-notably with CRIRES, with the detection of orbital motion, atmospheric constituents and exoplanetary winds~\citep[e.g.][]{snellen_orbital_2010, dekok_detection_2013, brogi_carbon_2014, brogi_rotation_2016, schwarz_evidence_2015}.
-The rotation rate of exoplanets has been achieved by measuring the spectral line broadening~\citep{snellen_fast_2014, brogi_rotation_2016}.
-An example of a cross correlated result is given in \cref{fig:snellen2010} showing the shift of the \ce{CO} lines during a transit due to the orbital motion of the planet~\citep{snellen_orbital_2010}.
+The development of new high resolution spectrographs operating in the \nir{} opens a whole new window to the study of exoplanets.
+The larger planet-to-star flux ratio in the \nir{} along with the richness of molecular lines have achieved some impressive detections.
+Notably with CRIRES there has been detections of the orbital motion, atmospheric constituents and exoplanetary winds through the detection of \nir{} molecular lines in the planetary atmosphere~\citep[e.g.][]{snellen_orbital_2010, dekok_detection_2013, brogi_carbon_2014, brogi_rotation_2016, schwarz_evidence_2015}.
+The rotation rate of exoplanets has been achieved by measuring the spectral line broadening of lines in te \nir{}~\citep{snellen_fast_2014, brogi_rotation_2016}.
+As an example \cref{fig:snellen2010} shows the result from~\citet{snellen_orbital_2010}.
+A series of sequential \nir{} spectra were taken during a planetary transit.
+A spectral template of \ce{CO} lines is cross correlated against the series of spectra, resulting in a visible shift the \ce{CO} lines during the transit due to the orbital motion of the exoplanet.
 
 The spectrum of the star and planet usually cannot be spatially resolved so methods to identify and remove the stellar component are required.
 This usually involves constructing a high \snr{} stellar mask from observations, possibly at different phases~\citep[e.g.][]{rodler_weighing_2012}, to subtract from the observed spectra leaving behind the planetary signal.
 If the planet is able to be spatially resolved, then a spectrum of the planet could be obtained without stellar contamination~\citep[e.g.][]{snellen_combining_2015}.
 
 High resolution spectroscopy of atmospheres is not limited to transit spectroscopy with detections also possible for non-transiting exoplanets~\citep[e.g.][]{brogi_signature_2012, brogi_carbon_2014,lockwood_nearir_2014, piskorz_evidence_2016}.
+It has been shown that the albedo of the exoplanet can also be measured by directly detected the reflected light off the planets atmosphere~\citet{martins_evidence_2015, martins_reflected_2016}.
 
 An advantage of high-resolution spectra is that it allows the molecular absorption lines of Earth's atmosphere to be resolved.
 This way they can be identified and corrected/removed to avoid contamination with the atmosphere of the exoplanet.
 Lower resolution and photometric methods are unable to fully resolve and remove Earth's atmosphere from ground based observations.
-
-
-\todo{You never mentioned the works of Martins et al. Since this is a result from Porto, I suggest you add a small paragraph about them.}
-
-\todo{All this is correct and fine. But since you focused more in NIR, why do not have a whole section about using NIR high resolution spectroscopy as a way to detect exoplanet atmospheres? You can start such a section by something like (The development of new high resolution spectrographs operating in the infra-red opens a whole new window to the study of exoplanets.) And then you put the results of Snellen and explain the method a bit. Anyway: this is just a suggestion to start already focusing on the main subject of the thesis.}
