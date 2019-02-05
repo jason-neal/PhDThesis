@@ -12,8 +12,8 @@ This chapter also includes the post reduction steps performed, specifically wave
 The reduced spectra produced in this chapter will be analysed in \cref{cha:direct_recovery} and \cref{cha:model_comparison}.
 
 
-\subsection{\nir{} reduction concepts}
-\label{subsec:nirreduction}
+\section{\nir{} reduction concepts}
+\label{sec:nirreduction}
 In reducing \nir{} spectra, or any spectrum in general, a number of calibration steps are performed to removed the imprint of the spectrograph and detector's signature on the spectra as much as possible.
 The main calibration steps required for \nir{} spectra are given below with examples from {CRIRES}.
 More information about the different effects with regards to CRIRES can be found in the CRIRES user manual and reduction cookbook.
@@ -39,8 +39,8 @@ The colour has been inverted so that black is the recorded measurement.}
     \label{fig:darkcurrent_colour}
 \end{figure}
 
-\subsubsection{Dark Current}
-\label{subsubsec:darkcurrent}
+\subsection{Dark Current}
+\label{subsec:darkcurrent}
 The dark current is a form of instrumental noise, in which the detector measures photons while not being illuminated.
 It is the detection of thermal electrons moving inside the detector, creating spurious photon counts.
 Calibration and removal of the dark current is performed by taking exposures in which the detector is not illuminated.
@@ -73,8 +73,8 @@ For the {CRIRES} detectors the dark current per pixel is around 0.2--0.4\,(\(e^{
     \label{fig:masterflats_colour}
 \end{figure}
 
-\subsubsection{Flat-field}
-\label{subsubsec:flat-field}
+\subsection{Flat-field}
+\label{subsec:flat-field}
 Due to the architecture of CMOS, in which pixels are read independently and each pixel has an independent amplifier with a different gain.
 To correct for pixel-to-pixel variations in gains and photon sensitivity across the detector and for any distortions in the optical path, a flat-field correction is needed.
 Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected.
@@ -91,7 +91,7 @@ The flat-field can also reveal defects in the detector e.g.\ dead pixels, dust a
 The flat-field and non-linearity correction are performed in the same reduction step.
 
 
-\subsubsection{Nodding and Jitter}
+\subsection{Nodding and Jitter}
 \label{subsec:nod-jitter}
 The technique of \emph{nodding} is used to remove sky emission, detector dark current, and glow.
 First, an observation is divided into multiple separate exposures.
