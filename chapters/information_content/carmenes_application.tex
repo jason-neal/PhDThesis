@@ -2,29 +2,29 @@
 
 \section{Application to {CARMENES} spectra}
 
-One of the main reasons for focusing on the extending the work of\citet{figueira_radial_2016} was to analyse the differences in {RV} precision of synthetic spectra and the observed \nir{}.
+One of the main reasons for focusing on extending the work of~\citet{figueira_radial_2016} was to analyse the differences in {RV} precision of synthetic spectra and the observed \nir{}.
 This is important for the community to understand the accuracy of synthetic spectra.
 \citet{artigau_optical_2018} recently found band-specific discrepancies in the theoretical precision between real and synthetic \nir{} spectra of Barnard's Star.
-In 2018 {CARMENES} openly released a spectral library containing one spectrum for each target in their 324 M-dwarf {RV} survey \citet{reiners_carmenes_2018}.
+In 2018 {CARMENES} openly released a spectral library containing one spectrum for each target in their 324 M-dwarf {RV} survey in~\citet{reiners_carmenes_2018}.
 With this they provide details on the empirical \(\delta V_{rms}\) measured during their {RV} processing with their {RV} analysis code, {SERVAL} \citep{zechmeister_spectrum_2018}, using all available spectra of each target.
 Spectra from this library will be used to compare the theoretical precision of observed {CARMENES} spectra to synthetic models.
 This work is still in the preliminary stages but the progress so far will be demonstrated here.
 
 \subsection{Target selection}
 \label{subsec:carmense_targets}
-To analysis the precision in different spectral types a few specific M-dwarfs were selected.
-The 324 spectra of the {CARMENES} M-dwarf library from \citet{reiners_carmenes_2018} are available at \href{http://carmenes.cab.inta-csic.es/gto/}{http://carmenes.cab.inta-csic.es/gto/}, along with the achieved \snr{} in the visible and \nir{} spectra.
+To analyse the precision in different spectral types a few specific M-dwarfs were selected.
+These were selected from the 324 spectra of the {CARMENES} M-dwarf library from \citet{reiners_carmenes_2018} available at \href{http://carmenes.cab.inta-csic.es/gto/}{http://carmenes.cab.inta-csic.es/gto/}, along with the achieved \snr{} in the visible and \nir{} spectra.
 
 The spectral library was downloaded and divided into spectral type and ordered by the {SNR} achieved in the \nir{}, to select targets at the high \snr{} end.
-To cover the M-dwarf range targets were selected near each of the spectral types M0, M3, M6 and M9.
+To cover the M-dwarf range, targets were selected near each of the spectral types M0, M3, M6 and M9.
 For each spectral type (within $\pm0.5$) two stars are selected that have high {SNR} values.
 One of the two selected targets for the M3 type is Barnard's star which has been analysed extensively in~\citet{artigau_optical_2018}, in particular with CRIRES spectra for the \nir{} domain, allowing for direct comparisons between the two works.
-The other criteria was to try select targets with a varied range of \Logg and \feh{} values if possible.
+The other criteria was to try to select targets with a varied range of \Logg{} and \feh{} values if possible.
 
 The selected targets from the {CARMENES} library are provided in \cref{tab:carmenes_selection_updated}.
-The spectral parameters (\Teff{}, \Logg{}, \feh{}) for these targets are from \citep{passegger_carmenes_2018, rajpurohit_exploring_2018} who performed spectral fitted of the {CARMENES} spectra with the {PHOENIX-ACES} and {BT-Settl} models respectively.
+The spectral parameters (\Teff{}, \Logg{}, \feh{}) for these targets are from \citet{passegger_carmenes_2018, rajpurohit_exploring_2018} who performed spectral fits of the {CARMENES} spectra with the {PHOENIX-ACES} and {BT-Settl} models respectively.
 The uncertainties in the \citet{rajpurohit_exploring_2018} parameters are \(\sigma_{\teff{}}\)=100\K{}, \(\sigma_{\logg{}}\)=0.3, and \(\sigma_{\feh{}}\)=0.3 while the uncertainties on the 
-\citep{passegger_carmenes_2018} values are \(\sigma_{\teff{}}\)=51\K{}, \(\sigma_{\logg{}}\)=0.07, and \(\sigma_{\feh{}}\)=0.16.
+\citet{passegger_carmenes_2018} values are \(\sigma_{\teff{}}\)=51\K{}, \(\sigma_{\logg{}}\)=0.07, and \(\sigma_{\feh{}}\)=0.16.
 There are gaps in the \citet{passegger_carmenes_2018} values for stars that have the lower \snr{} levels as they are more difficult to analyse/fit.
 Neither one has parameters for Luyten's Star, for which the parameters given are from {SIMBAD}.
 
