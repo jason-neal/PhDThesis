@@ -17,7 +17,7 @@ Here the radial velocity precision derivation following~\citet{connes_absolute_1
 
 For demonstration purposes \cref{fig:precisionderivation} shows a portion of an arbitrary spectrum \(A(\lambda)\), over a wavelength range \(\Lambda\).
 Here \({A}_{0}(\lambda)\) is the reference spectrum while \(A(\lambda)\) is observed some later time with an apparent wavelength shift observed.
-The majority of a single Gaussian line is shown as spectral lines contain the most information but the presence of spectral lines is not a requirement for the derivation.
+A Gaussian line is shown, but the presence of spectral lines is not a requirement for the derivation.
 
 The Doppler shift of a spectrum is given by:
 \begin{equation}
@@ -28,7 +28,7 @@ where \(c\) is the speed of light in a vacuum, and \(\delta \lambda\) is the shi
 
 \todo{intensity change from connes is vertically in the slice d lambda}
 
-Using basic calculus \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{Although~\citet{connes_absolute_1985} show that the approximation in \cref{eqn:intensitychange} is adequate under all circumstances.}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
+Using basic calculus \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{However,\citet{connes_absolute_1985} also shows that the approximation in \cref{eqn:intensitychange} is adequate under all circumstances.}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
 \begin{equation}
 \delta A(i) = A(i) - {A}_{0}(i) \simeq \pd{{A}_{0}(i)}{\lambda(i)} \delta \lambda = \pd{{A}_{0}(i)}{\lambda(i)} \frac{\delta V(i)}{c}\lambda(i).
 \label{eqn:intensitychange}
@@ -39,7 +39,7 @@ Rearranging \cref{eqn:intensitychange} for \(\delta \lambda\) and combining it w
 \frac{\delta V(i)}{c} = \frac{A(i) - {A}_{0}(i) }{\lambda(i) (\partial {A}_{0}(i)/\partial \lambda(i))} \label{eqn:delta_v_i}
 \end{equation}
 
-This equation shows that the radial velocity measured at pixel {\(i\)}, through a change in the intensity in the recorded spectrum, \(A(i)-{A}_{0}(i)\), and inversely proportional to the slope of the spectrum, \({\partial {A}_{0}(i)}/{\partial \lambda(i)}\).
+This equation shows that the radial velocity at pixel {\(i\)} is measured through a change in the intensity in the recorded spectrum, \(A(i)-{A}_{0}(i)\), and is inversely proportional to the slope of the spectrum, \({\partial {A}_{0}(i)}/{\partial \lambda(i)}\).
 \Cref{eqn:delta_v_i} provides a separate measurement of the radial velocity shift for every pixel, \(i\), in the spectrum.
 The sensitivity of the velocity measurement can be improved, and the noise decreased by using the information from the whole spectral range, \(\Lambda\).
 This is achieved by taking the weighted average\footnote{Weighted average on x is \(\bar{x} = \frac{\sum{ x(i)W(i)}}{\sum {W(i)}}\)} over all pixels in the spectral range using an optimal pixel weight \(W(i)\).
@@ -74,8 +74,7 @@ Using \cref{eqn:delta_v_i,eqn:weights,eqn:noise} the optimum weights then become
 W(i) = \frac{{\lambda}^{2}(i) {({\partial {A}_{0}(i)}/{\partial \lambda(i)})}^{2}}{A_0(i) + {\sigma}^{2}_{D}} \label{eqn:optimal_weight}
 \end{equation}
 
-This weighting function can be modified to mask out and eliminate unwanted lines in the spectrum (see \cref{subsec:masking_function}).
-For instance setting the particular pixel weights to zero to remove any telluric absorption lines in the observed spectra.
+This weighting function can be modified to mask out and eliminate unwanted lines in the spectrum (see \cref{subsec:masking_function}), for instance setting the particular pixel weights to zero to remove any telluric absorption lines in the observed spectra.
 
 With the optimal weights set, the weighed average velocity change measured from the full spectral range \(\Lambda\), is given by:
 
@@ -125,11 +124,11 @@ Q \equiv \frac{\sqrt{\sum{\,W(i)}}}{\sqrt{\sum{\,{A}_{0}(i)}}} = \frac{\sqrt{\su
 
 The pure photon noise case is exclusively considered here in a high signal-to-noise regime in which \({A(i) + \sigma_{D}^{2}} \sim {A(i)}\) can be approximated.
 The quality factor, \(Q\), becomes flux independent and is purely a function of the spectral profile within the spectral range considered\footnote{In the case of pure detector noise case the fluctuations in \(A\) are independent of the spectrum \(A\) and the quality factor is \({Q}_{D} = \frac{\sqrt{\sum{{\lambda}^{2} {(\partial {A}_{0}(i)/\partial \lambda(i))}^{2}}}}{\sum{\, {A}_{0}(i)}}\) as derived by~\citet{connes_absolute_1985}.}.
-It is a measure of the line richness i.e.\ that quantity and depth of the lines.
+It is a measure of the line richness i.e.\ the quantity and depth of the lines.
 For example a spectrum with many sharp lines will have a high \(Q\).
-The instrumental resolution of the spectrograph also effects the spectral quality as it induces line broadening.
+The instrumental resolution of the spectrograph also affects the spectral quality as it induces line broadening.
 
-The radial velocity precision or uncertainty can be rearranged in terms of the spectral quality;
+The radial velocity precision or uncertainty can be rearranged in terms of the spectral quality:
 \begin{equation}
 \delta V_{\rms} = \frac{c}{Q \sqrt{\sum {\,{A}_{0}(i)}}} = \frac{c}{Q \sqrt{{N}_{{e}^{-}}}} \approx \frac{c}{Q \cdot \snr{}},  \label{eqn:snr_relation}
 \end{equation}
@@ -140,8 +139,8 @@ It can be estimated using
 \begin{equation}
 N_{{e}^{-}} = P_{avg} * S_{tel} * \texp * \alpha* \Lambda, \label{eqn:Ne}
 \end{equation}
-where \(P_{avg}\) is the average monochromatic stellar brightness
-across the wavelength range \(\Lambda\) in {\si{\photons\per\second\per\centi\metre\squared\per\centi\metre}},\todo{check}
+where \(P_{avg}\) is the average monochromatic stellar brightness, in {\si{\photons\per\second\per\centi\metre\squared\per\centi\metre}},
+across the wavelength range \(\Lambda\),
 \(S_{tel}\) is the telescope collecting area in \si{\centi\metre\squared},
 \(\texp\) is the integration time in \si{\second}, and \(\alpha\) the is overall system efficiency (including atmosphere, telescope, spectrograph and detector).
 
@@ -159,4 +158,3 @@ A separate general formula for {RV} precision, discussed in \cref{sec:rv_precisi
 \end{equation}
 where $\sqrt{F}$ represents the \snr{} of the spectrum in the {Poisson}-noise dominated regime, and \(R\) is the spectral resolution.
 The $\Lambda$ comes from assuming a homogeneous distribution of lines, with the same line properties, per unit length.
-

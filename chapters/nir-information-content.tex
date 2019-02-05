@@ -7,25 +7,24 @@
 The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra, specifically the radial velocity precision of M-dwarf spectra in the \nir{}.
 This work is not directly related to detecting exoplanet atmospheres themselves but will aid in future exoplanet discoveries.\todo{I think this is presented in a negative way and not showing the importance that this type of analysis has.}
 For instance, the fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to inform some design choices of two \nir{} spectrographs, {SPIRou} and {NIRPS}.
-Understanding the underlying precision of different spectral types can also allow {RV} surveys to adjust the focus the target selection, or optimize the exposure time of different spectral types.
+Understanding the underlying precision of different spectral types can also allow {RV} surveys to adjust the focus of the target selection, or optimize the exposure time of different spectral types.
 This can help in detecting the presence of ``habitable Earth-like'' planets around {M-dwarfs} which have become a prime target with the recent \nir{} spectrographs.
 
 The purpose of the work presented in this chapter is to extend the work of~\citet{figueira_radial_2016}, computing the theoretical {RV} precision of synthetic stellar spectra over a wider range of situations.
 A investigation into the effect of \Logg{} and \feh{} on precision is performed and a preliminary comparison of {RV} precision of the recently observed \nir{} {M-dwarf} spectra from {CARMENES} library and their synthetic counterparts is given.
 This is to test how the {RV} precision of synthetic models compares to reality.
-Computations of the {RV} precision of synthetic spectral libraries are given, which were provided for exposure time calculators of {NIRPS} and {SPIRou}.
+New computations of the {RV} precision of synthetic spectral libraries are also given, which were provided for exposure time calculators of {NIRPS} and {SPIRou}.
 
 
 \section{Overview}
 \label{sec:precision_overview}
 The pursuit of detecting exoplanets, especially ``habitable'' and ``Earth-like'' planets, requires state-of-the-art instrumentation with high precision.
 Several new high-resolution \nir{} spectrographs are becoming available now and in the near future, not limited to {CARMENES}, {NIRPS}, {SPIRou} and {CRIRES+} (see \cref{subsec:new_generation}).
-One science objective common to all four instruments is the detection of small mass planets around {M-dwarf} stars utilizing the radial velocity technique.
-A objected strived for in the literature~\citep[e.g.][]{reiners_detecting_2010, rodler_detecting_2011a, plavchan_radial_2015}.
+One science objective common to all four instruments is the detection of small mass planets around {M-dwarf} stars utilizing the radial velocity technique, an objective strived for in the literature~\citep[e.g.][]{reiners_detecting_2010, rodler_detecting_2011a, plavchan_radial_2015}.
 As the {RV} amplitude is \(\kone\propto {P}^{-{1/2}}{\mone}^{-2/3}\) (\cref{eqn:k_relation}), the induced {RV} wobble from a similarly massive exoplanet is larger around an M-dwarf star, making the {RV} signal from lower mass exoplanets easier to detect.
-Also the cooler {M-dwarfs} have habitable zones closer to the star, at shorter orbital periods that again have a stronger {RV} amplitude making it easier to detect small mass planets in the habitable zone of {M-Dwarfs}.
+Also the cooler {M-dwarfs} have habitable zones closer to the star, at shorter orbital periods, that again have a stronger {RV} amplitude making it easier to detect small mass planets in the habitable zone of {M-Dwarfs}.
 
-To calculate and predict the information content attainable from {M-dwarfs} in the \nir{}~\citet{figueira_radial_2016} utilized the {PHOENIX-ACES} library of synthetic spectra.
+To calculate and predict the information content attainable from {M-dwarfs} in the \nir{,}~\citet{figueira_radial_2016} utilized the {PHOENIX-ACES} library of synthetic spectra.
 This helped at the early stages of instrument design by identifying the wavelength regions with the best {RV} precision, but can also help in the planning of observations, by understanding how the precision changes with spectral type and observed {\snr{}}.
 However, the synthetic spectra do not quite match reality and a comparison between theoretical and observed is needed.
 \citet{artigau_optical_2018} recently compared optical ({HARPS}, {ESpaDOnS}) and \nir{} ({CRIRES}) archival spectra of the {M-dwarf}, Barnard's Star, to synthetic spectra.
@@ -34,7 +33,7 @@ A similar comparison will be made in this work to {CARMENES} spectra.
 
 Recent results regarding the measured performance of the {CARMENES} survey~\citep{reiners_carmenes_2018,quirrenbach_carmenes_2018} find that the {RV} in the \nir{} is worse than the pre-survey predictions.
 Precisions of 1--2\mps{} have been achieved in the optical but only 5--10\mps{} in the \nir{}.
-However, comparing {RV} precision in different wavelength bands~\citet{quirrenbach_carmenes_2018} find a ``sweet spot'' around 0.7--0.8\um{} with deep \ce{TiO} bands providing rich {RV} information in mid-M dwarfs.
+However, comparing {RV} precision in different wavelength bands~\citet{quirrenbach_carmenes_2018} found a ``sweet spot'' around 0.7--0.8\um{} with deep \ce{TiO} bands providing rich {RV} information in mid-M dwarfs.
 
 \todo{I would conclude then saying that the number of papers on this thematic, number of open questions and impact on the design of instrumentation (which is very active for nIR spectrograhs) show that this is an important topic as of today!}
   

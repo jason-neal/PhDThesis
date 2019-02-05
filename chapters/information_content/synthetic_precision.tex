@@ -1,9 +1,8 @@
 %!TEX root = ../../thesis.tex
 
-\section{Deriving {RV} for synthetic spectra}
-The work of this chapter extends the work of~\citep{figueira_radial_2016}.
-To contrast the software improvements made here the details of~\citep{figueira_radial_2016} are first presented.
-The important factors that were considered in preparing and using the synthetic spectra to apply the {RV} precision formulation of \cref{eqn:dv_rms,eqn:weighted_average_error}.
+\section{Deriving {RV} precision of synthetic spectra}
+The work of this chapter extends the work of~\citet{figueira_radial_2016}.
+To contrast the software improvements made here the details of~\citet{figueira_radial_2016} are first presented, then the important factors that were considered in preparing and using the synthetic spectra to apply the {RV} precision formulation of \cref{eqn:dv_rms,eqn:weighted_average_error} are discussed.
 
 \subsection{Prepare {PHOENIX-ACES} models}
 Four {PHOENIX-ACES} spectra were selected, spanning the M-dwarfs regime (M0, {M3}, {M6}, {M9}) with model temperatures 3900, 3500, 2800 and 2600\K{} respectively.
@@ -19,7 +18,7 @@ The details of these kernels and implementation of numerical convolution are giv
 
 \subsubsection*{Rotational convolution}
 \label{subsubsec:rotational_convolution}
-Stellar rotation has the affect of broadening spectral lines as the different portions of the stellar surface have a different radial velocity between \(\pm\)\Vsini{}.
+Stellar rotation has the effect of broadening spectral lines as the different portions of the stellar surface have a different radial velocity between \(\pm\)\Vsini{}.
 Rotation is applied to a non-rotating spectrum by convolution with a rotation kernel.
 The stellar rotational kernel used follows~\citet{gray_observation_2005};
 \begin{align}
@@ -32,7 +31,7 @@ where
 \end{equation}
 are constants which depend on the equatorial rotational velocity \Vsini{}.
 
-Here $\Delta\lambda$ is the wavelength position from the non-rotating line centre, $\Delta\lambda_{L}$ is the maximum line shift of the line centre at the edge of the stellar disk where the Doppler shift is \Vsini{}; $\Delta\lambda_{L} = \lambda \frac{\vsini}{c}$.
+Here $\Delta\lambda$ is the wavelength position from the non-rotating line centre, while $\Delta\lambda_{L}$ is the maximum line shift of the line centre at the edge of the stellar disk where the Doppler shift is \Vsini{}; $\Delta\lambda_{L} = \lambda \frac{\vsini}{c}$.
 
 This kernel arises from integrating the rotational velocity profile across the surface of the stellar disk as a series of strips with different Doppler shifts.
 As such the rotation kernel is bounded in the range $[-\Delta\lambda_L, \Delta\lambda_{L}]$ from the line centre.
@@ -46,9 +45,9 @@ This kernel also accounts for limb-darkening on the stellar disk with the linear
     \end{tabular}
     \caption{Left: Apparent disk of the star, thought of as a series of strips parallel to the projected rotation axis, each with the Doppler shift proportional to \(x\).
         The amount of light at each Doppler shift varies with the length of the strip, from \(-y_1\) to \(+y_1\), where \(y_1 = \sqrt{R^2-x^2}\) for a circular disk.
-        Right: The rotation profile, \cref{eqn:rotational_profile}, is shown by the solid line black line for a limb darkening coefficient \(\epsilon=0.6\) and labelled ``total''.
+        Right: The rotation profile, \cref{eqn:rotational_profile}, is shown by the solid black line for a limb darkening coefficient \(\epsilon=0.6\) and labelled ``total''.
         It is the sum of the ``1st term'' and ``2nd term'' curves.
-        These are reproductions of Figures 18.3 and 18.5 from~\citep{gray_observation_2005}.}
+        These are reproductions of Figures 18.3 and 18.5 from~\citet{gray_observation_2005}.}
     \label{fig:rotationdiagram_and_profile}
 \end{figure}
 
@@ -78,7 +77,7 @@ From this description the integration of a circular fibre is given by
 \end{equation}
 where {$B = \frac{\fwhm_{0}}{\fwhm}$ } is scaled to give the same area.
 \citet{artigau_optical_2018} also mention that the {RV} precision results using this $\IP{}_{\textrm{fibre}}$ are all consistent with the results from a Gaussian kernel.
-It only provides a small correction to the Gaussian profile of a standard spectrograph, and only necessary if one is resolution-limited by the slit.% (priv.\ comm.\ Pedro Figueira)
+It only provides a small correction to the Gaussian profile of a standard spectrograph, and is only necessary if one is resolution-limited by the slit.% (priv.\ comm.\ Pedro Figueira)
 
 \subsubsection*{Numerical Convolution}
 \label{subsubsec:numerical_convolution}
@@ -89,42 +88,37 @@ The convolution kernel is calculated for the window, multiplied by the spectral 
 The shape of the convolution kernels and the size of convolution window are wavelength dependant (\(\Delta\lambda_{L}=\lambda \frac{\vsini}{c}\) and \({\fwhm}=\frac{\lambda}{R}\)) and must be calculated separately for each pixel, making the convolution computationally expensive.
 
 This convolution method allows for the spectrum to be non-uniformly spaced, unlike other methods that usually require uniform spacing e.g.\ the implementation in \pyastronomy{}.
-One factor the needs consideration when convolving with an non-uniformly spaced spectrum is the discretization\todo{duplicated} of the kernel onto the wavelength grid.
-For instance the number of points inside the convolution window, due to the sampling, as well as their specific location inside the kernel will have a slightly affect the kernel area.
-The convolution result is normalized by dividing it by the result of the convolution kernel applied to a unitary spectrum of ones on the same wavelength grid.
+One factor that needs consideration when convolving with a non-uniformly spaced spectrum is the discretization\todo{duplicated} of the kernel onto the wavelength grid.
+For instance the number of points inside the convolution window, due to the sampling, as well as their specific location inside the kernel will have a slight affect on the kernel area.
+The convolution result is normalized by dividing it by the result of the convolution kernel applied to a unitary spectrum of `1's on the same wavelength grid.
 \citet{figueira_radial_2016} performed this unitary convolution separately and applied the normalization correction afterwards.
-In the improved implementation of \cref{sec:eniric} the convolution normalization is performed inside the loop over the pixels, directly for each pixel following the convolution calculation result for that pixel.
+In the improved implementation of \cref{sec:eniric} the convolution normalization is performed inside the loop over the pixels, for each pixel directly, following the convolution calculation result for that pixel.
 
-One factor the needs consideration when convolving with an non-uniformly spaced spectrum is the discretization of the kernel onto the wavelength grid.
-For instance the number of points inside the convolution window, due to the sampling, as well as their specific location inside the kernel will have a slightly affect the kernel area.
-The convolution result is normalized by dividing it by the result of the convolution kernel applied to a unitary spectrum of ones on the same wavelength grid.
-\citet{figueira_radial_2016} performed this unitary convolution separately and applied the normalization correction afterwards.
-In the improved implementation of \cref{sec:eniric} the convolution normalization is performed inside the loop over the pixels, directly for each pixel following the convolution calculation result for that pixel.
-
-\todo{repeated}By default edge effects, in which pixels near the ends are not symmetrically convolved, are avoided on the spectral range desired by providing an input spectra that is sufficiently wider than the desired output spectrum.
-Since two convolutions are performed one after the other the original input spectrum is selected to be wide enough such that no edge effects will be present in final output spectrum after both convolutions.\todo{be clearer}
+Edge effects occur in convolution, where pixels near the ends are not symmetrically convolved, as there are not pixels outside the bounds. 
+For the synthetic spectra here, the convolution is performed on a slightly wider spectrum, so that the desired output wavelength range does not contain edge effects.
+In this case, since two convolutions are performed, the first input spectrum is chosen by default to be sufficiently wide, such that any pixel possibly altered by the edge effects not will be present in the final output spectrum after both convolutions.
 
 \subsection{Interpolation}
 \label{subsec:orginal_interpolation}
-To simulate the sampling effect of high-resolution spectrographs interpolation is used to re-sample the spectrum to three pixels per resolution element.
-This corresponds to a spacing between pixel at \(\lambda\) of (\(\lambda / 3R\)).
+To simulate the sampling effect of high-resolution spectrographs, interpolation is used to re-sample the spectrum to three pixels per resolution element.
+This corresponds to a spacing between pixels at \(\lambda\) of (\(\lambda / 3R\)).
 For echelle spectrographs, for which \(\Delta\lambda/\lambda\) is constant, the number of pixels per resolution element is also constant.
 A sampling of three is chosen to be above the Nyquist limit of two pixels per resolution element, to not lose any spectral information, and commonly achieved by current spectrographs, e.g.\ a sampling of 3.3 for HARPS~\citep{mayor_setting_2003}.
-This interpolation of the synthetic spectra is performed after the convolution and before the \snr scaling below.
+This interpolation of the synthetic spectra is performed after the convolution and before the \snr{} scaling below.
 
 \subsection{\snr{} scaling}
 \label{subsec:orginal_snr_scaling}
 The purpose of~\citet{figueira_radial_2016} was to compute only the relative precisions between the synthetic models.
 This was done by normalizing each spectrum, after convolution, to a \snr{} of 100 at the centre of the \emph{J}-band.
-Specifically this is achieved by summing the number pixels within one resolution element (three in this case), governed by the sampling, centred at 1.25\um{} and scaling the result so that the sum becomes \(100^2\).
+Specifically this is achieved by summing the number of pixels within one resolution element (three in this case), governed by the sampling, centred at 1.25\um{} and scaling the result so that the sum becomes \(100^2\).
 In this way the \(\snr{} =\sqrt{F}\) is 100, where \(F\) is the sum of the three pixels.
-The specific scaling values for the analysed spectra, \Vsini{}, and resolution combinations were hard coded into the software, making it impossible analyse a new spectrum without modification of the source code.
+The specific scaling values for the analysed spectra, \Vsini{}, and resolution combinations were hard coded into the software, making it impossible to analyse a new spectrum without modification of the source code.
 
 \subsection{Bands}
 \label{subsec:orginal_bands}
 To analyse the precision in different wavelength bands the spectra are split into several chunks.
-The bands studied are the \emph{Z}, \emph{Y}, \emph{J}, \emph{H}, \emph{K}-bands with the specific wavelength bounds given in \cref{tab:infrared_bands}.
-These are the \nir{} wavelength bands created by regions of strong water absorption in the Earth atmosphere.
+The bands studied are the \emph{Z}, \emph{Y}, \emph{J}, \emph{H}, and \emph{K}-bands with the specific wavelength bounds given in \cref{tab:infrared_bands}.
+These are the \nir{} wavelength bands created by regions of strong water absorption in the Earth's atmosphere.
 These strong \ce{H2O} regions that defined these bands can be seen in the telluric spectrum given in \cref{fig:croppedmolecfitabsorbtion} or in the {CARMENES} spectrum in \cref{fig:carmenes_correction}.
 
 \subsection{Precision calculations}
