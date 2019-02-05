@@ -64,6 +64,40 @@ At this stage only one spectrum has been corrected, Barnard's Star, to investiga
 Are the spectra first combined into one??? or is this already performed.
 The telluric correction is performed by ....
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/information-content/Carmenes/compare_telluric_corrections_shaded}
+    \caption[]{Comparison of telluric models in pursuit of a better correction.
+        Top: The two synthetic telluric spectra.
+        The blue shows the result from Molecfit after treating the full spectrum as one, with a single spectral profile, while the shaded red telluric spectrum has been derived with three separate bands, fitted individually.
+        Bottom: The difference in the telluric spectrum between the fit to the full spectrum, and the three individual fit.
+        The regions of deep \ce{H2O} absorption lines which defined the \nir{} bands are shaded grey.
+        The bounds of each band from \cref{tab:infrared_bands} are indicated with vertical black dashed lines.}
+    \label{fig:compare_telluric_corrections}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/information-content/Carmenes/telluric_correct_carmenes}
+    \caption[Telluic correction of the {CARMENES} \nir{} spectrum.]{Telluic correction of the {CARMENES} \nir{} spectrum.
+    Top: Uncorrected spectrum of Barnard's Star between 960--1710\nm{} from {CARMENES}.
+    Middle: The synthetic telluric transmission spectrum fitted with Molecfit.
+    Bottom: Telluric corrected spectrum by division of the telluric spectrum.
+    The regions of deep \ce{H2O} absorption lines which defined the \nir{} bands are shaded grey.
+    The bounds of each band from \cref{tab:infrared_bands} are indicated with vertical black dashed lines.}
+    \label{fig:carmenes_correction}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/information-content/Carmenes/carmenes_spike_removal}
+    \caption[]{Removal in bad pixels in CARMENES spectrum.}
+    \label{fig:carmenes_spike_removal}
+\end{figure}
+
+
 
 The current implementation of the telluric correction has the spectrum broken into three chunks with the line profile of the lines fitted independently in each chunk.
 Some regions have an improved telluric correction for while other regions the correction worsens.
