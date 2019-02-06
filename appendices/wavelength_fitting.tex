@@ -3,17 +3,18 @@
 \chapter{Multi-detector wavelength calibration} % Main appendix title
 \label{appendix:wavelength_fitting}
 
-In this Appendix an example of multi-detector wavelength calibration is provided.
-This is to try and improve the wavelength calibration on the detectors in which a limited number of telluric lines fall.
+An example of multi-detector wavelength calibration is provided here.
+This is an idea to improve the wavelength calibration on the detectors in which a limited number of telluric lines fall.
 
-The spectrum recorded across the four detectors is created from a single dispersion and should, in theory, be able to be modelled by a single polynomial.
-\cref{fig:multidectorfit} shows the pixel-wavelength calibrating points for the 4 detectors, along with the individual fits, extended over the four detectors.
-At this scale all four lines are basically similar except for the fourth detector near the wavelength region of detector 1 where it is slightly higher.
-On top is also a line indicating a polynomial fit made using the points from all four detectors and including the fixed gaps between detectors.
+The spectrum recorded across the four {CRIRES} detectors is created from a single dispersion and should, in theory, be able to be modelled by a single polynomial.
+\cref{fig:multidectorfit} shows the pixel-wavelength calibration points for the four detectors, along with the individual detector fits extended over all detectors.
+At this scale all four lines are basically similar except for the fourth detector fit (pink) near the first detector where the wavelengths are higher.
+On top of the four individual fits is also a black line indicating a polynomial fit made using the points from all detectors incorporating fixed detector gaps.
 
-\cref{fig:multidectorfitdiff} shows the difference between the individual detectors and the combined fit.
-Within the individual detectors the absolute wavelength difference is less than 0.5\nm{} at the edges of detector one, however the differences exceed 0.3\nm{} outside of the original detector.
-They are quadratic in shape as they are the difference between two quadratics.
+\cref{fig:multidectorfitdiff} shows the difference between the individual detector fits and the combined fit.
+Within the individual detectors the absolute wavelength difference to the combined fit is small.
+It is worst at the edges of detector \#1 with a maximum difference of 0.05\nm{}, however the differences exceed 0.3\nm{} outside of the original detector.
+The differences are quadratic in shape as the individual fits are quadratic hence their differences are also quadratic.
 
 \begin{figure}
     \centering
@@ -32,8 +33,8 @@ They are quadratic in shape as they are the difference between two quadratics.
 \end{figure}
 
 The combined fit is made by first assigning each horizontal pixel of each detector the position between 0 and 4095 in pixel coordinates of the {CRIRES} detectors.
-A transformation is made into a psudo-physical pixel coordinates from the left edge of the first detector by including the gaps between the detectors (in pixels).
-The parameters \(gap_{1}\), \(gap_{2}\), \(gap_{3}\) are the 3 gaps between neighbouring detectors gaps and are defined in pixel space as follows:
+A transformation is made into a pseudo-physical pixel coordinates from the left edge of the first detector by including the gaps between the detectors (in pixels).
+The parameters \(gap_{1}\), \(gap_{2}\), \(gap_{3}\) are the three gaps between neighbouring detectors gaps and are defined in pixel space as follows:
 \[
 gap =\begin{cases}
 0,                       & ~~~~0=<pxl<1024\\
@@ -43,10 +44,14 @@ gap_1 + gap_2 + gap_3,      & 3072=<pxl<4096
 \end{cases}
 \]
 
-The pixel widths of these gaps can be fixed to known values (e.g.\ 282, 278, and 275 pixels~\citep{brogi_rotation_2016}) or allowed to vary and included in the fitting process.
 
+This example does not include the height on the detectors that the spectrum falls or any skewness of the spectrum to pixel rows or any miss-alignment between the detectors.
+All which could have some affect on a global wavelength calibration.
 
-\section{Comparing variable gaps}
+The pixel widths of these gaps can be fixed to known values (e.g.\ 282, 278, and 275 pixels~\citep{brogi_rotation_2016}) as done in \cref{fig:multidectorfit} or allowed to vary and included in the fitting process.
+
+To explore this the same pixels-wavelength points from all detectors are fitted with a second and third order polynomial that includes variable or fixed gaps.
+\cref{tab:example_calibration_parameters} shows the fit parameters obtained as well as some fit statistics.
 
 %\begin{figure}
 %    \centering
@@ -56,18 +61,14 @@ The pixel widths of these gaps can be fixed to known values (e.g.\ 282, 278, and
 %    \label{fig:multidetecotparamfit}
 %\end{figure}
 
-This example does not include the height on the detectors the spectrum falls or any skewness of the spectrum to pixel rows or any miss-alignment between the detectors.
-All which could have some affect on a global wavelength calibration.
-
-\cref{tab:example_calibration_parameters} shows the fit parameters obtained as well as some fit statistics for quadratic and cubic fitting, comparing the full combined fit with fixed or variable gaps.
-
-\cref{fig:quadcornerplots} also show the distribution of the fit parameters for the quadratic fit with fixed (left) and variable gaps (right) obtained using the \textit{emcee} \Python{} package\footnote{\href{http://dfm.io/emcee/current/}{http://dfm.io/emcee/current/}}, which performs a Markov chain Monte Carlo simulation.
-The cloud of points reveal the correlations between different parameters.
+\cref{fig:quadcornerplots} also show the distribution of the fit parameters for the quadratic fit with fixed (left) and variable gaps (right). These were distributions were obtained using the \textit{emcee} \Python{} package\footnote{\href{http://dfm.io/emcee/current/}{http://dfm.io/emcee/current/}}, which performs a Markov chain Monte Carlo simulation over the parameter space.
+The shapes of the cloud of points reveal correlations between different parameters.
 For instance the narrow diagonals indicate a strong correlation between the parameters given on the axis.
 There are strong correlations between the quadratic parameters, {q, m, b} with $m$ being negatively correlated to all other parameters.
 It also shows strong positive correlations between the variable detector gaps.
 
-They plot on the left with fix detector gaps, is almost identical to the top 3 rows of the figure on the right.
+The correlations between the polynomial parameters with either fix or variable gaps are almost identical. 
+These are the plot on the left and the top three rows of the right hand plot.
 
 
 \input{./tables/appendices/wavelength_mapping_table}
@@ -77,13 +78,12 @@ They plot on the left with fix detector gaps, is almost identical to the top 3 r
     \begin{tabular}{c c}
     \includegraphics[width=0.4\linewidth]{figures/appendix/fixed_quad_corner} & \includegraphics[width=0.45\linewidth]{figures/appendix/variable_quad_corner} \\
     \end{tabular}
-    \caption[Multi-detector calibration parameter correlations.]{Corner plots of combined fitting of four detectors.
+    \caption[Multi-detector calibration parameter correlations.]{Corner plots of combined fitting across four detectors.
     The elliptical point clouds indicate there are correlations between parameters.
-    (left) Combined fit with fixed detector gaps.
-    (right) Combined fit with variable detector gaps.}
+    Left: The combined detector fit with fixed gaps.
+    Right: The combined detector fit with variable gaps.}
     \label{fig:quadcornerplots}
 \end{figure}
 
-This is just a simple representation of the idea, it has not been used in this thesis for wavelength calibration
-
-\todo{reread and fix up still}
+This is just a simple representation of the idea.
+It has not been pursued further and was not used in this thesis for the wavelength calibration.
