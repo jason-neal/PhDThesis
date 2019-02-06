@@ -257,7 +257,7 @@ In this case the {FFD} method has a larger change observed due to the addition o
 With the \npgradient{} all pixels are always included, and the end values only slightly change.
 The last column of \cref{tab:mask_ordering} is the difference ratio between the \emph{Mask} column of both gradient methods.
 These are consistent with the values obtained in \cref{tab:numerical_gradients} with the differences between the two gradient methods of 2--7\%.
-This table also shows that the difference induced on the {RV} precisions from changing the order of weight  calculation and masking is 1--2 orders of magnitude smaller than the change from the new gradient method.
+This table also shows that the difference induced on the {RV} precisions from changing the order of weight calculation and masking is 1--2 orders of magnitude smaller than the change from the new gradient method.
 
 \Eniric{} has been adjusted to consistently apply the masking after the pixel weights are calculated, simplifying the implementation.
 This retains the most pixels, with the most accurate pixel weights (less edge effects).
@@ -333,7 +333,7 @@ It then transforms the mask by the function \pythoninline{barycentre_broaden()},
 The assert statement performs the actual test, checking that if the new broadened mask is applied to the original transmission spectrum, then all values are greater or equal to the masking limit.
 That is, the telluric lines are still completely masked out.
 
-This is not the only test required to sufficiently test the ``correctness'' of \pythoninline{barycentre\_broaden()}, but it is a simple unit test\footnote{A unit test only tests  single specific piece of code or functionality at a time.} that would have caught the bug that was present.
+This is not the only test required to sufficiently test the ``correctness'' of \pythoninline{barycentre\_broaden()}, but it is a simple unit test\footnote{A unit test only tests single specific piece of code or functionality at a time.} that would have caught the bug that was present.
 %\begin{lstlisting}[language={python}, caption={Example unit test to catch the masking bug.\ The assert statement checks that the mask continues to remove all telluric lines deeper than 2\%.}, label={lst:masking_unit_test}]
 %def test_telluric_masking(wavelength, transmission):
 %    """Check the mask still masks out all telluric lines > 0.98 after
@@ -350,7 +350,7 @@ def test_telluric_masking(wavelength, transmission):
     mask = barycentre_broaden(wavelength, mask)     # Extend mask
     assert numpy.all(transmission[mask] >= 0.98)    # Assert condition
 \end{python}
-Due to this bug the published {RV} precision values for Condition~\#2  in~\citet{figueira_radial_2016} are all incorrect.
+Due to this bug the published {RV} precision values for Condition~\#2 in~\citet{figueira_radial_2016} are all incorrect.
 As the masking was unevenly applied the new ``correct'' {RV} precision values do not all change in the same direction or in the same proportion.
 For example, the largest difference is seen in the \emph{J}- and \emph{K}-bands, with changes over 20\mps{}, while other wavelength bands are essentially unchanged.
 The differences can be seen in the shaded areas of \cref{fig:figueria_comparision} comparing the~\citet{figueira_radial_2016} results to the updated values, with the upper edge defined by Condition \#2.
