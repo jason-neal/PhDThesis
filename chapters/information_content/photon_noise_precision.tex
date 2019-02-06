@@ -13,7 +13,7 @@ Here the radial velocity precision derivation following~\citet{connes_absolute_1
         \(\Lambda\) is the wavelength range considered.}
     \label{fig:precisionderivation}
 \end{figure}
-\todo{add \(\delta A\) to plots}
+%\todo{add \(\delta A\) to plots}
 
 For demonstration purposes \cref{fig:precisionderivation} shows a portion of an arbitrary spectrum \(A(\lambda)\), over a wavelength range \(\Lambda\).
 Here \({A}_{0}(\lambda)\) is the reference spectrum while \(A(\lambda)\) is observed some later time with an apparent wavelength shift observed.
@@ -26,9 +26,9 @@ The Doppler shift of a spectrum is given by:
 \end{equation}
 where \(c\) is the speed of light in a vacuum, and \(\delta \lambda\) is the shift in wavelength \(\lambda\) due to the velocity \(\delta V\).
 
-\todo{intensity change from connes is vertically in the slice d lambda}
+%\todo{intensity change from connes is vertically in the slice d lambda}
 
-Using basic calculus \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{However,\citet{connes_absolute_1985} also shows that the approximation in \cref{eqn:intensitychange} is adequate under all circumstances.}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
+Using \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{However,\citet{connes_absolute_1985} also shows that the approximation in \cref{eqn:intensitychange} is adequate under all circumstances.}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
 \begin{equation}
 \delta A(i) = A(i) - {A}_{0}(i) \simeq \pd{{A}_{0}(i)}{\lambda(i)} \delta \lambda = \pd{{A}_{0}(i)}{\lambda(i)} \frac{\delta V(i)}{c}\lambda(i).
 \label{eqn:intensitychange}
@@ -116,7 +116,8 @@ From rearranging \cref{eqn:weights} the dispersion is given by:
 \begin{equation}
 \overline{\frac{\delta V_{\rms}}{c}} = \frac{1}{\sqrt{\sum{\,W(i)}}} = \frac{1}{Q \sqrt{\sum{\,{A}_{0}(i)}}}.\label{eqn:dv_rms}
 \end{equation}
-With \cref{eqn:dv_rms} the velocity precision is inversely proportional to the sum of the optimal pixel weights.\todo{An aspect that is quite important and that I think should be stressed out is that this calculation was made for very small line shifts, i.e.\ RV variations, and by this one means much smaller than the line width. For larger ones, the principles here break down.}
+With \cref{eqn:dv_rms} the velocity precision is inversely proportional to the sum of the optimal pixel weights.
+%\todo{An aspect that is quite important and that I think should be stressed out is that this calculation was made for very small line shifts, i.e.\ RV variations, and by this one means much smaller than the line width. For larger ones, the principles here break down.}
 Here \(Q\) is a spectral quality factor, defined for the pure photon noise case in~\citet{connes_absolute_1985, connes_demonstration_1996}, as:
 \begin{equation}
 Q \equiv \frac{\sqrt{\sum{\,W(i)}}}{\sqrt{\sum{\,{A}_{0}(i)}}} = \frac{\sqrt{\sum{\,\frac{{\lambda}^{2}(i) {({\partial {A}_{0}(i)}/{\partial \lambda(i)})}^{2}}{A_0(i) + {\sigma}^{2}_{D}}}}}{\sqrt{\sum{\,{A}_{0}(i)}}}. \label{eqn:quality_factor}

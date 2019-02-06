@@ -83,7 +83,7 @@ Examples of use are given in \cref{appendix:nir_prec_amendment}, specifically al
 \label{sec:numerical_gradient}
 One of the key insights from \cref{eqn:optimal_weight,eqn:dv_rms} is that the radial velocity precision is inversely proportional to the gradient (first order derivative) of the spectra.
 In numerically computing the {RV} precision, the result is dependent on the numerical method used to compute the gradient.
-In the original code used in~\citet{figueira_radial_2016} the gradient is approximated using the forward finite difference ({FFD}9 method.
+In the original code used in~\citet{figueira_radial_2016} the gradient is approximated using the forward finite difference ({FFD}) method.
 In \eniric{} the method for computing the gradient is changed to the \npgradient{} function from the \numpy{} package.
 This uses more advanced numerical methods to compute a more precise gradient.
 A comparison between both gradient methods and the effect on the precisions result are presented here.

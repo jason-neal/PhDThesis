@@ -22,7 +22,7 @@ This causes the recovered temperature of the companion to be higher than expecte
 The \textchisquared{} approach is dominated by reducing the mismatch in the spectrum of the host rather than detecting the spectra of the companion.
 This spectral mismatch is not observed in the simulations in \cref{subsec:simulated_binaries} because they are created using the synthetic spectra themselves, and hence they do not have this same problem with the companion temperature.
 
-\todo{Find the wavelengths of some missing lines in the Mismatch, what elements do they belong to}
+%\todo{Find the wavelengths of some missing lines in the Mismatch, what elements do they belong to}
 
 Although the newer generations synthetic spectral models are improving and match the overall spectral energy distribution reasonably well there are still regions in the \emph{H}- and \emph{K}-band where there is room for improvement~\citep{rajpurohit_spectral_2016}.
 These can come in several forms, such as molecular line lists, abundance measurements, or further modelling.
@@ -33,7 +33,7 @@ In the \nir{} there is a compounding problem: the model input physics of sub-ste
 
 \subsection{Line contribution of faint companions}
 \label{subsec:line_contributions}
-\todo{Something I think that should be discussed in this section too is how the lines of the BD are not only small in absilute terms but smaller than the stellar counterparts. So the expectaions from the models are not only wrong but objectively too optimistic. }
+%\todo{Something I think that should be discussed in this section too is how the lines of the BD are not only small in absilute terms but smaller than the stellar counterparts. So the expectaions from the models are not only wrong but objectively too optimistic. }
 One thing easy to overlook when attempting to detect the binary companion at low flux ratios is the actual contribution of the spectral lines of the companion.
 Here the line depths in the synthetic companion spectra are calculated to determine the \snr{} levels required to detect the lines of the binary companions.
 
@@ -214,9 +214,8 @@ Differences are also observed between the \Logg{} and \feh{} recovered by the tw
 Both these works use a much larger wavelength range (\(\sim\)500--1700\nm{}) than utilized here.
 
 In trying to detect secondary stellar spectra in optical spectra at \(R=60\,000\), \citep{kolbl_detection_2015} are able to detect secondary spectra down to a 1\% flux ratio, by matching to a library of real spectra.
-The work performed here aimed at flux ratios starting around and below this limit, even after taking advantage of the increased flux ratio in the \nir{}.
-\todo{It is important to note that this is where your studies fit. So when trying to perform a model fitting at a \% fit ratio and smaller, you ran into the issues mentioned above.}
-    
+The work performed in this thesis aimed at flux ratios starting at and below this 1\% flux ratio limit, even after taking advantage of the increased flux ratio in the \nir{}. Attempting to fit smaller than at flux ratios below 1\% resulted in the issues mentioned above.
+
 One promising technique with a success in detecting faint companion emission spectra is presented by~\citet{lockwood_nearir_2014}.
 Applying the {TODCOR} correlation to several spectra at different epochs and combining the observations while accounting for the orbits using a maximum likelihood framework, they confirm the water emission signature in {\(\tau\) Bo\"{o}tis} and find a \(1\sigma\) upper limit high resolution (\(R=24\,000\)) spectroscopic flux ratio of \(10^{-4}\) at 3.3\um{}.
 
@@ -229,5 +228,3 @@ Particularly, the \snr{} in~\citet{piskorz_evidence_2016} is an order of magnitu
 Also the multi-epoch approach allows for the {RV} of the two components to be monitored and some orbital parameters determined.
 The narrow wavelength coverage CRIRES spectra analysed here, at \snr{}=100--300 are insufficient.
 The poorly separated epochs, were also a problem as addressed in \cref{subsec:differential_results}.
-
-\todo{Finally, mention the issues with the spectra.}
