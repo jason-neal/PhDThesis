@@ -22,11 +22,13 @@ The inverse survival function returns a \(\Delta\chisquared\) value from the min
 This can be achieved in \Python{} with the \scipy{} package as the single line of code \pythoninline{scipy.stats.chi2{(dof)}.isf{(1-p)}}, where \textit{dof} is the degree of freedom and \(p\) the probability; for example \(p = 0.68\) for 1-\(\sigma\).
 For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) confidence levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}.
 This method assumes that the measured flux is observed with a \snr{} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
+If however there is a correlated signal or noise in the spectra then the \textchisquared{} is inappropriate.
+The more advanced Gaussian processes techniques would be required to properly fit the data \citep[e.g.]{rasmussen_gaussian_2006}.
+This is beyond the scope performed here.
+%\todo{There is no discussion on the impact of correlated signal or noise in the spectra. If the signal is correlated, the number of independent points is smaller than  the number you are considering. This only has an impact on the normalization factor of the curve, but should be mentioned.}
 
 For a given observation, the \textchisquaredreduced{} is computed as \(\chisquaredreduced{}=\chisquared{} / \nu\) where \(\nu = n - m\), the number of observed pixels, \(n\), minus the number of parameters of interest, \(m\)\footnote{\(m=2\) or \(m=4\) in the examples explored below.}.
 In the cases explored below the \textchisquaredreduced{} is only calculated after the summation across the detectors is performed.
-
-\todo{There is no discussion on the impact of correlated signal or noise in the spectra. If the signal is correlated, the number of independent points is smaller than  the number you are considering. This only has an impact on the normalization factor of the curve, but should be mentioned.}
 
 For each observation \(O\), the \(\sigma\) is estimated using the \(\beta\sigma\) method~\citep{czesla_posteriori_2018}, using the {MAD} (median absolute deviation about the median) robust estimator.
 The \(\beta\sigma\) method estimates the spectral noise of the spectra using a series of numerical derivatives\footnote{Applying a Taylor expansion to the spectra.}.
@@ -81,9 +83,9 @@ This was because, at this stage, the techniques ability to detect the presence o
 These processes and others could however be included in the future to improve the detectability and precision of the best-fit model.
 Instead, a radial velocity component is included in the \textchisquared{} fitting, which is not included in~\citet{passegger_fundamental_2016}.
 
-{\red Rotational broadening of the host was not included in these models as an extra variable fitting  parameter.
+Rotational broadening of the host was not included in these models as an extra variable fitting  parameter.
 In \citet{passegger_carmenes_2018} rotational broadening is only included at the fine grid search stage, using only a fixed value for each target to determine, determined in a separate work, to reduce the number of parameters.
-A fine search is not attempted in this work.}
+A fine search is not attempted in this work.
 
 In the presence of faint companions this single component model will give a fit of the host spectrum, identifying the hosts parameters and be a good start for the parameters of the binary model or even fix them to reduce the parameters.
 
