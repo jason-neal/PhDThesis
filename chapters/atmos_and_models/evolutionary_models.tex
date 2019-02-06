@@ -45,8 +45,10 @@ The distance is obtained from the trigonometric parallax  $\pi$ using the formul
 Therefore it is important to remember to convert the parallax to arcseconds first, to avoid embarrassing calculation errors!}.
 In this work the recent high-precision parallax measurements from GAIA~\citep{gaiacollaboration_gaia_2018} are used.
 
-From the flux ratio the noise ratio between the host and companion can also be calculated in a similar way using the equation \(N_{2}/N_{1} = \sqrt{2} \times\sqrt{F_{1}/F_{2}}\).\todo{explain where 2 comes from: I got this from the observing proposal but I have not been able to find a definitive source for this, to explain it. My assumption is it comes from the mutual subtraction stage...}
-
+The noise ratio between the host and companion can also be calculated in a similar way using the equation \(N_{2}/N_{1} = \sqrt{2} \times\sqrt{F_{1}/F_{2}}\).
+This equation takes into account the difference between two stellar spectra and assumes the stellar noise of the sum is represented by the stellar noise of the host, see \cref{appendix:proposal} for more details.
+The factor of two appears due to the difference between the two spectra, with their errors adding.
+If \(\sigma_{A}\approx\sigma_B\) then the error on the difference is \(\sigma_{A-B} = \sigma_{A} + \sigma_{B} \approx 2\sigma_{A}\).
 
 \subsection{Baraffe tables}
 \label{subsubsec:baraffe_tables_code}
