@@ -230,7 +230,8 @@ bibwarn=true,
     \include{chapters/conclusions}
     \cleardoublepage{}
     \appendix
-    \unfinished{Precision table needs fixed up}
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}  % remove appendix sections
+
     \include{appendices/nir/nir_precision_tables}
     \cleardoublepage{}
     \include{appendices/app_artefact_examples}
