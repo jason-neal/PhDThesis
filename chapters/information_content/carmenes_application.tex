@@ -34,42 +34,61 @@ Neither one has parameters for Luyten's Star, for which the parameters given are
 
 
 
-\textbf{BELOW HERE IS Unfinished}
-
-
 \subsection{Preparation of {CARMENES} spectra}
 This work in telluric correcting all spectra chosen has been hampered by the difficulty faced in correcting the {CARMENES} spectra from telluric lines.
-There have been issues achieving a reliable telluric correction with the Molecfit software on the {CARMENES} spectra (private-communication Ulmer-mol (2018)).
-At this stage only one spectrum has been corrected to compare the difference between Molecfit correction and complete telluric masking to see if it is worth investing time in improving the correction.
+There have been issues achieving a reliable telluric correction with the {Molecfit} software on the {CARMENES} spectra (private-communication Ulmer-mol (2018)).
+At this stage only one spectrum has been corrected to compare the difference between {Molecfit} correction and complete telluric masking to see if it is worth investing time in improving the correction.
 
-
-- preparation of observed spectra
-
-Preparation of {CARMENES} spectra.
-
-\missingfigure{Example of {CARMENES} spectra before and after correction}
 
 
 \subsubsection{Spectral preparation and Telluric correction}
 \label{subsec:prepatation_on_carmenes}
-The {CARMENES} spectra have not been corrected for telluic lines.
-Therefore, this needs to be performed to remove their presence which would affect the theoretical {RV} precision.
-This is done in collaboration with Sol\'ene Ulmer-moll who used the Molecfit software \citep{smette_molecfit_2015} to correct for the telluric lines in the {CARMENES} spectra following their experience in \citet{ulmer-moll_telluric_2018}. 
-Telluric correction is performed to assess its improvement on the telluric spectra over straight masking in a real situation, and explore telluric correction on {CARMENES} spectra.
- 
-This work in telluric correcting the eight spectra chosen has been hampered by the difficulty faced in properly correcting the {CARMENES} spectra from telluric lines.
-There have been issues achieving a reliable telluric correction with the Molecfit software on the {CARMENES} spectra (\emph{priv.\ comm.} Ulmer-mol (2018)).
-At this stage only one spectrum has been corrected, Barnard's Star, to investigate if the Molecfit telluric correction is sufficient, and enhances the {RV} precision results.
+The spectra in the  {CARMENES} library have not been corrected for telluic lines.
+To properly assess the theoretical {RV} precision attainable in the {CARMENES} spectra they need to be corrected for telluic lines.
+Telluric correction is performed with the {Molecfit} software~\citep{smette_molecfit_2015} in collaboration with Sol\'ene Ulmer-moll, who has {Molecfit} experience ~\citet{ulmer-moll_telluric_2018}.
 
-Are the spectra first combined into one??? or is this already performed.
-The telluric correction is performed by ....
+The separate spectral orders first need to be combined into a single spectrum.
+At this stage, where spectral orders overlap only the flux from one order is kept for simplicity.
+The overlapping regions could be combined by taking the mean because the overlapping orders are well aligned in wavelength, but this was not performed at this exploratory stage.
+
+The telluric correction is performed by dividing the {CARMENES} spectrum by a telluric transmission spectrum fitted with {Molecfit}.
+The fitting with {Molecfit} has been attempted twice.
+The first correction performs the fitting on the full \nir{} spectrum, while the second splits the spectrum into three parts and fits them separately.
+This is because it was noticed that the spectral line shape changes significantly from 0.9\um{} to 1.7\um{}.
+
+Different molecules are fitted in the three separate parts.
+In the first part (0.9--1.1\um{}) \ce{H2O} is fitted, in the second (1.1--1.5\um{}) \ce{O2} is fitted while \ce{CO2} and \ce{CH4} are fitted in the third section (1.5--1.71\um{}).
+After this all molecule abundances are fixed and the final fit is performed on each of the three parts.
+
+In the end, splitting the spectrum into three does not seem to improve the telluric correction much.
+The telluric spectrum fitted from both attempts is shown in top panel of \cref{fig:compare_telluric_corrections}.
+The difference between the two telluric spectra changes is shown in the bottom panel.
+
+It is unknown whether the full telluric correction of the {CARMENES} \nir{} spectrum has been performed before.
+There has been one publication known which uses {Molecfit} to correct a {CARMENES} spectrum, but only in a very narrow spectral range (1.082--1.084\um{})~\citep{allard_spectrally_2018}.
+As such there is not yet a definitive guide to achieve the best telluric correction of {CARMENES} spectra with {Molecfit}.
+
+At this stage only one spectrum has been telluric corrected to compare the difference between the two {Molecfit} corrections and their improvement over complete telluric masking on spectral quality and {RV} precision.
+This is to see if it is worth investing time to improve the telluric correction.
+
+After telluric correction the spectrum is corrected for bad pixels by linear interpolation across them.
+Some examples of bad pixels can be seen in a narrow wavelength range in \cref{fig:carmenes_spike_removal}.
+The lines with orange circles and green crosses are the original and telluric corrected spectra, respectively.
+They both show individual bad pixel spikes throughout the spectrum.
+The black line is the spectrum corrected from  the bad pixels (labelled `fixed') for the bad pixels. 
+The blue line is a ``quality flag'' output (0 or 1) from Molecfit, indicating where the spectrum has a flux below or equal to zero.
+It correctly identifies one of the bad pixels but not the others that have a flux above zero.
+within the \emph{Y}- \emph{J}-, and \emph{H}-bands there are around 213/66069\(\sim\)0.3\% bad pixels identified with an automated algorithm, based on a maximum derivative threshold (the bad pixels have very high derivatives).
+
+The the removal of bad pixels, with their very high derivatives, is essential for an accurate computation of the spectral quality and RV precision. The sharp lines with high derivatives would artificially increases the spectral quality, masquerading as very deep and narrow spectral lines.
+
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{figures/information-content/Carmenes/compare_telluric_corrections_shaded}
     \caption[]{Comparison of telluric models in pursuit of a better correction.
         Top: The two synthetic telluric spectra.
-        The blue shows the result from Molecfit after treating the full spectrum as one, with a single spectral profile, while the shaded red telluric spectrum has been derived with three separate bands, fitted individually.
+        The blue shows the result from {Molecfit} after treating the full spectrum as one, with a single spectral profile, while the shaded red telluric spectrum has been derived with three separate bands, fitted individually.
         Bottom: The difference in the telluric spectrum between the fit to the full spectrum, and the three individual fit.
         The regions of deep \ce{H2O} absorption lines which defined the \nir{} bands are shaded grey.
         The bounds of each band from \cref{tab:infrared_bands} are indicated with vertical black dashed lines.}
@@ -79,30 +98,38 @@ The telluric correction is performed by ....
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/information-content/Carmenes/telluric_correct_carmenes}
-    \caption[Telluic correction of the {CARMENES} \nir{} spectrum.]{Telluic correction of the {CARMENES} \nir{} spectrum.
-    Top: Uncorrected spectrum of Barnard's Star between 960--1710\nm{} from {CARMENES}.
-    Middle: The synthetic telluric transmission spectrum fitted with Molecfit.
-    Bottom: Telluric corrected spectrum by division of the telluric spectrum.
-    The regions of deep \ce{H2O} absorption lines which defined the \nir{} bands are shaded grey.
-    The bounds of each band from \cref{tab:infrared_bands} are indicated with vertical black dashed lines.}
-    \label{fig:carmenes_correction}
+    \includegraphics[width=0.9\linewidth]{figures/information-content/Carmenes/carmenes_spike_removal}
+    \caption[Bad pixel removal in {CARMENES}.]{Removal in bad pixels from the {CARMENES} spectrum. The orange line with circles and green line with pluses are the original and telluric corrected spectra from CARMENES.
+    The black solid line shows spectrum after correction from bad pixels.
+    The blue line shows the ``quality flag'' (0 or 1) output from the Molecfit software.}
+    \label{fig:carmenes_spike_removal}
 \end{figure}
+
+\textbf{FINISHed down to here}
+
+\subsection{Barnard's star}
+\label{sec:carmenes_barnards_star}
+The {CARMENES} spectrum of Barnard's Star is shown in the top panel of \cref{fig:carmenes_correction}....
+with the telluric correction current implementation used is the one that was split into of three chunks.
 
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/information-content/Carmenes/carmenes_spike_removal}
-    \caption[]{Removal in bad pixels in CARMENES spectrum.}
-    \label{fig:carmenes_spike_removal}
+    \includegraphics[width=0.9\linewidth]{figures/information-content/Carmenes/telluric_correct_carmenes}
+    \caption[Telluic correction of the {CARMENES} \nir{} spectrum.]{Telluic correction of the {CARMENES} \nir{} spectrum.
+        Top: Uncorrected spectrum of Barnard's Star between 960--1710\nm{} from {CARMENES}.
+        Middle: The synthetic telluric transmission spectrum fitted with {Molecfit}.
+        Bottom: Telluric corrected spectrum by division of the telluric spectrum.
+        The regions of deep \ce{H2O} absorption lines which defined the \nir{} bands are shaded grey.
+        The bounds of each band from \cref{tab:infrared_bands} are indicated with vertical black dashed lines.}
+    \label{fig:carmenes_correction}
 \end{figure}
 
+Since a proper comparison between {RV} the results obtained two methods only one {CARMENES} spectrum has been corrected,Barnard's Star.
+This work in telluric correcting the eight spectra chosen has been hampered by the difficulty faced in properly correcting the {CARMENES} spectra from telluric lines.
+There have been issues achieving a reliable telluric correction with the {Molecfit} software on the {CARMENES} spectra (\emph{priv.\ comm.} Ulmer-mol (2018)).
+At this stage only one spectrum has been corrected, Barnard's Star, to investigate if the {Molecfit} telluric correction is sufficient, and enhances the {RV} precision results.
 
-
-The current implementation of the telluric correction has the spectrum broken into three chunks with the line profile of the lines fitted independently in each chunk.
-Some regions have an improved telluric correction for while other regions the correction worsens.
-
-\subsection{Barnard's star}
 - Barnard's star (Artigau 2018 comparison)
 
 Figure \citep{} shows the uncorrected {CARMENES} spectrum (xxx) along with the current telluric model (black) the bottom panel shows the corrected {CARMENES} spectrum after division.
