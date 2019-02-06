@@ -5,18 +5,20 @@
 
 As shown here there is a vast field of exoplanet research, with one of the current challenges being the detection of planetary atmospheres.
 The purpose of this thesis was to develop methodologies and tools to extract the minute signals of planetary spectra from \nir{} spectra.
-With access to \nir{} spectra of stars with suspected Brown Dwarf companions\footnote{Only the minimum mass \Mtwosini{} known} the higher temperature and relatively larger size of BDs compared to giant-planets makes the development of spectral recovery techniques for {BD} companions a logical step towards the spectroscopic detection of planetary atmospheres.
+With access to \nir{} spectra of stars with suspected Brown Dwarf companions\footnote{Only the minimum mass \Mtwosini{} known} the higher temperature and relatively larger size of {BD}s compared to giant-planets makes the development of spectral recovery techniques for {BD} companions a logical step towards the spectroscopic detection of planetary atmospheres.
 For one, the spectrum of the {BD} companion will have a higher flux ratio than an exoplanet, and hence should be easier to detect.
 Secondly, being able to recover the spectra of these {BD} companions would help to constrain their mass and differentiate them from low-mass stars, helping to complete the puzzle regarding {BD} companions and their formation.
 
-The original plan was to use this as a stepping stone to request observational time and apply the techniques on giant exoplanets in the \nir{} with the state-of-the-art detectors that are \emph{still} in development.
+The original plan was to use the methodologies developed as a stepping stone to request observational time and apply the techniques on giant exoplanets in the \nir{} with the state-of-the-art detectors that are \emph{still} in development (i.e.\ {CRIRES+}).
 In \cref{cha:rv_concepts,cha:nir_spectroscopy} the fundamental concepts of the radial velocity method and \nir{} spectroscopy are presented.
 In \cref{cha:atmospheres_and_models} models of the atmosphere are presented along with the stellar atmosphere and evolutionary models used in this work.
 The process of reducing \nir{} {CRIRES} spectra, with a comparison between two different reduction software is given in \cref{cha:reduction}, followed by the post reduction calibration and atmosphere correction techniques required.
 
 \cref{cha:direct_recovery} presents spectral disentanglement techniques, focusing on the application of a differential subtraction technique to the \nir{} spectra of {BD} companions, as well as analysing the phase of the observations obtained.
-A second technique is developed in \cref{cha:model_comparison} which attempts to fit the observations with a model comprised of two synthetic spectral components.
+A second technique is developed in \cref{cha:model_comparison} which performs a to fit the observations with a model comprised of two synthetic spectral components.
 
-Towards a slightly different goal, \cref{cha:nir_content} contains work computing the fundamental {RV} precision of {M-dwarf} in the \nir{}.
-These are the best candidates for detecting small mass planets in their habitable zone, and are a focus for upcoming \nir{} {RV} spectrographs.
+The {RV} precision achievable in stellar spectra are important for the detection and characterization of extrasolar planets through the RV technique.
+\cref{cha:nir_content} focuses on computing the fundamental {RV} precision of {M-dwarf} spectra in the \nir{} wavelength band.
+{M-dwarf}s are the best candidates for detecting small mass planets in their habitable zone, and are a major focus for the new and upcoming \nir{} {RV} spectrographs.
 A focus was shifted towards updating the tools to compute the {RV} precision to prepare for the release of the {CARMENES} \nir{} spectral library.
+With available {CARMENES} spectra a test of the spectral precision of synthetic models to reality can be performed.
