@@ -4,9 +4,9 @@
 \chapter{Information content in the \nir{}}
 \label{cha:nir_content}
 
-The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra, specifically the radial velocity precision of M-dwarf spectra in the \nir{}.
-This work is not directly related to detecting exoplanet atmospheres themselves but will aid in future exoplanet discoveries.\todo{I think this is presented in a negative way and not showing the importance that this type of analysis has.}
-For instance, the fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to inform some design choices of two \nir{} spectrographs, {SPIRou} and {NIRPS}.
+The work presented in this chapter focuses on calculating and analysing the information content of stellar spectra, specifically the radial velocity {RV} precision of M-dwarf spectra in the \nir{}. 
+M-dwarfs are a source of focus in the community with several new instruments dedicated specifically to detecting planet around M-dwarfs \citep[e.g.][among others]{quirrenbach_carmenes_2014, bouchy_nearinfrared_2017, artigau_spirou_2014}.
+The fundamental radial velocity precision of {M-dwarf} spectra attainable at different wavelength regions calculated in~\citet{figueira_radial_2016} was used to inform some design choices of two \nir{} spectrographs, {SPIRou} and {NIRPS}.
 Understanding the underlying precision of different spectral types can also allow {RV} surveys to adjust the focus of the target selection, or optimize the exposure time of different spectral types.
 This can help in detecting the presence of ``habitable Earth-like'' planets around {M-dwarfs} which have become a prime target with the recent \nir{} spectrographs.
 
@@ -35,7 +35,7 @@ Recent results regarding the measured performance of the {CARMENES} survey~\cite
 Precisions of 1--2\mps{} have been achieved in the optical but only 5--10\mps{} in the \nir{}.
 However, comparing {RV} precision in different wavelength bands~\citet{quirrenbach_carmenes_2018} found a ``sweet spot'' around 0.7--0.8\um{} with deep \ce{TiO} bands providing rich {RV} information in mid-M dwarfs.
 
-\todo{I would conclude then saying that the number of papers on this thematic, number of open questions and impact on the design of instrumentation (which is very active for nIR spectrograhs) show that this is an important topic as of today!}
+The number of papers on this thematic, the number of open questions, and the impact on the design of instrumentation, particularly in the \nir{}, show that this is an important topic as of today.
   
 
 \input{chapters/information_content/photon_noise_precision}
@@ -54,5 +54,6 @@ However, comparing {RV} precision in different wavelength bands~\citet{quirrenba
 
 
 \section{Summary}
-Significant advancements in the \eniric{} software have been made to ease the computation of synthetic {RV} precision, with the open source software in review to be published.
-This has been used to being exploring the affect of metallicity and \Logg{} for M-dwarfs, as well as comparing synthetic results to real spectra.
+Significant advancements in the \eniric{} software have been made to expand and simplify the computation of synthetic {RV} precision.
+This has been used to being exploring the affect of \Logg{} and \feh{} on the spectral prevision of M-dwarfs, as well as comparing the RV precision of synthetic spectra to observed M-dwarf spectra from {CARMENES}.
+Open to the community it is available for the community to aid in {RV} precision calculations.
