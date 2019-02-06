@@ -9,7 +9,7 @@ Two methods, differential subtraction and \textchisquared{} spectral recovery,  
 
 The objective of the observations acquired in this program was to apply the spectral differential technique.
 Unfortunately, due to operational reasons, the required conditions for this method were not met, in particular a sufficient {RV} separation.
-When two insufficiently separated observations were subtracted to mutually cancel the spectrum of the host, the spectra of the faint companions were also mutually cancelled, diminishing the amplitude and increasing the difficultly of detection.
+When two insufficiently separated observations were subtracted to mutually cancel the spectrum of the host, the spectra of the faint companions were also mutually cancelled, diminishing the amplitude and increasing the difficulty of detection.
 
 An alternative \textchisquared{} spectral recovery method was developed, which ended up revealing different difficulties.
 This fitted the observed spectra with a binary model comprised of two synthetic spectra.
@@ -19,7 +19,7 @@ The {DRACS} pipeline was favoured over the {ESO} pipeline due to its ability to 
 However, artefacts were found in the {DRACS} reduced spectra pipeline in individual nods due to the optimal extraction.
 The individual nod spectra with artefacts were replaced by their rectangularly extracted counterparts as they introduced errors into the combined spectra at the level of 2\%, larger than the expect signal of companion spectra.
 
-A discrepancy between the models and the observed spectra in the \nir{} negatively affected recovery performance of the synthetic recovery technique on the observed spectra, while injection-recovery simulations at a \snr{}=300 were unable to correctly recovery the companions below \(\sim\)3800\K{} at a companion/host flux ratio of 5--15\%.
+A discrepancy between the models and the observed spectra in the \nir{} negatively affected the recovery performance of the synthetic recovery technique on the observed spectra, while injection-recovery simulations at a \snr{}=300 were unable to correctly recover the companions below \(\sim\)3800\K{} at a companion/host flux ratio of 5--15\%.
 With both methods a successful detection of the {BD} companions in \nir{} was not achieved.
 
 This work highlights many of the difficulties when dealing with the spectral recovery of \nir{} spectra.
@@ -32,20 +32,17 @@ Other than the improvement of the spectral models, the observing community can i
 This work shows that observing in the areas of lower telluric absorption, as is frequently done, is not a guarantee of success due to the scarcity of deep lines in cold objects.
 
 This work also made improvements to software used to compute the {RV} precision of synthetic spectra, publishing and releasing \eniric{} openly.
-This work identified and corrected problems with the previous results, and extending the ability of the software to analyse all available spectra in the {PHOENIX-ACES} and {BT-Settl} synthetic libraries.
+This work identified and corrected problems with the previous results, and extended the ability of the software to analyse all available spectra in the {PHOENIX-ACES} and {BT-Settl} synthetic libraries.
 This was used to provide relative {RV} precision values for the {NIRPS} and {SPIRou} instruments, tailored to each instrument by request.
-This also allowed for the exploration of the affect of \Logg and \feh{} on the spectral quality of the synthetic models, with the identification of band-specific trends in the quality.
+This also allowed for the exploration of the affect of \Logg{} and \feh{} on the spectral quality of the synthetic models, with the identification of band-specific trends in the quality.
 
 Preliminary analysis into the comparison between observed {CARMENES} spectra and synthetic models was performed for Barnard's Star finding similar results to other works in which \textbf{the X and X band do this and the X X bans do that ...}\todo{} The other chosen targets are still to be analysed due to difficulties in the telluric correction of {CARMENES}.
 
-It is hoped that this work can act as a guide for the planning of future observations of faint {BD} and planetary companions with the upcoming generation of high resolution spectrographs in the near- and mid- infrared such as CRIRES+.
-
 
 \section{Future Work}
-\todo{Is this better separate or should I combine these into "Conclusions and future prospects"?}
 \label{subsec:future}
 
-Although not successful with the CRIRES data used here, with many high-resolution \nir{} spectrographs becoming available the instrumental stage is set to attempt the techniques presented here using the next-generation of high resolution spectrographs.
+Although not successful with the CRIRES data used here, with many high-resolution \nir{} spectrographs becoming available, the instrumental stage is set to attempt the techniques presented here using the next-generation of high resolution spectrographs.
 For instance, the upgrade of CRIRES to CRIRES+ will increase the wavelength coverage of a single shot capture by at least a factor of 3--5.
 This larger wavelength span would be extremely beneficial for the \textchisquared{} performance of the spectral recovery method, increasing the number of useful lines and spectral features to be fitted with the models.
 
@@ -64,16 +61,16 @@ They are more advanced than the differential subtraction method but both require
 The differential method may still be useful when only two observations can be obtained, provided a sufficient separation and \snr{}.
 
 The {RV} precision of the M-dwarfs, particularly in the \nir{}, is still highly important in the community with several new \nir{} spectrographs and {RV} surveys being started.
-With the vast growth in the number of \nir{} spectra that will be obtained there will be plenty of opportunity to contrast the obtained precisions to the theoretical spectra.
+With the vast growth in the number of \nir{} spectra that will be obtained, there will be plenty of opportunity to contrast the obtained precisions to the theoretical spectra.
 In depth comparison between the precision of synthetic and observed M-dwarf spectra still needs to be preformed across the M-dwarf range.
 \Eniric{} can aid in this by providing a simple way to perform {RV} precision computations.
 One opportunity currently available is to continue with the analysis of the {CARMENES} spectra.
 
-Another possibility made possible with \eniric{} is to attempt to use machine learning techniques to model the relations between the {RV} precision (or spectral quality) and the spectral and observational parameters.
+Another opportunity made possible with \eniric{} is to attempt to use machine learning techniques to model the relations between the {RV} precision (or spectral quality) and the spectral and observational parameters.
 One could envision several tens of thousands of {RV} precisions being calculated from the synthetic spectral library, altering not only the spectral parameters, (\Teff, \Logg{}, \feh{}, \alphafe{}) but also \(\lambda\), \(R\), \Vsini{} and \snr{}.
 This could be used to build a predictive model to estimate the {RV} precision for a star with parameters different from the library grid, observed with an arbitrary spectrograph.
 This would also enable any correlations between the parameters, such as seen with \Logg{} and \feh{} to be identified, and confirm the theoretical relationship with \(R\).
+With the large growth in machine learning technologies and libraries available this could be implemented  relatively easily.
 
-The future of exoplanetary detection and characterization in the \nir{} is promising with the high resolution near- and mid- IR spectrographs.
-
-\todo{I don't think this is the best final sentence...}
+The future of exoplanetary detection and characterization is promising.
+It is hoped that this work can act as a guide for the planning of future observations of faint {BD} and planetary companions with the upcoming generation of high resolution spectrographs in the near- and mid- infrared.
