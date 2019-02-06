@@ -81,14 +81,17 @@ It only provides a small correction to the Gaussian profile of a standard spectr
 
 \subsubsection*{Numerical Convolution}
 \label{subsubsec:numerical_convolution}
-\todo{I think you should describe what is a numerical convolution before you describe the different types of numerical convolutions.}
 Both convolutions are performed numerically, by iterating over all pixels in the spectrum.
+Convolution is a continuous mathematical operation in which one signal modifies the shape of another.
+In the cases here the rotation and instrument modify the shape of spectral lines.
+The continuous broadening functions/kernels are applied to the sampled (non-continuous) spectrum numerically by computing the kernels at the location of pixels in the spectrum and summing the result.
+
 At each pixel, a window of neighbouring pixels is selected that fall within the convolution window\footnote{Region in which the convolution kernel will affect this particular pixel.}, e.g.\ \(5\times\)\fwhm{} for that pixel.
 The convolution kernel is calculated for the window, multiplied by the spectral flux and then summed to produce the new value for the pixel of the iteration.
 The shape of the convolution kernels and the size of convolution window are wavelength dependant (\(\Delta\lambda_{L}=\lambda \frac{\vsini}{c}\) and \({\fwhm}=\frac{\lambda}{R}\)) and must be calculated separately for each pixel, making the convolution computationally expensive.
 
-This convolution method allows for the spectrum to be non-uniformly spaced, unlike other methods that usually require uniform spacing e.g.\ the implementation in \pyastronomy{}.
-One factor that needs consideration when convolving with a non-uniformly spaced spectrum is the discretization\todo{duplicated} of the kernel onto the wavelength grid.
+This convolution method allows for the spectrum to be non-uniformly spaced, unlike other methods that usually require a uniform spacing e.g.\ the implementation in \pyastronomy{}.
+One factor that needs consideration when convolving with a non-uniformly spaced spectrum is the discretization of the kernel onto the wavelength grid.
 For instance the number of points inside the convolution window, due to the sampling, as well as their specific location inside the kernel will have a slight affect on the kernel area.
 The convolution result is normalized by dividing it by the result of the convolution kernel applied to a unitary spectrum of `1's on the same wavelength grid.
 \citet{figueira_radial_2016} performed this unitary convolution separately and applied the normalization correction afterwards.
