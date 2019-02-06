@@ -125,7 +125,7 @@ which result in the approximation of the gradient of the central values to be
 \[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{{h_{s}}^{2}f\left(x_{i} + {h_{d}}\right) + \left({h_{d}}^{2} - {h_{s}}^{2}\right)f\left(x_{i}\right) - {h_{d}}^{2}f\left(x_{i}-{h_{s}}\right)} {{h_{s}}{h_{d}}\left({h_{d}} + {h_{s}}\right)} + \mathcal{O}\left(\frac{h_{d}{h_{s}}^{2} + {h_{s}}{h_{d}}^{2}}{{h_{d}} + {h_{s}}}\right) \label{eqn:full_compact_difference}.\]
 
 If the spectrum is evenly spaced, ${h_{s}}={h_{d}}$  reduces to the standard second order {CFD} approximation:
-\[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{f\left(x_{i+1}\right) - f\left(x_{i-1}\right)}{2h} + \mathcal{O}\left({h}^{2}\right)\].
+\[\frac{\partial{f(x_i)}}{\partial{x}} = \frac{f\left(x_{i+1}\right) - f\left(x_{i-1}\right)}{2h} + \mathcal{O}\left({h}^{2}\right).\]
 
 Applying this to the situation presented here, similar to \cref{eqn:ffd_precision}, results in:
 \[\frac{\partial {A}_{0}(i)}{\partial\lambda(i)} = \frac{{\lambda(i-1)}^{2} {A}_{0}(i+1) + ({\lambda(i+1)}^{2}-{\lambda(i-1)}^{2}) {A}_{0}(i) - {\lambda(i+1)}^{2} {A}_{0}(i-1)} {\lambda(i-1)\lambda(i+1)(\lambda(i+1) + \lambda(i-1))}, \hspace{1em} 2 \leq i \leq n-1\]
@@ -188,7 +188,7 @@ As suggested in~\citet{connes_absolute_1985} and~\citet{bouchy_fundamental_2001}
 W'(i) = W(i)\mathcal{M}(i),\label{eqn:mask_function}
 \end{equation}
 where \(\mathcal{M}(i)\) is the masking function and \(W'(i)\) are the modified pixel weights.
-This masking function can be used in particular for the removal of telluric lines, setting those weights to zero and is in essence what is done when wavelength selection is performed: zero weight is assigned to all pixels outside the desired wavelength range(s).
+This masking function can be used in particular for the removal of telluric lines, setting those weights to zero and is in essence what is done when wavelength selection is performed: zero weight is assigned to all pixels outside the desired wavelength range.
 
 This masking function can be used to easily apply the three conditions presented in~\citet{figueira_radial_2016}.
 The three masking functions incorporated into \eniric{} are defined here, followed by the quantification of how they differ from the previous implementation.
