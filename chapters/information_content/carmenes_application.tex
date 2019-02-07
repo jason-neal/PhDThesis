@@ -2,24 +2,23 @@
 
 \section{Application to {CARMENES} spectra}
 
-One of the main reasons for focusing on extending the work of~\citet{figueira_radial_2016} was to analyse the differences in {RV} precision of synthetic spectra and the observed \nir{}.
+One of the main reasons for focusing on extending the work of~\citet{figueira_radial_2016} was to analyse the differences in {RV} precision of synthetic spectra and observed \nir{}.
 This is important for the community to understand the accuracy of synthetic spectra.
 \citet{artigau_optical_2018} recently found band-specific discrepancies in the theoretical precision between real and synthetic \nir{} spectra of Barnard's Star.
 In 2018 {CARMENES} openly released a spectral library containing one spectrum for each target in their 324 M-dwarf {RV} survey in~\citet{reiners_carmenes_2018}.
 With this they provide details on the empirical \(\delta V_{rms}\) measured during their {RV} processing with their {RV} analysis code, {SERVAL} \citep{zechmeister_spectrum_2018}, using all available spectra of each target.
-Spectra from this library will be used to compare the theoretical precision of observed {CARMENES} spectra to synthetic models.
-This work is still in the preliminary stages but the progress so far will be demonstrated here.
+Spectra from this library has been used to compare the theoretical precision of observed {CARMENES} spectra to synthetic models, and is still in the preliminary stages, with the progress so far demonstrated here.
 
 \subsection{Target selection}
 \label{subsec:carmense_targets}
-To analyse the precision in different spectral types a few specific M-dwarfs were selected.
+To analyse the precision in different spectral types, a few specific M-dwarfs were selected.
 These were selected from the 324 spectra of the {CARMENES} M-dwarf library from \citet{reiners_carmenes_2018} available at \href{http://carmenes.cab.inta-csic.es/gto/}{http://carmenes.cab.inta-csic.es/gto/}, along with the achieved \snr{} in the visible and \nir{} spectra.
 
-The spectral library was downloaded and divided into spectral type and ordered by the {SNR} achieved in the \nir{}, to select targets at the high \snr{} end.
+The spectral library data was downloaded, divided into spectral type and ordered by the stated \nir{} {SNR}, to select targets at the high \snr{} end.
 To cover the M-dwarf range, targets were selected near each of the spectral types M0, M3, M6 and M9.
-For each spectral type (within $\pm0.5$) two stars are selected that have high {SNR} values.
+For each spectral type (within $\pm0.5$) two stars are selected that have high {SNR} values. This will give eight spectra over the M-dwarf range to analysis.
 One of the two selected targets for the M3 type is Barnard's star which has been analysed extensively in~\citet{artigau_optical_2018}, in particular with CRIRES spectra for the \nir{} domain, allowing for direct comparisons between the two works.
-The other criteria was to try to select targets with a varied range of \Logg{} and \feh{} values if possible.
+The other criteria used for selection was to select targets with a varied range of \Logg{} and \feh{} values if possible.
 
 The selected targets from the {CARMENES} library are provided in \cref{tab:carmenes_selection_updated}.
 The spectral parameters (\Teff{}, \Logg{}, \feh{}) for these targets are from \citet{passegger_carmenes_2018, rajpurohit_exploring_2018} who performed spectral fits of the {CARMENES} spectra with the {PHOENIX-ACES} and {BT-Settl} models respectively.
@@ -37,43 +36,43 @@ Neither one has parameters for Luyten's Star, for which the parameters given are
 \label{subsec:prepatation_on_carmenes}
 The spectra in the  {CARMENES} library have not been corrected for telluic lines.
 To properly assess the theoretical {RV} precision attainable in the {CARMENES} spectra they need to be corrected for telluic lines.
-Telluric correction is performed with the {Molecfit} software~\citep{smette_molecfit_2015} in collaboration with Sol\'ene Ulmer-moll, who has {Molecfit} experience~\citet{ulmer-moll_telluric_2018}.
+Telluric correction is performed with the {Molecfit} software~\citep{smette_molecfit_2015} in collaboration with Sol\'ene Ulmer-moll, who has {Molecfit} experience~\citep{ulmer-moll_telluric_2018}.
 
 The separate spectral orders first need to be combined into a single spectrum.
 At this stage, where spectral orders overlap only the flux from one order is kept for simplicity.
 The overlapping regions could be combined by taking the mean because the overlapping orders are well aligned in wavelength, but this was not performed at this exploratory stage.
 
 The telluric correction is performed by dividing the {CARMENES} spectrum by a telluric transmission spectrum fitted with {Molecfit}.
-The fitting with {Molecfit} has been attempted twice.
+The fitting with {Molecfit} has been attempted two different ways.
 The first correction performs the fitting on the full \nir{} spectrum, while the second splits the spectrum into three parts and fits them separately.
-This is because it was noticed that the spectral line shape changes significantly from 0.9\um{} to 1.7\um{}.
+This was done because it was noticed that the spectral line shape changes significantly from 0.9\um{} to 1.7\um{}.
 
 Different molecules are fitted in the three separate parts.
 In the first part (0.9--1.1\um{}) \ce{H2O} is fitted, in the second (1.1--1.5\um{}) \ce{O2} is fitted while \ce{CO2} and \ce{CH4} are fitted in the third section (1.5--1.71\um{}).
 After this all molecule abundances are fixed and the final fit is performed on each of the three parts.
 
-In the end, splitting the spectrum into three does not seem to improve the telluric correction much.
-The telluric spectrum fitted from both attempts is shown in top panel of \cref{fig:compare_telluric_corrections}.
+In the end, splitting the spectrum into three does not seem to improve the telluric correction considerably.
+The telluric spectrum fitted from both attempts is shown in the top panel of \cref{fig:compare_telluric_corrections}.
 The difference between the two telluric spectra changes is shown in the bottom panel.
 
 It is unknown whether the full telluric correction of the {CARMENES} \nir{} spectrum has been performed before.
 There has been one publication known which uses {Molecfit} to correct a {CARMENES} spectrum, but only in a very narrow spectral range (1.082--1.084\um{})~\citep{allart_spectrally_2018}.
 As such there is not yet a definitive guide to achieve the best telluric correction of {CARMENES} spectra with {Molecfit}.
 
-At this stage only one spectrum has been telluric corrected to compare the difference between the two {Molecfit} corrections and their improvement over complete telluric masking on spectral quality and {RV} precision.
-This is to see if it is worth investing time to improve the telluric correction.
+In this work only one spectrum has been telluric corrected to compare the difference between the two {Molecfit} corrections and their improvement over complete telluric masking on spectral quality and {RV} precision.
+This was to see if it is worth investing time to improve the telluric correction step.
 
-After telluric correction the spectrum is corrected for bad pixels by linear interpolation across them.
+After telluric correction the spectrum was corrected for bad pixels by linear interpolation across them.
 Some examples of bad pixels can be seen in a narrow wavelength range in \cref{fig:carmenes_spike_removal}.
 The lines with orange circles and green crosses are the original and telluric corrected spectra, respectively.
 They both show individual bad pixel spikes throughout the spectrum.
 The black line is the spectrum corrected from the bad pixels (labelled `fixed') for the bad pixels. 
 The blue line is a ``quality flag'' output (0 or 1) from {Molecfit}, indicating where the spectrum has a flux below or equal to zero.
 It correctly identifies one of the bad pixels but not the others that have a flux above zero.
-within the \emph{Y}- \emph{J}-, and \emph{H}-bands there are around 213/66069\(\sim\)0.3\% bad pixels identified with an automated algorithm, based on a maximum derivative threshold (the bad pixels have very high derivatives).
+Within the \emph{Y}- \emph{J}-, and \emph{H}-bands there are around 213/66069\(\sim\)0.3\% bad pixels identified with an automated algorithm, based on a maximum derivative threshold (the bad pixels have very high derivatives).
 
-The the removal of bad pixels, with their very high derivatives, is essential for an accurate computation of the spectral quality and RV precision. The sharp lines with high derivatives would artificially increases the spectral quality, masquerading as very deep and narrow spectral lines.
-
+The removal of bad pixels, which introduce pixels with very high derivatives (and pixel weight, $W(i)$), is essential for an accurate computation of the spectral quality and RV precision.
+The sharp lines with high derivatives would artificially increases the calculated spectral quality, \(Q\), masquerading as very deep and narrow spectral lines.
 
 \begin{figure}
     \centering
@@ -81,7 +80,7 @@ The the removal of bad pixels, with their very high derivatives, is essential fo
     \caption[]{Comparison of telluric models in pursuit of a better correction.
         Top: The two synthetic telluric spectra.
         The blue shows the result from {Molecfit} after treating the full spectrum as one, with a single spectral profile, while the shaded red telluric spectrum has been derived with three separate bands, fitted individually.
-        Bottom: The difference in the telluric spectrum between the fit to the full spectrum, and the three individual fit.
+        Bottom: The difference in the telluric spectrum between the fit to the full spectrum, and the fit with the spectrum split into three.
         The regions of deep \ce{H2O} absorption lines which defined the \nir{} bands are shaded grey.
         The bounds of each band from \cref{tab:infrared_bands} are indicated with vertical black dashed lines.}
     \label{fig:compare_telluric_corrections}
@@ -91,13 +90,11 @@ The the removal of bad pixels, with their very high derivatives, is essential fo
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{figures/information-content/Carmenes/carmenes_spike_removal}
-    \caption[Bad pixel removal in {CARMENES}.]{Removal in bad pixels from the {CARMENES} spectrum. The orange line with circles and green line with pluses are the original and telluric corrected spectra from {CARMENES}.
-    The black solid line shows spectrum after correction from bad pixels.
+    \caption[Bad pixel removal in {CARMENES}.]{Removal of bad pixels from the {CARMENES} spectrum. The orange line with circles and green line with pluses are the original and telluric corrected spectra from {CARMENES}.
+    The black solid line shows the spectrum after correction from bad pixels.
     The blue line shows the ``quality flag'' (0 or 1) output from the {Molecfit} software.}
     \label{fig:carmenes_spike_removal}
 \end{figure}
-
-\textbf{FINISHed down to here}
 
 \subsection{Barnard's star}
 \label{sec:carmenes_barnards_star}
