@@ -153,10 +153,10 @@ This is tabulated in with other parameters from \citet{artigau_optical_2018} in 
 \end{table}
 
 A series of spectra are shown in \cref{fig:carmenes_correction}.
-The uncorrected {CARMENES} spectrum of Barnard's Star is shown in the top panel.
-The middle panel shows telluric model from Molecfit, while the third panel shows the telluric corrected spectrum.
+The uncorrected {CARMENES} spectrum of Barnard's Star is shown in the first panel.
+The second panel shows telluric model from Molecfit, while the third panel shows the telluric corrected spectrum.
 In the telluric corrected spectrum there are several deep spikes which are bad pixels.
-Most of there are corrected for in the fourth panel, although it appears there may be a few still present in the spectrum.
+Most of these are corrected for in the fourth panel, although it appears there may be a few still present in the spectrum.
 The fifth panel contains the synthetic PHOENIX-ACES spectrum of Barnard's star, used to compare the spectral quality.
 The model has been convolved by an instrumental profile with R=80\,400, but not rotationally broadened since the \Vsini{} is low. The flux units of the spectra are arbitrary, and the synthetic model has been converted into photon counts.
 
@@ -169,10 +169,10 @@ The model has been convolved by an instrumental profile with R=80\,400, but not 
         Second: The synthetic telluric transmission spectrum fitted with {Molecfit}.
         Third: Telluric corrected spectrum by division of the telluric spectrum.
         The regions of deep \ce{H2O} absorption lines which defined the \nir{} bands are shaded grey.
-        Fourth: The telluric correct spectra after bad pixel removal.
+        Fourth: The telluric corrected spectra after the bad pixels are removed.
         Fifth: Synthetic PHOENIX-ACES model for Barnard's star, convolved to R=80\,400.
         The bounds of each band from \cref{tab:infrared_bands} are indicated with vertical black dashed lines.
-     The flux units of the spectra are arbitrary}
+        The flux units of the spectra are arbitrary}
     \label{fig:carmenes_correction}
 \end{figure}
 
@@ -181,23 +181,29 @@ To compare the model to the observation it is interpolated to the pixel position
 The spectral quality is calculated for both on small wavelength bins with a width 0.2\% the central wavelength similar to \citep{artigau_optical_2018}.
 The top panel of \cref{fig:qualitycomparisiontomodel} shows the results of the comparison, with the spectral quality in 0.2\%\,\(\lambda\) width bins for the observation (orange squares) and the model (blue stars) in the top panel.
 The ratio between the spectral quality of the observation and the model is given in the bottom panel.
-It shows that in this instance the \emph{Y}- and \emph{J}-bands similar quality, while there is a large difference in the \emph{H}-band with the CARMENES observation having a spectral quality 3--4\(\times\) than the model.
+It shows that in this instance the \emph{Y}- and \emph{J}-bands have a similar spectral quality, while there is a large difference in the \emph{H}-band with the CARMENES observation having a spectral quality 3--4\(\times\) greater than the model.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.7\linewidth]{figures/information-content/Carmenes/quality_comparision_to_model}
     \caption[Barnard's star spectral quality compared to CARMENES]{Measured RV content of Barnard's star over the near-infrared domain, from CARMENES.
-    Top: The spectral quality in 0.2\%\,\(\lambda\) width bins for CARMENES (orange squares) and the model (blue stars) Bottom: The ratio of spectral quality observed/model.}
+    Top: The spectral quality in 0.2\%\,\(\lambda\) width bins for CARMENES (orange squares) and the model (blue stars).
+    Bottom: The ratio of spectral quality observed/model.}
     \label{fig:qualitycomparisiontomodel}
 \end{figure}
 \cref{}
 
-\cref{fig:allw2} from \citep{artigau_optical_2018} is shown for comparison. 
-In the \emph{Y}- and \emph{J}-bands \cref{arti} obtains a lower spectral quality (50\%) compared to the model. However in this work the model and observation are quite similar in these bands, although the ratio does tend to 50\% in the latter apart of the \emph{J}. In the \emph{H}-band of both works the observed quality is higher then the model, however the CARMENES spectral quality is 3\(\times\) higher, instead of only 1.5\(\times\) in \citep{artigau_optical_2018}. This is a significant difference.
+\cref{fig:allw2} from \citep{artigau_optical_2018} is shown for comparison.
+In the \emph{Y}- and \emph{J}-bands \cref{arti} obtains a lower spectral quality (50\%) compared to the model.
+However in this work the model and observation have a similar spectral quality in these bands, although the ratio does drop to 50\% in the latter apart of the \emph{J}.
+In the \emph{H}-band of both works the observed quality is higher then the model, however the CARMENES spectral quality is 3\(\times\) higher, instead of only 1.5\(\times\) in \citep{artigau_optical_2018}.
+This is a significant difference.
 
-\citep{artigau_optical_2018} only apply telluric masking in their analysis where as here the telluric correct spectra is used. This could be the partly the reason for the largely improved results in the \emph{H}.
+\citep{artigau_optical_2018} only apply telluric masking in their analysis, whereas here the telluric corrected spectra were used.
+This could be part of the reason for the largely improved results in the \emph{H}.
 As shown in \cref{subsec:impact_telluric_correction} the telluric correction can improve the quality by 12--30\%.
-This does not fully explain the increase by a factor of 2.
+However, this does not fully explain the increase by a factor of 2.
+This requires further investigation.
 
 
 \begin{figure}
@@ -215,9 +221,11 @@ This does not fully explain the increase by a factor of 2.
 %Analysis of the precision on smaller wavelength scales is also performed in other works~\citep[e.g.][]{bouchy_fundamental_2001, reiners_carmenes_2018}.
 
 
-\subsection{Future aims}These results are still preliminary analysis as many things can be improved.
+\subsubsection{Future tasks}
+\label{subsubsec:future_tasksaims}
+These results are still preliminary analyses, and a few things can be improved.
 For instance the observed and model spectra have not yet been Doppler shifted to the same frame.
-Although a Doppler shift of a few \nm{} would not affect the results shown in \cref{fig:qualitycomparisiontomodel} significantly.
+A Doppler shift of a few \nm{} is unlikely to affect the results shown in \cref{fig:qualitycomparisiontomodel} significantly.
 There are also a few bad pixels that are still present in the observation that should be properly removed.
 
-Adding the analysis of several CARMENES spectra across the M-dwarf range would be important addition to this work to see if these result are consistent for all spectra, or if they are dependant on the stellar parameters. 
+Adding the analysis of several CARMENES spectra across the M-dwarf range would be an important addition to this work to see if these results are consistent for all spectra, or if they are dependant on the stellar parameters.
