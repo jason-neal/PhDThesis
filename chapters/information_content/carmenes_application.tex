@@ -96,6 +96,33 @@ The sharp lines with high derivatives would artificially increases the calculate
     \label{fig:carmenes_spike_removal}
 \end{figure}
 
+
+\subsection{Impact of telluric correction}
+\label{Impact_telluric_correction}
+Here the impact of the telluric correction on the spectral quality of the CARMENES spectrum is assessed.
+This was done by calculating, Q, with the original telluric lines deeper than 2\% masked out, and with the telluric correction performed.
+This was done for both fitting methods attempted with Molecfit and displayed in \cref{fig:band_qualityfromapplyingtelluriccorrection}.
+The top panel shows the telluric corrected spectrum (orange) along with the telluric mask that was applied (blue).
+The bottom panel shows the spectral quality for the three spectral bands \emph{Y}, \emph{J}, and \emph{H}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/information-content/Carmenes/Band_quality_from_applying_telluric_correction}
+    \caption[Barnard's star spectral quality.]{Measured spectral quality, Q, in the three \nir{} bands of Barnard's star to assess the gain from telluric correction. 
+        Top: The telluric corrected CARMENES spectrum (orange) along with the binary mask for telluric lines >2\% depth (blue). 
+        Bottom: The spectral quality in the three spectral bands, for different telluric treatment. `single' indicates the Molecfit results from the single fit to the spectrum, while 'triple' indicates the fit to the three wavelength bands.
+        `masked' indicates that telluric masking of the lines deeper than 2\% was performed and while `corrected' is just the telluric corrected spectrum.}
+    \label{fig:band_qualityfromapplyingtelluriccorrection}
+\end{figure}
+
+\cref{fig:band_qualityfromapplyingtelluriccorrection} shows that there is a benefit (gain in quality) from telluric correction in the \emph{J} and \emph{H}-bands, where there are numerous telluric lines.
+However, in the \emph{Y}-band where there is little telluric masking performed there is only a slight gain.
+Performing telluric correction of the CARMENES spectra over telluric masking causes a gain the the spectral quality by 1\%, 30\%, 12\% in the \emph{Y}-band, \emph{J}, and \emph{H}-bands respectively.
+As the spectral quality is related to the RV precision, this will lead to a 10-30\% improvement in the RV precision in the \emph{J}- and \emph{H}-bands
+This indicated that it is worth performing telluric correction on the other seven {CARMENES} targets selected.
+This also shows that the extra effort from three separate telluric fittings does not lead to a significant gain in quality.
+
+
 \subsection{Barnard's star}
 \label{sec:carmenes_barnards_star}
 The {CARMENES} spectrum of Barnard's Star is shown in the top panel of \cref{fig:carmenes_correction}....
