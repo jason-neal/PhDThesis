@@ -6,4 +6,8 @@ Completed at:
     Center of Astrophysics University of Porto,
     Porto, Portugal
 
+
+**Submitted** 11-2-2019
+**Defended** 09-09-2019
+
 ## Abstract
