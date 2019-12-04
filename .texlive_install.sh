@@ -40,7 +40,7 @@ tlmgr install collection-langeuropean
 # Index of packages: http://ctan.mirrors.hoobly.com/systems/texlive/tlnet/archive/
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # One package line per line in texive_packages 
-# tlmgr install $(cat .texlive_packages.txt)
+tlmgr install $(cat .texlive_packages.txt)
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
