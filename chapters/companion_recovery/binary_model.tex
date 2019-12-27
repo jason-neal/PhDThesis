@@ -1,6 +1,5 @@
 %!TEX root = ../../thesis.tex
 
-
 \section{Binary \texorpdfstring{\textchisquared}{chi-squared}\ spectral recovery}
 \label{subsec:companion_recovery}
 The approach developed here is to fit the observed CRIRES spectra, consisting of a {FGK} star with a {BD} companion, with a model comprised of a combination of two synthetic spectra, one for each component.
@@ -23,7 +22,7 @@ This can be achieved in \Python{} with the \scipy{} package as the single line o
 For example, the \(\Delta \chisquared\) for a single degree of freedom required for the 1-, 2-, and 3-\(\sigma\) confidence levels is 1, 4, and 9 respectively~\citep{bevington_data_2003}.
 This method assumes that the measured flux is observed with a \snr{} sufficiently high so that the noise on the spectrum is approximately Gaussian, and the \textchisquared{} method appropriate.
 If however there is a correlated signal or noise in the spectra then the \textchisquared{} is inappropriate.
-The more advanced Gaussian processes techniques would be required to properly fit the data \citep[e.g.]{rasmussen_gaussian_2006}.
+The more advanced Gaussian processes techniques would be required to properly fit the data~\citep[e.g.]{rasmussen_gaussian_2006}.
 This is beyond the scope performed here.
 %\todo{There is no discussion on the impact of correlated signal or noise in the spectra. If the signal is correlated, the number of independent points is smaller than  the number you are considering. This only has an impact on the normalization factor of the curve, but should be mentioned.}
 
@@ -37,7 +36,7 @@ The same \(\sigma\) value determined is applied to all points in the spectrum so
 The \(\beta\sigma\) method provides \(\sigma\) estimates for the target spectra which correspond inversely to \snr{} values between 100--400.
 These \snr{} values are similar to the values given in \cref{tab:observations} which were calculated only using the standard deviation of the continuum of detector \#2.
 
-The computed models \(C\) are described in \cref{subsec:models} and result in a multidimensional grid of \textchisquared{} values for each combination of model parameters, namely the spectral parameters  (e.g.\ \Teff{}), and the {RV} of the host and companion {RV} for each: detector, observation, and target.
+The computed models \(C\) are described in \cref{subsec:models} and result in a multidimensional grid of \textchisquared{} values for each combination of model parameters, namely the spectral parameters (e.g.\ \Teff{}), and the {RV} of the host and companion {RV} for each: detector, observation, and target.
 
 The global minimum of the multidimensional \textchisquared-space is used to represent the best fitting model combination to the observed spectra.
 The multidimensional \textchisquared{} grid is summed across multiple detectors to also determine a global minimum \textchisquared{} for the whole observation \(\chisquared_{obs} = \Sigma^{N}_{n=1} \chisquared_n\), where \(N\) is the number of detectors used.
@@ -84,7 +83,7 @@ These processes and others could however be included in the future to improve th
 Instead, a radial velocity component is included in the \textchisquared{} fitting, which is not included in~\citet{passegger_fundamental_2016}.
 
 Rotational broadening of the host was not included in these models as an extra variable fitting  parameter.
-In \citet{passegger_carmenes_2018} rotational broadening is only included at the fine grid search stage, using only a fixed value for each target to determine, determined in a separate work, to reduce the number of parameters.
+In~\citet{passegger_carmenes_2018} rotational broadening is only included at the fine grid search stage, using only a fixed value for each target to determine, determined in a separate work, to reduce the number of parameters.
 A fine search is not attempted in this work.
 
 In the presence of faint companions this single component model will give a fit of the host spectrum, identifying the hosts parameters and be a good start for the parameters of the binary model or even fix them to reduce the parameters.

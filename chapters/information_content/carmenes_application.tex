@@ -6,13 +6,13 @@ One of the main reasons for focusing on extending the work of~\citet{figueira_ra
 This is important for the community to understand the accuracy of synthetic spectra.
 \citet{artigau_optical_2018} recently found band-specific discrepancies in the theoretical precision between real and synthetic \nir{} spectra of Barnard's Star.
 In 2018 {CARMENES} openly released a spectral library containing one spectrum for each target in their 324 M-dwarf {RV} survey in~\citet{reiners_carmenes_2018}.
-With this they provide details on the empirical \(\delta V_{rms}\) measured during their {RV} processing with their {RV} analysis code, {SERVAL} \citep{zechmeister_spectrum_2018}, using all available spectra of each target.
+With this they provide details on the empirical \(\delta V_{rms}\) measured during their {RV} processing with their {RV} analysis code, {SERVAL}~\citep{zechmeister_spectrum_2018}, using all available spectra of each target.
 Spectra from this library has been used to compare the theoretical precision of observed {CARMENES} spectra to synthetic models, and is still in the preliminary stages, with the progress so far demonstrated here.
 
 \subsection{Target selection}
 \label{subsec:carmense_targets}
 To analyse the precision in different spectral types, a few specific M-dwarfs were selected.
-These were selected from the 324 spectra of the {CARMENES} M-dwarf library from \citet{reiners_carmenes_2018} available at \href{http://carmenes.cab.inta-csic.es/gto/}{http://carmenes.cab.inta-csic.es/gto/}, along with the achieved \snr{} in the visible and \nir{} spectra.
+These were selected from the 324 spectra of the {CARMENES} M-dwarf library from~\citet{reiners_carmenes_2018} available at \href{http://carmenes.cab.inta-csic.es/gto/}{http://carmenes.cab.inta-csic.es/gto/}, along with the achieved \snr{} in the visible and \nir{} spectra.
 
 The spectral library data was downloaded, divided into spectral type and ordered by the stated \nir{} {SNR}, to select targets at the high \snr{} end.
 To cover the M-dwarf range, targets were selected near each of the spectral types M0, M3, M6 and M9.
@@ -21,10 +21,10 @@ One of the two selected targets for the M3 type is Barnard's star which has been
 The other criteria used for selection was to select targets with a varied range of \Logg{} and \feh{} values if possible.
 
 The selected targets from the {CARMENES} library are provided in \cref{tab:carmenes_selection_updated}.
-The spectral parameters (\Teff{}, \Logg{}, \feh{}) for these targets are from \citet{passegger_carmenes_2018, rajpurohit_exploring_2018} who performed spectral fits of the {CARMENES} spectra with the {PHOENIX-ACES} and {BT-Settl} models respectively.
-The uncertainties in the \citet{rajpurohit_exploring_2018} parameters are \(\sigma_{\teff{}}\)=100\K{}, \(\sigma_{\logg{}}\)=0.3, and \(\sigma_{\feh{}}\)=0.3 while the uncertainties on the 
+The spectral parameters (\Teff{}, \Logg{}, \feh{}) for these targets are from~\citet{passegger_carmenes_2018, rajpurohit_exploring_2018} who performed spectral fits of the {CARMENES} spectra with the {PHOENIX-ACES} and {BT-Settl} models respectively.
+The uncertainties in the~\citet{rajpurohit_exploring_2018} parameters are \(\sigma_{\teff{}}\)=100\K{}, \(\sigma_{\logg{}}\)=0.3, and \(\sigma_{\feh{}}\)=0.3 while the uncertainties on the 
 \citet{passegger_carmenes_2018} values are \(\sigma_{\teff{}}\)=51\K{}, \(\sigma_{\logg{}}\)=0.07, and \(\sigma_{\feh{}}\)=0.16.
-There are gaps in the \citet{passegger_carmenes_2018} values for stars that have the lower \snr{} levels as they are more difficult to analyse/fit.
+There are gaps in the~\citet{passegger_carmenes_2018} values for stars that have the lower \snr{} levels as they are more difficult to analyse/fit.
 Neither one has parameters for Luyten's Star, for which the parameters given are from {SIMBAD}.
 
 \begin{landscape}
@@ -126,18 +126,17 @@ This also shows that the extra effort from three separate telluric fittings does
 \subsection{Barnard's star}
 \label{sec:carmenes_barnards_star}
 Currently only Barnard's star has had the telluric correction performed, and as such the analysis for this target is shown.
-The spectral content of Barnard's star was extensively explored in \citet{artigau_optical_2018} comparing the synthetic model to observations from {HARPS}, {ESPaDOns} and {CRIRES} in the range 380--2300\nm{}.
+The spectral content of Barnard's star was extensively explored in~\citet{artigau_optical_2018} comparing the synthetic model to observations from {HARPS}, {ESPaDOns} and {CRIRES} in the range 380--2300\nm{}.
 Agreement was found in the optical but the \nir{} bands had significant differences between the observations and models. 
 The goal of this analysis is to check if the same results are obtainable in the {CARMENES} spectrum of Barnard's star.
 
-\citep{artigau_optical_2018} tabulated several literature values for the stellar properties of Barnard's star and identified the closest matching {PHOENIX-ACES} model.
-The synthetic model adopted for Barnard's star is \Teff=3200\K{}, \Logg{}=5.0, and \feh{}=-0.5.
-This same model was adopted here.
-This is tabulated in with other parameters from \citet{artigau_optical_2018} in \cref{tab:barnards_star_params}.
+\citet{artigau_optical_2018} tabulated several literature values for the stellar properties of Barnard's star and identified the closest matching {PHOENIX-ACES} model.
+The synthetic model adopted for Barnard's star was \Teff=3200\K{}, \Logg{}=5.0, and \feh{}=-0.5, and we adopt the same model here.
+This is tabulated in with other parameters from~\citet{artigau_optical_2018} in \cref{tab:barnards_star_params}.
 
 \begin{table}
     \centering
-    \caption[Properties of Barnard's star.]{Properties of Barnard's star from \citep{artigau_optical_2018}. \Teff{}, \feh{} and \Logg{} values are only the adopted (closest) model parameters.}
+    \caption[Properties of Barnard's star.]{Properties of Barnard's star from~\citet{artigau_optical_2018}. \Teff{}, \feh{} and \Logg{} values are only the adopted (closest) model parameters.}
     \begin{tabular}{lc}
         \toprule
         Parameter & Value \\
@@ -160,7 +159,6 @@ Most of these are corrected for in the fourth panel, although it appears there m
 The fifth panel contains the synthetic PHOENIX-ACES spectrum of Barnard's star, used to compare the spectral quality.
 The model has been convolved by an instrumental profile with R=80\,400, but not rotationally broadened since the \Vsini{} is low. The flux units of the spectra are arbitrary, and the synthetic model has been converted into photon counts.
 
-
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{figures/information-content/Carmenes/bp_carmenes_masked_model_broadened}
@@ -178,7 +176,7 @@ The model has been convolved by an instrumental profile with R=80\,400, but not 
 
 
 To compare the model to the observation it is interpolated to the pixel positions of the {CARMENES} spectrum.
-The spectral quality is calculated for both on small wavelength bins with a width 0.2\% the central wavelength similar to \citep{artigau_optical_2018}.
+The spectral quality is calculated for both on small wavelength bins with a width 0.2\% the central wavelength similar to~\citet{artigau_optical_2018}.
 The top panel of \cref{fig:qualitycomparisiontomodel} shows the results of the comparison, with the spectral quality in 0.2\%\,\(\lambda\) width bins for the observation (orange squares) and the model (blue stars) in the top panel.
 The ratio between the spectral quality of the observation and the model is given in the bottom panel.
 It shows that in this instance the \emph{Y}- and \emph{J}-bands have a similar spectral quality, while there is a large difference in the \emph{H}-band with the CARMENES observation having a spectral quality 3--4\(\times\) greater than the model.
@@ -192,13 +190,13 @@ It shows that in this instance the \emph{Y}- and \emph{J}-bands have a similar s
     \label{fig:qualitycomparisiontomodel}
 \end{figure}
 
-\cref{fig:allw2} from \citep{artigau_optical_2018} is shown for comparison.
-In the \emph{Y}- and \emph{J}-bands \cref{artigau_optical_2018} obtains a lower spectral quality (50\%) compared to the model.
-However in this work the model and observation have a similar spectral quality in these bands, although the ratio does drop to 50\% in the latter apart of the \emph{J}.
-In the \emph{H}-band of both works the observed quality is higher then the model, however the CARMENES spectral quality is 3\(\times\) higher, instead of only 1.5\(\times\) in \citep{artigau_optical_2018}.
+For comparison the corresponding image from~\citet{artigau_optical_2018} is provided in \cref{fig:allw2}.
+It shows a lower computed spectral quality (50\%) in the \emph{Y}- and \emph{J}-bands compared to the model of Barnard's star.
+However in this work the model and observation have a similar spectral quality in these bands, although the ratio does drop to 50\% towards the red end of the \emph{J}-band.
+In the \emph{H}-band of both works the observed quality is higher then the model, however the CARMENES spectral quality is 3\(\times\) higher, instead of only 1.5\(\times\) in~\citet{artigau_optical_2018}.
 This is a significant difference.
 
-\citep{artigau_optical_2018} only apply telluric masking in their analysis, whereas here the telluric corrected spectra were used.
+\citet{artigau_optical_2018} only apply telluric masking in their analysis, whereas here the telluric corrected spectra were used.
 This could be part of the reason for the largely improved results in the \emph{H}.
 As shown in \cref{subsec:impact_telluric_correction} the telluric correction can improve the quality by 12--30\%.
 However, this does not fully explain the increase by a factor of 2.
@@ -212,14 +210,14 @@ This requires further investigation.
     \includegraphics[width=0.8\linewidth]{figures/information-content/artigau2018_figures/all_w2}
     \end{tabular}
     \caption[Measured RV content of Barnard's star over the optical and near-infrared domain.]{Measured RV content of Barnard's star over the optical and near-infrared domain. Overall measured (blue) and model (red) RV density are well matched blueward of $\sim1\mu$m. The agreement is poorer in the near-infrared domain with an over-prediction of RV content in $Y$ and \emph{J} bands and an under-prediction in \emph{H} and \emph{K}.
-        Bottom: Ratio of observed to model $Q_{0.2\%}$ values. Areas unusable for RV measurements because of strong telluric absorption are filled in light blue. Reproduced from from \citep{artigau_optical_2018}.}
+    Bottom: Ratio of observed to model $Q_{0.2\%}$ values. Areas unusable for RV measurements because of strong telluric absorption are filled in light blue. Reproduced from~\citet{artigau_optical_2018}.}
     \label{fig:allw2}
 \end{figure}
 
 
-%This work specifically added an extra feature to \eniric{} in the ability to calculate the precision on shorter wavelength scales rather than the full band. This is inspired and driven by the wavelength bins with a width \(2\%\times\lambda^\prime\), centred at \(\lambda^\prime\) as done in \citep{artigau_optical_2018}.
+%This work specifically added an extra feature to \eniric{} in the ability to calculate the precision on shorter wavelength scales rather than the full band. This is inspired and driven by the wavelength bins with a width \(2\%\times\lambda^\prime\), centred at \(\lambda^\prime\) as done in~\citep{artigau_optical_2018}.
 %This allows for a finer resolution of the spectral quality throughout the band rather than just the full band
-%precision as done in \citet{figueira_radial_2016} and \cref{fig:band_qualityfromapplyingtelluriccorrection}.
+%precision as done in~\citet{figueira_radial_2016} and \cref{fig:band_qualityfromapplyingtelluriccorrection}.
 %Analysis of the precision on smaller wavelength scales is also performed in other works~\citep[e.g.][]{bouchy_fundamental_2001, reiners_carmenes_2018}.
 
 

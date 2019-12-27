@@ -29,23 +29,23 @@ A very general formula for the {RV} precision achievable of a given non-resolved
 \begin{equation}
 \sigma \propto \frac{1}{\sqrt{F} \sqrt{\Delta \lambda} R^{1.5}}.
 \end{equation}
-where \(F\) is the average flux level, $\Delta \lambda$ is the wavelength coverage (bandwidth) and \(R\) the resolution.
+where \(F\) is the average flux level, \(\Delta \lambda\) is the wavelength coverage (bandwidth) and \(R\) the resolution.
 $\sqrt{F}$ represents the photon noise error (\snr{}) of the spectrum in the {Poisson}-dominated noise regime.
 While \(\sqrt{\Delta\lambda}\) represents the increase in statistics from including independent measurements of lines.
 That is if \({\sigma}_{RV}\) is measured on one line then after combining \(N\) lines the measured error becomes \(\frac{{\sigma}_{RV}}{N}\).
 This assumes that the spectrum contains a homogeneous distribution of uniform lines, per unit wavelength, and that the only noise present is photon noise.
-The precision depends more steeply on the spectral resolution with $R^{-1.5}$. At a higher resolution the slope of the spectral lines will be steeper as the spectral lines will have a higher contrast and a reduced line width. also narrower. 
+The precision depends more steeply on the spectral resolution with $R^{-1.5}$. At a higher resolution the slope of the spectral lines will be steeper as the spectral lines will have a higher contrast and a reduced line width (narrower).
 The sharper spectral lines allow smaller pixels shifts on the detector to be measured, improving the RV precision.
 
 As a star rotates its lines become broadened by an area preserving rotation kernel (see \cref{subsubsec:rotational_convolution}).
-In a similar way to the resolution, \(R\), the {RV} precision is dependant on rotational velocity of the star (\Vsini) to the power 1.5, \(\sigma_{RV} \propto{\vsini}^{1.5}$.
+In a similar way to the resolution, \(R\), the {RV} precision is dependant on rotational velocity of the star (\Vsini) to the power 1.5, $\sigma_{RV} \propto{\vsini}^{1.5}$.
 
-
-An alternate derivation comes from~\citet{bouchy_fundamental_2001}, based-off \citet{connes_absolute_1985}, in which an optimal weight, \(W(i)\), for each pixel, \(i\), is calculated for a spectrum $A_0$ via:
+An alternate derivation comes from~\citet{bouchy_fundamental_2001}, based-off~\citet{connes_absolute_1985}, in which an optimal weight, \(W(i)\), for each pixel, \(i\), is calculated for a spectrum $A_0$ via:
 \begin{equation}
     W(i) = \frac{\lambda^{2}(i) {(\partial A_0(i)/\partial\lambda)}^{2}}{A_0(i) + \sigma_D}. \label{eqn:pixel_weigth}
 \end{equation}
-where $\lambda$ is the wavelength and $\sigma_D$ the detector noise. Here, \(\partial A_0(i)/\partial\lambda\) is the slope of the spectral at each pixel so the edges of sharp spectral lines carry more weight.
+
+where \(\lambda\) is the wavelength and \(\sigma_D\) the detector noise. Here, \(\partial A_0(i)/\partial\lambda\) is the slope of the spectral at each pixel so the edges of sharp spectral lines carry more weight.
 
 The {RV} precision is calculated over all pixels as
 \begin{equation}
