@@ -51,7 +51,7 @@ It appears that the presence of the bad pixel spikes heavily affects the varianc
 Numerous parameters in the {DRACS} pipeline were experimented with in the attempt to remove the observed artefacts with limited success.
 For instance, no complete removal of the artefacts was found by adjusting the \(\sigma\) rejection limits (between \(1-5 \sigma\)) or increasing the tracing width parameter in {IRAF}s DOSLIT\footnote{Documentation for DOSLIT can be found here \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?doslit}} recipe, although they did slightly affect the shape of the artefacts.
 \cref{fig:resizednods} shows the extraction of HD\,202206 with one parameter changed in the reduction pipeline.
-The only difference between the left and right panels the automated aperture resizing\footnote{Using \href{apresize}{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?apresize.hlp}} was enabled by setting the ``resize'' parameter to \emph{yes} in the right hand panel.
+The only difference between the left and right panels the automated aperture resizing\footnote{Using \href{http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?apresize.hlp}{apresize}} was enabled by setting the ``resize'' parameter to \emph{yes} in the right hand panel.
 This manages to remove an ugly artefact in the sixth nod (brown), but not the artefact in the seventh nod (pink).
 This was only discovered in the writing of this thesis so could not be utilized earlier.
 However, it does indicate that some improvements may be obtained with extensive time and patience tweaking the parameters of the {DRACS} pipeline.
