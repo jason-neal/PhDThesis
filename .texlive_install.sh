@@ -11,12 +11,14 @@
 export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 if ! command -v texlua > /dev/null; then
   # Obtain TeX Live
-  wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+  # wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+  # Get 2018 version
+  wget  http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2018/install-tl-unx.tar.gz
   tar -xzf install-tl-unx.tar.gz
   cd install-tl-20*
 
   # Install a minimal system
-  ./install-tl --profile=../.texlive/texlive_profile.txt
+  ./install-tl --profile=../.texlive/texlive_profile.txt -repository http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2018/tlnet-final
 
   cd ..
 fi
