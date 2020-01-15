@@ -28,7 +28,7 @@ where \(c\) is the speed of light in a vacuum, and \(\delta \lambda\) is the shi
 
 %\todo{intensity change from connes is vertically in the slice d lambda}
 
-Using \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{However,\citet{connes_absolute_1985} also shows that the approximation in \cref{eqn:intensitychange} is adequate under all circumstances.}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
+Using \(\delta y = \pd{y}{x} \delta x \nonumber\), and for a Doppler shift that is small compared to the line-width\footnote{However,~\citet{connes_absolute_1985} also shows that the approximation in \cref{eqn:intensitychange} is adequate under all circumstances.}, the observable intensity change in a wavelength slice \(d \lambda\) (or at a given pixel) can be expressed by:
 \begin{equation}
 \delta A(i) = A(i) - {A}_{0}(i) \simeq \pd{{A}_{0}(i)}{\lambda(i)} \delta \lambda = \pd{{A}_{0}(i)}{\lambda(i)} \frac{\delta V(i)}{c}\lambda(i).
 \label{eqn:intensitychange}
@@ -42,7 +42,7 @@ Rearranging \cref{eqn:intensitychange} for \(\delta \lambda\) and combining it w
 This equation shows that the radial velocity at pixel {\(i\)} is measured through a change in the intensity in the recorded spectrum, \(A(i)-{A}_{0}(i)\), and is inversely proportional to the slope of the spectrum, \({\partial {A}_{0}(i)}/{\partial \lambda(i)}\).
 \Cref{eqn:delta_v_i} provides a separate measurement of the radial velocity shift for every pixel, \(i\), in the spectrum.
 The sensitivity of the velocity measurement can be improved, and the noise decreased by using the information from the whole spectral range, \(\Lambda\).
-This is achieved by taking the weighted average\footnote{Weighted average on x is \(\bar{x} = \frac{\sum{ x(i)W(i)}}{\sum {W(i)}}\)} over all pixels in the spectral range using an optimal pixel weight \(W(i)\).
+This is achieved by taking the weighted average\footnote{Weighted average on x is \(\bar{x} = \frac{\sum{ x(i)W(i)}}{\sum {W(i)}}\).} over all pixels in the spectral range using an optimal pixel weight \(W(i)\).
 
 \begin{equation}
 \overline{\frac{\delta V}{c}} = \frac{\sum{\frac{\delta V(i)}{c}W(i)}}{\sum {W(i)}}.

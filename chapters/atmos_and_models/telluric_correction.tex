@@ -43,8 +43,8 @@ This is detailed further below.
 \subsubsection{{TAPAS} web service}
 \label{subsubsec:TAPAS}
 In this work the telluric correction is performed using the TAPAS models.
-Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of the AtmosPhere for AStronomical data) web service\footnote{\href{http://cds-espri.ipsl.fr/tapas}{http://cds-espri.ipsl.fr/tapas}}~\citep{bertaux_tapas_2014}.
-{TAPAS} uses the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995} along with the 2008 {HITRAN} spectroscopic database~\citep{rothman_hitran_2009} and {ARLETTY} atmospheric profiles derived using meteorological measurements from the ESPRI data centre\footnote{\href{https://cds-espri.ipsl.upmc.fr}{https://cds-espri.ipsl.upmc.fr}} to create telluric line models.
+Telluric absorption spectra can be obtained with the {TAPAS} (Transmissions of the AtmosPhere for AStronomical data) web service\footnote{\href{http://cds-espri.ipsl.fr/tapas}{\url{http://cds-espri.ipsl.fr/tapas}}.}~\citep{bertaux_tapas_2014}.
+{TAPAS} uses the standard line-by-line radiative transfer model code LBLRTM~\citep{clough_linebyline_1995} along with the 2008 {HITRAN} spectroscopic database~\citep{rothman_hitran_2009} and {ARLETTY} atmospheric profiles derived using meteorological measurements from the ESPRI data centre\footnote{\href{https://cds-espri.ipsl.upmc.fr}{\url{https://cds-espri.ipsl.upmc.fr}}.} to create telluric line models.
 
 The {ARLETTY} atmospheric profiles have a 6~hour resolution.
 However, differences to the actual profile at the time of observation are likely to exist as there are seasonal, daily, and even hourly variations in the volume mixing ratio of atmospheric constituents~\citep[e.g.][]{ramanathan_daily_1953, thoning_atmospheric_1989, schneising_three_2009}.
@@ -87,7 +87,7 @@ The webpage is useful for quickly obtaining a small number of spectra but can be
 For this work this was around upwards of 50 telluric spectra, (3 for each of the 17 observations).
 {TAPAS} offers the ability to request multiple spectra at a time but this was found to be unreliable when attempting to request more than four spectra in a single request.
 
-A script\footnote{Available at \href{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}{https://github.com/jason-neal/equanimous-octo-tribble/blob/master/octotribble/Tapas/}} was created to automatically generate the data necessary to fill out a {TAPAS} request for each {CRIRES} observations.
+A script\footnote{Available at \href{https://github.com/jason-neal/equanimous-octo-tribble/tree/master/octotribble/Tapas}{\url{https://github.com/jason-neal/equanimous-octo-tribble/tree/master/octotribble/Tapas}}.} was created to automatically generate the data necessary to fill out a {TAPAS} request for each {CRIRES} observations.
 The script scanned the {CRIRES} header for information such as the mid-time of observations, target coordinates, slit width etc.\ and populated the {XML} request form provided by {TAPAS}.
 The script output is copied and pasted into the web browser for submission.
 

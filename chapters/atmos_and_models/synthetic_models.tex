@@ -7,7 +7,7 @@ One particular model output of importance for this work are the synthetic stella
 These spectra can be compared to observed spectra to attempt to classify and understand the stellar populations, as well as test the models fit to reality.
 There is an ever evolving effort to improve these stellar models and synthetic spectra to better match the observations; incorporating more physics, chemical reactions, line lists, and using the latest element abundances.
 This work extensively uses the {PHOENIX-ACES} synthetic spectra, with a little experimentation with the {BT-Settl} models.
-A collection of several theoretical stellar spectral libraries can be found at the Spanish Virtual Observatory \href{http://svo2.cab.inta-csic.es/theory/newov/index.php}{Theoretical Spectra Web Server}\footnote{\href{http://svo2.cab.inta-csic.es/theory/newov/index.php}{http://svo2.cab.inta-csic.es/theory/newov/index.php}}.
+A collection of several theoretical stellar spectral libraries can be found at the Spanish Virtual Observatory \href{http://svo2.cab.inta-csic.es/theory/newov/index.php}{Theoretical Spectra Web Server}\footnote{\href{http://svo2.cab.inta-csic.es/theory/newov/index.php}{\url{http://svo2.cab.inta-csic.es/theory/newov/index.php}}.}.
 
 The~\citet{kurucz_model_1979}, among others, models are popular synthetic models for stars ranging between G-O type with effective temperatures between 5500--50\,000\K{}.
 For cooler stars, M-dwarfs and even Brown Dwarfs the stellar models are based on the {PHOENIX} code~\citep[e.g.][]{hauschildt_parallel_1997}.
@@ -83,7 +83,7 @@ They are better suited for the entire range of {BD} temperatures down to 400\K{}
 The {BT-Settl} models now also include 3-D radiation transfer~\citep{seelmann_3d_2010}.
 
 The {BT-Settl} are generally more difficult to work with because of their file format (in comparison to {PHOENIX-ACES}).
-The most recent {BT-Settl} spectral library, using version 15.5 of the {PHOENIX} code, is designated {CIFIST2011\_2015}\footnote{\url{https://phoenix.ens-lyon.fr/Grids/{BT-Settl}/CIFIST2011_2015/}}~\citep{baraffe_new_2015} and includes newer~\citet{caffau_solar_2011} solar abundances and is combined with evolutionary modelling.
+The most recent {BT-Settl} spectral library, using version 15.5 of the {PHOENIX} code, is designated {CIFIST2011\_2015}\footnote{\href{https://phoenix.ens-lyon.fr/Grids/BT-Settl/CIFIST2011_2015/}{\url{https://phoenix.ens-lyon.fr/Grids/BT-Settl/CIFIST2011_2015/}}.}~\citep{baraffe_new_2015} and includes newer~\citet{caffau_solar_2011} solar abundances and is combined with evolutionary modelling.
 It is available in a fits format which is easier to use.
 The parameter range available from the pre-computed library is given in \cref{tab:btsettl_params}.
 
@@ -95,10 +95,10 @@ Above this temperature there are some difference observed in the line strengths 
 
 \subsection{Model access}
 \label{subsec:model_access}
-The pre-computed synthetic spectral libraries for the {PHOENIX-ACES} models (\cref{tab:phoenix}) are easily obtainable from \href{http://phoenix.astro.physik.uni-goettingen.de/}{http://phoenix.astro.physik.uni-goettingen.de/} while pre-computed models for the {BT-Settl} (\cref{tab:btsettl_params}) and other {PHOENIX} spectra can be found at \href{https://phoenix.ens-lyon.fr/Grids/}{https://phoenix.ens-lyon.fr/Grids/}.
-A simulator is also available to generate {BT-Settl} spectra or other {PHOENIX} spectra from {Allard France} at \href{phoenix.ens-lyon.fr}{phoenix.ens-lyon.fr}, for specific parameters or abundances.
+The pre-computed synthetic spectral libraries for the {PHOENIX-ACES} models (\cref{tab:phoenix}) are easily obtainable from \href{http://phoenix.astro.physik.uni-goettingen.de/}{\url{http://phoenix.astro.physik.uni-goettingen.de/}} while pre-computed models for the {BT-Settl} (\cref{tab:btsettl_params}) and other {PHOENIX} spectra can be found at \href{https://phoenix.ens-lyon.fr/Grids/}{\url{https://phoenix.ens-lyon.fr/Grids/}}.
+A simulator is also available to generate {BT-Settl} spectra or other {PHOENIX} spectra from {Allard France} at \href{phoenix.ens-lyon.fr}{\url{phoenix.ens-lyon.fr}}, for specific parameters or abundances.
 
-The spectral model libraries were downloaded using the above links and accessed using the ``grid tools'' interface provided in the \emph{Starfish}\footnote{\url{https://github.com/iancze/Starfish}} Python package~\citep{czekala_constructing_2015}.
+The spectral model libraries were downloaded using the above links and accessed using the ``grid tools'' interface provided in the \emph{Starfish}\footnote{\href{https://github.com/iancze/Starfish}{\url{https://github.com/iancze/Starfish}}.} Python package~\citep{czekala_constructing_2015}.
 The ``grid tools'' enables the fast, efficient, and simple loading of stellar spectra for use in the simulation performed in this work.
 For instance a spectra from a given model can be loaded simply using the four values of identifying parameter values [\Teff{}, \Logg{}, \feh{}, \alphafe{}]\footnote{\feh{} and \alphafe{} are abundances of \ce{Fe} and \(\alpha\) elements relative to those in the Sun.
     The definition of the scale is \([X/H] = \log_{10}{\left(\frac{n_{\ce{X}}}{n_{\ce{H}}}\right)}_{\star} - \log_{10}{\left(\frac{n_{\ce{X}}}{n_{\ce{H}}}\right)}_{\odot}\), where $n_{\ce{X}}$ is the number of atoms of element \ce{X} and $n_{\ce{H}}$ is the number of atoms of Hydrogen.}.

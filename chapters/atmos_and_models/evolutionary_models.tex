@@ -52,7 +52,7 @@ If \(\sigma_{A}\approx\sigma_B\) then the error on the difference is \(\sigma_{A
 
 \subsection{Baraffe tables}
 \label{subsubsec:baraffe_tables_code}
-A simple tool\footnote{Available at \href{https://github.com/jason-neal/baraffe_tables}{https://github.com/jason-neal/baraffe\_tables}} was created to calculate/estimate the host-companion flux ratio using the~\citet{baraffe_evolutionary_2003, baraffe_new_2015} evolution tables.
+A simple tool\footnote{Available at \href{https://github.com/jason-neal/baraffe_tables}{\url{https://github.com/jason-neal/baraffe\_tables}}.} was created to calculate/estimate the host-companion flux ratio using the~\citet{baraffe_evolutionary_2003, baraffe_new_2015} evolution tables.
 Given the name of the target star, the mass of a companion and the stellar/system age the tool determines the flux ratios in the available spectral bands.
 The tool uses the targets name and the \href{https://zenodo.org/record/1160627}{\emph{astroquery} package} to obtain the stellar properties from {SIMBAD}, specifically the flux magnitudes and parallax.
 It then interpolates the Baraffe tables to the desired companion mass and age, calculating and returning values for all parameters of the companion given in the tables (e.g.\ \Teff{}, \Logg{}, \(R/R_{\odot}\)).

@@ -77,12 +77,12 @@ For the {CRIRES} detectors the dark current per pixel is around 0.2--0.4\,(\(e^{
 \label{subsec:flat-field}
 Due to the architecture of CMOS, in which pixels are read independently and each pixel has an independent amplifier with a different gain.
 To correct for pixel-to-pixel variations in gains and photon sensitivity across the detector and for any distortions in the optical path, a flat-field correction is needed.
-Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected.
+Exposures of a uniform\footnote{Ideally uniform intensity and spectral distribution.} light source are taken, allowing the individual pixel-to-pixel sensitivity to be measured and corrected.
 The flat-field frames are corrected for dark current by subtraction of the master dark frame with the appropriate exposure time.
 
 The {CRIRES} detector suffers from non-linearities in sensitivity across the detector.
 This can be seen in the flat-field image on the left of \cref{fig:masterflats_colour} where there is an intensity gradient from dark to light across the detector.
-A set of coefficients for each pixel is provided by {ESO}\footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}} to apply the correction for the non-linearity of the detectors.
+A set of coefficients for each pixel is provided by {ESO}\footnote{Available at \href{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}{\url{https://www.eso.org/sci/facilities/paranal/instruments/crires/tools.html}}.} to apply the correction for the non-linearity of the detectors.
 This also corrects for a slight difference in sensitivity between the pixels from the odd and even columns in the {CRIRES} detectors, commonly called the ``odd-even effect''.
 This occurs because the odd and even columns are read separately by different large amplifiers that have a different gains.
 The frame on the right of \cref{fig:masterflats_colour} has been corrected for the non-linearities.
@@ -187,9 +187,9 @@ The stellar target and a very brief objective of each science case is given belo
 
 \begin{itemize}
     \setlength\itemsep{-0.3em} % Remove spacing on list.
-    \item Barnard's Star\footnote{Programme {{ID}}: 085.D-0161(A)}: The carefully reduced \nir{} spectra of Barnard's Star was meant to extend the work of~\citet{andreasen_nearinfrared_2016} in deriving the spectroscopic parameters of cool M-stars in the \nir{}.
+    \item Barnard's Star\footnote{Programme {{ID}}: 085.D-0161(A).}: The carefully reduced \nir{} spectra of Barnard's Star was meant to extend the work of~\citet{andreasen_nearinfrared_2016} in deriving the spectroscopic parameters of cool M-stars in the \nir{}.
     Unfortunately the work did not advance enough to analyse M-star's and a spectrum of {Arcturus} (K0) and a fully reduced spectrum of {10Leo} (K1) from the {CRIRES}-POP library~\citep{nicholls_crirespop_2017} were analysed instead in~{Andreasen et al.\ (in prep.)}.
-    \item \(\eta\) Tel\footnote{Programme {{ID}}: 083.C-0759(A)}: The spectra of a telluric standard star (HIP100090) and {HR\,7329-B} (\(\eta\) Tel-B) a rapidly rotating Brown Dwarf, were reduced to accurately determine the {BD} rotation rate by measuring the line broadening.
+    \item \(\eta\) Tel\footnote{Programme {{ID}}: 083.C-0759(A).}: The spectra of a telluric standard star (HIP100090) and {HR\,7329-B} (\(\eta\) Tel-B) a rapidly rotating Brown Dwarf, were reduced to accurately determine the {BD} rotation rate by measuring the line broadening.
     The results from this data will be published in an upcoming paper {Hagelberg et al.\ (in prep.)}.
     \item The same spectra of {HR\,7329-B} were also used in~\citet{ulmer-moll_telluric_2018} to compare different telluric correction methods in the \nir{}.
     An example from~\citet[][(B.3)]{ulmer-moll_telluric_2018} of the reduced target spectrum (black), the telluric model (red) and the telluric corrected spectrum (green) is provided in \cref{fig:ulmermol2018tellcorrcrires48}.

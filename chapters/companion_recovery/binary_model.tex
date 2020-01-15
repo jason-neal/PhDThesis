@@ -59,7 +59,7 @@ The loading is easily performed using Starfish's \href{https://iancze.github.io/
 The {PHOENIX-ACES} spectra are converted from the units of the spectral energy distribution (\(\rm erg\,s^{-1}\,cm^{2}\,cm^{-1}\)) (at the stellar surface) into photon flux (\(\rm photon\,s^{-1}\,cm^{2}\)) by dividing by the photon energy\footnote{Photon energy \(E=\frac{hc}{\lambda}\), where \(h\), \(c\) and, \(\lambda\) are Plank's constant, the speed of light, and wavelength, respectively.}.
 This can be simply achieved by multiplying the spectrum by the wavelength (multiplicative constants ignored), as done in~\citet{figueira_radial_2016}.
 The spectra are also convolved with a Gaussian kernel to the instrumental resolution of the observations, in this case R=50\,000.
-Due to the distributive property\footnote{\(I(\lambda) \ast (f(\lambda) + g(\lambda)) = I(\lambda) \ast f(\lambda) + I(\lambda) \ast g(\lambda) \)} of convolution the instrumental broadening is performed on each individual library spectrum first.
+Due to the distributive property\footnote{\(I(\lambda) \ast (f(\lambda) + g(\lambda)) = I(\lambda) \ast f(\lambda) + I(\lambda) \ast g(\lambda) \).} of convolution the instrumental broadening is performed on each individual library spectrum first.
 This is to avoid performing convolution for each combination of model parameters in the binary model after the spectra have been combined.
 It would be more computationally expensive to perform the convolution on every model combination, \(C\).
 

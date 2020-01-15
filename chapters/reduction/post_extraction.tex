@@ -31,7 +31,7 @@ Instead of directly using the {HITRAN} database~\citep{rothman_hitran2012_2013} 
 The {TAPAS} models use the {HITRAN} database but also includes atmospheric profiles and physical meteorological measurements to model the telluric absorption strength.
 
 To calibrate the wavelength the telluric lines in the model need to be associated to the corresponding telluric lines in the observed spectrum.
-The centroid\footnote{Centre of the line} of each telluric line in the model is obtained by fitting the telluric transmission spectrum, \(T(\lambda)\), as a simple sum of Gaussian functions (subtracted from the continuum):
+The centroid\footnote{Centre of the line.} of each telluric line in the model is obtained by fitting the telluric transmission spectrum, \(T(\lambda)\), as a simple sum of Gaussian functions (subtracted from the continuum):
 \begin{equation}
 T(\lambda) = 1 - {\Sigma}_{i}\ G(\lambda, A_{i}, {\mu}_{i}, {\sigma}_{i}),
 \end{equation}
@@ -41,7 +41,7 @@ G(\lambda, A, \mu, \sigma) = {A \textrm{e}}^{{-(\lambda-\mu)}^{2}/2\sigma^{2}},
 \end{equation}
 and \(A\), \(\mu\), \(\sigma\) are the amplitude, central wavelength, and standard deviation for each line respectively.
 Telluric lines actually have a Voigt profile\footnote{A Voigt profile is a convolution of two broadening profiles, a Gaussian and a Lorentzian.
-Gaussian broadening results from thermal Doppler broadening, and instrumental broadening while the Lorentzian broadening comes from molecular vibrational bands\citep{meier_art_2005}.} although they are not fully resolved in the \nir{} and their shape is dominated by the instrumental profile.
+Gaussian broadening results from thermal Doppler broadening, and instrumental broadening while the Lorentzian broadening comes from molecular vibrational bands~\citep{meier_art_2005}.} although they are not fully resolved in the \nir{} and their shape is dominated by the instrumental profile.
 \citet{seifahrt_synthesising_2010} measured the instrumental profile of {CRIRES} using singular-value decomposition and showed that it is extremely well represented by a single Gaussian below a \snr{}$\sim$300.
 Therefore, wavelength calibration using single Gaussian fits to each line is sufficient.
 
@@ -146,7 +146,7 @@ Telluric spectra used for correction can be observed alongside the non-corrected
 A technique suggested by~\citet{bertaux_tapas_2014} was attempted to address the poor \ce{H2O} airmass scaling.
 This involved fitting a scaling factor to the \ce{H2O} absorption lines before convolution to the instrument resolution.
 This was achieved by first dividing the spectrum by a telluric model containing the non-\ce{H2O} constituents, convolved to the observed resolution, and scaled by the airmass to remove the non-\ce{H2O} lines.
-Then the telluric model with only \ce{H2O} lines at full resolution was scaled by a factor \(\textrm{T}^{x}\) and convolved to the instrumental resolution\footnote{\(\rm R=50\,000\) for this work} and compared to the remaining telluric lines in the observed spectra.
+Then the telluric model with only \ce{H2O} lines at full resolution was scaled by a factor \(\textrm{T}^{x}\) and convolved to the instrumental resolution\footnote{\(\rm R=50\,000\) for this work.} and compared to the remaining telluric lines in the observed spectra.
 This scaled and convolved model was fitted to the observations to find the best was fitted to find the best scaling factor \(x\), for the \ce{H2O} lines.
 
 It was found that for a few spectra in the sample this method corrected the deeper telluric lines well, but in many cases the fitted scaling factor was affected by the presence of blended stellar lines (attempting to fit those also).
@@ -184,7 +184,7 @@ To accurately compare the radial velocity (or spectral shift) between two measur
 The rest frame of choice is the barycentre of the Solar System.
 Equations to relate the observed spectral shift to the {RV} shift at the \textit{Barycentric Celestial Reference Reference System}~\citep{rickman_transactions_2001} rest frame are provided in~\citet{lindegren_fundamental_2003}.
 
-In this work the barycentric velocity correction is calculated using PyAstronomy's\footnote{https://pyastronomy.readthedocs.io} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
+In this work the barycentric velocity correction is calculated using PyAstronomy's\footnote{\href{https://pyastronomy.readthedocs.io}{\url{https://pyastronomy.readthedocs.io}}.} \emph{helcor} function ported from the REDUCE IDL package (see~\citet[][]{piskunov_new_2002}).
 This calculates radial velocity of the observer towards the astronomical target, accounting for Earth's barycentric motion as well as Earth's rotation, to the accuracy of \(\sim\)1\mps{}\footnote{For corrections at an accuracy of 1\cmps{} see~\citet{wright_barycentric_2014, shubham_shbhuk_2018}.}.
 This computation requires the date and time of the observation, the location of the observatory and the celestial coordinates of the target.
 The observed spectra are Doppler shifted by the negative value of the barycentric velocity calculated, placing all spectra as if they were observed from the barycentre of the Solar System.

@@ -6,7 +6,7 @@ Here the software developed to compute the {RV} precisions is presented.
 It is an extension of the code used for the calculations of~\citet{figueira_radial_2016}.
 This section documents the vast improvements (optimizations and extensions) made to the software.
 Changes made that affect the derived {RV} precision attained are specifically documented in detail, with the relative precision changes provided.
-This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org/}{joss.theoj.org/}.} (JOSS) (Neal and Figueira 2019) with the source code openly available on \href{https://github.com/jason-neal/eniric}{Github}\footnote{\href{https://github.com/jason-neal/eniric}{https://github.com/jason-neal/eniric}}.
+This work resulted in a submission of a publication\footnote{Available at \href{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}{\url{http://joss.theoj.org/papers/384bfc031df47ecef2d88328f63e5479}}.} to \emph{The Journal of Open Source Software}\footnote{\href{http://joss.theoj.org}{\url{joss.theoj.org}}.} (JOSS) (Neal and Figueira 2019) with the source code openly available on \href{https://github.com/jason-neal/eniric}{Github}\footnote{\href{https://github.com/jason-neal/eniric}{\url{https://github.com/jason-neal/eniric}}.}.
 This should be accepted shortly as only minor changes to the paper have been requested by the reviewer.
 
 
@@ -21,7 +21,7 @@ After inheriting the code-base from~\citet{figueira_radial_2016}, software tests
 Version control practises were used to incrementally add small separate changes to the code base one at a time, regularly testing in a continuous integration manner.
 This is done by sending the code-base to a repository\footnote{Public or private.} on Github\footnote{\href{https://bitbucket.org}{Bitbucket} and \href{https://gitlab.com}{GitLab} are other popular options.}.
 Automated tools and services then forward the project for testing, code style checking, or other continuous-integration services (e.g.\ \href{https://travis-ci.com}{Travis-CI}) which either run the automated tests, or other checks on each new change.
-The public Travis-CI record of the test for \eniric{} can be found at \href{https://travis-ci.org/jason-neal/eniric}{https://travis-ci.org/jason-neal/eniric}.
+The public Travis-CI record of the test for \eniric{} can be found at \href{https://travis-ci.org/jason-neal/eniric}{\url{https://travis-ci.org/jason-neal/eniric}}.
 
 This process was valuable in preventing the introduction of errors, but also in identifying errors in the~\citet{figueira_radial_2016} results which are outlined in \cref{subsec:condition_two_bug}.
 Based on this experience it is a practise that is highly recommended for scientific programming.
@@ -34,7 +34,7 @@ This led to multiple weeks worth of processing time required to compute the {RV}
 The latest implementation of \eniric{} can compute all 180 combinations in less than two hours.
 
 The major performance bottleneck was identified in the convolution stage.
-Starting with a \numpy{} array containing the spectrum, the algorithm looped though each pixel in the spectrum, selecting a suitable window around the given pixel with a \emph{comprehension list}\footnote{Example usage can be found \href{https://docs.python.org/3/tutorial/datastructures.html\#list-comprehensions}{here}.}.
+Starting with a \numpy{} array containing the spectrum, the algorithm looped though each pixel in the spectrum, selecting a suitable window around the given pixel with a \emph{comprehension list}\footnote{Example usage can be found at \href{https://docs.python.org/3/tutorial/datastructures.html\#list-comprehensions}{\url{https://docs.python.org/3/tutorial/datastructures.html\#list-comprehensions}}.}.
 The output is a list\footnote{A list is a native Python data structure.} which was turned back into a \numpy{} array, eventually summed and then appended to a new list.
 This list was once again converted into \numpy{} array.
 The main performance issue is a Python implementation detail to do with a type checking overhead when converting between \numpy{} and native data types.
@@ -43,7 +43,7 @@ These conversions were performed 2--3 times for every pixel in the large spectra
 Remaining entirely in the fast compiled \numpy{} code and not changing data types a performance gain of around 250\(\times\)\,X was achieved.
 This is done by using boolean masks instead of comprehension lists and pre-allocating a \numpy{} array to store the results.
 
-The convolution computation of individual pixels is an ``embarrassingly parallel''\footnote{\href{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}.} problem.
+The convolution computation of individual pixels is an ``embarrassingly parallel''\footnote{\href{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}{\url{https://en.wikipedia.org/wiki/Embarrassingly\_parallel}}.} problem.
 What this means is that convolution result for pixel $i+1$ does not depend on the convolution result obtained of pixel $i$, as each can be computed independently.
 Therefore, parallel processing was also added into the convolution to further improve the performance, roughly dividing the convolution time by the number of processors used.
 
@@ -56,7 +56,7 @@ The \pyastronomy{} package has a ``slow'' version of the rotational convolution,
 They also provide ``fast'' convolution kernels that used a fixed kernel, taking the central wavelength value.
 These are significantly faster but are only valid for very short wavelength regions, in which the kernels do not significantly change.
 They are not deemed suitable for use in this work due to the large wavelength span of spectroscopic bands and the wavelength dependant spacing of the spectra considered here.
-A comparison of the performance between the \pyastronomy{} convolutions and the convolutions implemented in \eniric{} and used here are provided in a \emph{Jupyter} notebook in the Github repository of ``eniric''\footnote{\href{https://github.com/jason-neal/eniric/blob/master/docs/Notebooks/Convolution_speeds.ipynb}{https://github.com/jason-neal/eniric/blob/master/docs/Notebooks/Convolution\_speeds.ipynb}.}; basically they fall in between the ``fast'' and ``slow'' implementation of \pyastronomy{}.
+A comparison of the performance between the \pyastronomy{} convolutions and the convolutions implemented in \eniric{} and used here are provided in a \emph{Jupyter} notebook in the Github repository of ``eniric''\footnote{\href{https://github.com/jason-neal/eniric/blob/master/docs/Notebooks/Convolution_speeds.ipynb}{\url{https://github.com/jason-neal/eniric/blob/master/docs/Notebooks/Convolution\_speeds.ipynb}}.}; basically they fall in between the ``fast'' and ``slow'' implementation of \pyastronomy{}.
 
 
 \subsection{Model extension}
@@ -111,7 +111,7 @@ This only extends to \(i= n-1\), where \(n\) is the number of points in the spec
 This is important in the case of Condition~\#2 (\cref{eqn:mask2}) from~\citet{figueira_radial_2016}.
 
 
-The \npgradient{}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}.} function contains a more advanced numerical method to calculate the derivative.
+The \npgradient{}\footnote{Documentation available at \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1 }{\url{https://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html\#id1}}.} function contains a more advanced numerical method to calculate the derivative.
 It uses a \textit{compact difference} method~\citep{quarteroni_numerical_2000} which expands the finite differences using a Taylor expansion and then selects coefficients to minimize the \textit{consistency error}.
 From the \numpy{} documentation the consistency error here is \[\eta_i = \partial{f(x_i)}/\partial{x} -  [\alpha f(x_i) + \beta f(x_i +h_d) + \gamma f(x_i - h_s)],\] where \(h_s\) and \(h_d\) are the spacing to the left and right of \(i\) respectively.
 With Taylor expansion this turns into solving a linear system of equations:

@@ -7,7 +7,7 @@ The series of steps, performed by various software tools, is referred to as a \e
 Each stage in the pipeline performs a specific task, for example creating the master dark frame, or performing the nod subtraction.
 The result of one stage is passed to the next (either automatically or manually).
 Two different pipelines were available to reduce the {CRIRES} observations used in this work.
-The first is the standard {CRIRES} pipeline\footnote{\href{https://www.eso.org/sci/software/pipelines/}{https://www.eso.org/sci/software/pipelines/}}, available from {ESO}.
+The first is the standard {CRIRES} pipeline\footnote{\href{https://www.eso.org/sci/software/pipelines}{\url{https://www.eso.org/sci/software/pipelines}}.}, available from {ESO}.
 The second is an in-house pipeline previously used in~\citet{figueira_radial_2010} called {DRACS} (Data Reduction Algorithm for {CRIRES} Spectra)
 This was created due to a lack of a reduction pipeline for CRIRES at the time.
 In these next sections the experience gained using both pipelines, comparing the extracted spectra and user experience is documented.
@@ -15,9 +15,9 @@ In these next sections the experience gained using both pipelines, comparing the
 
 \subsection{{ESO} {CRIRES} pipeline}
 \label{subsec:eso-crires}
-The {ESO} {CRIRES} pipeline was used to reduce {CRIRES} nodding spectra following direction from the {CRIRES} pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}} and the {CRIRES} reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-{ESO}-14200-4032\_v91.pdf}{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-{ESO}-14200-4032\_v91.pdf}}.
+The {ESO} {CRIRES} pipeline was used to reduce {CRIRES} nodding spectra following direction from the {CRIRES} pipeline user manual\footnote{\href{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}{\url{ftp://ftp.eso.org/pub/dfs/pipelines/crires/crire-pipeline-manual-1.13.pdf}}.} and the {CRIRES} reduction cookbook\footnote{\href{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-{ESO}-14200-4032\_v91.pdf}{\url{https://www.eso.org/sci/facilities/paranal/instruments/crires/doc/VLT-MAN-{ESO}-14200-4032\_v91.pdf}}.}.
 
-The GASGANO\footnote{\href{https://www.eso.org/sci/software/gasgano.html}{https://www.eso.org/sci/software/gasgano.html}} graphical user interface (GUI) was used to interact with the pipeline with guidance from the {GASGANO} manual\footnote{\href{https://www.eso.org/sci/software/gasgano/VLT-PRO-{ESO}-19000-1932-V4.pdf}{https://www.eso.org/sci/software/gasgano/VLT-PRO-{ESO}-19000-1932-V4.pdf}}.
+The GASGANO\footnote{\href{https://www.eso.org/sci/software/gasgano.html}{\url{https://www.eso.org/sci/software/gasgano.html}}.} graphical user interface (GUI) was used to interact with the pipeline with guidance from the {GASGANO} manual\footnote{\href{https://www.eso.org/sci/software/gasgano/VLT-PRO-{ESO}-19000-1932-V4.pdf}{\url{https://www.eso.org/sci/software/gasgano/VLT-PRO-{ESO}-19000-1932-V4.pdf}}.}.
 This pipeline provides a number of \emph{recipes} which perform the required extraction steps.
 From the GUI each recipe is manually selected, then the correct calibration and observation files need to be selected to use with each recipe.
 The final output from the {ESO} pipeline is a table in a fits format with the combined extracted spectra (both \emph{rectangular} and \emph{optimal} extractions), pixel errors and a wavelength solution.
@@ -35,7 +35,7 @@ To try and improve the wavelength calibration, the {y-positions} of the 6 \thar{
 This helped the wavelength calibration recipe to correctly identify/fit more of the \thar{} spectra in most cases, but this took time.
 Because of this, it was chosen to use the other pipeline and these calibration were not used.
 
-{ESO} has a new reduction ``workflow'' called {ESO} Reflex~\citep{freudling_automated_2013}\footnote{\href{https://www.eso.org/sci/software/esoreflex/}{https://www.eso.org/sci/software/esoreflex/}}.
+{ESO} has a new reduction ``workflow'' called {ESO} Reflex~\citep{freudling_automated_2013}\footnote{\href{https://www.eso.org/sci/software/esoreflex}{\url{https://www.eso.org/sci/software/esoreflex}}.}.
 This enables automated reduction with the ability to chain together the extraction recipes in the specific order desired, repeat steps to optimize the reduction, and automatically handle the data organization (no need to manually select the files for each recipe).
 This would likely have enabled a quicker and more consistent reduction of the spectra.
 Unfortunately {ESO} Reflex was not, and is still not, available for the {CRIRES} pipeline.
